@@ -1,0 +1,99 @@
+<div style="margin-top:20px;">
+  <div class="row medication-details-container mr-0 ml-0">
+    <div class="col l8 m12 s12 pd-0">
+      <div class="medication-details" >
+        <div *ngIf="ismobile" class="pb-5">
+            <app-breadcrumbs></app-breadcrumbs>
+        </div>
+        <div class="medication-details-header pb-0">
+          Medication Details
+        </div>
+        <div *ngIf="!ismobile" class="pb-5">
+            <app-breadcrumbs></app-breadcrumbs>
+        </div>
+        <div *ngIf="medicationDetail && medicationDetail?.rxDetails">
+          <p class="medication-details-dependent-info">{{ basicMemInfo?.rxSummary?.fullName }}
+          </p>
+        </div>
+        <section *ngIf="medicationDetail && medicationDetail?.rxDetails">
+          <div class="medication-details-name">
+            <!-- Levothyrxine 88 mcg -->
+            {{medicationDetail?.rxDetails?.genericName}}
+          </div>
+          <div class="medication-details-prescribing-doctor">
+            <div class="doctor-name">
+              <span class="name" style="cursor: pointer">
+                Prescribing Doctor:
+                <ng-container *ngIf="medicationDetail?.rxDetails?.prescribingDoctor">
+                  <a (click)="navigateToDoctorDetails(medicationDetail?.rxDetails)">{{medicationDetail?.rxDetails?.prescribingDoctor.substr(0, medicationDetail?.rxDetails?.prescribingDoctor.lastIndexOf(' ')) | titlecase}}</a>,
+                  <a (click)="navigateToDoctorDetails(medicationDetail?.rxDetails)">{{medicationDetail?.rxDetails?.prescribingDoctor.substr(medicationDetail?.rxDetails?.prescribingDoctor.lastIndexOf(' ')+1)}}</a>                    
+                </ng-container>
+              </span>
+            </div>
+          </div>
+
+          <div class="medication-details-pharmacy-details">
+            <div class="pharmacy-name">
+              <span class="name">Pharmacy: {{medicationDetail?.rxDetails?.pharmacy?.name | titlecase}}</span>
+              <span class="store-id">({{medicationDetail?.rxDetails?.pharmacy?.id}}) </span>
+              <span class="address"> <br class="hide-on-large-only">{{medicationDetail?.rxDetails?.pharmacy?.address |
+                titlecase}}
+                {{medicationDetail?.rxDetails?.pharmacy?.city | titlecase}},
+                {{medicationDetail?.rxDetails?.pharmacy?.state }}
+                {{medicationDetail?.rxDetails?.pharmacy?.zip}}
+              </span>
+            </div>
+            <div class="pharmacy-contact-info">
+              <span class="phone-icon"> <i class="fas fa-phone"></i> </span>
+              <a [href]="medicationDetail && medicationDetail.rxDetails && medicationDetail.rxDetails.pharmacy ? 'tel:+1' + medicationDetail.rxDetails.pharmacy.phoneNumber:''"
+                class="phone" style="margin-right: 10px;">{{medicationDetail?.rxDetails?.pharmacy?.phoneNumber}}</a>
+
+              <span class="directions-icon"> <i class="fas fa-map-marker map-icon"></i> </span>
+              <span class="directions" (click)="getDirections()"> Get Directions
+              </span>
+            </div>
+          </div>
+          <div class="medication-details-fill-details">
+            <div class="amount-info">
+                <ng-container *ngIf="medicationDetail?.rxDetails?.copay">
+                  <span class="amount">
+                    ${{medicationDetail?.rxDetails?.copay?.toString().split('.')[0]}}</span><sup style="font-size: 10px">
+                    {{medicationDetail?.rxDetails?.copay?.toString().split('.')[1]?
+                    medicationDetail?.rxDetails?.copay.toString().split('.')[1]:'00'}}
+                  </sup>
+              </ng-container>
+              <p style="display: inline-block">copay</p>
+            </div>
+            <div class="last-fill-info">
+              Last Fill: <span class="last-fill-date"> {{medicationDetail?.rxDetails?.lastFill|yyyymmddTommddyyyy}}
+              </span>
+            </div>
+          </div>
+          <div class="medication-details-refil-history">
+
+          </div>
+        </section>
+      </div>
+      <div class="refill-history-container" *ngIf="medicationDetail">
+        <div class="refill-history-header">Medication refill history</div>
+
+        <div *ngFor="let item of medicationDetail?.rxDetails?.refillHistory">
+          <div class="refill-history-item" (click)="navigateToClaimDetails(item)">
+            <span class="refill-history-date">
+              {{item.date|yyyymmddTommddyyyy}}
+            </span>
+            <span class="refill-history-link">
+              <span><i class="far fa-chevron-right"></i></span>
+            </span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+    <div class="col l4 m12 s12 dynamic-content">
+      <div>
+        <app-fpo-layout [targetUrl]='fpoTargetUrl'></app-fpo-layout>
+      </div>
+    </div>
+  </div>
+</div>

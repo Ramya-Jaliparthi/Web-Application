@@ -1,0 +1,23 @@
+<div class="row m-0">
+  <h1 class="form-header">Confirm Your Identity</h1>
+  <p class="mb-20">For your protection, please enter the following information to verify your identity.</p>
+  <form novalidate [formGroup]="identityForm" (submit)="onSubmit()" autocomplete="off">
+
+    <div class="card-content">
+      <div class="row">
+        <div class="input-field col s12 pd-0">
+          <input placeholder="" id="dob" type="text" class="validate fluid-width" [textMask]="{mask: dobMask, guide: false}" formControlName="dob"
+            appAutofocus>
+          <label for="dob" class="active">Date of Birth*</label>
+          <app-control-messages [control]="identityForm['controls'].dob" [controlName]="'dateOfBirth'"></app-control-messages>
+          <span class="font-13-grey">MM/DD/YYYY</span>
+        </div>
+      </div>
+    </div>
+    <div class="submit-action">
+      <button class="waves-effect waves-light btn btn-block  mt-20 mb-20 btn-full-width br-8" type="submit" aria-label="Continue"
+        name="action" [disabled]='!identityForm.valid'>Continue</button>
+      <p class="font-14-grey left-align">*Field is required.</p>
+    </div>
+  </form>
+</div>

@@ -1,0 +1,230 @@
+<div class="row  m-0">
+  <h1 class="form-header">{{financialConstants.text.schedulePaymentTitle}}</h1>
+  <form [formGroup]="schedulePaymentForm" novalidate (ngSubmit)="schedulePayment()"
+        [ngClass]="{'form-submitted' : isFormSubmitted}">
+    <div class="card-content">
+
+      <div class="row">
+        <div class="input-field col s12 pd-0">
+          <mat-form-field floatPlaceholder="never" class="col s12 pd-0 mat-inherit-underline">
+            <mat-select tabindex="1" id="members" appMatSelectChange placeholder="Please select"
+                        formControlName='member'>
+              <mat-option *ngFor='let options of members' [value]='options.memberName'>
+                {{options.memberName}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+          <label for="members" class="active">{{financialConstants.text.member}}</label>
+        </div>
+        <app-control-messages [control]="schedulePaymentForm['controls'].member" [controlName]="'member'"
+                            [customMessages]='memberMessages'></app-control-messages>
+      </div>
+
+      <div class="row">
+        <div class="input-field col s12 pd-0">
+          <mat-form-field floatPlaceholder="never" class="col s12 pd-0 mat-inherit-underline">
+            <mat-select tabindex="2" id="services" appMatSelectChange placeholder="Please select"
+                        formControlName='serviceType'>
+              <mat-option *ngFor='let options of services' [value]='options.code'>
+                {{options.code}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+          <label for="services" class="active">{{financialConstants.text.serviceType}}</label>
+        </div>
+        <app-control-messages [control]="schedulePaymentForm['controls'].serviceType" [controlName]="'serviceType'"
+                            [customMessages]='serviceTypeMessages'></app-control-messages>
+      </div>
+
+      <div class="row">
+        <div class="input-field col s12 pd-0">
+          <input tabindex="3" matInput placeholder="" id="startdate" aria-labelledby="startdate" type="text"
+                 [textMask]="{mask: dateMask, guide: false}"
+                 maxlength="10" formControlName="serviceStartDate"/>
+          <label for="startdate" class="active">{{financialConstants.text.serviceStartDate}}</label>
+          <mat-hint>
+            <span class="font-13-grey">mm/dd/yyyy</span>
+          </mat-hint>
+          <app-control-messages [control]="schedulePaymentForm['controls'].serviceStartDate" [controlName]="'serviceStartDate'"
+                              [customMessages]='serviceStartDateMessages'></app-control-messages>
+          <!--<app-control-messages [controlName]="'dateOfBirth'" [control]="registerDetailForm['controls'].DOB"></app-control-messages>-->
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="input-field col s12 pd-0">
+          <input tabindex="4" matInput placeholder="" id="enddate" aria-labelledby="enddate" type="text"
+                 [textMask]="{mask: dateMask, guide: false}"
+                 maxlength="10" formControlName="serviceEndDate"/>
+          <label for="enddate" class="active">{{financialConstants.text.serviceEndDate}}</label>
+          <mat-hint>
+            <span class="font-13-grey">{{financialConstants.text.dateFormat}}</span>
+          </mat-hint>
+          <app-control-messages [control]="schedulePaymentForm['controls'].serviceEndDate" [controlName]="'serviceEndDate'"
+                              [customMessages]='serviceEndDateMessages'></app-control-messages>
+          <!--<app-control-messages [controlName]="'dateOfBirth'" [control]="registerDetailForm['controls'].DOB"></app-control-messages>-->
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="input-field col s12 pd-0">
+          <mat-form-field floatPlaceholder="never" class="col s12 pd-0 mat-inherit-underline">
+            <mat-select tabindex="5" id="reimbursmentMethod" appMatSelectChange placeholder="Please select"
+                        formControlName='reimbursmentMethod'>
+              <mat-option *ngFor='let options of reimbursmentMethods' [value]='options.method'>
+                {{options['method']}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+          <label for="reimbursmentMethod" class="active">{{financialConstants.text.reimbursementMthd}} *</label>
+        </div>
+        <app-control-messages [control]="schedulePaymentForm['controls'].reimbursmentMethod" [controlName]="'reimbursmentMethod'"
+                            [customMessages]='memberMessages'></app-control-messages>
+      </div>
+
+      <div class="row">
+        <div class="input-field col s12 pd-0">
+          <input tabindex="6" matInput placeholder="$" id="ramount" aria-labelledby="ramount" type="text"
+                 maxlength="19" formControlName="reimbursmentAmount"/>
+          <label for="ramount" class="active">{{financialConstants.text.reimbursementAmount}}</label>
+          <app-control-messages [control]="schedulePaymentForm['controls'].reimbursmentAmount" [controlName]="'reimbursmentAmount'"
+                              [customMessages]='amountMessages'></app-control-messages>
+          <!--<app-control-messages [controlName]="'firstName'" [control]="registerDetailForm['controls'].firstname"></app-control-messages>-->
+        </div>
+      </div>
+
+      <div class="payment-reciept">
+        <p class="section-header">{{financialConstants.text.addReciept}}</p>
+
+        <a href="javascript:void(0)">
+          <i class="material-icons">camera_alt</i>
+          <span>{{financialConstants.text.takeOrUploadPhoto}}</span>
+          <input tabindex="7" type="file" (change)="takeOrUploadReciept($event)" class="b3_upload"/>
+        </a>
+
+        <div class="row">
+          <div *ngFor="let val of upload_files; let i = index;" class="col s4 left">
+            <div class="imgPlaceholder " style="font-size:3em; color:Tomato">
+
+              <img [src]="val.data_raw" multiple *ngIf="val.data_raw" class="img">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 10 10" preserveAspectRatio="none"
+                   (click)="removeFileFromList(val);">
+                <polygon points="10 0 10 4 6 0"/>
+                <path d="M8.5 0.5 9.5 1.5 M9.5 0.5 8.5 1.5" style="stroke: white;stroke-width: 0.1;"></path>
+              </svg>
+              <!--<a class="close" >X</a>-->
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="row">
+        <div class="input-field col s12 pd-0">
+          <mat-form-field floatPlaceholder="never" class="col s12 pd-0 mat-inherit-underline">
+            <mat-select tabindex="8" id="selectProvider" appMatSelectChange  placeholder="Please select"
+                        formControlName='selectProvider'>
+              <mat-option *ngFor='let options of providers' [value]='options.memberName'>
+                {{options.memberName}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+          <label for="selectProvider" class="active">{{financialConstants.text.providerOrFacility}}</label>
+        </div>
+        <div class="select-provider">
+          <span>{{financialConstants.text.cantFindProvider}} <a href="javascript:void(0)" (click)="addProvider()">{{financialConstants.text.addProvider}}</a></span>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="input-field col s12 pd-0">
+          <input tabindex="9" matInput placeholder="$" id="billedamount" aria-labelledby="billedamount" type="text"
+                 maxlength="19" formControlName="billedAmount"/>
+          <label for="billedamount" class="active">{{financialConstants.text.billedAmount}}</label>
+          <app-control-messages [control]="schedulePaymentForm['controls'].billedAmount" [controlName]="'billedAmount'"
+                              [customMessages]='amountMessages'></app-control-messages>
+          <!--<app-control-messages [controlName]="'firstName'" [control]="registerDetailForm['controls'].firstname"></app-control-messages>-->
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="input-field col s12 pd-0">
+          <input tabindex="10" matInput placeholder="$" id="allowedInsurance" aria-labelledby="allowedInsurance"
+                 type="text"
+                 maxlength="19" formControlName="amountAllowedByInsurance"/>
+          <label for="allowedInsurance" class="active">{{financialConstants.text.amountAllowedByInsurance}}</label>
+          <app-control-messages [control]="schedulePaymentForm['controls'].amountAllowedByInsurance" [controlName]="'amountAllowedByInsurance'"
+                              [customMessages]='amountMessages'></app-control-messages>
+          <!--<app-control-messages [controlName]="'firstName'" [control]="registerDetailForm['controls'].firstname"></app-control-messages>-->
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="input-field col s12 pd-0">
+          <input tabindex="11" matInput placeholder="$" id="insurancePaidAmt" aria-labelledby="insurancePaidAmt"
+                 type="text"
+                 maxlength="19" formControlName="insurancePaidAmount"/>
+          <label for="insurancePaidAmt" class="active">{{financialConstants.text.insurancePaidAmount}}</label>
+          <app-control-messages [control]="schedulePaymentForm['controls'].insurancePaidAmount" [controlName]="'insurancePaidAmount'"
+                              [customMessages]='amountMessages'></app-control-messages>
+          <!--<app-control-messages [controlName]="'firstName'" [control]="registerDetailForm['controls'].firstname"></app-control-messages>-->
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="input-field col s12 pd-0">
+          <input tabindex="12" matInput placeholder="$" id="paidNonReimbursableAmount"
+                 aria-labelledby="paidNonReimbursableAmount" type="text"
+                 maxlength="19" formControlName="paidNonReimbursableAmount"/>
+          <label for="paidNonReimbursableAmount" class="active">{{financialConstants.text.paidNonRimbursable}}</label>
+          <app-control-messages [control]="schedulePaymentForm['controls'].paidNonReimbursableAmount" [controlName]="'paidNonReimbursableAmount'"
+                              [customMessages]='amountMessages'></app-control-messages>
+          <!--<app-control-messages [controlName]="'firstName'" [control]="registerDetailForm['controls'].firstname"></app-control-messages>-->
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="input-field col s12 pd-0">
+          <input tabindex="13" matInput placeholder="$ calculated automatically" id="myResponsibility" aria-labelledby="myResponsibility" type="text"
+                 formControlName="myResponsibility"/>
+          <label for="myResponsibility" class="active">{{financialConstants.text.myResponsibility}}</label>
+          <!--<app-control-messages [controlName]="'firstName'" [control]="registerDetailForm['controls'].firstname"></app-control-messages>-->
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="input-field col s12 pd-0">
+          <input tabindex="14" matInput placeholder="$ calculated automatically" id="reimbursedAmountFromAccounts"
+                 aria-labelledby="reimbursedAmountFromAccounts" type="text"
+                 formControlName="reimbursedAmountFromAccounts"/>
+          <label for="reimbursedAmountFromAccounts" class="active">{{financialConstants.text.reimbursedFromMyAccounts}}</label>
+          <!--<app-control-messages [controlName]="'firstName'" [control]="registerDetailForm['controls'].firstname"></app-control-messages>-->
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="input-field col s12 pd-0">
+          <input tabindex="15" matInput placeholder="$ calculated automatically" id="whatYouOwe" aria-labelledby="whatYouOwe" type="text"
+                 formControlName="whatYouOwe"/>
+          <label for="reimbursedAmountFromAccounts" class="active">{{financialConstants.text.whatYouOwe}}</label>
+          <!--<app-control-messages [controlName]="'firstName'" [control]="registerDetailForm['controls'].firstname"></app-control-messages>-->
+        </div>
+      </div>
+
+
+    </div>
+
+    <div class="row button-row">
+      <div tabindex="16" class="cancel-btn waves-effect waves-light btn-white
+              btn-block btn-half-width-left" type=""
+              aria-label="Cancel" (click)="clearAllFields()">Clear
+      </div>
+      <button tabindex="17" class="submit-btn waves-effect waves-light btn btn-block  btn-half-width-right br-8"
+              type="submit" aria-label="Submit"
+              name="action">Submit
+      </button>
+    </div>
+
+    <p class="note-text">* indicates a required field.</p>
+  </form>
+</div>

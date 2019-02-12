@@ -1,0 +1,30 @@
+@media (max-width: 992px) {
+    input.fluid-width {
+        //width: calc(99% + 7px) !important;
+        //margin: 0 -12px !important;
+        //max-width: none !important;
+        //padding: 0 15px !important;
+        //margin: 0px -10px !important;
+        //max-width: none !important;
+        //padding: 0 5px !important;
+    }
+    //input[placeholder] {
+    //  padding-left: 15px !important;
+    //}
+    //.input-field.col label {
+    //  left: 0.3rem;
+    //}
+}
+
+@mixin form-header {
+    color: $header-color;
+    font-size: $header-font-size;
+    @include Roboto(light);
+    margin: 20px 0px !important;
+}
+
+/*@mixin submit-action {
+    .btn[disabled] {
+        background-color: $disabed-background-color !important;
+    }
+}*/

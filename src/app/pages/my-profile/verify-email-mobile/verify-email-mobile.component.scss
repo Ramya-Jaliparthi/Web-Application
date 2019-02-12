@@ -1,0 +1,28 @@
+// spk-cleanup - @import '../../../../../assets/styles/variables';
+@import '../../../../assets/styles/_variables';
+@import '../../../../assets/styles/layouts-styles';
+@import '../../../../assets/styles/_global';
+/*submit-action {
+    .btn[disabled] {
+        background-color: $disabed-background-color !important;
+    }
+}*/
+
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+input.access-code {
+    border: none;
+    border-bottom: 1px solid $non-vdk-19-grey;
+    text-align: center;
+    font-size: 24px;
+    color: $text-normal-color;
+}
+
+.fix-left-right-margin{
+    margin-left: -0.75rem !important;
+    margin-right: -0.75rem !important;
+}

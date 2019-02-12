@@ -1,0 +1,38 @@
+<div class="row m-0">
+    <h1 class="screen-header">Verify new {{commChannelBeingVerified}}</h1>
+    <p class="mb-10 description-text">A 6-digit verification code has been sent to {{myPrefmaskedVerify}}. Please enter it below.</p>
+
+    <form novalidate [formGroup]="verifyaccesscodeForm" (ngSubmit)="onSubmit()" autocomplete="off">
+        <div class="card-content">
+            <div class="row mb-10">
+                <div class="col s2">
+                    <input tabindex="1" appAutofocus placeholder="" [textMask]="codeMask" class="access-code" aria-label="accesscode" #accesscode1 type="text" formControlName="accesscode1" (keyup)="onKeyUp($event, undefined, accesscode2)" />
+                </div>
+                <div class="col s2">
+                    <input tabindex="2" placeholder="" [textMask]="codeMask" class="access-code" aria-label="accesscode" #accesscode2 type="text" formControlName="accesscode2" (keyup)="onKeyUp($event, accesscode1, accesscode3)" />
+                </div>
+                <div class="col s2">
+                    <input tabindex="3" placeholder="" [textMask]="codeMask" class="access-code" aria-label="accesscode" #accesscode3 type="text" formControlName="accesscode3" (keyup)="onKeyUp($event, accesscode2, accesscode4)" />
+                </div>
+                <div class="col s2">
+                    <input tabindex="4" placeholder="" [textMask]="codeMask" class="access-code" aria-label="accesscode" #accesscode4 type="text" formControlName="accesscode4" (keyup)="onKeyUp($event, accesscode3, accesscode5)" />
+                </div>
+                <div class="col s2">
+                    <input tabindex="5" placeholder="" [textMask]="codeMask" class="access-code" aria-label="accesscode" #accesscode5 type="text" formControlName="accesscode5" (keyup)="onKeyUp($event, accesscode4, accesscode6)" />
+                </div>
+                <div class="col s2">
+                    <input tabindex="6" [textMask]="codeMask" (keyup)="onKeyUp($event, accesscode5, undefined)" placeholder="" class="access-code" aria-label="accesscode" #accesscode6 type="text" formControlName="accesscode6" />
+                </div>
+            </div>
+
+            <div class="mb-20  mt-25 verify-text">
+                <p class="m-0 description-text">Didn't get your verification code?</p>
+                <a tabindex="7" class="cursor-pointer underline anchor-text" aria-label="Send it again." (click)="this.sendAccessCode()">Send it again.</a>
+            </div>
+
+        </div>
+        <div class="submit-action">
+            <button tabindex="8" class="waves-effect waves-light btn btn-block  mt-20 mb-20 btn-full-width br-8" type="submit" aria-label="Continue" name="action" [disabled]="!verifyaccesscodeForm.valid">Continue</button>
+        </div>
+    </form>
+</div>

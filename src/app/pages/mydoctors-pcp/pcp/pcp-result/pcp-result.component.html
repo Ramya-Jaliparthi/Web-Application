@@ -1,0 +1,29 @@
+<div class="pcp-result">   
+        <!-- placeholder for alert success/warning -->
+        <h1>Your primary care provider (PCP) has been <span  *ngIf="!isRTMSError">updated</span><span *ngIf="isRTMSError">submitted</span></h1>
+        <dl class="pcpres-orderconf" *ngIf="!isRTMSError">
+          <dt>Order Confirmation </dt>
+          <dd>{{confirmationNumber}}</dd>        
+        </dl>
+        <!-- <div class="order-details">
+          <span>Greta M Thomas, MD</span>
+          <dl class="pcp-iddatetbl">
+              <dt>PCP ID</dt>
+              <dd>45678360J30682</dd>  
+              <dt>Effective Date</dt>      
+              <dd>since 01/01/2018</dd>
+            </dl>
+        </div> -->
+    <ul class="collection">  
+        <!-- <li> <a
+           [routerLink]="['../../../mydoctors/details']">View doctor's details 
+          <span class="icon-arrow"><i class="fa fa-chevron-right fa-w-10"></i></span>
+        </a></li> -->
+        <li ><a *ngIf="hasDependents" [routerLink]="previousUrl">Change another member's PCP 
+          <span class="icon-arrow"><i class="fa fa-chevron-right fa-w-10"></i></span></a></li>
+    </ul>
+    
+  </div>
+  
+  
+  

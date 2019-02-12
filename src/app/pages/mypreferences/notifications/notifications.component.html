@@ -1,0 +1,154 @@
+<div class="mypref-notifications-mat">
+
+    <div class="row m-0">
+        <h1 class="col s12 m12 l12 mb-10 chkbox-padding">Communications from Blue Cross</h1>
+    </div>
+    <div class="row mr-0 ml-0">
+        <div class="col s12 m12 l4 chkbox-padding">
+            <mat-checkbox disableRipple [checked]="receInfo">
+                Yes, I wish to receive information from Blue Cross Blue Shield of Massachusetts. <a href="javascript:void(0)" routerLink="/pages/learnmore" routerLinkActive="active">Learn more.</a>
+            </mat-checkbox>
+        </div>
+    </div>
+    <div class="row  mr-0 ml-0 mb-0 hide-on-large-only">
+        <div class="col s12">
+            <h2 class="m-0 pb-15">Notification Preferences</h2>
+        </div>
+    </div>
+    <div class="row bottom-border-nullifier">
+        <div class="col s12 m12 l4">
+            <mat-card>
+                <mat-card-content>
+                    <div class="valign-wrapper enforce-flex">
+                        <div class="p-0 valign-wrapper-override">
+                            <mat-checkbox disableRipple [checked]="myPrefMandate" disabled></mat-checkbox>
+                        </div>
+                        <a routerLink="/mypreferences/mandatory" class="m-0 valign-wrapper-override center-box-width">
+                            <div class="row col s12 box-header-text">
+                                Mandatory
+                            </div>
+                            <div style="height:44px;overflow:hidden;" class=" row col s12 box-description-text ">
+                                Communications sent out about your plan.
+                            </div>
+                        </a>
+                        <a routerLink="/mypreferences/mandatory" class="mr-18 right iconColor">
+                            <i class="fa fa-chevron-right long-text notification-arrow"></i>
+                        </a>
+                    </div>
+                </mat-card-content>
+            </mat-card>
+        </div>
+        <div class="col s12 m12 l4">
+            <mat-card>
+                <mat-card-content>
+                    <div class="valign-wrapper enforce-flex">
+                        <div class="p-0 valign-wrapper-override">
+                            <mat-checkbox disableRipple [checked]="myPrefAccActivity" disabled></mat-checkbox>
+                        </div>
+                        <a routerLink="/mypreferences/accountActivity" class="m-0 valign-wrapper-override center-box-width">
+                            <div class="row col s12 box-header-text">
+                                Account Activity
+                            </div>
+                            <div style="height:44px;overflow:hidden;" class=" row col s12 box-description-text">
+                                Get updates on your latest transactions
+                            </div>
+                        </a>
+                        <a routerLink="/mypreferences/accountActivity" class="mr-18 iconColor">
+                            <i class="fa fa-chevron-right long-text notification-arrow"></i>
+                        </a>
+                    </div>
+                </mat-card-content>
+            </mat-card>
+        </div>
+       <div class="col s12 m12 l4">
+           <mat-card>
+                <mat-card-content>
+                    <div class="valign-wrapper enforce-flex">
+                        <div class="p-0 valign-wrapper-override">
+                            <mat-checkbox disableRipple [checked]="myPrefSmartShopper" disabled></mat-checkbox>
+                        </div>
+                        <a routerLink="/mypreferences/smartshopper" class="m-0 valign-wrapper-override center-box-width">
+                            <div class="row col s12 box-header-text">
+                                SmartShopper
+                            </div>
+                            <div style="height:44px;overflow:hidden;" class="row col s12 box-description-text">
+                                Keep up-to-date with the latest SmartShopper
+                            </div>
+                        </a>
+                        <a routerLink="/mypreferences/smartshopper" class="mr-18 iconColor">
+                            <i class="fa fa-chevron-right long-text notification-arrow"></i>
+                        </a>
+                    </div>
+                </mat-card-content>
+            </mat-card> 
+        </div>
+    </div>
+    <div class="row">
+        <div class="col s12 m12 l4">
+            <mat-card>
+                <mat-card-content>
+                    <div class="valign-wrapper enforce-flex">
+                        <div class="p-0 valign-wrapper-override">
+                            <mat-checkbox disableRipple [(ngModel)]="myPrefHealthPromo" (change)="reCalculateOptions()"></mat-checkbox>
+                        </div>
+                        <a routerLink="/mypreferences/healthyUpdates" class="m-0 valign-wrapper-override center-box-width">
+                            <div class="row col s12 box-header-text healthPromosHeightAdjust">
+                                Healthy Updates (Promos)
+                            </div>
+                            <div *ngIf="isAllOptionalPrefUnChecked" style="height:44px;overflow:hidden;" class=" row col s12 box-description-text" [ngClass]="{'hideContent': !myPrefHealthPromo, 'showContent': myPrefHealthPromo}">
+                                The latest update on what's new
+                            </div>
+                        </a>
+                        <a routerLink="/mypreferences/healthyUpdates" class="mr-18 iconColor">
+                            <i class="fa fa-chevron-right long-text notification-arrow"></i>
+                        </a>
+                    </div>
+                </mat-card-content>
+            </mat-card>
+        </div>
+        <div class="col s12 m12 l4">
+            <mat-card>
+                <mat-card-content>
+                    <div class="valign-wrapper enforce-flex">
+                        <div class="p-0 valign-wrapper-override">
+                            <mat-checkbox disableRipple [(ngModel)]="myPrefMyInbox" (change)="reCalculateOptions()"></mat-checkbox>
+                        </div>
+                        <a routerLink="/mypreferences/myinbox" class="m-0 valign-wrapper-override center-box-width">
+                            <div class="row col s12 box-header-text healthPromosHeightAdjust">
+                                My Inbox
+                            </div>
+                            <div *ngIf="isAllOptionalPrefUnChecked" style="height:44px;overflow:hidden;" class="row col s12 box-description-text" [ngClass]="{'hideContent': !myPrefMyInbox, 'showContent': myPrefMyInbox}">
+                                Get notified when you receive a new message or document
+                            </div>
+                        </a>
+                        <a routerLink="/mypreferences/myinbox" class="mr-18 iconColor">
+                            <i class="fa fa-chevron-right long-text notification-arrow"></i>
+                        </a>
+                    </div>
+                </mat-card-content>
+            </mat-card>
+        </div>
+        <div class="col s12 m12 l4">
+           <mat-card>
+                 <mat-card-content>
+                     <div class="valign-wrapper enforce-flex">
+                         <div class="p-0 valign-wrapper-override">
+                             <mat-checkbox [(ngModel)]="myPrefFinance" disableRipple (change)="reCalculateOptions()"></mat-checkbox>
+                         </div>
+                         <a routerLink="/mypreferences/financials" class="m-0 valign-wrapper-override center-box-width">
+                             <div class="row col s12 box-header-text healthPromosHeightAdjust">
+                                 Financials
+                             </div>
+                             <div *ngIf="isAllOptionalPrefUnChecked" style="height:44px;overflow:hidden;" class=" row col s12 box-description-text" [ngClass]="{'hideContent': !myPrefFinance, 'showContent': myPrefFinance}">
+                                 Get updates on your latest transactions
+                             </div>
+                         </a>
+                         <a routerLink="/mypreferences/financials" class="mr-18 iconColor">
+                             <i class="fa fa-chevron-right long-text notification-arrow"></i>
+                         </a>
+                     </div>
+                 </mat-card-content>
+             </mat-card>
+         </div>
+    </div>
+</div>

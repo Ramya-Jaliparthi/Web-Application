@@ -1,0 +1,139 @@
+<section *ngIf="isRtmsUpmode" class="update-pcp">
+  <form [formGroup]="updatePcpValidationForm" novalidate>
+    <div class="updatepcp-innercontent">
+      <div>
+        <app-breadcrumbs></app-breadcrumbs>
+      </div>
+      <h1>Change my Primary Care Provider (PCP)</h1>
+      <!-- <p class="mb-10 instruction-note">[Explain why you can change your PCP and ways to do so (in and outside of MyBlue)]</p> 			 -->
+      
+      <div class="pcpDescription">
+        <app-fpo-layout [targetUrl]='fpoTargetUrl'></app-fpo-layout>
+      </div>
+      <div class="input-field mb-20 mt-30">
+        <div *ngIf="planLength > 1">
+          <mat-form-field class="mat-inherit-underline" floatPlaceholder="never" #planNameFormField>
+            <mat-select appMatSelectChange [parentFormField]="planNameFormField" (change)="getMemberPlanDependents($event);" id=" planName
+					 " formControlName='planName' [(ngModel)]="selectedPlan">
+              <mat-option *ngFor='let planinfos of planNamearray' [value]='planinfos'>
+                {{planinfos.planName}}
+              </mat-option>
+            </mat-select>
+
+            <label for="planName " class="active label-prefix-alt " [ngClass]="{ 'color-invalid': updatePcpValidationForm.controls[
+					 'planName'].touched && updatePcpValidationForm.controls[ 'planName'].errors && updatePcpValidationForm.controls[ 'planName'].errors.required} ">Plan Name*
+            </label>
+          </mat-form-field>
+        </div>
+        <div *ngIf="planLength === 1" class="input-field mt-20">
+            <label class="active label-prefix-alt " [ngClass]="{ 'color-invalid': updatePcpValidationForm.controls['planName'].touched && updatePcpValidationForm.controls['planName'].errors && updatePcpValidationForm.controls['planName'].errors.required} ">Plan
+                Name *</label>
+          <p class="singleItemName">{{selectedPlan.planName}}</p>
+        </div>
+        <div>
+          <!--  *ngIf="hasPlanDependents >1"  -->
+          <!--*ngIf="planLength > 1 && hasDependents" -->
+          <mat-form-field class="mat-inherit-underline  mt-30" floatPlaceholder="never" #memberInfoFormField *ngIf="depname && depname.length>1">
+            <mat-select appMatSelectChange [parentFormField]="memberInfoFormField" (change)="getPCPInfo();" id="memberInfo"
+              formControlName='memberInfo' [(ngModel)]="selectedMember">
+              <!-- <mat-option *ngFor='let member of memberList' [value]='member.name'>
+							{{member.name}} ({{member.relationship}})
+						</mat-option> -->
+              <mat-option *ngFor='let membername of depname' [value]='membername'>
+                {{membername.fullName}}
+                <!-- {{loginUserId}} -->
+              </mat-option>
+            </mat-select>
+            <label for="memberInfo" class="active label-prefix-alt" [ngClass]="{'color-invalid': updatePcpValidationForm.controls['memberInfo'].touched && updatePcpValidationForm.controls['memberInfo'].errors && updatePcpValidationForm.controls['memberInfo'].errors.required}">Member
+              Name*</label>
+          </mat-form-field>
+          <div *ngIf="depname && depname.length === 1 && selectedMember" class="input-field mt-20">
+              <label class="active label-prefix-alt ">Member Name *</label>
+              <p class="singleItemName">{{selectedMember.fullName}}</p>
+            </div>
+        </div>
+
+      </div>
+      <h2>Current PCP information</h2>
+      <p class="pcphead-info ">{{currentProviderName}}</p>
+      <dl>
+        <dt>PCP ID</dt>
+        <dd>{{this.pcpId}}</dd>
+        <dt>Effective Date</dt>
+        <dd> {{this.effectiveDate? 'since '+ this.effectiveDate : ''}}</dd>
+      </dl>
+    </div>
+    <div *ngIf="tierInfo">
+      <p class="tier-info"> Tier Information</p>
+      <p class="tier-info-name">
+        <a href="{{tierInfoUrl}}" target="_blank" >{{tierInfo}}</a>
+      </p>
+    </div>
+    <ul class="collection">
+      <li>
+        <!-- <a class="collection-item" href="https://myblue.bluecrossma.com/health-plan/find-doctor-provider-dentist"> -->
+        <a class="collection-item" (click)="openSsoUrl('/fad')">
+          <span class="updatepcp-finddoc">Find a doctor's PCP ID</span>
+          <i class="fa fa-chevron-right fa-w-10"></i>
+        </a>
+      </li>
+    </ul>
+    <h2>New PCP information</h2>
+    <div class="updatepcp-innercontent mt-40">
+      <div class="card-content">
+        <div class="input-field mb-20">
+          <div [ngClass]="{'error': updatePcpValidationForm.controls['updatepcpid'].errors && updatePcpValidationForm.controls['updatepcpid'].touched}">
+            <input matInput (focusout)="focusOutUIError()" placeholder="" aria-labelledby="updatepcpid" id="updatepcpid"
+              type="text" class="validate fluid-width pd-0 mt-0" formControlName="updatepcpid" maxlength="14" />
+            <label for="updatepcpid" class="active">New PCP ID*</label>
+            <app-control-messages [customMessages]="updatepcpidcustomMessages" [control]="updatePcpValidationForm.controls.updatepcpid"></app-control-messages>
+          </div>
+        </div>
+        <div class="input-field mb-20 mt-40">
+          <mat-form-field class="mat-inherit-underline" floatPlaceholder="never" #changeReasonFormField>
+            <mat-select appMatSelectChange [parentFormField]="changeReasonFormField" id="updatepcpchangereason"
+              placeholder="Select Reason" formControlName='updatepcpchangereason'>
+              <!-- <mat-option *ngFor='let changeReason of changeReasonsList' [value]='changeReason.code'>
+								{{changeReason.desc}}
+							</mat-option> -->
+              <mat-option *ngFor='let changeReason of pcpChangReason' [value]='changeReason.code'>
+                {{changeReason.text}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+          <label for="updatepcpchangereason" class="active label-prefix-alt" [ngClass]="{'color-invalid': updatePcpValidationForm.controls['updatepcpchangereason'].touched && updatePcpValidationForm.controls['updatepcpchangereason'].errors && updatePcpValidationForm.controls['updatepcpchangereason'].errors.required}">Reason
+            for change*</label>
+          <app-control-messages [customMessages]="reasonchangepcpcustomMessage" [control]="updatePcpValidationForm.controls.updatepcpchangereason"></app-control-messages>
+        </div>
+        <div class="input-field mb-20 mt-40">
+          <div [ngClass]="{'error': updatePcpValidationForm.controls['dob'].errors && updatePcpValidationForm.controls['dob'].touched}">
+            <input matInput (focusout)="focusOutUIError()" placeholder="" aria-labelledby="dob" id="dob" type="text"
+              class="validate fluid-width" formControlName="dob" [(ngModel)]="newEffectiveDate" [textMask]="{mask: dobMask, guide: false}" />
+            <label for="updatepcpid" class="active">Effective Date*</label>
+            <mat-hint>
+              <span class="font-13-grey">MM/DD/YYYY</span>
+            </mat-hint>
+            <app-control-messages [customMessages]="dobCustomMessage" [control]="updatePcpValidationForm.controls.dob"></app-control-messages>
+          </div>
+        </div>
+        <div class="mb-20 mt-20 patientofDoctorRadioBlock">
+          <span class="radioTextPD">Are you a current patient of this doctor?*</span>
+          <mat-radio-group formControlName="patientIndicator">
+            <mat-radio-button [value]="areYouPatientOfDoctor['YES']">{{ areYouPatientOfDoctor['YES'] }}</mat-radio-button>
+            <mat-radio-button [value]="areYouPatientOfDoctor['NO']">{{ areYouPatientOfDoctor['NO'] }}</mat-radio-button>
+          </mat-radio-group>
+          <!-- <app-control-messages [customMessages]="checkCurrentPatientCustomMessage" [control]="updatePcpValidationForm.controls.patientCheck"></app-control-messages> -->
+        </div>
+        <div>
+          <button class="btn btn-primary" type="button" (click)="btnsubmit()" aria-label="Save changes" name="action"
+            [disabled]="!updatePcpValidationForm.valid">Save changes</button>
+          <p class="font-14-grey left-align mt-10 requiredfield">* indicates a required field</p>
+        </div>
+
+      </div>
+    </div>
+  </form>
+</section>
+<app-maintenance *ngIf="!isRtmsUpmode">
+
+</app-maintenance>

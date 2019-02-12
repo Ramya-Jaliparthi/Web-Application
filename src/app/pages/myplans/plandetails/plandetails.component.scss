@@ -1,0 +1,377 @@
+@import '../../../../assets/styles/_fonts';
+// spk-cleanup - @import '../../../../assets/styles/variables';
+@import '../../../../assets/styles/_variables';
+@import '../../../../assets/styles/Global';
+@import '../../../../assets/styles/_flex';
+.pos-absolute {
+    position: absolute;
+}
+
+.title-color {
+    color: $non-vdk-47-blue;
+}
+
+.intro-text {
+    @include Roboto(regular);
+    font-size: 16px;
+    color: $text-disabled-gray;
+    margin: 0 0 0 14px !important;
+}
+
+.icon-arrow {
+    color: $text-disabled-color !important;
+    float: right;
+    width: 11px;
+    height: 18px;
+}
+
+.plans-flex {
+    display: flex;
+}
+
+.plan-results-container {
+    display: flex;
+    padding: 0px;
+    .dynamic-content {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        .details-right-link {
+            margin-bottom: 15px;
+            width: 100% !important;
+            background: $background-gray-color;
+            @include Roboto(bold);
+            text-align: left;
+            font-size: 13px;
+            cursor: pointer;
+            padding: 10px;
+            @media (max-width: 992px) {
+                padding: 15px;
+            }
+            span {
+                color: $headings-dark-color !important;
+            }
+            span.text-route {
+                margin: 0 0 0 2%;
+                @media (max-width: 992px) {
+                    margin: 0;
+                }
+            }
+            span.icon-arrow {
+                color: $headings-dark-color !important;
+                float: right;
+                width: 11px;
+                height: 18px;
+            }
+        }
+        .details-right-link:hover {
+            background: $content-background-color-alt;
+        }
+        
+        .details-right-link-alt {
+            margin-bottom: 15px;
+            width: 100% !important;
+            height: 100%;
+            font-size: $header-font-size;
+            @include Roboto(bold);
+            text-align: center;
+            cursor: pointer;
+            padding: 10px 0;
+            @media (max-width: 992px) {
+                padding: 10px;
+            }
+            span {
+                color: $headings-dark-color !important;
+            }
+            span.text-route {
+                margin: 0 0 0 2%;
+            }
+            span.icon-arrow {
+                color: $headings-dark-color !important;
+                float: right;
+                width: 11px;
+                height: 18px;
+            }
+        }
+        div {
+            text-align: center;
+            width: 100%;
+        }
+    }
+  .details-right-link:hover {
+      background:$button_hover_background;
+    }
+  
+  .plan-name-header {
+        @include Roboto(bold);
+        font-size: 16px !important;
+        color: $headings-dark-color;
+        margin-top: 15px;
+  }
+    .plan-name-margin {
+        //  margin-top: 5px;
+    }
+    .plan-label-date {
+        margin-left: 50%;
+        @include Roboto(medium);
+        font-size: 10px;
+        color: $text-normal-color;
+    }
+    .plan-label-dateValue {
+        margin-left: 9%;
+        @include Roboto(light);
+        font-size: 12px;
+        color: $text-normal-color;
+    }
+    .plan-group-name-header {
+        @include Roboto(light);
+        font-size: 12px;
+        color: $text-normal-color;
+        margin-left: 0%;
+    }
+    .plan-label-name {
+        @include Roboto(bold);
+        font-size: 14px;
+        color: $text-normal-color;
+        float: left;
+    }
+    .plan-label-value {
+        @include Roboto(regular);
+        font-size: 14px;
+        color: $text-sub-list;
+    }    
+    .side-nav-container {
+        padding: 0px;
+        .mat-card {
+            box-shadow: none;
+            // border-bottom: 1px solid $non-vdk-11-grey;
+        }
+    }
+    .dedco-link {
+        margin: 15px 0;
+    }
+}
+
+.disp-flex {
+    display: flex;
+}
+
+.network {
+    @include Roboto(regular);
+    font-size: 12px;
+    color: $text-disabled-gray;
+    line-height: 16px;
+    margin: 10px 0;
+}
+.benefit-section {
+    .network-section {
+        padding-bottom: 15px;
+        .row:last-child {
+            margin-bottom: 0 !important;
+        }
+    }
+    .network-section:nth-child(odd) {
+        background-color: $background-gray-color;
+        border-top: 1px solid $non-vdk-11-grey;
+        border-bottom: 1px solid $non-vdk-11-grey;
+    }
+    .network-section:last-child {
+        border-bottom: none transparent;
+    }
+}
+
+// Mat Expansion
+::ng-deep .expand-class>.mat-expansion-indicator:after {
+    color: $headings-dark-color;
+    @include Roboto(bold);
+    font-size: 14px;
+    border-left-color: transparent;
+}
+
+.mat-accordin-name {
+    @include Roboto(bold);
+    color: $headings-dark-color;
+    font-size: 13px;
+    line-height: 16px;
+}
+
+.mat-expansion-panel-header {
+    color: $headings-dark-color;
+    @media (max-width: 992px) {
+        padding-right: 18px !important;
+    }
+}
+
+.mat-expansion-panel {
+    width: 100%;
+    .mat-expansion-panel-header:hover {
+        background: $background-white-color 100%;
+    }
+}
+
+.mat-action-row {
+    border-top-style: solid;
+    border-bottom-style: solid;
+    border-top-width: 1px;
+    border-bottom-width: 1px;
+    border-top-color: $non-vdk-11-grey;
+    border-bottom-color: $non-vdk-11-grey;
+    @include justify-content(flex-start);
+    @media (min-width: 993px) {
+        border-left-style: solid;
+        border-right-style: solid;
+        border-left-color: $non-vdk-11-grey;
+        border-right-color: $non-vdk-11-grey;
+        border-left-width: 1px;
+        border-right-width: 1px;
+    }
+    @media (max-width: 992px) {
+        margin-left: -15px;
+        margin-right: -15px;
+    }
+    padding: 0;
+    margin-bottom: 10px;
+    &:last-child {
+        margin-bottom: 20px;
+    }
+}
+
+.mat-expansion-panel:not([class*=mat-elevation-z]) {
+    box-shadow: 0 0px 0px 0px rgba(0, 0, 0, 0), 0 0px 0px 0 rgba(0, 0, 0, 0), 0 0px 0px 0 rgba(0, 0, 0, 0)
+}
+
+
+@media (min-width: 993px) {
+    .header {
+        color: $headings-dark-color;
+        font-size: 24px;
+        //spk/ cleanup - font-weight: 300;
+        @include Roboto(light);
+        margin: 10px 0 17px 0!important;
+        text-align: left;
+    }
+    .intro-text {
+        @include Roboto(regular);
+        font-size: 16px;
+        color: $text-disabled-gray;
+        margin: 0 0 0 0px !important;
+    }
+    // .benefit-section {
+    //     padding-bottom: 5px;
+    // }
+}
+
+@media (max-width: 992px) {
+    .container {
+        width: 100% !important;
+    }
+    .header {
+        color: $headings-dark-color;
+        font-size: 24px;
+        //spk/ cleanup - font-weight: 300;
+        @include Roboto(light);
+        margin: 0 0 0 14px !important;
+        text-align: left;
+    }
+    .plan-results-container {
+        flex-direction: column;
+        //padding: 0px;
+        .middle-container {
+            width: 100% !important;
+            padding: 0px 0px !important;
+            padding-left: 15px !important;
+            padding-right: 15px !important;
+        }
+        .dynamic-content {
+            flex-direction: column;
+            width: 100% !important;
+        }
+        .side-nav-container {
+            width: 100% !important;
+            margin: 0 0 0 0px !important;
+            padding: 0px 0px 0px 0px !important;
+        }
+    }
+}
+
+.plan-details-text {
+    @include Roboto(regular);
+    font-size: 12px;
+    color: $non-vdk-3-grey;
+}
+
+.copay-header {
+    @include Roboto(medium);
+    font-size: 22px;
+    color: $headings-dark-color;
+}
+
+.copay-values {
+    @include Roboto(bold);
+    font-size: 16px;
+    color: $text-normal-color;
+    float: right;
+}
+
+.copay-values-header {
+    @include Roboto(regular);
+    font-size: 16px;
+    color: $text-normal-color;
+    float: left;
+}
+
+.view-values {
+    color: $link-color;
+    @include Roboto(medium);
+    font-size: 12px;
+    cursor: pointer;
+}
+
+.ext-link {
+    color: $link-color;
+    font-size: 18px;
+    font-family: FontAwesome5FreeSolid;
+    margin-right: 5px;
+}
+
+.mat-card-override {
+    padding: 20px 15px;
+    @media (max-width: 992px) {
+        padding-bottom: 10px;
+    }
+}
+
+.profile-name {
+    display: flex;
+    justify-content: space-between;
+    /*padding-bottom: 10px;*/
+    align-items: center;
+    padding-bottom: 5px; //for desktops
+    margin-bottom: 0px;
+    .profile-details-name {
+        margin: 0px !important;
+        color: $header-color;
+        font-size: 22px;
+        @include Roboto(medium);
+    }
+    .spacing-iconProfileName {
+        float: right;
+
+        .info-icon-span {
+            z-index: 2;
+            position:relative;
+        }
+    }
+}
+
+.tooltip .tooltiptext {
+    padding: 0;
+    padding-bottom: 10px;
+}
+
+@media (min-width: 992px) {
+    .mat-card {
+        box-shadow: none !important;
+        border: 1px solid $textbox-border;
+    }
+}

@@ -1,0 +1,39 @@
+<div class="mt-20 hide-on-large-only">
+  <app-breadcrumbs [breadCrumbs]="breadCrumbs"></app-breadcrumbs>
+</div>
+<div class="report-card-container">
+    <div class="report-card-details-header">
+      <h1>Manage Debit Cards</h1>
+      <div class="hide-on-med-only hide-on-small-only">
+        <app-breadcrumbs [breadCrumbs]="breadCrumbs"></app-breadcrumbs>
+      </div>
+    </div>
+      <div class="report-card-card-header">
+          <span>Report Lost/Stolen Card</span>
+      </div>
+      <div class="report-card-card">
+          <span>Do you want to report your card?</span>
+          <span class="bold"> xxxxxx - 9999</span>
+      </div>
+
+      <div class="mb-20 mt-20 report-card-selection">
+        <span class="radioTextPD">Do you want us to send you a new card?</span>
+        <mat-radio-group [(ngModel)]="reportStolen">
+          <mat-radio-button [value]="'No'">No</mat-radio-button>
+          <mat-radio-button [value]="'Yes'">Yes</mat-radio-button>
+        </mat-radio-group>
+      </div>
+  
+      <div class="col s12 filter-apply pd-0">
+        <div>
+          <button class="clear-button pd-0" disableRipple mat-raised-button type="button" (click)= 'naivagteToCardDetailsPage()'>
+            Cancel
+          </button>
+        </div>
+        <div>
+          <button (click)="onSubmit()" class="apply-button pd-0" disableRipple mat-raised-button type="submit">
+            Report Stolen
+          </button>
+        </div>
+      </div>
+  </div>

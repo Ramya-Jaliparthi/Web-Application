@@ -1,0 +1,51 @@
+<section class="uploadsComponent">
+    <app-no-documents-found *ngIf="hasDocuments===false" [componentMode]="no_doc_found_component_mode"></app-no-documents-found>
+
+    <div *ngIf="hasDocuments===true">
+
+        <div class="row">
+            <div class="col l6 push-l3 listing">
+                <h1 class="left">My Uploads</h1>
+            </div>
+        </div>
+        <div class="row">
+            <div class="flex-container">
+                <div class="col s12 l3 filter-adjust" *ngIf="searchCriteriaData?.dateFilterMap?.size>0">
+                    <app-message-center-search (onSearch)="onSearch($event)" [searchCriteriaData]="searchCriteriaData"></app-message-center-search>
+                </div>
+                <div *ngIf="!isNoSearchResults" [class]="['col','s12','l6', mobileHideByFilterOverlay? 'mobile-hide-by-filter-overlay':''].join(' ')">
+
+                    <ul class="collection">
+                        <li *ngFor="let uploadedItem of uploadsList;let i = index" class="collection-item" [hidden]="uploadedItem.hideEntityFromDisplay">
+                            <div class="flex-box-listing cursor-pointer" (click)="openFile(uploadedItem)">
+                                <div class="image-padding">
+                                    <img src="/assets/images/medical-bill-upload.PNG" alt="" class="img-thumbnail" width="56" height="56">
+                                </div>
+                                <div class="col m11 s10 pl-0 flex-grow-1">
+                                    <span class="title">{{uploadedItem.alertShortTxt}}</span>
+                                    <span class="right">11:00am</span>
+                                    <p class="mt-2">{{ (uploadedItem.alertLongTxt.length > 80 )? (uploadedItem.alertLongTxt | slice:0:80)+'..'
+                                        : uploadedItem.alertLongTxt }}
+                                    </p>
+                                </div>
+                                <div class="valign-wrapper">
+                                    <a href="javascript:void(0)" title="Click Here to View the Upload Details" (click)="openFile(uploadedItem)">
+                                        <i class="fa fa-chevron-right"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+
+                <div *ngIf="isNoSearchResults" [class]="['col','s12','l6', mobileHideByFilterOverlay? 'mobile-hide-by-filter-overlay':''].join(' ')">
+                    <app-no-documents-found [componentMode]="no_search_results_found_component_mode"></app-no-documents-found>
+                </div>
+
+                <div [class]="['col','l3','s12','promo',mobileHideByFilterOverlay? 'mobile-hide-by-filter-overlay':''].join(' ')">
+                    <app-dynamic-promotional-content></app-dynamic-promotional-content>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

@@ -1,0 +1,22 @@
+@import '../../../assets/styles/_include.scss';
+div {
+    color: $error-alert-color;
+    font-size: 12px;
+}
+
+.error-icon {
+    position: relative;
+    font-size: 18px;
+    margin-top: 0px;
+    margin-right: 5px;
+    display: inline;
+}
+
+.error-message {
+    position: relative;
+    color: $error-alert-color;
+    font-size: 12px;
+    top: -2px;
+    display: inline;
+    @include Roboto(regular);
+}

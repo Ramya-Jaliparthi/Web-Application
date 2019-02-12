@@ -1,0 +1,54 @@
+{
+  "cardListInfo": [
+    {
+      "cardStatusCode": 1,
+      "cardProxyNumber": "1100048003767900",
+      "cardLast4Digits": "1234",
+      "firstName": "DAKOTA",
+      "lastName": "GARRITY",
+      "namePrefix": " ",
+      "middleInitial": " ",
+      "cardIssueCde": 1
+    },
+    {
+      "cardStatusCode": 2,
+      "cardProxyNumber": "1100048003767900",
+      "cardLast4Digits": "5678",
+      "firstName": "SELLERS",
+      "lastName": "GARRITY",
+      "namePrefix": " ",
+      "middleInitial": " ",
+      "cardIssueCde": 1
+    },
+    {
+      "cardStatusCode": 3,
+      "cardProxyNumber": "1100048003767900",
+      "cardLast4Digits": "9012",
+      "firstName": "BERGER",
+      "lastName": "GARRITY",
+      "namePrefix": " ",
+      "middleInitial": " ",
+      "cardIssueCde": 1
+    },
+    {
+      "cardStatusCode": 4,
+      "cardProxyNumber": "1100048003767900",
+      "cardLast4Digits": "3456",
+      "firstName": "HOLLIS",
+      "lastName": "GARRITY",
+      "namePrefix": " ",
+      "middleInitial": " ",
+      "cardIssueCde": 1
+    },
+    {
+      "cardStatusCode": 5,
+      "cardProxyNumber": "1100048003767900",
+      "cardLast4Digits": "7890",
+      "firstName": "RAWLS",
+      "lastName": "GARRITY",
+      "namePrefix": " ",
+      "middleInitial": " ",
+      "cardIssueCde": 1
+    }
+  ]
+}

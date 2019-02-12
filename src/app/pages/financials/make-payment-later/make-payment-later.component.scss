@@ -1,0 +1,193 @@
+@import '../../../../assets/styles/_spacing';
+@import '../../../../assets/styles/_colors';
+@import '../../../../assets/styles/_fonts';
+@import '../../../../assets/styles/_typography';
+@import '../../../../assets/styles/variables';
+@import '../../../../assets/styles/_variables';
+
+
+.payment-success-container {
+    .payment-success-header {
+        h1 {
+          @include Roboto(regular);
+        }
+    }
+    .payment-amount {
+        border-bottom: 1px solid $non-vdk-11-grey;
+        padding-bottom: 30px;
+        padding-top: 10px;
+
+        div {
+            display: table;
+
+            span:first-child {
+                font-size: 22px;
+                @include Roboto(bold);
+            }
+    
+            span {
+                @include Roboto(regular);
+                color: $headings-dark-color;
+                display: table-cell;
+            }
+        }
+
+
+    }   
+    .transaction-details {
+        display: flex;
+        flex-direction: column;
+
+        /* span {
+            @include Roboto(regular);
+            font-size: 14px;
+            color: #000;
+        } */
+
+        .debit-card-label-value {
+            display: flex;
+
+            span:first-child {
+                width: 110px;
+            }
+
+            a {
+                text-decoration: underline;
+            }
+        }
+
+        .user-name {
+            margin-bottom: 10px;
+            span {
+                @include Roboto(bold);
+                color: $headings-dark-color;
+            }
+        }
+
+        .service-date-section {
+            
+            margin-top: 10px;
+            @include Roboto(regular);
+            font-size: 12px;
+            color: $text-normal-color;
+            text-align: right;
+    
+        }
+
+        .transaction-details-header {
+            h2 {
+                @include Roboto(regular);
+                font-size: 20px !important;
+                margin-bottom: 10px !important;
+                margin-top: 10px !important;
+            }
+        }
+
+        .provider-name, .service-type, .user-note {
+            span:first-child {
+                @include Roboto(medium);
+            }
+
+            span:last-child {
+                @include Roboto(regular);
+            }
+        }
+    }
+
+    .submit-section {
+
+        .user-prompt-text {
+            h2 {
+                padding-bottom: 10px;
+                padding-top: 2px;
+                height: 60px;
+                display: table-cell;
+                vertical-align: bottom;
+            }
+        }
+
+        .edit-payment-btn {
+            display: flex;
+            padding: 10px 0px;
+            flex: 1;
+            justify-content: center;
+        
+            button {
+              flex: 1;
+              background: $background-white-color;
+              border-color: $text-primary-color;
+              color: $text-primary-color;
+              @include Roboto(bold);
+            }
+
+            button:hover {
+                border-color: $headings-dark-color;
+                color: $headings-dark-color;
+            }
+        }
+
+        .submit-payment-btn {
+            display: flex;
+            padding: 10px 0px;
+            flex: 1;
+            justify-content: center;
+        
+            button {
+              flex: 1;
+            }
+        }
+
+        .button-seperator {
+            text-align: center;
+            color: $headings-dark-color;
+            @include Roboto(bold);
+            .line {
+                border-top: 1px solid $non-vdk-11-grey;
+                padding-left: 50px;
+                padding-right: 50px;
+                display: inline-block;
+                height: 5px;
+            }
+
+            
+        }
+        
+    }
+}
+
+
+
+@media (max-width: 992px) {
+
+    .payment-success-container {
+        margin-left: 15px !important;
+        margin-right: 15px !important;
+    }
+  
+    .payment-success-header {
+        h1 {
+        margin-left: 15px;
+        }
+    }
+
+    .button-seperator {
+        .line {
+            padding-left: 30px !important;
+            padding-right: 30px !important;
+        }
+    }
+
+  
+}
+.payment-success-header {
+  h1 {
+    margin: 20px 0;
+  }
+}
+
+::ng-deep .mlmr-15 {
+    .breadcrumb {
+        margin-left: 15px !important;
+        margin-right: 15px !important;
+    }
+}

@@ -1,0 +1,21 @@
+<div class="container header-container">
+    <app-header></app-header>
+</div>
+<div>
+    <div class="auth-shadow responsive-image"></div>
+    <!-- <div class="row container-width">
+       <app-alerts scope="component" class="hide-on-med-only hide-on-large-only"></app-alerts>
+        <div class="col l4 m3 hide-on-small-only"></div>
+        <div class="col l4 m6 s12"> 
+        <app-alerts scope="component" class="hide-on-small-only"></app-alerts>
+        </div>
+        <div class="col l4 m3 hide-on-small-only "></div> 
+    </div>-->
+
+    <div class="container">
+        <app-alerts scope="component"></app-alerts>
+        <router-outlet #o="outlet"></router-outlet>
+        <app-footer></app-footer>
+    </div>
+    <app-session></app-session>
+</div>

@@ -1,0 +1,97 @@
+.input-field.col label {
+    left: 0rem;
+}
+
+//Temporarily added for header dialog popups. Will add logic later.
+.cdk-overlay-backdrop.cdk-overlay-backdrop-showing {
+    opacity: 1;
+    //@if ($hideOpacity) { // visualizing layout internals
+    //opacity: 0;
+    //}
+}
+
+// media query based 
+input:not([type]).validate+label,
+input[type=text]:not(.browser-default).validate+label,
+input[type=password]:not(.browser-default).validate+label,
+input[type=email]:not(.browser-default).validate+label,
+input[type=url]:not(.browser-default).validate+label,
+input[type=time]:not(.browser-default).validate+label,
+input[type=date]:not(.browser-default).validate+label,
+input[type=datetime]:not(.browser-default).validate+label,
+input[type=datetime-local]:not(.browser-default).validate+label,
+input[type=tel]:not(.browser-default).validate+label,
+input[type=number]:not(.browser-default).validate+label,
+input[type=search]:not(.browser-default).validate+label,
+textarea.materialize-textarea.validate+label {
+    @media (min-width: 601px) and (max-width: 710px) {
+        width: max-content !important;
+    }
+    @media (min-width: 215px) and (max-width: 376px) {
+        width: max-content !important;
+    }
+    @media (min-width: 993px) and (max-width: 1125px) {
+        width: max-content !important;
+    }
+    @media (min-width: 715px) and (max-width: 876px) {
+        width: max-content !important;
+    }
+}
+
+input:not([type]),
+input[type=text]:not(.browser-default),
+input[type=password]:not(.browser-default),
+input[type=email]:not(.browser-default),
+input[type=url]:not(.browser-default),
+input[type=time]:not(.browser-default),
+input[type=date]:not(.browser-default),
+input[type=datetime]:not(.browser-default),
+input[type=datetime-local]:not(.browser-default),
+input[type=tel]:not(.browser-default),
+input[type=number]:not(.browser-default),
+input[type=search]:not(.browser-default),
+textarea.materialize-textarea {
+    //margin-top: 6px;
+    height: 40px;
+    margin-bottom: 0px;
+    font-size: 15px;
+    padding-top: 4px;
+}
+
+input.valid:not([type]),
+input.valid:not([type]):focus,
+input[type=text].valid:not(.browser-default),
+input[type=text].valid:not(.browser-default):focus,
+input[type=password].valid:not(.browser-default),
+input[type=password].valid:not(.browser-default):focus,
+input[type=email].valid:not(.browser-default),
+input[type=email].valid:not(.browser-default):focus,
+input[type=url].valid:not(.browser-default),
+input[type=url].valid:not(.browser-default):focus,
+input[type=time].valid:not(.browser-default),
+input[type=time].valid:not(.browser-default):focus,
+input[type=date].valid:not(.browser-default),
+input[type=date].valid:not(.browser-default):focus,
+input[type=datetime].valid:not(.browser-default),
+input[type=datetime].valid:not(.browser-default):focus,
+input[type=datetime-local].valid:not(.browser-default),
+input[type=datetime-local].valid:not(.browser-default):focus,
+input[type=tel].valid:not(.browser-default),
+input[type=tel].valid:not(.browser-default):focus,
+input[type=number].valid:not(.browser-default),
+input[type=number].valid:not(.browser-default):focus,
+input[type=search].valid:not(.browser-default),
+input[type=search].valid:not(.browser-default):focus,
+textarea.materialize-textarea.valid,
+textarea.materialize-textarea.valid:focus,
+.select-wrapper.valid>input.select-dropdown {
+    // spk/cleanup - border-bottom: 1px solid $non-vdk-6-greyk-6-greyk-6-grey;
+    border-bottom: 1px solid $non-vdk-6-grey;
+    box-shadow: none;
+}
+
+// IE cross icon issue.
+input::-ms-clear,
+input::-ms-reveal {
+    display: none;
+}

@@ -1,0 +1,80 @@
+<section class="sectionPadding">
+  <div class="backSearchDiv" (click)="goBackToSearchListPage()">
+    <i class="fa fa-chevron-left" aria-hidden="true"></i>
+    <u>{{fadConstants.text.backSearchResults}}</u>
+  </div>
+  <div class="numberProviders">
+    Comparing {{selectedProfessionDetail.length}} Providers
+  </div>
+  <div class="row">
+    <div class="col s12 m6 l4 profileDiv" *ngFor="let professional of selectedProfessionDetail; let idx = index;">
+      <div class="row profileBox">
+        <div class="col s11">
+          <div>
+            <span class="profileCardTitle">{{professional.name}},&nbsp;{{professional.degrees}}</span>
+          </div>
+          <div>
+            <span class="profileCardSubTitle">{{professional.locations[0].name}}</span>
+          </div>
+          <div>
+            <p class="addressDiv">{{professional.locations[0].address.addr_line1}},&nbsp;{{professional.locations[0].address.addr_line2}},&nbsp;{{professional.locations[0].address.city}},&nbsp;
+              {{professional.locations[0].address.state_code}},&nbsp;{{professional.locations[0].address.postal_code}}
+            </p>
+            <p>
+              <span class="addressExtendedDiv" *ngIf="professional.locations.length>1">+{{professional.locations.length-1}}
+                more locations</span>&nbsp;
+              <span class="phoneDiv">
+                <i class="fa fa-phone" aria-hidden="true"></i>&nbsp;
+                <a class="phoneNumber" [href]="'tel:+'+phoneNumber">{{professional.locations[0].phones.voice[0].number}}</a>
+              </span>
+            </p>
+          </div>
+        </div>
+        <div class="col s1 valign-wrapper" (click)="goToDoctorProfilePage()">
+          <i class="fa fa-chevron-right"></i>
+        </div>
+      </div>
+      <div class="profileBox">
+        <span class="profileCardHeading">{{fadConstants.text.specialities}}</span>&nbsp;<span class="profileCardValue">{{professional.specializations[0].field_specialty.name}}</span>
+      </div>
+      <div class="networkDiv profileBox">
+        <i class="fa fa-check-circle" aria-hidden="true"></i>&nbsp;
+        <span>{{fadConstants.text.inNetwork}}</span>
+      </div>
+      <div class="profileBox">
+        <span class="profileCardHeading">{{fadConstants.text.boardCertified}}</span>&nbsp;
+        <span class="profileCardValue" *ngIf="professional.specializations[0].is_certified === 'Y'; else NotCertified">
+          Yes
+        </span>
+        <ng-template class="profileCardValue" #NotCertified>No</ng-template>
+      </div>
+      <div class="profileBox">
+        <span class="profileCardHeading">{{fadConstants.text.rating}}</span>
+        <span>
+          <app-star-rating-component [componentInput]="doctorStarRating"></app-star-rating-component>
+        </span>
+      </div>
+      <div class="acceptingDiv profileBox">
+        <i class="fas fa-check" aria-hidden="true"></i>&nbsp;
+        <span>{{fadConstants.text.acceptingNewPatients}}</span>
+      </div>
+      <div class="profileBox">
+        <span class="profileCardHeading">{{fadConstants.text.languageSpokenProfessionalStaff}}</span>
+        <ng-container *ngIf="professional.languages.length > 0; else NoneReported">
+          <span class="profileCardValue" *ngFor="let lang of professional.languages;">
+            {{lang.name}}&nbsp;
+          </span>
+        </ng-container>
+        <ng-template class="profileCardValue" #NoneReported>None Reported</ng-template>
+      </div>
+      <div class="profileBox">
+        <span class="profileCardHeading">{{fadConstants.text.serviceAvailableLocation}}</span>
+        <span class="profileCardValue">Access to Public Transportation, Handicap Accessible</span>
+      </div>
+      <div class="removeDiv">
+        <i class="fa fa-minus-circle" aria-hidden="true"></i>&nbsp;
+        <span (click)="removeProfessional(idx)"><u>{{fadConstants.text.remove}}</u></span>
+      </div>
+    </div>
+  </div>
+</section>

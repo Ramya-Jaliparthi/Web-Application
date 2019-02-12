@@ -1,0 +1,352 @@
+.mypref-notification-detail-mat {
+    .mypref-chkBoxes {
+        mat-checkbox {
+            width: 24px;
+            height: 24px;
+        }
+        .mat-expansion-indicator::after {
+            height: 7.1px;
+            width: 12px;
+        }
+        .checkBoxText {
+            @include Roboto(light);
+            font-size: 14px;
+            color: $title-color;
+            padding-bottom: 3px;
+        }
+        .mat-list,
+        .mat-nav-list,
+        .mat-selection-list {
+            flex: 3 !important;
+            display: flex !important;
+            flex-direction: column !important;
+            /* align-items: center !important;*/
+        }
+        .mat-pseudo-checkbox {
+            width: 24px;
+            height: 24px;
+            border: 1px solid $non-vdk-19-grey !important;
+            border-radius: 0px !important;
+            cursor: pointer;
+            margin-right: 0px !important;
+            // margin-right: 25px !important;
+            display: inline-block;
+            vertical-align: middle;
+            box-sizing: border-box;
+            position: relative;
+            flex-shrink: 0;
+            // transition:border-color 90ms cubic-bezier(0,0,.2,.1),background-color 90ms cubic-bezier(0,0,.2,.1)
+        }
+        //mat-pseudo-checkbox[ng-reflect-disabled="true"] {
+        //    width: 24px;
+        //    height: 24px;
+        //    border: 1px solid $non-vdk-19-grey !important;
+        //    border-radius: 0px !important;
+        //    cursor: default;
+        //    display: inline-block;
+        //    vertical-align: middle;
+        //    box-sizing: border-box;
+        //    position: relative;
+        //    flex-shrink: 0;
+        //    background-color: #F2F2F2 !important;
+        //    // transition:border-color 90ms cubic-bezier(0,0,.2,.1),background-color 90ms cubic-bezier(0,0,.2,.1)
+        //}
+        //mat-pseudo-checkbox[ng-reflect-disabled="true"][ng-reflect-state="checked"]::after {
+        //    top: 0px;
+        //    left: 0px;
+        //    width: 13px!important;
+        //    height: 6px!important;
+        //    border-left: 2px solid $non-vdk-11-grey !important;
+        //    border-bottom: 2px solid $non-vdk-11-grey !important;
+        //    opacity: 1
+        //}
+        mat-pseudo-checkbox.mat-pseudo-checkbox.mat-pseudo-checkbox-checked.mat-pseudo-checkbox-disabled::after {
+            border-bottom: 2px solid $non-vdk-11-grey !important;
+            border-left: 2px solid $non-vdk-11-grey !important;
+            background-color: $background-gray-color !important;
+        }
+        mat-pseudo-checkbox.mat-pseudo-checkbox.mat-pseudo-checkbox-checked.mat-pseudo-checkbox-disabled {
+            background-color: $background-gray-color !important;
+            display: inline-block;
+            opacity: 1;
+            width: 24px!important;
+            height: 24px !important;
+        }
+        .mat-pseudo-checkbox-checked::after {
+            top: 0px;
+            left: 0px;
+            width: 12px;
+            height: 5px;
+            border-left: 2px solid currentColor;
+            opacity: 1
+        }
+        .mat-list-item-content.mat-list-item-content-reverse {
+            padding: 0px !important;
+            display: flex !important;
+            // align-items: flex-end !important;
+            // padding: 0 16px;
+            flex-direction: column-reverse !important;
+            justify-content: flex-end !important;
+        }
+        .mat-list.mat-list-item.mat-list-item-content-reverse,
+        .mat-list.mat-list-option.mat-list-item-content-reverse,
+        .mat-nav-list.mat-list-item.mat-list-item-content-reverse,
+        .mat-nav-list.mat-list-option .mat-list-item-content-reverse,
+        .mat-selection-list.mat-list-item/deep/ .mat-list-item-content-reverse,
+        .mat-selection-list.mat-list-option.mat-list-item-content-reverse {
+            padding: 0px !important;
+        }
+        .mat-selection-list {
+            padding-top: 0px!important;
+        }
+        .mat-list-option {
+            // padding-left: 25.5px !important;
+        }
+        .mat-checkbox-background {
+            background-color: transparent !important;
+        }
+        .mat-checkbox-checked {
+            .mat-checkbox-background {
+                background-color: $textbox-border !important;
+            }
+            .mat-checkbox-checkmark path {
+                stroke: $headings-dark-color !important;
+            }
+            .mat-checkbox-checkmark-path {
+                stroke-width: 2.1px;
+            }
+        }
+        .mat-checkbox-layout {
+            white-space: wrap;
+        }
+        .mat-list-text {
+            padding-right: 0px !important;
+            // position: absolute !important; maybe static
+            // margin-top: -34px !important; //26px height fo chkbox + 2 px for border +2px for safety + rest for spcace between other items.
+            color: $title-color !important;
+            @include Roboto(light);
+            font-size: 14px;
+            overflow: visible !important;
+        }
+    }
+    .mat-expansion-panel {
+        box-shadow: none !important;
+    }
+    .mat-checkbox-background {
+        background-color: transparent !important;
+    }
+    .mat-checkbox-checked {
+        .mat-checkbox-background {
+            background-color: $textbox-border !important;
+        }
+        .mat-checkbox-checkmark path {
+            stroke: $headings-dark-color !important;
+        }
+        .mat-checkbox-checkmark-path {
+            stroke-width: 2.1px;
+        }
+    }
+    .mat-checkbox-layout {
+        white-space: wrap;
+    }
+    mat-card-content {
+        .col {
+            padding-left: 0px !important;
+            padding-right: 0px !important;
+            padding-bottom: 0px !important;
+        }
+        .row {
+            margin: 0px !important;
+        }
+        .pt-5 {
+            padding-top: 5px !important;
+        }
+        .mat-checkbox-inner-container {
+            margin-right: 0px;
+            margin-bottom: 0px !important;
+        }
+    }
+    @media (max-width: 991px) {
+        mat-card {
+            // margin-right: -15px;
+            // margin-left: -15px;
+            border-left: none;
+            border-right: none;
+            border-top: 1px solid $non-vdk-11-grey !important;
+            border-bottom: 0px solid transparent !important;
+            border-left: 0px solid transparent !important;
+            border-right: 0px solid transparent !important;
+        }
+        .mat-expansion-panel-header {
+            // padding-left: 10px !important;
+        }
+    }
+    mat-card {
+        // padding-top: 15px;
+        padding-left: 0px !important;
+        padding-right: 0px !important;
+        // padding-bottom: 15 px;
+        padding-bottom: 8px;
+        padding-top: 5px;
+        border-radius: 0px !important;
+        margin-bottom: 0px;
+        box-shadow: none !important;
+        //border-bottom: 1px solid $non-vdk-11-grey !important;
+        //border-left: 1px solid $non-vdk-11-grey !important;
+        //border-right: 1px solid $non-vdk-11-grey !important;
+    }
+    .mat-card-top-borderless {
+        border-top: none !important;
+        //border-bottom: 1px solid $non-vdk-11-grey !important;
+        //border-left: 1px solid $non-vdk-11-grey !important;
+        //border-right: 1px solid $non-vdk-11-grey !important;
+    }
+    .mat-card-top-border {
+        border-top: 1px solid $non-vdk-11-grey !important;
+        //border-bottom: 1px solid $non-vdk-11-grey !important;
+        //border-left: 1px solid $non-vdk-11-grey !important;
+        //border-right: 1px solid $non-vdk-11-grey !important;
+    }
+    .mat-checkbox-background,
+    .mat-checkbox-frame {
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        position: absolute;
+        border-radius: 0px;
+        box-sizing: border-box;
+        pointer-events: none
+    }
+    .mat-checkbox-layout {
+        cursor: inherit;
+        align-items: baseline;
+        vertical-align: middle;
+        display: inline-flex;
+        font-size: 14px !important;
+        @include Roboto(regular);
+        color: black;
+        white-space: unset; //to enable wrapng in check box control
+    }
+    .mat-checkbox-label {
+        padding-left: 10px !important;
+    }
+    .mat-checkbox-inner-container {
+        display: inline-block;
+        height: 24px;
+        line-height: 0;
+        margin-top: 0px; // as per requirement
+        margin-right: 0px;
+        order: 0;
+        position: relative;
+        vertical-align: top;
+        white-space: nowrap;
+        width: 24px;
+        flex-shrink: 0
+    }
+    .mat-checkbox-frame {
+        background-color: transparent;
+        transition: border-color 90ms cubic-bezier(0, 0, .2, .1);
+        border-width: 1px;
+        border-style: solid;
+        border-color: $non-vdk-48-grey !important;
+    }
+    // accrodian stuff
+    .mat-expansion-panel-header {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        padding-right: 24px;
+        // height: 40px;
+        padding-bottom: 0px;
+        padding-top: 0px;
+        padding-left: 0px;
+    }
+    .mat-expansion-panel-header:hover {
+        background: $text-white-color 100% !important;
+    }
+    .mat-expansion-panel-header:focus,
+    .mat-expansion-panel-header:hover {
+        outline: none;
+    }
+    .mat-expansion-panel-header.mat-expanded:focus,
+    .mat-expansion-panel-header.mat-expanded:hover {
+        background: $text-white-color 100%;
+    }
+    .mat-expansion-panel-header:not([aria-disabled=true]) {
+        cursor: pointer
+    }
+    .mat-content {
+        display: flex;
+        flex: 1;
+        flex-direction: row;
+        overflow: hidden
+    }
+    .mat-expansion-panel-header-description,
+    .mat-expansion-panel-header-title {
+        display: flex;
+        flex-grow: 1;
+        margin-right: 16px
+    }
+    [dir=rtl] .mat-expansion-panel-header-description,
+    [dir=rtl] .mat-expansion-panel-header-title {
+        margin-right: 0;
+        margin-left: 16px
+    }
+    .mat-expansion-panel-header-description {
+        flex-grow: 2
+    }
+    .mat-expansion-indicator::after {
+        border-style: solid;
+        border-color: $title-color;
+        border-width: 0 2px 2px 0;
+        content: '';
+        display: inline-block;
+        padding: 3px;
+        transform: rotate(45deg);
+        vertical-align: middle
+    }
+    .mat-expansion-panel {
+        transition: box-shadow 280ms cubic-bezier(.4, 0, .2, 1);
+        box-sizing: content-box;
+        display: block;
+        margin: 0;
+        transition: margin 225ms cubic-bezier(.4, 0, .2, 1)
+    }
+    .mat-expansion-panel:not([class*=mat-elevation-z]) {
+        box-shadow: none;
+    }
+    .mat-expansion-panel-content {
+        overflow: hidden
+    }
+    .mat-expansion-panel-content.mat-expanded {
+        overflow: visible
+    }
+    .mat-expansion-panel-body {
+        padding: 0 24px 16px
+    }
+    .mat-expansion-panel-spacing {
+        /* margin: 16px 0 */
+    }
+    .mat-accordion .mat-expansion-panel-spacing:first-child {
+        margin-top: 0
+    }
+    .mat-accordion .mat-expansion-panel-spacing:last-child {
+        margin-bottom: 0
+    }
+    .mat-action-row {
+        border-top-style: solid;
+        border-top-width: 1px;
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-end;
+        padding: 16px 8px 16px 24px
+    }
+    .mat-action-row button.mat-button {
+        margin-left: 8px
+    }
+    [dir=rtl] .mat-action-row button.mat-button {
+        margin-left: 0;
+        margin-right: 8px
+    }
+}

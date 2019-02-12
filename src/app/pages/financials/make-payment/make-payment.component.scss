@@ -1,0 +1,674 @@
+@import '../../../../assets/styles/_spacing';
+@import '../../../../assets/styles/_colors';
+@import '../../../../assets/styles/_fonts';
+@import '../../../../assets/styles/_typography';
+
+$tablet-width: 992px;
+$desktop-width: 993px;
+.service-end-date-option span{
+    font-size: 12px;
+    color: #1866A3;
+    a {
+        text-decoration: underline;
+        color: #1866A3;
+        font-weight: 500 !important;
+        font-size: 12px;
+    }
+}
+
+.make-payment {   
+
+    div {
+        .section-header {
+            @include Roboto(bold);
+            font-size: 14px;
+            color: $title-color;
+        }
+
+        .mat-select {
+            border-bottom: 2px solid $non-vdk-3-grey;
+        }
+
+        input {
+            border-bottom: 2px solid $non-vdk-3-grey !important;
+        }
+
+        .sample-format {
+            @include Roboto(regular);
+            font-size: 12px;
+            color: $non-vdk-3-grey;
+        }
+    }
+
+    .provider-account-number {
+        margin-top: 23px;
+    }
+
+
+    .reimbursment-method {
+        margin-top: 23px;
+
+        span {
+            margin-top: 15px;
+            display: inline-block;
+            a {
+                text-decoration: underline;
+                @include Roboto(bold);
+                color: $text-primary-color;
+            }
+        }
+    }
+
+    .payment-amount {
+        margin-top: 32px;
+    }
+
+    .member-section {
+        margin-top: 19px;
+    }
+
+    .service-type {
+        margin-top: 28px;
+    }
+
+    .service-start-date {
+        margin-top: 32px;
+    }
+
+    .service-end-date {
+        margin-top: 15px;
+    }
+
+    .user-comments {
+        margin-top: 15px;
+
+        textarea {
+            resize: none;
+            height: 100px;
+            border: 2px solid #979797;
+        }
+    } 
+
+    .payment-reciept {
+
+        margin-top: 23px;
+        
+        p {
+            margin-bottom: 13px;
+        }
+        
+        a {
+            @include Roboto(medium);
+            font-size: 12px;
+            color: $text-primary-color;
+            position: relative;
+            overflow: hidden;
+
+            button {
+                background: $background-white-color;
+                border-color: $text-primary-color;
+                color: $text-primary-color;
+
+                i {
+                    margin-top: 5px;
+                }
+            
+                span {
+                    position: relative;
+                    top: -3px;
+                }
+            
+                input {
+                    &.b3_upload {
+                        width: 100%;
+                        height: 44px;
+                        position: absolute;
+                        top: -10px;
+                        right: 0;
+                        margin: 0;
+                        padding: 0;
+                        cursor: pointer;
+                        opacity: 0;
+                        filter: alpha(opacity=0);
+                    }
+                }
+            }
+        }
+    }
+    
+    
+    
+    
+    .disclaimer-text {
+        
+        margin-top: 32px;
+        
+        p {
+            
+            @include Roboto(regular);
+            font-size: 12px;
+            color: #4a4a4a;
+            a {
+                @include Roboto(bold);
+                text-decoration: underline;
+                color: $text-primary-color;
+            }
+        }
+    }
+    
+    .button-row {
+        
+        padding-top: 30px;
+        margin: 0;
+        margin-bottom:30px;
+
+    }
+    
+    .note-text {
+        @include Roboto(light);
+        font-size: 13px;
+        color: $non-vdk-3-grey;
+    }
+}
+
+.payment-confirmation {
+    @media (max-width: #{$tablet-width}) {
+        margin-left: 15px;
+        margin-right: 15px;
+    }
+    
+    .thank-you-note {
+        
+        .header {
+            @include Roboto(bold);
+            font-size: 22px;
+            color: $text-disabled-gray;
+        }
+        .content {
+            margin-top: 15px;
+            @include Roboto(regular);
+            font-size: 16px;
+            color: $text-disabled-gray;
+        }
+    
+    }
+    
+    .transaction-details {
+        
+        margin-top: 30px;
+        .header {
+            @include Roboto(regular);
+            font-size: 20px;
+            color: $text-disabled-gray;
+        }
+
+        .amount-paid-section {
+            
+            margin-top: 14px;
+            @include Roboto(bold);
+            font-size: 18px;
+            color: $text-normal-color;
+            
+            .amount-paid {
+                font-size: 10px;
+            }
+        }
+        
+        .amount-pay-type {
+            
+            margin-top: 10px;
+            @include Roboto(bold);
+            font-size: 14px;
+            color: $title-color;
+            
+            .pay-type {
+                @include Roboto(regular);
+            }
+        }
+
+        .claim-number-section {
+            
+            margin-top: 11px;
+            
+            font-size: 14px;
+            color: $text-normal-color;
+
+            .claim-label {
+                @include Roboto(bold);
+            }
+            
+            .claim-number {
+                @include Roboto(regular);
+            }
+        }
+        
+        .member-name {
+            margin-top: 10px;
+            @include Roboto(regular);
+            font-size: 12px;
+            color: $text-normal-color;
+        }
+        
+        .provider-facility {
+            margin-top: 10px;
+            @include Roboto(regular);
+            font-size: 12px;
+            color: $text-normal-color;
+        }
+        
+        .member-comments-section {
+            
+            margin-top: 10px;
+            
+            @include Roboto(regular);
+            font-size: 12px;
+            color: $text-normal-color;
+            
+        }
+        
+        .transaction-date-section {
+
+            margin-top: 16px;
+            
+            @include Roboto(regular);
+            font-size: 10px;
+            color: $text-normal-color;
+            letter-spacing: -0px;
+            text-align: right;
+
+        }
+        
+        .service-date-section {
+            
+            margin-top: 5px;
+            @include Roboto(regular);
+            font-size: 10px;
+            color: $text-normal-color;
+            text-align: right;
+
+        }
+
+        .confirm-button-row {
+            margin-top: 29px;
+            margin-left: 0px;
+            margin-right: 0px;
+        }
+    }
+}
+
+.whom-to-pay {
+    
+    p {
+    @include Roboto(bold);
+    font-size: 14px;
+    color: $title-color;
+    display: table;
+    height: 30px;
+    
+    .radio-btn {
+      opacity: 1;
+      pointer-events: all;
+      height: 26px;
+      width: 26px;
+      display: table-cell;
+      vertical-align: middle;
+      cursor: pointer;
+    }
+    .radio-label {
+
+        @include Roboto(bold);
+        font-size: 14px;
+        color: $title-color;
+        padding-left: 34px;
+        display: table-cell;
+        vertical-align: middle;
+    }
+  }
+  
+  
+  ::ng-deep .mat-input-infix.mat-form-field-infix {
+      border-top: 0 !important;
+    }
+    
+}
+
+.pay-provider-section {
+    margin-top: 20px;
+}
+
+.select-provider {
+    
+    /* margin-left: 34px; */
+    
+    span {
+        @include Roboto(regular);
+        font-size: 14px;
+        margin-top: 15px;
+        float: right;
+        
+        a {
+            text-decoration: underline;
+            @include Roboto(bold);
+            color: $text-primary-color;
+            
+          }
+      }
+  }
+
+::ng-deep  .mat-form-field-disabled .mat-form-field-underline {
+    background-size: 0;
+    background-color: rgba(0,0,0,.42) !important;
+    height: 1.3px;
+}
+
+.reimbursment-method {
+    margin-top: 23px;
+    
+  span {
+      margin-top: 15px;
+      float: right;
+      a {
+          text-decoration: underline;
+          @include Roboto(bold);
+          color: $text-primary-color;
+        }
+    }
+}
+
+.member-section {
+    .sample-format {
+        @include Roboto(regular);
+        font-size: 12px;
+        color: $non-vdk-3-grey;
+    }
+}
+
+.disable-color {
+    color: $non-vdk-11-grey !important;
+    font-size: 18px;
+}
+
+.user-comments {
+    margin-top: 15px;
+    
+    textarea {
+        resize: none;
+        height: 100px;
+    border: 2px solid #979797;
+}
+
+  .section-header {
+      @include Roboto(bold);
+    font-size: 14px;
+    color: $title-color;
+}
+
+}
+
+.payment-reciept {
+
+    .section-header {
+        @include Roboto(bold);
+        font-size: 14px;
+        color: $title-color;
+    }
+
+    row {
+        col {
+            padding: 0px;
+        }
+    }
+
+    margin-top: 15px;
+
+    p {
+        margin-bottom: 0px !important;
+    }
+
+    .upload-btn-reciept {
+        background: $background-white-color;
+        border-color: $text-primary-color;
+        color: $text-primary-color;
+        margin-top: 20px;
+        cursor: pointer;
+        i {
+            margin-top: 5px;
+        }
+    
+        span {
+            position: relative;
+            top: -3px;
+            text-transform: none;
+        }
+    }
+
+    a {
+        @include Roboto(bold);
+        font-size: 14px;
+        color: $text-primary-color;
+        position: relative;
+        overflow: hidden;
+        input {
+            &.b3_upload {
+                width: 100%;
+                height: 44px;
+                position: absolute;
+                top: -10px;
+                right: 0;
+                margin: 0;
+                padding: 0;
+                cursor: pointer;
+                opacity: 0;
+                filter: alpha(opacity=0);
+            }
+        }
+    }
+}
+
+.disclaimer-text {
+    
+    margin-top: 32px;
+    
+    p {
+
+        @include Roboto(regular);
+        font-size: 12px;
+        color: #4a4a4a;
+        a {
+            @include Roboto(bold);
+            text-decoration: underline;
+            color: $text-primary-color;
+        }
+    }
+}
+
+.button-row {
+    display: flex;
+    padding-top: 30px;
+    margin: 0;
+    margin-bottom:30px;
+    flex-direction: column;
+    .btn, .cancel-btn {
+        width: 100%;
+    }
+
+    .btn-cancel {
+      text-align: center;
+      margin-top: 10px;
+      .cancel {
+        @include Roboto(bold);
+        font-size: 14px;
+        color: $link-color;
+        text-decoration: underline;
+      }
+    }
+  }
+
+.note-text {
+    @include Roboto(light);
+    font-size: 13px;
+    color: $non-vdk-3-grey;
+}
+
+.imgPlaceholder {
+
+    width: 100px;
+    height: 100px;
+    background: $background-white-color;
+    margin-top: 15px;
+
+    a {
+        display: block;
+        height: 100px;
+        width: 100px;
+    }
+    
+    svg {
+        color: #adb5bd !important;
+        display: block;
+        position: relative;
+        width: 100%;
+        height: 100%;
+        background: none;
+        margin-top: -100px;
+        pointer-events:none;
+        /* margin-left: -20px;*/
+        fill: #1865a3;
+    
+        polygon, path {
+            pointer-events: all;
+        }
+    }
+    
+    
+    /*border:0.5px solid black;*/
+}
+
+.add-more-images {
+    width: 100px !important;
+    height: 100px;
+    display: inline-block;
+    background: $background-white-color;
+    border: 1px solid $non-vdk-3-grey;
+    line-height: 100px;
+    text-align: center;
+    padding: 0px;
+
+    a {
+        i {
+            font-size: 1.2em;
+        }
+        span {
+            position: relative;
+            top: -2px;
+        }
+
+        input {
+            &.b3_upload {
+                width: 100px;
+                height: 100px;
+                position: absolute;
+                top: -45px;
+                right: -16px;
+                margin: 0;
+                padding: 0;
+                cursor: pointer;
+                opacity: 0;
+                filter: alpha(opacity=0);
+            }
+        }
+    }
+}
+
+.checkmark__check {
+    transform-origin: 50% 50%;
+    stroke-dasharray: 29;
+    stroke-dashoffset: 29;
+    animation: stroke 0.3s cubic-bezier(0.65, 0, 0.45, 1) 0.8s forwards;
+}
+
+.glossyBtn {
+    background-image: url('https://www.google.com/logos/doodles/2018/hannah-glasses-310th-birthday-5894265455509504.4-l.png');
+    background-repeat: no-repeat;
+    background-position: left top;
+    padding-left: 15px;
+    height: 500px;
+    width: 500px;
+}
+
+.img {
+    width: 100%;
+    height: 100%;
+}
+
+.close {
+    margin-bottom: -16px;
+    display: block;
+    position: relative;
+    width: 30px;
+    height: 29px;
+    /*  margin-top: -100px; */
+    margin-left: 66px;
+    font-size: 13px;
+    font-family: serif;
+    color: $background-white-color;
+    /*background:url(http://www.htmlgoodies.com/img/registrationwelcome/close_icon.png) no-repeat center center;*/
+}
+
+.upload {
+    position: relative;
+    overflow: hidden;
+    
+    color: #1865a3;
+}
+
+/*
+.mycards_dimensions{
+    width:310px;
+    height:210px;
+}
+*/
+.iconWithLabelAdjustment {
+    vertical-align: middle !important;
+    padding-bottom: 3px !important;
+}
+
+.upload input.b3_upload {
+    position: absolute;
+    top: 0;
+    right: 0;
+    margin: 0;
+    padding: 0;
+    cursor: pointer;
+    opacity: 0;
+    filter: alpha(opacity=0);
+}
+
+
+.icon-svg {
+    width: 100% !important;
+    margin-top: 0px;
+}
+
+.icon-svg + svg {
+    margin-top: -100px;
+    margin-left: -12px;
+}
+
+.error-icon {
+    position: relative;
+    font-size: 18px;
+    margin-top: 0px;
+    margin-right: 5px;
+    display: inline;
+    
+}
+
+.error-message {
+    position: relative;
+    color: $error-alert-color;
+    font-size: 12px;
+    top: -2px;
+    display: inline;
+    @include Roboto(regular);
+}

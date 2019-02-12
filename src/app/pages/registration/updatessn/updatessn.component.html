@@ -1,0 +1,74 @@
+<div *ngIf="showSnnOptions">
+  <!-- *ngIf="showSnnOptions" -->
+  <div class="row m-0" *ngIf="!isMediCareUser">
+    <h1 class="form-header">Verify Your Identity</h1>
+    <p class="mb-20 text-ssn">Choose one of the {{showLn ? 'three': 'two'}} methods below to verify your identity
+    </p> <!-- *ngIf="!lexisNexisCountReached" -->
+    <!-- <a tabindex="6" class="answer-questions" [routerLink]="['/register/securityanswers']">answer three security questions.</a> -->
+    <div class="questions-link" *ngIf="showLn">
+      <!--  *ngIf="!timeoutHappened" -->
+      <div class="questions-header"><label>Security Questions</label></div>
+      <i class="fa fa-key" aria-hidden="true"></i>
+      <a (click)="navigateToLn()">
+        Answer 3 identity questions
+      </a>
+    </div>
+    <form autocomplete="off" [formGroup]="updatessnForm" (ngSubmit)="onSubmit()" novalidate>
+      <div class="ssn-questions-divider" *ngIf="showLn"></div>
+      <div class="card-content">
+        <div class="input-color-onsubmit row m-0">
+          <div class="input-field col s12 pd-0 password-block">
+            <input tabindex="1" autocomplete="new-password" [attr.disabled]="disableSsn ? '': null" placeholder=""
+              aria-labelledby="ssn" [textMask]="{mask: ssnMask, guide: false}" maxlength="11" id="ssn" type="{{type}}"
+              class="validate" formControlName="ssn" appAutofocus />
+            <label for="ssn" class="active">Social Security Number</label>
+            <a tabindex="2" class="input-group-addon" [ngClass]="(typePlaceholder | lowercase) + '-class'" (click)="togglePasswordVisibility()">{{typePlaceholder}}</a>
+            <span class="font-13-grey">Last four digits of your Social Security number</span>
+            <app-control-messages [valdiateOnFormSubmit]="true" [isFormSubmitted]="isFormSubmitted" [controlName]="'ssn'"
+              [control]="updatessnForm['controls'].ssn"></app-control-messages>
+          </div>
+        </div>
+      </div>
+      <div class="ssn-divider">
+
+        <div class="ssn-line"></div>
+        <div class="ssn-divider-word"> OR </div>
+        <div class="ssn-line"></div>
+      </div>
+      <div class="card-content mt-20">
+        <div class="input-color-onsubmit row m-0">
+          <div class="input-field col s12 pd-0 password-block">
+            <input tabindex="1" autocomplete="new-password1" [attr.disabled]="disableStudentId ? '' : null" placeholder="" aria-labelledby="studentid"
+              [textMask]="{mask: studentIdMask, guide: false}" id="studentid" type="text" class="validate"
+              formControlName="studentid" /> <!-- [textMask]="{mask: studentIdMask, guide: false}" -->
+            <label for="studentid" class="active">Student ID Number</label>
+            <app-control-messages [valdiateOnFormSubmit]="true" [isFormSubmitted]="isFormSubmitted" [controlName]="'studentid'"
+              [control]="updatessnForm['controls'].studentid"></app-control-messages>
+          </div>
+        </div>
+      </div>
+      <div class="submit-action">
+        <button tabindex="4" class="waves-effect waves-light btn btn-block  mt-20 mb-20 btn-full-width br-8" type="submit"
+          aria-label="Continue" [disabled]='updatessnForm.controls["ssn"].invalid && updatessnForm.controls["studentid"].invalid'
+          name="action">Continue</button>
+      </div>
+    </form>
+  </div>
+  <div class="row m-0" *ngIf="isMediCareUser">
+    <h1 class="form-header">Verify Your Identity</h1>
+    <p *ngIf="!lexisNexisCountReached" class="mb-20 text-ssn">We need some more information before we can verify your
+      identity
+    </p>
+    <div class="questions-link-medicare">
+      <div class="questions-header"><label>Security Questions</label></div>
+      <a (click)="navigateToLn()">
+        Answer three security questions.
+      </a>
+    </div>
+  </div>
+</div>
+
+
+<div *ngIf="!showSnnOptions" style="height: 300px">
+
+</div>

@@ -1,0 +1,306 @@
+@import '../../../../../assets/styles/_fonts';
+@import '../../../../../assets/styles/_vdk-button';
+@import '../../../../../assets/styles/_variables';
+@import '../../../../../assets/styles/Global';
+@import '../../../../../assets/styles/_flex';
+@import '../../../../../assets/styles/_filter-core';
+@import '../../../../../assets/styles/_colors';
+
+.main-header {
+    margin-top: 20px;
+    @media (max-width:992px){
+    margin-top: 10px;
+    }
+    .header-cont {
+        padding: 0 0.75em;
+        h1 {
+            @include Roboto(light);
+            font-size: 24px;
+            color: $header-color;
+            margin: 0;
+        }
+
+        .header-msg {
+            margin: 30px 0 10px 0;
+        }
+    }
+}
+.msg {
+    padding: 15px;
+    background: $background-gray-color;
+    p {
+        @include Roboto(bold);
+        font-size: 13px;
+        color: $black_color;
+        text-align: left;
+        line-height: 16px;
+        a {
+            @include Roboto(bold);
+            font-size: 13px;
+            color: $link-primary-color;
+            text-align: left;
+            line-height: 16px;
+            text-decoration: underline;
+            cursor: pointer;
+        }
+    }
+    
+}
+.main-container {    
+    .middle-container {
+        @media (max-width: 992px) {
+            padding: 0;
+        }
+        @media (min-width: 992px) {
+            display: block !important;
+            visibility: visible !important;
+        }
+
+        
+        .doctorProfile{
+            padding: 0px;
+            display: flex;
+            background: $background-gray-color;
+            align-items: center;
+            cursor: pointer;
+            @media (min-width: 993px) {
+                margin-left: 0px; 
+                margin-right: 10px;
+            }
+       
+            .pcpheadercontainer{
+                padding-left: 10px;
+                padding-right: 10px;
+                padding-top: 10px;
+                padding-bottom: 10px;
+                @include Roboto(bold);
+                font-size: 13px;
+                width: 100%;   
+                margin-bottom : 0px !important;
+                .floatrightheader{
+                    float:right;
+                }
+            }
+            .textcolor{
+                color: $headings-dark-color;
+            }
+        }
+    }
+    .list-item {
+        padding: 20px 15px;
+        background: $background-white-color;
+        border: 1px solid $textbox-border;
+        border-bottom-width: 0;
+        @media (max-width: 992px) {
+            border-left-width: 0;
+            border-right-width: 0;
+        }
+        .list-item-flex {
+            @extend %flexbox;
+            @include flex-direction(row);
+            @include align-items(center);
+            @include justify-content(space-between);
+            cursor: pointer;
+        }
+        .pcp-msg {
+            margin: -5px 0 15px 0;
+            @extend %flexbox;
+            @include flex-direction(row);
+            @include align-items(flex-start);
+            @include justify-content(space-between);
+            width: 100%;
+        }
+        .tool-tip-div {
+            @extend %flexbox;
+        }
+
+        header {
+            h2 {
+                @include Roboto(bold);
+                font-size: 16px !important;
+                color: $header-color !important;
+                letter-spacing: 0;
+                text-align: left;
+                margin: 0;
+            }
+            small {
+                @include Roboto(light);
+                font-size: 14px;
+                color: $black_color;
+                letter-spacing: -0px;
+            }
+            
+        }
+        .list-item-inner {
+            @include flex-grow(1);
+        }
+        .contact-info {
+            width: 100%;
+            @include Roboto(light);
+            margin: 20px 0;
+            .phone-icon,
+            .phone {
+                color: $text-primary-color;
+                @include Roboto(medium);
+                font-size: 12px;
+                i {
+                    font-size: 12px;
+                    transform: rotate(270deg);
+                    color: $text-primary-color;
+                }
+            }
+            .phone-icon {
+                vertical-align: middle;
+            }
+            .phone {
+                cursor: pointer;
+                text-decoration: underline;
+                color: $link-primary-color;
+            }
+        }
+    
+        .service-info {
+            width: 100%;
+            padding: 10px 0 0 0;
+            p {
+                @include Roboto(medium);
+                font-size: 12px;
+                color: $black_color;
+                letter-spacing: 0;
+                text-align: right;
+            }
+            small {
+                @include Roboto(light);
+                font-size: 12px;
+                color: $black_color;
+                letter-spacing: 0;
+                text-align: right;
+                display: block;
+            }
+        }
+    
+        .action {
+            padding-left: 15px;
+            i {
+                color: $header-color;
+                cursor: pointer;
+            }
+            svg {
+                color: $header-color;
+                cursor: pointer;
+                width: 18px;
+                height: 18px;
+            }
+        }
+    }
+    .list-item:last-child {
+        border-bottom-width: 1px;
+    }
+    .no-doctors-available-container {
+        @extend %flexbox;
+        @include justify-content(space-around);
+    }
+    
+    .no-doctors-available,
+    .no-doctors-available-container {
+        .material-icons {
+            font-size: 54px;
+        }
+        .no-doctors-icon {
+            padding: 20px 0px;
+            @media (max-width: 992px) {
+                padding-top: 10px;
+            }
+        }
+        .no-doctors-msg-cont {
+            width: 100%;
+            .no-doctors-msg {
+                padding: 0 15px 20px 15px;
+            }
+            p {
+                @include Roboto(regular);
+                font-size: 16px;
+                line-height: 22px;
+            }
+            .no-doctors {
+                color: $text-disabled-gray;
+                @include Roboto(bold);
+                font-size: 16px;
+                line-height: 22px;
+            }
+        }
+        .promotional-material {
+            padding: 20px;
+            @extend %flexbox;
+            @include flex-direction(column);
+            @include align-items(center);
+            @include justify-content(center);
+            p {
+                @include Roboto(bold);
+                color: $text-disabled-gray;
+                font-size: 16px;
+                text-align: center;
+                line-height: 22px;
+            }
+        }
+    }
+    .search-no-results-msg {
+        .search-clear-button {
+            background: $new-color;
+            width: 100%;
+            margin: 20px 0px;
+            color: $background-white-color;
+            border-radius: 5px;
+        }
+        .search-option-header {
+            color: $primary-color;
+            font-size: 18px;
+            padding-top: 5px;
+            @include Roboto(regular);
+        }
+        .search-msg {
+            font-size: 16px;
+            @include Roboto(regular);
+            color: $text-disabled-gray;
+        }
+        .search-option {
+            font-size: 14px;
+            color: $text-disabled-gray;
+            padding: 7px 0px;
+            @include Roboto(regular);
+            line-height: 18px;
+        }
+        @media (max-width: 992px) {
+            padding: 20px 15px 0 15px;
+        }
+    }
+    .dynamic-content {
+        padding: 0px;
+        @extend %flexbox;
+        @include flex-direction(row);
+        @include align-items(center);
+        @include justify-content(center);
+        font-size: $header-font-size;
+        div {
+            text-align: center;
+            color: $text-gray-color;
+            font-size: 24px;
+            @include Roboto(light);
+        }
+        @media (max-width: 992px) {
+            padding: 10px 15px;
+            margin-top: 20px;
+        }
+    }
+
+    @media (max-width: 992px) {
+        .hideMainCont {
+            display: none;
+        }
+    }
+
+    .block {
+        display: block;
+    }
+
+}

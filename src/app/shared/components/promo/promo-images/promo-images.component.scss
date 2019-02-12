@@ -1,0 +1,117 @@
+@import '../../../../../assets/styles/colors';
+@import '../../../../../assets/styles/variables';
+@import '../../../../../assets/styles/_fonts';
+
+.ads-container {
+    display: flex;
+    width: 100%;
+    margin: 0 0 15px 0;
+    .ads-details:first-child {
+      padding-right: 20px;
+    }
+    .ads-details:last-child {
+      padding-left: 20px;
+    }
+    .ads-details {
+      flex: 1;
+      display: block;
+      flex-direction: column;
+      img {
+        //height: 136px;
+        max-width: 100%;
+      }
+      .add-label {
+        padding: 15px 0;
+        color: $link-color;
+        font-size: 18px;
+        @include Roboto(bold);
+        cursor: pointer;
+      }
+    }
+  }
+
+  @media only screen and (max-width: 992px) {
+    .ads-container {
+        display: block;
+        flex-direction: column;
+        padding: 0 15px;
+        .ads-details:first-child {
+          padding-right: 0;
+          padding-bottom: 20px;
+        }
+        .ads-details:last-child {
+          padding: 20px 0;
+        }
+      .ads-details {
+        .add-label {
+          padding: 15px 0 30px 0;
+        }
+      }
+      }
+  }
+
+
+.ads-details {
+ .video-label {
+   position: relative;
+   cursor: pointer;
+
+   a {
+     position: absolute;
+
+     z-index: 11;
+     display: flex;
+     justify-content: center;
+     align-items: center;
+     top: 0;
+     left: 0;
+     width: 100%;
+     height: 100%;
+
+     .play-icon {
+       cursor: pointer;
+       color: #043167;
+     }
+   }
+ }
+}
+
+#imageVideoModal {
+  video {
+    z-index: 1999;
+    width :100%
+  }
+  .video-icon {
+    color: White;
+    cursor: pointer;
+    position: fixed;
+    right: 20px;
+    top: 20px;
+    z-index: 2000;
+  }
+}
+
+#imageVideoModal {
+  display: none;
+  position: fixed;
+  left: 0;
+  right: 0;
+  background-color: unset;
+  padding: 0;
+  max-height: 100%;
+  width: 100%;
+  margin: auto;
+  overflow-y: auto;
+  border-radius: 2px;
+  will-change: top, opacity;
+  z-index: 999999 !important;
+  box-shadow: none;
+}
+
+.video-icon {
+  svg {
+    background: #043167;
+    color: #ffffff !important;
+    border-radius: 50%;
+  }
+}

@@ -1,0 +1,32 @@
+{
+    "rxSummary": [
+        {
+            "genericName": "Hydrocodone-Acetaminophen Tab 7.5-325 MG",
+            "pharmacy": {
+                "id": "70010002236544",
+                "name": "STAR PHARMACY",
+                "phoneNumber": "617-782-162"
+            },
+            "copay": 5.45,
+            "lastFill": "2013-09-23",
+            "prescribingDoctor": "DAVID K WEINSTOCK MD",
+            "ndcCd": "00603389121",
+            "uniquePersonId": 710022564,
+            "rxIncurredDate": "2013-09-23"
+        },
+        {
+            "genericName": "Ciprofloxacin HCl Tab 500 MG (Base Equiv)",
+            "pharmacy": {
+                "id": "70010002236544",
+                "name": "STAR PHARMACY",
+                "phoneNumber": "617-782-162"
+            },
+            "copay": 10,
+            "lastFill": "2013-09-23",
+            "prescribingDoctor": "DAVID K WEINSTOCK MD",
+            "uniquePersonId": 710022565,
+            "ndcCd": "55111012701",
+            "rxIncurredDate": "2013-09-23"
+        }
+    ]
+}

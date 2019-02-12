@@ -1,0 +1,87 @@
+@import '../../../../assets/styles/_include';
+@import '../../../../assets/styles/_flex';
+.chart-container {
+  padding: 15px 0;
+  &:before,
+  &:after {
+    content: '';
+    display: block;
+  }
+  header {
+    margin: 0 0 10px 0;
+    h6 {
+      @include Roboto(bold);
+      font-size: 16px;
+      color: $text-disabled-gray;
+      line-height: 22px;
+      float: left;
+      margin: 0;
+    }
+    p {
+      @include Roboto(regular);
+      font-size: 16px;
+      color: $text-disabled-gray;
+      line-height: 22px;
+      margin: 0 0 0 10px;
+      display: inline-block;
+    }
+  }
+  .progress {
+    border-radius: 15px;
+    height: 23.1px;
+    background: $text-white-color;
+    border: 1px solid $non-vdk-11-grey;
+    //margin-bottom: 12px;
+    //margin:-1px 0px 12px -1px;
+    // overflow: visible;
+    margin: 0 0 12px 0;
+    .determinate, .pending {
+      border-radius: 15px;
+      background: $success-alerts-color;
+      height: 23.1px;
+      top: -1px;
+      left: -1px;
+    }
+  }
+  .chart-bottom {
+    @extend %flexbox;
+    @include flex-direction(row);
+    @include align-items(center);
+    @include justify-content(flex-start);
+    .chart-bottom-option {
+      width: 50%;
+      .chart-bottom-option-inner {
+        @extend %flexbox;
+        @include flex-direction(row);
+        @include align-items(flex-start);
+        @include justify-content(flex-start);
+      }
+      .chart-bottom-text {
+        padding: 0 5px;
+        small {
+          @include Roboto(bold);
+          font-size: 12px;
+          color: $text-disabled-gray;
+          line-height: 16px;
+          display: block;
+        }
+        p {
+          @include Roboto(regular);
+          font-size: 12px;
+          color: $text-disabled-gray;
+          line-height: 16px;
+        }
+      }
+      .round {
+        border-radius: 100px;
+        background: $success-alerts-color;
+        height: 15px;
+        width: 15px;
+      }
+      .round-default {
+        background: $text-white-color;
+        border: 1px solid $non-vdk-11-grey;
+      }
+    }
+  }
+}

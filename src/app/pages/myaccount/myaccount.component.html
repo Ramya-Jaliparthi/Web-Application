@@ -1,0 +1,265 @@
+<section>
+  <div class="documents-component">
+    <div *ngIf="ismobile" class="ml-15 mt-20">
+      <app-breadcrumbs></app-breadcrumbs>
+    </div>
+    <h1> My Account </h1>
+    <div *ngIf="!ismobile">
+      <app-breadcrumbs></app-breadcrumbs>
+    </div>
+    <div class="myaccount-container mb-10">
+
+      <div class="col l4 s12 side-nav-container" *ngIf="!menuListItemRegisteredUser">
+        <div class="account-details-container pt-0" [routerLink]="['/myplans']">
+          <div *ngFor="let item of accountInfo[0]?.accountinforesponse" style="padding-top: 20px">
+            <ng-container *ngIf="item">
+              <div class="account-item-header">
+                <label> {{item?.planName | titlecase}}</label>
+              </div>
+              <div class="account-type">
+                <label>{{item.groupName | titlecase}}</label>
+              </div>
+              <div class="item-container">
+                <span class="item-text">Group Number:</span>
+                <span class="item-value">{{item.groupNumber}} </span>
+              </div>
+              <div class="item-container">
+                <span class="item-text">Subscriber ID:</span>
+                <span class="item-value"> {{item?.subscriberId}}</span>
+              </div>
+              <ng-container *ngIf="item?.esi?.hasESI === 'true' || item?.esi?.hasESIMedex  === 'true' || item?.esi?.hasESI === 'True' || item?.esi?.hasESIMedex  === 'True'">
+                <div class="item-container">
+                  <span class="item-text">Pharmacy Coverage:</span>
+                  <span class="item-value-coverage" (click)="openUrl(esiUrl)" (click)="stopEventPropagation($event)">
+                  <a href="javascript:void(0)">Express Scripts</a>
+                </span>
+                </div>
+              </ng-container>
+              <!--<div class="item-container pd-t10">-->
+              <!--<span class="item-date-text">Effective Date:</span>-->
+              <!--<span class="item-value">{{item?.planEffectiveDate}}</span>-->
+              <!--</div>-->
+            </ng-container>
+
+          </div>
+
+        </div>
+      </div>
+
+      <div *ngIf="!ismobile && menuListItem1?.length > 0" class="col l4 s12 menu-container-1">
+        <div class="flex-box">
+          <div *ngFor="let folderItem of menuListItem1; index as folderItemItr" class="collection" [ngClass]="{'menu-top-border': folderItem.isFirstMenu}">
+            <div class="flex" (click)="openFolder(folderItem)">
+              <div class="flex menu-item-container">
+
+                <div class="flex menu-item-text">
+                  <div class="mr-10">
+                    <i *ngIf="folderItem.icon==='cards'" class="fal fa-address-card override-fa-icon icons-class"></i>
+                    <i *ngIf="folderItem.icon==='coinsurance'" class="fal fa-clipboard-check override-fa-icon icons-class"></i>
+                    <i *ngIf="folderItem.icon==='financials'" class="fal fa-chart-line override-fa-icon icons-class"></i>
+                    <i *ngIf="folderItem.icon==='claims'" class="fal fa-file-alt override-fa-icon icons-class"></i>
+                    <i *ngIf="folderItem.icon==='medications'" class="fal fa-capsules override-fa-icon icons-class"></i>
+                    <!-- Change to pro icon later -->
+                    <i *ngIf="folderItem.icon==='estimate'" class="fal fa-file-invoice-dollar override-fa-icon icons-class"></i>
+                    <i *ngIf="folderItem.icon==='preferences'" class="fal fa-cog override-fa-icon icons-class"></i>
+                  </div>
+                  <p class="flex-grow-1 folder-card" [ngClass]="{'text-padding': folderItem.needPadding}">
+                    <!-- ,'split-in-two-lines': folderItem.icon==='coinsurance' -->
+                    {{folderItem.alertShortTxt}}
+                  </p>
+                </div>
+
+                <div class="flex menu-item-action">
+                  <div class="valign-wrapper">
+                    <span class="badge unread-docs-indicator" *ngIf="folderItem.unReadDocs && folderItem.unReadDocs>0">{{folderItem.unReadDocs}}</span>
+                  </div>
+                  <div class="valign-wrapper ml-10">
+                    <i class="far fa-chevron-right"></i>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div *ngIf="!ismobile && menuListItem2?.length > 0" class="col l4 s12 pd-0 menu-container-2">
+        <div class="flex-box">
+          <div *ngFor="let folderItem of menuListItem2; index as folderItemItr" class="collection" [ngClass]="{ 'bb-0': folderItem.icon ==='preferences' && ismobile}">
+            <!-- 'doctor-menu-item': folderItem.icon==='doctors', -->
+            <!-- <div *ngFor="let folderItem of menuListItem2; index as folderItemItr" class="collection" [ngClass]="{'doctor-menu-item': isInActive ? folderItem.icon==='plans' : folderItem.icon==='doctors', 'bb-0': folderItem.icon ==='preferences' && ismobile}"> -->
+            <div class="flex" (click)="openFolder(folderItem)">
+
+              <div class="mr-10">
+                <i *ngIf="folderItem.icon==='plans'" class="fal fa-shield-alt override-fa-icon icons-class"></i>
+                <i *ngIf="folderItem.icon==='doctors'" class="fal fa-user-md override-fa-icon icons-class"></i>
+                <i *ngIf="folderItem.icon==='profile'" class="fal fa-user-circle override-fa-icon icons-class"></i>
+                <i *ngIf="folderItem.icon==='inbox'" class="fal fa-envelope override-fa-icon icons-class"></i>
+                <i *ngIf="folderItem.icon==='preferences'" class="fal fa-cog override-fa-icon icons-class"></i>
+              </div>
+              <p class="flex-grow-1 folder-card" [ngClass]="{'text-padding': folderItem.needPadding}">
+                {{folderItem.alertShortTxt}}
+              </p>
+
+              <div class="valign-wrapper">
+                <span class="badge unread-docs-indicator" *ngIf="folderItem.unReadDocs && folderItem.unReadDocs>0 && !ismobile">{{folderItem.unReadDocs}}</span>
+              </div>
+              <div class="valign-wrapper ml-10">
+                <i class="far fa-chevron-right"></i>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div *ngIf="ismobile && menuListItemMobile?.length > 0" class="col l4 s12 menu-container-1">
+        <div class="flex-box">
+          <div *ngFor="let folderItem of menuListItemMobile; index as folderItemItr" class="collection" [ngClass]="{'bb-0': folderItem.icon ==='preferences' && ismobile, 'menu-top-border': folderItem.isFirstMenu}">
+            <div class="flex" (click)="openFolder(folderItem)">
+              <div class="flex menu-item-container">
+
+                <div class="flex menu-item-text">
+                  <div class="mr-10">
+                    <i *ngIf="folderItem.icon==='cards'" class="fal fa-address-card override-fa-icon icons-class"></i>
+                    <i *ngIf="folderItem.icon==='coinsurance'" class="fal fa-clipboard-check override-fa-icon icons-class"></i>
+                    <i *ngIf="folderItem.icon==='financials'" class="fal fa-chart-line override-fa-icon icons-class"></i>
+                    <i *ngIf="folderItem.icon==='claims'" class="fal fa-file-alt override-fa-icon icons-class"></i>
+                    <i *ngIf="folderItem.icon==='medications'" class="fal fa-capsules override-fa-icon icons-class"></i>
+                    <i *ngIf="folderItem.icon==='plans'" class="fal fa-shield-alt override-fa-icon icons-class"></i>
+                    <i *ngIf="folderItem.icon==='doctors'" class="fal fa-user-md override-fa-icon icons-class"></i>
+                    <i *ngIf="folderItem.icon==='profile'" class="fal fa-user-circle override-fa-icon icons-class"></i>
+                    <i *ngIf="folderItem.icon==='inbox'" class="fal fa-envelope override-fa-icon icons-class"></i>
+                    <i *ngIf="folderItem.icon==='preferences'" class="fal fa-cog override-fa-icon icons-class"></i>
+                    <i *ngIf="folderItem.icon==='estimate'" class="fal fa-file-invoice-dollar override-fa-icon icons-class"></i>
+                  </div>
+                  <p class="flex-grow-1 folder-card" [ngClass]="{'text-padding': folderItem.needPadding,'split-in-two-lines': folderItem.icon==='coinsurance'}">
+                    {{folderItem.alertShortTxt}}
+                  </p>
+                </div>
+
+                <div class="flex menu-item-action">
+                  <div class="valign-wrapper">
+                    <span class="badge unread-docs-indicator" *ngIf="folderItem.unReadDocs && folderItem.unReadDocs>0">{{folderItem.unReadDocs}}</span>
+                  </div>
+                  <div class="valign-wrapper ml-10">
+                    <i class="far fa-chevron-right"></i>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- <div *ngIf="menuListItemRegisteredUser?.length > 0" class="col l4 s12 menu-container-1">
+          <div class="flex-box">
+              <div class="collection" [ngClass]="{'menu-top-border': true}">
+                  <div class="flex" (click)="navigateUrl('/myprofile')">
+                      <div class="flex menu-item-container">
+
+                          <div class="flex menu-item-text">
+                              <div class="mr-10">
+                                  <i class="fal fa-user-circle override-fa-icon icons-class"></i>
+                              </div>
+                              <p class="flex-grow-1 folder-card">
+                                  Profile
+                              </p>
+                          </div>
+
+                          <div class="flex menu-item-action">
+
+                              <div class="valign-wrapper ml-10">
+                                  <i class="far fa-chevron-right"></i>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+
+      <div *ngIf="menuListItemRegisteredUser?.length > 0" class="col l4 s12 menu-container-1">
+              <div class="flex-box">
+                  <div class="collection" [ngClass]="{'menu-top-border': true, 'b-0': ismobile}">
+                      <div class="flex" (click)="navigateUrl('/mypreferences')">
+                          <div class="flex menu-item-container">
+
+                              <div class="flex menu-item-text">
+                                  <div class="mr-10">
+                                      <i class="fal fa-cog override-fa-icon icons-class"></i>
+                                  </div>
+                                  <p class="flex-grow-1 folder-card">
+                                      Preferences
+                                  </p>
+                              </div>
+
+                              <div class="flex menu-item-action">
+                                  <div class="valign-wrapper ml-10">
+                                      <i class="far fa-chevron-right"></i>
+                                  </div>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+          </div> -->
+
+      <!-- <div *ngIf="menuListItemRegisteredUser?.length > 0" class="col l4 s12 menu-container-1">
+          <div class="flex-box">
+                  <div class="collection" [ngClass]="{'menu-top-border': true, 'bt-0': ismobile}">
+                          <div class="flex" (click)="navigateUrl('/message-center')">
+                              <div class="flex menu-item-container">
+
+                                  <div class="flex menu-item-text">
+                                      <div class="mr-10">
+                                          <i class="fal fa-envelope override-fa-icon icons-class"></i>
+                                      </div>
+                                      <p class="flex-grow-1 folder-card">
+                                          Inbox
+                                      </p>
+                                  </div>
+
+                                  <div class="flex menu-item-action">
+                                      <div class="valign-wrapper">
+                                          <span class="badge unread-docs-indicator">20</span>
+                                      </div>
+                                      <div class="valign-wrapper ml-10">
+                                          <i class="far fa-chevron-right"></i>
+                                      </div>
+                                  </div>
+                              </div>
+                          </div>
+                      </div>
+          </div>
+      </div> -->
+
+    </div>
+    <div class="flex-box registered-users mb-20" *ngIf="menuListItemRegisteredUser?.length > 0">
+      <div class="collection" [ngClass]="{'menu-top-border': true, 'bt-0': ismobile}" *ngFor="let option of menuListItemRegisteredUser"
+        (click)="navigateUrl(option.url)">
+        <div class="row valign-wrapper">
+          <div class="col s9 left ml-0">
+            <div>
+              <span class="col 1 pr-0">
+                <i class="{{option.imageClass}} override-fa-icon icons-class mr-10"></i>
+              </span>
+              <span class="flex-grow-1 folder-card">
+                {{option.alertShortTxt}}
+              </span>
+            </div>
+          </div>
+          <div class="col s1 offset-s1" *ngIf="option.alertShortTxt === 'My Inbox'">
+            <!--<span class="badge unread-docs-indicator">20</span>-->
+          </div>
+          <div class="col s1 right">
+
+            <div class="mr-10 valign-wrapper">
+              <i class="far fa-chevron-right"></i>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="collection" *ngIf="!ismobile"></div>
+    </div>
+  </div>
+</section>

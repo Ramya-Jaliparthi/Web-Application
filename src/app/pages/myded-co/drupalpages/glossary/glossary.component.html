@@ -1,0 +1,46 @@
+<div class="dedcoglossary-cont">
+        <div class="dedcoglossary">
+
+                <h1>Deductible & Co-Insurance Glossary</h1>
+            
+                <mat-accordion multi="true">
+                    <mat-expansion-panel class="body-panel" [expanded]="isOverallDeductible" (opened)="isOverallDeductible  = true" (closed)="isOverallDeductible  = false">
+                        <mat-expansion-panel-header class="header-panel" [expandedHeight]="expandedHeight">
+                            Overall Deductible
+                        </mat-expansion-panel-header>
+                        <span>
+                    The dollar amount that a member must pay for medical services before a health plan will cover eligible services.
+                    </span>
+                    </mat-expansion-panel>
+                </mat-accordion>
+                <mat-accordion multi="true">
+                    <mat-expansion-panel class="body-panel" [expanded]="isEffectiveDate" (opened)="isEffectiveDate  = true" (closed)="isEffectiveDate  = false">
+                        <mat-expansion-panel-header class="header-panel" [expandedHeight]="expandedHeight">
+                            Effective Date
+                        </mat-expansion-panel-header>
+                        The date on which coverage under a health benefits plan begins.
+                    </mat-expansion-panel>
+                </mat-accordion>
+                <mat-accordion multi="true">
+                    <mat-expansion-panel class="body-panel" [expanded]="isExceptionsExclusions" (opened)="isExceptionsExclusions  = true" (closed)="isExceptionsExclusions  = false">
+                        <mat-expansion-panel-header class="header-panel" [expandedHeight]="expandedHeight">
+                            Exceptions & Exclusions
+                        </mat-expansion-panel-header>
+                        Applies to Group 2 and Group 3 services combined. It does not apply to any enhanced benefits.
+                    </mat-expansion-panel>
+                </mat-accordion>
+                <mat-accordion multi="true">
+                    <mat-expansion-panel class="body-panel" [expanded]="isOutPocketMaximum" (opened)="isOutPocketMaximum  = true" (closed)="isOutPocketMaximum  = false">
+                        <mat-expansion-panel-header class="header-panel" [expandedHeight]="expandedHeight">
+                            Out-of-Pocket Maximum
+                        </mat-expansion-panel-header>
+                        The maximum amount a plan will pay for covered services during a plan year.
+                    </mat-expansion-panel>
+                </mat-accordion>
+                <div style="text-align: center">
+                    <button class="apply-button mt-30" mat-raised-button type="button" (click)="goBack()">
+                        Back
+                </button>
+                </div>
+            </div>
+</div>

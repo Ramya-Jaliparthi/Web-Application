@@ -1,0 +1,111 @@
+// spk-cleanup - @import '../../../../../assets/styles/variables';
+@import '../../../../assets/styles/_variables';
+@import '../../../../assets/styles/layouts-styles';
+@import '../../../../assets/styles/Global';
+@import '../../../../assets/styles/_fonts';
+.panel-content {
+    @extend %panel-content;
+}
+
+@media (max-width: 992px) {
+    .fpo-padding {
+        margin-top: 30px !important;
+    }
+}
+
+.question {
+    color: $headings-dark-color !important;
+    @include Roboto(medium);
+    font-size: 22px;
+}
+
+.rel-label {
+    font-size: 14px !important;
+    @include Roboto(bold);
+}
+
+a.text-link {
+    color: $new-color;
+}
+
+.drupal-content {
+    color: $disabed-background-color;
+    @include Roboto(medium);
+    font-size: 20px;
+}
+
+.input-field label:not(.label-icon).active {
+    -webkit-transform: translateY(-14px) scale(0.8);
+    transform: translateY(-14px) scale(1.0);
+    -webkit-transform-origin: 0 0;
+    transform-origin: 0 0;
+}
+
+.add-optional {
+    float: left;
+    @include Roboto(medium);
+    font-size: 12px;
+}
+
+.new-font {
+    font-size: 18px;
+}
+
+.description-text {
+    @include Roboto(regular);
+}
+
+.learn-more-link {
+    a {
+        color: $link-primary-color;
+        font-size: 14px;
+        @include Roboto(medium);
+        text-decoration: underline;
+        cursor: pointer;
+    }
+    a:hover {
+        color: $link-secondary-color;
+    }
+    a:focus {
+        color: $link-color;
+    }
+}
+
+.info-checkbox {
+    @include Roboto(regular);
+    font-size: 14px;
+    color: $black_color;
+}
+
+.submit-action-twobutton-twocol {
+    // spk/cleanup - @media only screen and (min-device-width: 320px) and (max-device-width: 480px) {
+    @media only screen and (min-width: 320px) and (max-width: 992px) {
+        width: 100%;
+    }
+}
+
+/*.submit-action-twobutton-twocol .btn[disabled] {
+    color: $text-white-color !important;
+}*/
+
+.btn-white,
+.btn-white:hover,
+.btn-white:focus {
+    background-color: transparent !important;
+    line-height: 44px;
+}
+
+.link-rel {
+    cursor: pointer;
+    color: $link-color !important;
+}
+
+.color-focus {
+    color: $non-vdk-39-blue;
+}
+
+.add-link {
+    cursor: pointer;
+    color: $link-color !important;
+    margin-top: -5px;
+}

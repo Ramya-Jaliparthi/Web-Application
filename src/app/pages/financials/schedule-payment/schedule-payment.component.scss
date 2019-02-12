@@ -1,0 +1,263 @@
+@import '../../../../assets/styles/_spacing';
+@import '../../../../assets/styles/_colors';
+@import '../../../../assets/styles/_fonts';
+@import '../../../../assets/styles/_typography';
+@import '../../../../assets/styles/_variables';
+@import '../../../../assets/styles/_global';
+
+div {
+  .section-header {
+    @include Roboto(bold);
+    font-size: 14px;
+    color: $title-color;
+    margin-bottom: 4px;
+  }
+
+  //.mat-select {
+  //  border-bottom: 2px solid $non-vdk-3-grey;
+  //}
+
+  //input {
+  //  border-bottom: 2px solid $non-vdk-3-grey !important;
+  //  margin-top: 0px;
+  //  padding-top: 0px;
+  //  height: 34px;
+  //}
+
+  .sample-format {
+    @include Roboto(regular);
+    font-size: 12px;
+    color: $non-vdk-3-grey;
+  }
+}
+
+.provider-account-number {
+  margin-top: 23px;
+}
+
+.payment-amount {
+  margin-top: 32px;
+}
+
+.member-section {
+  margin-top: 0px;
+}
+
+.service-type {
+  margin-top: 32px;
+}
+
+.service-start-date {
+  margin-top: 32px;
+}
+
+.service-end-date {
+  margin-top: 14.6px;
+}
+
+.payment-reciept {
+
+  margin-top: 23px;
+
+  p {
+    margin-bottom: 13px;
+  }
+
+  a {
+    @include Roboto(medium);
+    font-size: 12px;
+    color: $text-primary-color;
+    position: relative;
+    overflow: hidden;
+
+    i {
+      font-size: 1.5rem;
+    }
+
+    span {
+      position: relative;
+      top: -5px;
+    }
+
+    input {
+      &.b3_upload {
+        position: absolute;
+        top: 0;
+        right: 0;
+        margin: 0;
+        padding: 0;
+        cursor: pointer;
+        opacity: 0;
+        filter: alpha(opacity=0);
+      }
+    }
+  }
+}
+
+.button-row {
+
+  padding-top: 14px;
+  margin: 0;
+  margin-bottom: 30px;
+
+  .cancel-btn {
+    text-align: center;
+    height: 44px;
+    line-height: 44px;
+    @include Roboto(bold);
+    color: $title-color !important;
+    text-transform: none;
+    font-size: 16px;
+    &:hover {
+      background: none !important;
+  }
+  }
+}
+
+.note-text {
+  @include Roboto(light);
+  font-size: 13px;
+  color: $non-vdk-3-grey;
+}
+
+.service-end-date {
+  margin-top: 14.6px;
+}
+
+.reimbursment-method {
+  margin-top: 14.6px;
+}
+
+.select-provider {
+  margin-top: 32px;
+
+  .mat-select {
+    margin-bottom: 7px;
+  }
+
+  span {
+    @include Roboto(regular);
+    font-size: 14px;
+
+    a {
+      text-decoration: underline;
+      @include Roboto(bold);
+      color: $text-primary-color;
+    }
+  }
+}
+
+.billed-amount {
+  margin-top: 29px;
+}
+
+.other-accounts {
+  margin-top: 19px;
+}
+
+.imgPlaceholder {
+
+  width: 100px;
+  height: 100px;
+  background: white;
+  margin-top: 15px;
+
+  /*border:0.5px solid black;*/
+}
+
+.checkmark__check {
+  transform-origin: 50% 50%;
+  stroke-dasharray: 29;
+  stroke-dashoffset: 29;
+  animation: stroke 0.3s cubic-bezier(0.65, 0, 0.45, 1) 0.8s forwards;
+}
+
+.glossyBtn {
+  background-image: url('https://www.google.com/logos/doodles/2018/hannah-glasses-310th-birthday-5894265455509504.4-l.png');
+  background-repeat: no-repeat;
+  background-position: left top;
+  padding-left: 15px;
+  height: 500px;
+  width: 500px;
+}
+
+.img {
+
+  width: 100%;
+  height: 100%;
+  /*
+
+  */
+}
+
+.close {
+  margin-bottom: -16px;
+  display: block;
+  position: relative;
+  width: 30px;
+  height: 29px;
+  /*  margin-top: -100px; */
+  margin-left: 66px;
+  font-size: 13px;
+  font-family: serif;
+  color: white;
+  /*background:url(http://www.htmlgoodies.com/img/registrationwelcome/close_icon.png) no-repeat center center;*/
+}
+
+.upload {
+  position: relative;
+  overflow: hidden;
+
+  color: #1865a3;
+}
+
+/*
+.mycards_dimensions{
+    width:310px;
+     height:210px;
+}
+*/
+.iconWithLabelAdjustment {
+  vertical-align: middle !important;
+  padding-bottom: 3px !important;
+}
+
+.upload input.b3_upload {
+  position: absolute;
+  top: 0;
+  right: 0;
+  margin: 0;
+  padding: 0;
+  cursor: pointer;
+  opacity: 0;
+  filter: alpha(opacity=0);
+}
+
+svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+  background: none;
+  margin-top: -117px;
+  /* margin-left: -20px;*/
+  fill: #1865a3;
+}
+
+.info-text {
+  a {
+    text-decoration: underline;
+  }
+}
+
+.password-block {
+  position: relative;
+}
+
+.password-block .input-group-addon {
+  position: absolute;
+  right: 0px;
+  top: 20px;
+  text-align: center;
+}
+
+

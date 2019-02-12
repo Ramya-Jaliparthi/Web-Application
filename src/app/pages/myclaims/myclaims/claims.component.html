@@ -1,0 +1,488 @@
+<div [ngClass]="{'mt-20': !ismobile}">
+  <div *ngIf="!noClaimsAvailable" class="row m-0">
+    <div class="col m12 s12" [ngClass]="{'l3':bHasDependents,'l0':!bHasDependents}"></div>
+    <div class="col m12 s12" [ngClass]="{'pd-r15': !bHasDependents, 'l6 offset-l3': initialClaimsCount !== 1, 'l9': initialClaimsCount === 1}">
+      <div *ngIf="ismobile" class="mt-20">
+        <app-breadcrumbs></app-breadcrumbs>
+      </div>
+      <div class="medicare-color" *ngIf="!isDisplayResults">My Claims Summary</div>
+      <div *ngIf="!ismobile">
+        <app-breadcrumbs></app-breadcrumbs>
+      </div>
+      <div class="medicare-color" *ngIf="isDisplayResults">
+        {{ filteredClaims?.length === 0 ? 'No results found' : filteredClaims?.length }} {{ filteredClaims?.length > 1
+        ? 'results'
+        : ''}} {{ filteredClaims?.length === 1 ? ' result': ''}}
+      </div>
+      <!-- <div class="claims-description" [hidden]="issearchShowing"> -->
+      <div class="claims-description">
+        <!-- [Short description about claims with a link to
+        <a class="intro-link">learn how claims work</a>
+        <span style="margin:0 -3px;color: #1065A5;font-weight: 600">.</span> ] -->
+        <app-fpo-layout [targetUrl]='fpoTargetUrl'></app-fpo-layout>
+      </div>
+    </div>
+    <div class="col m12 s12" [ngClass]="{'l3':bHasDependents,'l4':!bHasDependents}"></div>
+  </div>
+  <div class="row m-0">
+
+    <div *ngIf="noClaimsAvailable">
+      <div class="col l3 s12 m12"></div>
+      <div class="no-medications-available-container col l6 m12 s12">
+
+        <div class="medicare-msg">
+          <div class="col s12 left pl-0 mt-10" *ngIf="ismobile">
+            <app-breadcrumbs></app-breadcrumbs>
+          </div>
+          <div class="col s12 pl-0 medicare-color left">
+            My Claims
+          </div>
+          <div class="col s12 left pl-0" *ngIf="!ismobile">
+            <app-breadcrumbs></app-breadcrumbs>
+          </div>
+          <div class="text-center claims-description">
+            <!-- [Short description about claims with a link to
+              <a class="intro-link">learn how claims work</a>
+              <span style="margin:0 -3px;color: #1065A5;font-weight: 600">.</span> ] -->
+            <app-fpo-layout [targetUrl]='fpoTargetUrl' [displayCategory]="'profile'"></app-fpo-layout>
+          </div>
+          <div class="text-center no-medications-icon">
+            <img src="/assets/images/medication_error.svg">
+          </div>
+          <p class="text-center no-medications">You don’t have any claims.</p>
+          <p class="text-center pd-0">Details about your claims filed will</p>
+          <p class="text-center">display here.</p>
+          <div class="text-center dynamic-content pd-0">
+            <ng-container *ngTemplateOutlet="actions"></ng-container>
+          </div>
+          <div class="text-center mb-20">
+            <app-fpo-layout [targetUrl]='fpoTargetUrl' [displayCategory]="'profile'"></app-fpo-layout>
+          </div>
+        </div>
+      </div>
+      <div class="col l3 s12 m12"></div>
+    </div>
+
+    <div *ngIf="!noClaimsAvailable">
+      <div [ngClass]="{'pd-0': (ismobile) }">
+        <div class="medicare-result">
+          <div class="medicare-result-container">
+            <div class="filter-action-button" *ngIf="initialClaimsCount !== 1" [ngClass]="{'toggle-filter': (isSidenavOpened), 'closed-filter': !(isSidenavOpened)}">
+              <div class="filter-action-label" (click)="toggleFilter('in')">
+                <span style="margin-left: 10px" class="filter-menu-text">Filter</span>
+                <p>
+                  <i class="material-icons" style="font-size: 26px;margin-top: 8px;color: #043167;padding-left:  8px;">keyboard_arrow_down</i>
+                </p>
+              </div>
+              <div class="clear-action-label" *ngIf="showClearLink" (click)="clearFilter(providerFilter, claimStatusFilter, visitTypeFilter,memberFilter)">
+                <span>Clear</span>
+              </div>
+            </div>
+
+            <div [ngClass]="{'filter-mobile-divider': !(isSidenavOpened)}" class="hide-on-large-only" *ngIf="initialClaimsCount !== 1"></div>
+            <div class="hide-on-large-only divider" *ngIf="initialClaimsCount === 1"></div>
+
+            <div class="side-nav-container col l3 m12 s12" [@slideInOut]='sideNavStatus' [ngClass]="{'show-side-content': (isSidenavOpened)}" *ngIf="initialClaimsCount !== 1">
+
+              <div class="row claims-filter-container" #sideNavContainer>
+
+                <div class="col m12 s12 pd-0 medicare-filter-inner-btn">
+                  <div #filterWidth class="col m12 s12 filter-btn">
+                    <div class="col s12 filter-menu">
+                      <div class="filter-menu-text">Filter</div>
+                    </div>
+                    <div class="col s12 filter-menu-with-action" (click)="toggleFilter('out')">
+                      <div class="filter-menu-text">Filter</div>
+                      <i class="material-icons" style="font-size: 28px;color: #043167;margin-right: 4px;margin-top: 5px;">keyboard_arrow_up</i>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="col s12 search-box">
+                  <!-- <div>
+                    <input #searchInput [focus]="myFocusTriggeringEventEmitter" type="text" id="autocomplete-input" [(ngModel)]="searchval" #data
+                      (keyup)="SearchAutoComplete($event,data)" (keyup.enter)="search($event,data,planFilter, providerFilter, claimStatusFilter, visitTypeFilter)"
+                      (keydown)="escapeSearchContainer($event)" (focus)="escapeSearchContainer($event)" class="search-input"
+                      placeholder="Keyword">
+                    <i class="material-icons close-icon" (click)="clearSearchVal()" *ngIf="showClose">close</i>
+                    <i class="material-icons" (click)="search($event,data,planFilter, providerFilter, claimStatusFilter, visitTypeFilter)">search</i>
+                  </div>
+                  <div class="auto-search" *ngIf="isautosearch" #searchDrpContainer>
+                    <ul>
+                      <li *ngFor="let val of autoCompleteSearchArray; let i = index;" tabindex="{{i}}" (keydown)="searchMouseDown($event, i,planFilter, providerFilter, claimStatusFilter, visitTypeFilter)"
+                        (click)="getSearchValue($event,val,planFilter, providerFilter, claimStatusFilter, visitTypeFilter)">
+                        {{val | titlecase}}
+                      </li>
+                    </ul>
+                  </div> -->
+                </div>
+
+                <div class="col s12 pd-0">
+                  <mat-accordion multi="true">
+                    <mat-expansion-panel [expanded]="isSortExpanded" (opened)="isSortOpened()" (closed)="isSortClosed()">
+                      <mat-expansion-panel-header class="header-panel" [collapsedHeight]="collapsedSortHeight"
+                        [expandedHeight]="expandedSortHeight">
+                        <div class="medication-sort">Sort by</div>
+                        <p class="selected-sort" *ngIf="!isSortExpanded">{{sortSelectedFilter}}</p>
+                      </mat-expansion-panel-header>
+                      <mat-list>
+                        <mat-radio-group name="filterSort" [(ngModel)]="sortSelectedFilter" #issortingChecked>
+                          <mat-list-item *ngFor="let item of sortList">
+                            <mat-radio-button labelPosition="before" [checked]="item.checked" name="filterSort" [value]="item.value">{{item.value}}
+                            </mat-radio-button>
+                          </mat-list-item>
+                        </mat-radio-group>
+                      </mat-list>
+                    </mat-expansion-panel>
+                  </mat-accordion>
+                  <div class="filter-divider"></div>
+                </div>
+
+                <!-- Plan Filter/ -->
+                <!--<mat-accordion multi="true">
+                  <mat-expansion-panel [expanded]="step[1]" (opened)="isOpened(1)">
+                    <mat-expansion-panel-header class="header-panel" [collapsedHeight]="collapsedHeight"
+                      [expandedHeight]="expandedHeight">
+                      Plan
+                    </mat-expansion-panel-header>
+                    <mat-selection-list #planFilter (selectionChange)="manageSelectedClaimsFilter($event,allClaimsFilterOptions.plan.text)">
+                      <mat-list-option *ngFor="let item of planList" [selected]="item.selected" [disabled]="item.disabled"
+                        [value]="item">
+                        {{item.planName | titlecase}} ({{item.planCount}})
+                      </mat-list-option>
+                    </mat-selection-list>
+                  </mat-expansion-panel>
+                </mat-accordion>
+                <div class="filter-divider-row"></div>-->
+
+                <!-- Date filter -->
+                <mat-accordion multi="true">
+                  <mat-expansion-panel [expanded]="step[2]" (opened)="isOpened(2)">
+                    <mat-expansion-panel-header class="header-panel" [collapsedHeight]="collapsedHeight"
+                      [expandedHeight]="expandedHeight">
+                      Date
+                    </mat-expansion-panel-header>
+                    <mat-list class="date-container">
+                      <mat-radio-group name="filterDate" [(ngModel)]="dateSelectedFilter" (change)="dateFilterChanged($event);"
+                        #isdateChecked>
+                        <mat-list-item *ngFor="let item of dateList">
+                          <mat-radio-button labelPosition="before" [checked]="item.checked" name="filterDate" [value]="item">
+                            <!--{{item.label}} {{item.label != "Custom Date Range" ? ("(" + item.count+ ")") : ''}}-->
+                            {{item.dateRange}}
+                            <span *ngIf="item.dateCount!==0">({{item.dateCount}})</span>
+                          </mat-radio-button>
+                        </mat-list-item>
+                      </mat-radio-group>
+
+                      <mat-list-item class="calendar-min-height" [ngClass]="{ 'mb-10' : isSelectedDateInvalid || isCustomDateRangeInValid }"
+                        *ngIf="isDisplayCustomDateRange">
+                        <div class="date-filter-custom">
+                          <div class="date-filter-range">
+                            <div class="date-filter-custom-date from-date">
+                              <mat-form-field>
+                                <input #fromDateInput matInput placeholder="From date" class="input-calender"
+                                  [(ngModel)]="fromDate" maxlength="10" dateFormatValidation (input)="formatInputFromDate($event.target.value)"
+                                  (click)="toggleCalender('from')">
+                                <mat-hint class="mat-hint-message">MM/DD/YYYY</mat-hint>
+                              </mat-form-field>
+                              <div class="calendar-icon" (click)="toggleCalender('from')">
+                                <i class="far fa-calendar-alt"></i>
+                              </div>
+                              <!--<mat-datepicker-toggle  matSuffix [for]="fromPicker"></mat-datepicker-toggle>-->
+                              <mat-datepicker #fromPicker></mat-datepicker>
+                            </div>
+                            <div class="date-filter-custom-date">
+                              <mat-form-field>
+                                <input #toDateInput matInput [min]="fromMinDate" (click)="toggleCalender('to')"
+                                  maxlength="10" dateFormatValidation (input)="formatInputToDate($event.target.value)"
+                                  [(ngModel)]="toDate" placeholder="End date">
+                                <mat-hint class="mat-hint-message">MM/DD/YYYY</mat-hint>
+                              </mat-form-field>
+                              <div class="calendar-icon" (click)="toggleCalender('to')">
+                                <i class="far fa-calendar-alt"></i>
+                              </div>
+                              <!--<mat-datepicker-toggle disabled matSuffix [for]="toPicker"></mat-datepicker-toggle>-->
+                              <mat-datepicker #toPicker></mat-datepicker>
+                            </div>
+                          </div>
+                          <div class="custom-range-error-message pt-0" *ngIf="isSelectedDateInvalid">
+                            Please Enter valid Date
+                          </div>
+                          <div class="custom-range-error-message pt-0" *ngIf="isCustomDateRangeInValid">
+                            End date can't be less than start range
+                          </div>
+                          <div class="date-error" *ngIf="errorMessage !== null">
+                            <i class="material-icons arrow_forward pd-0">arrow_forward</i>
+                            <span>{{errorMessage}}</span>
+                          </div>
+                        </div>
+                      </mat-list-item>
+                    </mat-list>
+                    <div class="calendar-main-container">
+                      <div class="calendar-container">
+                        <mat-calendar *ngIf='showCalender' [minDate]="fromMinDate" [maxDate]="calendarMaxDate"
+                          [startAt]="currentSelectedDate" [cellAspectRatio]="1" [selected]="currentSelectedDate"
+                          (selectedChange)="getSelectedValue($event)">
+                        </mat-calendar>
+                      </div>
+                    </div>
+                  </mat-expansion-panel>
+                </mat-accordion>
+                <div class="filter-divider-row"></div>
+
+                <!-- Member Filter -->
+                <div *ngIf="membersList?.length > 2">
+                  <mat-accordion multi="true">
+                    <!-- <mat-accordion multi="true" *ngIf="dependentList?.length > 0"> -->
+                    <mat-expansion-panel disableRipple [expanded]="step[3]" (opened)="isOpened(3)">
+                      <mat-expansion-panel-header class="header-panel" [collapsedHeight]="collapsedHeight"
+                        [expandedHeight]="expandedHeight">
+                        Member
+                      </mat-expansion-panel-header>
+                      <mat-selection-list #memberFilter (selectionChange)="manageSelectedClaimsFilter($event,allClaimsFilterOptions.member.text)">
+                        <mat-list-option *ngFor="let item of membersList" [disabled]="item.disabled" [selected]="item.selected"
+                          [value]="item">
+                          {{item.memberName | titlecase}} ({{item.memberCount}})
+                        </mat-list-option>
+                      </mat-selection-list>
+                    </mat-expansion-panel>
+                  </mat-accordion>
+                  <div class="filter-divider-row">
+                    <!-- <div class="filter-divider-row" *ngIf="dependentList?.length > 0"> -->
+                  </div>
+                </div>
+
+                <!-- Provider Filter/provName -->
+                <div *ngIf="providerList?.length > 2">
+                  <mat-accordion multi="true">
+                    <mat-expansion-panel [expanded]="step[4]" (opened)="isOpened(4)">
+                      <mat-expansion-panel-header class="header-panel" [collapsedHeight]="collapsedHeight"
+                        [expandedHeight]="expandedHeight">
+                        Provider
+                      </mat-expansion-panel-header>
+                      <mat-selection-list #providerFilter (selectionChange)="manageSelectedClaimsFilter($event,allClaimsFilterOptions.provider.text)">
+                        <mat-list-option *ngFor="let item of providerList" [selected]="item.selected" [disabled]="item.disabled"
+                          [value]="item">
+                          {{item.providerName | titlecase}} ({{item.providerCount}})
+                        </mat-list-option>
+                      </mat-selection-list>
+                    </mat-expansion-panel>
+                  </mat-accordion>
+                  <div class="filter-divider-row"></div>
+                </div>
+
+                <!-- Visit Type Filter/svcType -->
+                <mat-accordion multi="true">
+                  <mat-expansion-panel [expanded]="step[5]" (opened)="isOpened(5)">
+                    <mat-expansion-panel-header class="header-panel" [collapsedHeight]="collapsedHeight"
+                      [expandedHeight]="expandedHeight">
+                      Visit Type
+                    </mat-expansion-panel-header>
+                    <mat-selection-list #visitTypeFilter (selectionChange)="manageSelectedClaimsFilter($event,allClaimsFilterOptions.visitType.text)">
+                      <mat-list-option *ngFor="let item of visitTypeList" [selected]="item.selected" [disabled]="item.disabled"
+                        [value]="item">
+                        {{item.visitType}} ({{item.visitTypeCount}})
+                      </mat-list-option>
+                    </mat-selection-list>
+                  </mat-expansion-panel>
+                </mat-accordion>
+                <div class="filter-divider-row"></div>
+
+                <!-- Claim Status Filter/clmStatus -->
+                <mat-accordion multi="true">
+                  <mat-expansion-panel [expanded]="step[6]" (opened)="isOpened(6)">
+                    <mat-expansion-panel-header class="header-panel" [collapsedHeight]="collapsedHeight"
+                      [expandedHeight]="expandedHeight">
+                      Claim Status </mat-expansion-panel-header>
+                    <mat-selection-list #claimStatusFilter (selectionChange)="manageSelectedClaimsFilter($event,allClaimsFilterOptions.claimStatus.text)">
+                      <mat-list-option *ngFor="let item of claimsStatusList" [selected]="item.selected" [disabled]="item.disabled"
+                        [value]="item">
+                        {{item.status}} ({{item.statusCount}})
+                      </mat-list-option>
+                    </mat-selection-list>
+                  </mat-expansion-panel>
+                </mat-accordion>
+                <div class="filter-divider-row"></div>
+
+
+                <div class="col s12 filter-apply pd-0">
+                  <div>
+                    <button class="clear-button" disableRipple mat-raised-button type="button" (click)="clearFilter(providerFilter, claimStatusFilter, visitTypeFilter,memberFilter)">
+                      Clear
+                    </button>
+                  </div>
+                  <div>
+                    <button class="apply-button" disableRipple mat-raised-button type="submit" (click)="applyFilter(providerFilter, claimStatusFilter, visitTypeFilter,memberFilter)">
+                      Apply
+                    </button>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+
+            <div class="result-container col m12 s12 pd-r15" [ngClass]="{'hide-side-content': (isSidenavOpened), 'l9': initialClaimsCount === 1, 'l6': initialClaimsCount !== 1}">
+              <div class="no-medications-available" *ngIf="isDisplayMessage">
+                <div class="search-no-results-msg">
+                  <p class="search-msg">Oops. We couldn't find any results for the applied filters.
+                  </p>
+                  <button class="search-clear-button" mat-raised-button type="button" (click)="clearFilter(providerFilter, claimStatusFilter, visitTypeFilter,memberFilter)">
+                    Clear Filters
+                  </button>
+                  <div class="try-filter-by-header row m-0">
+                    <div class="search-option-header">Or try filtering by:</div>
+                    <div class="list-items mb-10 col s12">
+                      <ul>
+                        <li>Date</li>
+                        <li>Provider</li>
+                        <li>Member Name</li>
+                        <li>Visit Type</li>
+                        <li>Claim Status</li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!-- [infiniteScrollUpDistance]="1000"-->
+
+              <div [scrollWindow]="true" infiniteScroll [infiniteScrollContainer]="selector" [fromRoot]="false"
+                [infiniteScrollDistance]="0" [infiniteScrollUpDistance]="2" [infiniteScrollThrottle]="1000"
+                [infiniteScrollDisabled]="filteredClaims?.length>=claimsListing?.summaryMetaData?.totalRecordCount"
+                (scrolled)="paginationOnScrollDown()" (scrolledUp)="onScrollUp()">
+                <div *ngFor="let claim of filteredClaims; trackBy: trackByFn" (click)="showClaimDetails(claim)">
+                  <div class="list-container">
+                    <div class="claim-detail">
+                      <div class="dependent-info">
+                        {{claim.memberName | titlecase}} &#40;{{claim.memberType}}&#41;
+                      </div>
+                      <div class="claim-details">
+                        <div class="claim-name">
+                          {{claim.providerName | titlecase }}
+                        </div>
+                      </div>
+                      <div class="claim-number">
+                        <span class="claim-number-label"> Claim No.</span>
+                        <span class="claim-number">{{claim.claimId | claimid}}</span>
+                        <div class="claim-action">
+                          <span>
+                            <i class="far fa-chevron-right"></i>
+                          </span>
+                        </div>
+                      </div>
+                      <div class="claim-status">
+                        <span [ngClass]="{'completed': (claim.claimStatus === 'Completed'), 'pending': (claim.claimStatus === 'Pending')}">
+                          {{claim.claimStatus}}</span>
+                      </div>
+                      <div class="claim-amount-details">
+                        <div class="amount-covered">
+                          <span class="amount"> ${{claim.amountCovered.toString().split('.')[0] ?
+                            claim.amountCovered.toString().split('.')[0]
+                            : '0' }}
+                            <sup style="font-size: 10px;left: -0.4em">{{claim.amountCovered.toString().split('.')[1] ?
+                              claim.amountCovered.toString().split('.')[1]
+                              : '00'}}</sup>
+                          </span>
+                          <span> Amount Covered</span>
+                        </div>
+                        <div class="amount-you-owe">
+                          <span class="amount"> ${{claim.amountOwed.toString().split('.')[0]}}
+                            <sup style="font-size: 10px;font-weight: 500;left: -0.4em">{{claim.amountOwed.toString().split('.')[1]
+                              ? claim.amountOwed.toString().split('.')[1] : '00'}}</sup>
+                          </span>
+                          <span class="amount-owe"> Amount You Owe</span>
+                        </div>
+                      </div>
+                      <div class="claim-service-details">
+                        <span class="claim-service-label">Date of Service:&nbsp;</span>
+                        <span class="claim-service-date" style="padding-left: 5px">
+                          {{formattedData(claim.firstDateOfService)}} - {{formattedData(claim.lastDateOfService)}}
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <app-spinner [showSpinner]="isDisplaySpinner"></app-spinner>
+              </div>
+            </div>
+
+            <div class="dynamic-content col l3 m12 s12 pd-0" [ngClass]="{'hide-side-content': (isSidenavOpened)}">
+              <ng-container *ngTemplateOutlet="actions"></ng-container>
+
+              <div class="details-right-link-fpo drupal-content mb-0 pl-15 pr-15">
+                <app-fpo-layout [targetUrl]='fpoTargetUrl' [displayCategory]="'profile'"></app-fpo-layout>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<ng-template #actions>
+  <div class="details-right-link">
+    <div class="other-actions-container">
+      <div class="header">
+        Looking for something else?
+      </div>
+      <div class="action-label" >
+        <div class="icon" routerLink="/assets/files/SubscriberSubmitClaimForm7307.pdf">
+          <i class="far fa-clone"></i>
+        </div>
+        <div class="text" (click)="openPDF('/assets/files/SubscriberSubmitClaimForm7307.pdf')">
+          <a>Submit a Claim </a>
+        </div>
+      </div>
+      <div class="action-label" routerLink="/mydedco">
+        <div class="icon">
+          <i class="fas fa-external-link-alt"></i>
+        </div>
+        <div class="text">
+          <a>View Deductible Balances </a>
+        </div>
+      </div>
+      <div class="action-label" (click)="openSSO('algOrHeq')" *ngIf="showFinancialLink">
+        <div class="icon">
+          <i class="fas fa-external-link-alt"></i>
+        </div>
+        <div class="text">
+          <a>Go to My Financials</a>
+        </div>
+      </div>
+      <div class="action-label" (click)="openSSO('heq')" *ngIf="showHEQALGFinancialLink">
+        <div class="icon">
+          <i class="fas fa-external-link-alt"></i>
+        </div>
+        <div class="text">
+          <a>Go to my HealthEquity financial account(s)</a>
+        </div>
+      </div>
+      <div class="action-label" (click)="openSSO('alg')" *ngIf="showHEQALGFinancialLink">
+        <div class="icon">
+          <i class="fas fa-external-link-alt"></i>
+        </div>
+        <div class="text">
+          <a>Go to my Blue Cross health financial account(s)</a>
+        </div>
+      </div>
+      <div class="action-label" (click)="openSSO('connecture')" *ngIf="claimsListing?.directPayIndicator">
+        <div class="icon">
+          <i class="fas fa-external-link-alt"></i>
+        </div>
+        <div class="text">
+          <a>Pay My Bill (Direct Pay) </a>
+        </div>
+      </div>
+      <div class="action-label" (click)="openUrl()">
+        <div class="icon">
+          <i class="fas fa-phone"></i>
+        </div>
+        <div class="text">
+          <a>Contact Us</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</ng-template>

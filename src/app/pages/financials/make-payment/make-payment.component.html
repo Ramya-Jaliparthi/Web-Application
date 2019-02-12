@@ -1,0 +1,268 @@
+<div class="mt-20 hide-on-large-only">
+  <app-breadcrumbs [breadCrumbs]="breadCrumbs"></app-breadcrumbs>
+</div>
+<div class="row m-0" *ngIf="paymentForm">
+  <h1 class="form-header">{{header}}</h1>
+  <div class="hide-on-med-only hide-on-small-only">
+    <app-breadcrumbs [breadCrumbs]="breadCrumbs"></app-breadcrumbs>
+  </div>
+  <form [formGroup]="payForm" novalidate (ngSubmit)="submitPayment(submitNow)"
+        [ngClass]="{'form-submitted' : isFormSubmitted}">
+
+    <div class="row">
+      <div class="input-field col s12 pd-0">
+        <mat-form-field floatPlaceholder="never" class="col s12 pd-0 mat-inherit-underline">
+          <mat-select tabindex="1" id="member" appMatSelectChange placeholder="Please select"
+                      formControlName='member'>
+            <mat-option *ngFor='let member of members' [value]="member['memberName']">
+              {{member['memberName']}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+        <label for="member" class="active">{{financialConstants.text.member}}</label>
+      </div>
+      <!-- <div class="member-section">
+        <span class="sample-format">{{financialConstants.text.nameSample}}</span>
+      </div> -->
+    </div>
+
+    <div class="row pay-provider-section">
+      <div class="input-field col s12 pd-0">
+        <mat-form-field floatPlaceholder="never" class="col s12 pd-0 mat-inherit-underline">
+          <mat-select tabindex="4" id="selectProvider" appMatSelectChange placeholder="Please select"
+                      formControlName='selectProvider'>
+            <mat-option *ngFor='let provider of providers' [value]="provider['providerName']">
+              {{provider['providerName']}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+        <label for="selectProvider" class="active">{{financialConstants.text.provider}} {{ isPayProvider ? "*" : "" }}</label>
+      </div>
+      <div class="select-provider">
+        <span>{{financialConstants.text.cantFindProvider}} <a href="javascript:void(0)" (click)="addProvider()">{{financialConstants.text.addProvider}}</a></span>
+      </div>
+    </div>
+
+    <div class="row" style="margin-top: 20px" *ngIf="isPayProvider">
+      <div class="input-field col s12 pd-0">
+        <input tabindex="5" maxlength="19" matInput id="providerAccountNumber" aria-labelledby="providerAccountNumber" type="text"
+              formControlName="providerAccountNumber"/>
+        <label for="providerAccountNumber" class="active">{{financialConstants.text.accountNumberWithProvider}}</label>
+        <!--<app-control-messages [controlName]="'firstName'" [control]="registerDetailForm['controls'].firstname"></app-control-messages>-->
+        <app-control-messages [control]="payForm['controls'].providerAccountNumber" [controlName]="'providerAccountNumber'"
+                              [customMessages]='accountNumberCustomMessages'></app-control-messages>
+      </div>
+    </div>
+
+
+    <div class="row" *ngIf="!isPayProvider">
+      <div class="input-field col s12 pd-0">
+        <mat-form-field floatPlaceholder="never" class="col s12 pd-0 mat-inherit-underline"
+                        [attr.disabled]="disableMethod ? '': null">
+          <mat-select tabindex="6" id="reimbursmentMethod" appMatSelectChange placeholder="Please select"
+                      formControlName='reimbursmentMethod' [disabled]="disableMethod">
+            <mat-option *ngFor='let options of reimbursmentMethods' [value]="options['method']">
+              {{options['method']}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+        <label for="reimbursmentMethod" class="active" [ngClass]="{'disable-color': disableMethod}">Reimbursement Method *</label>
+      </div>
+      <div class="reimbursment-method">
+        <span>{{financialConstants.text.preferDirectDeposit}} <a href="javascript:void(0)">{{financialConstants.text.addBankAccount}}</a></span>
+      </div>
+    </div>
+
+
+    <div class="row" style="margin-top: 20px">
+      <div class="input-field col s12 pd-0">
+        <input tabindex="7" maxlength="19" matInput placeholder="$" id="paymentAmount" aria-labelledby="paymentAmount" type="text"
+               formControlName="paymentAmount"/>
+        <label for="paymentAmount" class="active">{{financialConstants.text.paymentAmount}}</label>
+        <app-control-messages [control]="payForm['controls'].paymentAmount" [controlName]="'paymentAmount'"
+                              [customMessages]='amountMessages'></app-control-messages>
+        <!--<app-control-messages [controlName]="'firstName'" [control]="registerDetailForm['controls'].firstname"></app-control-messages>-->
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="input-field col s12 pd-0">
+        <mat-form-field floatPlaceholder="never" class="col s12 pd-0 mat-inherit-underline">
+          <mat-select tabindex="8" formControlName='serviceType' placeholder="Please select" id="serviceType">
+            <mat-option *ngFor='let service of services' [value]="service['code']">
+              {{service['code']}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+        <label for="serviceType" class="active">{{financialConstants.text.makePaymentServiceType}}</label>
+      </div>
+      <app-control-messages [control]="payForm['controls'].serviceType" [controlName]="'serviceType'"
+                            [customMessages]='serviceTypeMessages'></app-control-messages>
+    </div>
+
+
+    <div class="row" style="margin-top: 20px">
+      <div class="input-field col s12 pd-0">
+        <input tabindex="9" matInput placeholder="" id="startdate" aria-labelledby="startdate" type="text"
+               [textMask]="{mask: dateMask, guide: false}"
+               maxlength="10" formControlName="serviceStartDate"/>
+        <label for="startdate" class="active">
+          {{isServiceMoreThanDay ? financialConstants.text.serviceStartDate :  financialConstants.text.serviceDate }}</label>
+        <mat-hint>
+          <span class="font-13-grey">MM/DD/YYYY</span>
+        </mat-hint>
+        <app-control-messages [control]="payForm['controls'].serviceStartDate" [controlName]="'serviceStartDate'"
+                              [customMessages]='serviceStartDateMessages'></app-control-messages>
+        <!--<app-control-messages [controlName]="'dateOfBirth'" [control]="registerDetailForm['controls'].DOB"></app-control-messages>-->
+      </div>
+    </div>
+
+    <div class="row" *ngIf="!isServiceMoreThanDay">
+      <div class="service-end-date-option">
+        <span>+ <a (click)="showServiceEndDate()" routerLinkActive="active">{{financialConstants.text.serviceDateMoreThanDay}}</a>
+        </span></div>
+    </div>
+
+    <div class="row" *ngIf="isServiceMoreThanDay">
+      <div class="input-field col s12 pd-0">
+        <input tabindex="10" matInput placeholder="" id="enddate" aria-labelledby="enddate" type="text"
+               [textMask]="{mask: dateMask, guide: false}"
+               maxlength="10" formControlName="serviceEndDate"/>
+        <label for="enddate" class="active">{{financialConstants.text.serviceEndDate}}</label>
+        <mat-hint>
+          <span class="font-13-grey">MM/DD/YYYY</span>
+        </mat-hint>
+        <app-control-messages [control]="payForm['controls'].serviceEndDate" [controlName]="'serviceEndDate'"
+                              [customMessages]='serviceEndDateMessages'></app-control-messages>
+        <!--<app-control-messages [controlName]="'dateOfBirth'" [control]="registerDetailForm['controls'].DOB"></app-control-messages>-->
+      </div>
+    </div>
+
+
+    <div class="row user-comments">
+      <div class="input-field col s12 pd-0">
+          <input tabindex="11" maxlength="255" matInput id="userComments" aria-labelledby="userComments" type="text"
+                 formControlName="userComments"/>
+          <label for="userComments" class="active">{{financialConstants.text.note}}</label>
+        </div>
+    </div>
+
+    <div class="payment-reciept" style="margin-top: 20px">
+      <p class="section-header">{{financialConstants.text.addReciept}} {{ submitNow ? "*" : "" }}</p>
+      <div class="btn btn-primary btn-full-width upload-btn-reciept" *ngIf="!addMoreImages">
+        
+        <a href="javascript:void(0)">
+          <i class="material-icons">camera_alt</i>
+          <span>Upload your reciept</span>
+          <input #uploadedFile (click)="uploadedFile.value = null" tabindex="12" type="file" (change)="takeOrUploadReciept($event)"
+            class="b3_upload"/>
+          <!-- <i class="material-icons">camera_alt</i> -->
+        </a>
+        
+      </div>
+
+      <div class="row">
+        <div *ngFor="let val of upload_files; let i = index;" class="col s4 left">
+          <div class="imgPlaceholder " style="font-size:3em; color:tomato;">
+            <a (click)="downloadImage(val, $event)">
+              <i class="fa icon-svg {{iconType}}" aria-hidden="true" *ngIf="val.data_raw && !val.isImage"></i>
+              <img [src]="val.data_raw" multiple *ngIf="val.data_raw && val.isImage" class="img">
+            </a>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 10 10" preserveAspectRatio="none">
+              <polygon points="10 0 10 4 6 0" (click)="removeFileFromList(val);"  style="cursor: pointer"/>
+              <path d="M8.5 0.5 9.5 1.5 M9.5 0.5 8.5 1.5" style="stroke: white;stroke-width: 0.1;cursor: pointer" (click)="removeFileFromList(val);"></path>
+            </svg>
+          </div>
+        </div>
+        <div class="imgPlaceholder col left s4" *ngIf="addMoreImages">
+          <div class="add-more-images">
+            <a href="javascript:void(0)">
+                <i class="material-icons">camera_alt</i>
+                <span>Add More</span>
+                <input #uploadedFile   (click)= "uploadedFile.value = null" tabindex="12" type="file" (change)="takeOrUploadReciept($event)" class="b3_upload"/>
+            </a>
+          </div>
+        </div>
+      </div>
+          
+    </div>
+    
+    <div *ngIf="submitNow && uploadRecieptMsg" class="inline-error row">
+      <span class="error-icon">
+        <i class="fa fa-exclamation-circle"></i>
+      </span>
+      <span class="error-message">Please upload a reciept</span>
+    </div>
+    
+    <div class="disclaimer-text">
+      <p>{{financialConstants.text.paymentDisclaimerText}}<a (click)="saveState()" routerLinkActive="active">{{financialConstants.text.termsAndConditionsLink}}</a></p>
+    </div>
+
+    <div class="row button-row">
+      <button tabindex="13" class="submit-btn waves-effect waves-light btn btn-block  btn-half-width-right br-8"
+              type="submit" aria-label="Submit" 
+              name="action">{{ submitNow ? "Submit" : "Save" }}
+      </button>
+      <div class="btn-cancel" aria-label="Cancel" tabindex="14">
+          <a class="cancel" (click)="navigateToPaymentOptions()">Cancel</a>
+      </div>
+    </div>
+    <p class="note-text">{{financialConstants.text.requiredFields}}</p>
+  </form>
+</div>
+
+<section class="payment-confirmation" *ngIf="paymentConfirmation">
+  <div class="row m-0">
+    <h1 class="form-header">{{financialConstants.text.makePaymentTitle}}</h1>
+    <div class="l6 s12">
+      <div class="thank-you-note">
+        <p class="header" *ngIf="!reimbursmentConfirmed">{{financialConstants.text.thankYouTitle}}</p>
+        <p class="header" *ngIf="reimbursmentConfirmed">{{financialConstants.text.reimbursmentTitle}}</p>
+        <p class="content">
+          {{financialConstants.text.concernsText}}
+        </p>
+      </div>
+      <div class="transaction-details">
+        <p class="header">{{financialConstants.text.transactionDetails}}</p>
+        <div class="amount-paid-section">
+          (&#36;00<sup>00</sup>)
+          <span class="amount-paid">{{financialConstants.text.paymentsAmountPaid}}</span>
+        </div>
+
+        <div class="amount-pay-type">
+          <span class="pay-type-label">{{financialConstants.text.paymentTypeLabel}}</span>
+          <span class="pay-type">{{financialConstants.text.paymentType}}</span>
+        </div>
+
+        <div class="claim-number-section">
+          <span class="claim-label">{{financialConstants.text.claimLabel}}</span>
+          <span class="claim-number">0000 0000 0000 0000</span>
+        </div>
+
+        <div class="member-name">{{financialConstants.text.memberName}}</div>
+        <div class="provider-facility">{{financialConstants.text.providerFacility}}</div>
+        <div class="member-comments-section">
+          <span class="comment-label">{{financialConstants.text.confirmPaymentComment}}</span>
+          <span class="comment"></span>
+        </div>
+
+        <div class="transaction-date-section">
+          <span class="trasaction-label">{{financialConstants.text.dateOfTransaction}} </span>
+          <span class="transaction-date">{{financialConstants.text.dateFormat}}</span>
+        </div>
+
+        <div class="service-date-section">
+          <span class="service-date-label">{{financialConstants.text.dateOfService}} </span>
+          <span
+            class="service-date">{{financialConstants.text.dateFormat}} - {{financialConstants.text.dateFormat}}</span>
+        </div>
+
+        <div class="row confirm-button-row">
+          <button class="col s12 waves-effect waves-light btn btn-block buttonPayment">Submit</button>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+

@@ -1,0 +1,43 @@
+<section class="fad-medical-index-component">
+  <div class="row flex-container">
+    <div class="col l3 s12 mobile-hidden" role="left margin">
+    </div>
+    <div class="col l6 s12" role="medical entity list container">
+      <div role="page title">
+        <h1 alt="STRUCTURAL ELEMENTS: Heading level 1">{{pageTitle}}</h1>
+      </div>
+      <div class="mob-mr-in-px--10 mob-ml-in-px--10" role="medical index list">
+        <mat-accordion>
+          <mat-expansion-panel class="mob-ml-in-px--9" *ngFor="let character of indexMap.getKeys().sort();let charIndex=index;">
+            <mat-expansion-panel-header [collapsedHeight]="'44px'" [expandedHeight]="'44px'">
+              {{character}}
+            </mat-expansion-panel-header>
+            <mat-list>
+              <mat-list-item *ngFor="let speciality of indexMap.get(character)">
+                <a (click)="onListItemClicked(speciality)">{{speciality.name}} </a>
+              </mat-list-item>
+              <mat-list-item>
+                <div class="medical-index-item-seperator"></div>
+              </mat-list-item>
+            </mat-list>
+          </mat-expansion-panel>
+        </mat-accordion>
+
+        <div *ngIf="isProcedureList" class="position-relative">
+          <article>
+            <div>Can't find your procedure</div>
+            <footer>
+              <div class="right-arrow">
+                <i class="fas fa-arrow-right"></i>
+              </div>
+              <div class="footer-text">Request a written estimate</div>
+            </footer>
+          </article>
+        </div>
+
+      </div>
+    </div>
+    <div class="col l3 s12 mobile-hidden" role="right margin">
+    </div>
+  </div>
+</section>

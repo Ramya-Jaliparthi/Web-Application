@@ -1,0 +1,213 @@
+@import '../../../../assets/styles/_colors';
+// spk-cleanup - @import '../../../../assets/styles/variables';
+@import '../../../../assets/styles/_variables';
+@import '../../../../assets/styles/_fonts';
+.claim-status-header-container {
+    display: flex;
+    justify-content: space-between;
+    
+    .claim-status-header-details {
+        display: flex;
+        align-items: center;
+        padding: 0 0 72px 0;
+        .header-text {
+            font-size: $header-font-size;
+            color: $header-color;
+            @include Roboto(light);
+        }
+        .claim-number {
+            padding-left: 30px;
+            padding-top: 6px;
+            .claim-label {
+                @include Roboto(bold);
+                font-size: 16px;
+                color: $light-label-color;
+                margin-right: 8px;
+            }
+            .claim-value {
+                @include Roboto(light);
+                font-size: 14px;
+                color: $text-disabled-gray;
+            }
+        }
+    }
+    .material-icons {
+        font-size: 30px;
+        cursor: pointer;
+    }
+    .claim-status-header-action {
+        cursor: pointer;
+    }
+}
+
+.step-details-container {
+    display: flex;
+    .step-details {
+        width: 25%;
+        display: flex;
+        flex-direction: column;
+        .step-indicator-details {
+            display: flex;
+            .step-number {
+                height: 38px;
+                width: 38px;
+                border-radius: 50%;
+                font-size: 17.5px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                background: $forms-select-muted-color;
+                color: $background-white-color;
+                align-self: center;
+                font-family: Helvetica;
+                @include Roboto(bold);
+            }
+            .step-inactive {
+                background: $textbox-border !important;
+            }
+            .step-seperator {
+                flex: 1;
+                height: 38px;
+                justify-content: center;
+                align-items: center;
+                display: flex;
+                .line {
+                    height: 6px;
+                    flex: 1;
+                    background: $forms-select-muted-color;
+                }
+                .hidden {
+                    visibility: hidden;
+                }
+            }
+            .line.step-inactive {
+                height: 3px !important;
+            }
+        }
+        .status-details {
+            display: flex;
+            flex-direction: column;
+            .status-label {
+                color: $primary-color;
+                font-size: 22px;
+                @include Roboto(light);
+                align-self: center;
+            }
+            .status-description {
+                padding-top: 5px;
+                padding-right: 10px;
+                font-size: 16px;
+                line-height: 22px;
+                @include Roboto(regular);
+                color: $text-disabled-gray;
+                @media (max-width: 992px) {
+                  padding-right: 0;
+                }
+                .additional-details {
+                    font-size: 12px;
+                    color: $text-gray-color;
+                    line-height: 16px;
+                    margin-top: 5px;
+                }
+            }
+        }
+        .current-status-details {
+            .status-label {
+                @include Roboto(bold);
+            }
+            .status-description {
+                @include Roboto(medium);
+            }
+        }
+    }
+}
+
+.claim-status-actions-container {
+    display: flex;
+    justify-content: space-around;
+    margin: 68px 0 20px;
+    .close-button {
+        width: 380px;
+        height: 44px;
+        background: $notification-alerts-color;
+        border-radius: 5px;
+        color: $background-white-color;
+        font-size: 16px;
+        @include Roboto(bold);
+    }
+}
+
+@media (max-width: 992px) {
+    .claim-stauts-details-container {
+        padding: 20px 0.75rem;
+    }
+    .step-details-container {
+        flex-direction: column;
+        .step-details {
+            width: 100%;
+            flex-direction: row;
+            .hide-on-mobile-view {
+                display: none !important;
+            }
+            .step-indicator-details {
+                flex-direction: column;
+                .line {
+                    max-width: 6px;
+                    height: 100% !important;
+                }
+                .line.step-inactive {
+                    max-width: 3px !important;
+                    height: 100% !important;
+                }
+            }
+            .status-details {
+                padding-left: 10px;
+                padding-bottom: 10px;
+                .status-label {
+                    align-self: flex-start;
+                }
+            }
+        }
+    }
+    .claim-status-header-container {
+        .claim-status-header-details {
+            padding: 50px 0.75rem 0 0.75rem;
+            flex-direction: column;
+            align-items: flex-start;
+            .claim-number {
+                padding-left: 0;
+            }
+        }
+        .claim-status-header-action {
+            padding: 0 0.75rem;
+        }
+    }
+    .claim-status-actions-container {
+        margin: 30px 0 0 0;
+    }
+}
+
+.inactive-label-text {
+    color: $non-vdk-11-grey !important;
+    @include Roboto(light);
+}
+
+.inactive-description-text {
+    color: $non-vdk-11-grey !important;
+    @include Roboto(regular);
+}
+
+.inactive-details-text {
+    color: $non-vdk-11-grey !important;
+    @include Roboto(regular);
+}
+
+.fa-4x {
+    font-size: 3.3em;
+}
+
+.breadcrumbs{
+        @media (max-width:992px){
+            margin-left: 15px !important;
+        }
+    }

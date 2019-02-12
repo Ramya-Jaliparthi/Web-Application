@@ -1,0 +1,499 @@
+<section class="fad-doctor-profile-component">
+  <app-breadcrumbs></app-breadcrumbs>
+  <div class="row" *ngIf="isShowProfessionalDetialsSection">
+    <div class="col l4 s12">
+      <mat-card class="profile-title-card">
+        <mat-card-title>{{fadProfessionalResposeData?.doctorName}}</mat-card-title>
+        <mat-card-subtitle class='card-sub-title'>{{fadProfessionalResposeData?.specialty}}</mat-card-subtitle>
+        <mat-card-footer>
+          <span *ngIf="selectedLocationDetails?.acceptingNewPatients">
+            <i class="fas fa-check"></i>&nbsp;{{selectedLocationDetails?.acceptingNewPatients}}
+          </span>
+          <div *ngIf="selectedLocationDetails?.pcpId" class="row pcp-id">
+            <div class="col s8">
+              <p class="pcp-text">Primary Care Provider/Provider of Choice</p>
+              <input id="pcp-id" type="text" [value]="selectedLocationDetails?.pcpId">
+            </div>
+            <div class="col s3 pcp-copy-btn">
+              <a class="copy-text" href="javascript:void(0)" (click)="copyIdentifierValue($event, 'pcp-id')">
+                Copy ID
+              </a>
+            </div>
+          </div>
+        </mat-card-footer>
+      </mat-card>
+    </div>
+    <div class="col l4 s12">
+      <!-- *ngFor="let location of doctorProfile?.locations; let locationItr = index" -->
+      <mat-card class="location-card">
+        <mat-card-title>{{selectedLocationDetails?.name}}</mat-card-title>
+        <mat-card-subtitle>
+          {{selectedLocationDetails?.address}}
+        </mat-card-subtitle>
+        <mat-card-content class="doctor-location">
+          <span class="phone-icon">
+            <i class="fa fa-phone" aria-hidden="true"></i>
+          </span>&nbsp;
+          <a [href]="selectedLocationDetails && 'tel:+'+selectedLocationDetails?.phone">
+            <!-- {{formatMobileNumer(selectedLocationDetails?.phone)}} -->
+            {{selectedLocationDetails?.phone | phone}}
+          </a>&nbsp;&nbsp;
+          <span class="phone-icon">
+            <i class="fas fa-map-marker-alt"></i>
+          </span>&nbsp;
+          <a (click)="getDirections(selectedLocationDetails?.address, $event)">Get Directions</a>
+
+          <!-- <div class="row procedure">
+            <div class="header">Knee Replacement</div>
+            <div class="sub-header">Estimated costs at this location. <a href="javascript:void(0)" (click)="showCostBreakdown()">See
+                cost breakdown</a>.</div>
+            <div>
+              <div class="col s3 my-cost procedure-cost">
+                <div class="cost"><span>$700</span><sup>00</sup></div>
+                <div class="description">My Cost</div>
+              </div>
+              <div class="col s1 operation-symbol">+</div>
+              <div class="col s4 insurance-cost procedure-cost">
+                <div class="cost"><span>$700</span><sup>00</sup></div>
+                <div class="description">Insurance Cost</div>
+              </div>
+              <div class="col s1 operation-symbol">=</div>
+              <div class="col s3 total-cost procedure-cost">
+                <div class="cost"><span>$1400</span><sup>00</sup></div>
+                <div class="description">Total Cost</div>
+              </div>
+            </div>
+          </div> -->
+        </mat-card-content>
+      </mat-card>
+      <mat-expansion-panel class="see-all-location-affiliations" [expanded]="accordianToggleStatus['allLocation'] == undefined ? false : accordianToggleStatus['allLocation']"
+        (opened)="toggleAccordion('allLocation',true)" (closed)="toggleAccordion('allLocation',false)">
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            <span class="accordian-title-text">See all locations and affiliations{{isexpanded}}</span>
+          </mat-panel-title>
+        </mat-expansion-panel-header>
+        <mat-card *ngIf="fadProfessionalResposeData?.locations?.length>1" class="other-locations-card">
+          <mat-card-title>Other Locations</mat-card-title>
+          <mat-card-content>
+            <div *ngFor="let locationItem of fadProfessionalResposeData?.locations; index as locationIndex">
+              <mat-card class="location-card" *ngIf="locationIndex != selectedLocationIndex">
+                <div class="col s11">
+                  <mat-card-title (click)="loadDetailsBasedOnLocation(locationIndex)">{{locationItem?.name}}</mat-card-title>
+                  <mat-card-subtitle>
+                    {{locationItem?.address}}
+                  </mat-card-subtitle>
+                  <mat-card-content>
+
+                    <span class="phone-icon">
+                      <i class="fa fa-phone" aria-hidden="true"></i>
+                    </span>&nbsp;
+                    <a [href]="locationItem && 'tel:+'+locationItem?.phone">
+                      {{locationItem?.phone | phone}}
+                    </a>&nbsp;&nbsp;
+                    <span class="phone-icon">
+                      <i class="fas fa-map-marker-alt"></i>
+                    </span>&nbsp;
+                    <a (click)="getDirections(locationItem?.address, $event)">Get Directions</a>
+
+                    <!-- <div class="row procedure">
+                    <div class="header">Knee Replacement</div>
+                    <div class="sub-header">Estimated costs at this location. <a href="javascript:void(0)" (click)="showCostBreakdown()">See
+                        cost breakdown</a>.</div>
+                    <div>
+                      <div class="col s3 my-cost procedure-cost">
+                        <div class="cost"><span>$700</span><sup>00</sup></div>
+                        <div class="description">My Cost</div>
+                      </div>
+                      <div class="col s1 operation-symbol">+</div>
+                      <div class="col s4 insurance-cost procedure-cost">
+                        <div class="cost"><span>$700</span><sup>00</sup></div>
+                        <div class="description">Insurance Cost</div>
+                      </div>
+                      <div class="col s1 operation-symbol">=</div>
+                      <div class="col s3 total-cost procedure-cost">
+                        <div class="cost"><span>$1400</span><sup>00</sup></div>
+                        <div class="description">Total Cost</div>
+                      </div>
+                    </div>
+                  </div> -->
+                    <div class="out-of-network-info" hidden>
+                      <span class="remove-icon">
+                        <i class="fas fa-times"></i>
+                      </span>
+                      <span class="out-of-network-text">Out-of-Network &nbsp;</span>
+                      <span class="info-icon tooltip clearfix">
+                        <span class="tooltiptext">We’re unable to provide cost estimates for this provider. Please
+                          <a (click)="reviewBenifits()">review your benefits</a> for more information</span>
+                        <i class="fas fa-info-circle"></i>
+                      </span>
+                    </div>
+                  </mat-card-content>
+
+                </div>
+                <div class="col s1 aside text-right" (click)="loadDetailsBasedOnLocation(locationIndex)">
+                  <a href="javascript:void(0)" title="Click Here to View the Document Details">
+                    <i class="fa fa-chevron-right"></i>
+                  </a>
+                </div>
+              </mat-card>
+            </div>
+          </mat-card-content>
+        </mat-card>
+        <mat-card class="hospital-affiliation-card">
+          <mat-card-title>Hospital Affliations</mat-card-title>
+          <mat-card-subtitle>
+            Where this doctor has admitting priviledges.
+          </mat-card-subtitle>
+          <mat-card-content>
+            <mat-card class="hospital-affiliated-with" *ngFor="let hospitalAffiliationsItem of selectedLocationDetails?.hospitalAffiliations;">
+              <mat-card-content>
+                <div class="row">
+                  <div class="col s10 affiliations-name">
+                    {{hospitalAffiliationsItem.name}}
+                  </div>
+                  <!-- <div class="col s2 aside text-center affiliations-link">
+                    <a href="javascript:void(0)" title="Click Here to view Facility/Hospital Details" >
+                      <i class="fa fa-chevron-right"></i>
+                    </a>
+                  </div> -->
+                </div>
+                <!-- <div class="row procedure">
+                  <div class="header">Knee Replacement</div>
+                  <div class="sub-header">Estimated costs at this location. <a href="javascript:void(0)" (click)="showCostBreakdown()">See
+                      cost breakdown</a>.</div>
+                  <div>
+                    <div class="col s3 my-cost procedure-cost">
+                      <div class="cost"><span>$700</span><sup>00</sup></div>
+                      <div class="description">My Cost</div>
+                    </div>
+                    <div class="col s1 operation-symbol">+</div>
+                    <div class="col s4 insurance-cost procedure-cost">
+                      <div class="cost"><span>$700</span><sup>00</sup></div>
+                      <div class="description">Insurance Cost</div>
+                    </div>
+                    <div class="col s1 operation-symbol">=</div>
+                    <div class="col s3 total-cost procedure-cost">
+                      <div class="cost"><span>$1400</span><sup>00</sup></div>
+                      <div class="description">Total Cost</div>
+                    </div>
+                  </div>
+                </div> -->
+              </mat-card-content>
+            </mat-card>
+          </mat-card-content>
+        </mat-card>
+        <mat-card class="hospital-affiliation-card">
+          <mat-card-title>Group Affliations</mat-card-title>
+          <mat-card-subtitle>
+            Where this doctor has admitting priviledges.
+          </mat-card-subtitle>
+          <mat-card-content>
+            <mat-card class="hospital-affiliated-with" *ngFor="let groupAffiliationsItem of selectedLocationDetails?.groupAffiliations;">
+              <mat-card-content>
+                <div class="row">
+                  <div class="col s10 affiliations-name">
+                    {{groupAffiliationsItem.name}}
+                  </div>
+                  <!-- <div class="col s2 aside text-center affiliations-link">
+                      <a href="javascript:void(0)" title="Click Here to view Facility/Hospital Details" >
+                        <i class="fa fa-chevron-right"></i>
+                      </a>
+                    </div> -->
+                </div>
+                <!-- <div class="row procedure">
+                    <div class="header">Knee Replacement</div>
+                    <div class="sub-header">Estimated costs at this location. <a href="javascript:void(0)" (click)="showCostBreakdown()">See
+                        cost breakdown</a>.</div>
+                    <div>
+                      <div class="col s3 my-cost procedure-cost">
+                        <div class="cost"><span>$700</span><sup>00</sup></div>
+                        <div class="description">My Cost</div>
+                      </div>
+                      <div class="col s1 operation-symbol">+</div>
+                      <div class="col s4 insurance-cost procedure-cost">
+                        <div class="cost"><span>$700</span><sup>00</sup></div>
+                        <div class="description">Insurance Cost</div>
+                      </div>
+                      <div class="col s1 operation-symbol">=</div>
+                      <div class="col s3 total-cost procedure-cost">
+                        <div class="cost"><span>$1400</span><sup>00</sup></div>
+                        <div class="description">Total Cost</div>
+                      </div>
+                    </div>
+                  </div> -->
+              </mat-card-content>
+            </mat-card>
+          </mat-card-content>
+        </mat-card>
+      </mat-expansion-panel>
+
+    </div>
+    <div class="col l4 s12">
+      <mat-expansion-panel class="rating-accordian" [expanded]="accordianToggleStatus['rating'] == undefined ? false : accordianToggleStatus['rating']"
+        (opened)="toggleAccordion('rating',true)" (closed)="toggleAccordion('rating',false)">
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            <div *ngIf="fadProfessionalResposeData?.reviews">
+              <app-star-rating-component [componentInput]="getRating(fadProfessionalResposeData?.reviews)"></app-star-rating-component>
+            </div>
+          </mat-panel-title>
+        </mat-expansion-panel-header>
+        <p class="overall-header-title">{{doctorsStarRating[0]?.header}}</p>
+        <div class="row overall-rating-scale" hidden>
+          <div class="col s6">
+            <div *ngFor="let doctorRating of doctorsStarRating | slice:1; let i = index;">
+              <app-star-rating-component [componentInput]="doctorRating.rating"></app-star-rating-component>
+              <p class="rating-title">{{doctorRating.header}}</p>
+            </div>
+          </div>
+          <div class="col s6 recommendation">
+            <div class="header">100%</div>
+            <div class="description">would recommend this provider to a friend.</div>
+          </div>
+        </div>
+        <div class="all-reviews" hidden>All Reviews</div>
+        <mat-card class="doctor-reviews" hidden>
+          <!-- <mat-card-title hidden>
+            <span class="review-name" >ScreenName</span> <span class="review-date"> on mm/dd/yy</span></mat-card-title>
+          <mat-card-content hidden>
+            <div class="row all-reviews-rating-scale">
+              <div class="col s6">
+                <div *ngFor="let doctorRating of doctorsStarRating let i = index;">
+                  <app-star-rating-component [componentInput]="doctorRating.rating"></app-star-rating-component>
+                  <p class="rating-title">{{doctorRating.header}}</p>
+                </div>
+              </div>
+              <div class="col s6 recommendation">
+                <div class="header">Yes</div>
+                <div class="description">would recommend this provider to a friend.</div>
+              </div>
+            </div>
+            <div class="review-comment" hidden>
+              <div class="header">Title lorem ipsum dolor sit amet</div>
+              <div class="description">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+                incididunt ut labore et dolore magna aliqua.</div>
+            </div>
+
+
+          </mat-card-content> -->
+        </mat-card>
+        <mat-card class="rate-latest-visit-card" hidden>
+          <mat-card-content>
+            <div class="row">
+              <div class="col s10">
+                Rate your latest visit
+              </div>
+              <div class="col s2 aside text-right">
+                <a href="javascript:void(0)" title="Click Here to view Facility/Hospital Details">
+                  <i class="fa fa-chevron-right"></i>
+                </a>
+              </div>
+            </div>
+          </mat-card-content>
+        </mat-card>
+      </mat-expansion-panel>
+
+      <mat-expansion-panel class="in-network-accordian" [expanded]="accordianToggleStatus['inNetwork'] == undefined ? false : accordianToggleStatus['inNetwork']"
+        (opened)="toggleAccordion('inNetwork',true)" (closed)="toggleAccordion('inNetwork',false)">
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            <div class="in-network-header">
+              <span class="check-circle">
+                <i class="fa fa-check-circle" aria-hidden="true"></i>
+              </span>
+              <span class="title-text">&nbsp;In-Network</span>
+            </div>
+            <div *ngIf="noNetworkSelectedFlag" class="networks-accepted">
+              Networks Accepted
+            </div>
+            <div *ngIf="outOfNetworkFlag" class="row out-of-network-info">
+              <span class="remove-icon">
+                <i class="fas fa-times"></i>
+              </span>
+              <span class="out-of-network-text">Out-of-Network &nbsp;</span>
+              <span class="info-icon tooltip clearfix">
+                <span class="tooltiptext">We’re unable to provide cost estimates for this provider. Please
+                  <a (click)="reviewBenifits()">review your benefits</a> for more information</span>
+                <i class="fas fa-info-circle"></i>
+              </span>
+            </div>
+          </mat-panel-title>
+          <mat-panel-description>
+
+          </mat-panel-description>
+        </mat-expansion-panel-header>
+
+        <mat-card class="in-network-card">
+          <mat-card-title *ngIf="inNetworkFlag || outOfNetworkFlag" class="networks-accepted-title">All Networks accepted
+          </mat-card-title>
+          <mat-card-title *ngIf="noNetworkSelectedFlag && anonymousUserFlag">
+            <div class="row">
+              <div class="col s12">
+                <div class="authenticate-if-in-network">
+                  <span class="check-circle">
+                    <i class="fas fa-exclamation-circle"></i>
+                  </span>&nbsp;
+                  <a (click)="doAuthentication()">Login</a>&nbsp;to see if In-Network
+                </div>
+              </div>
+            </div>
+          </mat-card-title>
+          <mat-card-title *ngIf="noNetworkSelectedFlag && registeredUserFlag">
+            <div class="row">
+              <div class="col s12">
+                <div class="authenticate-if-in-network">
+                  <span class="check-circle">
+                    <i class="fas fa-exclamation-circle"></i>
+                  </span>&nbsp;
+                  <a (click)="doAuthentication()">Authenticate</a>&nbsp;to see if In-Network
+                </div>
+              </div>
+            </div>
+          </mat-card-title>
+          <mat-card-content>
+
+            <ul class="accepted-network">
+              <li *ngFor="let acceptedNetwork of acceptedNetworks">
+                {{acceptedNetwork}}
+              </li>
+            </ul>
+          </mat-card-content>
+        </mat-card>
+
+      </mat-expansion-panel>
+
+      <mat-expansion-panel class="provider-details-accordian" [expanded]="accordianToggleStatus['providerDetails'] == undefined ? false : accordianToggleStatus['providerDetails']"
+        (opened)="toggleAccordion('providerDetails',true)" (closed)="toggleAccordion('providerDetails',false)">
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            <span class="accordian-title-text">Provider Details</span>
+          </mat-panel-title>
+          <mat-panel-description>
+
+          </mat-panel-description>
+        </mat-expansion-panel-header>
+
+        <mat-card class="provider-identifier-card" *ngIf="selectedLocationDetails?.identifiers">
+          <mat-card-title>Identifiers</mat-card-title>
+          <mat-card-content *ngFor="let identifiersItem of selectedLocationDetails?.identifiers; let identifiersIndex = index;">
+            <div class="row">
+              <!-- <div class="col s2">
+                <input readonly [value]="identifier?.type_code+' :'">
+              </div> -->
+              <div class="col s10">
+                <input readonly [value]="identifiersItem?.value" id="{{'inputIdentifier'+identifiersIndex}}">
+              </div>
+              <div class="col s2 aside text-right">
+                <a class="copy-text" href="javascript:void(0)" (click)="copyIdentifierValue($event, 'inputIdentifier'+identifiersIndex)">
+                  Copy
+                </a>
+              </div>
+            </div>
+          </mat-card-content>
+        </mat-card>
+
+        <mat-card class="provider-languages-card" *ngIf="fadProfessionalResposeData?.languages">
+          <mat-card-title>Languages</mat-card-title>
+          <mat-card-content>
+            <div class="languages-content">
+              {{fadProfessionalResposeData?.languages}}
+            </div>
+          </mat-card-content>
+          <!-- TOOD : check is language is an array -->
+          <!-- <mat-card-content *ngIf="languages?.length==0" class="languages-content">
+            <div>None reported</div>
+          </mat-card-content> -->
+        </mat-card>
+
+        <!-- <mat-card class="provider-certification-card" hidden>
+          <mat-card-title>Board Certification</mat-card-title> -->
+        <!-- <mat-card-content *ngIf="certificates?.length>0" class="certification-content">
+            <div *ngFor="let certificate of certificates">
+              {{certificate.field_specialty.name}}
+            </div>
+          </mat-card-content> -->
+        <!-- *ngIf="certificates?.length==0" -->
+        <!-- <mat-card-content>
+            <div>None reported</div>
+          </mat-card-content>
+        </mat-card> -->
+
+        <mat-card class="provider-education-card" *ngIf="fadProfessionalResposeData?.education?.length>1">
+          <mat-card-title>Education</mat-card-title>
+          <div *ngFor="let educationItem of fadProfessionalResposeData?.education;">
+            <mat-card-subtitle class='card-sub-title'>{{educationItem.type}}</mat-card-subtitle>
+            <mat-card-content class="education-content">
+              <div>&nbsp;&nbsp; • &nbsp;&nbsp;{{educationItem.name}}</div>
+            </mat-card-content>
+          </div>
+        </mat-card>
+
+        <mat-card class="provider-award-card" *ngIf="selectedLocationDetails?.awards?.length>0">
+          <mat-card-title>Awards</mat-card-title>
+          <!-- TODo *ngIf="awards?.length > 0" -->
+          <!-- <mat-card-content  class="education-content">
+            <div class="row" *ngFor="let awardsItem of selectedLocationDetails?.awards;">
+              <div class="col s2 image">
+                {{awardsItem.typeCode}}
+              </div>
+              <div class="col s10 description">
+                {{awardsItem.name}}
+              </div>
+            </div>
+          </mat-card-content> -->
+          <mat-card-content>
+            <div class="row" *ngFor="let awardsItem of selectedLocationDetails?.awards;">
+              <div class="col s3 award-image">
+
+              </div>
+              <div class="col s9 award-description">
+                {{awardsItem.name}}
+              </div>
+            </div>
+          </mat-card-content>
+          <!-- <mat-card-content *ngIf="awards?.length==0">
+            <div>
+              Not reported
+            </div>
+          </mat-card-content> -->
+        </mat-card>
+      </mat-expansion-panel>
+
+      <mat-expansion-panel class="location-details-accordian" [expanded]="accordianToggleStatus['locationDetails'] == undefined ? false : accordianToggleStatus['locationDetails']"
+        (opened)="toggleAccordion('locationDetails',true)" (closed)="toggleAccordion('locationDetails',false)">
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            <span class="accordian-title-text">Location Details</span>
+          </mat-panel-title>
+          <mat-panel-description>
+
+          </mat-panel-description>
+        </mat-expansion-panel-header>
+
+        <ul class="location-details">
+          <li *ngFor="let amenitiesItem of selectedLocationDetails?.amenities">
+            {{amenitiesItem.type}}
+          </li>
+        </ul>
+
+      </mat-expansion-panel>
+      <mat-card class="disclaimer hide-on-large-only">
+        <mat-card-title>
+          <a>
+            <i class="fa fa-search circle"></i>&nbsp;
+            <span> Search for similar in-network doctors</span>
+          </a>
+        </mat-card-title>
+        <mat-card-content>
+          <p>Our networks include a comprehensive range of doctors, hospitals, and other health care providers. When recruiting
+            providers to participate in our network, we consider the distance our members will have to travel to get to the
+            provider. We select providers for participation in our networks based on their proven ability to meet our credentialing
+            criteria. We do not measure cost, quality, or member experience when selecting providers to participate in our
+            networks.
+          </p>
+        </mat-card-content>
+      </mat-card>
+    </div>
+  </div>
+</section>

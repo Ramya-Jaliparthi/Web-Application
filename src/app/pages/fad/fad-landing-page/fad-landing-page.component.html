@@ -1,0 +1,485 @@
+<section class="fad-landing-page-component" role="Landing page for the Find a doctor module">
+  <app-breadcrumbs></app-breadcrumbs>
+  <div *ngIf="viewPortWidth>992" class="flex-container" [ngClass]="{'mt-30': componentMode===fadConstants.flags.fadLandingPageComponentMode_Abstract}"
+    role="desktop landing page view">
+    <div *ngIf="componentMode===fadConstants.flags.fadLandingPageComponentMode_Normal" class='mobile-hidden' role="page title">
+      <h1 alt="STRUCTURAL ELEMENTS: Heading level 1">{{fadConstants.text.landingPageTitle}}</h1>
+    </div>
+    <div #searchBar class="search-bar" role="search bar">
+      <div class="row">
+        <div [class]="['col ',displayDependentsOptionFlag?'l4':'l6','s12','search-name-container','position-relative'].join(' ')"
+          role="search-text-typeAhead-container">
+          <div class="search-field-group">
+
+            <!-- search text field-->
+            <mat-form-field>
+              <input matInput #searchTextTypeAhead [placeholder]="fadConstants.text.landingPage_entity_placeHolder"
+                [matAutocomplete]="autoSearchName" [formControl]="searchControls?.searchTypeAheadControl"
+                aria-autocomplete="list" role="combobox" aria-expanded="false" aria-owns="mat-autocomplete-0"
+                aria-invalid="false" aria-required="false" tabindex="1" (focus)="displaySearchTextAutoCompleteDropDown()"
+                (keyup)="displaySearchTextAutoCompleteDropDown($event)">
+              <mat-autocomplete #autoSearchName="matAutocomplete" class="search-text-autocomplete-desktop">
+                <mat-optgroup *ngFor="let autoCompleteSearchOption of filteredAutoCompleteSearchOptions | async"
+                  [label]="autoCompleteSearchOption.category" [ngClass]="{'clickable-label': autoCompleteSearchOption.options[0]?.contextText?.length>0}"
+                  (click)="searchTypeOptLableClickHandler($event)">
+                  <mat-option (onSelectionChange)="onSearchTextOptionSelected(option,autoCompleteSearchOption.category==='')"
+                    *ngFor="let option of autoCompleteSearchOption.options" [value]="option.simpleText||option.contextText"
+                    [ngClass]="{'not-Highlighted': option?.link?.href?.length>0}">
+
+                    <div class="auto-complete-suggestion-option">
+                      <div *ngIf="option?.simpleText?.length>0" class="simpleText" [innerHTML]="getMatchHighlightedTextInSearchTextOption(option.simpleText)"></div>
+                      <div *ngIf="option?.contextText?.length>0" class="contextText" [innerHTML]="getMatchHighlightedTextInSearchTextOption(option.contextText)"
+                        (click)="selectAutoCompleteSearchTextOption(option)"></div>
+                      <div *ngIf="option?.contextText?.length>0" class="infoText" [innerHTML]="getMatchHighlightedTextInSearchTextOption(option.infoText)"
+                        (click)="selectAutoCompleteSearchTextOption(option)"></div>
+                      <div *ngIf="option?.link?.href?.length>0" (click)="openSelectionList($event,option.link)" class="simpleText link">
+                        <a (click)="openMedicalIndex(option?.link?.href)">{{option.link?.text}}</a>
+                      </div>
+
+                    </div>
+                  </mat-option>
+                </mat-optgroup>
+                <mat-option [ngClass]="['mat-auto-complete-spinner', 
+                landingPageService.showAutoCompleteDropDownSpinner?'visible':'hidden'].join(' ')">
+                  <app-spinner [showSpinner]="landingPageService.showAutoCompleteDropDownSpinner"></app-spinner>
+                </mat-option>
+              </mat-autocomplete>
+            </mat-form-field>
+            <div class="location-arrow">
+              <span *ngIf="focusedTarget==='searchText' && searchControls.searchTypeAheadControl.value!==''" (click)="clearTargetValue()">
+                <i class="fas fa-times-circle remove-circle-icon" tabindex="2"></i>
+              </span>
+            </div>
+          </div>
+        </div>
+
+        <div class="col l2 s12 mt-5-mob position-relative" role="zip-code-typeAhead-container">
+          <div class="zip-code-field-group">
+            <!-- location text field-->
+
+            <mat-form-field>
+              <input matInput #zipCodeTypeAhead [placeholder]="fadConstants.text.landingPage_location_placeHolder"
+                [matAutocomplete]="autoZipCode" [formControl]="searchControls?.zipCodeTypeAheadControl"
+                aria-autocomplete="list" role="type-a-head-combobox" aria-expanded="false" aria-owns="mat-autocomplete-1"
+                aria-invalid="false" aria-required="false" tabindex="3" (focus)="removeIconFocusTracker('zipCode')"
+                (input)="zipcodeValidator($event.target.value)">
+
+              <div class="inline-error ng-star-inserted" *ngIf="zipCodeValidationErrors.invalidZipCode.display==true">
+                <div class="error-icon">
+                  <i class="fa fa-exclamation-circle"></i>
+                  <div class="error-message">{{zipCodeValidationErrors.invalidZipCode.errorMsg}}</div>
+                </div>
+              </div>
+              <div class="inline-error ng-star-inserted" *ngIf="zipCodeValidationErrors.noMatchFound.display==true">
+                <div class="error-icon">
+                  <i class="fa fa-exclamation-circle"></i>
+                  <div class="error-message">{{zipCodeValidationErrors.noMatchFound.errorMsg}}</div>
+                </div>
+              </div>
+
+              <mat-autocomplete #autoZipCode="matAutocomplete">
+                <mat-option *ngFor="let location of filteredZipCodeOptions | async" (onSelectionChange)="onZipCodeTypeaheadOptionSelectionChange(location)"
+                  [value]="location.zip+' - '+location.city+', '+location.state_code">
+                  {{ location?.zip }} - {{ location?.city }}, {{ location?.state_code }}
+                </mat-option>
+              </mat-autocomplete>
+            </mat-form-field>
+
+            <div class="location-arrow">
+              <span *ngIf="focusedTarget==='zipCode'" tabindex="4" (click)="clearTargetValue()">
+                <i class="fas fa-times-circle remove-circle-icon"></i>
+              </span>
+              <span role="comboBoxDropDownButton" (keydown)="checkAndDisplayZipCodeDropDown($event)" (click)="displayZipCodeDropDown($event)"
+                tabindex="5">
+                <i class="fal fa-location-arrow"></i>
+              </span>
+            </div>
+
+
+          </div>
+        </div>
+        <div class="col l2 s12 mt-5-mob position-relative" role="play-type-typeAhead-container">
+          <div class="plan-field-group">
+            <!-- plan text field-->
+            <mat-form-field class="">
+              <input type="text" #planTypeAhead placeholder="Plan" aria-label="Number" matInput [formControl]="searchControls?.planControl"
+                [matAutocomplete]="autoPlan" aria-autocomplete="list" aria-label="Number" aria-expanded="false"
+                aria-owns="mat-autocomplete-2" aria-invalid="false" aria-required="false" role="type-a-head-combobox"
+                tabindex="6" (focus)="removeIconFocusTracker('plan')" (click)="displayPlanDropDown($event)" (keyup)="displayPlanDropDown($event)">
+              <mat-autocomplete #autoPlan="matAutocomplete" class="planOption" [displayWith]="displaySelectedPlanOptionName">
+                <mat-optgroup *ngFor="let autoCompletePlanOption of filteredPlanOptions | async" [label]="autoCompletePlanOption.category">
+                  <mat-option *ngFor="let option of autoCompletePlanOption.options" [value]="option">
+                    <div class="auto-complete-suggestion-option">
+                      <div *ngIf=" option?.simpleText?.length>0" class="simpleText" [innerHTML]="getMatchHighlightedTextInPlanOption(option.simpleText)"></div>
+                      <div *ngIf="option?.infoText===fadConstants.plans.defaultOption" class="dont-know-ur-plan-option planDefault"
+                        (click)="redirectRequestPlanDropDown($event)">
+                        <div>
+                          <a (click)="redirectRequestPlanDropDown($event,'login')">Login</a> or
+                          <a (click)="redirectRequestPlanDropDown($event,'register')">create an account</a>, and
+                        </div>
+                        <div>we'll select your plan for you</div>
+                      </div>
+                      <div *ngIf="option?.infoText===fadConstants.plans.dontKnowPlanOption" class="dont-know-ur-plan-option topBorder">
+                        <!--</div>(click)="redirectRequestPlanDropDown($event)"> -->
+                        <div class="plan-option-seperator"></div>
+                        <div>{{fadConstants.text.dontKnowPlan}}</div>
+                      </div>
+                      <div *ngIf="option?.infoText===fadConstants.plans.myCurrentPlanOption" class="dont-know-ur-plan-option topBorder">
+                        <!-- (click)="redirectRequestPlanDropDown($event)"> -->
+                        <div class="plan-option-seperator"></div>
+                        <div>
+                          <strong>My Current plan:</strong> {{userCurrentPlan.name}}
+                        </div>
+                      </div>
+                    </div>
+                  </mat-option>
+                </mat-optgroup>
+              </mat-autocomplete>
+            </mat-form-field>
+
+            <div class="location-arrow">
+              <span *ngIf="focusedTarget==='plan'" tabindex="7" (click)="clearTargetValue()">
+                <i class="fas fa-times-circle remove-circle-icon"></i>
+              </span>
+              <span style="font-size:24px" role="comboBoxDropDownButton" (keydown)="checkAndDisplayPlanDropDown($event)"
+                (click)="displayPlanDropDown($event)" tabindex="8">
+                <i class="fa fa-caret-down"></i>
+              </span>
+            </div>
+          </div>
+        </div>
+        <div *ngIf="displayDependentsOptionFlag" class="col l2 s12 mt-5-mob position-relative">
+          <div class="dependants-field-group">
+            <!-- depandents field-->
+            <mat-form-field class="">
+              <input type="text" #dependantListTypeAhead placeholder="Dependants" aria-label="Number" matInput
+                [formControl]="searchControls?.dependantNameControl" [matAutocomplete]="autoSavedSearch"
+                aria-autocomplete="list" aria-label="Number" aria-expanded="false" aria-owns="mat-autocomplete-3"
+                aria-invalid="false" aria-required="false" role="type-a-head-combobox" tabindex="9" (focus)="removeIconFocusTracker('dependant')">
+              <mat-autocomplete autoActiveFirstOption #autoSavedSearch="matAutocomplete">
+                <mat-option *ngFor="let option of filteredDependantsList | async" [value]="option">
+                  {{ option }}
+                </mat-option>
+              </mat-autocomplete>
+            </mat-form-field>
+
+            <div class="location-arrow">
+              <span *ngIf="focusedTarget==='dependant'" tabindex="10" (click)="clearTargetValue()">
+                <i class="fas fa-times-circle remove-circle-icon"></i>
+              </span>
+              <span style="font-size:24px" role="comboBoxDropDownButton" (keydown)="checkAndDisplayDependentListDropDown($event)"
+                (click)="displayDependentListDropDown($event)" tabindex="11">
+                <i class="fa fa-caret-down"></i>
+              </span>
+            </div>
+          </div>
+        </div>
+        <div class="col l2 s12  search-button-container position-relative" *ngIf="isSearchButtonDisabled==false">
+          <!-- search button field-->
+          <button (click)="doSearch()" tabindex="12">Search</button>
+        </div>
+        <div class="col l2 s12  search-button-container position-relative" *ngIf="isSearchButtonDisabled==true">
+          <button (click)="doSearch()" [disabled]="isSearchButtonDisabled" class="search-button-disable" tabindex="12">Search</button>
+        </div>
+      </div>
+    </div>
+
+
+    <div *ngIf="componentMode===fadConstants.flags.fadLandingPageComponentMode_Normal" class="absoluteCenterAlign" role="See past searches placeholder">
+      <!-- <div *ngIf="isLogin">
+        <a (keydown)="checkAndDisplayPastSearchHistory($event)" (click)="displayPastSearchHistory()" tabindex="13">
+          See past searches
+        </a>
+      </div> -->
+    </div>
+    <div *ngIf="componentMode===fadConstants.flags.fadLandingPageComponentMode_Normal" class="promo" role="promotional material content">
+      <app-dynamic-promotional-content></app-dynamic-promotional-content>
+    </div>
+  </div>
+
+  <div *ngIf="viewPortWidth<993 && componentMode===fadConstants.flags.fadLandingPageComponentMode_Normal" class="flex-container"
+    role="mobile landing page view">
+    <div role="page title">
+      <h1 alt="STRUCTURAL ELEMENTS: Heading level 1">Find a Doctor
+        <br>&amp; Get Cost Estimates </h1>
+    </div>
+    <div #searchBar class="search-bar" role="search bar">
+      <div class="row">
+        <div [class]="['col', 's12', 'search-name-container', emboseSearchTextField?'concentrate':''].join(' ')"
+          (touchmove)="onScroll($event)">
+          <div class="search-field-group">
+            <!-- search text field-->
+            <mat-form-field>
+              <input matInput #searchTextTypeAhead [placeholder]="fadConstants.text.landingPage_entity_placeHolder"
+                [matAutocomplete]="autoSearchName" [formControl]="searchControls?.searchTypeAheadControl"
+                aria-autocomplete="list" role="combobox" aria-expanded="false" aria-owns="mat-autocomplete-0"
+                aria-invalid="false" aria-required="false" tabindex="1" (focus)="displaySearchTextAutoCompleteDropDown()"
+                (keyup)="displaySearchTextAutoCompleteDropDown($event)">
+              <mat-autocomplete #autoSearchName="matAutocomplete" class="search-text-autocomplete-mobile">
+                <mat-optgroup *ngFor="let autoCompleteSearchOption of filteredAutoCompleteSearchOptions | async"
+                  [label]="autoCompleteSearchOption.category" [ngClass]="{'clickable-label': autoCompleteSearchOption.options[0]?.contextText?.length>0}"
+                  (click)="searchTypeOptLableClickHandler($event)">
+                  <mat-option (onSelectionChange)="onSearchTextOptionSelected(option,autoCompleteSearchOption.category==='')"
+                    *ngFor="let option of autoCompleteSearchOption.options" [value]="option.simpleText||option.contextText"
+                    [ngClass]="{'not-Highlighted': option?.link?.href?.length>0}">
+
+                    <div class="auto-complete-suggestion-option">
+                      <div *ngIf="option?.simpleText?.length>0" class="simpleText" [innerHTML]="getMatchHighlightedTextInSearchTextOption(option.simpleText)"></div>
+                      <div *ngIf="option?.contextText?.length>0" class="contextText" [innerHTML]="getMatchHighlightedTextInSearchTextOption(option.contextText)"
+                        (click)="selectAutoCompleteSearchTextOption(option)"></div>
+                      <div *ngIf="option?.contextText?.length>0" class="infoText" [innerHTML]="getMatchHighlightedTextInSearchTextOption(option.infoText)"
+                        (click)="selectAutoCompleteSearchTextOption(option)"></div>
+                      <div *ngIf="option?.link?.href?.length>0" (click)="openSelectionList($event,option.link)" class="simpleText link">
+                        <a (click)="openMedicalIndex(option?.link?.href)">{{ option.link?.text }}</a>
+                      </div>
+                    </div>
+                  </mat-option>
+                </mat-optgroup>
+                <mat-option [ngClass]="['mat-auto-complete-spinner', 
+                landingPageService.showAutoCompleteDropDownSpinner?'visible':'hidden'].join(' ')">
+                  <app-spinner [showSpinner]="landingPageService.showAutoCompleteDropDownSpinner"></app-spinner>
+                </mat-option>
+              </mat-autocomplete>
+            </mat-form-field>
+            <div class="search-fontawesome-icon-container">
+              <span *ngIf="focusedTarget==='searchText' && searchControls.searchTypeAheadControl.value!==''" (click)="clearTargetValue()"
+                class="clearSearchText">
+                <i class="fas fa-times-circle remove-circle-icon"></i>
+              </span>
+              <span (click)="triggerSearchOnSearchLensIcon(!emboseSearchTextField)">
+                <i class="fas fa-search search-lens-icon"></i>
+              </span>
+            </div>
+          </div>
+          <div class="cancelButton">
+            <span *ngIf="emboseSearchTextField" (click)="cancelSearchTextAutoCompleteDropDown()">Cancel</span>
+          </div>
+
+        </div>
+        <div class="col s12 mt-5-mob position-relative">
+          <div class="row">
+            <!-- <div class="col s1">
+              <label>near</label>
+            </div> -->
+            <div [class]="['col', 's12', emboseZipCodeField?'concentrate zipCode':''].join(' ')" (touchmove)="onScroll($event)">
+              <div class="zip-code-field-group">
+                <mat-form-field>
+                  <input matInput #zipCodeTypeAhead [placeholder]="fadConstants.text.landingPage_location_placeHolder"
+                    [matAutocomplete]="autoZipCode" [formControl]="searchControls?.zipCodeTypeAheadControl"
+                    aria-autocomplete="list" role="type-a-head-combobox" aria-expanded="false" aria-owns="mat-autocomplete-1"
+                    aria-invalid="false" aria-required="false" tabindex="2" (focus)="removeIconFocusTracker('zipCode',$event)"
+                    (click)="displayZipCodeDropDown($event)" (keyup)="displayZipCodeDropDown($event)" (input)="zipcodeValidator($event.target.value)">
+
+                  <mat-autocomplete #autoZipCode="matAutocomplete" class="zipCodeOption">
+                    <mat-option (onSelectionChange)="emboseZipCodeFieldOnScreen(false,location)" *ngFor="let location of filteredZipCodeOptions | async"
+                      [value]="location.zip + ' - '+ location.city+', '+ location.state_code">
+                      {{ location?.zip }} - {{ location?.city }}, {{ location?.state_code }}
+                    </mat-option>
+                  </mat-autocomplete>
+                </mat-form-field>
+
+                <div class="location-arrow">
+                  <!-- <span *ngIf="focusedTarget==='zipCode'" (click)="clearTargetValue()"> -->
+                  <span [class]="zipClearIcon" (click)="clearTargetValue('zipCode')">
+                    <i class="fas fa-times-circle remove-circle-icon"></i>
+                  </span>
+                  <span (keydown)="checkAndDisplayZipCodeDropDown($event)" (click)="displayZipCodeDropDown($event)"
+                    role="comboBoxDropDownButton">
+                    <i class="fal fa-location-arrow"></i>
+                  </span>
+                </div>
+
+                <div class="inline-error ng-star-inserted" *ngIf="zipCodeValidationErrors.invalidZipCode.display==true">
+                  <div class="error-icon">
+                    <i class="fa fa-exclamation-circle"></i>
+                    <span>{{zipCodeValidationErrors.invalidZipCode.errorMsg}}</span>
+                  </div>
+                </div>
+                <div class="inline-error ng-star-inserted" *ngIf="zipCodeValidationErrors.noMatchFound.display==true">
+                  <div class="error-icon">
+                    <i class="fa fa-exclamation-circle"></i>
+                    <div class="error-message">{{zipCodeValidationErrors.noMatchFound.errorMsg}}</div>
+                  </div>
+                </div>
+              </div>
+              <div class="cancelButtonZip">
+                <span *ngIf="emboseZipCodeField" (click)="hiddenZipCodeDropDown()">Cancel</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col s12 mt-5-mob position-relative">
+          <!-- <div class="row"> -->
+          <!-- <div class="col s1">
+              <label>plan</label>
+            </div> -->
+          <div [class]="['col', 's12', embosePlanField?'concentrate planText':''].join(' ')" (touchmove)="onScroll($event)">
+            <div class="plan-field-group">
+              <!-- plan text field-->
+              <mat-form-field class="">
+                <input type="text" #planTypeAhead placeholder="Plan" aria-label="Number" matInput [formControl]="searchControls?.planControl"
+                  [matAutocomplete]="autoPlan" aria-autocomplete="list" aria-label="Number" aria-expanded="false"
+                  aria-owns="mat-autocomplete-2" aria-invalid="false" aria-required="false" role="type-a-head-combobox"
+                  tabindex="4" (click)="displayPlanDropDown($event)" (keyup)="displayPlanDropDown($event)" (focus)="removeIconFocusTracker('plan',$event)">
+
+                <mat-autocomplete #autoPlan="matAutocomplete" class="planOption" [displayWith]="displaySelectedPlanOptionName">
+                  <mat-optgroup *ngFor="let autoCompletePlanOption of filteredPlanOptions | async" [label]="autoCompletePlanOption.category">
+                    <mat-option (onSelectionChange)="embosePlanFieldOnScreen(false)" *ngFor="let option of autoCompletePlanOption.options"
+                      [value]="option">
+                      <div class="auto-complete-suggestion-option">
+                        <div *ngIf=" option?.simpleText?.length>0" class="simpleText" [innerHTML]="getMatchHighlightedTextInPlanOption(option.simpleText)"></div>
+                        <div *ngIf="option?.infoText===fadConstants.plans.defaultOption" class="dont-know-ur-plan-option planDefault"
+                          (click)="redirectRequestPlanDropDown($event)">
+                          <div>
+                            <a (click)="redirectRequestPlanDropDown($event,'login')">Login</a> or
+                            <a (click)="redirectRequestPlanDropDown($event,'register')">create an account</a>, and
+                            we'll
+                          </div>
+                          <div>select your plan for you</div>
+                        </div>
+                        <div *ngIf="option?.infoText===fadConstants.plans.dontKnowPlanOption" class="dont-know-ur-plan-option topBorder">
+                          <!-- (click)="redirectRequestPlanDropDown($event)"> -->
+                          <div class="plan-option-seperator"></div>
+                          <div>{{fadConstants.text.dontKnowPlan}}</div>
+                        </div>
+                        <div *ngIf="option?.infoText===fadConstants.plans.myCurrentPlanOption" class="dont-know-ur-plan-option topBorder">
+                          <!-- (click)="redirectRequestPlanDropDown($event)">-->
+                          <div class="plan-option-seperator"></div>
+                          <div>
+                            <strong>My Current plan:</strong> {{userCurrentPlan.name}}
+                          </div>
+                        </div>
+                      </div>
+                    </mat-option>
+                  </mat-optgroup>
+                </mat-autocomplete>
+
+              </mat-form-field>
+
+              <div class="location-arrow">
+                <span [class]="planClearIcon" (click)="clearTargetValue('plan')">
+                  <i class="fas fa-times-circle remove-circle-icon"></i>
+                </span>
+                <span role="comboBoxDropDownButton" (click)="displayPlanDropDown($event)" *ngIf="!embosePlanField">
+                  <i class="fa fa-caret-down" style="font-size:24px"></i>
+                </span>
+                <span (click)="displayPlanDropDown($event)" *ngIf="embosePlanField">
+                  <i class="fas fa-search search-lens-icon"></i>
+                </span>
+              </div>
+            </div>
+            <div class="cancelButtonPlan">
+              <span *ngIf="embosePlanField" (click)="hiddenPlanDropDown()">Cancel</span>
+            </div>
+          </div>
+          <!-- </div> -->
+        </div>
+        <div *ngIf="displayDependentsOptionFlag" class="col s12 mt-5-mob position-relative">
+          <div class="row">
+            <!-- <div class="col s1">
+              <label>for</label>
+            </div> -->
+            <div [class]="['col', 's12', emboseDependantsField?'concentrate dependantsText':''].join(' ')" (touchmove)="onScroll($event)">
+              <div class="dependants-field-group">
+                <!-- dependants field-->
+                <mat-form-field class="">
+                  <input type="text" #dependantListTypeAhead placeholder="Dependants" aria-label="Number" matInput
+                    [formControl]="searchControls?.dependantNameControl" [matAutocomplete]="autoSavedSearch"
+                    aria-autocomplete="list" aria-label="Number" aria-expanded="false" aria-owns="mat-autocomplete-3"
+                    aria-invalid="false" aria-required="false" role="type-a-head-combobox" tabindex="6" (keyup)="displayDependentListDropDown($event)"
+                    (click)="displayDependentListDropDown($event)" (focus)="removeIconFocusTracker('dependant')">
+                  <mat-autocomplete autoActiveFirstOption #autoSavedSearch="matAutocomplete" class="dependantOption">
+                    <mat-option (onSelectionChange)="emboseDependantsFieldOnScreen(false)" *ngFor="let option of filteredDependantsList | async"
+                      [value]="option">
+                      {{ option }}
+                    </mat-option>
+                  </mat-autocomplete>
+                </mat-form-field>
+
+                <div class="location-arrow">
+                  <span [class]="dependantClearIcon" (click)="clearTargetValue('dependant')">
+                    <i class="fas fa-times-circle remove-circle-icon"></i>
+                  </span>
+                  <span style="font-size:24px" role="comboBoxDropDownButton" (click)="displayDependentListDropDown($event)"
+                    *ngIf="!emboseDependantsField">
+                    <i class="fa fa-caret-down"></i>
+                  </span>
+                  <span (click)="displayDependentListDropDown($event)" *ngIf="emboseDependantsField">
+                    <i class="fas fa-search search-lens-icon"></i>
+                  </span>
+                </div>
+              </div>
+              <div class="cancelButtonDependant">
+                <span *ngIf="emboseDependantsField" (click)="hiddenDependantDropDown()">Cancel</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col s12  search-button-container position-relative" *ngIf="isSearchButtonDisabled==false">
+          <!-- search button field-->
+          <button (click)="doSearch()" tabindex="8">Search</button>
+        </div>
+        <div class="col l2 s12  search-button-container position-relative" *ngIf="isSearchButtonDisabled==true">
+          <button (click)="doSearch()" [disabled]="isSearchButtonDisabled" class="search-button-disable" tabindex="12">Search</button>
+        </div>
+      </div>
+
+    </div>
+    <div *ngIf="componentMode===fadConstants.flags.fadLandingPageComponentMode_Normal" class="absoluteCenterAlign" role="See past searches placeholder">
+      <!-- <div *ngIf="isLogin">
+        <a (click)="displayPastSearchHistory()">See past searches</a>
+      </div> -->
+    </div>
+    <div *ngIf="componentMode===fadConstants.flags.fadLandingPageComponentMode_Normal" class="promo" role="promotional material content">
+      <app-dynamic-promotional-content></app-dynamic-promotional-content>
+    </div>
+  </div>
+
+  <div *ngIf="viewPortWidth<993 && componentMode===fadConstants.flags.fadLandingPageComponentMode_Abstract" class="flex-container abstract-mode"
+    role="sub section of search results page view in mobile">
+    <div class="search-bar abstract-view search-bar-as-sub-section" role="search bar">
+      <div class="row">
+        <div [class]="['col s12 search-name-container']">
+          <div class="search-field-group search-field-abstractview">
+            <label class="label-value">{{searchControls?.searchTypeAheadControl.value}}</label>
+            <div class="search-fontawesome-icon-container">
+              <span>
+                <i class="fas fa-search search-lens-icon"></i>
+              </span>
+            </div>
+          </div>
+        </div>
+        <div class="col s12 mt-5-mob position-relative">
+          <div class="row">
+            <div class="col s12 pd-0 pt-dot75rem">
+              <label class="label-text">near</label>
+              <label class="label-value">{{searchControls?.zipCodeTypeAheadControl.value}}</label>
+            </div>
+            <div class="col s10 pd-0 pt-dot75rem">
+              <label class="label-text">on plan</label>
+              <label class="label-value">{{ displaySelectedPlanOptionName(searchControls?.planControl.value) }}</label>
+            </div>
+            <div class="col s2 pd-0">
+              <div [class]="['location-arrow abstractLocationArrow',!embosePlanField?'visible':''].join(' ')">
+                <span role="comboBoxDropDownButton" (click)="doSearch()">
+                  <i class="fas fa-chevron-down"></i>
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div *ngIf="displayDependentsOptionFlag" class="col s12 mt-5-mob position-relative mt-8">
+          <div class="row">
+            <div class="col s8 pd-0 pt-dot75rem">
+              <label class="label-text">for</label>
+              <label class="label-value">{{searchControls?.dependantNameControl.value}}</label>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+</section>

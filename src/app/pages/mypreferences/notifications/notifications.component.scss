@@ -1,0 +1,91 @@
+@import '../../../../assets/styles/_fonts';
+@import '../mypreferences-vdk';
+@media (max-width: 991px) {
+    .container {
+        width: 100% !important;
+        padding-left: 15px !important;
+        padding-right: 15px !important;
+    }
+    .center-box-width {
+        padding-right: 0px !important;
+    }
+    .bottom-border-nullifier {
+        margin-bottom: 0px !important;
+    }
+}
+
+.hideContent {
+    visibility: hidden;
+    @media (max-width: $tab-and-down) {
+        display: none;
+    }
+}
+
+// .healthPromosHeightAdjust {
+//     @media (min-width: 992px) and (max-width: 1232px) {
+//         height: 54px;
+//     }
+// }
+
+.showContent {
+    visibility: visible;
+    @media (max-width: $tab-and-down) {
+        display: inherit;
+    }
+}
+
+.enforce-flex {
+    flex: 3;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.center-box-width {
+    width: 100%;
+}
+
+.mypref-notifications-mat {
+    .chkbox-padding {
+        @media (max-width: $tab-and-down) {
+            padding-left: 0.75rem;
+            padding-right: 0.75rem;
+        }
+        @media (min-width: $tab-and-down) {
+            padding: 0px !important;
+        }
+    }
+    @media (max-width: $tab-and-down) {
+        padding-left: 0.75rem;
+        padding-right: 0.75rem;
+    }
+    .iconColor {
+        color: $headings-dark-color;
+        fill: $headings-dark-color;
+        padding-left: 5px;
+    }
+    .box-header-text {
+        @include Roboto(bold);
+        font-size: 18px;
+        color: $headings-dark-color;
+    }
+    .box-description-text {
+        @include Roboto(light);
+        font-size: 16px;
+        color: $text-disabled-gray;
+    }
+    a {
+        text-decoration: underline !important;
+        color: $non-vdk-50-black 100%;
+        @include Roboto(regular);
+        font-size: 14px;
+    }
+    mat-checkbox {
+        width: 24px;
+        height: 24px;
+    }
+    .valign-wrapper-override {
+        align-self: flex-start;
+    }
+    //http://jsfiddle.net/XPDcH/1/
+}

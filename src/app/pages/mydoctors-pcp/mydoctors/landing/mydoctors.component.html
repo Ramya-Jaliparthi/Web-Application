@@ -1,0 +1,169 @@
+<header class="row main-header mb-0 ml-0 mr-0">
+    <div class="col m12 s12 header-cont" [ngClass]="{ 'offset-l3 l6': initialRecentVisitsCount !== 1, 'l9': initialRecentVisitsCount === 1}">
+        <div *ngIf="ismobile">
+            <app-breadcrumbs></app-breadcrumbs>
+        </div>
+        <ng-container *ngIf="!isSearchShowing">
+            <h1 class="mb-20">My Doctors</h1>
+        </ng-container>
+        <div *ngIf="!ismobile">
+            <app-breadcrumbs></app-breadcrumbs>
+        </div>
+        <ng-container *ngIf="isSearchShowing">
+            <h1 *ngIf="doctorList.length === 0" class="pb-5">No Results</h1>
+            <h1 *ngIf="doctorList.length === 1" class="pb-5">{{ doctorList.length }} Result</h1>
+            <h1 *ngIf="doctorList.length > 1" class="pb-5">{{ doctorList.length }} Results</h1>
+        </ng-container>
+        <div class="msg header-msg" *ngIf="!noDoctorVisits && doctorList.length > 0 && isActive && (memberPCP['isRequiredPCP'] && !memberPCP['hasPCP'])">
+            <p>
+                Your plan requires you to have a Primary Care Provider (PCP).
+            </p>
+            <p>
+                Select one of your in-network doctors to make them your PCP or
+                <a [routerLink]="['/mydoctors/add-pcp']">elect a new PCP.</a>
+            </p>
+        </div>
+
+
+    </div>
+</header>
+
+<section class="row mb-0 ml-0 mr-0">
+    <div class="">
+        <div class="main-container mb-20">
+            <div class="main-result">
+                <div class="main-result-container">
+                    <div class="col l3 m12 s12 pd-0" *ngIf="initialRecentVisitsCount !== 1">
+                        <div class="row filter-container" *ngIf="!noDoctorVisits">
+                            <app-filter [filterConfig]="filterConfig" [dispatchEvent]="eventAction" (applyFilter)="applyFilter($event)"
+                                (clearFilter)="clearFilter($event)" (toggleFilter)="toggleFilter($event)"></app-filter>
+                        </div>
+                    </div>
+                    <ng-container *ngIf="doctorList">
+                        <div class="col s12 m12 middle-container" [ngClass]="{'hideMainCont': (hideMainContentOnFilterToggleForMobile), 'l9': initialRecentVisitsCount === 1, 'l6': initialRecentVisitsCount !== 1}">
+                            <div class="list-container">
+                                <div class="no-doctors-available" *ngIf="noDoctorVisitsAfterFilter">
+                                    <div class="search-no-results-msg">
+                                        <p class="search-msg">Oops. We couldn't find any results for the applied
+                                            filters.
+                                            <!-- your search - "{{searchVal}}" -->
+                                        </p>
+                                        <button class="search-clear-button" mat-raised-button type="button" (click)="clearFilter()">
+                                            Clear Filters
+                                        </button>
+                                        <div class="try-filter-by-header">
+                                            <div class="search-option-header">Or try filtering by:</div>
+                                            <div class="search-option"> Date</div>
+                                            <div class="search-option"> Member</div>
+                                            <div class="search-option"> Specialty</div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                                <div *ngIf="(noDoctorVisits || noDoctorVisitsAfterFilter) && !isSearchShowing">
+                                    <div class="no-doctors-available-container">
+                                        <div class="text-center no-doctors-msg-cont">
+                                            <div class="no-doctors-icon">
+                                                <img src="/assets/images/no_uploads.svg">
+                                            </div>
+                                            <div class="no-doctors-msg" *ngIf="(noDoctorVisits)">
+                                                <p class="no-doctors">We couldn't look up your doctors.</p>
+                                                <p class="text-center">As you visit doctors, you'll be able to see your
+                                                    visit history here.</p>
+                                            </div>
+                                            <div class="no-doctors-msg" *ngIf="(noDoctorVisitsAfterFilter && !noDoctorVisits )">
+                                                <p class="no-doctors">No matches were found. Please refine your search
+                                                    and try again.</p>
+                                            </div>
+                                            <div class="promotional-material" *ngIf="noDoctorVisits">
+                                                <app-fpo-layout [targetUrl]='fpoTargetNoResultsUrl' [layout]='layout'></app-fpo-layout>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div *ngIf="!noDoctorVisits" infiniteScroll [infiniteScrollDistance]="2"
+                                    [infiniteScrollThrottle]="50" (scrolled)="onScroll()">
+                                    <ng-container *ngFor="let doctor of doctorList; let i = index;">
+                                        <section class="list-item">
+                                            <div class="msg pcp-msg" *ngIf="doctor.isPCP">
+                                                <p>
+                                                    Primary Care Provider (PCP)
+                                                    <span class="block">for {{ doctor?.mem_name | titlecase }}
+                                                    </span>
+                                                </p>
+                                                <div class="tool-tip-div" *ngIf="isActive && doctor.isAllowedChangePCP">
+                                                    <span class="i-circle tooltip" [ngClass]="{'icon-tooltip-filled': tooltipState[i] }"
+                                                        (click)="showToolTip('link', i)">
+                                                        <i class="fal fa-info-circle icon-blue"></i>
+                                                        <ng-container *ngIf="tooltipState[i]">
+                                                            <span class="tooltiptext raisedbox">
+                                                                Your PCP should be your first stop for all your medical
+                                                                needs. Learn more or
+                                                                <a class="link-global" (click)="setDoctor(doctor, false);"
+                                                                    [routerLink]="['/mydoctors/update-pcp']">
+                                                                    change your PCP.
+                                                                </a>
+                                                            </span>
+                                                        </ng-container>
+                                                    </span>
+                                                </div>
+                                            </div>
+                                            <div class="list-item-flex" (click)="setDoctor(doctor, true);">
+                                                <div class="list-item-inner">
+                                                    <header>
+                                                        <h2>{{doctor.providerName | doctorname}}</h2>
+                                                        <small>{{ doctor.providerSpeciality }}</small>
+                                                    </header>
+                                                    <div class="contact-info" *ngIf="doctor.providerPhone">
+                                                        <span class="phone-icon">
+                                                            <i class="fas fa-phone"></i>
+                                                        </span>
+                                                        <a href="tel:{{ doctor.providerPhone }}" class="phone" (click)="phoneClick($event);">{{
+                                                            doctor.providerPhone | phone }}</a>
+                                                    </div>
+                                                    <div class="service-info">
+                                                        <p>Last date of service for
+                                                            <span>{{ doctor.mem_name | titlecase}}</span>
+                                                        </p>
+                                                        <small>{{ doctor.dateOfservice | yyyymmddTommddyyyy}}</small>
+                                                    </div>
+                                                </div>
+                                                <div class="action">
+                                                    <a routerLink="/mydoctors/details" (click)="setDoctor(doctor, true);">
+                                                        <span>
+                                                            <i class="far fa-chevron-right"></i>
+                                                        </span>
+                                                    </a>
+                                                </div>
+                                            </div>
+                                        </section>
+                                    </ng-container>
+
+                                </div>
+
+                            </div>
+                            <div *ngIf="isActive && (memberPCP['isRequiredPCP'] && !memberPCP['hasPCP'])" class="doctorProfile mt-20"
+                                [routerLink]="['/mydoctors/add-pcp']">
+                                <div class="pcpheadercontainer textcolor">
+                                    Elect a Primary Care Provider (PCP)
+                                    <span class="icon-arrow floatrightheader">
+                                        <i class="far fa-chevron-right long-text"></i>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </ng-container>
+
+
+
+                    <div class="col l3 m12 s12 pd-0">
+                        <div class="dynamic-content" [ngClass]="{'hideMainCont': (hideMainContentOnFilterToggleForMobile)}"
+                            *ngIf="!noDoctorVisits || !noDoctorVisitsAfterFilter">
+                            <app-fpo-layout [targetUrl]='fpoTargetListingUrl' [displayCategory]="'doctor'"></app-fpo-layout>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

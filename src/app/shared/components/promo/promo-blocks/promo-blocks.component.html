@@ -1,0 +1,28 @@
+<div  [ngClass]="{'drupal-1x': true}" class="my-details">
+    <div class="details-header">
+      <!--<i class="far fa-capsules" aria-hidden="true"></i>-->
+      <label> </label><!--{{medicationData?.Title}}-->
+    </div>
+    <div class="drupal-content" (click)="openUrl(data?.urlLink)"> <!-- (click)="openUrl(data?.urlLink)" -->
+      <div class="video-label">
+        <img src="{{data?.src}}" class="responsive-img" alt="default image" [ngClass]="{'height-220': !ismobile}" *ngIf="!ismobile">
+        <img src="{{data?.mobilesrc}}" class="responsive-img" alt="default image" *ngIf="ismobile">
+        <a  *ngIf="data?.isVideo" (click)="openVideoModal($event, data?.VIdeoUrl)">
+          <div class="video-icon">
+            <i class="fas fa-play-circle   fa-2x play-icon" aria-hidden="true"></i>
+          </div>
+        </a>
+      </div>
+    </div>
+</div>
+<div id="drupalVideoModal" class="modal">
+  <div class="video-container" *ngIf="carouselVideoSource">
+    <a (click)= 'closeVideoModal()'><i class="fas fa-times fa-2x video-icon"  aria-hidden="true"></i></a>
+    <video class="responsive-video" autoplay
+           [src]='carouselVideoSource' controls>
+      Your browser does not support the video tag.
+    </video>
+  </div>
+</div>
+
+

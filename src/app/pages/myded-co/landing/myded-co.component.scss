@@ -1,0 +1,233 @@
+    @import '../../../../assets/styles/_fonts';
+    // spk-cleanup - @import '../../../../assets/styles/variables';
+    @import '../../../../assets/styles/_variables';
+    @import '../../../../assets/styles/Global';
+    @import '../../../../assets/styles/_flex';
+    @import '../../../../assets/styles/_filter-core';
+    @import '../../../../assets/styles/_colors';
+    .my-dedco-header {
+        margin-bottom: 20px;
+        .my-dedco-header-inner {
+            padding: 0 15px;
+            @extend %flexbox;
+            @include flex-direction(row);
+            @include align-items(center);
+            @include justify-content(flex-start);
+            @media (max-width: 992px) {
+                @include align-items(flex-start);
+                @include justify-content(space-between);
+            }
+            .tool-tip-div {
+                padding: 0 15px;
+                margin-top: 20px;
+                @media (max-width: 992px) {
+                    padding: 0;
+                }
+            }
+            .hide-below-322 {
+                @media (max-width: 322px) {
+                    display: none;
+                }
+            }
+            .hide-above-322 {
+                @media (min-width: 323px) {
+                    display: none;
+                }
+            }
+        }
+        h1 {
+            // font-family: Roboto-Light; spk/code review - cant use fonts directly, should be used thru mixin
+            @include Roboto(light);
+            font-size: 24px;
+            // color: $headings-dark-color; spk/code review  - should include _colors and use from that only.
+            color: $headings-dark-color;
+            margin: 20px 0 0 0; //unit test fix
+            @media (max-width: 992px) {
+                margin-top: 20px; // unit test fix  
+            }
+        }
+    }
+    
+    .middle-container {
+        padding: 0 15px;
+        @media (max-width: 992px) {
+            padding: 0;
+        }
+    }
+    
+    .main-container {
+        @media (max-width: 992px) {
+            margin-bottom: 0;
+            .hideMainCont {
+                display: none;
+            }
+        }
+    }
+    
+    .my-dedco-section {
+        // border-bottom: 1px solid $textbox-borderx-border; spk/code review  - should include _colors and use from that only.
+        border-bottom: 1px solid $textbox-border;
+        @media (max-width: 992px) {
+            padding: 5px 15px;
+        }
+        @media (min-width: 993px) {
+            // border: 1px solid $textbox-borderx-border; spk/code review  - should include _colors and use from that only.
+            border: 1px solid $textbox-border;
+            border-bottom-width: 0;
+            padding: 5px 15px;
+        }
+        h4 {
+            @include Roboto(medium);
+            font-size: 18px;
+            // color: $headings-dark-color; spk/code review  - should include _colors and use from that only.
+            color: $headings-dark-color;
+            margin-bottom: 0;
+            margin-top: 15px;
+        }
+        .my-dedco-dependent-text {
+            @include Roboto(regular);
+            font-size: 14px;
+            // color: $text-disabled-gray; spk/code review  - should include _colors and use from that only.
+            color: $text-disabled-gray;
+            letter-spacing: -0px;
+        }
+        .my-dedco-effective-cont {
+            @extend %flexbox;
+            @include flex-direction(row);
+            @include align-items(center);
+            @include justify-content(flex-start);
+            padding: 10px 0 5px 0;
+            small {
+                @include Roboto(bold);
+                font-size: 12px;
+                // color: $text-disabled-gray; spk/code review  - should include _colors and use from that only.
+                color: $text-disabled-gray;
+                text-align: left;
+            }
+            p {
+                @include Roboto(regular);
+                font-size: 12px;
+                // color: $text-disabled-gray; spk/code review  - should include _colors and use from that only.
+                color: $text-disabled-gray;
+                padding-left: 5px;
+            }
+        }
+        .my-dedco-network-info {
+            span {
+                @include Roboto(light);
+                font-size: 14px;
+                color: $headings-dark-color;
+            }
+        }
+        .my-dedco-limitations, .my-dedco-exceptions {
+            border-top: 1px solid $border-gray;
+            border-bottom: 1px solid $border-gray;
+            .header-panel {
+                @include Roboto(bold);
+                color: $header-color !important;
+                padding-top: 20px !important;
+                padding-bottom: 20px !important;
+                padding-left: 5px !important;
+                padding-right: 14px !important;
+                font-size: 13px;
+                background: $text-white-color 100%;
+                // height: 40px !important;
+            }
+            .mat-expansion-panel {
+                box-shadow: none !important;
+            } 
+            .content {
+                padding: 0px 10px 10px;
+            }
+        }
+        .my-dedco-exceptions {
+            border-top: none;
+            margin-bottom: 20px;
+        }
+    }
+    
+    .link-container {
+        @extend %flexbox;
+        @include flex-direction(column);
+        @include align-items(flex-start);
+        @include justify-content(flex-start);
+        .link-container-inner {
+            @extend %flexbox;
+            @include flex-direction(row);
+            @include align-items(center);
+            @include justify-content(space-between);
+            width: 100%;
+            padding: 0 10px;
+            @media (max-width: 992px) {
+                padding-left: 15px;
+                padding-right: 15px;
+            }
+            .tool-tip-div {
+                float: right;
+                margin: 0px 0px 15px 0px !important;
+                @media (max-width: 992px) {
+                    margin: 15px 0px 15px 0px !important;
+                }
+            }
+        }
+        h3 {
+            @include Roboto(regular);
+            font-size: 20px;
+            // color: $headings-dark-color; spk/code review  - should include _colors and use from that only.
+            color: $headings-dark-color;
+            text-align: left;
+            line-height: 16px;
+            margin: 0px 0px 15px 0px !important;
+            @media (max-width: 993px) {
+                margin: 15px 0px 15px 0px !important;
+            }
+        }
+        .details-right-link {
+            margin-bottom: 10px;
+            width: 100% !important;
+            @include Roboto(bold);
+            // background: $text-white-colorFFF;  spk/code review  - should include _colors and use from that only.
+            background: $background-gray-color;
+            text-align: left;
+            font-size: 13px;
+            cursor: pointer;
+            padding: 10px;
+            span {
+                // color: $headings-dark-color; !important; spk/code review  - should include _colors and use from that only.
+                color: $headings-dark-color !important;
+            }
+            span.icon-arrow {
+                // color: $headings-dark-color; !important; spk/code review  - should include _colors and use from that only.
+                color: $headings-dark-color !important;
+                float: right;
+                width: 11px;
+                height: 18px;
+            }
+            @media (max-width: 992px) {
+                padding-left: 15px;
+                padding-right: 15px;
+                margin-bottom: 10px;
+            }
+            &:last-child {
+                margin-bottom: 0;
+            }
+        }
+        .details-right-link:hover {
+            background: $button_hover_background;
+        }
+    }
+    
+    // containers should be removed
+    @media (max-width: 992px) {
+        .container {
+            width: 100%;
+        }
+    }
+
+    @media (min-width: 993px) {
+        .my-dedco-section:last-child {
+            border-bottom-width: 1px;
+        }
+    }
+    
+    // containers should be removed.

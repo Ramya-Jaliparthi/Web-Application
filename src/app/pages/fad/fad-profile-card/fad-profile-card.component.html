@@ -1,0 +1,129 @@
+<section class="fad-profile-card-component">
+  <mat-card [class]="['profile-card', componentInput?.mode!=='MapItem'? 'profile-card-separator':'mapItemMode','mat-card','mobile-adjustments'].join(' ')">
+    <mat-card-content class="mt--7">
+      <div class="row btn-full-width">
+        <div class="col s1">
+          <!-- <input type="checkbox" *ngIf="componentInput?.mode!=='MapItem'"  class="profileCardTitle" [(ngModel)]="checked" (ngModelChange)="onSelectionChange($event)"> -->
+          <mat-checkbox disableRipple="true" *ngIf="componentInput?.mode!=='MapItem'" class="profileCardTitle" (change)="onSelectionChange($event)"
+            [checked]="checked" [value]="checked"></mat-checkbox>
+        </div>
+        <div class="col s10">
+          <div class="row">
+            <div [class]="['col', componentInput?.mode!=='MapItem'?'l8':'', 's12'].join(' ')" (click)="openProfile($event)">
+              <span class="profileCardTitle">{{doctorName}}</span>
+              <div class="profileCardSubTitle">{{speciality}}</div>
+            </div>
+            <div class="rating-container" [class]="['col', componentInput?.mode!=='MapItem'?'l4':'', 's12'].join(' ')">
+              <app-star-rating-component class="app-star-rating-component" [componentInput]="doctorStarRating"></app-star-rating-component>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col s12 profile-card-article-body">
+              <div class="body-title">
+                {{medicalGroup}}
+              </div>
+              <div class="body-content">
+                <span class='body-content-address mt-2 mb-2'>{{address}}</span>
+                <span class="phone-icon">
+                  <i class="fa fa-phone" aria-hidden="true"></i>
+                  <a class="phoneNumber" href="tel:{{ phoneNumber }}">{{phoneNumber | phone}} </a>
+                </span>
+                <p *ngIf="numberOfLocations>1" class='body-content-location mt-2 mb-2'>
+                  + {{numberOfLocations-1}} more locations
+                  <!-- <span class="drop-up-down-icon" *ngIf="!toggleShowMoreLocationStatus"><i class="fa fa-caret-down"></i></span> 
+                  <span class="drop-up-down-icon" *ngIf="toggleShowMoreLocationStatus"><i class="fa fa-caret-up"></i></span> -->
+                </p>
+              </div>
+              <!-- For more locaitons -->
+              <div class="body-content" *ngFor="let location of componentInput.professional.locations; let index = index">
+                <div *ngIf="index > 0 && toggleShowMoreLocationStatus" class="mt-5 mb-5 locationDetail">
+                  <span class='body-content-address mt-2 mb-2'>{{location.address}}</span>
+                  <span class="phone-icon">
+                    <i class="fa fa-phone" aria-hidden="true"></i>
+                    <a class="phoneNumber" href="tel:{{ phoneNumber }}">{{location.phone | phone}} </a>
+                  </span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- <div class="row">
+            <div class="col s12">
+              <div class="authenticate-if-in-network">
+                <span class="check-circle">
+                  <i class="fas fa-exclamation-circle"></i>
+                </span>&nbsp;
+                <a (click)="doAuthentication()">Login</a>&nbsp;to see if In-Network
+              </div>
+            </div>
+          </div> -->
+
+          <div class="row">
+            <div class="col s12">
+              <div class="authenticate-if-in-network">
+                <span class="check-circle">
+                  <i class="fas fa-exclamation-circle"></i>
+                </span>&nbsp;
+                <a (click)="doAuthentication()" class="authenticate">{{authService.useridin && authService.useridin!=='undefined'?'Authenticate':'Login'}}</a>&nbsp;to see if In-Network
+              </div>
+            </div>
+          </div>
+
+          <!-- <div class="row">
+            <div class="col s12">
+              <div class="in-network">
+                <span class="check-circle">
+                  <i class="fa fa-check-circle" aria-hidden="true"></i>
+                </span>In-Network
+              </div>
+              <div *ngIf="componentInput?.mode!=='MapItem'" class="text-right">
+                <span class="doctor-cost">${{cost_dollars}}
+                  <sup>{{cost_pennies}}</sup>
+                </span>
+                <span class="doctor-cost-info">total insurance cost</span>
+              </div>
+            </div>
+          </div> -->
+
+          <!-- <div class="row">
+            <div class="col s12 out-of-network-info">
+              <span class="remove-icon">
+                <i class="fas fa-times"></i>
+              </span>
+              <span class="out-of-network-text">Out-of-Network &nbsp;</span>
+              <span class="info-icon tooltip ">
+                <span class="tooltiptext">Weâ€™re unable to provide cost estimates for this provider. Please
+                  <a (click)="reviewBenifits()">review your benefits</a> for more information</span>
+                <i class="fas fa-info-circle"></i>
+              </span>
+            </div>
+          </div> -->
+
+          <!-- <div class="row">
+            <div class="col s12 enhanced-benefit-marker">
+              <span class="enhanced-benefit-text">Enhanced Benefits Tier&nbsp;</span>
+              <span class="info-icon tooltip ">
+                <span class="tooltiptext">Includes hospitals and primary care providers (PCPs) that meet the standards for quality and low cost relative
+                  to our benchmark. This tier has the lowest member cost.</span>
+                <i class="fas fa-info-circle"></i>
+              </span>
+            </div>
+          </div> -->
+
+          <!-- <div class="row">
+            <div class="col s12 future-care-option">
+              Future care option on 1/1/18
+            </div>
+          </div> -->
+
+        </div>
+        <div class="col s1 aside text-right" (click)="openProfile($event)">
+          <a href="javascript:void(0)" title="Click Here to View the Document Details">
+            <i class="fa fa-chevron-right"></i>
+          </a>
+        </div>
+      </div>
+    </mat-card-content>
+  </mat-card>
+</section>

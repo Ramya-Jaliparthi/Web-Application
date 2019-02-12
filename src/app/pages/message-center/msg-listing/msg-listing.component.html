@@ -1,0 +1,117 @@
+<!-- No Messages Found -->
+<div *ngIf="isMsgNotAvailable===true">
+  <app-no-documents-found [componentMode]="no_doc_found_component_mode" [fpoUrl]="fpoTargetUrl"></app-no-documents-found>
+</div>
+<!-- Content Part - Starts Here -->
+<section class="messages" *ngIf="isMsgNotAvailable===false">
+  <!-- Banner section to show the clear & delete buttons for mobile & desktop with fixed position (scrolling) -->
+
+
+  <div class="banner" [class.block]="isDisplayBanner" *ngIf="msgCount > 0">
+
+    <div class="wrapper">
+      <div class="row mb-0">
+        <div class="col l6 s12 push-l3">
+          <div class="mob-float">
+            <div *ngIf="isDeleteListing">
+              <button type="button" class="btn btn-default" (click)="clearMsgListing()">Clear</button>
+              <button type="button" class="btn btn-primary ml-15 right" (click)="deleteMsgListing()">{{msgCount}}
+                Selected to Delete</button>
+            </div>
+
+            <div *ngIf="isUndoListing">
+              <p class="inline-block" *ngIf="!isDisplayUndo">
+                {{msgCount}} {{ msgCount === 1 ? 'message deleted' : 'messages deleted' }}
+              </p>
+              <button type="button" *ngIf="!isDisplayUndo" class="btn btn-primary ml-15 right" (click)="undoMsgListing()">Undo</button>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="row mb-0">
+
+    <div class="col l6 s12 push-l3 listing">
+
+      <h1 class="left" *ngIf="!isNoSearchResults && !applyFilterFlag">Messages</h1>
+      <h1 class="left" *ngIf="!isNoSearchResults && applyFilterFlag">
+        {{ filterMsgCount?.length }} {{ filterMsgCount?.length > 1 ? 'results'
+        : ''}} {{ filterMsgCount?.length === 1 ? ' result': ''}}
+      </h1>
+      <h1 class="left" *ngIf="isNoSearchResults">
+        No results found
+      </h1>
+      <div class="mt-20 right hide-on-med-and-down" [class.hide]="IsHideBanner">
+        <!-- Banner section to show the clear & delete buttons for desktop with static position -->
+        <div *ngIf="isDeleteListing">
+          <button type="button" class=" btn btn-default btn-default-ripple" (click)="clearMsgListing()">Clear</button>
+          <button type="button" class=" btn btn-primary btn-primary-ripple ml-10" (click)="deleteMsgListing()">{{msgCount}}
+            Selected to Delete</button>
+        </div>
+        <div *ngIf="isUndoListing">
+          <p class="inline-block" *ngIf="!isDisplayUndo">
+            {{msgCount}} {{ msgCount === 1 ? 'message deleted' : 'messages deleted' }}
+          </p>
+          <button *ngIf="!isDisplayUndo" type="button" class=" btn btn-primary btn-primary-ripple ml-10" (click)="undoMsgListing()">Undo</button>
+        </div>
+      </div>
+    </div>
+    <div class="col l8 s12 m12 push-l3">
+      <app-breadcrumbs></app-breadcrumbs>
+    </div>
+  </div>
+  <div class="row">
+    <!-- Filter Section -->
+    <div *ngIf="showClearLink" class="clear-action-label" (click)="clearFilter()">
+      Clear
+    </div>
+    <div class="flex-container">
+
+      <div class="col s12 l3 filter-adjust" *ngIf="searchCriteriaData?.categoryFilterMap?.size>0">
+        <app-message-center-search (onSearch)="onSearch($event)" [searchCriteriaData]="searchCriteriaData"></app-message-center-search>
+      </div>
+      <div *ngIf="!isNoSearchResults" [class]="['col','s12','l6', mobileHideByFilterOverlay? 'mobile-hide-by-filter-overlay':''].join(' ')">
+        <ul class="collection">
+          <li *ngFor="let msg of msgListing;let i = index" class="collection-item" [hidden]="msg.hideEntityFromDisplay">
+            <div class="flex-box-listing">
+              <mat-checkbox class="mr-10" disableRipple [checked]="msg.selected" (change)="getSelectedMsgListing(msg,$event,i)"></mat-checkbox>
+              <div class="flex-grow-1 mr-10 cursor-pointer" (click)="showMsgDetails(msg,i)">
+                <span class="title word-break" [class.title-black]="msg.isRead==='true'">{{
+                  (msg.ShortText &&
+                  msg.ShortText.length > 25 )? (msg.ShortText | slice:0:25)+'..' : msg.ShortText
+                  }}
+                </span>
+                <span class="right">{{formattedDate(msg.messageUpdatedDateTime)}}</span>
+                <p class="word-break">{{ (msg.LongText && msg.LongText.length > 80 )? (msg.LongText |
+                  slice:0:80)+'..' :
+                  msg.LongText
+                  }}
+                  <span class="right category">{{msg.category | titlecase}}</span>
+                </p>
+              </div>
+              <div class="valign-wrapper">
+                <a href="javascript:void(0)" title="Click Here to View the Message Details" (click)="showMsgDetails(msg,i)">
+                  <i class="fa fa-chevron-right"></i>
+                </a>
+              </div>
+            </div>
+          </li>
+        </ul>
+
+      </div>
+      <div *ngIf="isNoSearchResults" [class]="['col','s12','l6', mobileHideByFilterOverlay? 'mobile-hide-by-filter-overlay':''].join(' ')">
+        <app-no-documents-found [componentMode]="no_search_results_found_component_mode"></app-no-documents-found>
+        <app-fpo-layout [targetUrl]="fpoTargetUrl"></app-fpo-layout>
+      </div>
+      <!-- Promotional Material Section-->
+      <div [class]="['col','l3','s12','promo',mobileHideByFilterOverlay? 'mobile-hide-by-filter-overlay':''].join(' ')">
+
+      </div>
+    </div>
+  </div>
+</section>
+<!-- Content Part - Ends Here -->

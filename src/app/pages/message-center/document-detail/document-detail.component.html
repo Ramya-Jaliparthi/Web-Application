@@ -1,0 +1,222 @@
+<div class="message-detail">
+    <div class="row">
+        <div class="col s12">
+            <a class="col s6 pd-0 valign-wrapper" href="javascript:void(0)">
+                <!-- <i class="fas fa-chevron-left mr-5"></i> -->
+                <!-- <div class="row">
+            <div class="col s12"> -->
+                <app-breadcrumbs [breadCrumbs]="breadCrumbs"></app-breadcrumbs>
+                <!-- </div>
+        </div> -->
+                <div class="titleSeperator"></div>
+            </a>
+            <!-- <a class="col s6 pd-0 right-align"><i class="fas fa-trash-alt mr-5"></i><span>Delete</span></a> -->
+        </div>
+        <!-- <div class="col s12">
+        <h1 class="mt-20 mb-14">Subject line cras quis nulla commodo aliquam</h1>
+        <p class="date-detail mb-5">Wednesday, 12/02/2017 at 11:00am</p>
+        <div class="mt-20">
+            <p>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
+              Integer velit urna, sodales eget cursus non, iaculis ac est.
+              Nulla bibendum risus odio, eu pretium eros feugiat sed. Duis ut luctus neque, 
+              vitae ultricies sapien.
+            </p>
+        </div>
+       </div> -->
+        <div class="col s12" *ngIf="benefitTextType===0">
+            <h1 class="mt-20 mb-14">Eligibility Provisions</h1>
+            <div class="mt-20">
+                <p>
+                    Types of member who are eligible for coverage under your plan.
+                </p>
+            </div>
+        </div>
+        <div class="col s12" *ngIf="benefitTextType===1">
+            <h1 class="mt-20 mb-14">Claims Filling Limit</h1>
+            <div class="mt-20">
+                <p>
+                    When a claim should be filed by the provider or member.
+                </p>
+            </div>
+        </div>
+        <div class="col s12" *ngIf="benefitTextType===2">
+            <h1 class="mt-20 mb-14">Coordination of Benefits</h1>
+            <div class="mt-20">
+                <p>
+                    How your plan will coordinate payments of covered services with other insureance plans.
+                </p>
+            </div>
+        </div>
+        <div class="col s12" *ngIf="benefitTextType===3">
+            <h1 class="mt-20 mb-14">Overall Plan Limitations &amp; Exclusions</h1>
+            <div class="mt-20">
+                <p>
+                    Describes coverage that is limited or excluded under your plan.
+                </p>
+            </div>
+        </div>
+        <!-- <div class="col s12 valign-wrapper mt-20 mb-20">
+            <img src="../../../../assets/images/medical-bill-upload.PNG" alt="" class="img-thumbnail" width="90" height="90">
+            <div class="col m11 s10">
+                <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
+                    fugiat nulla pariatur.
+                    <span class="hide-on-small-only">
+                        Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
+                        fugiat nulla pariatur.Duis aute irure dolor in reprehenderit in voluptate velit esse cillum
+                        dolore eu
+                        <span class="hide-on-med-and-down">
+                            fugiat nulla pariatur.Duis aute irure dolor in reprehenderit in voluptate velit esse cillum
+                            dolore eu
+                            fugiat nulla pariatur.Duis aute irure dolor in reprehenderit in voluptate velit esse cillum
+                            dolore eu
+                            fugiat nulla pariatur.
+                        </span>
+                    </span>
+                </p>
+            </div>
+        </div> -->
+
+        <section *ngIf="benefitTextType===1">
+            <div class="col s12 mb-20" *ngFor="let benefitTextItem of benefitText.claimFilingTextReply;let itr = index">
+                <br *ngIf="itr===0">
+                <p>
+                    {{benefitTextItem?.filingText}}
+                </p>
+            </div>
+        </section>
+        <section *ngIf="benefitTextType===2">
+            <div class="col s12 mb-20" *ngFor="let benefitTextItem of benefitText.COBTextReply;let itr = index">
+                <br *ngIf="itr===0">
+                <p>
+                    {{benefitTextItem?.COBTextValue}}
+                </p>
+            </div>
+        </section>
+        <!-- <div class="col s12">
+            <video controls src="https://myblue.bluecrossma.com/sites/g/files/csphws701/files/videos/BCBS_BlueBikes_MadeForChange_30_Final.mp4"
+                poster="https://myblue.bluecrossma.com/sites/g/files/csphws701/files/inline-images/bluebikes-video-screen_0.png"
+                width="620">
+                Your browser does not support the video tag.
+            </video>
+        </div>
+        <div class="col s12 mb-5">
+            <h2>H2 Subheader</h2>
+            <ul class="ml-20">
+                <li class="mb-20">
+                    <p>
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer velit urna, sodales eget
+                        cursus non, iaculis ac est. Nulla
+                        bibendum risus odio, eu pretium eros bibendum risus odio, eu pretium eros feugiat sed. Duis ut
+                        luctus
+                        neque, vitae ultricies sapien. Nulla bibendum risus odio, eu pretium eros feugiat sed. Duis ut
+                        luctus
+                        neque, vitae ultricies sapien.
+                    </p>
+                </li>
+                <li class="mb-20">
+                    <p>
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer velit urna, sodales eget
+                        cursus non, iaculis ac est. Nulla
+                        bibendum risus odio, eu pretium eros bibendum risus odio, eu pretium eros feugiat sed. Duis ut
+                        luctus
+                        neque, vitae ultricies sapien. Nulla bibendum risus odio, eu pretium eros feugiat sed. Duis ut
+                        luctus
+                        neque, vitae ultricies sapien.
+                    </p>
+                </li>
+                <li class="mb-20">
+                    <p>
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer velit urna, sodales eget
+                        cursus non, iaculis ac est. Nulla
+                        bibendum risus odio, eu pretium eros bibendum risus odio, eu pretium eros feugiat sed. Duis ut
+                        luctus
+                        neque, vitae ultricies sapien. Nulla bibendum risus odio, eu pretium eros feugiat sed. Duis ut
+                        luctus
+                        neque, vitae ultricies sapien.
+                    </p>
+                </li>
+            </ul>
+        </div>
+         <div class="col l5 s12 offset-l3">
+            <button class="col s12 btn btn-primary">CTA</button>
+        </div>
+        <div class="col s12 mb-5">
+            <h3>H3 Subsubheader</h3>
+            <ol class="ml-20">
+                <li class="mb-20">
+                    <p>
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer velit urna, sodales eget
+                        cursus non, iaculis ac est. Nulla
+                        bibendum risus odio, eu pretium eros bibendum risus odio, eu pretium eros feugiat sed. Duis ut
+                        luctus
+                        neque, vitae ultricies sapien. Nulla bibendum risus odio, eu pretium eros feugiat sed. Duis ut
+                        luctus
+                        neque, vitae ultricies sapien.
+                    </p>
+                </li>
+                <li class="mb-20">
+                    <p>
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer velit urna, sodales eget
+                        cursus non, iaculis ac est. Nulla
+                        bibendum risus odio, eu pretium eros bibendum risus odio, eu pretium eros feugiat sed. Duis ut
+                        luctus
+                        neque, vitae ultricies sapien. Nulla bibendum risus odio, eu pretium eros feugiat sed. Duis ut
+                        luctus
+                        neque, vitae ultricies sapien.
+                    </p>
+                </li>
+                <li class="mb-20">
+                    <p>
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer velit urna, sodales eget
+                        cursus non, iaculis ac est. Nulla
+                        bibendum risus odio, eu pretium eros bibendum risus odio, eu pretium eros feugiat sed. Duis ut
+                        luctus
+                        neque, vitae ultricies sapien. Nulla bibendum risus odio, eu pretium eros feugiat sed. Duis ut
+                        luctus
+                        neque, vitae ultricies sapien.
+                    </p>
+                </li>
+            </ol>
+        </div>
+         <div class="col l5 s12 offset-l3">
+            <button class="col s12 btn btn-default center-align">Secondary CTA</button>
+        </div> -->
+        <section *ngIf="benefitTextType===0">
+            <div class="col s12 mt-mb-5 mb-10" *ngFor="let benefitTextItem of benefitText.eligibilityTextReply">
+                <h4>{{benefitTextItem?.eligibilityTypeName}}</h4>
+                <p>
+                    {{benefitTextItem?.eligibilityTextValue}}
+                </p>
+            </div>
+        </section>
+        <section *ngIf="benefitTextType===3">
+            <div class="col s12 mt-mb-5 mb-10" *ngFor="let benefitTextItem of benefitText.limitationTextReply">
+                <h4>{{benefitTextItem?.limitationTextHeader}}</h4>
+                <p>
+                    {{benefitTextItem?.limitationTextValue}}
+                </p>
+            </div>
+        </section>
+        <!-- <div class="col s12 mt-mb-5 mb-20">
+            <h5>H5 Subsubsubsubheader</h5>
+            <p>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer velit urna, sodales eget cursus non,
+                iaculis ac est. Nulla
+                bibendum risus odio, eu pretium eros bibendum risus odio, eu pretium eros feugiat sed. Duis ut luctus
+                neque, vitae ultricies sapien. Nulla bibendum risus odio, eu pretium eros feugiat sed. Duis ut luctus
+                neque, vitae ultricies sapien.
+            </p>
+        </div>
+        <div class="col s12 mb-5">
+            <h6>H6 Subsubsubsubsubheader</h6>
+            <p>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer velit urna, sodales eget cursus non,
+                iaculis ac est. Nulla
+                bibendum risus odio, eu pretium eros bibendum risus odio, eu pretium eros feugiat sed. Duis ut luctus
+                neque, vitae ultricies sapien. Nulla bibendum risus odio, eu pretium eros feugiat sed. Duis ut luctus
+                neque, vitae ultricies sapien.
+            </p>
+        </div> -->
+    </div>
+</div>

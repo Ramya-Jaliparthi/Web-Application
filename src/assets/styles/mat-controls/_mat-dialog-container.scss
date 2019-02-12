@@ -1,0 +1,20 @@
+@import '../_colors';
+.menu-dialog .mat-dialog-container {
+    padding: 0 !important;
+    overflow: visible !important;
+}
+
+.logo-dialog .mat-dialog-container {
+    padding: 0 !important;
+    overflow: visible !important;
+    background: $background-default-color;
+}
+
+.modal-pd-0 .mat-dialog-container {
+    padding: 0;
+    overflow: visible;
+    height: auto;
+    .mat-dialog-content {
+        margin: 0px;
+    }
+}

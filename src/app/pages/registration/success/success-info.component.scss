@@ -1,0 +1,60 @@
+@import '../../../../assets/styles/_variables';
+.login-action {
+    display: block;
+    padding: 10px;
+    border-radius: 2px;
+    color: $background-title-separator-color;
+    height: 47px;
+    p {
+        display: inline-block;
+        margin: 3px 0 0 4px;
+        font-size: 16px;
+    }
+    span {
+        float: right;
+        margin-top: 4px;
+    }
+}
+
+.span-height-width {
+    width: 11px;
+    height: 18px;
+}
+
+.svg-inline--fa.fa-w-10 {
+    width: 11px !important;
+    height: 18px !important;
+}
+
+.pad-10 {
+    padding-left: 10px
+}
+
+.border-style {
+    border-bottom-color: darkgrey;
+    border-bottom-width: 2px;
+}
+
+@media only screen and (max-width: 600px) {
+    .margin_success {
+        margin-left: -0.75rem;
+        margin-right: -0.75rem;
+    }
+}
+
+.override-fa-icon {
+    font-size: 1.2em;
+    margin-right: 10px;
+}
+
+.login-action {
+    border-radius: 0px !important;
+}
+
+.br-trl-B2 {
+  border-top: 1px solid $non-vdk-11-grey;
+  @media only screen and (min-width: 600px) {
+    border-left: 1px solid $non-vdk-11-grey;
+    border-right: 1px solid $non-vdk-11-grey;
+  }
+}

@@ -1,0 +1,251 @@
+@import '../../../../assets/styles/_fonts';
+@import '../../../../assets/styles/_variables';
+@import '../../../../assets/styles/Global';
+@import '../../../../assets/styles/_flex';
+@import '../../../../assets/styles/_filter-core';
+@import '../../../../assets/styles/_colors';
+
+.accountdetail-header {
+    margin-bottom: 20px;
+    .accountdetail-header-inner {
+        padding: 0;
+        @extend %flexbox;
+        @include flex-direction(row);
+        @include align-items(center);
+        @include justify-content(flex-start);
+        @media (max-width: 992px) {
+            @include align-items(flex-start);
+            @include justify-content(space-between);
+        }
+        
+    }
+    .tool-tip-div {
+        padding: 0 15px;
+        margin-top: 20px;
+        @media (max-width: 992px) {
+            padding: 0;
+        }
+    }
+    h1 {
+        // font-family: Roboto-Light; spk/code review - cant use fonts directly, should be used thru mixin
+        @include Roboto(light);
+        font-size: 24px;
+        // color: $headings-dark-color; spk/code review  - should include _colors and use from that only.
+        color: $headings-dark-color;
+        margin: 20px 0 0 0; //unit test fix
+        @media (max-width: 992px) {
+            margin-top: 20px; // unit test fix  
+        }
+    }
+}
+
+.remaining-container {
+    padding: 0 0 0 0;
+    @media (max-width: 992px) {
+        padding: 0;
+    }
+
+    .accountDetailItem{
+        margin-top: 20px;
+        display: flow-root;
+
+        &:first-child {
+            margin-top: 0;
+        }
+    }
+
+    &:first-child {
+        margin-top: 0 !important;
+    }
+}
+
+.main-container {
+    @media (max-width: 992px) {
+        margin-bottom: 0;
+        .hideMainCont {
+            display: none;
+        }
+    }
+}
+
+.accountDetailSection {
+    // border-bottom: 1px solid $textbox-borderx-border; spk/code review  - should include _colors and use from that only.
+    border-bottom: 1px solid $file-card-border-color;
+    
+    @media (max-width: 992px) {
+        padding: 5px 15px;
+    }
+    @media (min-width: 993px) {
+        // border: 1px solid $textbox-borderx-border; spk/code review  - should include _colors and use from that only.
+        border: 1px solid $file-card-border-color;
+        padding: 5px 15px;
+    }
+    h4 {
+        @include Roboto(light);
+        font-size: 12px !important;
+        // color: $headings-dark-color; spk/code review  - should include _colors and use from that only.
+        color: $black_color;
+        line-height: 14px;
+        margin-bottom: 0;
+        margin-top: 15px;
+
+        span {
+            @include Roboto(regular);
+        }
+    }
+}
+
+.link-container {
+    padding-right: 0;
+
+    @media (max-width: 992px) {
+        padding: 0;
+    }
+
+    .rightSideDetails {
+       
+        margin-bottom: 20px;
+        width: 100% !important;
+        text-align: left;
+        cursor: pointer;
+        border: 1px solid $file-card-border-color;
+        @media (max-width: 992px) {
+            padding: 0;
+            margin: 0;
+            border: 0;
+            border-bottom: 1px solid $file-card-border-color;
+        }
+
+        ::ng-deep {
+            .mat-expansion-panel {
+                display: inherit;
+                box-shadow: none !important;
+            }
+
+            .header-panel.mat-expansion-panel-header {
+                padding-top: 10px;
+                padding-bottom: 10px;
+                margin-left: 0 !important;
+                padding-left: 1rem !important;
+                @media (max-width: 992px) {
+                    @include Roboto(bold);
+                    font-size: 13px;
+                }
+                letter-spacing: -0.26px;
+                color: $link-secondary-color !important;
+                padding: 0 18px;
+            }
+
+            .header-panel > .mat-expansion-indicator:after {
+                margin: -10px 0 0px 0px !important;
+                padding: 2px !important;
+                color: $headings-dark-color !important;
+                width: 10px;
+                height: 10px;
+                border-left-color: transparent;
+            }  
+
+            .mat-list-item{
+                height: 40px;
+
+                &:last-child {
+                    height: 45px;
+                }
+            }
+
+            .matListFamilyContent.mat-list-item{
+                height: 60px;
+
+                @media (max-width: 992px) {
+                    height: 40px;
+                }
+            }
+
+            .mat-list-item-content{
+                display: inherit !important;
+
+                @media (max-width: 992px) {
+                    padding: 0 16px 0 14px;
+                }
+            }
+
+            .matListFamilyContent .mat-list-item-content {
+                @include Roboto(light);
+                font-size: 14px;
+                color: $light-text-color !important;
+                border-bottom: 0px !important;
+            }
+
+            .mat-list-item-content>div.matListContentDiv {
+                @include Roboto(medium);
+                font-size: 12px;
+                color: $black_color;
+                border-bottom: 1px solid $file-card-border-color;
+                height: 24px;
+                text-transform: capitalize;
+            }
+
+            .mat-list-item-content>div span.activeColumn{
+                float: right;
+            }
+
+        }
+
+    }
+   
+}
+
+// containers should be removed
+@media (max-width: 992px) {
+    .container {
+        width: 100%;
+    }
+}
+
+@media (min-width: 993px) {
+    .accountDetailSection:last-child {
+        border-bottom-width: 1px;
+    }
+}
+
+
+::ng-deep {
+    @media (min-width: 993px) {
+     
+        .link-container {
+    
+            .rightSideDetails {
+                
+                border: none !important;
+                margin-bottom: 0px !important;
+                
+                .mat-expansion-panel {
+                    cursor: default;
+                }
+                .header-panel {
+                    &.mat-expansion-panel-header {
+                        pointer-events: none;
+
+                        @include Roboto(light);
+                        font-size: 18px;
+                        height: auto !important;
+                        
+                        .mat-expansion-indicator {
+                            display: none;    
+                        }
+                    }
+                }
+                .mat-expansion-panel-content {
+                    height: auto !important;
+                    visibility: visible !important;
+                }
+            }
+        } 
+    }
+}
+
+@media (max-width: 993px) {
+  .accountdetail-header-inner {
+    padding: 0 15px !important;
+  }
+}

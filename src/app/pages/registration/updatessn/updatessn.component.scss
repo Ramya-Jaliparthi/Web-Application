@@ -1,0 +1,148 @@
+@import '../../../../assets/styles/_include';
+.input-group-addon {
+    cursor: pointer;
+    &.show-class {}
+    &.hide-class {
+        background-color: $non-vdk-3-grey;
+    }
+}
+
+.password-block {
+    position: relative;
+}
+
+.password-block .input-group-addon {
+    position: absolute;
+    right: 0px;
+    top: 20px;
+    text-align: center;
+}
+
+.ssn-header {
+    color: $header-color;
+    font-size: $header-font-size;
+    @include Roboto(light);
+    margin: 20px 0px !important;
+}
+
+.form-control-label {
+    font-size: $font-size-base;
+}
+
+.no-social-number {
+    text-align: center;
+    @include Roboto(bold);
+    cursor: pointer;
+    text-decoration: underline;
+    a {
+        color: $link-primary-color;
+        font-size: $link-font-size;
+        padding: 20px;
+    }
+    a:hover {
+        text-decoration: underline;
+        color: $link-secondary-color;
+        ;
+    }
+    a:focus {
+        text-decoration: underline;
+        color: $new-color;
+    }
+}
+
+.field-required-indicator {
+    margin-top: 20px;
+    text-align: left;
+    color: $required-indicator-color;
+}
+
+.questions-link {
+    padding: 0px 0px 30px;
+    a {
+        color: $background-title-separator-color;
+        text-decoration: none;
+        font-size: 16px;
+        cursor: pointer;
+        @include Roboto(bold);
+    }
+    .fa-key {
+        color: $background-title-separator-color;
+        margin: 0px 5px;
+    }
+    .questions-header {
+        label {
+            color: $header-color;
+            font-size: 20px;
+            @include Roboto(bold);
+        }
+    }
+}
+
+.questions-link-medicare {
+    .questions-header {
+        label {
+            color: black;
+            font-size: 20px;
+            @include Roboto(bold);
+        }
+    }
+    a {
+        color: #4D4D4D;
+        text-decoration: underline;
+        font-size: 16px;
+        cursor: pointer;
+        font-weight: 500;
+    }
+}
+
+.answer-questions {
+    color: $link-primary-color;
+    text-decoration: underline;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.answer-questions:hover {
+    cursor: pointer;
+    color: $link-secondary-color;
+}
+
+.answer-questions:focus {
+    cursor: pointer;
+    color: $link-color;
+}
+
+.text-ssn {
+    color: $text-disabled-gray !important;
+    font-size: 16px;
+}
+
+.ssn-divider {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding-top: 30px;
+    .ssn-line {
+        flex: 1;
+        border-top: 2px solid #DDD;
+    }
+    .ssn-divider-word {
+      min-height: 20px;
+      padding: 0 10px;
+      color: #4D4D4D;
+      font-size: 20px !important;
+    }
+}
+.ssn-questions-divider {
+    border-top: 2px solid #DDD;
+    margin-bottom: 30px;
+}
+
+@media (max-width: 992px) {
+    .ssn-divider {
+        margin: 0px -15px;
+    }
+    .ssn-questions-divider {
+        margin: 0px -15px 30px;
+    }
+}

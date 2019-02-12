@@ -1,0 +1,42 @@
+<section class="message-center-no-docs-found-comp">
+  <div class="row" *ngIf="!noSearchResultsMode">
+    <div class="col s12">
+      <h1 class="mt-20 mb-30">{{componentMode.title || messageCenterNoDocsFoundPageModel.title}}</h1>
+    </div>
+  </div>
+  <div *ngIf="!noSearchResultsMode" class="row">
+    <div class="flex-container">
+      <div class="col l8 s12">
+        <p class="no-uploads-icon center-align">
+          <img src="../../../../assets/images/no_uploads.svg">
+        </p>
+        <p class="mt-10 no-docs-message-bold">
+          {{messageCenterNoDocsFoundPageModel.noDocsMessage}}
+        </p>
+        <p class="mt-14 mb-30 no-docs-message-regular">
+          {{messageCenterNoDocsFoundPageModel.containerInfo}}
+        </p>
+      </div>
+      <div class="col l4 s12">
+        <app-fpo-layout [targetUrl]="fpoUrl"></app-fpo-layout>
+      </div>
+    </div>
+  </div>
+
+
+  <div *ngIf="noSearchResultsMode" class="no-search-results-mode">
+
+    <p>Oops. We couldn't find any results for the applied filters.</p>
+    <button mat-raised-button type="button" (click)="triggerFilterComponentClearButtonClick($event)">
+      Clear Filters
+    </button>
+
+    <p class="search-option-header">Or try filtering by:</p>
+    <ul>
+      <li>Category</li>
+      <li>Date</li>
+    </ul>
+
+  </div>
+
+</section>

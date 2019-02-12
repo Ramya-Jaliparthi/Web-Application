@@ -1,0 +1,123 @@
+@import '../../../assets/styles/_include';
+.nav-drop-down {
+    position: relative;
+    a,
+    p {
+        line-height: 25px;
+    }
+    p {
+        @include Roboto(bold);
+    }
+    max-height: 0;
+    transition: max-height .3s;
+    padding: 0;
+    overflow: hidden;
+    &.open {
+        max-height: 300px;
+    }
+}
+
+.close-button {
+    height: 65px;
+}
+
+.menu-bar {
+    nav {
+        background-color: white;
+        box-shadow: none;
+        // height: 0px;
+    }
+    .menu-active {
+        border-bottom: 4px solid black;
+        height: 50px;
+    }
+    a:hover {
+        background-color: unset;
+    }
+}
+
+.side-nav {
+    //top: 15%;
+    .chevron-right {
+        right: 0;
+        font-size: 50px;
+    }
+}
+
+.sign-out-button {
+    padding: 1.5rem;
+    text-align: right;
+}
+
+.mobile-breadcrumb {}
+
+.sesstion-timeout-modal {
+  padding: 15px;
+  background: $white_background;
+  top: 15% !important;
+  overflow: hidden;
+  .modal-header {
+    display: flex;
+    justify-content: space-between;
+    padding-bottom: 15px;
+    border-bottom: 2px solid $non-vdk-32-grey;
+    .bcbsma-logo {
+      height: 51px;
+      width: 133px;
+    }
+
+    .modal-close {
+      svg {
+        color: $non-vdk-3-grey;
+        width: .556em !important;
+      }
+    }
+  }
+  .modal-body {
+    padding: 20px 0 10px 0;
+    p {
+      @include Roboto(bold);
+      font-size: 18px;
+      line-height: 24px;
+      letter-spacing: -0.01px;
+      .phone-link {
+        color: #043167;
+        text-decoration: underline;
+      }
+    }
+    .action-container {
+      display: flex;
+      justify-content: space-around;
+      padding-top: 30px;
+      button {
+        font-size: 16px;
+        width: 290px;
+      }
+      .btn-primary {
+        color: white;
+      }
+      .secondary {
+        color: $primary-color;
+      }
+      button:nth-child(2) {
+        margin-left: 20px;
+      }
+    }
+  }
+}
+@media (max-width: 992px) {
+  .sesstion-timeout-modal {
+    width: 100% !important;
+    top:27.8% !important;
+    .modal-body {
+      .action-container {
+        flex-direction: column-reverse;
+        align-items: center;
+        button:nth-child(2) {
+          margin-bottom: 20px;
+          margin-left: 0;
+        }
+      }
+    }
+  }
+}

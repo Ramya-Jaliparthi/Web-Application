@@ -1,0 +1,11 @@
+@import '../../../../assets/styles/_include';
+.dynamic-promotional-content-component {
+    .promotional-material {
+        background-color: $background-gray-color;
+        p {
+            @include Roboto(bold);
+            font-size: 16px;
+            color: $black-text;
+        }
+    }
+}

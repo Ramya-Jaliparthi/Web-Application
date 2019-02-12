@@ -1,0 +1,54 @@
+<div class="row m-0">
+    <h1 class="form-header">Verification Code</h1>
+    <p class="mb-10 font-16-grey">A 6-digit verification code has been sent to {{maskedUserId}}. Please enter it below.</p>
+
+    <form novalidate [formGroup]="verifyaccesscodeForm" (submit)="onSubmit()" autocomplete="off">
+        <div class="card-content">
+            <div class="row mb-10 fix-left-right-margin">
+                <div [ngClass]="{'error': verifyaccesscodeFormValidator.isError}">
+                    <div class="col s2">
+                        <input matInput appAutofocus appNumberOnly tabindex="1" placeholder="" class="access-code" aria-label="accesscode" #accesscode1
+                            type="text" formControlName="accesscode1" (keyup)="onKeyUp($event, undefined, accesscode2,verifyaccesscodeForm)"
+                            (paste)="splitAndPlacePastedValues($event,verifyaccesscodeForm)" required />
+                    </div>
+                    <div class="col s2">
+                        <input matInput appNumberOnly tabindex="2" placeholder="" class="access-code" aria-label="accesscode" #accesscode2 type="text"
+                            formControlName="accesscode2" (paste)="splitAndPlacePastedValues($event,verifyaccesscodeForm)" (keyup)="onKeyUp($event, accesscode1, accesscode3,verifyaccesscodeForm)"
+                            required/>
+                    </div>
+                    <div class="col s2">
+                        <input matInput appNumberOnly tabindex="3" placeholder="" class="access-code" aria-label="accesscode" #accesscode3 type="text"
+                            formControlName="accesscode3" (paste)="splitAndPlacePastedValues($event,verifyaccesscodeForm)" (keyup)="onKeyUp($event, accesscode2, accesscode4,verifyaccesscodeForm)"
+                            required />
+                    </div>
+                    <div class="col s2">
+                        <input matInput appNumberOnly tabindex="4" placeholder="" class="access-code" aria-label="accesscode" #accesscode4 type="text"
+                            formControlName="accesscode4" (paste)="splitAndPlacePastedValues($event,verifyaccesscodeForm)" (keyup)="onKeyUp($event, accesscode3, accesscode5,verifyaccesscodeForm)"
+                            required />
+                    </div>
+                    <div class="col s2">
+                        <input matInput appNumberOnly tabindex="5" placeholder="" class="access-code" aria-label="accesscode" #accesscode5 type="text"
+                            formControlName="accesscode5" (paste)="splitAndPlacePastedValues($event,verifyaccesscodeForm)" (keyup)="onKeyUp($event, accesscode4, accesscode6,verifyaccesscodeForm)"
+                            required />
+                    </div>
+                    <div class="col s2">
+                        <input matInput appNumberOnly tabindex="6" (paste)="splitAndPlacePastedValues($event,verifyaccesscodeForm)" (keyup)="onKeyUp($event, accesscode5, undefined,verifyaccesscodeForm)"
+                            placeholder="" class="access-code" aria-label="accesscode" #accesscode6 type="text" formControlName="accesscode6"
+                            required />
+                    </div>
+                </div>
+            </div>
+
+            <div class="mt-25 mb-10 verify-text">
+                <p class="m-0">Didn't get your verification code?</p>
+                <a tabindex="7" class="cursor-pointer underline anchor-text" aria-label="Send it again." (click)="this.sendAccessCode()">Send it again.</a>
+            </div>
+
+        </div>
+        <div class="submit-action">
+            <button tabindex="8" class="waves-effect waves-light btn btn-block  mt-20 mb-20 btn-full-width br-8" type="submit" aria-label="Continue"
+                name="action" [disabled]="!verifyaccesscodeForm.valid">Continue</button>
+        </div>
+
+    </form>
+</div>

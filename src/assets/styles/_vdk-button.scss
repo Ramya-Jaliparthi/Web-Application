@@ -1,0 +1,57 @@
+@import './_colors';
+@import './fonts';
+@import './_vdk-colors.scss';
+
+/* Buttons */
+
+%btn{
+    @include Roboto(bold);
+    font-size: 16px;
+    border-radius:5px;
+    letter-spacing: -0.01px;
+    line-height:normal;
+    &:hover,&:hover[disabled]{
+        box-shadow:none; 
+        background:none;
+    }
+}
+
+.btn-primary{
+    @extend %btn;
+    color:$text-white-color;
+    
+    &:hover{
+        background: $link-secondary-color;
+    }
+    
+    &, &:focus{
+        background: $link-primary-color;
+    }
+  
+}
+
+.btn-secondary{
+    @extend %btn;
+    color:$text-primary-color;
+    
+    &:hover{
+        background: $button_hover_background!important;
+        color:$link-secondary-color;
+    }
+
+    @at-root{
+       .btn[disabled],&, &:focus{
+            background: $background-white-color!important;
+       } 
+    }
+ 
+}
+
+ .btn[disabled]{
+    @extend %btn;
+    color:$non-vdk-11-grey!important;
+    border :3px solid $non-vdk-32-grey;
+    cursor:not-allowed;
+    
+}
+

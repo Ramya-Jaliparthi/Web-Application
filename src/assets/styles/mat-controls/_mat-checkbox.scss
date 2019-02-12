@@ -1,0 +1,22 @@
+@import '../_colors';
+.mat-pseudo-checkbox-checked::after {
+    border-left: 2px solid $text-primary-color !important;
+}
+
+.mat-pseudo-checkbox::after {
+    border-bottom: 2px solid $text-primary-color !important;
+}
+
+.mat-accent .mat-pseudo-checkbox-checked,
+.mat-accent .mat-pseudo-checkbox-indeterminate,
+.mat-pseudo-checkbox-checked,
+.mat-pseudo-checkbox-indeterminate {
+    background: $non-vdk-14-grey !important;
+}
+
+.mat-pseudo-checkbox-checked::after {
+    top: 6px !important;
+    width: 13px !important;
+    height: 6px !important;
+    left: 4px !important;
+}

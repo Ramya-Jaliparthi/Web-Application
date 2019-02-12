@@ -1,0 +1,18 @@
+<div [hidden]="!alert" class="alert card-panel mb-0" [ngClass]="alert?.cssClass">
+    <div class="row m-0">
+        <div class="col s0">
+            <div *ngIf="alert?.cssIcon === 'sentiment_satisfied'">
+                <!--<i class="far fa-check-circle fa-2x " style="color:#3DA148; width:18px; height:18px;" alt="alert satisfied"></i> -->
+                <img src="assets/images/icons/Success.svg" />
+            </div>
+            <div *ngIf="alert?.cssIcon === 'sentiment_dissatisfied'">
+                <!-- <i class="fas fa-exclamation-circle fa-2x" style="color:#C1272D; width:18px; height:18px;" alt="alert error"></i>-->
+                <img src="assets/images/icons/Error.svg" />
+            </div>
+        </div>
+        <div class="col s10 ml-10">
+            <div *ngIf="alert?.title != ''">{{alert?.title}}</div>
+            <p [innerHTML]="alert?.message"></p>
+        </div>
+    </div>
+</div>

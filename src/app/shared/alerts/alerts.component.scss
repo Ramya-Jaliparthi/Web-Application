@@ -1,0 +1,71 @@
+@import '../../../assets/styles/_include.scss';
+.card-panel {
+    margin-top: 0px !important;
+    box-shadow: 0 0px 0px 0 rgba(0, 0, 0, 0), 0px 0px 0px 0 rgba(0, 0, 0, 0), 0 0px 0px 0px rgba(0, 0, 0, 0);
+}
+
+.alert {
+    background: $content-background-color;
+    padding: 10px;
+    // border-left: solid 0.57rem;
+    border-left: solid 4px;
+    margin-right: 0px;
+    .col {
+        padding: 0;
+    }
+    div {
+        @include Roboto(bold);
+        color: $title-color;
+        margin: 0px;
+        font-size: 13px;
+    }
+    p {
+        @include Roboto(regular);
+        font-size: 13px;
+    }
+    &.alert-failure {
+        border-left-color: $alert_red;
+        border-radius: 0px;
+        h4,
+        .material-icons {
+            color: $title-color;
+            font-size: 1rem;
+        }
+    }
+    &.alert-success {
+        border-left-color: $success-alerts-color;
+        border-radius: 0px;
+        h4,
+        .material-icons {
+            color: $success-alerts-color;
+        }
+    }
+    &.alert-notification {
+        border-left-color: $notification-alerts-color;
+        border-radius: 0px;
+        .h4-header
+        {
+            @include Roboto(bold);
+            margin: 0px;
+            font-size: 13px;
+        }
+    }
+    &.alert-warning {
+        border-left-color: yellow;
+        border-radius: 0px;
+        h4,
+        .material-icons {
+            color: yellow;
+        }
+    }
+    img {
+        height: 18px;
+        width: 18px;
+    }
+}
+
+a.link-message {
+    color: $link-color;
+    @include Roboto(medium);
+    font-size: 16px;
+}

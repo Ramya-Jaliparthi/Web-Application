@@ -1,0 +1,452 @@
+<div style="margin-top:20px;">
+  <div class="row claim-details-container">
+    <div class="col pd-0 l8 m12 s12">
+      <div class="claim-details" *ngIf="claimDetails">
+        <div class="hide-on-large-only">
+          <app-breadcrumbs></app-breadcrumbs>
+        </div>
+        <div class="claim-details-header pb-0">
+          Claim Details
+        </div>
+        <div class="hide-on-small-only hide-on-med-only">
+          <app-breadcrumbs></app-breadcrumbs>
+        </div>
+        <div>
+          <!--<p class="claim-details-dependent-info" *ngIf="claimRecord.MemberInfo">{{claimRecord.MemberInfo | titlecase}}
+                    </p>-->
+          <p class="claim-details-dependent-info">{{claimDetails.memberName | titlecase}}
+            &#40;{{claimDetails.memberType}}&#41;
+          </p>
+        </div>
+        <div class="claim-details-number">
+          <span> Claim No.</span>
+          <span class="claim-details-number-label">{{claimDetails.claimId | claimid}}</span>
+        </div>
+        <div class="claim-details-status">
+          <span [ngClass]="{'completed': (claimDetails.claimStatus === 'Completed'), 'pending': (claimDetails.claimStatus === 'Pending')}">
+            <a (click)="navigateToDetails(claimDetails.claimId, claimDetails)" class="claim-details-status-link">{{claimDetails.claimStatus}}</a>
+          </span>
+        </div>
+        <div class="claim-details-description">
+          <p>This is a description that supports status of a claim. Typically it is associated with a
+            {{claimStatusLowerCaseDescription}}
+            claim.
+            <!--This is a description that supports the status of a claim. Typically it is associated with a denied claim.-->
+          </p>
+        </div>
+
+        <div class="claim-details-pharmacy-details">
+          <div class="pharmacy-name">
+            <span class="name"> {{claimDetails.providerName | titlecase}} </span>
+            <address class="address">{{providerAddress?.address1}}
+              <span *ngIf="providerAddress?.address2 !== ''">
+                , </span> {{providerAddress?.address2}}
+              <span *ngIf="providerAddress?.city !== ''">
+                , </span>
+              {{providerAddress?.city}} {{providerAddress?.state}} {{providerAddress?.zipcode}}</address>
+            <!--<span > 123 Main Street Boston, MA 12345</span>-->
+          </div>
+          <div class="pharmacy-contact-info">
+            <span class="phone-icon" *ngIf="providerAddress?.phone !== ''">
+              <i class="fas fa-phone"></i>
+            </span>
+            <a href="tel:{{providerAddress?.phone}}" class="phone" *ngIf="providerAddress?.phone !== ''">{{providerAddress?.phone}}</a>
+            <span class="directions-icon" *ngIf="providerAddress?.address1 !== '' && providerAddress?.city !== '' && providerAddress?.state !== ''">
+              <i class="fas fa-map-marker map-icon"></i>
+            </span>
+            <span class="directions" (click)="getDirections()" *ngIf="providerAddress?.address1 !== '' && providerAddress?.city !== '' && providerAddress?.state !== ''">
+              Get Directions </span>
+          </div>
+          <!-- <div class="rate-your-provider" *ngIf="!isRateProvided">
+            <a>
+              <span>
+                <i class="far fa-star"></i>
+              </span>
+              <span>Rate your visit with this provider</span>
+            </a>
+          </div> -->
+        </div>
+
+        <div class="claim-details-amount">
+          <div class="amount-covered">
+            <span class="amount"> ${{claimDetails.amountCovered?.toString().split('.')[0] ?
+              claimDetails.amountCovered.toString().split('.')[0]
+              : '0'}}
+              <sup style="font-size: 10px;left: -0.4em">{{claimDetails.amountCovered?.toString().split('.')[1] ?
+                claimDetails.amountCovered.toString().split('.')[1]
+                : '00'}}</sup>
+            </span>
+            <span class="amount-text"> Amount Covered</span>
+          </div>
+          <div class="amount-you-owe">
+            <span class="amount"> ${{claimDetails.amountOwed?.toString().split('.')[0]}}
+              <sup style="font-size: 10px;left: -0.4em">{{claimDetails.amountOwed?.toString().split('.')[1] ?
+                claimDetails.amountOwed.toString().split('.')[1] : '00'}}</sup>
+            </span>
+            <span class="amount-text"> Amount You Owe</span>
+          </div>
+        </div>
+        <div class="claim-details-service">
+          <span class="claim-service-label"> Date of Service:&nbsp;</span>
+          <span class="claim-service-date"> {{formattedDate(claimDetails.firstDateOfService)}} -
+            {{formattedDate(claimDetails.lastDateOfService)}}
+          </span>
+        </div>
+      </div>
+
+
+      <div *ngIf="claimDetails && claimDetails.claimStatus?.toLowerCase() === 'completed'">
+        <div class="claim-billing-breakdown" style="margin-bottom: 0">
+          <div class="claim-billing-breakdown-header">
+            Total Billing Breakdown for All Services
+          </div>
+          <div class="claim-expense-row">
+            <div class="claim-expense-label">
+              Amount charged by health care provider
+            </div>
+            <div class="claim-expense-value" [ngClass]="{ 'text-gray': claimTotals?.amountCharged <= 0 }">
+              ${{claimTotals?.amountCharged | number : '.2'}}
+            </div>
+          </div>
+          <div class="claim-expense-row">
+            <div class="claim-expense-label">
+              Amount allowed by Blue Cross
+            </div>
+            <div class="claim-expense-value" [ngClass]="{ 'text-gray': claimTotals?.amountAllowed <= 0 }">
+              ${{claimTotals?.amountAllowed | number : '.2'}}
+            </div>
+          </div>
+          <div class="claim-expense-row">
+            <div class="claim-expense-label">
+              Amount covered by Blue Cross
+            </div>
+            <div class="claim-expense-value" [ngClass]="{ 'text-gray': claimTotals?.amountCoveredByBCBS <= 0 }">
+              ${{claimTotals?.amountCoveredByBCBS | number : '.2'}}
+            </div>
+          </div>
+          <div class="claim-expense-row">
+            <div class="claim-expense-label">
+              Amount covered by Other Insurance
+            </div>
+            <div class="claim-expense-value" [ngClass]="{ 'text-gray': claimTotals?.amountCoveredByOthers <= 0 }">
+              ${{claimTotals?.amountCoveredByOthers | number : '.2'}}
+            </div>
+          </div>
+          <div class="claim-expense-row">
+            <div class="claim-expense-label">
+              Copayments
+            </div>
+            <div class="claim-expense-value" [ngClass]="{ 'text-gray': claimTotals?.coPayments <= 0 }">
+              ${{claimTotals?.coPayments | number : '.2'}}
+            </div>
+          </div>
+          <div class="claim-expense-row">
+            <div class="claim-expense-label">
+              Applies to deductible
+            </div>
+            <div class="claim-expense-value" [ngClass]="{ 'text-gray': claimTotals?.appliedToDeductible <= 0 }">
+              ${{claimTotals?.appliedToDeductible | number : '.2'}}
+            </div>
+          </div>
+          <div class="claim-expense-row">
+            <div class="claim-expense-label">
+              Co-insurance
+            </div>
+            <div class="claim-expense-value" [ngClass]="{ 'text-gray': claimTotals?.coinsurance <= 0 }">
+              ${{claimTotals?.coinsurance | number : '.2'}}
+            </div>
+          </div>
+          <div class="claim-expense-row">
+            <div class="claim-expense-label">
+              Not covered
+            </div>
+            <div class="claim-expense-value" [ngClass]="{ 'text-gray': claimTotals?.amountNotCovered <= 0 }">
+              ${{claimTotals?.amountNotCovered | number : '.2'}}
+            </div>
+          </div>
+          <div class="claim-expense-owe">
+            <div class="claim-expense-label">
+              What you owe
+            </div>
+            <div class="claim-expense-value">
+              ${{claimTotals?.amountOwed | number : '.2'}}
+            </div>
+          </div>
+          <!-- <div class="claim-Arcillary">
+              <div class="header">Ancillary</div>
+              <div class="place-holder-text">{{claimDetails.lineMsg ? claimDetails.lineMsg : 'Placeholder Text'}}</div>
+            </div>-->
+        </div>
+
+        <div class="col s12 pd-0" [ngClass]="{'add-border': !isExpanded}">
+
+          <mat-expansion-panel (opened)="toggleExpansionPanel(true)" (closed)="toggleExpansionPanel(false)">
+            <mat-expansion-panel-header class="header-panel" [expandedHeight]="expandedHeight">
+              <div class="billing-header">Billing Breakdown by Service</div>
+            </mat-expansion-panel-header>
+            <mat-panel-description>
+              <div class="billing-service">
+                <!--<div class="claim-billing-breakdown-service">
+                    <div class="claim-billing-breakdown-header">
+                      Medical Service
+                    </div>
+                    <div class="claim-expense-row">
+                      <div class="claim-expense-label">
+                        Amount charged by health care provider
+                      </div>
+                      <div class="claim-expense-value">
+                        $110.00
+                      </div>
+                    </div>
+                    <div class="claim-expense-row">
+                      <div class="claim-expense-label">
+                        Amount allowed by Blue Cross
+                      </div>
+                      <div class="claim-expense-value">
+                        $75.00
+                      </div>
+                    </div>
+                    <div class="claim-expense-row">
+                      <div class="claim-expense-label">
+                        Amount covered by Blue Cross
+                      </div>
+                      <div class="claim-expense-value">
+                        $0.00
+                      </div>
+                    </div>
+                    <div class="claim-expense-row">
+                      <div class="claim-expense-label">
+                        Amount covered by Other Insurance
+                      </div>
+                      <div class="claim-expense-value">
+                        $0.00
+                      </div>
+                    </div>
+                    <div class="claim-expense-row">
+                      <div class="claim-expense-label">
+                        Copayments
+                      </div>
+                      <div class="claim-expense-value">
+                        $0.00
+                      </div>
+                    </div>
+                    <div class="claim-expense-row">
+                      <div class="claim-expense-label">
+                        Applies to deductible
+                      </div>
+                      <div class="claim-expense-value">
+                        $78.00
+                      </div>
+                    </div>
+                    <div class="claim-expense-row">
+                      <div class="claim-expense-label">
+                        Not covered
+                      </div>
+                      <div class="claim-expense-value">
+                        $0.00
+                      </div>
+                    </div>
+                    <div class="claim-expense-owe">
+                      <div class="claim-expense-label">
+                        What you owe
+                      </div>
+                      <div class="claim-expense-value">
+                        $0.00
+                      </div>
+                    </div>
+                    <div class="claim-Arcillary">
+                      <div class="header">Ancillary</div>
+                      <div class="place-holder-text">Place holder text</div>
+                    </div>
+                  </div>-->
+                <div class="claim-billing-breakdown-service" *ngFor="let claimServiceLines of allClaimServiceLines">
+                  <div class="claim-billing-breakdown-header">
+                    {{claimDetails.visitType}} Service
+                  </div>
+
+                  <div class="claim-expense-row">
+                    <div class="claim-expense-label">
+                      Amount charged by health care provider
+                    </div>
+                    <div class="claim-expense-value" [ngClass]="{ 'text-gray': claimServiceLines?.amountCharged <= 0 }">
+                      ${{claimServiceLines?.amountCharged | number : '.2'}}
+                    </div>
+                  </div>
+                  <div class="claim-expense-row">
+                    <div class="claim-expense-label">
+                      Amount allowed by Blue Cross
+                    </div>
+                    <div class="claim-expense-value" [ngClass]="{ 'text-gray': claimServiceLines?.amountAllowed <= 0 }">
+                      ${{claimServiceLines?.amountAllowed | number : '.2'}}
+                    </div>
+                  </div>
+                  <div class="claim-expense-row">
+                    <div class="claim-expense-label">
+                      Amount covered by Blue Cross
+                    </div>
+                    <div class="claim-expense-value" [ngClass]="{ 'text-gray': claimServiceLines?.amountCoveredByBCBS <= 0 }">
+                      ${{claimServiceLines?.amountCoveredByBCBS | number : '.2'}}
+                    </div>
+                  </div>
+                  <div class="claim-expense-row">
+                    <div class="claim-expense-label">
+                      Amount covered by Other Insurance
+                    </div>
+                    <div class="claim-expense-value" [ngClass]="{ 'text-gray': claimServiceLines?.amountCoveredByOthers <= 0 }">
+                      ${{claimServiceLines?.amountCoveredByOthers | number : '.2'}}
+                    </div>
+                  </div>
+                  <div class="claim-expense-row">
+                    <div class="claim-expense-label">
+                      Copayments
+                    </div>
+                    <div class="claim-expense-value" [ngClass]="{ 'text-gray': claimServiceLines?.coPayments <= 0 }">
+                      ${{claimServiceLines?.coPayments | number : '.2'}}
+                    </div>
+                  </div>
+                  <div class="claim-expense-row">
+                    <div class="claim-expense-label">
+                      Applies to deductible
+                    </div>
+                    <div class="claim-expense-value" [ngClass]="{ 'text-gray': claimServiceLines?.appliedToDeductible <= 0 }">
+                      ${{claimServiceLines?.appliedToDeductible | number : '.2'}}
+                    </div>
+                  </div>
+                  <div class="claim-expense-row">
+                    <div class="claim-expense-label">
+                      Co-insurance
+                    </div>
+                    <div class="claim-expense-value" [ngClass]="{ 'text-gray': claimServiceLines?.coinsurance <= 0 }">
+                      ${{claimServiceLines?.coinsurance | number : '.2'}}
+                    </div>
+                  </div>
+                  <div class="claim-expense-row">
+                    <div class="claim-expense-label">
+                      Not covered
+                    </div>
+                    <div class="claim-expense-value" [ngClass]="{ 'text-gray': claimServiceLines?.amountNotCovered <= 0 }">
+                      ${{claimServiceLines?.amountNotCovered | number : '.2'}}
+                    </div>
+                  </div>
+                  <div class="claim-expense-owe">
+                    <div class="claim-expense-label">
+                      What you owe
+                    </div>
+                    <div class="claim-expense-value">
+                      ${{claimServiceLines?.amountOwed | number : '.2'}}
+                    </div>
+                  </div>
+
+                  <!-- <div class="claim-Arcillary">
+                      <div class="header">Ancillary</div>
+                      <div class="place-holder-text">Place holder text</div>
+                    </div>-->
+                </div>
+              </div>
+
+
+            </mat-panel-description>
+          </mat-expansion-panel>
+
+          <div class="filter-divider"></div>
+        </div>
+        <!--<div class="col s12 pd-0 external-link-item" *ngIf="!claimDetails.medexFlag">-->
+        <div class="col s12 pd-0 external-link-item" *ngIf="claimDetails.eobLinkName">
+          <a href="javascript:void(0)" (click)="loadBenefitsDocument()">
+            <span style="vertical-align: middle">
+              <i class="fas fa-external-link-alt"></i>
+            </span>
+            <span *ngIf="claimDetails.eobLinkName !== ''">
+              {{claimDetails.eobLinkName}}
+              <!--Explanation of Benefits-->
+            </span>
+
+          </a>
+
+        </div>
+        <div class="col s12 pd-0 external-link-item" *ngIf="claimDetails.eobMessage">
+
+          <span *ngIf="claimDetails.eobMessage != ''" class="claim-details-description">
+            {{claimDetails.eobMessage}}
+            <!--Explanation of Benefits-->
+          </span>
+        </div>
+
+        <!--<div class="col s12 pd-0 external-link-item" *ngIf="claimDetails.medexFlag">
+            <a>
+              <span style="vertical-align: middle">
+                <i class="fas fa-external-link-alt"></i>
+              </span>
+              <span>{{claimDetails.eobLinkName}} Summary of Health Plan Benefits</span>
+            </a>
+          </div>-->
+      </div>
+
+
+    </div>
+
+    <div class="col l4 m12 s12 pd-0 dynamic-content ">
+      <div class="details-right-link mobile-container">
+        <div class="other-actions-container">
+          <div class="header">
+            Looking for something else?
+          </div>
+          <div class="action-label" routerLink="/mydedco">
+            <div class="icon">
+              <i class="fas fa-external-link-alt"></i>
+            </div>
+            <div class="text">
+              <a>View Deductible Balances </a>
+            </div>
+          </div>
+          <div class="action-label" (click)="openSSO('algOrHeq')" *ngIf="showFinancialLink">
+            <div class="icon">
+              <i class="fas fa-external-link-alt"></i>
+            </div>
+            <div class="text">
+              <a>Go to My Financials</a>
+            </div>
+          </div>
+          <div class="action-label" (click)="openSSO('heq')" *ngIf="showHEQALGFinancialLink">
+            <div class="icon">
+              <i class="fas fa-external-link-alt"></i>
+            </div>
+            <div class="text">
+              <a>Go to my HealthEquity financial account(s)</a>
+            </div>
+          </div>
+          <div class="action-label" (click)="openSSO('alg')" *ngIf="showHEQALGFinancialLink">
+            <div class="icon">
+              <i class="fas fa-external-link-alt"></i>
+            </div>
+            <div class="text">
+              <a>Go to my Blue Cross health financial account(s)</a>
+            </div>
+          </div>
+          <div class="action-label" (click)="openSSO('connecture')" *ngIf="claimDetails?.directPayIndicator">
+            <div class="icon">
+              <i class="fas fa-external-link-alt"></i>
+            </div>
+            <div class="text">
+              <a>Pay My Bill (Direct Pay) </a>
+            </div>
+          </div>
+          <div class="action-label" style="padding-bottom: 20px" (click)="openContactsUs()">
+            <div class="icon">
+              <i class="fas fa-phone"></i>
+            </div>
+            <div class="text">
+              <a>Contact Us </a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div style="height: 20px; background: #FFF">
+
+      </div>
+      <div class="details-right-link-fpo drupal-content mb-0">
+        <app-fpo-layout [targetUrl]='fpoTargetUrl' [displayCategory]="'profile'"></app-fpo-layout>
+      </div>
+    </div>
+  </div>
+</div>

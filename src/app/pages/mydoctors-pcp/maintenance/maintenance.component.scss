@@ -1,0 +1,138 @@
+@import '../../../../assets/styles/_colors';
+@import '../../../../assets/styles/_fonts';
+
+.flex {
+    display: flex;
+}
+
+.fit-container {
+    width: 100%;
+    height: 100%;
+}
+
+.flex-grow-1 {
+    flex-grow: 1;
+}
+
+.flex-box {
+    display: flex;
+    flex-wrap: wrap;
+    @media (max-width: 992px) {
+        margin: 0;
+    }
+    .collection {
+        flex: 0 1 100%;
+        margin: 10px;
+        padding: 20px;
+        cursor: pointer;
+        @media (max-width: 992px) {
+            min-width: 100%;
+            margin: 10px 0 0;
+        }
+    }
+    svg {
+      width: 1.125em;
+    }
+}
+
+.no-page-found {
+    color: $headings-dark-color;
+    @include Roboto(light);
+    font-size: 16px;
+    margin: 0px 10px;
+}
+
+.no-page-found-mobile {
+    color: $headings-dark-color;
+    @include Roboto(light);
+    font-size: 12px;
+}
+
+.icons-class {
+    color: $headings-dark-color;
+    font-size: 22px;
+}
+
+.folder-card {
+    @include Roboto(bold);
+    color: $primary-color;
+    font-size: 16px;
+}
+
+.valign-wrapper {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+}
+
+.maintenance-container {
+    display: flex;
+    .col {
+        flex: 1;
+    }
+    .link-container {
+        padding-top: 50px;
+    }
+    .img-container {
+        padding: 0;
+        .no-page-found-mobile {
+            display: none;
+        }
+    }
+    .details-action {
+      display: flex;
+      align-items: center;
+      margin-right: 1px;
+      i {
+        color: $header-color;
+        cursor: pointer;
+      }
+
+      svg {
+        color: $header-color;
+        cursor: pointer;
+        width: 18px;
+        height: 18px;
+      }
+
+
+    }
+}
+
+@media (max-width: 992px) {
+    .maintenance-container {
+        flex-direction: column;
+        padding-top: 0;
+        .col {
+            padding: 0;
+            flex: none;
+        }
+        .no-page-found {
+            display: none;
+        }
+        .link-container {
+            padding: 0 15px;
+        }
+        .img-container {
+            position: relative;
+            .no-page-found-mobile {
+                display: block;
+                position: absolute;
+                top: 40px;
+                left: 40%;
+                margin-right:15px;
+            }
+            img {
+                height: 196px;
+                width: 50%;
+            }
+        }
+    }
+
+    .margin-40 {
+      margin: 10px 0 40px 0 !important;
+    }
+}

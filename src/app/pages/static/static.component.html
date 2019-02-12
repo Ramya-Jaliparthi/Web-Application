@@ -1,0 +1,16 @@
+<div class="row container-width">
+    <div class="col s12 pr-15 pl-15">
+        <div class="layoutCentered">
+            <div class="text-right pt-15 flex flex-row-reverse" *ngIf="!displayClose">
+                <a class="black-text modal-close-right cursor-pointer" (click)="closeScreen()">
+                    <i class="material-icons ft-30">close</i>
+                </a>
+            </div>
+            <router-outlet></router-outlet>
+            <div class="submit-action" *ngIf="displayClose">
+                <button tabindex="0" class="btn waves-effect waves-light mt-mb-5 btn-full-width btn-color br-8" type="button" (click)="closeScreen();"
+                    name="action" aria-label="Back">Back</button>
+            </div>
+        </div>
+    </div>
+</div>

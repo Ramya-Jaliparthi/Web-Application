@@ -1,0 +1,502 @@
+<div class="row main-container request-estimate-container m-0">
+  <div class="col l8 m12 s12 mb-20 main-content">
+    <header>
+      <div *ngIf="ismobile">
+        <app-breadcrumbs></app-breadcrumbs>
+      </div>
+
+      <h1 class="header">Request a Written Cost Estimate for Health Care </h1>
+      <div *ngIf="!ismobile">
+        <app-breadcrumbs></app-breadcrumbs>
+      </div>
+    </header>
+
+    <p class="header-text pt-0">The information you provide will be used to calculate your written estimate for medical procedures and treatments in
+      Massachusetts. Once your request is complete and we've confirmed all necessary information, we'll respond within two
+      business days.</p>
+    <div class="link-container">
+      <a (click)="openSsoUrl('/fad')">
+        <p>
+          <span>Looking for something quicker?</span>
+          <span class="lint-desc">Get Your Cost Estimate Online. Use Find a Doctor & Estimate Costs to get estimates for over 1,600 common medical
+            procedures.
+          </span>
+        </p>
+
+        <span class="icon-arrow">
+          <i class="far fa-chevron-right long-text"></i>
+        </span>
+      </a>
+    </div>
+    <div class="form-error-stretch">
+      <app-alerts scope="estimate-form-scope"></app-alerts>
+    </div>
+    <div class="questions-container">
+      <form [formGroup]="requestEstimateForm" (ngSubmit)="onSubmit()" novalidate>
+        <section class="estimate-eligibility row">
+          <header>
+            <h2>Written Estimate Eligibility</h2>
+          </header>
+          <div class="input-item">
+            <p class="question-text">Is your healthcare provider delivering treatment in Massachusetts?*</p>
+            <mat-radio-group formControlName="estimateEligibility" (change)="eligibilityChanged($event);">
+              <mat-radio-button class="question-option" [value]="requestEstimateConstants['YES']">{{ requestEstimateConstants['YES'] }}</mat-radio-button>
+              <mat-radio-button class="question-option" [value]="requestEstimateConstants['NO']">{{ requestEstimateConstants['NO'] }}</mat-radio-button>
+            </mat-radio-group>
+          </div>
+          <div class="form-error-stretch">
+            <app-alerts scope="eligibility-scope"></app-alerts>
+          </div>
+        </section>
+        <ng-container *ngIf="isEligible">
+          <section class="patient-details row">
+            <header>
+              <h2>Patient Details</h2>
+            </header>
+            <div class="input-item input-field col s12 pd-0 mb-20">
+              <div>
+                <mat-form-field #patientField floatPlaceholder="never" class="col s12 pd-0 mat-inherit-underline">
+                  <mat-select id="patient" appMatSelectChange [parentFormField]="patientField" placeholder="Select" formControlName='patient'
+                    (selectionChange)="patientChanged($event);">
+                    <mat-option *ngFor='let item of patientList' [value]='item.name'>
+                      {{item.name | camelcase}}
+                    </mat-option>
+                  </mat-select>
+                </mat-form-field>
+                <app-control-messages [control]="requestEstimateForm.controls.patient" [customMessages]="customMessages.patient"></app-control-messages>
+              </div>
+              <label for="patient" class="active label-prefix-alt" [ngClass]="{'color-invalid': requestEstimateForm.controls['patient'].touched 
+                        && requestEstimateForm.controls['patient'].errors 
+                        && requestEstimateForm.controls['patient'].errors.required}">Who are you requesting an estimate for?*</label>
+            </div>
+            <div class="input-item input-field col s12 pd-0 mb-20">
+              <div [ngClass]="{'error': requestEstimateForm.controls['contactPhoneNumber'].errors && !requestEstimateForm.controls['contactPhoneNumber'].pristine}">
+                <input placeholder="" id="contactPhoneNumber" [textMask]="phoneMask" aria-labelledby="contactPhoneNumber" type="text" formControlName="contactPhoneNumber"
+                />
+                <label for="contactPhoneNumber" class="active label-prefix-alt">Contact Phone Number*</label>
+                <mat-hint class="mat-hint-message">
+                  <span class="font-13-grey">123-123-1234</span>
+                </mat-hint>
+                <app-control-messages [control]="requestEstimateForm.controls.contactPhoneNumber" [customMessages]="customMessages.contactPhoneNumber"></app-control-messages>
+              </div>
+            </div>
+          </section>
+
+          <section class="delivery row">
+            <header>
+              <h2>Delivery</h2>
+            </header>
+            <p class="question-text mb-20" [ngClass]="{'error': requestEstimateForm.get('deliveryFormGroup').controls['deliveryOption'].errors && !requestEstimateForm.get('deliveryFormGroup').controls['deliveryOption'].pristine}">How would you like your cost estimate delivered?*</p>
+            <div class="deliver-option" formGroupName="deliveryFormGroup">
+              <div>
+                <mat-radio-group formControlName="deliveryOption" required="true" (change)="deliveryOptionChanged($event);">
+                  <mat-radio-button class="question-option" [value]="requestEstimateConstants.EMAIL"></mat-radio-button>
+                  <mat-radio-button class="question-option" [value]="requestEstimateConstants.MAIL"></mat-radio-button>
+                </mat-radio-group>
+              </div>
+              <div>
+                <div class="input-item input-field col s12 mb-40">
+                  <div [ngClass]="{'error': requestEstimateForm.get('deliveryFormGroup').controls['deliveryEmail'].errors && !requestEstimateForm.get('deliveryFormGroup').controls['deliveryEmail'].pristine}">
+                    <input placeholder="" id="deliveryEmail" [readonly]="requestEstimateForm.get('deliveryFormGroup').controls['deliveryEmail'].readonly"
+                      aria-labelledby="deliveryEmail" type="text" formControlName="deliveryEmail" />
+                    <label for="deliveryEmail" class="active label-prefix-alt">Email</label>
+                    <app-control-messages class="pos-absolute" [control]="requestEstimateForm.get('deliveryFormGroup').controls.deliveryEmail"
+                      [customMessages]="customMessages.deliveryEmail"></app-control-messages>
+                  </div>
+                </div>
+                <div class="input-item input-field col s12 mb-20">
+                  <div [ngClass]="{'error': requestEstimateForm.get('deliveryFormGroup').controls['deliveryAddress1'].errors && !requestEstimateForm.get('deliveryFormGroup').controls['deliveryAddress1'].pristine}">
+                    <input placeholder="" id="deliveryAddress1" [readonly]="requestEstimateForm.get('deliveryFormGroup').controls['deliveryAddress1'].readonly"
+                      aria-labelledby="deliveryAddress1" type="text" formControlName="deliveryAddress1" />
+                    <label for="deliveryAddress1" class="active label-prefix-alt">Address</label>
+                    <app-control-messages [control]="requestEstimateForm.get('deliveryFormGroup').controls.deliveryAddress1" [customMessages]="customMessages.deliveryAddress1"></app-control-messages>
+                  </div>
+                </div>
+                <div class="input-item input-field col s12 mb-20">
+                  <div [ngClass]="{'error': requestEstimateForm.get('deliveryFormGroup').controls['deliveryAddress2'].errors && !requestEstimateForm.get('deliveryFormGroup').controls['deliveryAddress2'].pristine}">
+                    <input placeholder="" id="deliveryAddress2" [readonly]="requestEstimateForm.get('deliveryFormGroup').controls['deliveryAddress2'].readonly"
+                      aria-labelledby="deliveryAddress2" type="text" formControlName="deliveryAddress2" />
+                    <label for="deliveryAddress2" class="active label-prefix-alt">Address 2</label>
+                    <app-control-messages [control]="requestEstimateForm.get('deliveryFormGroup').controls.deliveryAddress2"></app-control-messages>
+                  </div>
+                </div>
+                <div class="input-item input-field col s12 mb-20">
+                  <div>
+                    <mat-form-field #stateField floatPlaceholder="never" class="col s12 pd-0 mat-inherit-underline">
+                      <mat-select tabindex="4" id="deliveryState" appMatSelectChange [parentFormField]="stateField" placeholder="Select One" formControlName='deliveryState'>
+                        <mat-option *ngFor='let options of statesList' [value]='options.value'>
+                          {{options.label}}
+                        </mat-option>
+                      </mat-select>
+                    </mat-form-field>
+                  </div>
+                  <label for="deliveryState" class="active label-prefix-alt" [ngClass]="{'color-invalid': requestEstimateForm.get('deliveryFormGroup').controls['deliveryState'].touched 
+                  && requestEstimateForm.get('deliveryFormGroup').controls['deliveryState'].errors 
+                  && requestEstimateForm.get('deliveryFormGroup').controls['deliveryState'].errors.required}">State</label>
+                </div>
+                <div class="input-item input-field col s12 mb-20">
+                  <div [ngClass]="{'error': requestEstimateForm.get('deliveryFormGroup').controls['deliveryCity'].errors && !requestEstimateForm.get('deliveryFormGroup').controls['deliveryCity'].pristine}">
+                    <input placeholder="" id="deliveryCity" aria-labelledby="deliveryCity" type="text" formControlName="deliveryCity" />
+                    <label for="deliveryCity" class="active label-prefix-alt">City</label>
+                    <app-control-messages [control]="requestEstimateForm.get('deliveryFormGroup').controls.deliveryCity" [customMessages]="customMessages.deliveryCity"></app-control-messages>
+                  </div>
+                </div>
+                <div class="input-item input-field col s12 mb-20">
+                  <div [ngClass]="{'error': requestEstimateForm.get('deliveryFormGroup').controls['deliveryZipCode'].errors && !requestEstimateForm.get('deliveryFormGroup').controls['deliveryZipCode'].pristine}">
+                    <input placeholder="" (change)="deliveryZipCodeChange($event)" type="text" id="deliveryZipCode" [readonly]="requestEstimateForm.get('deliveryFormGroup').controls['deliveryZipCode'].readonly"
+                      aria-labelledby="deliveryAddress2" maxlength="5" [textMask]="zipMask" formControlName="deliveryZipCode"
+                    />
+                    <label for="deliveryZipCode" class="active label-prefix-alt">Zip Code</label>
+                    <mat-hint class="mat-hint-message">
+                      <span class="font-13-grey">00000</span>
+                    </mat-hint>
+                    <app-control-messages [control]="requestEstimateForm.get('deliveryFormGroup').controls.deliveryZipCode" [customMessages]="customMessages.zipCode"></app-control-messages>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="input-item input-field col s12 pd-0 mb-20">
+              <p class="question-text">Please list out any specially formatted materials (e.g. Braille) needed or if you need the estimate in another
+                language
+              </p>
+              <div [ngClass]="{'error': requestEstimateForm.controls['materialRequirements'].errors && !requestEstimateForm.controls['materialRequirements'].pristine}">
+                <input placeholder="" id="materialRequirements" aria-labelledby="materialRequirements" type="text" formControlName="materialRequirements"
+                />
+                <app-control-messages [control]="requestEstimateForm.controls.materialRequirements"></app-control-messages>
+              </div>
+            </div>
+          </section>
+          <section class="medical-details row">
+            <header>
+              <h2>Medical Procedure or Treatment</h2>
+            </header>
+            <div class="input-item input-field col s12 pd-0 mb-30">
+              <p class="question-text">Please describe the procedure(s) or treatment(s) that you are requesting an estimate.
+              </p>
+              <p class="question-sub-text">(Example: I am request an estimate for a left knee replacement.)</p>
+              <div [ngClass]="{'error': requestEstimateForm.controls['materialProcedureDesc'].errors && !requestEstimateForm.controls['materialProcedureDesc'].pristine}">
+                <input placeholder="" id="materialProcedureDesc" aria-labelledby="materialProcedureDesc" type="text" formControlName="materialProcedureDesc"
+                />
+                <app-control-messages [control]="requestEstimateForm.controls.materialProcedureDesc"></app-control-messages>
+              </div>
+            </div>
+            <div class="input-item input-field col s12 pd-0 mb-30">
+              <div>
+                <mat-form-field #providerField floatPlaceholder="never" class="col s12 pd-0 mat-inherit-underline">
+                  <mat-select id="provider" appMatSelectChange [parentFormField]="providerField" formControlName='provider' placeholder="Select"
+                    (selectionChange)="providerChanged();">
+                    <mat-option *ngFor='let item of refinedProviderList' [value]='item.value'>
+                      <span *ngIf="item.label.toUpperCase()!=='OTHER'">{{item.label | titlecase | slice:0 :-2}} {{item.label | slice:-2}}</span>
+                      <span *ngIf="item.label.toUpperCase()==='OTHER'">{{item.label}}</span>
+                    </mat-option>
+                  </mat-select>
+                </mat-form-field>
+                <app-control-messages [control]="requestEstimateForm.controls.provider" [customMessages]="customMessages.provider"></app-control-messages>
+              </div>
+              <label for="provider" class="active label-prefix-alt" [ngClass]="{'color-invalid': requestEstimateForm.controls['provider'].touched 
+                          && requestEstimateForm.controls['provider'].errors 
+                          && requestEstimateForm.controls['provider'].errors.required}">Your Provider*
+              </label>
+            </div>
+            <div class="input-item input-field col s12 pd-0 mb-30">
+              <div [ngClass]="{'error': requestEstimateForm.controls['providerName'].errors && !requestEstimateForm.controls['providerName'].pristine}">
+                <input placeholder="" id="providerName" [readonly]="requestEstimateForm.controls['providerName'].readonly" aria-labelledby="providerName"
+                  type="text" formControlName="providerName" />
+                <label for="providerName" class="active label-prefix-alt">Physician/Provider Full Name*</label>
+                <app-control-messages [control]="requestEstimateForm.controls.providerName" [customMessages]="customMessages.providerName"></app-control-messages>
+              </div>
+            </div>
+            <div class="input-item input-field col s12 pd-0 mb-30">
+              <div [ngClass]="{'error': requestEstimateForm.controls['providerPhoneNumber'].errors && !requestEstimateForm.controls['providerPhoneNumber'].pristine}">
+                <input placeholder="" id="providerPhoneNumber" [readonly]="requestEstimateForm.controls['providerPhoneNumber'].readonly"
+                  [textMask]="phoneMask" aria-labelledby="providerPhoneNumber" type="text" formControlName="providerPhoneNumber"
+                />
+                <label for="providerPhoneNumber" class="active label-prefix-alt">Physician/Provider Phone Number*</label>
+                <mat-hint class="mat-hint-message">
+                  <span class="font-13-grey">123-123-1234</span>
+                </mat-hint>
+                <app-control-messages [control]="requestEstimateForm.controls.providerPhoneNumber" [customMessages]="customMessages.providerPhoneNumber"></app-control-messages>
+              </div>
+            </div>
+            <div formGroupName="facilityFormGroup">
+              <div class="input-item">
+                <p class="question-text">Are you having the service at a medical facility?</p>
+                <mat-radio-group formControlName="facilityIndicator" (change)="facilityIndicatorChanged($event)">
+                  <mat-radio-button class="question-option" [value]="requestEstimateConstants['NO']">{{ requestEstimateConstants['NO'] }}</mat-radio-button>
+                  <mat-radio-button class="question-option" [value]="requestEstimateConstants['YES']">{{ requestEstimateConstants['YES'] }}</mat-radio-button>
+                </mat-radio-group>
+              </div>
+              <div class="sub-details-shift row" *ngIf="isFacility">
+                <div class="input-item input-field col pd-0 s12 mb-20">
+                  <div [ngClass]="{'error': requestEstimateForm.get('facilityFormGroup').controls['facilityName'].errors && !requestEstimateForm.get('facilityFormGroup').controls['facilityName'].pristine}">
+                    <input placeholder="" id="facilityName" aria-labelledby="facilityName" type="text" formControlName="facilityName" />
+                    <label for="facilityName" class="active label-prefix-alt">Name of Facility</label>
+                    <app-control-messages [control]="requestEstimateForm.get('facilityFormGroup').controls.facilityName" [customMessages]="customMessages.facilityName"></app-control-messages>
+
+                  </div>
+                </div>
+
+                <div class="input-item input-field col pd-0 s12 mb-20">
+                  <div [ngClass]="{'error': requestEstimateForm.get('facilityFormGroup').controls['facilityAddress'].errors && !requestEstimateForm.get('facilityFormGroup').controls['facilityAddress'].pristine}">
+                    <input placeholder="" id="facilityAddress" aria-labelledby="facilityAddress" type="text" formControlName="facilityAddress"
+                    />
+                    <label for="facilityAddress" class="active label-prefix-alt">Address</label>
+                    <app-control-messages [control]="requestEstimateForm.get('facilityFormGroup').controls.facilityAddress" [customMessages]="customMessages.facilityAddress"></app-control-messages>
+
+                  </div>
+                </div>
+
+                <div class="input-item input-field col pd-0 s12 mb-20">
+                  <div [ngClass]="{'error': requestEstimateForm.get('facilityFormGroup').controls['facilityCity'].errors && !requestEstimateForm.get('facilityFormGroup').controls['facilityCity'].pristine}">
+                    <input placeholder="" id="facilityCity" aria-labelledby="facilityCity" type="text" formControlName="facilityCity" />
+                    <label for="facilityCity" class="active label-prefix-alt">City</label>
+                    <app-control-messages [control]="requestEstimateForm.get('facilityFormGroup').controls.facilityCity" [customMessages]="customMessages.facilityCity"></app-control-messages>
+
+                  </div>
+                </div>
+
+                <!-- <div class="input-item input-field col pd-0 s12 mb-20">
+                  <div [ngClass]="{'error': requestEstimateForm.get('facilityFormGroup').controls['facilityState'].errors && !requestEstimateForm.get('facilityFormGroup').controls['facilityState'].pristine}">
+                    <input placeholder="" readonly id="facilityState" aria-labelledby="facilityState" type="text"
+                      formControlName="facilityState" value="MA" />
+                    <label for="facilityState" class="active label-prefix-alt">State</label>
+                    <app-control-messages [control]="requestEstimateForm.get('facilityFormGroup').controls.facilityState"
+                      [customMessages]="customMessages.facilityState"></app-control-messages>
+                  </div>
+                </div> -->
+
+                <div class="input-item input-field col pd-0 s12 mb-20">
+                  <div [ngClass]="{'error': requestEstimateForm.get('facilityFormGroup').controls['facilityZipCode'].errors && !requestEstimateForm.get('facilityFormGroup').controls['facilityZipCode'].pristine}">
+                    <input placeholder="" (change)="facilityZipCodeChange($event)" id="facilityZipCode" aria-labelledby="facilityZipCode" type="text"
+                      formControlName="facilityZipCode" maxlength="5" [textMask]="zipMask" />
+                    <label for="facilityZipCode" class="active label-prefix-alt">Zip Code</label>
+                    <mat-hint class="mat-hint-message">
+                      <span class="font-13-grey">00000</span>
+                    </mat-hint>
+                    <app-control-messages [control]="requestEstimateForm.get('facilityFormGroup').controls.facilityZipCode" [customMessages]="customMessages.facilityZipCode"></app-control-messages>
+
+                  </div>
+                </div>
+
+                <div class="input-item input-field col pd-0 s12 mb-40">
+                  <div [ngClass]="{'error': requestEstimateForm.get('facilityFormGroup').controls['facilityPhoneNumber'].errors && !requestEstimateForm.get('facilityFormGroup').controls['facilityPhoneNumber'].pristine}">
+                    <input placeholder="" id="facilityPhoneNumber" [textMask]="phoneMask" aria-labelledby="facilityPhoneNumber" type="text" formControlName="facilityPhoneNumber"
+                    />
+                    <label for="facilityPhoneNumber" class="active label-prefix-alt">Phone Number</label>
+                    <app-control-messages [control]="requestEstimateForm.get('facilityFormGroup').controls.facilityPhoneNumber" [customMessages]="customMessages.facilityPhoneNumber"></app-control-messages>
+
+                  </div>
+                </div>
+              </div>
+            </div>
+
+
+            <div class="input-item">
+              <p class="question-text">Do you have the Service Provider NPI and/or Facility NPI?</p>
+              <mat-radio-group formControlName="npiIndicator" (change)="npiIndicatorChanged($event)">
+                <mat-radio-button class="question-option" [value]="requestEstimateConstants['NO']">{{ requestEstimateConstants['NO'] }}</mat-radio-button>
+                <mat-radio-button class="question-option" [value]="requestEstimateConstants['YES']">{{ requestEstimateConstants['YES'] }}</mat-radio-button>
+              </mat-radio-group>
+            </div>
+            <div class="sub-details-shift row" *ngIf="isNPI">
+              <div class="input-item input-field col pd-0 s12 mb-20">
+                <div [ngClass]="{'error': requestEstimateForm.controls['providerNPI'].errors && !requestEstimateForm.controls['providerNPI'].pristine}">
+                  <input placeholder="" id="providerNPI" maxlength="10" [textMask]="numeric10DigitMask" aria-labelledby="providerNPI" type="text"
+                    formControlName="providerNPI" />
+                  <label for="providerNPI" class="active label-prefix-alt">Service Physician/Provider NPI
+                  </label>
+                  <mat-hint class="mat-hint-message">
+                    <span class="font-13-grey">10-digits</span>
+                  </mat-hint>
+                  <app-control-messages [control]="requestEstimateForm.controls.providerNPI" [customMessages]="customMessages.providerNPI"></app-control-messages>
+
+                </div>
+                <div class="tool-tip-div">
+                  <span class="i-circle tooltip" (click)="showToolTip('providerNPI')">
+                    <div [ngClass]="{'icon-tooltip-filled': tooltip.providerNPIToolTipVisible }">
+                      <i class="fal fa-info-circle icon-blue"></i>
+                    </div>
+                    <ng-container *ngIf="tooltip.providerNPIToolTipVisible">
+                      <ng-container *ngTemplateOutlet="serviceProviderNPI;">
+                      </ng-container>
+                    </ng-container>
+
+                  </span>
+                </div>
+              </div>
+
+              <div class="input-item input-field col pd-0 s12 mb-40">
+                <div [ngClass]="{'error': requestEstimateForm.controls['facilityNPI'].errors && !requestEstimateForm.controls['facilityNPI'].pristine}">
+                  <input placeholder="" id="facilityNPI" maxlength="10" [textMask]="numeric10DigitMask" aria-labelledby="facilityNPI" type="text"
+                    formControlName="facilityNPI" />
+                  <label for="facilityNPI" class="active label-prefix-alt">Facility NPI</label>
+                  <mat-hint class="mat-hint-message">
+                    <span class="font-13-grey">10-digits</span>
+                  </mat-hint>
+                  <app-control-messages [control]="requestEstimateForm.controls.facilityNPI" [customMessages]="customMessages.facilityNPI"></app-control-messages>
+
+                </div>
+                <div class="tool-tip-div">
+                  <span class="i-circle tooltip" (click)="showToolTip('facilityNPI')">
+                    <div [ngClass]="{'icon-tooltip-filled': tooltip.facilityNPIToolTipVisible }">
+                      <i class="fal fa-info-circle icon-blue"></i>
+                    </div>
+                    <ng-container *ngIf="tooltip.facilityNPIToolTipVisible">
+                      <ng-container *ngTemplateOutlet="faclityNPI;">
+                      </ng-container>
+                    </ng-container>
+
+                  </span>
+                </div>
+              </div>
+            </div>
+
+            <div class="input-item">
+              <p class="question-text">Do you have procedure codes and diagnosis codes?</p>
+              <mat-radio-group formControlName="procedureCodeIndicator" (change)="procedureCodeIndicatorChanged($event)">
+                <mat-radio-button class="question-option" [value]="requestEstimateConstants['NO']">{{ requestEstimateConstants['NO'] }}</mat-radio-button>
+                <mat-radio-button class="question-option" [value]="requestEstimateConstants['YES']">{{ requestEstimateConstants['YES'] }}</mat-radio-button>
+              </mat-radio-group>
+            </div>
+
+            <div class="sub-details-shift row" *ngIf="isProcedureCode">
+              <p class="question-text">Please enter up to 10 procedure and diagnosis codes for the services you are considering.
+              </p>
+              <p class="question-sub-text mb-20">(Example: Arthroscopic knee repair may also include anethesia, labs, x-rays, as well as other procedures.)</p>
+              <div class="input-item input-field col pd-0 s12 mb-20">
+                <div [ngClass]="{'error': requestEstimateForm.controls['procedureCode1'].errors && !requestEstimateForm.controls['procedureCode1'].pristine}">
+                  <input placeholder="" id="procedureCode1" [textMask]="numeric5DigitMask" maxlength="5" aria-labelledby="procedureCode1" type="text"
+                    formControlName="procedureCode1" />
+                  <label for="procedureCode1" class="active label-prefix-alt">Procedure Code 1</label>
+                  <mat-hint class="mat-hint-message">
+                    <span class="font-13-grey">5-digits</span>
+                  </mat-hint>
+                  <app-control-messages [control]="requestEstimateForm.controls.procedureCode1" [customMessages]="customMessages.procedureCode"></app-control-messages>
+
+                </div>
+              </div>
+
+              <div class="input-item input-field col pd-0 s12 mb-40">
+                <div [ngClass]="{'error': requestEstimateForm.controls['diagnosisCode1'].errors && !requestEstimateForm.controls['diagnosisCode1'].pristine}">
+                  <input placeholder="" id="diagnosisCode1" [textMask]="numeric5DigitMask" maxlength="5" aria-labelledby="diagnosisCode1" type="text"
+                    formControlName="diagnosisCode1" />
+                  <label for="diagnosisCode1" class="active label-prefix-alt">Diagnosis Code 1</label>
+                  <mat-hint class="mat-hint-message">
+                    <span class="font-13-grey">5-digits (One per procedure if available)
+                    </span>
+                  </mat-hint>
+                  <app-control-messages [control]="requestEstimateForm.controls.diagnosisCode1" [customMessages]="customMessages.diagnosisCode"></app-control-messages>
+
+                </div>
+                <div class="tool-tip-div">
+                  <span class="i-circle tooltip" (click)="showToolTip('diagnosisCode1')">
+                    <div [ngClass]="{'icon-tooltip-filled': tooltip.diagnosisCode1ToolTipVisible }">
+                      <i class="fal fa-info-circle icon-blue"></i>
+                    </div>
+                    <ng-container *ngIf="tooltip.diagnosisCode1ToolTipVisible">
+                      <ng-container *ngTemplateOutlet="DiagnosisCode;">
+                      </ng-container>
+                    </ng-container>
+
+                  </span>
+                </div>
+              </div>
+              <ng-container *ngFor="let item of procedureDiagnosisArray; let i = index">
+                <div class="input-item input-field col pd-0 s12 mb-20">
+                  <div [ngClass]="{'error': item.procedureControl.errors && !item.procedureControl.pristine}">
+                    <input placeholder="" [id]="item.procedureId" [textMask]="numeric5DigitMask" maxlength="5" type="text" [formControlName]="item.procedureId"
+                    />
+                    <label [for]="item.procedureId" class="active label-prefix-alt">Procedure Code {{item.index}}</label>
+                    <mat-hint class="mat-hint-message">
+                      <span class="font-13-grey">5-digits</span>
+                    </mat-hint>
+                    <app-control-messages [control]="item.procedureControl" [customMessages]="customMessages.procedureCode"></app-control-messages>
+
+                  </div>
+                </div>
+
+                <div class="input-item input-field col pd-0 s12 mb-40">
+                  <div [ngClass]="{'error': item.diagnosisControl.errors && !item.diagnosisControl.pristine}">
+                    <input placeholder="" [id]="item.diagnosisId" [textMask]="numeric5DigitMask" maxlength="5" type="text" [formControlName]="item.diagnosisId"
+                    />
+                    <label [for]="item.diagnosisId" class="active label-prefix-alt">Diagnosis Code {{item.index}}</label>
+                    <mat-hint class="mat-hint-message">
+                      <span class="font-13-grey">5-digits (One per procedure if available)
+                      </span>
+                    </mat-hint>
+                    <app-control-messages [control]="item.diagnosisControl" [customMessages]="customMessages.diagnosisCode"></app-control-messages>
+
+                  </div>
+                </div>
+              </ng-container>
+
+              <div *ngIf="procedureDiagnosisCounter < 10" class="row ml-0 add-link add-optional mb-20" (click)="addProcedure($event);">
+                <i class="fas fa-plus font-18"></i>
+                <a class="add-link">Add another</a>
+              </div>
+            </div>
+          </section>
+
+          <!-- Cancel and Save Buttons -->
+          <div class="row submit-action-twobutton-twocol">
+            <div class="waves-effect mt-20 mb-20  waves-light white-background btn-white
+                           btn-block white-background btn-half-width-left" (click)="cancelClick($event);" type="" aria-label="Cancel">Cancel
+            </div>
+
+            <button class="mt-20 mb-20 waves-effect waves-light btn btn-block  btn-half-width-right br-8" type="submit" aria-label="Submit"
+              name="action" [disabled]="!requestEstimateForm.valid">Submit
+            </button>
+          </div>
+        </ng-container>
+
+        <div class="mt-10 clearfix">
+          <p class="font-13-grey">*Field is required.</p>
+        </div>
+      </form>
+    </div>
+  </div>
+  <div class="col l4 m12 s12 mb-20 dynamic-content">
+    <!-- <div> FPO placeholder for dynamic content</div> -->
+    <app-fpo-layout [targetUrl]='fpoTargetUrl' [displayCategory]="'rfe'"></app-fpo-layout>
+  </div>
+
+  <!-- <div id="cancelModal" class="modal">
+      <div class="modal-content">
+        <p>Do you want to proceed with with cancelling the request?</p>
+      </div>
+      <div class="modal-footer submit-action-twobutton-twocol">
+        <div class="modal-close waves-effect waves-light white-background btn-white
+        btn-block white-background btn-half-width-left">No</div>
+        <button class="modal-close waves-effect waves-light btn btn-block  btn-half-width-right br-8" (click)="cancel();">Yes</button>
+      </div>
+    </div> -->
+  <!-- 
+  <ng-template #tooltipContent>
+    <span class="tooltiptext raisedbox">
+      <app-fpo-layout [targetUrl]='toll'></app-fpo-layout>
+    </span>
+  </ng-template> -->
+
+
+  <ng-template #serviceProviderNPI>
+    <span class="tooltiptext raisedbox">
+      <app-fpo-layout [targetUrl]='serviceProviderNPIdrupalTargetUrl' [toolTipdataPlans]="serviceProviderNPIdrupalTargetUrlData"
+        isplandetails="true"></app-fpo-layout>
+    </span>
+  </ng-template>
+
+
+  <ng-template #faclityNPI>
+    <span class="tooltiptext raisedbox">
+      <app-fpo-layout [targetUrl]='faclityNPIdrupalTargetUrl' [toolTipdataPlans]="faclityNPIdrupalTargetUrlData" isplandetails="true"></app-fpo-layout>
+    </span>
+  </ng-template>
+
+
+  <ng-template #DiagnosisCode>
+    <span class="tooltiptext raisedbox">
+      <app-fpo-layout [targetUrl]='DiagnosisCodedrupalTargetUrl' [toolTipdataPlans]="DiagnosisCodedrupalTargetUrlData" isplandetails="true"></app-fpo-layout>
+    </span>
+  </ng-template>
+
+</div>

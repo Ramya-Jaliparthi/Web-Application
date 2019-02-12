@@ -1,0 +1,18 @@
+<div class="container header-container">
+    <app-header></app-header>
+</div>
+<div class="container-fluid">
+    <div class="auth-shadow responsive-image"></div>
+    <div class="row container-width">
+        <app-alerts scope="component" class="hide-on-med-and-up"></app-alerts>
+        <div class="col s12">
+            <div class="layoutCentered">
+                <app-alerts scope="component" class="hide-on-small-only"></app-alerts>
+                <router-outlet #o="outlet"></router-outlet>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container ftrContainer">
+        <app-footer></app-footer>
+</div>

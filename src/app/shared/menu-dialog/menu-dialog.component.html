@@ -1,0 +1,34 @@
+<div id="menuDialog">
+  
+  <div mat-dialog-title class="row" style="background:#1d75bc; padding-bottom:5px;">
+        <div class="row top-link">    
+            <div class="col s8" style="color: white; padding: 4%">
+                <span>Welcome to MyBlue!</span>
+            </div>
+            <div class="col s4" style="margin-top: 2%;">
+                <a href="javascript:void(0)" class="float-right">
+                    <img src="../../assets/images/icon-close-white.svg" class="close" (click)="closeMobileMenu($event)" style="height:15px;width:15px;margin-top: 10px;margin-right: 10px;"
+                                                alt="Close">
+                </a>
+            </div>
+        </div>
+        <div class="row register-buttons">
+            <button mat-raised-button class="col s5">Register Now</button>
+            <button mat-raised-button class="col s5">Sign in</button>
+        </div>
+  </div>
+  
+  <mat-dialog-content>
+       <div style="padding-bottom:15px;padding-left: 20px;">My Account</div>
+      <mat-expansion-panel *ngFor="let game of games;">
+          <mat-expansion-panel-header>
+              <mat-panel-title>
+                  {{game.game}}
+              </mat-panel-title>
+          </mat-expansion-panel-header>
+          <div style="padding:0px 25px 10px;">{{game.release}}</div>
+          <div style="padding:0px 25px 10px;">{{game.platform}}</div>
+          </mat-expansion-panel>
+  </mat-dialog-content>
+  
+</div>

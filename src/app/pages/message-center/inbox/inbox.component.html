@@ -1,0 +1,36 @@
+<section class="inbox">
+  <div class="row mb-0">
+    <div class="col s12">
+      <h1 class="left">My Inbox</h1>
+    </div>
+    <div class="col s12">
+      <app-breadcrumbs [breadCrumbs]="breadCrumbs"></app-breadcrumbs>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col s12 l8 mb-30">
+      <div class="flex mt-20">
+        <div class="inbox-icons center-align mr-20" (click)="openComponent('messages')">
+          <i class="fas fa-envelope-open fa-2x circle"></i>
+          <span class="notification-badge" *ngIf="headerService?.unReadMsgCount > 0" [ngClass]="{'big-digits':headerService?.unReadMsgCount?.toString().length > 1}">{{headerService?.unReadMsgCount}}</span>
+          <span>Messages</span>
+        </div>
+        <div class="inbox-icons center-align mr-20" (click)="goToDocumentsHome()" *ngIf="authService.authToken.scopename === 'AUTHENTICATED-AND-VERIFIED'">
+          <i class="fas fa-folder fa-2x circle"></i>
+          <!--<span class="notification-badge"></span>-->
+          <span>Documents</span>
+        </div>
+        <!-- FPO - Chat is future looking
+                    <div class="inbox-icons center-align" (click)="openComponent('chats')">
+                        <i class="fas fa-comments fa-2x circle"></i>
+                        <span class="notification-badge">2</span>
+                        <span>Chats</span>
+                    </div>   -->
+      </div>
+    </div>
+    <div class="col s12 l4">
+      <app-fpo-layout [targetUrl]="fpoTargetUrl"></app-fpo-layout>
+    </div>
+  </div>
+
+</section>

@@ -1,0 +1,465 @@
+@import '../../../assets/styles/variables';
+// spk-cleanup - @import '../../../assets/styles/variables';
+@import '../../../assets/styles/_variables';
+@import '../../../assets/styles/_colors';
+@import '../../../assets/styles/_fonts';
+
+
+//@import "~@angular/material/prebuilt-themes/indigo-pink.css";
+.row {
+  @media (max-width: 993px) {
+    margin-left: 0px !important;
+    margin-right: 0px !important;
+  }
+}
+
+.mycards {
+  .container {
+    .row {
+      margin-left: 0px !important;
+      margin-right: 0px !important;
+    }
+  }
+
+  .flipContainer .cardContainer.flipped {
+    -webkit-transform: rotatey(-180deg);
+  }
+
+  .flipContainer .cardContainer {
+    -webkit-transform-style: preserve-3d;
+    -webkit-transition: 0.5s;
+  }
+
+  .flipContainer .cardContainer .face {
+    -webkit-backface-visibility: hidden;
+    z-index: 2;
+  }
+
+  .flipContainer .cardContainer .canvasfront {
+    z-index: 1;
+  }
+
+  .flipContainer .cardContainer .canvasBack {
+    -webkit-transform: rotatey(-180deg);
+  }
+
+  .dynamicPlaceholder>div {
+    margin: 3px 0;
+  }
+
+  .dynamicPlaceholder .downloadView {
+    height: 20%;
+    background: $non-vdk-4-grey;
+  }
+
+  .dynamicPlaceholder .placeHolder {
+    height: 80%;
+    background: $non-vdk-4-grey;
+  }
+
+  .cards-result {
+    background-color: $text-white-color;
+  }
+
+  .filter-container {
+    height: 100%;
+    margin: 0px;
+    background: $non-vdk-15-grey;
+
+    .mat-expansion-panel {
+      margin: 0px !important;
+      border: 0px !important;
+      padding: 0px !important;
+    }
+
+    .header-panel,
+    .mat-expansion-indicator::after {
+      color: $header-color !important;
+      padding-top: 20px !important;
+      padding-bottom: 20px !important;
+      background: $text-white-color 100%;
+    }
+
+    .clear-btn {
+      color: $header-color;
+    }
+
+    .mat-expansion-panel-header:hover {
+      background: $text-white-color 100%;
+    }
+  }
+
+  .filter-action-button {
+    display: none;
+  }
+
+  .cards-result {
+    .cards-result-container {
+      display: flex;
+
+      .dynamic-content {
+        font-size: 24px;
+
+        .order-cards {
+          padding: 5px 0.75rem 10px 0.75rem;
+        }
+
+        display: flex;
+        flex-direction: column;
+      }
+
+      .order-cards {
+        display: flex;
+        flex-direction: column;
+        background: $background-gray-color;
+        padding-bottom: 30px !important;
+        margin-bottom: 10px;
+      }
+
+      .cards-header {
+        //spk/cleanup: font-weight: 500;
+        @include Roboto(medium);
+        font-size: 22px !important;
+        margin: 0;
+        padding: 5px 0 10px 0;
+        color: $headings-dark-color;
+      }
+
+      .downloadView {
+        padding: 5px 0.75rem 10px 0.75rem;
+      }
+
+      // .downloadView {
+      //     display: flex;
+      //     height: 100%;
+      //     align-items: center;
+      //     font-family: Roboto;
+      //     justify-content: center;
+      //     background: $background-gray-color;
+      //     color: $non-vdk-3-grey;
+      //     p {
+      //         font-size: 24px;
+      //         @include Roboto(light);
+      //         align-self: center;
+      //     }
+      // }
+      .filter-menu-text {
+        font-size: 14px;
+      }
+    }
+  }
+
+  @media (max-width: 992px) {
+    .cards-result-container {
+      flex-direction: column;
+
+      .result-container {
+        padding: 0 !important;
+      }
+
+      .dynamic-content {
+        padding: 0 !important;
+      }
+
+      .side-nav-container {
+        display: none;
+      }
+
+      .show-side-content {
+        display: block;
+        padding: 0;
+      }
+
+      .hide-side-content {
+        display: none !important;
+      }
+    }
+
+    .filter-action-button.no-dependents {
+      display: none !important;
+    }
+
+    .filter-action-button {
+      display: flex;
+      display: -webkit-flex;
+      flex-direction: row;
+      align-items: center;
+      margin: 0;
+
+      .filter-action-label {
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        cursor: pointer;
+
+        i {
+          font-size: 14px;
+        }
+
+        color:$headings-dark-color;
+        @include Roboto(bold);
+        background: $non-vdk-15-grey 20%;
+        //width: 76px;
+      }
+
+      .clear-action-label {
+        cursor: pointer;
+        color: $link-color;
+        font-size: 14px;
+        text-decoration: underline;
+        padding-left: 20px;
+        @include Roboto(bold);
+      }
+    }
+
+    // .downloadView {
+    //     display: flex;
+    //     height: 100%;
+    //     align-items: center;
+    //     font-family: Roboto;
+    //     justify-content: center;
+    //     background: $background-gray-color;
+    //     color: $non-vdk-3-grey;
+    //     p {
+    //         font-size: 24px;
+    //         //spk/cleanup- font-weight: 300;
+    //         @include Roboto(light);
+    //         align-self: center;
+    //     }
+    // }
+  }
+
+  @media (max-width: 992px) {
+    .filter-btn {
+      padding: 0.5rem 10px 0.5rem 2% !important
+    }
+  }
+
+  .cards-filter-inner-btn {
+    .filter-btn {
+      background: $non-vdk-15-grey 100%;
+      color: $header-color;
+      vertical-align: middle;
+      padding: 0.5rem 1rem 0.5rem 0;
+      //spk/clean - font-weight: bold;
+      @include Roboto(bold);
+      cursor: pointer;
+
+      img {
+        width: 24px;
+        height: 24px;
+      }
+    }
+
+    .col.s10 {
+      margin-top: 5px;
+    }
+
+    h2 {
+      margin: 0;
+    }
+  }
+
+  .filter-container {
+    .filter-menu-with-action {
+      display: flex;
+      align-items: center;
+      padding: 0px !important;
+      justify-content: space-between;
+      display: none;
+    }
+
+    .filter-menu {
+      display: block;
+    }
+
+    .filter-apply {
+      margin: 10px 0 10px 0;
+      display: flex;
+      justify-content: space-around;
+
+      div {
+        flex: 1;
+
+        button {
+          width: 100%;
+        }
+      }
+
+      div:first-child {
+        padding: 5px 5px 5px 3%;
+      }
+
+      div:last-child {
+        padding: 5px 3% 5px 5px;
+      }
+
+      .clear-button:hover {
+        background-color: #c6dcee !important;
+      }
+    }
+
+    .filter-divider {
+      height: 10px;
+      background: $non-vdk-15-grey;
+      width: 100%;
+      border-top: 1px solid $non-vdk-14-grey;
+      border-bottom: 1px solid $non-vdk-14-grey;
+    }
+  }
+
+  .cards-logo-color {
+    color: $primary-color;
+    font-size: 24px;
+    @include Roboto(light);
+    @media (max-width:992px){
+      margin: 20px 0;
+    }
+  }
+
+  .toggle-filter {
+    display: none;
+  }
+
+  .mobile-filter {
+    color: $link-secondary-color;
+    @include Roboto(bold);
+    background: $non-vdk-15-grey 100%;
+
+    p {
+      margin-left: 80%;
+    }
+  }
+
+  .filter-mobile-divider {
+    border: 1px solid $header-color;
+    margin-bottom: 10px;
+  }
+
+  .closed-filter {
+    color: $link-secondary-color;
+    @include Roboto(bold);
+    background: $non-vdk-15-grey 20%;
+    width: 76px;
+  }
+
+  @media (max-width: 992px) {
+    .cards-result-container {
+      flex-direction: column;
+    }
+
+    .dynamic-content {
+      margin: 20px 0;
+    }
+
+    .filter-container mat-expansion-panel-header {
+      padding: 0 20px 0 0 !important;
+    }
+
+    .filter-menu-with-action {
+      display: flex !important;
+    }
+
+    .filter-menu {
+      display: none !important;
+    }
+  }
+
+  .download-icon,
+  .replacement-icon {
+    font-size: 20px;
+    color: $link-color;
+  }
+
+  .replacement-icon {
+    margin-right: 4px
+  }
+
+  .text-style {
+    font-size: 12px;
+    color: $link-color;
+    cursor: pointer;
+  }
+
+  .toggle-card {
+    a {
+      color: $link-color;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+  }
+
+  .apply-button {
+    background: $new-color;
+    border-radius: 8px;
+    color: $background-white-color;
+    font-size: 16px !important;
+    @include Roboto(bold);
+  }
+
+  .clear-button {
+    color: $text-primary-color;
+    border-radius: 5px;
+    background: $background-white-color;
+    font-size: 16px !important;
+    height: 44px !important;
+    @include Roboto(bold);
+  }
+
+  @media (min-width: 992px) and (max-width: 1150px) {
+
+    .clear-button,
+    .apply-button {
+      min-width: 105px;
+    }
+  }
+
+  @media (min-width: 992px) and (max-width: 1070px) {
+
+    .clear-button,
+    .apply-button {
+      min-width: 90px;
+    }
+  }
+
+  .mobile-text-info,
+  .text-info {
+    @include Roboto(regular);
+    font-size: 14px;
+
+    a {
+      color: $link-color;
+      text-decoration: underline;
+      cursor: pointer;
+    }
+
+    p.header-text {
+      color: $text-disabled-gray;
+      margin-bottom: 15px;
+    }
+
+    p {
+      margin-bottom: 10px;
+    }
+  }
+
+  .mobile-text-info {
+    padding: 0 0.75rem;
+  }
+
+  .dynamic-content {
+    .or-link {
+      padding: 5px 0;
+    }
+
+    .or-link.half-width {
+      width: 55%;
+    }
+
+    .download-link {
+      padding: 5px 0;
+    }
+  }
+}

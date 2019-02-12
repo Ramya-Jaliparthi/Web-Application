@@ -1,0 +1,130 @@
+<div class="mt-10" *ngIf="claimProcessingStatus">
+  <div class="row pd-0 m-0">
+    <div class="col l12 m12 s12 pd-0">
+      <div class="breadcrumbs">
+        <app-breadcrumbs></app-breadcrumbs>
+      </div>
+      <div class="claim-status-header-container">
+        <div class="claim-status-header-details">
+          <div class="header-text">
+            {{claimProcessingStatus.memberName | titlecase}}'s Claim
+          </div>
+          <div class="claim-number">
+            <span class="claim-label">Claim No.</span>
+            <span class="claim-value">{{claimProcessingStatus.claimId | claimid}}</span>
+          </div>
+        </div>
+        <div class="claim-status-header-action" (click)="navigateToDetailsPage()">
+          <i class="fal fa-times fa-4x"></i>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row claim-stauts-details-container m-0">
+    <div class="step-details-container">
+      <div class="step-details" *ngFor="let stepDetails of claimProcessingSteps; let i = index;">
+        <div class="step-indicator-details">
+          <div class="step-seperator hide-on-mobile-view">
+            <div class="line" [ngClass]="{'hidden': (i === 0),'step-inactive': stepDetails.step===4 && claimProcessingStatus.claimStatus?.toLowerCase()==='pending'}"></div>
+          </div>
+          <div class="step-number" [ngClass]="{'step-inactive': stepDetails.step===4 && claimProcessingStatus.claimStatus?.toLowerCase()==='pending' }">
+            {{stepDetails.step}}
+          </div>
+          <div class="step-seperator">
+            <div class="line" [ngClass]="{'hidden': (i === claimProcessingSteps.length - 1),'step-inactive': stepDetails.step===3 && claimProcessingStatus.claimStatus?.toLowerCase()==='pending' }"></div>
+          </div>
+        </div>
+        <div class="status-details" [ngClass]="{'current-status-details': stepDetails.step===3 && claimProcessingStatus.claimStatus?.toLowerCase()==='pending' || stepDetails.step===4 && claimProcessingStatus.claimStatus?.toLowerCase()==='completed'}">
+          <div class="status-label" [ngClass]="{'inactive-label-text':stepDetails.step===4 && claimProcessingStatus.claimStatus?.toLowerCase()==='pending' }">
+            {{stepDetails.label}}
+          </div>
+          <div class="status-description" [ngClass]="{'inactive-description-text':stepDetails.step===4 && claimProcessingStatus.claimStatus?.toLowerCase()==='pending' }">{{stepDetails.description}}
+            <p class="additional-details" [ngClass]="{'inactive-details-text':stepDetails.step===4 && claimProcessingStatus.claimStatus?.toLowerCase()==='pending' }">{{stepDetails.additionalDetails}}</p>
+          </div>
+        </div>
+      </div>
+      <!-- <div class="step-details">
+      <div class="step-indicator-details">
+        <div class="step-seperator hide-on-mobile-view">
+          <div class="line hidden"></div>
+        </div>
+        <div class="step-number">
+          1
+        </div>
+        <div class="step-seperator">
+          <div class="line"></div>
+        </div>
+      </div>
+      <div class="status-details">
+        <div class="status-label"> Care </div>
+        <div class="status-description">
+          When you visit a doctor or hospital for medical care.
+          <p class="additional-details">Date of Service: 01/10/2018</p>
+        </div>
+      </div>
+    </div>
+    <div class="step-details">
+      <div class="step-indicator-details">
+        <div class="step-seperator hide-on-mobile-view">
+          <div class="line"></div>
+        </div>
+        <div class="step-number">
+          2
+        </div>
+        <div class="step-seperator">
+          <div class="line"></div>
+        </div>
+      </div>
+      <div class="status-details">
+        <div class="status-label"> Process </div>
+        <div class="status-description"> When you or your doctor submits a claim to Blue Cross.
+          <p class="additional-details">Claim is no longer pending</p>
+        </div>
+      </div>
+    </div>
+    <div class="step-details">
+      <div class="step-indicator-details">
+        <div class="step-seperator hide-on-mobile-view">
+          <div class="line"></div>
+        </div>
+        <div class="step-number">
+          3
+        </div>
+        <div class="step-seperator">
+          <div class="line"></div>
+        </div>
+      </div>
+      <div class="status-details">
+        <div class="status-label"> Submit </div>
+        <div class="status-description">Blue Cross processes your claim based on your health coverage.
+          <p class="additional-details">Claim Submitted to Blue Cross: 01/13/2018</p>
+        </div>
+      </div>
+    </div>
+    <div class="step-details">
+      <div class="step-indicator-details">
+        <div class="step-seperator hide-on-mobile-view">
+          <div class="line"></div>
+        </div>
+        <div class="step-number">
+          4
+        </div>
+        <div class="step-seperator">
+          <div class="line hidden"></div>
+        </div>
+      </div>
+      <div class="status-details">
+        <div class="status-label"> Notify </div>
+        <div class="status-description"> Blue Cross notifies you when you owe money for covered services.
+          <p class="additional-details">Claim completed: 01/20/2018</p>
+        </div>
+      </div>
+    </div> -->
+    </div>
+    <div class="claim-status-actions-container">
+      <button class="close-button" mat-raised-button color="primary" (click)="navigateToDetailsPage()">
+        Close
+      </button>
+    </div>
+  </div>
+</div>

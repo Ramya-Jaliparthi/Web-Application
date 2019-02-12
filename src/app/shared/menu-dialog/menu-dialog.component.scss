@@ -1,0 +1,28 @@
+@import '../../../assets/styles/_include';
+.top-link {
+    line-height: 20px;
+    margin: 0;
+}
+
+.mat-dialog-container {
+    padding: 0% !important;
+}
+
+.register-buttons {
+    button {
+        border-radius: 5%;
+        margin: 0 15px;
+        color: $non-vdk-52-blue;
+    }
+}
+
+button:focus {
+    background-color: $non-vdk-53-black !important;
+    border: 1px solid $non-vdk-54-black;
+    color: white;
+}
+
+.list-values {
+    padding: 10px 20px;
+    background: $non-vdk-55-white;
+}

@@ -1,0 +1,28 @@
+@import '../../../assets/styles/_fonts';
+@import '../../../assets/styles/_variables';
+@import '../../../assets/styles/_colors';
+.mycards {
+  .side-nav-container {
+   .mat-pseudo-checkbox:not(.mat-pseudo-checkbox-checked) {
+        border: 1px solid;
+        border-color: $non-vdk-19-grey;
+        border-radius: 1px;
+    }
+  }
+.cards-result-container {
+    .result-container {
+        .hideMatdivider {
+             .mat-divider {
+                display: none;
+            }
+        }
+    }
+}
+.result-container {
+     .material-placeholder {
+        #materialbox-overlay {
+            opacity: 0.4 !important;
+        }
+    }
+}
+}

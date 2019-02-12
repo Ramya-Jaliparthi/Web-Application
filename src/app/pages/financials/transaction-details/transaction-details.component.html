@@ -1,0 +1,584 @@
+<!-- Start - For Partial Claim Notification -->
+<!-- <div class="row partialClaimNotifDiv">
+  <table>
+    <tr>
+      <td class="partialClaimNotifColor"></td>
+      <td class="partialClaimNotifText">{{financialConstants.text.partiallyPaid}}</td>
+    </tr>
+  </table>
+</div> -->
+<!-- End - For Partial Claim Notification -->
+
+<!-- Start - Title -->
+<div class="row transaction-details-title">
+  <div class="col l6 s12">
+    <h1>{{financialConstants.text.transactionDetailTitle}}</h1>
+  </div>
+</div>
+<!-- <div class="auth-shadow responsive-image"></div> -->
+<!-- End - Title -->
+
+<!-- Start - Transaction Details Content -->
+<div class="row transaction-details" *ngIf="transactionDetailsMakePayment">
+  <div class="col s12 m12 l7 transaction-details-column">
+    <section class="transaction-details-content">
+      <table class="transacDetails">
+        <tr class="transactionDisplayName">John Sample</tr>
+        <tr>
+          <span class="transactionClaimText">{{financialConstants.text.claimNo}}</span>
+          <span class="transactionClaim"> 102650101</span>
+        </tr>
+        <tr class="actionClaimStatus">{{financialConstants.text.makePayment}}</tr>
+        <tr class="transactionDesc">{{financialConstants.text.actionDescTransactDetails}}</tr>
+        <tr class="transactionProviderName">Sturdy Memorial Hospital</tr>
+        <tr>
+          <div class="row">
+            <div class="col s6 m4 amountFirst">
+              &#36;288<sup>48</sup>
+              <span class="amountFirstText">{{financialConstants.text.amountPaid}}</span>
+            </div>
+            <div class="col s6 m4 amountSecond">
+              &#36;25<sup>39</sup>
+              <span class="amountSecondText">{{financialConstants.text.whatYouOwe}}</span>
+            </div>
+          </div>
+        </tr>
+        <tr>
+          <div class="transactionFrom">from abh,
+            and accNo
+          </div>
+        </tr>
+        <tr>
+          <div class="transactionDateDiv">
+            <span class="transactionDateText">{{financialConstants.text.dateOfTransaction}}</span>
+            <span class="transactionDate">06/12/2018</span>
+          </div>
+        </tr>
+        <tr>
+          <div class="serviceDateDiv">
+            <span class="transactionDateText">{{financialConstants.text.dateOfService}}</span>
+            <span class="transactionDate">06/08/2018 - 06/08/2018</span>
+          </div>
+        </tr>
+      </table>
+    </section>
+    <hr>
+    <!-- End - Transaction Details Content -->
+    <!-- Start - Total Billing Breakdown Content -->
+    <section class="total-billing-breakdown">
+      <div class="breakupHeadline">{{financialConstants.text.totalBillingBreakdown}}</div>
+      <table style="line-height: 0%">
+        <tr>
+          <td class="breakdownText">{{financialConstants.text.amountChargedByHealthcareProvider}}</td>
+          <td class="breakdownAmount">&#36;0.00</td>
+        </tr>
+        <tr>
+          <td class="breakdownText">{{financialConstants.text.amountAllowed}}</td>
+          <td class="breakdownAmount">&#36;0.00</td>
+        </tr>
+        <tr>
+          <td class="breakdownText">{{financialConstants.text.amountCovered}}</td>
+          <td class="breakdownAmount">&#36;0.00</td>
+        </tr>
+        <tr>
+          <td class="breakdownText">{{financialConstants.text.yourTotalResponsibility}}</td>
+          <td class="breakdownAmount">&#36;0.00</td>
+        </tr>
+        <tr>
+          <td class="breakdownText">{{financialConstants.text.amountYouPaidoutOfPocket}}</td>
+          <td class="breakdownAmount">&#36;0.00</td>
+        </tr>
+        <tr>
+          <td class="breakdownText">{{financialConstants.text.amountYourBenefitAccountPaid}}</td>
+          <td class="breakdownAmount">&#36;0.00</td>
+        </tr>
+        <hr>
+        <tr>
+          <td class="ownText">{{financialConstants.text.whatYouOwe}}</td>
+          <td class="ownAmount">&#36;25.19</td>
+        </tr>
+      </table>
+    </section>
+    <!-- End - Total Billing Breakdown Content -->
+  </div>
+  <!-- Start - Billing Breakdown By Service & Edit out-of-pocket Content -->
+  <div class="col s12 m12 l5 billing-breakdown-by-service-n-edit" *ngIf="billingBreakdownWithEdit">
+    <aside>
+      <ul class="collapsible">
+        <li>
+          <div class="collapsible-header billingHeadline">
+            <table>
+              <tr>
+                <td class="billing-headline-header">{{financialConstants.text.billingBreakdownByService}}</td>
+                <td class="transactionDateDiv"><i class="material-icons">expand_more</i></td>
+              </tr>
+            </table>
+          </div>
+          <div class="collapsible-body billingBody">
+            <form>
+              <table style="line-height: 0%">
+                <tr>
+                  <td class="serviceTypeTitle">{{financialConstants.text.serviceType}}</td>
+                </tr>
+                <tr>
+                  <td class="breakdownText">{{financialConstants.text.amountChargedByHealthcareProvider}}</td>
+                  <td class="breakdownAmount">&#36;.25300</td>
+                </tr>
+                <tr>
+                  <td class="breakdownText">{{financialConstants.text.amountAllowed}}</td>
+                  <td class="breakdownAmount">&#36;0.00</td>
+                </tr>
+                <tr>
+                  <td class="breakdownText">{{financialConstants.text.amountCovered}}</td>
+                  <td class="breakdownAmount">&#36;0.00</td>
+                </tr>
+                <tr>
+                  <td class="breakdownText">{{financialConstants.text.yourTotalResponsibility}}</td>
+                  <td class="breakdownAmount">&#36;0.00</td>
+                </tr>
+                <tr *ngIf="!editMode">
+                  <td class="breakdownText">{{financialConstants.text.amountYouPaidoutOfPocket}}</td>
+                  <td class="breakdownAmount">&#36;{{paidOutPocketAmount}}</td>
+                </tr>
+                <tr *ngIf="!editMode">
+                  <td class="editText">
+                    <i class="tiny material-icons">info</i>
+                    {{financialConstants.text.pleaseConfirmountofPocketPaidAmount}}
+                  </td>
+                  <td class="editAmount" (click)='editPaidOfPocket()'>Edit</td>
+                </tr>
+                <tr *ngIf="editMode">
+                  <td class="breakdownTextEditMode">{{financialConstants.text.amountYouPaidoutOfPocket}}&#42;</td>
+                  <td class="editText">
+                    <input name="paidOutofpocketInput" [(ngModel)]="paidOutPocketAmount" placeholder="$0.00">
+                    <i class="tiny material-icons">info</i>
+                    {{financialConstants.text.pleaseConfirmountofPocketPaidAmount}}
+                  </td>
+                </tr>
+                <tr>
+                  <td class="breakdownText">{{financialConstants.text.amountYourBenefitAccountPaid}}</td>
+                  <td class="breakdownAmount">&#36;0.00</td>
+                </tr>
+                <hr>
+                <tr>
+                  <td class="ownTextForAside">{{financialConstants.text.whatYouOwe}}</td>
+                  <td class="ownAmount">&#36;25.19</td>
+                </tr>
+                <tr *ngIf="editMode">
+                  <div class="col s6 buttonSave">
+                    <button class="btn btn-primary" (click)="editMode=false">Cancel</button>
+                  </div>
+                  <div class="col s6 buttonSave">
+                    <button class="btn btn-primary" (click)="savePaidOfPocket()">Save</button>
+                  </div>
+                </tr>
+                <hr>
+                <tr>
+                  <button class="col s12 btn btn-primary buttonPayment">{{financialConstants.text.makePayment}}
+                  </button>
+                </tr>
+              </table>
+            </form>
+          </div>
+        </li>
+      </ul>
+    </aside>
+  </div>
+  <!-- End - Billing Breakdown By Service & Edit out-of-pocket Content -->
+
+  <!-- Start - Completed Transactions 1 Service/1 Payment Content -->
+  <div class="col s12 m12 l5 completed-transactions billing-breakdown-by-service">
+    <aside>
+      <ul class="collapsible">
+        <li>
+          <div class="collapsible-header billingHeadline">
+            <table>
+              <tr>
+                <td class="billing-headline-header">{{financialConstants.text.billingBreakdownByService}}</td>
+                <td class="transactionDateDiv"><i class="material-icons">expand_more</i></td>
+              </tr>
+            </table>
+          </div>
+          <div class="collapsible-body billingBody">
+            <table style="line-height: 0%">
+              <tr>
+                <td class="serviceTypeTitle">{{financialConstants.text.serviceType}}</td>
+              </tr>
+              <tr>
+                <td class="breakdownText">{{financialConstants.text.amountChargedByHealthcareProvider}}</td>
+                <td class="breakdownAmount">&#36;.25300</td>
+              </tr>
+              <tr>
+                <td class="breakdownText">{{financialConstants.text.amountAllowed}}</td>
+                <td class="breakdownAmount">&#36;0.00</td>
+              </tr>
+              <tr>
+                <td class="breakdownText">{{financialConstants.text.amountCovered}}</td>
+                <td class="breakdownAmount">&#36;0.00</td>
+              </tr>
+              <tr>
+                <td class="breakdownText">{{financialConstants.text.yourTotalResponsibility}}</td>
+                <td class="breakdownAmount">&#36;0.00</td>
+              </tr>
+              <tr>
+                <td class="breakdownText">{{financialConstants.text.amountYouPaidoutOfPocket}}</td>
+                <td class="breakdownAmount">&#36;0.00</td>
+              </tr>
+              <tr>
+                <td class="breakdownText">{{financialConstants.text.amountYourBenefitAccountPaid}}</td>
+                <td class="breakdownAmount">&#36;0.00</td>
+              </tr>
+              <hr>
+              <tr>
+                <td class="ownTextForAside">{{financialConstants.text.whatYouOwe}}</td>
+                <td class="ownAmount">&#36;25.19</td>
+              </tr>
+              <tr>
+                <ul class="collapsible">
+                  <li>
+                    <div class="collapsible-header adjudication">
+                      <i class="tiny material-icons plus-icon">add</i><i class="tiny material-icons sub-icon">remove</i><u>{{financialConstants.text.PaymentDetailsAdjudication}}</u>
+                    </div>
+                    <div class="collapsible-body billingBody">
+                      <table style="line-height: 0%">
+                        <tr>
+                          <td class="adjudicationext">{{financialConstants.text.payment}} &nbsp; &#36;0.00</td>
+                        </tr>
+                        <tr>
+                          <td class="breakdownText">{{financialConstants.text.account}}</td>
+                          <td class="breakdownAmount">Health Reimbursement Account</td>
+                        </tr>
+                        <tr>
+                          <td class="breakdownText">{{financialConstants.text.previouslyPaid}}</td>
+                          <td class="breakdownAmount">&#36;25.19</td>
+                        </tr>
+                        <tr>
+                          <td class="breakdownText">{{financialConstants.text.paidTo}}</td>
+                          <td class="breakdownAmount">Provider</td>
+                        </tr>
+                        <tr>
+                          <td class="breakdownText">{{financialConstants.text.paymentDate}}</td>
+                          <td class="breakdownAmount">YYYY/MM/DD</td>
+                        </tr>
+                        <tr>
+                          <td class="breakdownText">{{financialConstants.text.paymentMethod}}</td>
+                          <td class="breakdownAmount">Check</td>
+                        </tr>
+                        <tr>
+                          <td class="breakdownText">{{financialConstants.text.checkTrace}}</td>
+                          <td class="breakdownAmount">&#36;25.19</td>
+                        </tr>
+                        <br>
+                        <tr>
+                          <td class="adjudicationext">{{financialConstants.text.adjudicationDetails}}</td>
+                        </tr>
+                        <tr>
+                          <td class="breakdownText">{{financialConstants.text.totalCharges}}</td>
+                          <td class="breakdownAmount">&#36;0.00</td>
+                        </tr>
+                        <tr>
+                          <td class="breakdownText">{{financialConstants.text.pended}}</td>
+                          <td class="breakdownAmount">&#36;0.00</td>
+                        </tr>
+                        <tr>
+                          <td class="breakdownText">{{financialConstants.text.denied}}</td>
+                          <td class="breakdownAmount">&#36;0.00</td>
+                        </tr>
+                        <tr>
+                          <td class="breakdownText">{{financialConstants.text.excluded}}</td>
+                          <td class="breakdownAmount">&#36;0.00</td>
+                        </tr>
+                        <tr>
+                          <td class="breakdownText">{{financialConstants.text.eligible}}</td>
+                          <td class="breakdownAmount">&#36;0.00</td>
+                        </tr>
+                        <tr>
+                          <td class="breakdownText">{{financialConstants.text.appiledtoUpFrontDeductible}}</td>
+                          <td class="breakdownAmount">&#36;0.00</td>
+                        </tr>
+                        <tr>
+                          <td class="breakdownText">{{financialConstants.text.offset}}</td>
+                          <td class="breakdownAmount">&#36;0.00</td>
+                        </tr>
+                        <tr>
+                          <td class="breakdownText">{{financialConstants.text.employeePaid}}</td>
+                          <td class="breakdownAmount">&#36;0.00</td>
+                        </tr>
+                        <tr>
+                          <td class="breakdownText">{{financialConstants.text.onHold}}</td>
+                          <td class="breakdownAmount">&#36;0.00</td>
+                        </tr>
+                        <br>
+                        <tr>
+                          <td class="ownTextForAside">{{financialConstants.text.approved}}</td>
+                          <td class="ownAmount">&#36;0.00</td>
+                        </tr>
+                        <hr>
+                      </table>
+                    </div>
+                  </li>
+                </ul>
+              </tr>
+            </table>
+            <table style="line-height: 0%">
+              <tr>
+                <td class="serviceTypeTitle">{{financialConstants.text.serviceType}}</td>
+              </tr>
+              <tr>
+                <td class="breakdownText">{{financialConstants.text.amountChargedByHealthcareProvider}}</td>
+                <td class="breakdownAmount">&#36;.25300</td>
+              </tr>
+              <tr>
+                <td class="breakdownText">{{financialConstants.text.amountAllowed}}</td>
+                <td class="breakdownAmount">&#36;0.00</td>
+              </tr>
+              <tr>
+                <td class="breakdownText">{{financialConstants.text.amountCovered}}</td>
+                <td class="breakdownAmount">&#36;0.00</td>
+              </tr>
+              <tr>
+                <td class="breakdownText">{{financialConstants.text.yourTotalResponsibility}}</td>
+                <td class="breakdownAmount">&#36;0.00</td>
+              </tr>
+              <tr>
+                <td class="breakdownText">{{financialConstants.text.amountYouPaidoutOfPocket}}</td>
+                <td class="breakdownAmount">&#36;0.00</td>
+              </tr>
+              <tr>
+                <td class="breakdownText">{{financialConstants.text.amountYourBenefitAccountPaid}}</td>
+                <td class="breakdownAmount">&#36;0.00</td>
+              </tr>
+              <hr>
+              <tr>
+                <td class="ownTextForAside">{{financialConstants.text.whatYouOwe}}</td>
+                <td class="ownAmount">&#36;25.19</td>
+              </tr>
+              <tr>
+                <ul class="collapsible">
+                  <li>
+                    <div class="collapsible-header adjudication">
+                      <i class="tiny material-icons plus-icon">add</i><i class="tiny material-icons sub-icon">remove</i><u>{{financialConstants.text.PaymentDetailsAdjudication}}</u>
+                    </div>
+                    <div class="collapsible-body billingBody">
+                      <table style="line-height: 0%">
+                        <tr>
+                          <td class="adjudicationext">{{financialConstants.text.payment}} &nbsp; &#36;0.00</td>
+                        </tr>
+                        <tr>
+                          <td class="breakdownText">{{financialConstants.text.account}}</td>
+                          <td class="breakdownAmount">Health Reimbursement Account</td>
+                        </tr>
+                        <tr>
+                          <td class="breakdownText">{{financialConstants.text.previouslyPaid}}</td>
+                          <td class="breakdownAmount">&#36;25.19</td>
+                        </tr>
+                        <tr>
+                          <td class="breakdownText">{{financialConstants.text.paidTo}}</td>
+                          <td class="breakdownAmount">Provider</td>
+                        </tr>
+                        <tr>
+                          <td class="breakdownText">{{financialConstants.text.paymentDate}}</td>
+                          <td class="breakdownAmount">YYYY/MM/DD</td>
+                        </tr>
+                        <tr>
+                          <td class="breakdownText">{{financialConstants.text.paymentMethod}}</td>
+                          <td class="breakdownAmount">Check</td>
+                        </tr>
+                        <tr>
+                          <td class="breakdownText">{{financialConstants.text.checkTrace}}</td>
+                          <td class="breakdownAmount">&#36;25.19</td>
+                        </tr>
+                        <br>
+                        <tr>
+                          <td class="adjudicationext">{{financialConstants.text.adjudicationDetails}}</td>
+                        </tr>
+                        <tr>
+                          <td class="breakdownText">{{financialConstants.text.totalCharges}}</td>
+                          <td class="breakdownAmount">&#36;0.00</td>
+                        </tr>
+                        <tr>
+                          <td class="breakdownText">{{financialConstants.text.pended}}</td>
+                          <td class="breakdownAmount">&#36;0.00</td>
+                        </tr>
+                        <tr>
+                          <td class="breakdownText">{{financialConstants.text.denied}}</td>
+                          <td class="breakdownAmount">&#36;0.00</td>
+                        </tr>
+                        <tr>
+                          <td class="breakdownText">{{financialConstants.text.excluded}}</td>
+                          <td class="breakdownAmount">&#36;0.00</td>
+                        </tr>
+                        <tr>
+                          <td class="breakdownText">{{financialConstants.text.eligible}}</td>
+                          <td class="breakdownAmount">&#36;0.00</td>
+                        </tr>
+                        <tr>
+                          <td class="breakdownText">{{financialConstants.text.appiledtoUpFrontDeductible}}</td>
+                          <td class="breakdownAmount">&#36;0.00</td>
+                        </tr>
+                        <tr>
+                          <td class="breakdownText">{{financialConstants.text.offset}}</td>
+                          <td class="breakdownAmount">&#36;0.00</td>
+                        </tr>
+                        <tr>
+                          <td class="breakdownText">{{financialConstants.text.employeePaid}}</td>
+                          <td class="breakdownAmount">&#36;0.00</td>
+                        </tr>
+                        <tr>
+                          <td class="breakdownText">{{financialConstants.text.onHold}}</td>
+                          <td class="breakdownAmount">&#36;0.00</td>
+                        </tr>
+                        <br>
+                        <tr>
+                          <td class="ownTextForAside">{{financialConstants.text.approved}}</td>
+                          <td class="ownAmount">&#36;0.00</td>
+                        </tr>
+                        <hr>
+                      </table>
+                    </div>
+                  </li>
+                </ul>
+              </tr>
+            </table>
+          </div>
+        </li>
+      </ul>
+    </aside>
+  </div>
+  <!-- End - Completed Transactions 1 Service/1 Payment Content -->
+</div>
+
+<!-- Start - Denied Transaction Details Content -->
+<div class="row transaction-details" *ngIf="transactionDenied">
+  <div class="col s12 m12 l7 transaction-details-column">
+    <section class="transaction-details-content">
+      <table class="transacDetails">
+        <tr class="transactionDisplayName">John Sample</tr>
+        <tr>
+          <span class="transactionClaimText">{{financialConstants.text.claimNo}}</span>
+          <span class="transactionClaim"> 102650101</span>
+        </tr>
+        <tr class="actionClaimStatus">Denied</tr>
+        <tr class="transactionDesc">{{financialConstants.text.actionDescTransactDetails}}</tr>
+        <tr class="transactionProviderName">Sturdy Memorial Hospital</tr>
+        <tr>
+          <div class="row">
+            <div class="col s6 m4 amountFirst">
+              &#36;288<sup>48</sup>
+              <span class="amountFirstText">{{financialConstants.text.amountPaid}}</span>
+            </div>
+            <div class="col s6 m4 amountSecond">
+              &#36;25<sup>39</sup>
+              <span class="amountSecondText">{{financialConstants.text.whatYouOwe}}</span>
+            </div>
+          </div>
+        </tr>
+        <tr>
+          <div class="transactionFrom">from abh,
+            and accNo
+          </div>
+        </tr>
+        <tr>
+          <div class="transactionDateDiv">
+            <span class="transactionDateText">{{financialConstants.text.dateOfTransaction}}</span>
+            <span class="transactionDate">06/12/2018</span>
+          </div>
+        </tr>
+        <tr>
+          <div class="serviceDateDiv">
+            <span class="transactionDateText">{{financialConstants.text.dateOfService}}</span>
+            <span class="transactionDate">06/08/2018 - 06/08/2018</span>
+          </div>
+        </tr>
+      </table>
+    </section>
+    <hr>
+    <!-- Start - Total Billing Breakdown Content -->
+    <section class="total-billing-breakdown">
+      <div class="breakupHeadline">{{financialConstants.text.totalBillingBreakdown}}</div>
+      <table style="line-height: 0%">
+        <tr>
+          <td class="breakdownText">{{financialConstants.text.amountChargedByHealthcareProvider}}</td>
+          <td class="breakdownAmount">&#36;0.00</td>
+        </tr>
+        <tr>
+          <td class="breakdownText">{{financialConstants.text.amountAllowed}}</td>
+          <td class="breakdownAmount">&#36;0.00</td>
+        </tr>
+        <tr>
+          <td class="breakdownText">{{financialConstants.text.amountCovered}}</td>
+          <td class="breakdownAmount">&#36;0.00</td>
+        </tr>
+        <tr>
+          <td class="breakdownText">{{financialConstants.text.yourTotalResponsibility}}</td>
+          <td class="breakdownAmount">&#36;0.00</td>
+        </tr>
+        <tr>
+          <td class="breakdownText">{{financialConstants.text.amountYouPaidoutOfPocket}}</td>
+          <td class="breakdownAmount">&#36;0.00</td>
+        </tr>
+        <tr>
+          <td class="breakdownText">{{financialConstants.text.amountYourBenefitAccountPaid}}</td>
+          <td class="breakdownAmount">&#36;0.00</td>
+        </tr>
+        <hr>
+        <tr>
+          <td class="ownText">{{financialConstants.text.whatYouOwe}}</td>
+          <td class="ownAmount">&#36;25.19</td>
+        </tr>
+        <tr>
+          <button class="col s12 btn btn-primary buttonPayment">{{financialConstants.text.viewClaims}}
+          </button>
+        </tr>
+      </table>
+    </section>
+    <!-- End - Total Billing Breakdown Content -->
+  </div>
+</div>
+<!-- End - Denied Transaction Details Content -->
+
+<!-- Start - Recurring payment Transaction Details Content -->
+<div class="row recurring-payment-details" *ngIf="recurringPayment">
+  <div class="col s12 m12 l7">
+    <section>
+      <table style="line-height: 0%">
+        <tr>
+          <td class="transactionClaimText">{{financialConstants.text.paymentDetails}}</td>
+        </tr>
+        <tr>
+          <td class="breakdownText">{{financialConstants.text.account}}</td>
+          <td class="breakdownAmount">Health Reimbursement Account</td>
+        </tr>
+        <tr>
+          <td class="breakdownText">{{financialConstants.text.previouslyPaid}}</td>
+          <td class="breakdownAmount">&#36;25.19</td>
+        </tr>
+        <tr>
+          <td class="breakdownText">{{financialConstants.text.paidTo}}</td>
+          <td class="breakdownAmount">Provider</td>
+        </tr>
+        <tr>
+          <td class="breakdownText">{{financialConstants.text.reimbursementDate}}</td>
+          <td class="breakdownAmount">YYYY/MM/DD</td>
+        </tr>
+        <tr>
+          <td class="breakdownText">{{financialConstants.text.reimbursementMethod}}</td>
+          <td class="breakdownAmount">Direct Deposit</td>
+        </tr>
+        <tr>
+          <td class="breakdownText">{{financialConstants.text.checkTrace}}</td>
+          <td class="breakdownAmount">&#36;25.19</td>
+        </tr>
+        <tr>
+          <td class="breakdownText">{{financialConstants.text.hsaType}}</td>
+          <td class="breakdownAmount">CY - Normal Distribution</td>
+        </tr>
+        <tr>
+          <td class="breakdownText">{{financialConstants.text.hsaPositingDate}}</td>
+          <td class="breakdownAmount">YYYY/MM/DD</td>
+        </tr>
+      </table>
+    </section>
+  </div>
+</div>
+<!-- End - Recurring payment Transaction Details Content -->

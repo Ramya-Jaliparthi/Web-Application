@@ -1,0 +1,108 @@
+@import '../../../../assets/styles/_spacing';
+@import '../../../../assets/styles/_colors';
+@import '../../../../assets/styles/_fonts';
+@import '../../../../assets/styles/_typography';
+
+$tablet-width: 992px;
+$desktop-width: 993px;
+
+@media (max-width: #{$tablet-width}) {
+    .page-header {
+        margin-left: 15px;
+        margin-right: 15px;
+    }
+}
+
+.add-provider {
+
+    @media (max-width: #{$tablet-width}) {
+        margin-left: 15px;
+        margin-right: 15px;
+    }
+
+    div {
+        .section-header {
+            @include Roboto(bold);
+            font-size: 14px;
+            color: $title-color;
+            margin-bottom: 4px;
+        }
+
+        .mat-select {
+            border-bottom: 2px solid $non-vdk-3-grey;
+        }
+
+        input {
+            border-bottom: 2px solid $non-vdk-3-grey !important;
+            margin-top: 0px;
+            padding-top: 0px;
+            height: 38px;
+        }
+        
+    }
+
+    .provider-name {
+        margin-top: 0px;
+    }
+
+    .provider-address1 {
+        margin-top: 19px;
+    }
+
+    .provider-address2 {
+        margin-top: 19px;
+    }
+
+    .provider-city {
+        margin-top: 19px;
+    }
+
+    .provider-state {
+        margin-top: 19px;
+    }
+
+    .provider-zipcode {
+        margin-top: 32px;
+    }
+
+    .provider-phonenumber {
+        margin-top: 19px;
+    }
+
+    .button-row {
+
+        padding-top: 34px;
+        margin: 0;
+        margin-bottom:30px;
+    }
+
+    .note-text {
+        margin-top: 30px;
+        margin-bottom: 10px;
+        @include Roboto(light);
+        font-size: 13px;
+        color: $non-vdk-3-grey;
+    }
+}
+
+.button-row {
+    padding-top: 14px;
+    display: flex;
+    margin: 0;
+    margin-bottom:30px;
+    flex-direction: column;
+    .btn, .cancel-btn {
+        width: 100%;
+    }
+
+    .btn-cancel {
+      text-align: center;
+      margin-top: 10px;
+      .cancel {
+        @include Roboto(bold);
+        font-size: 14px;
+        color: $link-color;
+        text-decoration: underline;
+      }
+    }
+  }

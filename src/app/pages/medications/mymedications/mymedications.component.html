@@ -1,0 +1,354 @@
+<div [ngClass]="{'mt-20': !ismobile}">
+  <!-- <div *ngIf="!noMedicationsAvailable" class="row" [ngClass]="{'container-fluid': (ismobile),  'container': (!ismobile)}"> -->
+  <div class="row mr-0 ml-0" [ngClass]="{'mb-0': !ismobile}" [hidden]="!bHasDependents && !(filteredMedications?.rxSummary.length === 1)">
+    <div class="col m12 s12" [ngClass]="{'l3':bHasDependents,'l0':!bHasDependents}"></div>
+    <div class="col m12 s12" [ngClass]="{'l6':bHasDependents,'l8':!bHasDependents,'pd-r15': !bHasDependents}">
+      <div *ngIf="ismobile">
+        <app-breadcrumbs></app-breadcrumbs>
+      </div>
+      <div class="medicare-color" *ngIf="!issearchShowing && !showFilterCount"> My Medications</div>
+      <div *ngIf="!ismobile">
+        <app-breadcrumbs></app-breadcrumbs>
+      </div>
+      <div class="medicare-color" *ngIf="issearchShowing || showFilterCount">
+        {{ filteredMedications?.rxSummary.length === 0 ? 'No Results Found' : filteredMedications?.rxSummary.length }} {{ filteredMedications?.rxSummary.length
+        > 1 ? ' Results': ''}} {{ filteredMedications?.rxSummary.length === 1 ? ' result': ''}}
+      </div>
+    </div>
+    <div class="col m12 s12" [ngClass]="{'l3':bHasDependents,'l4':!bHasDependents}"></div>
+  </div>
+  <!-- <div class="row" [ngClass]="{'container-fluid': (ismobile),  'container': (!ismobile)}"> -->
+  <div class="row mr-0 ml-0">
+    <div *ngIf="noMedicationsAvailable">
+      <div class="col l3 s12 m12"></div>
+      <div class="no-medications-available-container col l6 m12 s12 ">
+
+        <div class="medicare-msg">
+          <div class="col s12 pl-0 left" *ngIf="ismobile">
+            <app-breadcrumbs></app-breadcrumbs>
+          </div>
+          <div class="text-center medicare-color" style="text-align: left">
+            My Medications
+          </div>
+          <div class="col s12 pl-0 left" *ngIf="!ismobile">
+            <app-breadcrumbs></app-breadcrumbs>
+          </div>
+          <div class="text-center no-medications-icon">
+            <img src="/assets/images/no_uploads.svg">
+          </div>
+          <p class="text-center pd-0 no-med-text">You have no medications at this time.</p>
+          <!--<p class="pd-0">Medications prescribed and filled will show up here</p>-->
+          <!--<p class="text-center"> with details.</p>-->
+          <div class="text-center promotional-material">
+            <app-fpo-layout [targetUrl]='fpoTargetUrl' [layout]='layout'></app-fpo-layout>
+          </div>
+        </div>
+      </div>
+      <div class="col l3 s12 m12"></div>
+    </div>
+
+    <div [hidden]="!bHasDependents  && !(filteredMedications?.rxSummary.length === 1)">
+      <!-- && medications && medications.length -->
+      <div [ngClass]="{'pd-0': (ismobile) }">
+        <div class="medicare-result">
+          <div class="medicare-result-container">
+            <div [hidden]="!bHasDependents" class="filter-action-button" [ngClass]="{'toggle-filter': (isSidenavOpened),
+                    'closed-filter': !(isSidenavOpened), 'no-dependents': !bHasDependents}">
+              <div class="filter-action-label" (click)="toggleFilter('in')">
+                <span style="margin-left: 10px; padding-right:10px;font-size: 14px;">Filter</span>
+                <p>
+                  <i class="material-icons" style="font-size: 26px;margin-top: 8px;color: #043167">keyboard_arrow_down</i>
+                </p>
+              </div>
+              <div class="clear-action-label" *ngIf="showClearLink" (click)="clearFilter()">
+                <span>Clear</span>
+              </div>
+            </div>
+
+            <div [ngClass]="{'filter-mobile-divider': !(isSidenavOpened)}" class="hide-on-large-only"></div>
+
+            <div class="side-nav-container col l3 m12 s12" [@slideInOut]='sideNavStatus' [hidden]="!bHasDependents" [ngClass]="{'show-side-content': (isSidenavOpened)}">
+
+              <div class="row medications-filter-container" #sideNavContainer>
+
+                <div class="col m12 s12 pd-0 medicare-filter-inner-btn">
+                  <div #filterWidth class="col m12 s12 filter-btn">
+                    <div class="col s12 filter-menu">
+                      <div class="filter-menu-text"> Filter</div>
+                    </div>
+                    <div class="col s12 filter-menu-with-action" (click)="toggleFilter('out')">
+                      <div class="filter-menu-text"> Filter</div>
+                      <i class="material-icons" style="font-size: 26px;">keyboard_arrow_up</i>
+                    </div>
+                  </div>
+                </div>
+
+                <!--<div class="col s12 search-box">-->
+                <!--<div>-->
+                <!--<input #searchInput [focus]="myFocusTriggeringEventEmitter" type="text" id="autocomplete-input"-->
+                <!--[(ngModel)]="searchval" #data (keyup)="SearchAutoComplete($event,data)" (keyup.enter)="search($event,data,doctorFilter, pharmacyFilter)"-->
+                <!--(keydown)="escapeSearchContainer($event)" (focus)="escapeSearchContainer($event)" class="search-input"-->
+                <!--placeholder="Keyword">-->
+                <!--<i class="material-icons close-icon" (click)="clearSearchVal()" *ngIf="showClose">close</i>-->
+                <!--<i class="material-icons" (click)="search($event,data,doctorFilter, pharmacyFilter)">search</i>-->
+                <!--</div>-->
+                <!--<div class="auto-search" *ngIf="isautosearch" #searchDrpContainer>-->
+                <!--<ul>-->
+                <!--<li *ngFor="let val of autoCompleteSearchArray; let i = index;" tabindex="{{i}}" (keydown)="searchMouseDown($event, i,doctorFilter, pharmacyFilter)"-->
+                <!--(click)="getSearchValue($event,val,doctorFilter, pharmacyFilter)">-->
+                <!--{{val | titlecase}}-->
+                <!--</li>-->
+                <!--</ul>-->
+                <!--</div>-->
+                <!--</div>-->
+
+                <div class="col s12 pd-0">
+                  <mat-accordion multi="true">
+                    <mat-expansion-panel [expanded]="isSortExpanded" (opened)="isSortOpened()" (closed)="isSortClosed()">
+                      <mat-expansion-panel-header class="header-panel" [collapsedHeight]="collapsedSortHeight" [expandedHeight]="expandedSortHeight">
+                        <div class="medication-sort">Sort by</div>
+                        <p class="selected-sort" *ngIf="!isSortExpanded">{{sortSelectedFilter}}</p>
+                      </mat-expansion-panel-header>
+                      <mat-list>
+                        <mat-radio-group name="filterSort" [(ngModel)]="sortSelectedFilter" (change)="sortFilterChanged($event);" #issortingChecked>
+                          <mat-list-item *ngFor="let item of sortList">
+                            <mat-radio-button labelPosition="before" [checked]="item.checked" name="filterSort" [value]="item.value">{{item.value}}
+                            </mat-radio-button>
+                          </mat-list-item>
+                        </mat-radio-group>
+                      </mat-list>
+                    </mat-expansion-panel>
+                  </mat-accordion>
+                  <div class="filter-divider"></div>
+                </div>
+
+                <mat-accordion multi="true">
+                  <mat-expansion-panel [expanded]="step[1]" (opened)="isOpened(1)">
+                    <mat-expansion-panel-header class="header-panel" [collapsedHeight]="collapsedHeight" [expandedHeight]="expandedHeight">
+                      Date
+                    </mat-expansion-panel-header>
+                    <mat-list class="date-container" [ngClass]="{'pb-20': isCustomDateRangeInValid || isSelectedDateInvalid}">
+                      <mat-radio-group name="filterDate" [(ngModel)]="dateSelectedFilter" (change)="dateFilterChanged($event);" #isdateChecked>
+                        <mat-list-item *ngFor="let item of dateList">
+                          <mat-radio-button labelPosition="before" [checked]="item.checked" name="filterDate" [value]="item.value">
+                            {{item.label}} {{item.label != "Custom Date Range" ? ("(" + item.count+ ")") : ''}}
+                          </mat-radio-button>
+                        </mat-list-item>
+                      </mat-radio-group>
+                      <mat-list-item class="calendar-min-height" *ngIf="dateSelectedFilter === 'Custom'">
+                        <div class="date-filter-custom">
+                          <div class="date-filter-range">
+                            <div class="date-filter-custom-date from-date">
+                              <mat-form-field>
+                                <input #fromDateInput matInput placeholder="From date" class="input-calender" dateFormatValidation [(ngModel)]="fromDate"
+                                  maxlength="10" (input)="formatInputFromDate($event.target.value)" (focus)="toggleCalender('from')"
+                                  (click)="toggleCalender('from')">
+                                <mat-hint class="mat-hint-message">MM/DD/YYYY</mat-hint>
+                              </mat-form-field>
+                              <div class="calendar-icon" (click)="toggleCalender('from')">
+                                <i class="far fa-calendar-alt"></i>
+                              </div>
+                              <!--<mat-datepicker-toggle  matSuffix [for]="fromPicker"></mat-datepicker-toggle>-->
+                              <mat-datepicker #fromPicker></mat-datepicker>
+                            </div>
+                            <div class="date-filter-custom-date">
+                              <mat-form-field>
+                                <input #toDateInput matInput [min]="fromMinDate" (click)="toggleCalender('to')" (focus)="toggleCalender('to')" maxlength="10"
+                                  dateFormatValidation (input)="formatInputToDate($event.target.value)" [(ngModel)]="toDate"
+                                  placeholder="End date">
+                                <mat-hint class="mat-hint-message">MM/DD/YYYY</mat-hint>
+                              </mat-form-field>
+                              <div class="calendar-icon" (click)="toggleCalender('to')">
+                                <i class="far fa-calendar-alt"></i>
+                              </div>
+                              <!--<mat-datepicker-toggle disabled matSuffix [for]="toPicker"></mat-datepicker-toggle>-->
+                              <mat-datepicker #toPicker></mat-datepicker>
+                            </div>
+                          </div>
+                          <div class="custom-range-error-message" *ngIf="isSelectedDateInvalid && !isCustomDateRangeInValid">
+                            Please enter valid Date
+                          </div>
+                          <div class="custom-range-error-message" *ngIf="isCustomDateRangeInValid">
+                            End date can't be less than start date
+                          </div>
+                          <div class="date-error" *ngIf="errorMessage !== null">
+                            <i class="material-icons arrow_forward pd-0">arrow_forward</i>
+                            <span>{{errorMessage}}</span>
+                          </div>
+                        </div>
+                      </mat-list-item>
+                    </mat-list>
+                    <div class="calendar-main-container">
+                      <div class="calendar-container">
+                        <mat-calendar *ngIf='showCalender' [minDate]="fromMinDate" [maxDate]="calendarMaxDate" [startAt]="currentSelectedDate" [cellAspectRatio]="1"
+                          [selected]="currentSelectedDate" (selectedChange)="getSelectedValue($event)">
+                        </mat-calendar>
+                      </div>
+                    </div>
+                  </mat-expansion-panel>
+                </mat-accordion>
+                <div class="filter-divider-row"></div>
+                <mat-accordion multi="true" *ngIf="dependentList?.dependents?.length > 0">
+                  <!-- <mat-accordion multi="true" *ngIf="dependentList?.length > 0">-->
+                  <mat-expansion-panel disableRipple [expanded]="step[2]" (opened)="isOpened(2)">
+                    <mat-expansion-panel-header class="header-panel" [collapsedHeight]="collapsedHeight" [expandedHeight]="expandedHeight">
+                      Member
+                    </mat-expansion-panel-header>
+                    <mat-selection-list (selectionChange)="onMemberSelectionChange($event)" [(ngModel)]="memberSelectedFilter">
+                      <mat-list-option *ngFor="let item of membersList" [disabled]="item.disabled" [selected]="item.selected" value="{{ item.value }}">
+                        {{item.name !== 'User' ? (item.name | titlecase) : (basicMemInfo?.rxSummary?.filterName)}} ({{item.count}})
+                      </mat-list-option>
+                    </mat-selection-list>
+                  </mat-expansion-panel>
+                </mat-accordion>
+                <div class="filter-divider-row" *ngIf="dependentList?.dependents?.length > 0"></div>
+
+                <mat-accordion multi="true" [hidden]="!(doctorList?.length > 1)">
+                  <mat-expansion-panel [expanded]="step[3]" (opened)="isOpened(3)">
+                    <mat-expansion-panel-header class="header-panel" [collapsedHeight]="collapsedHeight" [expandedHeight]="expandedHeight">
+                      Prescribing Doctor
+                    </mat-expansion-panel-header>
+                    <mat-selection-list #doctorFilter (selectionChange)="onDoctorSelectionChange($event)">
+                      <mat-list-option *ngFor="let item of doctorList" [selected]="item.selected" [disabled]="item.disabled" value="{{ item.value }}">
+                        {{item.value | casingForFilter}} ({{item.count}})
+                      </mat-list-option>
+                    </mat-selection-list>
+                  </mat-expansion-panel>
+                </mat-accordion>
+                <div class="filter-divider-row" [hidden]="!(doctorList?.length > 1)"></div>
+
+                <mat-accordion multi="true" [hidden]="!(pharmacyList?.length > 1)">
+                  <mat-expansion-panel [expanded]="step[4]" (opened)="isOpened(4)">
+                    <mat-expansion-panel-header class="header-panel" [collapsedHeight]="collapsedHeight" [expandedHeight]="expandedHeight">
+                      Pharmacy
+                    </mat-expansion-panel-header>
+                    <mat-selection-list #pharmacyFilter (selectionChange)="onPharmacySelectionChange($event)">
+                      <mat-list-option *ngFor="let item of pharmacyList" [selected]="item.selected" [disabled]="item.disabled" value="{{ item.value }}">
+                        {{item.value | titlecase}} ({{item.count}})
+                      </mat-list-option>
+                    </mat-selection-list>
+                  </mat-expansion-panel>
+                </mat-accordion>
+                <div class="filter-divider-row" [hidden]="!(pharmacyList?.length > 1)"></div>
+
+                <div class="col s12 filter-apply pd-0">
+                  <div>
+                    <button class="clear-button" disableRipple mat-raised-button type="button" (click)="clearFilter()">
+                      Clear
+                    </button>
+                  </div>
+                  <div>
+                    <button class="apply-button" disableRipple mat-raised-button type="submit" (click)="applyFilter(doctorFilter, pharmacyFilter)">
+                      Apply
+                    </button>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+
+            <div class="result-container col m12 s12" [ngClass]="{'hide-side-content': (isSidenavOpened),'l6':bHasDependents,'l8':!bHasDependents, 'pd-r15': !bHasDependents}">
+              <div class="no-medications-available" *ngIf="isDisplayMessage">
+                <div class="search-no-results-msg" *ngIf="!issearchShowing">
+                  <p class="search-msg">Oops. We couldn't find any results for the applied filters.</p>
+                  <button class="search-clear-button" mat-raised-button type="button" (click)="clearFilter()">
+                    Clear Filters
+                  </button>
+                  <div class="try-filter-by-header">
+                    <div class="search-option-header">Or try filtering by:</div>
+                    <div class="search-option"> Medication name</div>
+                    <div class="search-option"> Pharmacy name</div>
+                    <div class="search-option"> Prescribing doctor</div>
+                    <div class="search-option"> Member name</div>
+                  </div>
+
+                </div>
+                <div class="text-center medicare-msg" *ngIf="issearchShowing">
+                  <div class="text-center medicare-msg">
+                    <div class="no-medications-icon">
+                      <img src="/assets/images/no_uploads.svg">
+                    </div>
+                    <p>You have no medications at this time.</p>
+                  </div>
+                </div>
+              </div>
+
+              <div *ngIf="!isDisplayMessage && filteredMedications.rxSummary">
+                <div *ngFor="let medication of filteredMedications.rxSummary; trackBy: trackByFn" class="list-medications-container">
+                  <div class="list-medication-container" (click)="showMedicationDetails(medication)">
+                    <div class=medication-detail>
+                      <div class="dependent-info" *ngIf="medication.currUser">
+                        {{ basicMemInfo?.rxSummary?.fullName}}
+                      </div>
+                      <div class="dependent-info" *ngIf="!medication.currUser">
+                        {{medication?.MemberInfo}}
+                      </div>
+                      <div class="medication-details">
+                        <div class="medication-name">
+                          <!-- {{medication.BrandName}} -->
+                          {{medication?.genericName}}
+                        </div>
+                        <!--<div class="medication-type">-->
+                        <!--Tablet {{medication?.Strength}}-->
+                        <!--</div>-->
+                        <!--<div class="medication-frequency">-->
+                        <!--Frequency: 1x/Daily Hardcoded-->
+                        <!--</div>-->
+                      </div>
+                      <div class="pharmacy-details">
+                        <div class="pharmacy-name">
+                          <!-- <span class="name">{{medication.DispName}}</span> <span class="store-id">(Store ID#)</span> -->
+                          <span class="name">Pharmacy: {{medication?.pharmacy?.name | titlecase}}</span>
+                          <span class="store-id">({{medication?.pharmacy?.id}}) </span>
+                        </div>
+                        <!-- MWIT-519 issue fix -->
+                        <div class="pharmacy-contact-info" *ngIf="medication.pharmacy.phoneNumber">
+                          Need a refill?
+                          <span class="phone-icon">
+                            <i class="fas fa-phone"></i>
+                          </span>
+                          <!--<span class="phone"> {{medication.DispPh}} </span>-->
+                          <!-- MWIT-519 issue fix -->
+                          <a [href]="'tel:+1'+medication.pharmacy.phoneNumber" (click)="stopEventPropagation($event)" class="phone">{{medication?.pharmacy?.phoneNumber | phone}} </a>
+
+                        </div>
+                      </div>
+                      <div class="fill-details">
+                        <div class="amount-info">
+                          <ng-container *ngIf="medication?.copay">
+                            <span class="amount"> ${{medication?.copay?.toString().split('.')[0]}}
+                              <sup style="font-size: 10px">{{medication.copay.toString().split('.')[1]?medication.copay.toString().split('.')[1]:'00'}}</sup>
+                            </span>
+                          </ng-container>
+                          <span>copay</span>
+                        </div>
+                        <div class="last-fill-info">
+                          <!-- Last Fill: <span class="last-fill-date">{{ medication.DispDt |  customdate }}</span> -->
+                          Last Fill:
+                          <span class="last-fill-date">{{ medication.rxIncurredDate|yyyymmddTommddyyyy}}</span>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="medication-action">
+                      <span>
+                        <i class="far fa-chevron-right"></i>
+                      </span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="dynamic-content col m12 s12 pd-0" [ngClass]="{'hide-side-content': (isSidenavOpened),'l3':bHasDependents,'l4':!bHasDependents}">
+              <div>
+                <app-fpo-layout [targetUrl]='fpoTargetUrl'></app-fpo-layout>
+              </div>
+              <!-- FPO placeholder for dynamic content -->
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

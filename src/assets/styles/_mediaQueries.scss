@@ -1,0 +1,18 @@
+//taken from materialize css
+//based on our project
+//Use Media queries like given below
+@import './_variables.scss';
+@mixin respond-to($media) {
+    @if $media==moblile {
+        @media only screen and (max-width: $mobile-tablet) {}
+    }
+    @else if $media==desktop {
+        @media only screen and (min-width: $mobile-tablet + 1) {}
+    }
+}
+
+
+/* for future
+ @else if $media==desktop {
+        @media only screen and (min-width: $mobile-tablet + 1) and (max-width: $break-large - 1) {}
+    }*/

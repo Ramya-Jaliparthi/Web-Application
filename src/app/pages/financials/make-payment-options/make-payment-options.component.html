@@ -1,0 +1,38 @@
+<div class="mt-20 hide-on-large-only">
+  <app-breadcrumbs [breadCrumbs]="breadCrumbs"></app-breadcrumbs>
+</div>
+<div class="row m-0 make-payment-options-container">
+  <h1 class="form-header">{{financialConstants.text.makePaymentTitle}}</h1>
+  <div class="hide-on-med-only hide-on-small-only">
+    <app-breadcrumbs [breadCrumbs]="breadCrumbs"></app-breadcrumbs>
+  </div>
+  <form [formGroup]="payOptionsForm" novalidate (ngSubmit)="makePayment()">
+
+    <div class="mb-20 mt-20 make-payment-selection">
+      <span class="radioTextPD">{{financialConstants.text.whenDoYouWantToSubmit}}</span>
+      <mat-radio-group formControlName="whenToSubmit">
+        <mat-radio-button [value]="'now'">{{financialConstants.text.now}}</mat-radio-button>
+        <mat-radio-button [value]="'later'">{{financialConstants.text.later}}</mat-radio-button>
+      </mat-radio-group>
+    </div>
+
+    <div class="mb-20 mt-20 make-payment-selection">
+      <span class="radioTextPD">{{financialConstants.text.whatDoYouWantToPay}}</span>
+      <mat-radio-group formControlName="whomToPay">
+        <mat-radio-button [value]="'payMe'">{{financialConstants.text.payMe}}</mat-radio-button>
+        <mat-radio-button [value]="'payProvider'">{{financialConstants.text.payAProvider}}</mat-radio-button>
+      </mat-radio-group>
+    </div>
+
+    <div class="row button-row">
+      <button tabindex="13" class="submit-btn waves-effect waves-light btn btn-block  btn-half-width-right br-8" type="submit"
+        aria-label="Submit" name="action">Next
+      </button>
+
+      <div class="btn-cancel" tabindex="14">
+          <a class="cancel" [routerLink]="['/myfinancials']">Cancel</a>
+      </div>
+    </div>
+    <p class="note-text">{{financialConstants.text.requiredFields}}</p>
+  </form>
+</div>

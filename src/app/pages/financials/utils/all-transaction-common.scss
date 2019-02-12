@@ -1,0 +1,178 @@
+/* Common CSS Properties */
+
+h1 {
+    color: $header-color;
+    margin: 20px 0;
+}
+
+.row h1 {
+    margin-bottom: 0;
+}
+
+a {
+    color: $link-color;
+}
+
+.btn,
+a {
+    @include Roboto(bold);
+}
+
+.btn {
+    /*padding-left: 15px;
+    padding-right: 15px;*/
+    font-size: 16px;
+    border-radius: 5px;
+    &.btn-default {
+        background: $white_background !important;
+        color: $text-primary-color;
+    }
+    &.btn-primary {
+        background: $link-primary-color;
+        color: $text-white-color;
+    }
+}
+
+.btn:hover {
+    &.btn-primary {
+        background-color: $link-secondary-color;
+        color: $text-white-color;
+    }
+    &.btn-default {
+        background-color: $background-blue-fair-color!important;
+        /*color: $primary-color;*/
+    }
+}
+
+.btn:focus {
+    &.btn-primary {
+        background-color: $link-color;
+        color: $text-white-color;
+    }
+}
+
+.inline-block {
+    display: inline-block;
+}
+
+.fa-chevron-right {
+    font-size: 18px;
+    color: $link-secondary-color;
+}
+
+.flex-box-listing {
+    display: flex;
+    @include Roboto(light);
+    color: $text-normal-color;
+    span,
+    p {
+        font-size: 12px;
+    }
+    .flex-grow-1 {
+        flex-grow: 1;
+    }
+    .title {
+        @include Roboto(bold);
+        font-size: 14px;
+        color: $header-color;
+        &.title-black {
+            @include Roboto(light);
+            color: $black_color;
+        }
+    }
+    .category {
+        background: $text-bkg-color;
+        padding: 0 8px;
+    }
+}
+
+.flex-container {
+    display: flex;
+    flex-direction: row;
+    margin-right: 0;
+    margin-left: 0;
+}
+
+.collection {
+    margin: 0 auto;
+    border-radius: 0;
+    @media (max-width: 992px) {
+        margin-bottom: 20px;
+    }
+}
+
+.collection,
+.collection-item {
+    border-color: $textbox-border;
+}
+
+.collection-item {
+    padding-left: 12px;
+    padding-right: 10px;
+}
+
+@media (max-width:992px) {
+    .messages,
+    .documents-component,
+    .documents-list-view-component,
+    .uploadsComponent {
+        .row {
+            .col {
+                &.listing {
+                    padding: 0 0.75rem;
+                }
+            }
+        }
+        .flex-container {
+            .col {
+                padding: 0;
+            }
+        }
+    }
+    .row {
+        margin-left: auto;
+        margin-right: auto;
+        .col {
+            padding: 0 15px;
+        }
+    }
+    .promo {
+        padding: 0 15px !important;
+    }
+    h1 {
+        /* margin-top:0;*/
+        padding-left: 0.75rem;
+    }
+    .row h1 {
+        padding-left: 0;
+    }
+    .flex-container {
+        flex-direction: column;
+    }
+    .collection-item {
+        padding-left: 10px;
+    }
+
+    .mobile-hide-by-filter-overlay {
+        display: none;
+    }
+}
+
+.filter-adjust {
+    // padding-left: 0;
+    background: $non-vdk-15-grey;
+    background-clip: content-box;
+    /*margin: 0 0.75rem 0 0; */
+}
+
+@media (min-width:993px) {
+    .promo {
+        background: $background-gray-color;
+        background-clip: content-box;
+        /*margin-left:0.60rem!important;*/
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        // padding-right:0;
+    }
+}

@@ -1,0 +1,32 @@
+{
+    "subscriberId": "MTN050866570",
+    "plans": [
+      {
+        "planName": "Blue Care Elect Program",
+        "groupName": "Dental Plan",
+        "planType": "dental",
+        "groupNumber": "1234567890",
+        "hasRx": "True",
+        "hasESI": "True",
+        "hasESIMedex": "True"
+      },
+      {
+        "planName": "Blue Care Elect Program",
+        "groupName": "Dental Plan",
+        "planType": "dental",
+        "groupNumber": "1234567890",
+        "hasRx": "True",
+        "hasESI": "True",
+        "hasESIMedex": "True"
+      },
+      {
+        "planName": "Blue Care Elect Program",
+        "groupName": "Dental Plan",
+        "planType": "dental",
+        "groupNumber": "1234567890",
+        "hasRx": "True",
+        "hasESI": "True",
+        "hasESIMedex": "True"
+      }
+    ]
+  }

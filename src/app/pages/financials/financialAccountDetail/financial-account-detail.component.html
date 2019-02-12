@@ -1,0 +1,167 @@
+<div class="ml-15 mt-20 hide-on-large-only">
+  <app-breadcrumbs [breadCrumbs]="breadCrumbs"></app-breadcrumbs>
+</div>
+<header class="row accountdetail-header ml-0 mr-0">
+    <div class="">
+        <div class="col l6 m12 s12 pd-0">
+            <div class="accountdetail-header-inner" *ngIf="accountDetail?.length">
+                <h1 class="header hide-below-322" *ngIf="!detailsheader">{{accountDetail[0]['accountDisplayHeader']}}
+                    Details</h1>
+                <h1 class="header hide-below-322" *ngIf="detailsheader">{{detailsheader}} Details</h1>
+            
+            <div class="tool-tip-div">
+                <span class="i-circle tooltip" (click)="showToolTip()">
+                    <div [ngClass]="{'icon-tooltip-filled': headerToolTipVisible }">
+                        <i class="fal fa-info-circle icon-blue"></i>
+                    </div>
+                    <ng-container *ngIf="headerToolTipVisible">
+                        <ng-container *ngTemplateOutlet="tooltipTextGlossary;">
+                        </ng-container>
+                    </ng-container>
+                </span>
+            </div>
+            </div>
+        </div>
+    </div>
+</header>
+<div class="hide-on-med-only hide-on-small-only">
+  <app-breadcrumbs [breadCrumbs]="breadCrumbs"></app-breadcrumbs>
+</div>
+<section class="row mb-0 ml-0 mr-0">
+
+    <div class="">
+        <!-- no container class to be used. -->
+        <div class="main-container mb-20">
+            <div class="main-result">
+                <div class="main-result-container">
+
+                    <div class="col l12 s12 m12 remaining-container">
+                        <ng-container *ngFor="let detail of accountDetail;let i=index">
+                            <section class="accountDetailItem">
+                                <section class="col l8 s12 m12 accountDetailSection">
+                                    <header>
+                                        <h4><span>{{financialConstants.text.acountDetailsDateTitle}}: </span>{{
+                                            convertDate(detail.planStartDate) | date:'MM/dd/yyyy' }} - {{
+                                            convertDate(detail.planEndDate) | date:'MM/dd/yyyy' }}</h4>
+                                    </header>
+                                    <section class="accountDetailChart1">
+                                        <app-alegeus-linechart [lineChartOptions]="convertAccountDetailIntoLineChartOptions(detail, financialConstants.text.chart1)"></app-alegeus-linechart>
+                                    </section>
+
+                                    <section class="accountDetailChart2">
+                                        <app-alegeus-linechart [lineChartOptions]="convertAccountDetailIntoLineChartOptions(detail, financialConstants.text.chart2)"></app-alegeus-linechart>
+                                    </section>
+                                </section>
+
+                                <section class="col l4 s12 m12 link-container">
+                                    <div class="rightSideDetails" *ngIf="detail.deductibleInfo && isHRAaccount(detail['accountType'])">
+                                        <mat-accordion multi="true">
+                                            <mat-expansion-panel>
+                                                <mat-expansion-panel-header class="header-panel" [collapsedHeight]="'48px'"
+                                                    [expandedHeight]="'48px'">
+                                                    <div class="sort-by">{{financialConstants.text.accountDetailRightDeductibleAccordionHeader}}</div>
+                                                </mat-expansion-panel-header>
+                                                <mat-list>
+                                                    <mat-list-item>
+                                                        <div class="matListContentDiv">
+                                                            <span>{{financialConstants.text.accountDetailRightDeductibleAccordionContent1}}</span>
+                                                            <span class="activeColumn">&#36;{{detail.deductibleInfo['deductible'] | number : '1.2-2'}}</span>
+                                                        </div>
+                                                    </mat-list-item>
+                                                    <mat-list-item>
+                                                        <div class="matListContentDiv">
+                                                            <span>{{financialConstants.text.accountDetailRightDeductibleAccordionContent2}}</span>
+                                                            <span class="activeColumn">&#36;{{detail.deductibleInfo['appliedDeductible'] | number : '1.2-2'}}</span>
+                                                        </div>
+                                                    </mat-list-item>
+                                                    <mat-list-item>
+                                                        <div class="matListContentDiv">
+                                                            <span>{{financialConstants.text.accountDetailRightDeductibleAccordionContent3}}</span>
+                                                            <span class="activeColumn">&#36;{{detail.deductibleInfo['remainingDeductible'] | number : '1.2-2'}}</span>
+                                                        </div>
+                                                    </mat-list-item>
+
+                                                </mat-list>
+                                            </mat-expansion-panel>
+                                        </mat-accordion>
+                                    </div>
+
+                                    <div class="rightSideDetails" *ngIf="detail.familyDetailInfo?.length">
+                                        <mat-accordion multi="true">
+                                            <mat-expansion-panel>
+                                                <mat-expansion-panel-header class="header-panel" [collapsedHeight]="'48px'"
+                                                    [expandedHeight]="'48px'">
+                                                    <div class="sort-by">{{financialConstants.text.accountDetailRightTopAccordionHeader}}</div>
+                                                </mat-expansion-panel-header>
+                                                <mat-list>
+                                                    <mat-list-item class="matListFamilyContent">{{financialConstants.text.accountDetailRightTopAccordionContent}}</mat-list-item>
+                                                    <mat-list-item>
+                                                        <div class="matListContentDiv">
+                                                            <span>Name</span>
+                                                            <span class="activeColumn">Status</span>
+                                                        </div>
+                                                    </mat-list-item>
+                                                    <mat-list-item *ngFor="let info of detail.familyDetailInfo;">
+                                                        <div class="matListContentDiv">
+                                                            <span>{{info.firstName | titlecase}} {{info.middleInitial |
+                                                                titlecase}} {{info.lastName | titlecase}}</span>
+                                                            <span class="activeColumn">{{getStatus(info.depStatus)}}</span>
+                                                        </div>
+                                                    </mat-list-item>
+                                                </mat-list>
+                                            </mat-expansion-panel>
+                                        </mat-accordion>
+                                    </div>
+
+
+                                    <div class="rightSideDetails">
+                                        <mat-accordion multi="true">
+                                            <mat-expansion-panel>
+                                                <mat-expansion-panel-header class="header-panel" [collapsedHeight]="'48px'"
+                                                    [expandedHeight]="'48px'">
+                                                    <div class="sort-by">{{financialConstants.text.accountDetailRightBottomAccordionHeader}}</div>
+                                                </mat-expansion-panel-header>
+                                                <mat-list>
+                                                    <mat-list-item>
+                                                        <div class="matListContentDiv">
+                                                            <span>{{financialConstants.text.accountDetailRightBottomAccordionContent1}}</span>
+                                                            <span class="activeColumn">{{
+                                                                convertDate(detail.planStartDate) | date:'MM/dd/yyyy'
+                                                                }}</span>
+                                                        </div>
+                                                    </mat-list-item>
+                                                    <mat-list-item>
+                                                        <div class="matListContentDiv">
+                                                            <span>{{financialConstants.text.accountDetailRightBottomAccordionContent2}}</span>
+                                                            <span class="activeColumn">{{
+                                                                convertDate(detail.spendingLastDate) | date:'MM/dd/yyyy' }}</span>
+                                                        </div>
+                                                    </mat-list-item>
+                                                    <mat-list-item>
+                                                        <div class="matListContentDiv">
+                                                            <span>{{financialConstants.text.accountDetailRightBottomAccordionContent3}}</span>
+                                                            <span class="activeColumn">{{
+                                                                convertDate(detail.submitClaimsLastDate) | date:'MM/dd/yyyy' }}</span>
+                                                        </div>
+                                                    </mat-list-item>
+
+                                                </mat-list>
+                                            </mat-expansion-panel>
+                                        </mat-accordion>
+                                    </div>
+                                </section>
+                            </section>
+                        </ng-container>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+<ng-template #tooltipTextGlossary>
+    <span class="tooltiptext raisedbox">
+      <app-fpo-layout [targetUrl]='drupalFinancialTooltipUrl' [toolTipdataPlans]="drupalFinancialTooltipUrlData" isplandetails="true"></app-fpo-layout>
+    </span>
+  </ng-template>

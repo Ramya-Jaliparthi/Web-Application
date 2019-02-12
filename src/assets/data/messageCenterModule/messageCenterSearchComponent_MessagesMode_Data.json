@@ -1,0 +1,47 @@
+{
+    "sortByFilter": [
+        {
+            "criteriaName": "Most Recent",
+            "isCriteriaSelected": true
+        },
+        {
+            "criteriaName": "A to Z",
+            "isCriteriaSelected": false
+        },
+        {
+            "criteriaName": "Z to A",
+            "isCriteriaSelected": false
+        }
+    ],
+    "categoryFilter": [
+        {
+            "criteriaName": "Most Recent"
+        }
+    ],
+    "dateFilter": [
+        {
+            "criteriaName": "Last 30 days",
+            "matchingResultsCount": 1
+        },
+        {
+            "criteriaName": "Last 60 days",
+            "matchingResultsCount": 2
+        },
+        {
+            "criteriaName": "Last 90 days",
+            "matchingResultsCount": 3
+        },
+        {
+            "criteriaName": "Year-to-date",
+            "matchingResultsCount": 12
+        },
+        {
+            "criteriaName": "All dates",
+            "matchingResultsCount": 12
+        },
+        {
+            "criteriaName": "Custom Date Range",
+            "matchingResultsCount": null
+        }
+    ]
+}

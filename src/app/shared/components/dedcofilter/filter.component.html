@@ -1,0 +1,173 @@
+<div class="filter-component">
+  <div class="filter-action-button-cont">
+    <div class="filter-action-button" [ngClass]="{'toggle-filter': (isSidenavOpened), 'closed-filter': !(isSidenavOpened)}">
+      <div class="filter-action-label" (click)="toggleFilterHandler('in')">
+        Filter
+        <p>
+          <i class="material-icons">keyboard_arrow_down</i>
+        </p>
+      </div>
+    </div>
+    <div *ngIf="showClearLink" [ngClass]="{'toggle-filter': (isSidenavOpened)}" class="clear-action-label" (click)="clearFilterHandler()">
+      Clear
+    </div>
+  </div>
+
+  <div [ngClass]="{'filter-mobile-divider': !(isSidenavOpened)}" class="hide-on-large-only"></div>
+
+  <div class="filter-content" [ngClass]="{'show-side-content': (isSidenavOpened)}" [@slideInOut]='sideNavStatus'>
+    <div class="">
+      <div class="col m12 s12 pd-0 medicare-filter-inner-btn">
+        <div #filterWidth class="col m12 s12 filter-btn">
+          <div class="col s12 filter-menu">
+            <div> Filter</div>
+          </div>
+          <div class="col s12 filter-menu-with-action" (click)="toggleFilterHandler('out')">
+            <div> Filter</div>
+            <i class="material-icons">keyboard_arrow_up</i>
+          </div>
+        </div>
+      </div>
+      <div class="col s12 search-box" *ngIf="_filterConfig.hasSearch">
+        <div>
+          <input #searchInput [focus]="myFocusTriggeringEventEmitter" type="text" id="autocomplete-input" [(ngModel)]="searchVal"
+            #data (keyup)="searchAutoComplete($event,data)" (keyup.enter)="search($event,data)" (keydown)="escapeSearchContainer($event)"
+            (focus)="escapeSearchContainer($event)" class="search-input" [placeholder]="_filterConfig.searchPlaceHolder">
+          <i class="material-icons close-icon" (click)="clearSearchVal()" *ngIf="showClose">close</i>
+          <i class="material-icons" (click)="search($event,data)">search</i>
+        </div>
+        <div class="auto-search" *ngIf="isAutoSearch" #searchDrpContainer>
+          <ul>
+            <li *ngFor="let val of autoCompleteSearchArray; let i = index;" tabindex="{{i}}" (keydown)="searchKeyDown($event, i)"
+              (click)="getSearchValue($event,val)">
+              {{val | titlecase}}
+            </li>
+          </ul>
+        </div>
+      </div>
+      <ng-container *ngFor="let item of _filterConfig.items; let i = index">
+        <mat-accordion [multi]="item.multi" class="filter-item" [ngClass]="{'hidden': (item.hide)}">
+          <mat-expansion-panel [expanded]="item.expanded" [disabled]="item.disabled" [hideToggle]="item.hideToggle"
+            (opened)="isOpened(i)" (closed)="isClosed(i)">
+            <mat-expansion-panel-header *ngIf="!item.hideHeader" class="header-panel" [collapsedHeight]="item.collapsedHeight"
+              [expandedHeight]="item.expandedHeight">
+              <ng-container *ngIf="!item.sortBy">{{ item.headerText }}</ng-container>
+              <ng-container *ngIf="item.sortBy">
+                <div class="sort-by">{{ item.headerText }}</div>
+                <p class="selected-sort" *ngIf="!item.expanded">{{item.model}}</p>
+              </ng-container>
+            </mat-expansion-panel-header>
+            <mat-list *ngIf="item.type === 'radio'" [ngClass]="[item.className ? item.className : '']">
+              <mat-radio-group [(ngModel)]="item.model" (change)="radioChangeHandler($event, i);">
+                <mat-list-item *ngFor="let option of item.list" [ngClass]="[option.className ? option.className : '']">
+                  <mat-radio-button [disabled]="option.disabled" labelPosition="before" [disableRipple]="item.disableRipple"
+                    [checked]="option.selected" [value]="option.value">
+                    <ng-container *ngIf="item.titlecase">{{option.text ? option.text : option.value | titlecase}}</ng-container>
+                    <ng-container *ngIf="!item.titlecase">{{option.text ? option.text : option.value}} {{option.count
+                      !== null && option.count
+                      !== undefined ? ("(" + option.count+ ")") : ''}}</ng-container>
+                  </mat-radio-button>
+                </mat-list-item>
+              </mat-radio-group>
+            </mat-list>
+            <mat-selection-list #matSelectionLists *ngIf="item.type === 'checkbox'" [disableRipple]="item.disableRipple"
+              (selectionChange)="checkboxChangeHandler($event, i)">
+              <mat-list-option *ngFor="let option of item.list" [ngClass]="[option.className ? option.className : '']"
+                [selected]="option.selected" [disabled]="option.disabled" [value]="option.value">
+                <ng-container *ngIf="item.titlecase">{{option.text ? option.text : option.value | titlecase}}</ng-container>
+                <ng-container *ngIf="!item.titlecase">{{option.text ? option.text : option.value}} {{option.count !==
+                  null && option.count !==
+                  undefined ? ("(" + option.count+ ")") : ''}}</ng-container>
+              </mat-list-option>
+            </mat-selection-list>
+
+            <mat-list class="date-container" *ngIf="item.type === 'calendar'">
+              <mat-radio-group name="filterDate" [(ngModel)]="item.model" (change)="dateFilterChanged($event, i);"
+                #isdateChecked>
+                <mat-list-item *ngFor="let option of item.list">
+                  <mat-radio-button labelPosition="before" [checked]="option.selected" name="filterDate" [value]="option.value">
+                    {{option.text ? option.text : option.value}} {{(option.text ? option.text : option.value) !=
+                    "Custom Date Range" ? ("(" +
+                    option.count+ ")") : ''}}
+                  </mat-radio-button>
+                </mat-list-item>
+              </mat-radio-group>
+              <mat-list-item class="calendar-min-height" *ngIf="item.model === 'CUSTOM'">
+                <div class="date-filter-custom">
+                  <div class="date-filter-range">
+                    <div class="date-filter-custom-date from-date">
+                      <div>
+                        <input matInput #fromDateInput dateFormatValidation placeholder="Start Date" class="input-calender"
+                          [(ngModel)]="fromDate" maxlength="10" (input)="formatInputFromDate($event.target.value)"
+                          (click)="toggleCalender('from')">
+                        <mat-hint class="mat-hint-message">MM/DD/YYYY</mat-hint>
+                      </div>
+
+
+                      <div class="calendar-icon" (click)="toggleCalender('from')">
+                        <i class="far fa-calendar-alt"></i>
+                      </div>
+                      <mat-datepicker #fromPicker></mat-datepicker>
+                    </div>
+                    <div class="date-filter-custom-date">
+                      <div>
+                        <input matInput #toDateInput dateFormatValidation [min]="fromMinDate" class="input-calender"
+                          (click)="toggleCalender('to')" maxlength="10" (input)="formatInputToDate($event.target.value)"
+                          [(ngModel)]="toDate" placeholder="End Date">
+                        <mat-hint class="mat-hint-message">MM/DD/YYYY</mat-hint>
+                      </div>
+
+
+                      <div class="calendar-icon" (click)="toggleCalender('to')">
+                        <i class="far fa-calendar-alt"></i>
+                      </div>
+                      <mat-datepicker #toPicker></mat-datepicker>
+                    </div>
+                  </div>
+                  <!-- <div class="custom-range-error-message" *ngIf="isSelectedDateInvalid">
+                                        Please use the following format: MM/DD/YYYY.
+                                    </div>
+                                    <div class="custom-range-error-message" *ngIf="isCustomDateRangeInValid">
+                                        Invalid end date. Please try again.
+                                    </div> -->
+                  <div class="custom-range-error-message" *ngIf="errorMessage">
+                    <span>{{errorMessage}}</span>
+                  </div>
+                  <!-- <div class="date-error" *ngIf="errorMessage !== null">
+                                        <i class="material-icons arrow_forward pd-0">arrow_forward</i>
+                                        <span>{{errorMessage}}</span>
+                                    </div> -->
+                </div>
+              </mat-list-item>
+            </mat-list>
+            <div class="calendar-main-container" *ngIf="item.type === 'calendar'">
+              <div class="calendar-container">
+                <mat-calendar *ngIf='showCalender' [minDate]="fromMinDate" [maxDate]="calendarMaxDate" [startAt]="currentSelectedDate"
+                  [selected]="currentSelectedDate" (selectedChange)="getSelectedValue($event)">
+                </mat-calendar>
+              </div>
+            </div>
+          </mat-expansion-panel>
+        </mat-accordion>
+        <div class="filter-divider" *ngIf="item.divider"></div>
+        <div class="filter-divider-row" *ngIf="!item.divider"></div>
+      </ng-container>
+
+      <div class="col s12 filter-apply pd-0">
+        <div>
+          <button class="clear-button" mat-raised-button type="button" (click)="clearFilterHandler()">
+            Clear
+          </button>
+        </div>
+        <div>
+          <button class="apply-button" mat-raised-button type="submit" (click)="applyFilterHandler()">
+            Apply
+          </button>
+        </div>
+      </div>
+
+
+    </div>
+  </div>
+
+</div>

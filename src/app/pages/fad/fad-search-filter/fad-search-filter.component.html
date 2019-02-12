@@ -1,0 +1,263 @@
+<div class="fad-search-filter-component">
+  <div #sideNavContainer>
+
+    <div class="filter-bar" [ngClass]="{'toggle-show':isDisplayFilter}" (click)="toggleFilter()">
+      <span>Filter
+        <a href="javascript:void(0)">
+          <i class="fa fa-chevron-down"></i>
+        </a>
+      </span>
+    </div>
+
+    <div class="filter-container" [class.block]="isDisplayFilter">
+      <div class="filter-pos">
+
+        <mat-accordion multi="true">
+          <mat-expansion-panel class="sort" [expanded]="isSortExpanded" (opened)="isSortOpened()" (closed)="isSortClosed()">
+            <mat-expansion-panel-header class="header-panel" [collapsedHeight]="collapsedSortHeight" [expandedHeight]="expandedSortHeight">
+              <div class="sort-text">Sort by</div>
+              <p class="selected-sort" *ngIf="!isSortExpanded">{{sortSelectedFilter}}</p>
+            </mat-expansion-panel-header>
+            <mat-list>
+              <mat-radio-group name="filterSort" [(ngModel)]="sortSelectedFilter" (change)="onSortFilterChanged($event);">
+                <mat-list-item *ngFor="let item of sortList">
+                  <mat-radio-button labelPosition="before" [checked]="item.checked" name="filterSort" [value]="item.name">{{item.name}}
+                  </mat-radio-button>
+                </mat-list-item>
+              </mat-radio-group>
+            </mat-list>
+          </mat-expansion-panel>
+        </mat-accordion>
+        <div class="filter-divider"></div>
+
+        <!-- <mat-accordion multi="true" *ngIf="componentInput.searchCriteriaData?.distanceFilterMap?.size>0">
+          <mat-expansion-panel [expanded]="isProviderExpanded" (opened)="isOpened('isProviderExpanded')" (closed)="isClosed('isProviderExpanded')">
+            <mat-expansion-panel-header class="header-panel" [collapsedHeight]="collapsedHeight" [expandedHeight]="expandedHeight">
+              Distance Old
+            </mat-expansion-panel-header>
+            <mat-selection-list (selectionChange)="onDistanceFilterChange($event)">
+              <mat-list-option *ngFor="let item of componentInput.searchCriteriaData.distanceFilterMap.getValues()" [selected]="item.criteriaSelected"
+                [disabled]="item.disabled" value="{{ item.criteriaName }}">
+              <span>{{item.criteriaName}} ({{item.matchingResultsCount}})</span>
+              </mat-list-option>
+            </mat-selection-list>
+          </mat-expansion-panel>
+        </mat-accordion>
+        <div class="filter-divider-row" *ngIf="componentInput.searchCriteriaData?.distanceFilterMap?.size>0"></div> -->
+
+        <section *ngIf="inNetworkOnlyCheckbox || acceptingNewPatientsCheckbox || primaryCareProviderCheckbox || techSavvyCheckbox">
+          <mat-card class="filterSingleCardCheckbox">
+            <mat-card-content>
+                <section class="filterSingleSection" *ngIf="primaryCareProviderCheckbox && primaryCareProviderCheckbox.value!='' ">
+                    <mat-checkbox disableRipple="true" class="filterSingleCheckBox" (change)="manageCheckboxProfessionalFilter($event)" 
+                    [checked]="primaryCareProviderCheckbox.selected" [value]="primaryCareProviderCheckbox.value">
+                      Primary Care Provider Only  ({{primaryCareProviderCheckbox.count}})
+                    </mat-checkbox>
+                </section>
+                <section class="filterSingleSection" *ngIf="acceptingNewPatientsCheckbox && acceptingNewPatientsCheckbox.value!='' ">
+                  <mat-checkbox disableRipple="true" class="filterSingleCheckBox" (change)="manageCheckboxProfessionalFilter($event)"
+                  [checked]="acceptingNewPatientsCheckbox.selected" [value]="acceptingNewPatientsCheckbox.value">
+                      Accepting New Patient ({{acceptingNewPatientsCheckbox.count}})
+                  </mat-checkbox>
+                </section>
+                
+                <section class="filterSingleSection" *ngIf="techSavvyCheckbox && techSavvyCheckbox.value!='' ">
+                    <mat-checkbox disableRipple="true" class="filterSingleCheckBox" (change)="manageCheckboxProfessionalFilter($event)" 
+                    [checked]="techSavvyCheckbox.selected" [value]="techSavvyCheckbox.value">
+                      Tech Savvy ({{techSavvyCheckbox.count}})
+                    </mat-checkbox>
+                </section>
+
+                <section class="filterSingleSection" *ngIf="inNetworkOnlyCheckbox && inNetworkOnlyCheckbox.value!='' ">
+                    <mat-checkbox disableRipple="true" class="filterSingleCheckBox" (change)="manageCheckboxProfessionalFilter($event)" 
+                    [checked]="inNetworkOnlyCheckbox.selected" [value]="inNetworkOnlyCheckbox.value">
+                      In-Network Only  ({{inNetworkOnlyCheckbox.count}})
+                    </mat-checkbox>
+                </section>
+            </mat-card-content>
+          </mat-card>
+          <div class="filter-divider"></div>
+        </section>
+
+        <mat-accordion *ngIf="locationGeoList.length > 0">
+          <mat-expansion-panel>
+            <mat-expansion-panel-header class="header-panel" [collapsedHeight]="collapsedHeight" [expandedHeight]="expandedHeight">
+              Distance
+            </mat-expansion-panel-header>
+            <mat-list>
+              <mat-radio-group name="filterLocation" (change)="manageSelectedProfessionalFilter($event)">
+                <mat-list-item *ngFor="let item of locationGeoList">
+                  <mat-radio-button labelPosition="before" [checked]="item.selected" name="filterLocation" [value]="item.value">{{item.name}} ({{item.count}})
+                  </mat-radio-button>
+                </mat-list-item>
+              </mat-radio-group>
+            </mat-list>
+          </mat-expansion-panel>
+        </mat-accordion>
+        <div class="filter-divider-row" *ngIf="locationGeoList.length>0"></div>
+
+        <mat-accordion *ngIf="genderList.length > 0">
+          <mat-expansion-panel>
+            <mat-expansion-panel-header class="header-panel" [collapsedHeight]="collapsedHeight" [expandedHeight]="expandedHeight">
+              Gender
+            </mat-expansion-panel-header>
+            <mat-list>
+              <mat-radio-group name="filterGender" (change)="manageSelectedProfessionalFilter($event)">
+                <mat-list-item *ngFor="let item of genderList" >
+                  <mat-radio-button labelPosition="before" [checked]="item.selected" name="filterGender" [value]="item.value">{{item.name}} ({{item.count}})
+                  </mat-radio-button>
+                </mat-list-item>
+              </mat-radio-group>
+            </mat-list>
+          </mat-expansion-panel>
+        </mat-accordion>
+        <div class="filter-divider-row" *ngIf="genderList.length>0"></div>
+
+        <mat-accordion *ngIf="languagesList.length >0">
+          <mat-expansion-panel>
+            <mat-expansion-panel-header class="header-panel" [collapsedHeight]="collapsedHeight" [expandedHeight]="expandedHeight">
+              Languages
+            </mat-expansion-panel-header>
+            <mat-list>
+              <mat-radio-group name="filterLanguage" (change)="manageSelectedProfessionalFilter($event)">
+                <mat-list-item *ngFor="let item of languagesList" >
+                  <mat-radio-button labelPosition="before" [checked]="item.selected" name="filterLanguage" [value]="item.value">{{item.name}} ({{item.count}})
+                  </mat-radio-button>
+                </mat-list-item>
+              </mat-radio-group>
+            </mat-list>
+          </mat-expansion-panel>
+        </mat-accordion>
+        <div class="filter-divider-row" *ngIf="languagesList.length>0"></div>
+
+        <mat-accordion *ngIf="ratingList.length >0">
+          <mat-expansion-panel>
+            <mat-expansion-panel-header class="header-panel" [collapsedHeight]="collapsedHeight" [expandedHeight]="expandedHeight">
+              Rating
+            </mat-expansion-panel-header>
+            <mat-list>
+              <mat-radio-group name="filterRating" (change)="manageSelectedProfessionalFilter($event)">
+                <mat-list-item *ngFor="let item of ratingList" >
+                  <mat-radio-button labelPosition="before" [checked]="item.selected" name="filterRating" [value]="item.value">{{item.name}} ({{item.count}})
+                  </mat-radio-button>
+                </mat-list-item>
+              </mat-radio-group>
+            </mat-list>
+          </mat-expansion-panel>
+        </mat-accordion>
+        <div class="filter-divider-row" *ngIf="ratingList.length>0"></div>
+
+        <mat-accordion *ngIf="agesTreatedList.length >0">
+          <mat-expansion-panel>
+            <mat-expansion-panel-header class="header-panel" [collapsedHeight]="collapsedHeight" [expandedHeight]="expandedHeight">
+              Ages Treated
+            </mat-expansion-panel-header>
+            <mat-list>
+              <mat-radio-group name="filterAges" (change)="manageSelectedProfessionalFilter($event)">
+                <mat-list-item *ngFor="let item of agesTreatedList" >
+                  <mat-radio-button labelPosition="before" [checked]="item.selected" name="filterAges" [value]="item.value">{{item.name}} ({{item.count}})
+                  </mat-radio-button>
+                </mat-list-item>
+              </mat-radio-group>
+            </mat-list>
+          </mat-expansion-panel>
+        </mat-accordion>
+        <div class="filter-divider-row" *ngIf="agesTreatedList.length>0"></div>
+
+        <mat-accordion *ngIf="specialtyList.length >0">
+          <mat-expansion-panel>
+            <mat-expansion-panel-header class="header-panel" [collapsedHeight]="collapsedHeight" [expandedHeight]="expandedHeight">
+              Specialties
+            </mat-expansion-panel-header>
+            <mat-list>
+              <mat-radio-group name="filterSpecialities" (change)="manageSelectedProfessionalFilter($event)">
+                <mat-list-item *ngFor="let item of specialtyList" >
+                  <mat-radio-button labelPosition="before" [checked]="item.selected" name="filterSpecialities" [value]="item.value">{{item.name}} ({{item.count}})
+                  </mat-radio-button>
+                </mat-list-item>
+              </mat-radio-group>
+            </mat-list>
+          </mat-expansion-panel>
+        </mat-accordion>
+        <div class="filter-divider-row" *ngIf="specialtyList.length>0"></div>
+
+        <mat-accordion *ngIf="disordersTreatedList.length >0">
+          <mat-expansion-panel>
+            <mat-expansion-panel-header class="header-panel" [collapsedHeight]="collapsedHeight" [expandedHeight]="expandedHeight">
+              Disorders Treated
+            </mat-expansion-panel-header>
+            <mat-list>
+              <mat-radio-group name="filterDisorders" (change)="manageSelectedProfessionalFilter($event)">
+                <mat-list-item *ngFor="let item of disordersTreatedList" >
+                  <mat-radio-button labelPosition="before" [checked]="item.selected" name="filterDisorders" [value]="item.value">{{item.name}} ({{item.count}})
+                  </mat-radio-button>
+                </mat-list-item>
+              </mat-radio-group>
+            </mat-list>
+          </mat-expansion-panel>
+        </mat-accordion>
+        <div class="filter-divider-row" *ngIf="disordersTreatedList.length>0"></div>
+
+        <mat-accordion *ngIf="treatmentMethodsList.length >0">
+          <mat-expansion-panel>
+            <mat-expansion-panel-header class="header-panel" [collapsedHeight]="collapsedHeight" [expandedHeight]="expandedHeight">
+              Treatment Method
+            </mat-expansion-panel-header>
+            <mat-list>
+              <mat-radio-group name="filterTreatment" (change)="manageSelectedProfessionalFilter($event)">
+                <mat-list-item *ngFor="let item of treatmentMethodsList" >
+                  <mat-radio-button labelPosition="before" [checked]="item.selected" name="filterTreatment" [value]="item.value">{{item.name}} ({{item.count}})
+                  </mat-radio-button>
+                </mat-list-item>
+              </mat-radio-group>
+            </mat-list>
+          </mat-expansion-panel>
+        </mat-accordion>
+        <div class="filter-divider-row" *ngIf="treatmentMethodsList.length>0"></div>
+
+        <mat-accordion *ngIf="grpHospitalAffiliationList.length >0">
+          <mat-expansion-panel>
+            <mat-expansion-panel-header class="header-panel" [collapsedHeight]="collapsedHeight" [expandedHeight]="expandedHeight">
+              Hospitals & Medical Groups
+            </mat-expansion-panel-header>
+            <mat-list>
+              <mat-radio-group name="filterHospitalAffilation" (change)="manageSelectedProfessionalFilter($event)">
+                <mat-list-item *ngFor="let item of grpHospitalAffiliationList" >
+                  <mat-radio-button labelPosition="before" [checked]="item.selected" name="filterHospitalAffilation" [value]="item">{{item.name}} ({{item.count}})
+                  </mat-radio-button>
+                </mat-list-item>
+              </mat-radio-group>
+            </mat-list>
+          </mat-expansion-panel>
+        </mat-accordion>
+        <div class="filter-divider-row" *ngIf="grpHospitalAffiliationList.length>0"></div>
+
+
+
+
+
+        
+
+        
+
+
+        <!-- <div class="filter-buttons">
+
+          <div class="row mb-0">
+            <div class="col s6 m3 l6">
+              <button class="btn btn-default btn-default-ripple clear-filter-button" (click)="clearFilter()" type="button">
+                Clear
+              </button>
+            </div>
+
+            <div class="col s6 m3 l6 right">
+              <button class="btn btn-primary btn-primary-ripple right" (click)="applyFilter()" type="submit">
+                Apply
+              </button>
+            </div>
+          </div>
+        </div> -->
+      </div>
+    </div>
+  </div>
+</div>

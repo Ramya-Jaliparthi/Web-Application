@@ -1,0 +1,30 @@
+export const BcbsmaConstants = Object.freeze({
+    modules: {
+        registrationModule: 'RegistrationModule',
+        messageCenterModule: 'MessageCenterModule',
+        fadModule: 'FadModule',
+        financialModule: 'FinancialModule',
+        myPlansModule: 'MyplansModule',
+        myAccountModule: 'MyAccountModule',
+        myDedCoModule: 'MyDedCoModule',
+        loginModule: 'LoginModule',
+        staticModule: 'StaticModule',
+        ssoModule: 'SsoModule',
+        requestEstimateModuleModule: 'RequestEstimateModuleModule',
+        orderreplacementModule: 'OrderreplacementModule',
+        notificationPreferencesModule: 'NotificationPreferencesModule',
+        myPreferencesModule: 'MyPreferencesModule',
+        myplansModule: 'MyplansModul',
+        myDoctorsPcpModule: 'MyDoctorsPcpModule',
+        claimsModule: 'ClaimsModule',
+        mycardsModule: 'MycardsModule',
+        profileHomeModule: 'ProfileHomeModule',
+        memberMigrationModule: 'MemberMigrationModule',
+        myMedicationsModule: 'MyMedicationsModule',
+        landingModule: 'LandingModule',
+    },
+    errorMessages: {
+        invalidMethodCall_invalidObj: 'Invalid method call - object is invalid',
+        invalidMethodCall_invalidObjOrInstance: 'Invalid method call - object or instance param is invalid',
+    }
+});

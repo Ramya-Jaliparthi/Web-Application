@@ -1,0 +1,98 @@
+<div class="row  m-0">
+    <h1 class="form-header">Verify Your Identity</h1>
+    <form [formGroup]="registerDetailForm" novalidate (ngSubmit)="onSubmit()" [ngClass]="{'form-submitted' : isFormSubmitted}" *ngIf="showForm">
+        <div class="card-content">
+            <div class="row">
+                <div class="input-field col s12 pd-0">
+                    <input matInput placeholder="" tabindex="1" id="fname" aria-labelledby="fname" type="text" formControlName="firstname" />
+                    <label for="fname" class="active">First Name*</label>
+                    <app-control-messages [controlName]="'firstName'" [control]="registerDetailForm['controls'].firstname"></app-control-messages>
+                </div>
+            </div>
+            <div class="row">
+                <div class="input-field col s12 pd-0">
+                    <input matInput placeholder="" tabindex="2" id="lname" aria-labelledby="lname" type="text" formControlName="lastname" />
+                    <label for="lname" class="active">Last Name*</label>
+                    <app-control-messages [controlName]="'lastName'" [control]="registerDetailForm['controls'].lastname"></app-control-messages>
+                </div>
+            </div>
+            <div class="row">
+                <div class="input-field col s12 pd-0">
+                    <input matInput placeholder="" tabindex="3" id="dob" aria-labelledby="DOB" type="text" [textMask]="{mask: dobMask, guide: false}"
+                        maxlength="10" formControlName="DOB" />
+                    <label for="dob" class="active">Date of Birth*</label>
+                    <mat-hint>
+                        <span class="font-13-grey">MM/DD/YYYY</span>
+                    </mat-hint>
+                    <app-control-messages [controlName]="'dateOfBirth'" [control]="registerDetailForm['controls'].DOB"></app-control-messages>
+                </div>
+            </div>
+           <!--  <div class="row" *ngIf="isUserEmail">
+                <div class="input-field col s12 pd-0">
+                    <mat-form-field #phoneNumberTypeFormField class="col s12 pd-0 mat-inherit-underline">
+                        <mat-select tabindex="4" appMatSelectChange [parentFormField]="phoneNumberTypeFormField" id="phoneNumberType" formControlName='phoneNumberType'>
+                            <mat-option *ngFor='let options of phoneNumberTypeValues' [value]='options.value'>
+                                {{options.label}}
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                    <label for="phoneNumberType" class="active" [ngClass]="{'error': registerDetailForm.controls['phoneNumberType'].errors &&
+                    registerDetailForm.controls['phoneNumberType'].touched}">Phone Number Type*</label>
+                </div>
+            </div> -->
+            <div class="row mb-0" *ngIf="isUserEmail">
+                <div class="input-field col s12 pd-0">
+                    <input matInput placeholder="" tabindex="5" id="mobile" aria-labelledby="mobile" type="text" [textMask]="{mask: phoneMask, guide: false}"
+                        maxlength="12" formControlName="mobile" />
+                    <label for="mobile" class="active">Phone Number*</label>
+                    <mat-hint>
+                        <span class="font-13-grey">000-000-0000</span>
+                    </mat-hint>
+                    <app-control-messages [controlName]="'phone'" [control]="registerDetailForm['controls'].mobile"></app-control-messages>
+                </div>
+            </div>
+            <div class="row">
+            <div *ngIf="!isUserEmail">
+                <div class="input-field col s12 pd-0">
+                    <input matInput placeholder="" tabindex="4" id="email" aria-labelledby="email" type="text" formControlName="email" />
+                    <label for="email" class="active">Email Address*</label>
+                    <app-control-messages [controlName]="'email'" [control]="registerDetailForm['controls'].email"></app-control-messages>
+                </div>
+            </div>
+</div>
+            <!-- <div class="row info-text mt-10">
+                <a class="cursor-pointer info-text" (click)="changeShowStatus()">Why do we need this?</a>
+                <p *ngIf="showHide">{{message}}</p>
+            </div> -->
+            <div class="row">
+                <div class="input-field col s12 pd-0">
+                    <mat-form-field #securityQuestionFormField floatPlaceholder="never" class="col s12 pd-0 mat-inherit-underline">
+                        <mat-select tabindex="6" id="hintQuestion" appMatSelectChange [parentFormField]="securityQuestionFormField" placeholder="Select a question" formControlName='hintQuestion'>
+                            <mat-option *ngFor='let options of securityQuestionsOptions' [value]='options.label'>
+                                {{options.label}}
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                    <label for="hintQuestion" class="active" [ngClass]="{'color-invalid': registerDetailForm.controls['hintQuestion'].touched
+                    && registerDetailForm.controls['hintQuestion'].errors
+                    && registerDetailForm.controls['hintQuestion'].errors.required}">Hint Question*</label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="input-field col s12 pd-0 password-block">
+                    <input matInput placeholder="" tabindex="6" id="hintAnswer" aria-labelledby="hintAnswer" type="text"
+                        class="validate" formControlName="hintAnswer" autocomplete="new-password" maxlength="30" />
+                    <label for="hintAnswer" class="active">Answer to Hint Question*</label>
+                    <!--<a class="input-group-addon" [ngClass]="(typePlaceholder | lowercase) + '-class'" (click)="togglePasswordVisibility()">{{typePlaceholder}}</a>-->
+                    <app-control-messages [controlName]="'hintAnswer'" [control]="registerDetailForm['controls'].hintAnswer"></app-control-messages>
+                </div>
+            </div>
+        </div>
+
+        <div class="submit-action">
+            <button tabindex="7" class="waves-effect waves-light btn btn-block  mt-20 mb-20 btn-full-width br-8" type="submit" aria-label="Continue"
+                name="action" [disabled]="!registerDetailForm.valid">Continue</button>
+            <p class="font-13-grey">*Field is required.</p>
+        </div>
+    </form>
+</div>

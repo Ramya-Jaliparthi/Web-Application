@@ -1,0 +1,82 @@
+<section class="documents-list-view-component">
+
+    <app-no-documents-found *ngIf="hasContents===false" [componentMode]="no_doc_found_component_mode"></app-no-documents-found>
+
+
+    <!-- <div class=" row col s12"> -->
+    <!-- <h1> {{dataSource?.pageTitle}}</h1>
+                    <h6> for {{dataSource?.planName}}</h6> -->
+    <!-- <h1> {{eocPolicy?.policyFormName}}</h1>
+                    <h6> for {{parentFolderName}}</h6>
+    
+                </div> -->
+    <div class="row">
+
+        <div class="flex-container">
+
+            <!-- <div class="col l3 s12 filter-adjust" *ngIf="searchCriteriaData?.dateFilterMap?.size>0">
+                    <app-message-center-search (onSearch)="onSearch($event)" [searchCriteriaData]="searchCriteriaData"></app-message-center-search>
+                </div> -->
+
+            <div class="col s12 l12">
+                <h1> {{eocPolicy?.policyFormName}}</h1>
+                <h6> for {{parentFolderName}}</h6>
+                <div class="row">
+                    <div class="col s12 breadcrumbs">
+                        <app-breadcrumbs  [breadCrumbs]="breadCrumbs"></app-breadcrumbs>
+                    </div>
+                </div>
+                <div class="titleSeperator"></div>
+                <div class="row">
+                <div class="col l9 s12 promo">
+                    <ul class="collection">
+                        <!-- <li *ngFor="let fileItem of fileList; index as fileItemItr" class="collection-item" [hidden]="fileItem.hideEntityFromDisplay"> -->
+                        <li *ngFor="let fileItem of eocPolicy.riders; index as fileItemItr" class="collection-item">
+                            <div class="flex-box-listing cursor-pointer" (click)="openFile(fileItem)">
+                                <div class="flex-grow-1 mr-10">
+                                    <span class="unread-docs">{{fileItem.riderTitle}}</span>
+                                    <!-- <span class="right">{{fileItem.timeStamp}}</span> -->
+                                    <p>{{ (fileItem.riderDescription && fileItem.riderDescription.length > 80 )? (fileItem.riderDescription
+                                        | slice:0:80)+'..' : fileItem.riderDescription }}
+                                    </p>
+                                </div>
+                                <div class="valign-wrapper">
+                                    <a href="javascript:void(0)" title="Click Here to View the Document Details" (click)="openFile(fileItem)">
+                                        <i class="fa fa-chevron-right"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="collection-item">
+                            <div class="flex-box-listing cursor-pointer" (click)="openPolicy()">
+                                <div class="flex-grow-1 mr-10">
+                                    <!-- <span class="unread-docs">{{eocPolicy.policyFormName}}</span> -->
+                                    <!-- <span class="right">{{fileItem.timeStamp}}</span> -->
+                                    <p>{{ (eocPolicy.policyFormName && eocPolicy.policyFormName.length > 80 )? (eocPolicy.policyFormName
+                                        | slice:0:80)+'..' : eocPolicy.policyFormName }}
+                                    </p>
+                                </div>
+                                <div class="valign-wrapper">
+                                    <a href="javascript:void(0)" title="Click Here to View the Document Details" (click)="openPolicy()">
+                                        <i class="fa fa-chevron-right"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </li>
+    
+                    </ul>
+                </div>
+                <!-- <div class="col l3 s12 promo">
+                    <app-fpo-layout [targetUrl]="fpoTargetUrl"></app-fpo-layout>
+                </div> -->
+                </div>
+            </div>
+
+            <!-- <div *ngIf="isNoSearchResults" [class]="['col','s12','l6', mobileHideByFilterOverlay? 'mobile-hide-by-filter-overlay':''].join(' ')">
+                    <app-no-documents-found [componentMode]="no_search_results_found_component_mode"></app-no-documents-found>
+                </div> -->
+           
+        </div>
+    </div>
+
+</section>

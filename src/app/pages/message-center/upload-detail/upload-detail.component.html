@@ -1,0 +1,30 @@
+<div class="upload-detail">
+    <div class="row">
+        <div class="col l8 s12">
+            <a class="valign-wrapper" href="javascript:void(0)">
+                <i class="fas fa-chevron-left mr-5"></i>
+                <span (click)="navigateToUploadsScreen()">{{messageCenterConstants &&
+                    messageCenterConstants.buttonSpans.backToUploads}}</span>
+            </a>
+            <!-- <h1>{{docInfo?.alertShortTxt}}</h1> -->
+            <p>{{docInfo?.dayStamp}}, {{docInfo?.dateStamp}} at {{docInfo?.messageUpdatedDateTime}}</p>
+            <!-- <p class="image-detail mt-20">{{docInfo?.alertLongTxt}}</p> -->
+        </div>
+        <div class="col l4 s12 mt-20">
+            <p class="mb-10">
+                <img class="responsive-img" src="assets/images/medical-bill-upload.PNG">
+            </p>
+        </div>
+    </div>
+    <hr class="hide-on-large-only">
+    <div class="row mb-0">
+        <div class="col s12">
+            <div class="col l6 left-align pd-0">
+                <a class="valign-wrapper mt-20 mb-30" (click)="downloadCopy()">
+                    <i class="fas fa-arrow-down mr-5"></i>
+                    <span>{{messageCenterConstants?.buttonSpans?.downloadACopy}}</span>
+                </a>
+            </div>
+        </div>
+    </div>
+</div>

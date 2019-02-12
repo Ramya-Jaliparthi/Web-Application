@@ -1,0 +1,97 @@
+@import '../../../../assets/styles/_fonts';
+
+@media (min-width: 992px) {
+    .member-text {
+        padding-left: 15px;
+        padding-bottom: 15px;
+        padding-top: 10px;
+    }
+}
+
+@media (max-width: 992px) {
+    .member-text {
+        padding: 10px;
+    }
+}
+
+.toggle-button {
+    text-decoration: underline;
+    @include Roboto(medium);
+    font-size: 12px;
+    padding-top: 5px;
+    margin-right: 8px;
+    color: $link-primary-color;
+}
+
+.mat-divide {
+    border: 1px solid $non-vdk-19-grey;
+}
+
+.member-title {
+    color: $link-secondary-color;
+    padding-bottom: 6px;
+    font-size: 16px;
+    @include Roboto(bold);
+}
+
+.div-full-screen {
+    height: 100%;
+    //width:298px
+    position: absolute;
+    width: 100%;
+    left: 0;
+    top: 0;
+    opacity: 0.2;
+    background-color: $text-disabled-gray;
+}
+
+.flipContainer {
+.show-cards-singleuser{
+    display: flex !important;
+    justify-content: space-around;
+}
+.show-cards-multiuser {
+.face {
+    margin: 15px 0;
+    }
+} 
+    .face {
+        border-radius: 12px;
+        box-shadow: 1px 1px 1px 1px $non-vdk-19-grey;
+        width: 300px;
+    }
+}
+
+@media (min-width: 992px) and (max-width: 1150px)  {
+    .flipContainer {
+       .show-cards-singleuser{
+        flex-direction: column;
+        align-items: center;
+        .face{
+          margin: 15px 0;
+        }
+      }
+    }
+}
+
+.canvasBack {
+    .st0 {
+        fill: none;
+    }
+    .st1 {
+        fill: $text-white-color;
+    }
+    .st2 {
+        fill: $non-vdk-45-gray;
+    }
+    .st3 {
+        fill: $text-normal-color;
+    }
+    .st4 {
+        fill: $non-vdk-46-black;
+    }
+    .st5 {
+        fill: none;
+        stroke: $non-vdk-46-black;
+    }
+}

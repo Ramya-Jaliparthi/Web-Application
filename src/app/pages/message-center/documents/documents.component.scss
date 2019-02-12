@@ -1,0 +1,123 @@
+@import '../../../../assets/styles/_colors';
+@import '../../../../assets/styles/_fonts';
+@import '../utils/message-center-common.scss';
+
+.fa-folder,.fa-image{
+    color: $link-secondary-color;
+    font-size: 22px;
+
+	@media (max-width: 992px){
+		font-size: 14px;
+	}
+}
+
+.fa-chevron-right{
+    color: $link-secondary-color;
+    font-size:18px;
+    cursor: pointer;
+}
+
+.documents-component {
+ 
+    .hide {
+        display: none;
+    }
+    h1{
+        margin-bottom: 0;
+    }
+    .unread-docs-indicator {
+        @include Roboto(regular);
+        text-align: center;
+        background-color: $unread-docs-alert-color;
+        font-size: 12.65px;
+        color: $text-white-color;
+        border-radius: 50%;
+        min-width: 1.5rem;
+    }
+
+    .folder-card {
+        @include Roboto(bold);
+        color: $primary-color;
+        font-size: 16px;
+    }
+
+    //for desktop screens
+    @media (min-width: 993px) {
+        .container {
+            margin-left: 0px;
+        }
+        .folderCard {
+            width: 48%;
+            margin-right: 2%; //to give horizontal gap between cards
+            margin-bottom: 3%; //to give vertical gap between cards
+            &:hover {
+                cursor: pointer;
+            }
+        }
+
+        .documentsNav {
+            min-height: 340px;
+        }
+
+        .titleSeperator {
+            display: none;
+        }
+
+        .desktop-right-align {
+            text-align: right;
+        }
+    }
+
+    //for mobile/tablet screens
+    @media (max-width: 992px) {
+        width: 100%;
+
+        .folderCard {
+            width: 100%;
+            border: 1px solid $textbox-border;
+            padding-left: 8%;
+        }
+
+        .titleSeperator {
+            width: 100%;
+            height: 2px;
+            background-color: $background-title-separator-color;
+        }
+
+        .mobileMarginLeft-minus10 {
+            margin-left: -10px;
+        }
+    }
+}
+
+.flex{
+    display:flex;
+}
+
+.flex-grow-1{
+    flex-grow:1;
+}
+
+.flex-box {
+    display: flex;
+    flex-wrap: wrap;
+    margin:-10px;
+
+    @media (max-width: 992px) {
+         margin:0;
+         margin-bottom: 20px;
+    }
+
+.collection{
+    flex: 0 0 40%;
+    margin:10px;
+    padding:15px;
+    cursor: pointer;
+    @media (max-width: 992px) {
+        // flex: 0 0 100%;
+        min-width: 100%;
+        margin:0;
+      }
+    }
+}
+

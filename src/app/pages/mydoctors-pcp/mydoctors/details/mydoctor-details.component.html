@@ -1,0 +1,141 @@
+<div style="margin-top:20px;">
+  <div class="row medication-details-container mr-0 ml-0">
+    <div class="col l8 m12 s12 pd-0">
+      <div class="medication-details">
+        <div *ngIf="ismobile">
+          <app-breadcrumbs></app-breadcrumbs>
+        </div>
+        <div class="medication-details-header pb-0">
+          Doctor details
+        </div>
+        <div *ngIf="!ismobile">
+          <app-breadcrumbs></app-breadcrumbs>
+        </div>
+        <div class="pcpheader">
+          <div *ngIf="doctor?.isPCP && member?.hasPCP" class=" pcpheadercontent pcp-msg ">
+            <div>
+              <div>
+                <div>
+                  Primary care provider
+                </div>
+                <p class="pcpnextline">for {{ doctor?.mem_name | titlecase}}</p>
+              </div>
+            </div>
+            <div class=" floatrightheader tool-tip-div " *ngIf="active && doctor.isAllowedChangePCP">
+              <span class="tooltip spacing-iconProfileName" (click)="showToolTip()">
+                <div [ngClass]="{'icon-tooltip-filled': toolTipVisible }">
+                  <i class="fal fa-info-circle icon-blue"></i>
+                </div>
+                <span class="tooltiptext raisedbox" *ngIf="toolTipVisible">
+                  Your primary care provider (PCP) should be your first stop for all medical needs.
+                   Learn more or<a class="link-global" [routerLink]="['/mydoctors/update-pcp']"> change your PCP.</a>
+                </span>
+              </span>
+            </div>
+          </div>
+          <div *ngIf="active && doctor?.isRequiredPCP && member?.isRequiredPCP && !doctor?.isPCP && !memberHasMultiplePlans"
+            class="pcpheadercontent">
+            Your plan requires a primary care provider (PCP)
+            <span>
+              <!-- Below code is commented since Multiple Plans are not yet handled.
+                Enable the below code once we get Multiple Plans flag from Member Login API 
+               <a class="link-pcp" [routerLink]="['/mydoctors/add-pcp']">
+                Elect this doctor as your PCP
+              </a>or 
+            <a class="link-pcp" [routerLink]="['/mydoctors/update-pcp']">
+                elect a new one.
+              </a>   Enable the code till here -->
+              <a class="link-pcp" [routerLink]="electPCPLink">
+                Elect a new one.
+              </a>
+            </span>
+          </div>
+        </div>
+
+        <div class="namefield">
+          {{doctor?.providerName | titlecase | slice:0:-2}} {{doctor?.providerName | uppercase | slice:-2}}
+        </div>
+
+        <div class="field">
+          {{doctor?.providerSpeciality | titlecase}}
+        </div>
+
+        <div class="addressdetail1 ">
+          {{doctor?.addressStr}}
+        </div>
+
+
+        <div *ngIf="doctor">
+          <span *ngIf="doctor?.providerPhone">
+            <span class="phone-icon">
+              <i class="fas fa-phone"></i>
+            </span>
+            <a href="tel:{{ doctor?.providerPhone }}" class="addressdetail2part1 paddingrightdiv">{{doctor?.providerPhone | phone}}
+            </a>
+          </span>
+          <span class="directions-icon">
+            <i class="fas fa-map-marker map-icon"></i>
+          </span>
+          <span (click)="getDirections()" class="addressdetail2part1 paddingleftdiv">Get Directions</span>
+        </div>
+
+
+        <div class="medication-details-refil-history">
+
+        </div>
+      </div>
+
+         <!-- Below code is commented since Multiple Plans are not yet handled.
+          Enable the below code once we get Multiple Plans flag from Member Login API 
+      <div *ngIf="active && !member?.hasPCP && member?.isRequiredPCP && !memberHasMultiplePlans"
+        class="doctorProfile mt-20" (click)="setPCP()">
+        <div class="pcpheadercontainer textcolor">
+          Elect as my PCP
+          <span class="icon-arrow floatrightheader">
+            <i class="far fa-chevron-right long-text"></i>
+          </span>
+        </div>
+      </div> Enable the code till here -->
+
+      <div *ngIf="active && doctor?.isPCP && member?.hasPCP && member?.isRequiredPCP"
+        class="doctorProfile mt-20" (click)="changePCP()">
+        <div class="pcpheadercontent textcolor">
+          Change my PCP
+          <span class="icon-arrow floatrightheader">
+            <i class="far fa-chevron-right long-text"></i>
+          </span>
+
+        </div>
+      </div>
+
+      <div class="servicedetailscontainer pr-15" *ngIf="doctor">
+        <div class="servicedetails">
+          Last date of service for {{ doctor?.mem_name | titlecase}}
+        </div>
+
+        <div class="datedetails">
+          {{ doctor?.dateOfService | yyyymmddTommddyyyy}} - {{ doctor?.lastDateOfService | yyyymmddTommddyyyy}}
+        </div>
+
+      </div>
+      <div class="refill-history-container"  *ngIf="doctor">
+        <div class="refill-history-header">Claims</div>
+        <div *ngFor="let item of claims">
+          <div class="refill-history-item pointerCursor" (click)="navigateToClaimDetails(item)">
+            <span class="refill-history-date">
+              {{item.date | yyyymmddTommddyyyy}}
+            </span>
+            <span class="icon-arrow floatrightheader pointerCursor claimsarrowpadding">
+              <i class="far fa-chevron-right long-text"></i>
+            </span>
+
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col l4 m12 s12 dynamic-content ">
+      <!-- <div> FPO placeholder for dynamic content</div> -->
+      <app-fpo-layout [targetUrl]='fpoTargetUrl' [displayCategory]="'doctor'"></app-fpo-layout>
+    </div>
+  </div>
+</div>

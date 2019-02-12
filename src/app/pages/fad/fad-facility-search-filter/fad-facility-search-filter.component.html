@@ -1,0 +1,169 @@
+<div class="fad-facility-search-filter-component">
+  <div #sideNavContainer>
+
+    <div class="filter-bar" [ngClass]="{'toggle-show':isDisplayFilter}" (click)="toggleFilter()">
+      <span>Filter
+        <a href="javascript:void(0)">
+          <i class="fa fa-chevron-down"></i>
+        </a>
+      </span>
+    </div>
+
+    <div class="filter-container" [class.block]="isDisplayFilter">
+      <div class="filter-pos">
+
+        <mat-accordion multi="true">
+          <mat-expansion-panel class="sort" [expanded]="isSortExpanded" (opened)="isSortOpened()" (closed)="isSortClosed()">
+            <mat-expansion-panel-header class="header-panel" [collapsedHeight]="collapsedSortHeight" [expandedHeight]="expandedSortHeight">
+              <div class="sort-text">Sort by</div>
+              <p class="selected-sort" *ngIf="!isSortExpanded">{{sortSelectedFilter}}</p>
+            </mat-expansion-panel-header>
+            <mat-list>
+              <mat-radio-group name="filterSort" [(ngModel)]="sortSelectedFilter" (change)="onSortFilterChanged($event);">
+                <mat-list-item *ngFor="let item of sortList">
+                  <mat-radio-button labelPosition="before" [checked]="item.checked" name="filterSort" [value]="item.name">{{item.name}}
+                  </mat-radio-button>
+                </mat-list-item>
+              </mat-radio-group>
+            </mat-list>
+          </mat-expansion-panel>
+        </mat-accordion>
+        <div class="filter-divider"></div>
+
+        <section *ngIf="inNetworkOnlyCheckbox && inNetworkOnlyCheckbox.value!='' ">
+        <mat-card class="filterSingleCardCheckbox">
+          <mat-card-content>
+              <section class="filterSingleSection" *ngIf="inNetworkOnlyCheckbox && inNetworkOnlyCheckbox.value!='' ">
+                  <mat-checkbox disableRipple="true" class="filterSingleCheckBox" (change)="manageCheckboxProfessionalFilter($event)" 
+                  [checked]="inNetworkOnlyCheckbox.selected" [value]="inNetworkOnlyCheckbox.value">
+                    In-Network Only  ({{inNetworkOnlyCheckbox.count}})
+                  </mat-checkbox>
+              </section>
+          </mat-card-content>
+        </mat-card>
+        <div class="filter-divider"></div>
+        </section>
+
+        <mat-accordion *ngIf="locationGeoList.length > 0">
+          <mat-expansion-panel>
+            <mat-expansion-panel-header class="header-panel" [collapsedHeight]="collapsedHeight" [expandedHeight]="expandedHeight">
+              Distance
+            </mat-expansion-panel-header>
+            <mat-list>
+              <mat-radio-group name="filterLocation" (change)="manageSelectedProfessionalFilter($event)">
+                <mat-list-item *ngFor="let item of locationGeoList">
+                  <mat-radio-button labelPosition="before" [checked]="item.selected" name="filterLocation" [value]="item.value">{{item.name}} ({{item.count}})
+                  </mat-radio-button>
+                </mat-list-item>
+              </mat-radio-group>
+            </mat-list>
+          </mat-expansion-panel>
+        </mat-accordion>
+        <div class="filter-divider-row" *ngIf="locationGeoList.length>0"></div>
+
+        <mat-accordion *ngIf="ratingList.length >0">
+          <mat-expansion-panel>
+            <mat-expansion-panel-header class="header-panel" [collapsedHeight]="collapsedHeight" [expandedHeight]="expandedHeight">
+              Rating
+            </mat-expansion-panel-header>
+            <mat-list>
+              <mat-radio-group name="filterRating" (change)="manageSelectedProfessionalFilter($event)">
+                <mat-list-item *ngFor="let item of ratingList" >
+                  <mat-radio-button labelPosition="before" [checked]="item.selected" name="filterRating" [value]="item.value">{{item.name}} ({{item.count}})
+                  </mat-radio-button>
+                </mat-list-item>
+              </mat-radio-group>
+            </mat-list>
+          </mat-expansion-panel>
+        </mat-accordion>
+        <div class="filter-divider-row" *ngIf="ratingList.length>0"></div>
+
+        <mat-accordion *ngIf="specialtyList.length >0">
+          <mat-expansion-panel>
+            <mat-expansion-panel-header class="header-panel" [collapsedHeight]="collapsedHeight" [expandedHeight]="expandedHeight">
+              Specialties
+            </mat-expansion-panel-header>
+            <mat-list>
+              <mat-radio-group name="filterSpecialities" (change)="manageSelectedProfessionalFilter($event)">
+                <mat-list-item *ngFor="let item of specialtyList" >
+                  <mat-radio-button labelPosition="before" [checked]="item.selected" name="filterSpecialities" [value]="item.value">{{item.name}} ({{item.count}})
+                  </mat-radio-button>
+                </mat-list-item>
+              </mat-radio-group>
+            </mat-list>
+          </mat-expansion-panel>
+        </mat-accordion>
+        <div class="filter-divider-row" *ngIf="specialtyList.length>0"></div>
+
+        <mat-accordion *ngIf="bdcTypeList.length >0">
+          <mat-expansion-panel>
+            <mat-expansion-panel-header class="header-panel" [collapsedHeight]="collapsedHeight" [expandedHeight]="expandedHeight">
+              Blue Distinction Recognition
+            </mat-expansion-panel-header>
+            <mat-list>
+              <mat-radio-group name="filterBDC" (change)="manageSelectedProfessionalFilter($event)">
+                <mat-list-item *ngFor="let item of bdcTypeList" >
+                  <mat-radio-button labelPosition="before" [checked]="item.selected" name="filterBDC" [value]="item">{{item.name}} ({{item.count}})
+                  </mat-radio-button>
+                </mat-list-item>
+              </mat-radio-group>
+            </mat-list>
+          </mat-expansion-panel>
+        </mat-accordion>
+        <div class="filter-divider-row" *ngIf="bdcTypeList.length>0"></div>
+
+        <mat-accordion *ngIf="awardTypeList.length >0">
+          <mat-expansion-panel>
+            <mat-expansion-panel-header class="header-panel" [collapsedHeight]="collapsedHeight" [expandedHeight]="expandedHeight">
+              Awards
+            </mat-expansion-panel-header>
+            <mat-list>
+              <mat-radio-group name="filterAward" (change)="manageSelectedProfessionalFilter($event)">
+                <mat-list-item *ngFor="let item of awardTypeList" >
+                  <mat-radio-button labelPosition="before" [checked]="item.selected" name="filterAward" [value]="item">{{item.name}} ({{item.count}})
+                  </mat-radio-button>
+                </mat-list-item>
+              </mat-radio-group>
+            </mat-list>
+          </mat-expansion-panel>
+        </mat-accordion>
+        <div class="filter-divider-row" *ngIf="awardTypeList.length>0"></div>
+
+        <mat-accordion *ngIf="cqmsTypeList.length >0">
+          <mat-expansion-panel>
+            <mat-expansion-panel-header class="header-panel" [collapsedHeight]="collapsedHeight" [expandedHeight]="expandedHeight">
+              Clinical Quality Measure
+            </mat-expansion-panel-header>
+            <mat-list>
+              <mat-radio-group name="filterCQMS" (change)="manageSelectedProfessionalFilter($event)">
+                <mat-list-item *ngFor="let item of cqmsTypeList" >
+                  <mat-radio-button labelPosition="before" [checked]="item.selected" name="filterCQMS" [value]="item">{{item.name}} ({{item.count}})
+                  </mat-radio-button>
+                </mat-list-item>
+              </mat-radio-group>
+            </mat-list>
+          </mat-expansion-panel>
+        </mat-accordion>
+        <div class="filter-divider-row" *ngIf="cqmsTypeList.length>0"></div>
+
+
+        <!-- <div class="filter-buttons">
+
+          <div class="row mb-0">
+            <div class="col s6 m3 l6">
+              <button class="btn btn-default btn-default-ripple clear-filter-button" (click)="clearFilter()" type="button">
+                Clear
+              </button>
+            </div>
+
+            <div class="col s6 m3 l6 right">
+              <button class="btn btn-primary btn-primary-ripple right" (click)="applyFilter()" type="submit">
+                Apply
+              </button>
+            </div>
+          </div>
+        </div> -->
+      </div>
+    </div>
+  </div>
+</div>

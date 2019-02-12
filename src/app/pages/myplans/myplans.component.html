@@ -1,0 +1,220 @@
+<div class="row m-0">
+  <div class="col l9 m12 s12 pd-0 offset-l3">
+    <div class="ml-15 mt-20 hide-on-large-only">
+      <app-breadcrumbs></app-breadcrumbs>
+    </div>
+    <h1 *ngIf="!isSearched" class="header">My Plans</h1>
+    <div class="ml-10 hide-on-med-only hide-on-small-only">
+      <app-breadcrumbs></app-breadcrumbs>
+    </div>
+    <h1 class="header" *ngIf="isSearched && filteredList.length === 0">No Results Found</h1>
+    <h1 class="header" *ngIf="isSearched && filteredList.length === 1">{{ filteredList.length }} Result</h1>
+    <h1 class="header" *ngIf="isSearched && filteredList.length > 1">{{ filteredList.length }} Results</h1>
+    <div class=" drupal-plans-content">
+      <div class="intro-text ">
+        <app-fpo-layout [targetUrl]='fpoListingUrl'></app-fpo-layout>
+      </div>
+      
+    <div class="col l8 s12 m12 pd-0 mb-20 drupal-result">
+        <div class="intro-text ">
+            <app-fpo-layout [targetUrl]='fpoInformationUrl'></app-fpo-layout>
+          </div>
+        <!-- <a *ngIf="!showSideBarDrupal" (click)="showSideBarDrupalMat()" class="cursor-pointer mt-20">
+          <span class="pr-5">
+            <i class="fas fa-arrow-down "></i>
+          </span> Sample link pull from Drupal API</a> -->
+        <!-- <div class="drupal-action-row" [ngClass]="{ 'hide': !showSideBarDrupal }"> -->
+           <div class="drupal-action-row">
+          <div class="vl mat-exp-margin">
+            
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="row m-0">
+  <div class="plan-results-container mb-20">
+    <div class="side-nav-container col l3 s12 m12 pd-0">
+      <div class="col s12 m12 pd-0 main-result">
+        <div class="main-result-container">
+          <div class="filter-action-button-cont">
+            <div class="filter-action-button filter-button-margin" [ngClass]="{'toggle-filter': (isSidenavOpened), 'closed-filter': !(isSidenavOpened)}">
+              <div class="filter-action-label" (click)="toggleFilter('in')">
+                Filter
+                <p>
+                  <i class="material-icons">keyboard_arrow_down</i>
+                </p>
+              </div>
+            </div>
+            <div *ngIf="showClearLink" class="clear-action-label" [ngClass]="{'toggle-filter': (isSidenavOpened)}" (click)="clearFilter()">
+              Clear
+            </div>
+          </div>
+
+          <div [ngClass]="{'filter-mobile-divider': !(isSidenavOpened)}" class="hide-on-large-only mobile-divider"></div>
+
+          <div class="side-nav-container  container-width" [@slideInOut]='sideNavStatus' [ngClass]="{'show-side-content': (isSidenavOpened)}">
+            <div class="row filter-container" #sideNavContainer>
+              <div class="col m12 s12 pd-0 medicare-filter-inner-btn">
+                <div class="col m12 s12 filter-btn">
+                  <div class="col s12 filter-menu">
+                    <div> Filter</div>
+                  </div>
+                  <div class="col s12 filter-menu-with-action" (click)="toggleFilter('out')">
+                    <div> Filter</div>
+                    <i class="material-icons">keyboard_arrow_up</i>
+                  </div>
+                </div>
+              </div>
+
+              <div class="filter-divider-row"></div>
+
+              <mat-accordion multi="true" class="filter-item">
+                <mat-expansion-panel [expanded]="true" [disabled]="false" [hideToggle]="false">
+                  <mat-expansion-panel-header class="header-panel" [collapsedHeight]="collapsedHeight" [expandedHeight]="expandedHeight">
+                    Date
+                  </mat-expansion-panel-header>
+                  <div>
+                    <mat-list class="date-container">
+                      <mat-radio-group name="filterDate" [(ngModel)]="filterDate" #isdateChecked>
+                        <mat-list-item>
+                          <mat-radio-button labelPosition="before" name="filterDate" [value]="'DATE'">
+                            Search for Coverage by Date
+                          </mat-radio-button>
+                        </mat-list-item>
+                      </mat-radio-group>
+                      <mat-list-item class="calendar-min-height" *ngIf="filterDate === 'DATE'">
+                        <div class="date-filter-custom">
+                          <div class="date-filter-range">
+                            <div class="date-filter-custom-date from-date">
+                              <div>
+                                <input matInput #searchDateInput dateFormatValidation placeholder="Date" class="input-calender" [(ngModel)]="searchDate"
+                                  maxlength="10" (input)="formatInputSearchDate($event.target.value)" (keyup.enter)="applyFilter($event.target.value)" (click)="toggleCalender('search')">
+                                <mat-hint class="mat-hint-message">MM/DD/YYYY</mat-hint>
+                              </div>
+
+
+                              <div class="calendar-icon" (click)="toggleCalender('search')">
+                                <i class="far fa-calendar-alt"></i>
+                              </div>
+                              <mat-datepicker #searchPicker></mat-datepicker>
+                            </div>
+                          </div>
+                          <div class="custom-range-error-message" *ngIf="errorObj.isSelectedDateInvalid">
+                            Please Enter valid Date
+                          </div>
+                          <div class="custom-range-error-message" *ngIf="!errorObj.isSelectedDateInvalid && errorObj.sixtyDaysInvalid">
+                            Date > then 60 days
+                          </div>
+                          <div class="custom-range-error-message" *ngIf="!errorObj.isSelectedDateInvalid && errorObj.twoYearsInvalid">
+                            Date> 2 years in past
+                          </div>
+                          <div class="custom-range-error-message" *ngIf="errorObj.required">
+                            Required Field is blank
+                          </div>
+                          <div class="date-error" *ngIf="errorMessage !== null">
+                            <i class="material-icons arrow_forward pd-0">arrow_forward</i>
+                            <span>{{errorMessage}}</span>
+                          </div>
+                        </div>
+                      </mat-list-item>
+                    </mat-list>
+                    <div class="calendar-main-container">
+                      <div class="calendar-container">
+                        <mat-calendar *ngIf='showCalender' [minDate]="calendarMinDate" [maxDate]="calendarMaxDate" [startAt]="currentSelectedDate"
+                          [selected]="currentSelectedDate" (selectedChange)="getSelectedValue($event)">
+                        </mat-calendar>
+                      </div>
+                    </div>
+                  </div>
+                </mat-expansion-panel>
+              </mat-accordion>
+              <div class="col s12 filter-apply pd-0">
+                <div>
+                  <button class="clear-button" disableRipple mat-raised-button type="button" (click)="clearFilter()">
+                    Clear
+                  </button>
+                </div>
+                <div>
+                  <button class="apply-button" disableRipple mat-raised-button type="submit" (click)="applyFilter($event.target.value)">
+                    Apply
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col l6 s12 m12 middle-container" [ngClass]="{'hide-side-content': (isSidenavOpened)}">
+      <div *ngFor="let planRowItem of filteredList" class="list-plan-container" (click)="openPlanBenefitsDetail(planRowItem)">
+        <div class="row m-0 disp-flex  list-plan-inner-container plan-list-desktop">
+          <div class="col s11 m11 pd-0 ml-0">
+            <h4 class="plan-name-header">{{ planRowItem.planName}} </h4>
+            <div class="row plan-group-name-header">
+              <!-- Group [e.g. Employer] {{planRowItem.groupName}} -->
+              {{planRowItem.groupName | camelcase}}
+            </div>
+            <div class="row ml-0 mb-10">
+              <div class="plan-label-name">Group Number: </div>
+              <div class="plan-label-value">{{planRowItem.groupNumber}}</div>
+            </div>
+            <div class="row ml-0 mb-10">
+              <div class="plan-label-name">Subscriber ID: </div>
+              <div class="plan-label-value">{{planRowItem.subscriberId}}</div>
+            </div>
+            <div class="row ml-0 mb-0">
+              <div class="plan-label-name">Members</div>
+            </div>
+            <div class="row ml-0 mb-17">
+              <div class="plan-label-value" *ngFor="let member of planRowItem.members">{{member.name | camelcase}} ({{member.memberType}})
+              </div>
+            </div>
+          </div>
+          <div class="valign-wrapper col s1 m1 pd-0">
+            <a>
+              <span class="icon-arrow" *ngIf="planRowItem.foundFlag === true || planRowItem.foundFlag === 'Y'">
+                <i class="fa fa-chevron-right long-text"></i>
+              </span>
+            </a>
+          </div>
+          <div class=list-plans-container></div>
+        </div>
+        <div class="row plan-effective-date-cont">
+          <div class="col s11 m11 pd-0 ml-0 right-align">
+            <span class="plan-label-date">Effective Date:</span>
+            <span class="plan-label-dateValue">{{planRowItem.effectiveStartDate | yyyymmddTommddyyyy}}
+              <ng-container *ngIf="planRowItem.effectiveEndDate">- {{planRowItem.effectiveEndDate | yyyymmddTommddyyyy}}</ng-container>
+            </span>
+          </div>
+        </div>
+      </div>
+      <div class="result-container col l12 m12 s12 pd-0" *ngIf="noPlans && filteredList?.length === 0" [ngClass]="{'hide-side-content': (isSidenavOpened)}">
+        <div class="no-medications-available">
+          <div class="text-center medicare-msg">
+            <div class="text-center medicare-msg no-search-result">
+              <div class="no-medications-icon">
+                <img src="/assets/images/medication_error.svg">
+              </div>
+              <p class="no-medications">We couldn’t look up your plan.</p>
+              <p>If you have questions about your plan, please contact us.</p>
+            </div>
+            <button class="search-clear-button mb-10" mat-raised-button type="button" (click)="navigateToContactUs()">
+              Contact Us
+            </button>
+            <a class="search-back-button" mat-raised-button type="button" (click)="clearFilter();">
+              Go Back
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col l3 s12 m12 pd-0 dynamic-content">
+      <div class="details-right-link plans-flex">
+        <app-fpo-layout [targetUrl]="fpoTargetUrl" [displayCategory]="'plans'"></app-fpo-layout>
+      </div>
+    </div>
+  </div>
+</div>

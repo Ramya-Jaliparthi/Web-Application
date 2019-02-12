@@ -1,0 +1,13 @@
+@import '../../../../assets/styles/_include';
+mat-dialog-actions {
+    display: block;
+    text-align: center;
+}
+
+.content {
+    padding: 20px 0 20px 0;
+}
+
+.bg-color {
+    background: $non-vdk-47-blue;
+}

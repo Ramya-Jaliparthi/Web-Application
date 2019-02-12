@@ -1,0 +1,44 @@
+<div class="info-container">
+  <div *ngIf="carouselItems !== undefined && carouselItems.length > 0" materialize="carousel"
+       style="margin-top: -34px;"
+       [materializeParams]="[{fullWidth: true, indicators: true, duration: 50, overflowScroll: false,sensitveScroll:true}]"
+       class="carousel carousel-slider center">
+    <div *ngFor="let carouselItem of carouselItems; let i = index" class="carousel-item info-item">
+      <p>
+        <span (click)="openUrl(carouselItem?.urlLink)">{{carouselItem?.text}}</span><br>
+        <span [innerHTML]="carouselItem?.Body" style="color: black !important;font-weight: 400;font-size: 16px !important;padding-top: 10px !important;"></span>
+      </p>
+      <div class="promo-carousel-image">
+        <img src="{{carouselItem?.src}}" alt="default image" class="responsive-img">
+        <a *ngIf="carouselItem?.isVideo" (click)="openVideoModal(carouselItem?.VIdeoUrl)">
+          <div class="video-icon">
+            <i class="fas fa-play-circle   fa-3x play-icon" aria-hidden="true"></i>
+          </div>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <div class="carousel-fixed-item carousel-action-view">
+    <div class="previous-next">
+            <span class="previos-next-action" [ngClass]="{'active-black': (carouselCurrentIndex > 0)}"
+                  (click)="decrementInfoTextCounter()">
+              <i class="far fa-chevron-left"></i>
+            </span>
+      <span class="arrow-seperator"></span>
+      <span class="previos-next-action" [ngClass]="{'active-black': (carouselCurrentIndex !== carouselItems.length - 1)}"
+            (click)="incrementInfoTextCounter()">
+             <i class="far fa-chevron-right"></i>
+            </span>
+    </div>
+  </div>
+</div>
+<div id="carouselVideoModal" class="modal">
+  <div class="video-container" *ngIf="carouselVideoSource">
+    <a (click)= 'closeVideoModal()'><i class="fas fa-times fa-2x video-icon"  aria-hidden="true"></i></a>
+    <video class="responsive-video" autoplay
+           [src]='carouselVideoSource' controls>
+      Your browser does not support the video tag.
+    </video>
+  </div>
+</div>

@@ -1,0 +1,379 @@
+@import '../../../../assets/styles/_fonts';
+// spk-cleanup - @import '../../../../assets/styles/variables';
+@import '../../../../assets/styles/_variables';
+@import '../../../../assets/styles/_colors';
+@import '../utils/message-center-common.scss';
+
+.message-center-search-component {
+    .filter-bar {
+        border-bottom: 5px solid $background-default-color;
+        background: $white_background;
+        span {
+            // margin-bottom: 10px;
+            @include Roboto(bold);
+            font-size: 14px;
+            padding: 10px 10px 8px 11px;
+            display: inline-block;
+            background: $non-vdk-15-grey;
+            .fa-chevron-down,
+            .fa-chevron-up {
+                font-size: 16px;
+                margin: 0 6px 0 10px;
+            }
+        }
+        span,
+        .fa-chevron-down,
+        .fa-chevron-up {
+            color: $header-color;
+        }
+        &.toggle-show {
+            @media (max-width:992px){
+                border-bottom: none;
+                span {
+                    padding-bottom: 20px;
+                    display: block;
+                    .fa-chevron-up {
+                        float: right;
+                    }
+                }
+            }
+        }
+    }
+    @media (min-width: 993px) {
+        .filter-bar {
+            border-bottom: none;
+            span {
+                // margin-bottom: 0;
+                padding: 10px 10px 7px 11px;
+                display: block;
+                .fa-chevron-down,
+                .fa-chevron-up {
+                    display: none;
+                }
+            }
+        }
+        .mat-expansion-panel-header {
+            padding: 20px 0 20px 14px !important;
+            margin: 0 !important;
+        }
+        ::ng-deep .mat-expansion-indicator {
+            margin-right: 15px;
+        }
+    }
+    .filter-container {
+        .mat-list,
+        .mat-selection-list {
+            padding: 0;
+        }
+        .mat-content,
+        .mat-expansion-indicator {
+            @include Roboto(bold);
+            font-size: 16px;
+            color: $header-color;
+        }
+        .mat-list-option {
+            .mat-list-text {
+                display: block !important;
+            }
+        }
+        .filter-buttons {
+            //margin: 15px 0 15px 0;
+            button {
+                width: 100%;
+            }
+        }
+    }
+    @media (max-width: 992px) {
+        .filter-container {
+            display: none;
+            position: relative;
+            .filter-pos {
+                position: relative;
+                top: -10px;
+                width: 100%;
+                z-index: 1;
+                background: $non-vdk-15-grey;
+            }
+        }
+    }
+    .block {
+        display: block;
+    }
+    .filter-container {
+        height: 100% !important;
+        margin: 0px;
+        background: $non-vdk-15-grey;
+        .mat-expansion-panel {
+            margin: 0px !important;
+            border: 0px !important;
+            padding: 0px !important;
+            &.sort {
+                // margin-bottom: 10px !important;
+                .sort-text {
+                    @include Roboto(bold);
+                }
+                .sort-text,
+                .most-recent {
+                    color: $title-color;
+                }
+                .most-recent {
+                    @include Roboto(light);
+                    font-size: 14px;
+                }
+            }
+        }
+        .mat-expansion-panel-header:hover {
+            background: $background-white-color 100%;
+        }
+        .filter-menu-with-action {
+            display: flex;
+            align-items: center;
+            padding: 0px !important;
+            justify-content: space-between;
+            display: none;
+        }
+        .filter-menu {
+            display: block;
+            font-size: 14px;
+        }
+        .filter-apply {
+            margin: 10px 0 0 0;
+            display: flex;
+            justify-content: space-around;
+        }
+        .filter-divider {
+            height: 10px;
+            background: $non-vdk-15-grey;
+            width: 100%;
+            border-top: 1px solid $non-vdk-14-grey;
+            border-bottom: 1px solid $non-vdk-14-grey;
+        }
+    }
+    .calendar-min-height {
+        /*min-height: 65px;*/
+        margin: 15px 0 20px 0;
+    }
+    .calendar-container {
+        width: 380px !important;
+        position: relative;
+    }
+    .calendar-main-container {
+        display: flex; //justify-content: space-around;
+        .mat-calendar-previous-button:focus {
+            background-color: none !important;
+        }
+    }
+    .medicare-filter-inner-btn {
+        .filter-btn {
+            background: $non-vdk-15-grey 100%;
+            color: $header-color;
+            vertical-align: middle;
+            padding: 0.5rem 1rem 0rem 0;
+            @include Roboto(bold);
+            cursor: pointer;
+            img {
+                width: 24px;
+                height: 24px;
+            }
+        }
+        .col.s10 {
+            margin-top: 5px;
+        }
+        h2 {
+            margin: 0;
+        }
+    }
+    .date-error {
+        color: $error-alert-color;
+        span {
+            font-size: 12px;
+        }
+        i.arrow_forward {
+            position: relative;
+            font-size: 18px;
+            top: 4px;
+            display: inline-block;
+        }
+    }
+    .search-box {
+        padding: 10px 10px 25px 10px;
+        background: $non-vdk-15-grey 100%;
+        position: relative;
+        .search-input {
+            border: 1px solid $non-vdk-14-grey;
+            border-radius: 20px;
+            padding: 0px 20% 0 5%;
+            max-width: 75%;
+            background: white;
+        }
+        .material-icons {
+            position: absolute;
+            top: 20px;
+            right: 15px;
+            cursor: pointer;
+            color: $icon-color;
+            &.close-icon {
+                position: absolute;
+                top: 20px;
+                right: 35px;
+                cursor: pointer;
+            }
+        }
+        .auto-search {
+            ul {
+                background: $text-white-color;
+                border: 1px solid $non-vdk-27-blue;
+                display: inline-block;
+                width: 100%;
+                top: 3.65em;
+                left: 0;
+                z-index: 999;
+                box-shadow: 0 0 10px 0 $non-vdk-27-blue;
+            }
+            li {
+                padding: 10px;
+                cursor: pointer;
+                background: $non-vdk-37-white;
+                &:hover,
+                &:focus {
+                    background: $non-vdk-38-blue;
+                    color: $headings-dark-color;
+                }
+            }
+        }
+        input:focus {
+            border-bottom: 1px solid $non-vdk-14-grey !important;
+            box-shadow: none !important;
+        }
+    }
+    .date-filter-custom {
+        .mat-form-field {
+            width: 97.7969px;
+        }
+        display: flex;
+        flex-direction: column;
+        margin-top: -25px;
+        .date-filter-range {
+            display: flex;
+            .from-date {
+                padding-right: 5px;
+            }
+        }
+        .mat-hint-message {
+            font-size: 12px;
+        }
+        .date-filter-custom-date {
+            /* Safari 6.1+ */
+            -webkit-flex: 1;
+            /* IE 10 */
+            -ms-flex: 1;
+            flex: 1;
+            display: flex;
+            flex-direction: row;
+            width: 48%;
+            .fa-calendar-alt {
+                cursor: pointer;
+                margin-top: 15px;
+                margin-right: 20px;
+                color: $notification-alerts-color;
+            }
+        }
+        .custom-range-error-message {
+            color: $non-vdk-41-red;
+            font-size: 12px;
+            padding-top: 5px;
+        }
+    }
+    .selected-sort {
+        @include Roboto(regular);
+        font-size: 14px;
+        color: $title-color;
+    }
+    .filter-divider-row {
+        height: 1px;
+        background: $non-vdk-15-grey;
+        width: 100%;
+    }
+    input.input-calender {
+        font-size: 14px;
+    }
+    input:not([type]),
+    input:not([type]):focus:not([readonly]) {
+        box-shadow: none !important;
+        border-bottom: 1px solid $non-vdk-6-grey !important;
+        font-size: 14px;
+    }
+    @media (max-width: 992px) {
+        .filter-btn {
+            //padding: 0.5rem 10px 0.5rem 2% !important;
+            padding: 0 10px 0 3% !important;
+        }
+        .filter-container mat-expansion-panel-header {
+            color: $header-color !important;
+            padding-right: 0 !important;
+            background: $text-white-color 100%;
+            padding: 20px 19px 20px 14px !important;
+            margin: 0 !important;
+        }
+        .filter-menu-with-action {
+            display: flex !important;
+        }
+        .filter-menu {
+            display: none !important;
+        }
+        .search-box {
+            .search-input {
+                border: 1px solid $non-vdk-14-grey;
+                border-radius: 22px;
+                padding: 0px 10% 0 5%;
+                max-width: 85%;
+                background: $text-white-color;
+            }
+        }
+    }
+    @media (min-width: 992px) and (max-width: 1150px) {
+        .clear-button,
+        .apply-button {
+            min-width: 70px;
+        }
+        .header-panel {
+            color: $header-color !important;
+            padding-top: 20px !important;
+            padding-bottom: 20px !important;
+            padding-right: 14px !important;
+            background: $text-white-color 100%;
+        }
+    }
+}
+
+.filter-apply {
+    margin: 10px 0 10px 0;
+    display: flex;
+    justify-content: space-around;
+    div {
+        flex: 1;
+        button {
+            width: 100%;
+        }
+    }
+    div:first-child {
+        padding: 5px 5px 10px 3%;
+    }
+    div:last-child {
+        padding: 5px 3% 5px 5px;
+    }
+    .clear-button:hover {
+        background-color: #c6dcee !important;
+    }
+}
+
+.clear-filter-button{
+    border: none !important;
+    box-shadow: none;
+}
+
+::ng-deep mat-radio-button {
+    label {
+        width: 0px !important;
+    }
+}

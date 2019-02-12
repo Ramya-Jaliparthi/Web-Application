@@ -1,0 +1,415 @@
+@import '../../../../assets/styles/_colors';
+@import '../../../../assets/styles/_fonts';
+// spk-cleanup - @import '../../../../assets/styles/variables';
+@import '../../../../assets/styles/_variables';
+
+@mixin ie11 {
+    @media screen and (-ms-high-contrast: active), screen and (-ms-high-contrast: none) {
+        @content;
+    }
+}
+
+.documents-component {
+    h1 {
+        color: $header-color;
+        margin: 20px 0;
+    }
+    .flex-container {
+        display: flex;
+        flex-direction: row;
+        margin-right: 0;
+        margin-left: 0;
+        @media (max-width: 992px) {
+            // flex-direction: column;
+            width: 100%;
+        }
+    }
+    .promo {
+        @media (min-width: 992px) {
+            background: $background-gray-color;
+        }
+    }
+    .hide {
+        display: none;
+    }
+    .unread-docs-indicator {
+        @include Roboto(regular);
+        text-align: center;
+        background-color: $unread-docs-alert-color;
+        font-size: 12.65px;
+        color: $text-white-color;
+        border-radius: 50%;
+        min-width: 1.5rem;
+    }
+    .folder-card {
+        @include Roboto(medium);
+        color: $primary-color;
+        font-size: 16px;
+    }
+    .folder-card-span{
+        display: block;
+        font-size: 14px;
+        @include Roboto(medium);
+        color: $black_color;
+
+        .folder-card-amt{
+            @include Roboto(bold);
+            color: $black_color;
+            font-size: 14px;
+        }
+    }
+    
+
+    .folder-card-sm {
+        @include Roboto(bold);
+        color: $primary-color;
+        font-size: 14px;
+    }
+
+    .folder-card-sm1 {
+        @include Roboto(bold);
+        color: $primary-color;
+        font-size: 13px;
+    }
+
+    .fa-chevron-right {
+        color: $link-secondary-color;
+        width: 11px;
+        height: 18px;
+        cursor: pointer;
+      }
+
+      .future-account {
+          color: green;
+      }
+    //for desktop screens
+    @media (min-width: 993px) {
+        .container {
+            margin-left: 0;
+        }
+        .folderCard {
+            width: 48%;
+            margin-right: 2%; //to give horizontal gap between cards
+            margin-bottom: 3%; //to give vertical gap between cards
+            &:hover {
+                cursor: pointer;
+            }
+        }
+        .documentsNav {
+            min-height: 340px;
+        }
+        .desktop-right-align {
+            text-align: right;
+        }
+    }
+    //for mobile/tablet screens
+    @media (max-width: 992px) {
+        width: 100%;
+        h1 {
+            margin-left: 15px;
+        }
+    }
+}
+
+.flex {
+    display: flex;
+}
+
+.flex-grow-1 {
+    flex-grow: 1;
+}
+
+.mr-10 {
+    margin-right: 10px !important;
+}
+
+.flex-box {
+    display: flex;
+    flex-wrap: wrap;
+    margin: -10px;
+    @media (max-width: 992px) {
+        margin: 0;
+    }
+
+    @include ie11 {
+        .collection { flex: 0 1 42% !important; }
+    }
+    
+    .collection {
+        flex: 0 1 47.4%;
+        margin: 10px;
+        padding: 15px 20px;
+        cursor: pointer;
+        border: 1px solid $file-card-border-color !important;
+        @media (max-width: 992px) {
+            // flex: 0 0 100%;
+            min-width: 100%;
+            margin: 0;
+            padding: 15px 10px 15px 18px;
+            
+        }
+
+        &.previous-accounts {
+            border: none !important;
+
+            .menu-item-container {
+                justify-content: space-between;
+            }
+        }
+    }
+
+    @include ie11 {
+        .collection_m { flex: 0 1 28% !important; }
+    }
+
+    .collection_m {
+        flex: 0 1 31.2%;
+        margin: 10px;
+        padding: 15px 20px;
+        cursor: pointer;
+        border-top: 1px solid $file-card-border-color !important;
+        border-bottom: 1px solid $file-card-border-color !important;
+        @media (max-width: 992px) {
+            // flex: 0 0 100%;
+            min-width: 100%;
+            margin: 0;
+            padding: 15px 10px 15px 18px;
+            
+        }
+    }
+
+    @include ie11 {
+        .collection_sm { flex: 0 1 27.8% !important; }
+    }
+    
+    .collection_sm {
+        flex: 0 1 31.5%;
+        margin: 10px;
+        padding: 13px 20px;
+        cursor: pointer;
+        border: 1px solid $file-card-border-color !important;
+        @media (max-width: 992px) {
+            // flex: 0 0 100%;
+            min-width: 100%;
+            margin: 0;
+            border: 0 !important;
+            border-top: 4px solid #1866A3 !important;
+            border-bottom: 1px solid $file-card-border-color !important;
+            padding: 13px 10px 13px 17px;
+        }
+    }
+    .collection_heading {
+        padding: 25px 0px 10px 10px;
+        @media (max-width: 992px) {
+            // flex: 0 0 100%;
+            min-width: 100%;
+            margin: 0;
+            margin-left: 8px;
+        }
+
+        h2 {
+            @include Roboto(bold);
+            color: $primary-color;
+            font-size: 22px;
+            line-height: 0;
+        } 
+        
+        h4 {
+            line-height: 0;
+            @include Roboto(bold);
+            color: $primary-color;
+            font-size: 18px;
+        } 
+
+        h6 {
+            line-height: 0;
+            @include Roboto(bold);
+            color: $primary-color;
+            padding-top: 16px;
+            padding-bottom: 5px;
+        } 
+    }
+    
+
+    @include ie11 {
+        .collection_links { flex: 0 1 95% !important; }
+    }
+                  
+    .collection_links{
+        flex: 0 1 100%;
+        margin: 10px;
+        padding: 11px 20px;
+        cursor: pointer;
+        background: $background-gray-color;
+        @media (max-width: 992px) {
+            // flex: 0 0 100%;
+            min-width: 100%;
+            margin: 0;
+            margin-bottom: 10px;
+            padding: 11px 10px 11px 18px;
+        }
+    }
+
+    @include ie11 {
+        .collection_acc_details { flex: 0 1 28% !important; }
+    }
+
+    .collection_acc_details{
+        flex: 0 1 31.2%;
+        margin: 10px;
+        padding: 12px 20px;
+        cursor: pointer;
+        border: 1px solid $file-card-border-color !important;
+        @media (max-width: 992px) {
+            // flex: 0 0 100%;
+            min-width: 100%;
+            margin: 0;
+            border: 0 !important;
+            padding: 12px 10px 12px 18px;
+        }
+    }
+    
+}
+
+.menu-container-0 {
+    width: 100%;
+}
+
+.myaccount-container {
+    display: flex;
+    padding: 0;
+    margin-bottom: 20px;
+    .side-nav-container {
+        flex: 4;
+        .account-details-container {
+            padding: 15px;
+            border: 1px solid $file-card-border-color;
+        }
+        .account-item-header {
+            label {
+                font-size: 16px;
+                @include Roboto(bold);
+                color: $primary-color;
+            }
+        }
+        .account-type {
+            padding: 1px 0;
+            label {
+                font-size: 12px;
+                @include Roboto(light);
+                color: $light-label-color;
+                letter-spacing: -0.01px;
+                line-height: 16px;
+            }
+        }
+        .item-container {
+            .item-text,
+            .item-date-text {
+                font-size: 12px;
+                @include Roboto(medium);
+                color: $light-label-color;
+                letter-spacing: -0.01px;
+                line-height: 16px;
+            }
+            .item-value {
+                font-size: 12px;
+                @include Roboto(light);
+                color: $text-sub-list;
+                letter-spacing: -0.01px;
+                line-height: 16px;
+            }
+            .item-date-text {
+                font-size: 10px;
+            }
+        }
+    }
+    
+    .menu-container-1 {
+        flex: 4;
+        padding: 0 15px;
+        svg {
+          width: 1.125em;
+        }
+        
+    }
+    
+    .menu-item-container {
+        flex: 1;
+        justify-content: space-between;
+        .split-in-two-lines {
+            width: 140px;
+        }
+    }
+}
+
+.menu-top-border {
+    border-top: 1px solid $file-card-border-color !important;
+}
+
+@media (max-width: 992px) {
+    .myaccount-container {
+        // flex-direction: column;
+        display: block;
+        .side-nav-container {
+            margin-bottom: 20px;
+            .account-details-container {
+                border: none;
+            }
+        }
+        .menu-container-1 {
+            padding: 0 !important;
+        }
+        .doctor-menu-item {
+            height: auto;
+        }
+    }
+    .flex-box {
+        .collection {
+            border: 0 !important;
+            border-bottom: 1px solid $file-card-border-color !important;
+        }
+        .menu-top-border {
+            border-top: 1px solid $file-card-border-color !important;
+        }
+    }
+}
+
+.flex-box {
+    .bb-0 {
+        border-bottom: none !important;
+    }
+
+    .b-0 {
+      border: none !important;
+    }
+
+    .bt-0 {
+      border-top: none !important;
+    }
+}
+
+.pd-t10 {
+    padding-top: 10px !important;
+}
+
+.pd-b20 {
+    padding-bottom: 20px;
+}
+
+.padding-single-account {
+    padding: 42px 0px 10px;
+}
+
+.quick-links {
+    @media (min-width: 992px) {
+        margin-top: 63px;
+    }
+
+    @media (max-width: 992px) {
+        margin-top: 40px;
+    }
+}
+
+.new-account {
+    color: $success-alerts-color;
+}

@@ -1,0 +1,31 @@
+<div class="mt-20 hide-on-large-only">
+  <app-breadcrumbs [breadCrumbs]="breadCrumbs"></app-breadcrumbs>
+</div>
+<div class="debit-card-activate-container">
+    <div class="debit-card-details-header">
+      <h1>Manage Debit Cards</h1>
+      <div class="hide-on-med-only hide-on-small-only">
+        <app-breadcrumbs [breadCrumbs]="breadCrumbs"></app-breadcrumbs>
+      </div>
+    </div>
+      <div class="debit-card-activate-card-header">
+          <span>Activate Card</span>
+      </div>
+      <div class="debit-card-activate-card">
+          <span>Do you want to activate your card? </span>
+          <span class="bold"> xxxx - 9999</span>
+      </div>
+  
+      <div class="col s12 filter-apply pd-0" *ngIf="cardDetails.showActivateButton">
+        <div>
+          <button class="clear-button pd-0" disableRipple mat-raised-button type="button" (click)= 'naivagteToCardDetailsPage()'>
+            Cancel
+          </button>
+        </div>
+        <div>
+          <button (click)="onSubmit()" class="apply-button pd-0" disableRipple mat-raised-button type="submit">
+            Activate
+          </button>
+        </div>
+      </div>
+  </div>

@@ -1,0 +1,114 @@
+<div *ngIf="isRtmsUpmode" class="row container-width order-idcard-container">
+  <!--<div class="col l4 m3 hide-on-small-only"></div>-->
+  <div class="">
+    <!-- col m12 s12 l4 offset-l4 -->
+    <div *ngIf="ismobile">
+        <app-breadcrumbs></app-breadcrumbs>
+    </div>
+    <h1 *ngIf="!isSubmitted" class="form-header">{{header}}</h1>
+    <div *ngIf="!ismobile">
+        <app-breadcrumbs></app-breadcrumbs>
+    </div>
+    <div [hidden]="isSubmitted" class="beforeSubmition">
+      <!--<p [hidden]="!isEligible" [innerHTML]="message" style="padding-bottom: 10px"></p>-->
+      <div *ngIf="isReviewed" style="padding-bottom: 10px">
+        Our records indicate you've placed an order in the past 14 days. If you haven't received your card, call Member Service at
+        <a href="tel:+18002622583" class="underline service-link">1-800-262-BLUE (2583)</a>.
+      </div>
+
+      <div *ngIf="(isMemberText || isEligible) && orderIdCardsData" class="member-text">
+        Choose a member to select cards
+      </div>
+      <div>
+        <div class="mt-mb-5" *ngFor="let item of memberList">
+          <mat-checkbox #parentCheckBox class="tick-color" [disabled]="!item.requestIdCardElegible" [checked]="item.selected"
+            [value]="item.value" (change)="onUserCheckedStatusChange($event)" disableRipple>
+            {{item.name | titlecase}}
+            <!-- {{item.name !== 'User' ? (item.name | titlecase) : (globalService.memberInfo$ | async)?.fullName}}
+             ({{ item.depRelationship}}) -->
+          </mat-checkbox>
+          <div class="cardTypes" *ngIf="parentCheckBox.checked">
+            <div class="mt-mb-5" *ngFor="let card of item.cardTypes">
+              <mat-checkbox [checked]="card.isChecked" [disabled]="card.isEligible === 'false'"  [value]="card.groupNumber" (change)="onCardCheckedStatusChange($event, item.value)" disableRipple>
+                {{card.type | titlecase}} - {{card.planName | uppercase}}
+              </mat-checkbox>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div [hidden]="!isSubmitted" class="afterSubmition">
+      <p class="form-header">{{submissionMessageHeader}}</p>
+      <p class="form-header">{{submissionMessage}}</p>
+      <p *ngIf="!!successList.length">Your ID Cards will be send to the following members: </p>
+      <div [hidden]="!submittedSuccessfully" *ngFor="let member of successList">
+        <a class="check-link">
+          <i class="material-icons submitted">check</i>
+        </a>
+        <span style="font-weight: bold">
+          {{member.aliasName | titlecase}} ({{member.cardTypes.length}})</span>
+        <div class="selected-cards" *ngFor="let card of member.cardTypes">
+          {{card.type | titlecase}} - {{card.planName | uppercase}}
+        </div>
+      </div>
+      <p *ngIf="!!failureList.length">We could not place order for the following members: </p>
+      <div [hidden]="!submittedSuccessfully" *ngFor="let member of failureList">
+        <a class="clear-link">
+          <i class="material-icons submitted">clear</i>
+        </a>
+        <span style="font-weight: bold">
+          {{member.name | titlecase}} ({{member.cardTypes.length}})</span>
+        <div class="selected-cards" *ngFor="let card of member.cardTypes">
+          {{card.type | titlecase}}
+        </div>
+      </div>
+
+      <!-- <p [hidden]="!submittedSuccessfully">
+        <a class="check-link"><i class="material-icons submitted">check</i></a> {{(globalService.memberInfo$ | async)?.fullName}}
+      </p>
+      <p [hidden]="!submittedSuccessfully" *ngFor="let oDependent of authService.getDependentsList()">
+        <a class="check-link"><i class="material-icons submitted">check</i></a> {{oDependent.MemName | titlecase}}
+      </p> -->
+    </div>
+    <div *ngIf="(!isSubmitted || isSubmitted && submittedSuccessfully)" class="address-text">
+
+      <div *ngIf="memberData.materialDistributionIndicator && memberData.materialDistributionIndicator.toString() !== '1'">
+        <p class="mail-address">Mailing Address</p>
+        <p>{{subscriberAddress?.NameLine_1 | titlecase}}</p>
+        <p>{{subscriberAddress?.NameLine_2}}</p>
+        <p>{{subscriberAddress?.Address_Line1 | titlecase}}</p>
+        <p>{{subscriberAddress?.Address_Line2 | titlecase}}</p>
+        <p>{{subscriberAddress?.City | titlecase}}, {{subscriberAddress?.State}} {{subscriberAddress?.Zip}}</p>
+        <!-- <p>{{subscriberAddress?.State}}</p>
+        <p>{{subscriberAddress?.Zip}}</p>
+        <p>{{subscriberAddress?.Zip_4}}</p> -->
+      </div>
+      <div *ngIf="memberData.materialDistributionIndicator && memberData.materialDistributionIndicator.toString() === '1'">
+        We will send ID card(s) to your plan sponsor
+      </div>
+    </div>
+    <div *ngIf="isSubmitted">
+      <div>
+        <button class="btn waves-effect waves-light mt-mb-5 btn-full-width btn-color br-8" [routerLink]="['/myaccount']">
+          My Account
+        </button>
+      </div>
+    </div>
+    <div [hidden]="isSubmitted">
+      <div>
+        <button class="btn waves-effect waves-light mt-mb-5 btn-full-width btn-color br-8 submit-btn" [disabled]="disbaledSubmitButton()"
+          (click)="submit()">Submit
+        </button>
+      </div>
+      <div class="btn-cancel">
+        <a *ngIf="authTokenDetailsJson && authTokenDetailsJson.planTypes && (authTokenDetailsJson.planTypes.medical === 'false'
+          || authTokenDetailsJson.planTypes.medical === false);else navtomycards" class="cancel" [routerLink]="['/myaccount']">Cancel</a>
+        <ng-template #navtomycards>
+          <a class="cancel" [routerLink]="['/mycards']">Cancel</a> </ng-template>
+    </div>
+  </div>
+ </div>
+</div>
+<app-maintenance *ngIf="!isRtmsUpmode">
+
+</app-maintenance>

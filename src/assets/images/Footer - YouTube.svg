@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="24px" height="24px" viewBox="0 0 24 24" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 47 (45396) - http://www.bohemiancoding.com/sketch -->
+    <title>!UI Kit / Icons / Social / YouTube</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Symbols" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="!UI-Kit-/-Molecule-/-Footer-/-Social" transform="translate(-132.000000, 0.000000)">
+            <g id="!UI-Kit-/-Icons-/-Social-/-YouTube" transform="translate(132.000000, 0.000000)">
+                <path d="M21,24 L3,24 C1.344,24 0,22.656 0,21 L0,3 C0,1.344 1.344,0 3,0 L21,0 C22.656,0 24,1.344 24,3 L24,21 C24,22.656 22.656,24 21,24 Z" id="Shape-Copy" fill="#D9252A" fill-rule="nonzero"></path>
+                <path d="M19.6656364,7.87383871 C19.4816364,7.13622581 18.9395455,6.5553871 18.2510909,6.35825806 C17.0033636,6 12,6 12,6 C12,6 6.99663636,6 5.74890909,6.35825806 C5.06054545,6.5553871 4.51836364,7.13622581 4.33436364,7.87383871 C4,9.21067742 4,12 4,12 C4,12 4,14.7892258 4.33436364,16.1262581 C4.51836364,16.8637742 5.06054545,17.4446129 5.74890909,17.6418387 C6.99663636,18 12,18 12,18 C12,18 17.0033636,18 18.2510909,17.6418387 C18.9395455,17.4446129 19.4816364,16.8637742 19.6656364,16.1262581 C20,14.7892258 20,12 20,12 C20,12 20,9.21067742 19.6656364,7.87383871" id="Fill-1" fill="#FFFFFF" fill-rule="evenodd"></path>
+                <polyline id="Fill-4" fill="#D9252A" fill-rule="evenodd" points="10 14.6748747 14.1087592 12.3375267 10 10 10 14.6748747"></polyline>
+            </g>
+        </g>
+    </g>
+</svg>

@@ -1,0 +1,99 @@
+@import "../../../../assets/styles/_colors";
+@import "../../../../assets/styles/_spacing";
+@import "../../../../assets/styles/_fonts";
+@import "../../../../assets/styles/_typography";
+
+.sectionPadding {
+  padding:0 20px;
+}
+
+.backSearchDiv {
+  margin-top: 15px;
+  color: $text-primary-color;
+  @include Roboto(bold);
+  font-size: 12px;
+}
+
+.numberProviders {
+  color: $headings-dark-color;
+  @include Roboto(light);
+  font-size: 24px;
+  margin-top: 10px;
+}
+
+.profileDiv {
+  max-width: 375px;
+  height: 450px;
+  border: 1px solid $textbox-border;
+  padding: 10px;
+  margin: 15px;
+}
+
+.profileBox {
+  border-bottom: 1px solid $non-vdk-11-grey;
+  padding: 5px;
+}
+
+.profileCardTitle {
+  @include Roboto(bold);
+  font-size: 16px;
+  color: $headings-dark-color;
+}
+
+.profileCardSubTitle {
+  @include Roboto(bold);
+  font-size: 12px;
+  color: $headings-dark-color;
+}
+
+.profileCardHeading {
+  @include Roboto(bold);
+  font-size: 14px;
+  color: $headings-dark-color;
+}
+
+.profileCardValue {
+  @include Roboto(light);
+  font-size: 14px;
+}
+
+.valign-wrapper {
+  color: $header-color;
+  font-size: 20px;
+  padding-top: 25px;
+  float: right;
+}
+
+.acceptingDiv {
+  @include Roboto(bold);
+  font-size: 12px;
+  color: $success-alerts-color;
+}
+
+.networkDiv {
+  @include Roboto(light);
+  font-size: 12px;
+  color: $success-alerts-color;
+}
+
+.phoneDiv {
+  color: $text-primary-color;
+  font-size: 12px;
+  @include Roboto(light);
+}
+
+.addressDiv {
+  color: $non-vdk-12-grey;
+  font-size: 12px;
+  @include Roboto(light);
+}
+
+.addressExtendedDiv {
+  color: $non-vdk-12-grey;
+  font-size: 12px;
+  @include Roboto(medium);
+}
+
+.removeDiv {
+  color: $error-alert-color;
+}

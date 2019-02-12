@@ -1,0 +1,165 @@
+<section class="fad-doctor-rating-component">
+  <div class="row">
+    <div class="col offset-l3 l6 s12">
+      <div *ngIf="reviewSubmitError" class="review-submit-error">
+        <span class="check-circle">
+          <i class="fal fa-exclamation-circle"></i>
+        </span>&nbsp;
+        <span *ngIf="errorText" class="error-text">Error!</span>
+        <span *ngIf="cantReview" class="error-text">Oops! you can't review yet.</span>
+      </div>
+    
+      <div *ngIf="reviewSubmitSuccess" class="review-submit-success">
+        <span class="check-circle">
+          <i class="fal fa-check-circle"></i>
+        </span>&nbsp;
+        <span class="success-text">Thank you for your review!</span>
+      </div>
+      
+      <div class="submit-response">
+        <p *ngIf="forModeration">
+            Your review has been submited for moderation. You can expected to see it posted within 2-3 business days.
+        </p>
+        <p *ngIf="reviewSubmitted">
+            Your rating has been posted.
+        </p>
+        <p *ngIf="reviewAlreadyDone">
+            You have already rated this doctor in the past. Please rate again after (amount of time from API). 
+        </p>
+        <a href="javascript:void(0)" (click)="gotoDoctorProfile()">
+          <i class="fa fa-chevron-left"></i>
+          <span>Back to Fname Lname, MD</span>
+        </a>
+      </div>
+    </div>
+  </div>
+  
+  <div class="row">
+    <div class="col offset-l3 l6 s12">
+      <h1 class="form-header">Write a Review</h1>
+      <p class="form-sub-header">Tells us about your experience with</p>
+      <p class="form-sub-header-name">{{doctorName}}, {{doctorDegree}}.</p>
+      <form novalidate [formGroup]="doctorRatingGroup" (ngSubmit)="onSubmit()" autocomplete="off" [ngClass]="{'form-submitted' : isFormSubmitted}">
+        
+        <div class="user-comment star-rating-comment">
+          <p class="rating-question star-rating-question">How would you rate your overall satisfaction with this doctor?*</p>
+          <fieldset class="rating">
+              <input type="radio" id="5star_1" name="overallSatisfaction" value="5" formControlName="overallSatisfaction" />
+              <label class="full" for="5star_1"></label>
+              <input type="radio" id="4star_1" name="overallSatisfaction" value="4" formControlName="overallSatisfaction" />
+              <label class="full" for="4star_1"></label>
+              <input type="radio" id="3star_1" name="overallSatisfaction" value="3" formControlName="overallSatisfaction" />
+              <label class="full" for="3star_1"></label>
+              <input type="radio" id="2star_1" name="overallSatisfaction" value="2" formControlName="overallSatisfaction" />
+              <label class="full" for="2star_1"></label>
+              <input type="radio" id="1star_1" name="overallSatisfaction" value="1" formControlName="overallSatisfaction" />
+              <label class="full" for="1star_1"></label>
+          </fieldset>
+          <!-- <app-star-rating-component formControlName="overallSatisfaction" [control]="doctorRatingGroup.controls['overallSatisfaction']" [componentInput]="facilityStarRating"></app-star-rating-component> -->
+        </div>
+
+        <div class="user-comment radio-btn-comment">
+          <p class="rating-question star-rating-question">Would you recommened this doctor to your family and friends?*</p>
+          <p>
+            <input class="radio-btn" name="recommendToFamily" type="radio" value="Yes" formControlName="recommendToFamily"/>
+            <span>Yes</span>
+          </p>
+          <p>
+            <input class="radio-btn" name="recommendToFamily" type="radio" value="No" formControlName="recommendToFamily"/>
+            <span>No</span>
+          </p>
+        </div>
+
+        <div class="user-comment star-rating-comment">
+          <p class="rating-question star-rating-question">How would you rate this doctor’s ability to explain things in a way you could understand?</p>
+          <fieldset class="rating">
+              <input type="radio" id="5star_2" name="easeOfUnderstanding" value="5" formControlName="easeOfUnderstanding" />
+              <label class="full" for="5star_2"></label>
+              <input type="radio" id="4star_2" name="easeOfUnderstanding" value="4" formControlName="easeOfUnderstanding" />
+              <label class="full" for="4star_2"></label>
+              <input type="radio" id="3star_2" name="easeOfUnderstanding" value="3" formControlName="easeOfUnderstanding" />
+              <label class="full" for="3star_2"></label>
+              <input type="radio" id="2star_2" name="easeOfUnderstanding" value="2" formControlName="easeOfUnderstanding" />
+              <label class="full" for="2star_2"></label>
+              <input type="radio" id="1star_2" name="easeOfUnderstanding" value="1" formControlName="easeOfUnderstanding" />
+              <label class="full" for="1star_2"></label>
+          </fieldset>
+          <!-- <app-star-rating-component formControlName="easeOfUnderstanding" [control]="doctorRatingGroup.controls['easeOfUnderstanding']" [componentInput]="facilityStarRating"></app-star-rating-component> -->
+        </div>
+
+        <div class="user-comment star-rating-comment">
+          <p class="rating-question star-rating-question">How would you rate this doctor’s availability for your appointment?</p>
+          <fieldset class="rating">
+              <input type="radio" id="5star_3" name="doctorAvailability" value="5" formControlName="doctorAvailability" />
+              <label class="full" for="5star_3"></label>
+              <input type="radio" id="4star_3" name="doctorAvailability" value="4" formControlName="doctorAvailability" />
+              <label class="full" for="4star_3"></label>
+              <input type="radio" id="3star_3" name="doctorAvailability" value="3" formControlName="doctorAvailability" />
+              <label class="full" for="3star_3"></label>
+              <input type="radio" id="2star_3" name="doctorAvailability" value="2" formControlName="doctorAvailability" />
+              <label class="full" for="2star_3"></label>
+              <input type="radio" id="1star_3" name="doctorAvailability" value="1" formControlName="doctorAvailability" />
+              <label class="full" for="1star_3"></label>
+          </fieldset>
+          
+          <!-- <app-star-rating-component formControlName="doctorAvailability" [control]="doctorRatingGroup.controls['doctorAvailability']" [componentInput]="facilityStarRating"></app-star-rating-component> -->
+        </div>
+
+        <div class="user-comment star-rating-comment">
+            <p class="rating-question star-rating-question">How would you rate your experience with the staff?</p>
+            <fieldset class="rating">
+                <input type="radio" id="5star_4" name="staffRating" value="5" formControlName="staffRating" />
+                <label class="full" for="5star_4"></label>
+                <input type="radio" id="4star_4" name="staffRating" value="4" formControlName="staffRating" />
+                <label class="full" for="4star_4"></label>
+                <input type="radio" id="3star_4" name="staffRating" value="3" formControlName="staffRating" />
+                <label class="full" for="3star_4"></label>
+                <input type="radio" id="2star_4" name="staffRating" value="2" formControlName="staffRating" />
+                <label class="full" for="2star_4"></label>
+                <input type="radio" id="1star_4" name="staffRating" value="1" formControlName="staffRating" />
+                <label class="full" for="1star_4"></label>
+            </fieldset>
+  
+            <!-- <app-star-rating-component formControlName="staffRating" [control]="doctorRatingGroup.controls['staffRating']"  [componentInput]="facilityStarRating"></app-star-rating-component> -->
+          </div>
+        
+        <div class="user-comment">
+          <p class="rating-question">Any additional comments</p>
+          <input matInput placeholder="" aria-labelledby="additionalComments" id="additionalComments" type="text" class="validate fluid-width" formControlName="additionalComments" maxlength="100"/>
+        </div>
+
+        <div class="user-comment">
+          <p class="rating-question">Title for your review</p>
+          <input matInput placeholder="" aria-labelledby="reviewTitle" id="reviewTitle" type="text" class="validate fluid-width" formControlName="reviewTitle" maxlength="30"/>
+        </div>
+
+        <div class="user-comment">
+          <p class="rating-question">Screen Name</p>
+          <input matInput placeholder="Fname" aria-labelledby="userName" id="userName" type="text" class="validate fluid-width" formControlName="userName" maxlength="30"/>
+        </div>
+
+        <p class="disclaimer-text">
+          By clicking “Submit” I verify that I or my child has received services from this doctor, and agree to the <a href="javascript:void(0)" (click)="gotoTermsandConditions()">Terms & Conditions of the Patient Review System</a>.
+        </p>
+
+        <div class="row button-row">
+            <button class="cancel-btn col s5 waves-effect waves-light btn-flat disabled left" type="submit" aria-label="Cancel" (click)="clearAllFields()">Cancel</button>
+            <button class="submit-btn col s5 waves-effect waves-light btn btn-block right" type="submit" aria-label="Submit" name="action">Submit</button>
+        </div>
+
+        <p class="note-text">* Field is required.</p>
+      </form>
+    </div>
+  </div>
+  <div class="disclaimer hide-on-large-only">
+    <p>powered by <span>Vitals</span></p>
+    <p>Vitals is an independent company providing search engine capabilities for Blue Cross Blue Shield of Massachusetts</p>
+    <p>Provider data last updated : June 13, 2018</p>
+    <ul>
+      <li>Patient Review System Terms of Use</li>
+      <li>Important Disclosures</li>
+      <li>Terms of Use</li>
+      <li>Privacy Policy</li>
+    </ul>
+  </div>
+</section>

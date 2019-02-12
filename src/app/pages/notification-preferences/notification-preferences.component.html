@@ -1,0 +1,82 @@
+<div class="notification-preferences row">
+  <div class="col s12 pd-0">
+    <div class="mt-20 hide-on-large-only" style="text-align: left">
+      <app-breadcrumbs></app-breadcrumbs>
+    </div>
+    <h1 class="mt-mb-20">Notifications</h1>
+    <div class="hide-on-med-only hide-on-small-only" style="text-align: left">
+      <app-breadcrumbs></app-breadcrumbs>
+    </div>
+    <p>Select how you wish to receive information from Blue Cross Blue Shield of Massachusetts.
+      <br class="hide-on-small-and-down hide-on-med-and-down">
+      <a href="javascript:void(0)" routerLink="/pages/parent/notification/learnmore" routerLinkActive="active">
+        <u>Learn more.</u>
+      </a>
+    </p>
+    <div class="row mb-20">
+      <div class="col s12 pl-0 mt-30">
+        <label class="text-label">Emails</label>
+        <a (click)="emailEdit()" class="font-linktext right" *ngIf="isVerifiedEmail">Edit</a>
+      </div>
+      <div class="col s6 pl-0" *ngIf="isVerifiedEmail">
+        <input type="checkbox" class="filled-in spacing-keyWithIcon" id="email" name="email" aria-labelledby="email" [checked]="optInEmail"
+          (change)="onEmailChange()" />
+        <label for="email" class="mt-10">
+          <span class="black-text">
+            {{verifiedEmail}}
+          </span>
+        </label>
+      </div>
+      <div class="col s12 pl-0 mt-10" *ngIf="!isVerifiedEmail" (click)="goToVerifyEmail()">
+        <div class="details-right-link">
+          <a>
+            <span class="text-route">Verify your email to receive notifications</span>
+            <span class="icon-arrow">
+              <i class="fa fa-chevron-right long-text"></i>
+            </span>
+          </a>
+        </div>
+      </div>
+    </div>
+    <div class="row" *ngIf="isMobileNumberAvail !== ''">
+      <div class="col s12 pl-0" >
+        <label class="text-label">Mobile Phone Number</label>
+        <a class="font-linktext right" (click)="phoneEdit()" *ngIf="IsVerifiedMobile">Edit</a>
+      </div>
+      <div class="col s6 pl-0" *ngIf="IsVerifiedMobile">
+        <input type="checkbox" class="filled-in spacing-keyWithIcon" id="mobile" name="mobileNumber" aria-labelledby="mobile" [checked]="optInMobile"
+          (change)="onMobileChange()" />
+        <label for="mobile" class="mt-10">
+          <span class="black-text">
+            {{ verifiedMobile | phoneNumber }}
+          </span>
+        </label>
+      </div>
+      <div class="col s12 pl-0 mt-10" *ngIf="!IsVerifiedMobile" (click)="goToVerifyMobile()">
+        <div class="details-right-link">
+          <a>
+            <span class="text-route">Verify your mobile phone number to receive notifications</span>
+            <span class="icon-arrow">
+              <i class="fa fa-chevron-right long-text"></i>
+            </span>
+          </a>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col s6 pl-0 submit-action-twobutton-center">
+        <!-- <button mat-button type="button" (click)="onCancel()">Cancel</button> -->
+        <div class="waves-effect waves-light white-background btn-white
+                       btn-block white-background btn-half-width-left" type="" aria-label="Cancel" (click)="onCancel()">Cancel
+        </div>
+      </div>
+      <div class="col s6 pr-0">
+        <button class="btn btn-primary" type="button" [disabled]="disableSave" (click)="onSave()">Save</button>
+      </div>
+    </div>
+    <div class="row footnote">
+      <p>*By enrolling in text alerts you are authorizing Blue Cross Blue Shield of Massachusetts to send text messages through
+        an automatic dialing system.</p>
+    </div>
+  </div>
+</div>

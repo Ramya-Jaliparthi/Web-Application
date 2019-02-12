@@ -1,0 +1,169 @@
+@import '../../../../assets/styles/_variables';
+@import '../../../../assets/styles/_global';
+@import '../../../../assets/styles/_include';
+a.text-link {
+    color: $new-color;
+}
+
+.password-block {
+    position: relative;
+}
+
+.password-block .input-group-addon {
+    right: 10px;
+    top: 10px;
+    position: absolute;
+    text-align: center;
+}
+
+.privacy-text a {
+    text-decoration: underline;
+    color: $link-primary-color;
+}
+
+.privacy-text a:hover {
+    text-decoration: underline;
+    color: $link-secondary-color;
+    ;
+}
+
+.privacy-text a:focus {
+    text-decoration: underline;
+    color: $new-color;
+}
+
+.privacy-text {
+    color: $non-vdk-12-grey;
+}
+
+.input-group-addon {
+    cursor: pointer;
+    &.show-class {}
+    &.hide-class {
+        background-color: $non-vdk-3-grey;
+    }
+}
+
+.tabs {
+    background-color: transparent;
+}
+
+.tabs .tab a {
+    line-height: 65px;
+    color: $non-vdk-3-grey;
+    text-overflow: unset;
+    text-transform: capitalize;
+    @include Roboto(bold);
+    font-size: 15px;
+    border-bottom: 1px solid $non-vdk-3-grey;
+}
+
+.tabs .tab a:hover,
+.tabs .tab a.active {
+    background-color: transparent;
+    color: $title-color;
+}
+
+.tabs .tab.disabled a,
+.tabs .tab.disabled a:hover {
+    color: rgba(102, 147, 153, 0.7);
+}
+
+.modal-close-right {
+    position: absolute;
+    top: 6px;
+    right: 6px
+}
+
+#priacy-modal,
+#terms-modal,
+#learn-more {
+    max-height: 80%;
+    height: 100%;
+    .modal-header {
+        .material-icons {
+            font-size: 42px;
+        }
+    }
+    .modal-content .modal-header {
+        color: $header-color;
+        font-size: $header-font-size;
+        @include Roboto(light);
+    }
+}
+
+.modal_content {
+    bottom: 0px;
+    top: 45px;
+    overflow-y: auto;
+    position: absolute;
+}
+
+//.userid-control {
+//  padding: 15px 0px 0px !important;
+//}
+.black-text-margin-top {
+    margin-top: 30px;
+}
+
+@media (min-width: 215px) and (max-width: 310px) {
+    .userid-control {
+        //width: 100% !important;
+        padding: 15px 0px 0px !important;
+    }
+}
+
+@media (min-width: 0px) and (max-width: 214px) {
+    .userid-control {
+        //width: 100% !important;
+        padding: 30px 0px 0px !important;
+    }
+}
+
+@media (min-width: 601px) and (max-width: 715px) {
+    .userid-control {
+        //width: 100% !important;
+        //padding: 15px 0px 0px !important;
+    }
+}
+
+.font-14-grey {
+    color: $non-vdk-12-grey;
+}
+
+.font-color-black {
+    color: $title-color !important;
+}
+
+.password-block .input-group-addon {
+    right: 0px;
+    top: 22px;
+    position: absolute;
+    text-align: center;
+}
+
+.mat-hint-message {
+    color: $text-gray-color;
+    @include Roboto(regular);
+    font-size: 12px;
+}
+
+.sub-header {
+    color: $text-disabled-gray;
+    font-size: 16px;
+}
+
+.continue-text {
+    color: $non-vdk-12-grey !important;
+    margin-bottom: 7px;
+}
+
+.help-text {
+  @include vdkTextLink();
+  margin-left: 10px !important;
+  p {
+    color: $link-primary-color;
+    @include Roboto(medium);
+    margin-bottom: 10px;
+  }
+}

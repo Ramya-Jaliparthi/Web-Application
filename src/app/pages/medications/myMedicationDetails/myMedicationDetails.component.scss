@@ -1,0 +1,207 @@
+@import '../../../../assets/styles/_colors';
+// spk-cleanup - @import '../../../../assets/styles/variables';
+@import '../../../../assets/styles/_variables';
+@import '../../../../assets/styles/_fonts';
+.row {
+    @media (max-width: 993px) {
+        margin-left: 0 !important;
+        margin-right: 0 !important;
+    }
+}
+
+.medication-details-container {
+    display: flex;
+    .medication-details {
+        //flex: 2;
+        margin-right: 0.75rem;
+        &-header {
+            font-size: $header-font-size;
+            color: $header-color;
+            padding-bottom: 20px;
+            @include Roboto(light);
+        }
+        &-dependent-info {
+            font-size: 12px;
+            padding-bottom: 10px;
+            @include Roboto(light);
+            color: $text-normal-color;
+            @include Roboto(light);
+        }
+        &-name {
+            font-size: 18px;
+            color: $header-color;
+            @include Roboto(bold);
+            padding-bottom: 10px;
+        }
+        &-frequency {
+            padding-bottom: 20px;
+            color: $non-vdk-3-grey;
+            @include Roboto(regular);
+            font-size: 12px;
+        }
+        &-fill-details {
+            display: flex;
+            justify-content: space-between;
+            padding-bottom: 20px;
+            color: $text-normal-color;
+            .amount-info {
+                font-size: 10px;
+                @include Roboto(light);
+                .amount {
+                    font-size: 18px;
+                }
+            }
+            .last-fill-info {
+                padding-top: 8px;
+                @include Roboto(bold);
+                font-size: 12px;
+                .last-fill-date {
+                    padding-left: 3px;
+                    @include Roboto(light);
+                    margin-left: -2px;
+                }
+            }
+        }
+        &-pharmacy-details,
+        &-prescribing-doctor {
+            .pharmacy-name,
+            .doctor-name {
+                color: $text-normal-color;
+                .name {
+                    @include Roboto(medium);
+                    color: $text-normal-color;
+                    font-size: 14px;
+                }
+                .address {
+                    @include Roboto(light);
+                    color: $text-sub-list;
+                    font-size: 14px;
+                }
+            }
+            .pharmacy-name {
+                padding-bottom: 10px;
+            }
+            .doctor-name {
+                padding-bottom: 5px;
+            }
+            .pharmacy-contact-info {
+                font-size: 14px;
+                .phone-icon,
+                .phone,
+                .directions {
+                    color: $link-primary-color;
+                    @include Roboto(medium);
+                    i {
+                        font-size: 12px;
+                        transform: rotate(270deg);
+                        color: $link-primary-color;
+                    }
+                }
+                .phone-icon,
+                .directions-icon {
+                    vertical-align: middle;
+                }
+                .map-icon {
+                    color: $link-color;
+                }
+                .directions-icon {
+                    i {
+                        font-size: 12px;
+                        color: $link-color;
+                        margin-left: 10px;
+                    }
+                }
+                .phone,
+                .directions {
+                    cursor: pointer;
+                    text-decoration: underline;
+                }
+            }
+        }
+        &-pharmacy-details {
+            padding-bottom: 15px;
+        }
+        &-prescribing-doctor {
+            padding-bottom: 5px;
+        }
+    }
+    .dynamic-content {
+        //flex: 3;
+        padding: 0;
+        display: flex;
+        justify-content: center;
+        //background: $content-background-color;
+        font-size: $header-font-size;
+        align-items: center;
+        div {
+            text-align: center;
+            color: $text-gray-color;
+            font-size: 24px;
+            padding: 0 20px;
+            @include Roboto(light);
+        }
+    }
+}
+
+.refill-history-container {
+    margin-right: 0.75rem;
+    .refill-history-header {
+        color: $primary-color;
+        padding-bottom: 10px;
+        @include Roboto(bold);
+        font-size: 16px;
+    }
+    .refill-history-item {
+        border-top: 1px solid $non-vdk-32-grey;
+        padding: 5px 5px 5px 15px;
+        color: $title-color;
+        .refill-history-date {
+          cursor: pointer;
+        }
+        .refill-history-link {
+            float: right;
+            cursor: pointer;
+            text-decoration: underline;
+            a {
+                color: $link-primary-color;
+                @include Roboto(medium);
+            }
+        }
+    }
+}
+
+.doctor-name {
+    a {
+        color: $link-primary-color;
+        @include Roboto(medium);
+        text-decoration: underline;
+        font-size: 14px;
+    }
+}
+
+@media (max-width: 992px) {
+    .container {
+        width: 100%;
+    }
+    .medication-details-container {
+        flex-direction: column;
+        .medication-details {
+            padding: 0 0.75rem;
+            margin-right: 0;
+            &-header {
+                padding-bottom: 10px !important;
+            }
+        }
+        .dynamic-content {
+            margin-top: 20px;
+            padding: 30px;
+        }
+    }
+    .refill-history-container {
+        margin-right: 0;
+        padding: 0 0.75rem;
+    }
+}
+.medication-details-dependent-info{
+    font-size: 14px;
+}

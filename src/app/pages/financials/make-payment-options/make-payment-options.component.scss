@@ -1,0 +1,93 @@
+@import '../../../../assets/styles/_colors';
+@import '../../../../assets/styles/_fonts';
+@import '../../../../assets/styles/_variables';
+
+.make-payment-options-container {
+  .whom-to-pay,
+  .when-to-submit {
+    p {
+      @include Roboto(bold);
+      font-size: 14px;
+      color: $title-color;
+      display: table;
+      height: 30px;
+
+      .radio-btn {
+        opacity: 1;
+        pointer-events: all;
+        height: 26px;
+        width: 26px;
+        display: table-cell;
+        vertical-align: middle;
+        cursor: pointer;
+      }
+
+      .radio-label {
+
+        @include Roboto(bold);
+        font-size: 14px;
+        color: $title-color;
+        padding-left: 34px;
+        display: table-cell;
+        vertical-align: middle;
+      }
+    }
+
+    p:first-child {
+        margin-bottom: 0;
+    }
+  }
+
+  .whom-to-pay {
+      margin-top: 20px;
+  }
+
+  .button-row {
+    display: flex;
+    padding-top: 30px;
+    margin: 0;
+    margin-bottom:30px;
+    flex-direction: column;
+    .btn, .cancel-btn {
+        width: 100%;
+    }
+
+    .btn-cancel {
+      text-align: center;
+      margin-top: 10px;
+      .cancel {
+        @include Roboto(bold);
+        font-size: 14px;
+        color: $link-color;
+        text-decoration: underline;
+      }
+    }
+  }
+
+  .make-payment-selection mat-radio-group{
+    -webkit-box-direction: normal;
+    -webkit-box-orient: vertical;
+    -moz-flex-direction: column;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    // padding: 20px 0;
+    display: inline-flex;
+    mat-radio-button{
+      padding-top: 8px;
+    }
+    ::ng-deep .mat-radio-label-content{
+      padding-left: 12px;
+      @include Roboto(bold);
+      font-size: 14px;
+      color: #000000;
+      line-height: 22px;
+    }
+  }
+  .make-payment-selection{
+    .radioTextPD{
+      @include Roboto(bold);
+      display: block;
+    }
+  }
+
+}

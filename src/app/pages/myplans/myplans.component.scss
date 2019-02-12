@@ -1,0 +1,1392 @@
+@import '../../../assets/styles/_include';
+@import '../../../assets/styles/Global';
+@import '../../../assets/styles/_flex';
+@import '../../../assets/styles/_filter-core';
+@import '../../../assets/styles/_colors';
+@import '~@angular/material/prebuilt-themes/deeppurple-amber.css';
+.pos-absolute {
+    position: absolute;
+}
+
+.title-color {
+    color: $non-vdk-47-blue;
+}
+
+.intro-text {
+    @include Roboto(regular);
+    font-size: 16px;
+    color: $text-disabled-gray;
+    margin-left: -10px;
+    //margin: 0 15px 0 15px !important;
+}
+
+.icon-arrow {
+    color: $headings-dark-color !important;
+    float: right;
+    width: 11px;
+    height: 18px;
+    .svg-inline--fa.fa-w-10 {
+        font-size: 1.45em;
+    }
+}
+
+.plans-flex {
+    display: flex;
+}
+
+.plan-results-container {
+    display: flex;
+    padding: 0px;
+    .main-result {
+        height: 100%;
+        .main-result-container {
+            height: 100%;
+        }
+    }
+    .dynamic-content {
+        .details-right-link {
+            margin-bottom: 15px;
+            width: 100% !important;
+            //text-align: center;
+            @include Roboto(bold);
+            text-align: left;
+            font-size: 13px;
+            cursor: pointer;
+            span {
+                //color: $background-title-separator-color!important;
+                color: $background-white-color!important;
+            }
+            span.text-route {
+                //margin: 0 0 0 2%;
+            }
+            span.icon-arrow {
+                color: $headings-dark-color !important;
+                float: right;
+                width: 11px;
+                height: 18px;
+            }
+            @media (max-width: 992px) {
+                margin-top: 20px;
+                margin-bottom: 0;
+                padding: 0 15px;
+            }
+        }
+        div {
+            text-align: center;
+            color: $text-gray-color;
+            font-size: 24px;
+            @include Roboto(light);
+        }
+    }
+    .plan-name-header {
+        @include Roboto(regular);
+        font-size: 18px;
+        color: $headings-dark-color;
+    }
+    .plan-label-date {
+        @include Roboto(medium);
+        font-size: 10px;
+        color: $text-normal-color;
+        margin-left: 0%;
+    }
+    .plan-label-dateValue {
+        @include Roboto(light);
+        font-size: 12px;
+        color: $text-normal-color;
+        // min-width: 144px; Defect fix M30-3064
+        min-width: 0px;
+        display: inline-block;
+        line-height: 16px;
+        margin-left: 5px;
+    }
+    .plan-group-name-header {
+        @include Roboto(light);
+        font-size: 12px;
+        color: $text-normal-color;
+        margin-left: 0%;
+        line-height: 16px;
+        margin-bottom: 10.6px;
+    }
+    .plan-label-name {
+        @include Roboto(medium);
+        font-size: 12px;
+        color: $text-normal-color;
+        float: left;
+        white-space: pre;
+    }
+    .plan-label-value {
+        @include Roboto(light);
+        font-size: 12px;
+        color: $text-sub-list;
+    }
+    .side-nav-container {
+        padding: 0px;
+        overflow: hidden;
+        a {
+            cursor: pointer;
+            color: $link-color;
+        }
+    }
+}
+
+.disp-flex {
+    display: flex;
+}
+
+.plan-effective-date-cont {
+    line-height: 16px;
+    margin: 0px 0px 20px 0px;
+}
+
+.calendar-min-height {
+    min-height: 65px;
+}
+
+.calendar-main-container {
+    @extend %flexbox;
+    .mat-calendar-previous-button:focus {
+        background-color: none !important;
+    }
+}
+
+.date-filter-custom {
+    display: flex;
+    flex-direction: column;
+    margin-top: -25px;
+    .date-filter-range {
+        display: flex;
+        .from-date {
+            padding-right: 2px;
+        }
+    }
+    .mat-hint-message {
+        font-size: 12px;
+    }
+    .date-filter-custom-date {
+        display: flex;
+        flex-direction: row;
+        width: 60%;
+        .fa-calendar-alt {
+            cursor: pointer;
+            margin-top: 17px;
+            margin-right: 10px;
+            color: $icon-color;
+            @media (max-width: 992px) {
+                margin-right: 15px;
+            }
+        }
+    }
+    .custom-range-error-message {
+        color: $non-vdk-41-red;
+        font-size: 12px;
+        padding-top: 5px;
+    }
+}
+
+.input-calender {
+    font-size: 14px;
+    margin-top: 4px;
+}
+
+.hidden {
+    display: none;
+}
+
+@media (min-width: 993px) {
+    .header {
+        color: $headings-dark-color;
+        font-size: 24px;
+        //spk/ cleanup - font-weight: 300;
+        @include Roboto(light);
+        margin: 20px 0px 17px 0px !important;
+        text-align: left;
+        padding-left: 10px;
+    }
+    .intro-text {
+        @include Roboto(regular);
+        font-size: 16px;
+        color: $text-disabled-gray;
+        margin: 0 0 0 0px !important;
+    }
+}
+
+@media (max-width: 992px) {
+    .container {
+        width: 100% !important;
+    }
+    .header {
+        color: $headings-dark-color;
+        font-size: 24px;
+        //spk/ cleanup - font-weight: 300;
+        @include Roboto(light);
+        margin: 20px 15px;
+        text-align: left;
+    }
+    .plan-results-container {
+        flex-direction: column;
+        //padding: 0px;
+        .middle-container {
+            margin-top: 15px;
+            width: 100% !important;
+            padding: 0px 0px !important;
+            padding-left: 15px !important;
+            padding-right: 15px !important;
+            border-bottom: 1px solid $file-card-border-color;
+        }
+        .dynamic-content {
+            width: 100% !important;
+        }
+        .side-nav-container {
+            width: 100% !important;
+            margin: 0 0 0 0px !important; //changed here
+            overflow: visible;
+        }
+        .plan-result-right-link {
+            padding-left: 0;
+            padding-right: 3px;
+        }
+    }
+}
+
+
+/* Mat Accordin*/
+
+.mat-expansion-panel:not([class*=mat-elevation-z]) {
+    box-shadow: 0 0px 0px 0px rgba(0, 0, 0, 0), 0 0px 0px 0 rgba(0, 0, 0, 0), 0 0px 0px 0 rgba(0, 0, 0, 0)
+}
+
+.mat-expansion-panel-header {
+    padding: 0px 0px 0px 0px;
+    color: $header-color;
+}
+
+.mat-exp-margin {
+    padding: 0!important;
+    @media (max-width: 992px) {
+        margin-left: 0px;
+        margin-right: 0px;
+    }
+    padding: 10px 15px 10px 10px;
+    width: 100% !important;
+}
+
+.expand-class {
+    height: 0px !important;
+}
+
+.drupal-action-row {
+    border-top-style: none;
+    border-bottom-style: none;
+    border-top-width: 1px;
+    // background-color: $background-gray-color;
+    background-color: transparent;
+    border-bottom-width: 1px;
+    border-top-color: $non-vdk-11-grey;
+    border-bottom-color: $non-vdk-11-grey;
+    @media (min-width: 993px) {
+        border-left-style: none;
+        border-right-style: none;
+        border-left-color: $non-vdk-11-grey;
+        border-right-color: $non-vdk-11-grey;
+        border-left-width: 1px;
+        border-right-width: 1px;
+    }
+    @media (max-width: 992px) {
+        margin-left: -15px;
+        margin-right: -15px;
+    }
+    padding: 0px 0px 0px 0px !important;
+    margin-bottom: 12px;
+    display: flex;
+}
+
+.vl {
+    // border-left: 4px solid $background-title-separator-color;
+    // height: 100%;
+    div {
+        margin-left: 0px;
+        @media (max-width: 992px) {
+            padding-left: 3px;
+            margin-right: 0;
+        }
+    }
+}
+
+//css taken from benefits page css from benefits page end  @ line 606
+.header {
+    color: $headings-dark-color;
+    font-size: 24px;
+    //spk/ cleanup - font-weight: 300;
+    @include Roboto(light);
+    margin: 20px 0;
+    text-align: left;
+}
+
+.drupal-plans-content {
+    padding-left: 10px;
+    .drupal-result {
+        padding: 7px 1.2rem 0 0 !important;
+        a {
+            @include Roboto(medium);
+            font-size: 12px;
+            color: $background-title-separator-color;
+            letter-spacing: -0px;
+            display: block;
+            span {
+                font-size: 18px;
+                color: $background-title-separator-color;
+                letter-spacing: -0px;
+                padding-right: 1px;
+                position: relative;
+                top: 2px;
+            }
+        }
+    }
+}
+
+.pos-absolute {
+    position: absolute;
+}
+
+.title-color {
+    color: $non-vdk-47-blue;
+}
+
+.benefits-intro-text {
+    @include Roboto(regular);
+    font-size: 12px;
+    color: $non-vdk-3-grey;
+    line-height: 16px;
+}
+
+.benefitdate-label {
+    @include Roboto(medium);
+    font-size: 10px;
+    color: $text-normal-color;
+    float: left;
+    line-height: 16px;
+}
+
+.benefitdate-value {
+    @include Roboto(light);
+    font-size: 12px;
+    color: $text-normal-color;
+    line-height: 16px;
+    padding-left: 5px;
+}
+
+.icon-arrow {
+    color: $headings-dark-color !important;
+    float: right;
+    width: 11px;
+    height: 18px;
+}
+
+.plans-flex {
+    @extend %flexbox;
+}
+
+.plan-results-container {
+    @extend %flexbox;
+    padding: 0px;
+    .dynamic-content {
+        .details-right-link {
+            margin-bottom: 15px;
+            width: 100% !important;
+            //text-align: center;
+            @include Roboto(bold);
+            text-align: left;
+            font-size: 13px;
+            cursor: pointer;
+            span {
+                color: $background-title-separator-color!important;
+            }
+            span.text-route {
+                margin: 0 0 0 2%;
+            }
+            span.icon-arrow {
+                color: $background-title-separator-color !important;
+                float: right;
+                width: 11px;
+                height: 18px;
+            }
+            @media (max-width: 992px) {
+                margin-top: 20px;
+                margin-bottom: 0;
+                padding: 0 15px;
+            }
+        }
+        .details-right-link-alt {
+            width: 100% !important;
+            height: 100%;
+            @include Roboto(bold);
+            text-align: left;
+            font-size: 13px;
+            cursor: pointer;
+            span {
+                color: $background-title-separator-color!important;
+            }
+            span.text-route {
+                margin: 0 0 0 2%;
+            }
+            span.icon-arrow {
+                color: $background-title-separator-color !important;
+                float: right;
+                width: 11px;
+                height: 18px;
+            }
+        }
+        div {
+            text-align: center;
+            color: $text-gray-color;
+            font-size: 24px;
+            @include Roboto(light);
+            width: 100%;
+            @extend %flexbox;
+            @include flex-direction(row);
+            @include align-items(center);
+            @include justify-content(center);
+        }
+    }
+    .plan-name-header {
+        @include Roboto(bold);
+        font-size: 16px !important;
+        color: $headings-dark-color;
+    }
+    .plan-label-date {
+        margin-left: 0%;
+        @include Roboto(medium);
+        font-size: 10px;
+        color: $text-normal-color;
+    }
+    .plan-label-dateValue {
+        margin-left: 5px;
+        @include Roboto(light);
+        font-size: 12px;
+        color: $text-normal-color;
+    }
+    .plan-group-name-header {
+        @include Roboto(light);
+        font-size: 12px;
+        color: $text-normal-color;
+        margin-left: 0%;
+    }
+    /*.plan-label-name {
+    @include Roboto(bold);
+    font-size: 14px;
+    color: $text-normal-color;
+    float: left;
+  }
+
+  .plan-label-value{
+    @include Roboto(regular);
+    font-size: 14px;
+    color: $text-sub-list;
+  }*/
+    .side-nav-container {
+        padding: 0px;
+    }
+}
+
+.disp-flex {
+    @extend %flexbox;
+}
+
+.benefits-text {
+    @extend %flexbox;
+    @include flex-direction(row);
+    @include align-items(center);
+    @include justify-content(center);
+    padding: 0px 15px 20px 15px;
+    p {
+        font-family: Roboto;
+        font-size: 12px;
+        color: $non-vdk-3-grey;
+        line-height: 16px;
+    }
+}
+
+@media (min-width: 993px) {
+    .intro-text {
+        @include Roboto(regular);
+        font-size: 16px;
+        color: $text-disabled-gray;
+        margin: 0 0 0 -10px !important;
+    }
+    .plan-results-container {
+        .dynamic-content {
+            .details-right-link-alt {
+                margin: 0;
+            }
+        }
+    }
+}
+
+@media (max-width: 992px) {
+    .header {
+        margin: 20px 0;
+        padding: 0 15px;
+    }
+    .drupal-plans-content {
+        padding: 0 15px;
+        .drupal-result {
+            padding: 0 !important;
+        }
+        .close-icon {
+            padding: 0 !important;
+        }
+    }
+    .container {
+        width: 100% !important;
+    }
+    .plan-results-container {
+        @include flex-direction(column);
+        margin-bottom: 0;
+        .middle-container {
+            margin-top: 15px;
+            width: 100% !important;
+            padding: 0px 0px !important;
+            padding-left: 15px !important;
+            padding-right: 15px !important;
+            @media (max-width: 992px) {
+                padding-left: 0px !important;
+                padding-right: 0px !important;
+            }
+        }
+        .dynamic-content {
+            width: 100% !important;
+        }
+        .side-nav-container {
+            width: 100% !important;
+        }
+    }
+}
+
+.plan-details-text {
+    @include Roboto(regular);
+    font-size: 12px;
+    color: $non-vdk-3-grey;
+}
+
+.copay-header {
+    @include Roboto(medium);
+    font-size: 22px;
+    color: $headings-dark-color;
+}
+
+.copay-values {
+    @include Roboto(bold);
+    font-size: 16px;
+    color: $text-normal-color;
+    float: right;
+}
+
+.copay-values-header {
+    @include Roboto(regular);
+    font-size: 16px;
+    color: $text-normal-color;
+    float: left;
+}
+
+.view-values {
+    color: $link-color;
+    @include Roboto(medium);
+    font-size: 12px;
+}
+
+
+/* Mat accordin*/
+
+.mat-expansion-panel:not([class*=mat-elevation-z]) {
+    box-shadow: 0 0px 0px 0px rgba(0, 0, 0, 0), 0 0px 0px 0 rgba(0, 0, 0, 0), 0 0px 0px 0 rgba(0, 0, 0, 0)
+}
+
+.mat-expansion-panel-header {
+    padding: 0px 0px 0px 0px;
+    color: $headings-dark-color;
+    max-height: 41px;
+}
+
+::ng-deep .expand-class>.mat-expansion-indicator:after {
+    color: $headings-dark-color;
+    @include Roboto(bold);
+    font-size: 14px;
+}
+
+.mat-action-row {
+    border-top-style: solid;
+    border-bottom-style: solid;
+    border-top-width: 1px;
+    border-bottom-width: 1px;
+    border-top-color: $non-vdk-11-grey;
+    border-bottom-color: $non-vdk-11-grey;
+    @media (min-width: 993px) {
+        border-left-style: solid;
+        border-right-style: solid;
+        border-left-color: $non-vdk-11-grey;
+        border-right-color: $non-vdk-11-grey;
+        border-left-width: 1px;
+        border-right-width: 1px;
+    }
+    @media (max-width: 992px) {
+        margin-left: -15px;
+        margin-right: -15px;
+    }
+    padding: 0;
+    margin-bottom: 10px;
+    &:last-child {
+        margin-bottom: 0;
+    }
+    display: flex;
+}
+
+.mt-13 {
+    margin-top: 13px !important;
+}
+
+.info-service {
+    background: $non-vdk-15-grey;
+    margin-left: -15px;
+    margin-right: -15px;
+    min-height: 41px;
+    @extend %flexbox;
+    @include flex-direction(row);
+    @include align-items(center);
+    @include justify-content(flex-start);
+    div {
+        padding-left: 15px;
+        padding-right: 15px;
+        text-align: left;
+        @extend %flexbox;
+        @include flex-direction(row);
+        @include align-items(center);
+        @include justify-content(space-between);
+        a {
+            font-family: Roboto;
+            font-size: 13px;
+            //spk/ cleanup - font-weight: 700;
+            @include Roboto(bold);
+            color: $headings-dark-color;
+            text-align: left;
+            line-height: 16px;
+        }
+        span {
+            padding-right: 15px;
+            color: $headings-dark-color;
+            vertical-align: middle;
+            display: inherit;
+        }
+    }
+}
+
+.mat-accordin-name {
+    @include Roboto(bold);
+    color: $headings-dark-color;
+    font-size: 13px;
+    line-height: 16px;
+}
+
+.mat-service-header {
+    @include Roboto(bold);
+    font-size: 14px;
+    color: $title-color;
+    margin-top: 0;
+    margin-bottom: 11px;
+}
+
+.mat-service-label {
+    p {
+        @include Roboto(light);
+        font-size: 13px;
+        color: $title-color;
+        text-align: left;
+        line-height: 19px;
+    }
+}
+
+.mat-service-value {
+    @include Roboto(regular);
+    font-size: 14px;
+    color: $text-normal-color;
+    line-height: 18px;
+}
+
+// css from benefits page end  @ line 606
+
+.calendar-min-height {
+    min-height: 65px;
+}
+
+.medicare-result {
+    .list-medications-container {
+        //width: 100%;
+        //display: inline-block;
+    }
+    .medicare-result-container {
+        display: flex;
+        //background: $text-white-color;
+        padding: 0px;
+        .side-nav-container {
+            //flex: 3;
+            //min-width: 220px;
+            padding: 0px;
+            .apply-button {
+                background: $new-color;
+                border-radius: 8px;
+                color: $text-white-color;
+                @include Roboto(bold);
+                font-size: 16px;
+                letter-spacing: -0.01px;
+                text-align: center;
+                height: 44px;
+            }
+            .clear-button {
+                color: $background-title-separator-color;
+                border-radius: 8px;
+                background: $text-white-color;
+                @include Roboto(bold);
+                font-size: 16px;
+                letter-spacing: -0.01px;
+                text-align: center;
+                height: 44px;
+            }
+        }
+        .result-container {
+            //flex: 6;
+            padding: 0px 15px;
+            .list-medication-container {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                background: $text-white-color;
+                //border: 1px solid $textbox-border;
+                padding: 20px 15px;
+                .medication-detail {
+                    line-height: 16px;
+                    letter-spacing: -0.01px;
+                    flex-grow: 1;
+                    font-size: 12px;
+                    .dependent-info {
+                        @include Roboto(light);
+                        color: $text-normal-color;
+                        line-height: 16px;
+                        letter-spacing: -0.01px;
+                        padding-bottom: 15px;
+                    }
+                    .medication-details {
+                        padding-bottom: 15px;
+                        .medication-name {
+                            font-size: 16px;
+                            color: $header-color;
+                            @include Roboto(bold);
+                        }
+                        .medication-type,
+                        .medication-frequency {
+                            color: $disabed-background-color;
+                            @include Roboto(regular);
+                        }
+                    }
+                    .pharmacy-details {
+                        padding-bottom: 10px;
+                        .pharmacy-name {
+                            padding-bottom: 5px;
+                            color: $text-normal-color;
+                            .name {
+                                @include Roboto(medium);
+                                color: $title-color;
+                            }
+                            .store-id {
+                                @include Roboto(light);
+                                color: $title-color;
+                            }
+                        }
+                        .pharmacy-contact-info {
+                            @include Roboto(light);
+                            .phone-icon,
+                            .phone {
+                                color: $background-title-separator-color;
+                                @include Roboto(medium);
+                                i {
+                                    font-size: 12px;
+                                    transform: rotate(270deg);
+                                    color: $background-title-separator-color;
+                                }
+                            }
+                            .phone-icon {
+                                vertical-align: middle;
+                            }
+                            .phone {
+                                cursor: pointer;
+                                text-decoration: underline;
+                            }
+                        }
+                    }
+                    .fill-details {
+                        display: flex;
+                        justify-content: space-between;
+                        .amount-info {
+                            font-size: 10px;
+                            color: $radio-label-color;
+                            .amount {
+                                font-size: 18px;
+                                @include Roboto(light);
+                            }
+                        }
+                        .last-fill-info {
+                            @include Roboto(medium);
+                            color: $radio-label-color;
+                            .last-fill-date {
+                                @include Roboto(light);
+                            }
+                        }
+                    }
+                }
+                .medication-action {
+                    i {
+                        color: $header-color;
+                        cursor: pointer;
+                    }
+                }
+            }
+        }
+        .dynamic-content {
+            font-size: $header-font-size;
+        }
+    }
+}
+
+.sort-filter {
+    display: flex;
+    flex-direction: column;
+    padding-top: 5px;
+    .selected-sort {
+        letter-spacing: -0.23px;
+        @include Roboto(regular);
+        font-size: 14px;
+        margin-top: -8px;
+    }
+}
+
+.filter-action-button {
+    display: none;
+}
+
+.calendar-min-height {
+    min-height: 65px;
+}
+
+.calendar-container {
+    width: 380px !important;
+    position: relative;
+}
+
+.calendar-main-container {
+    display: flex;
+    justify-content: space-around;
+    .mat-calendar-previous-button:focus {
+        background-color: none !important;
+    }
+}
+
+mat-expansion-panel-header {
+    padding: 0 16px 0 14px !important;
+    margin: 0 !important;
+}
+
+@media (max-width: 992px) {
+    .medicare-result-container {
+        flex-direction: column;
+        .result-container {
+            //width: 100% !important;
+            padding: 0px 0px !important;
+        }
+        .side-nav-container {
+            //width: 100% !important;
+            display: none;
+        }
+        .show-side-content {
+            display: block;
+            padding: 0px;
+        }
+        .hide-side-content {
+            display: none !important;
+        }
+    }
+    .filter-action-button {
+        display: flex;
+        align-items: center;
+        // border-bottom: 2px solid $header-color;
+        //padding: 8px !important;
+        margin: 0px 0px;
+        .filter-action-label {
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+            i {
+                font-size: 27px;
+            }
+        }
+        .clear-action-label {
+            cursor: pointer;
+            color: $link-color;
+            font-size: 14px;
+            text-decoration: underline;
+            padding-left: 20px;
+            @include Roboto(bold);
+        }
+    }
+}
+
+@media (max-width: 992px) {
+    .filter-btn {
+        //padding: 0.5rem 10px 0.5rem 2% !important;
+        padding: 0 10px 0 3% !important;
+        cursor: pointer;
+    }
+}
+
+.medicare-btn.darken-4 {
+    background-color: $non-vdk-36-blue !important;
+    border-radius: 5px;
+}
+
+.medicare-link-btn {
+    color: $non-vdk-36-blue !important;
+    line-height: 2.5rem;
+    cursor: pointer;
+    font-weight: 600;
+}
+
+.medicare-filter-inner-btn {
+    .filter-btn {
+        background: $non-vdk-15-grey 100%;
+        color: $header-color;
+        vertical-align: middle;
+        padding: 0.5rem 1rem 0.5rem 0;
+        @include Roboto(bold);
+        img {
+            width: 24px;
+            height: 24px;
+        }
+    }
+    .col.s10 {
+        margin-top: 5px;
+    }
+    h2 {
+        margin: 0;
+    }
+}
+
+.date-error {
+    color: $error-alert-color;
+    span {
+        font-size: 12px;
+    }
+    i.arrow_forward {
+        position: relative;
+        font-size: 18px;
+        top: 4px;
+        display: inline-block;
+    }
+}
+
+.search-box {
+    padding: 10px;
+    background: $non-vdk-15-grey 100%;
+    position: relative;
+    .search-box-inner {
+        border-radius: 20px;
+        background-color: $text-white-color;
+        height: 40px;
+        padding-left: 15px;
+        padding-right: 58px;
+        border: 1px solid $non-vdk-14-grey;
+        overflow: hidden;
+    }
+    .search-input {
+        border-radius: 20px;
+        background: #FFFFFF;
+        padding: 0px 20% 0 5%;
+        max-width: 75%;
+        border: 1px solid $non-vdk-14-grey;
+        @include Roboto(regular);
+        font-size: 14px;
+        margin-top: 0;
+    }
+    .material-icons {
+        position: absolute;
+        top: 20px;
+        right: 15px;
+        cursor: pointer;
+        color: $icon-color;
+    }
+    .material-icons.close-icon {
+        position: absolute;
+        top: 20px;
+        right: 35px;
+        cursor: pointer;
+    }
+    .auto-search {
+        ul {
+            background: $text-white-color;
+            border: 1px solid $non-vdk-27-blue;
+            display: inline-block;
+            width: 100%;
+            top: 3.65em;
+            left: 0;
+            z-index: 999;
+            box-shadow: 0 0 10px 0 $non-vdk-27-blue;
+        }
+        li {
+            padding: 10px;
+            cursor: pointer;
+            background: $non-vdk-37-white;
+        }
+        li:hover,
+        li:focus {
+            background: $non-vdk-38-blue;
+            color: $headings-dark-color;
+        }
+    }
+    input:focus {
+        border-bottom: 1px solid lightgrey !important;
+        box-shadow: none !important;
+    }
+}
+
+.medicare-color {
+    color: $headings-dark-color;
+    font-size: 24px;
+    @include Roboto(light);
+}
+
+.prescriber {
+    padding: 10px;
+    text-transform: uppercase;
+    color: blue;
+}
+
+.toggle-filter {
+    display: none;
+}
+
+.mobile-filter {
+    color: $headings-dark-color;
+    @include Roboto(bold);
+    background: $non-vdk-15-grey 100%;
+    p {
+        margin-left: 80%;
+    }
+}
+
+.filter-mobile-divider {
+    border: 2px solid $background-title-separator-color;
+}
+
+.closed-filter {
+    color: $headings-dark-color;
+    @include Roboto(bold);
+    background: $non-vdk-15-grey 20%;
+    width: 84px;
+}
+
+.filter-container .mat-list-item.calendar-min-height {
+    min-height: 44px;
+    height: auto;
+}
+
+@media (max-width: 992px) {
+    .container-medications {
+        width: 100%;
+    }
+    .list-medication-container {
+        border-bottom: 1px solid $textbox-border;
+    }
+    .filter-container mat-expansion-panel-header {
+        padding: 0 22px 0 12px !important;
+        margin: 0 !important;
+    }
+    .filter-menu-with-action {
+        display: flex !important;
+    }
+    .filter-menu {
+        display: none !important;
+    }
+    .search-box {
+        .search-input {
+            border-radius: 20px;
+            background: #FFFFFF;
+            border: 1px solid $non-vdk-14-grey;
+            padding: 0px 20% 0 5%;
+            max-width: 75%;
+        }
+    }
+}
+
+@media (min-width: 992px) {
+    .list-medication-container {
+        border: 1px solid $textbox-border;
+    }
+}
+
+.sort-container {
+    display: flex;
+    .sort-by {
+        padding: 15px 5px 0px 0px;
+        @include Roboto(bold);
+    }
+    .mat-selection-list {
+        flex: 0.9;
+    }
+}
+
+.no-medications-available-container {
+    display: flex;
+    justify-content: space-around;
+}
+
+.no-medications-available,
+.no-medications-available-container {
+    .material-icons {
+        font-size: 54px;
+    }
+    .no-medications-icon {
+        padding: 20px 0px;
+    }
+    .no-medications {
+        color: $text-disabled-gray;
+        @include Roboto(bold);
+    }
+    .promotional-material {
+        background-color: lightcoral;
+        min-height: 100px;
+        padding: 20px;
+    }
+}
+
+.medicare-msg{
+    padding: 0 10px;
+    .no-search-result {
+        padding: 20px 0 10px 0;
+    }    
+}
+
+
+.date-filter-custom {
+    display: flex;
+    flex-direction: column;
+    margin-top: -25px;
+    .date-filter-range {
+        display: flex;
+        .from-date {
+            padding-right: 2px;
+        }
+    }
+    .mat-hint-message {
+        font-size: 12px;
+    }
+    .date-filter-custom-date {
+        display: flex;
+        flex-direction: row;
+        .fa-calendar-alt {
+            cursor: pointer;
+            margin-top: 15px;
+            margin-right: 20px;
+        }
+    }
+    .custom-range-error-message {
+        color: red;
+        font-size: 12px;
+        padding-top: 5px;
+    }
+}
+
+.selected-sort {
+    @include Roboto(regular);
+    font-size: 14px;
+    color: black;
+}
+
+.filter-divider-row {
+    height: 1px;
+    background: $non-vdk-15-grey;
+    width: 100%;
+}
+
+@media (min-width: 992px) and (max-width: 1150px) {
+    .clear-button,
+    .apply-button {
+        min-width: 70px;
+    }
+}
+
+.wrap-mat-radio-label {
+    white-space: normal;
+}
+
+.search-no-results-msg {
+    padding: 15px;
+    .search-clear-button {
+        background: $new-color;
+        width: 100%;
+        margin: 20px 0px;
+        color: $text-white-color;
+        border-radius: 8px;
+    }
+    .search-option-header {
+        color: $primary-color;
+        font-size: 18px;
+        @include Roboto(regular);
+    }
+    .search-msg {
+        font-size: 16px;
+        @include Roboto(regular);
+        color: $text-gray-color;
+    }
+    .search-option {
+        font-size: 13px;
+        //padding-bottom: 5px;
+        color: $text-gray-color;
+        padding: 5px 0px;
+    }
+}
+
+.medicare-result-container {
+    .mat-list-option {
+        height: auto !important;
+        min-height: 44px;
+    }
+}
+
+input.input-calender {
+    font-size: 14px;
+}
+
+input:not([type]),
+input:not([type]):focus:not([readonly]) {
+    box-shadow: none !important;
+    border-bottom: 1px solid $non-vdk-6-grey !important;
+    font-size: 14px;
+}
+
+.mat-expansion-indicator {
+    color: $headings-dark-color;
+}
+
+.title-dripal-pd {
+    padding-left: 0px;
+    padding-right: 0px;
+    @include Roboto(bold);
+    font-size: 13px;
+    color: $title-color;
+    text-align: left;
+    line-height: 16px;
+    .close-icon {
+        font-size: 20px;
+        color: $black-color;
+        text-align: right;
+    }
+}
+
+.close-icon {
+    font-size: 24px;
+    color: $black-color;
+    text-align: right;
+    float: right;
+    cursor: pointer;
+    // padding-right: 15px !important;
+}
+
+.close-button {
+    margin-left: 0px;
+    width: 24px !important;
+    height: 24px !important;
+    cursor: pointer;
+    text-align: right;
+    @media (max-width: 992px) {
+        float: right;
+        margin-right: 0 !important;
+    }
+}
+
+.mobile-divider {
+    margin-left: -15px;
+    margin-right: -15px;
+}
+
+.list-plan-container {
+    cursor: pointer;
+}
+
+@media (min-width: 992px) {
+    .list-plan-container {
+        margin-top: -1px;
+        border: 1px solid $textbox-border;
+    }
+    .plan-list-desktop {
+        padding-left: 15px;
+    }
+}
+
+@media (max-width: 992px) {
+    .list-plan-container {
+        border-bottom: 1px solid $textbox-border;
+    }
+    .list-plan-inner-container {
+        padding-left: 15px;
+        padding-right: 15px;
+    }
+}
+
+.align-media {
+    @media (max-width: 992px) {
+        text-align: left;
+    }
+    text-align: right;
+}
+
+.plan-label-date {
+    @include Roboto(medium);
+    font-size: 10px;
+    color: $text-normal-color;
+    margin-left: 0%;
+}
+
+.plan-label-dateValue {
+    @include Roboto(light);
+    font-size: 12px;
+    color: $text-normal-color;
+    min-width: 161px;
+    display: inline-block;
+    line-height: 16px;
+    margin-left: 5px;
+    text-align: left;
+}
+
+.date-filter-padding {
+    padding-top: 109px !important;
+    padding-left: 15px;
+    @include Roboto(bold);
+}
+
+.search-box-bottom {
+    margin-bottom: 12px;
+}
+
+.pr-5 {
+    padding-right: 5px;
+}
+
+@media (max-width: 992px) {
+    .hide-side-content {
+        display: none !important;
+    }
+}
+
+.container-width {
+    width: 100%;
+}
+
+.hide {
+    display: none;
+}

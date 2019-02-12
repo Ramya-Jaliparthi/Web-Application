@@ -1,0 +1,15 @@
+@import '../../../../assets/styles/_colors';
+@import '../../../../assets/styles/_fonts';
+@import '../utils/message-center-common.scss';
+
+.uploadsComponent{
+   
+    .title{
+        @include Roboto(light);
+        color: $title-color;
+    }
+    .image-padding{
+        padding: 0 15px 0 0;
+    }
+
+}

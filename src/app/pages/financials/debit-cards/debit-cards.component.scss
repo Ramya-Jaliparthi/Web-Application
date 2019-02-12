@@ -1,0 +1,111 @@
+@import '../../../../assets/styles/_spacing';
+@import '../../../../assets/styles/_colors';
+@import '../../../../assets/styles/_fonts';
+@import '../../../../assets/styles/_typography';
+
+$tablet-width: 993px;
+$desktop-width: 993px;
+
+@mixin tablet {
+    @media (max-width: #{$tablet-width}) {
+        @content;
+    }
+}
+
+@mixin desktop {
+    @media (min-width: #{$desktop-width}) {
+      @content;
+    }
+}
+
+.debit-cards-container {
+    .debit-cards-header {
+      h1 {
+        color: $header-color;
+        margin: 20px 0;
+      }
+    }
+    .debit-card-detail {
+        cursor: pointer;
+        display: flex;
+        border: 1px solid $non-vdk-11-grey;
+        //border-bottom: 0px;
+        padding: 10px  15px;
+        flex: 1 1 30%;
+        //margin-right: 15px;
+        .debit-card-info {
+            flex: 1;
+            .debit-card-status {
+                label {
+                    @include Roboto(medium);
+                    font-size: 14px;
+                    @include TransactionStatusColor(pending);
+                }
+                label.Active {
+                    @include TransactionStatusColor(completed);
+                }
+                label.New {
+                  @include TransactionStatusColor(new);
+                }
+            }
+            .debit-card-number label{
+                @include Roboto(bold);
+                font-size: 16px;
+                color: #000;
+            }
+            .debit-card-name label{
+                @include Roboto(regular);
+                font-size: 14px;
+                color: #000;
+            }
+        }
+        .debit-card-action {
+            display: flex;
+            align-items: center;
+        }
+    }
+    .debit-card-detail:last-child {
+        border-bottom: 1px solid $non-vdk-11-grey;
+    }
+}
+
+@media (max-width:993px) {
+    .debit-cards-container {
+        .debit-cards-details {
+            //margin: 0px -15px;
+            .debit-card-detail {
+                border-left: 0px;
+                border-right: 0px;
+            }
+        }
+      .debit-cards-header {
+        h1 {
+          margin-left: 15px;
+        }
+      }
+    }
+}
+
+@media (min-width: 993px) {
+  .debit-cards-container {
+    .debit-cards-details {
+      display: flex;
+      flex-wrap: wrap;
+    }
+    .debit-card-detail {
+      flex: 1 1 32%;
+      max-width: 32%;
+      margin-bottom: 15px;
+    }
+  }
+}
+.margin-right {
+  margin-right: 15px !important;
+}
+
+::ng-deep .mlmr-15 {
+    .breadcrumb {
+        margin-left: 15px !important;
+        margin-right: 15px !important;
+    }
+}

@@ -1,0 +1,201 @@
+{
+  "facilityName": "string",
+  "location": [
+    {
+      "specialty": "string",
+      "facilityId": 0,
+      "address": "string",
+      "phone": 0,
+      "geoLocation": {
+        "latitude": 0,
+        "longitude": 0
+      },
+      "amenities": [
+        {
+          "type": "string"
+        }
+      ],
+      "awards": [
+        {
+          "name": "string",
+          "typeCode": "string"
+        }
+      ],
+      "identifiers": [
+        {
+          "typeCode": "string",
+          "value": "string"
+        }
+      ],
+      "ratings": {
+        "overallRating": 0,
+        "percentRecommended": 0,
+        "totalRatings": 0
+      },
+      "quality": [
+        {
+          "name": "string1",
+          "score": 2
+        },
+        {
+          "name": "string2",
+          "score": 0
+        },
+        {
+          "name": "string3",
+          "score": 0
+        },
+        {
+          "name": "string4",
+          "score": 0
+        },
+        {
+          "name": "string5",
+          "score": 0
+        }
+      ],
+      "additionalInformation": [
+        {
+          "typeCode": "string",
+          "type": "string"
+        }
+      ],
+      "reviews": [
+        {
+          "name": "string",
+          "questionAnswer": [
+            {
+              "question": "string",
+              "answers": [
+                {
+                  "answer": "string",
+                  "answerPercent": "string"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "specialty": "string2",
+      "facilityId": 0,
+      "address": "string2",
+      "phone": 0,
+      "geoLocation": {
+        "latitude": 0,
+        "longitude": 0
+      },
+      "amenities": [
+        {
+          "type": "strin2g"
+        }
+      ],
+      "awards": [
+        {
+          "name": "string2",
+          "typeCode": "string2"
+        }
+      ],
+      "identifiers": [
+        {
+          "typeCode": "string2",
+          "value": "string2"
+        }
+      ],
+      "ratings": {
+        "overallRating": 0,
+        "percentRecommended": 0,
+        "totalRatings": 0
+      },
+      "quality": [
+        {
+          "name": "string2",
+          "score": 0
+        }
+      ],
+      "additionalInformation": [
+        {
+          "typeCode": "string2",
+          "type": "string2"
+        }
+      ],
+      "reviews": [
+        {
+          "name": "string2",
+          "questionAnswer": [
+            {
+              "question": "string2",
+              "answers": [
+                {
+                  "answer": "string2",
+                  "answerPercent": "string2"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "specialty": "string3",
+      "facilityId": 0,
+      "address": "string3",
+      "phone": 0,
+      "geoLocation": {
+        "latitude": 0,
+        "longitude": 0
+      },
+      "amenities": [
+        {
+          "type": "string3"
+        }
+      ],
+      "awards": [
+        {
+          "name": "string3",
+          "typeCode": "string3"
+        }
+      ],
+      "identifiers": [
+        {
+          "typeCode": "string3",
+          "value": "string3"
+        }
+      ],
+      "ratings": {
+        "overallRating": 0,
+        "percentRecommended": 0,
+        "totalRatings": 0
+      },
+      "quality": [
+        {
+          "name": "string3",
+          "score": 0
+        }
+      ],
+      "additionalInformation": [
+        {
+          "typeCode": "string3",
+          "type": "string3"
+        }
+      ],
+      "reviews": [
+        {
+          "name": "string3",
+          "questionAnswer": [
+            {
+              "question": "string3",
+              "answers": [
+                {
+                  "answer": "string3",
+                  "answerPercent": "string3"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

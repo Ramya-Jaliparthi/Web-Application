@@ -1,0 +1,326 @@
+@import '../../../../assets/styles/_spacing';
+@import '../../../../assets/styles/_colors';
+@import '../../../../assets/styles/_fonts';
+@import '../../../../assets/styles/_typography';
+
+$tablet-width: 992px;
+$desktop-width: 993px;
+$color_alto_approx: #ddd;
+$gold: #F68C0B;
+
+@mixin tablet {
+    @media (max-width: #{$tablet-width}) {
+        @content;
+    }
+}
+  
+@mixin desktop {
+    @media (min-width: #{$desktop-width}) {
+      @content;
+    }
+}
+
+@mixin font-source($fontweight, $fontsize, $fontcolor, $linespacing, $lineheight) {
+    @include Roboto($fontweight);
+    font-size: $fontsize;
+    color: $fontcolor;
+    letter-spacing: $linespacing;
+    line-height: $lineheight;
+} 
+
+
+.fad-doctor-rating-component {
+
+    @include tablet {
+        padding: 0 16px;
+    }
+
+    .review-submit-error {
+        margin: 0px -16px;
+        display: flex;
+        padding: 0px;
+        border-left: 5px solid #C1272D;
+        height: 41px;
+        background: #F2F2F2;
+        
+        .error-text {
+            @include font-source(bold, 13px, #000000, -0px, 16px);
+            line-height: 41px;
+        }
+
+        .check-circle {
+            color: #C1272D;
+            padding: 0px 10px;
+            line-height: 41px;
+            font-size: 18px;
+        }
+        
+    }
+
+    .review-submit-success {
+        margin: 0px -16px;
+        display: flex;
+        padding: 0px;
+        border-left: 5px solid #3DA148;
+        height: 41px;
+        background: #F2F2F2;
+        
+        .success-text {
+            @include font-source(bold, 13px, #000000, -0px, 16px);
+            line-height: 41px;
+        }
+
+        .check-circle {
+            color: #3DA148;
+            padding: 0px 10px;
+            line-height: 41px;
+            font-size: 18px;
+        }
+        
+    }
+
+    .submit-response {
+        padding-top: 30px;
+        padding-bottom: 40px;
+        border-bottom: 1px solid #B2B2B2;
+        margin: 0px -16px;
+
+        p {
+            @include font-source(light, 16px, #4D4D4D, -0px, 22px);
+            padding-bottom: 20px;
+            padding-left: 16px;
+            padding-right: 16px;
+        }
+        a {
+            color: #1866A3;
+            padding-left: 16px;
+            padding-right: 16px;
+            span {
+                @include font-source(bold, 12px, #1866A3, -0px, 18px);
+                text-decoration: underline;
+            }
+        }
+    }
+
+    .form-header {
+        @include font-source(light, 24px, #043167, -0px, 32px);
+        margin-bottom: 10px !important;
+    }
+    
+    .form-sub-header {
+        @include font-source(light, 16px, #043167, -0px, 24px);
+        
+        
+        @include desktop{
+            padding-right: 0px;
+            display: inline-block;
+        }
+    }
+    
+    .form-sub-header-name {
+        @include font-source(light, 16px, #043167, -0px, 24px);
+        padding-bottom: 30px;
+
+        @include desktop{
+            padding-left: 0px;
+            display: inline-block;
+        }
+    }
+
+    .user-comment {
+        margin-bottom: 30px;
+    }
+
+    .star-rating-comment {
+        height: 120px;
+        .rating {
+            border: none;
+            float: left;
+            font-size: 40px;
+            padding: 0px;
+            margin: 0px;
+            padding-top: 20px;
+                        
+            @include FontAwesome5Pro(solid);
+            > input {
+                display: none;
+                &:checked {
+                    ~ label {
+                        color: $gold;
+                        &:hover {
+                            color: $gold;
+                            ~ label {
+                                color: $gold;
+                            }
+                        }
+                        
+                    }
+                    + label:hover {
+                        color: $gold;
+                    }
+                }
+            }
+            > label {
+                float: right;
+                padding-right: 25px;
+                &:before {
+                    display: inline-block;
+                    content: " \2605";
+                    font-size: 60px;
+                }
+                &:hover ~ input:checked ~ label {
+                    color: $gold;
+                }
+            }
+            &:not(:checked) > label:hover {
+                color: $gold;
+                ~ label {
+                    color: $gold;
+                }
+            }
+            
+        }
+    }
+
+    
+
+    .rating-question {
+        @include font-source(bold, 14px, #000000, -0px, 16px);
+        margin-bottom: 0px;
+    }
+
+    .star-rating-question {
+        margin-bottom: 10px;
+    }
+
+    input {
+       // margin-bottom: 29px;
+    }
+
+    .disclaimer-text {
+        @include font-source(light, 13px, #4d4d4d, -0px, 18px);
+        margin-bottom: 30px;
+        
+        a {
+            color: #1866A3;
+            text-decoration: underline;
+        }
+    }
+    
+    .button-row {
+        margin: 0;
+        padding-bottom:30px;
+        
+        .cancel-btn {
+            text-align: center;
+        }
+    }
+    
+    .note-text {
+        @include font-source(light, 13px, #818181, -0px, 16px);
+    }
+    
+    app-star-rating-component {
+        
+        .star-rating-component {
+            .rating-bar {
+                width: 360px !important;
+            }
+        }
+    }
+    
+    .radio-btn-comment {
+        p {
+            display: table;
+            height: 30px;
+
+            .radio-btn {
+                opacity: 1;
+                pointer-events: all;
+                height: 26px;
+                width: 26px;
+                display: table-cell;
+                vertical-align: middle;
+            }
+            span {
+                @include font-source(medium, 14px, #000000, 0px, 18px);
+                padding-left: 34px;
+                display: table-cell;
+                vertical-align: middle;
+            }
+        }
+    }
+    
+    .disclaimer {
+        border-top: 1px solid #B2B2B2;
+        padding-top: 10px;
+        margin: 0px -16px;
+        p {
+            @include font-source(light, 12px, #999999, -0.01px, 19px);
+            padding-bottom: 5px;
+            padding-left: 16px;
+            padding-right: 16px;
+            span {
+                @include font-source(bold, 25px, #000000, -0.01px, 32px);
+            }
+        }
+        
+        ul {
+            @include font-source(medium, 12px, #818181, -0.01px, 16px);
+            
+            padding: 5px 16px 10px 16px;
+            li {
+                padding-bottom: 5px;
+            }
+
+        }
+    }
+}
+
+
+::ng-deep .fad-doctor-rating-component {
+    .star-rating-comment {
+
+        app-star-rating-component {
+            .star-rating-component {
+                .rating-bar{
+                    @include desktop{
+                        width: 300px !important;
+                    }
+                    @include tablet{
+                        width: 300px !important;
+                    }
+                    @media (max-width: 520px){
+                        width: 300px !important;
+                    }
+    
+                    font-size: 40px !important;
+                    max-height: 50px;
+    
+                    .solid-stars {
+                        max-height: 50px !important;
+    
+                        svg {
+                            margin-right: 10px;
+                        }
+                    }
+                }
+            }
+        
+            .rating-text {
+                display: none;
+            }
+        }
+    }
+    
+}
+
+
+::ng-deep [type="radio"]:checked + label:after, [type="radio"].with-gap:checked + label:before, [type="radio"].with-gap:checked + label:after {
+    border: none;
+    background: none;
+}
+
+::ng-deep [type="radio"]:not(:checked) + label:before, [type="radio"]:not(:checked) + label:after, [type="radio"]:checked + label:before, [type="radio"]:checked + label:after, [type="radio"].with-gap:checked + label:before, [type="radio"].with-gap:checked + label:after {
+    border: none;
+}

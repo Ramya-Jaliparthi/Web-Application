@@ -1,0 +1,130 @@
+<section class="fad-search-results-component">
+  <div class="row flex-container">
+    <!-- <div class="col l9 s12"> -->
+    <div class="col s12">
+      <div class="row">
+        <div class="col s12" *ngIf="miniSearchBarData.componentMode === fadConstants.flags.fadLandingPageComponentMode_Abstract">
+          <app-fad-landing-page (componentOutput)="onLandingPageSearchComponentInteraction($event)" [componentInput]="miniSearchBarData"></app-fad-landing-page>
+        </div>
+        <div *ngIf="!isNoSearchResults" class="col s12">
+          <div class="row">
+            <div class="col l3 s12"></div>
+            <div class="col l6 s12 search-results-meta-info-container">
+              <div class="result-count" *ngIf="totalCount == 1">{{totalCount}} result</div>
+              <div class="result-count" *ngIf="totalCount > 1 || totalCount == 0">{{totalCount}} results</div> 
+              
+
+              <div class="not-signed-on-section position-relative" *ngIf="!isAnonymousUser()">
+                <div class="col s11 container-vertical-center-align request-sign-in-section ">
+                  Looking for cost estimates?
+                  <a href="/login">Sign in</a> or
+                  <a href="/register">create an account</a>.
+                </div>
+                <div class="col s1 container-vertical-center-align close-icon">
+                  <i class="fa fa-times" aria-hidden="true"></i>
+                </div>
+              </div>
+
+              <!-- <div class="ask-to-authenticate position-relative" *ngIf="!isAuthenticatedUser()">
+                <div class="container-vertical-center-align request-sign-in-section ">
+                  Looking for cost estimates? You'll need to
+                  <a>authenticate your account</a>.
+                </div>
+                <div class="container-vertical-center-align close-icon">
+                  <i class="fa fa-times" aria-hidden="true"></i>
+                </div>
+              </div>
+
+              <div class="signed-on-section">
+                <div class="network-info">
+                  <p>
+                    Your search results may include providers that will be joining the network effective 1/1/2018. Those providers are identified
+                    by the 1/1/2018 effective date in the provider profile information.
+                  </p>
+                  <p>
+                    If you have the Dental Blue Freedom plan you have the freedom to choose from providers in both the Dental Blue and Dental
+                    Blue PPO networks. You will get the most out of your benefits by choosing a provider in the Dental Blue
+                    PPO network. To search for Dental Blue PPO providers choose the Dental Blue PPO network from the "My
+                    Health Plan" dropdown.
+                  </p>
+                </div>
+              </div> -->
+
+            </div>
+            <div class="col l3 s12"></div>
+          </div>
+        </div>
+
+        <div *ngIf="isNoSearchResults" class="col s12">
+          <div class="row">
+            <div class="col l3 s12"></div>
+            <div class="col l6 s12 search-results-meta-info-container">
+              <div class="result-count">0 result</div>
+            </div>
+            <div class="col l3 s12"></div>
+          </div>
+        </div>
+
+        <div class="col s12 mobile-adjustments">
+          <div class="row">
+            <!-- Filter Section -->
+            <div *ngIf="!isNoSearchResults && resourceTypeCode==='P'" class="col l3 s12 filter-adjust-padding">
+              <app-fad-search-filter (componentOutput)="onSearchFilterComponentInteraction($event)" [componentInput]="searchFilterComponentInput"
+              [componentFilterInput]="searchListComponentInput" ></app-fad-search-filter>
+            </div>
+
+            <div *ngIf="!isNoSearchResults && resourceTypeCode==='F'" class="col l3 s12 filter-adjust-padding">
+              <app-facility-search-filter (componentOutput)="onSearchFilterComponentInteraction($event)" [componentInput]="searchFilterComponentInput"
+              [componentFilterInput]="facilityListComponentInput" ></app-facility-search-filter>
+            </div>
+            <!-- End :: Filter Section -->
+
+            <!-- Document List View Section-->
+            <div *ngIf="!isNoSearchResults && resourceTypeCode==='P'" [class]="['col','s12','l6','adjust-padding', mobileHideByFilterOverlay? 'mobile-hide-by-filter-overlay':''].join(' ')">
+                <div [scrollWindow]="true" infiniteScroll [infiniteScrollContainer]="selector" [fromRoot]="false"
+                    [infiniteScrollDistance]="0" [infiniteScrollUpDistance]="2" [infiniteScrollThrottle]="1000" (scrolled)="onProfessionalScrollDown()">
+                    <app-fad-search-list (componentOutput)="onSearchListComponentInteraction($event)" [componentInput]="searchListComponentInput"></app-fad-search-list>
+                    <app-spinner [showSpinner]="isDisplaySpinnerProfessional"></app-spinner>
+                </div>
+            </div>
+
+            <div *ngIf="!isNoSearchResults && resourceTypeCode==='F'" [class]="['col','s12','l6','adjust-padding', mobileHideByFilterOverlay? 'mobile-hide-by-filter-overlay':''].join(' ')">
+                <div [scrollWindow]="true" infiniteScroll [infiniteScrollContainer]="selector" [fromRoot]="false"
+                  [infiniteScrollDistance]="0" [infiniteScrollUpDistance]="2" [infiniteScrollThrottle]="1000" (scrolled)="onFacilityScrollDown()">
+                      <app-fad-facility-list (componentOutput)="onSearchListComponentInteraction($event)" 
+                          [componentInput]="facilityListComponentInput"></app-fad-facility-list>
+                      <app-spinner [showSpinner]="isDisplaySpinner"></app-spinner>
+                </div>
+            </div>
+
+            <div *ngIf="isNoSearchResults" [class]="['col','s12','l12','adjust-padding', mobileHideByFilterOverlay? 'mobile-hide-by-filter-overlay':''].join(' ')">
+              <app-fad-no-docs-page ></app-fad-no-docs-page>
+            </div>
+
+            <div class="col l3 s12" *ngIf="!isNoSearchResults">
+              <section class="more-info-section">
+                <!-- <p>For more information regarding your out-of-pocket costs, please
+                  <a (click)="reviewBenefits()">review your benefits</a>.
+                </p>
+                <br>
+                <p>If you need more details,
+                  <a (click)="requestWrittenEstimte()">request a written estimate.</a>
+                </p> -->
+              </section>
+              <!-- <section class="email-section">
+                <div class="section-content">
+                  <div class="mail-icon">
+                    <i class="fa fa-envelope" aria-hidden="true"></i>
+                  </div>
+                  <div class="section-text"> Email a copy of these results</div>
+                </div>
+              </section> -->
+            </div>
+            <!-- End :: Document List View Section-->
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>

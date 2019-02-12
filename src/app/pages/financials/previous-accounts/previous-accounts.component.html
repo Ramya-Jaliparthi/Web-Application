@@ -1,0 +1,42 @@
+<div class="ml-15 mt-20 hide-on-large-only">
+  <app-breadcrumbs [breadCrumbs]="breadCrumbs"></app-breadcrumbs>
+</div>
+<section>
+  <div class="documents-component">
+    <h1>Previous Accounts</h1>
+
+    <div class="hide-on-med-only hide-on-small-only">
+      <app-breadcrumbs [breadCrumbs]="breadCrumbs"></app-breadcrumbs>
+    </div>
+
+    <div class="myaccount-container row m-0">
+      <div class="col l12 s12 menu-container-0">
+          <div class="flex-box" *ngIf="accountDetails?.length">
+            <div *ngFor="let account of accountDetails; index as account; let i = index" class="collection" [ngClass]="{'menu-top-border': i===0 && ismobile}">
+              <div class="flex" (click)="navigateToAccountDetail(account)">
+                <div class="flex menu-item-container">
+                  <div class="flex menu-item-text">
+                    <p class="flex-grow-1 folder-card">
+                      {{getHeader(account['accountType'])}}
+                      <span class="folder-card-span">Available:
+                        <label class="folder-card-amt">&#36;{{account['availBalance'] | number : '1.2-2'}}</label>
+                        {{convertDate(account.planStartDate) | date:'MM/dd/yyyy' }} - {{
+                          convertDate(account.planEndDate) | date:'MM/dd/yyyy' }}
+                      </span>
+                    </p>
+                  </div>
+
+                  <div class="flex menu-item-action">
+                    <div class="valign-wrapper ml-10">
+                      <i class="far fa-chevron-right"></i>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+      </div>
+    </div>
+  </div>
+</section>

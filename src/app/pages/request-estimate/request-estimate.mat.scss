@@ -1,0 +1,22 @@
+@import '../../../assets/styles/_flex';
+.questions-container {
+    .deliver-option {
+        mat-radio-group {
+            padding: 0;
+        }
+        mat-radio-button:first-child {
+            padding-bottom: 69px;
+        }
+    }
+    mat-radio-group {
+        @extend %inline-flex;
+        @include flex-direction(column);
+        padding: 20px 0;
+        mat-radio-button {
+            padding-bottom: 10px;
+        }
+        mat-radio-button:last-child {
+            padding-bottom: 0;
+        }
+    }
+}

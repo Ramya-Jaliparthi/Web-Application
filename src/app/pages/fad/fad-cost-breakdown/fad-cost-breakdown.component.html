@@ -1,0 +1,92 @@
+<!-- Start - Title -->
+<div class="row">
+  <div class="col l6 s12 push-l3">
+    <h1>{{fadConstants.text.costBreakdown}}</h1>
+  </div>
+</div>
+<div class="auth-shadow responsive-image"></div>
+<!-- End - Title -->
+<!-- Start - Cost Breakdown Page  -->
+<section>
+  <div class="row">
+    <!-- Start - Filter Section -->
+    <div class="col l3 m12 s12">
+      <!--*ngIf="searchCriteriaData?.categoryFilterMap?.size>0" <app-filter-search-all-transactions (onSearch)="onSearch($event)" [searchCriteriaData]="searchCriteriaData"></app-filter-search-all-transactions> -->
+      <app-cost-breakdown-financials-filter [filterConfig]="filterConfig"></app-cost-breakdown-financials-filter>
+    </div>
+    <!-- End - Filter Section -->
+    <!-- Start - Cost Breakdown Section  -->
+    <div class="col l9 m12 s12 sectionPadding">
+      <div class="costHeading">
+        Knee Replacement
+      </div>
+      <div class="profileCardTitle">
+        For Family
+      </div>
+      <div class="addressDiv">
+        Estimated Costs at Medical Group
+      </div>
+      <!-- <div class="breakdownFullBox">
+        <div class=" col s3 breakdownBox">
+          <p class="breakdownBoxCost">$1700<sup>00</sup></p>
+          <p class="breakdownBoxText">{{fadConstants.text.totalCost}}</p>
+        </div>
+      </div> -->
+      <div class="breakdownFullBox">
+        <table>
+          <tr>
+            <td class="breakdownBox">
+              <p class="breakdownBoxCost">{{convertAmountToBaseValue(costBreakdownData.my_cost)}}<sup>{{convertAmountToDecimalValue(costBreakdownData.my_cost)}}</sup></p>
+              <p class="breakdownBoxText">{{fadConstants.text.myCost}}</p>
+            </td>
+            <td class="breakdownBoxSign">+</td>
+            <td class=" breakdownBox">
+              <p class="breakdownBoxCost">{{convertAmountToBaseValue(costBreakdownData.insurance_cost)}}<sup>{{convertAmountToDecimalValue(costBreakdownData.insurance_cost)}}</sup></p>
+              <p class="breakdownBoxText">{{fadConstants.text.insuranceCost}}</p>
+            </td>
+            <td class="breakdownBoxSign">=</td>
+            <td class=" breakdownBox">
+              <p class="breakdownBoxCost">{{convertAmountToBaseValue(costBreakdownData.total_cost)}}<sup>{{convertAmountToDecimalValue(costBreakdownData.total_cost)}}</sup></p>
+              <p class="breakdownBoxText">{{fadConstants.text.totalCost}}</p>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div *ngIf="2>1" class="breakdownCoPayBox">
+        <table>
+          <tr class="breakdownBoxCost">{{fadConstants.text.breakdownForMyCost}}</tr>
+          <tr>
+            <td>
+              <p class="breakdownBoxCost">{{convertAmountToBaseValue(costBreakdownData.coinsurance_responsibility)}}<sup>{{convertAmountToDecimalValue(costBreakdownData.total_cost)}}</sup></p>
+              <p class="breakdownBoxText">{{fadConstants.text.coinsuranceResponsibility}}</p>
+            </td>
+            <td>
+              <p class="breakdownBoxCost">{{convertAmountToBaseValue(costBreakdownData.towards_deductible)}}<sup>{{convertAmountToDecimalValue(costBreakdownData.towards_deductible)}}</sup></p>
+              <p class="breakdownBoxText">{{fadConstants.text.towardsDeductible}}</p>
+            </td>
+            <td>
+              <p class="breakdownBoxCost">{{convertAmountToBaseValue(costBreakdownData.co_pay)}}<sup>{{convertAmountToDecimalValue(costBreakdownData.co_pay)}}</sup></p>
+              <p class="breakdownBoxText">{{fadConstants.text.coPay}}</p>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <!--line chart component-->
+      <div>
+        <section class="accountDetailSection">
+          <section class="">
+            <app-alegeus-linechart [lineChartOptions]="costBreakdownAsLineChartOptions(fadConstants.text.chart1)"></app-alegeus-linechart>
+          </section>
+          <section class="">
+            <app-alegeus-linechart [lineChartOptions]="costBreakdownAsLineChartOptions(fadConstants.text.chart2)"></app-alegeus-linechart>
+          </section>
+        </section>
+      </div>
+      <div class="noteDiv">
+        {{fadConstants.text.outPocketMaximumCoinsurance}}
+      </div>
+    </div>
+    <!-- End - Cost Breakdown Section  -->
+  </div>
+</section>
+<!-- End - Cost Breakdown Page  -->

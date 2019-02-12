@@ -1,0 +1,217 @@
+{
+  "ROWSET": {
+    "ROWS": [
+      {
+        "messageId": 100,
+        "timeStamp": "03/11/2017",
+        "rowNum": 1,
+        "messageRead": false,
+        "alertShortTxt": "Save with Mail Order Pharmacy",
+        "isDeleted": false,
+        "alertLongTxt": "You're using a retail pharmacy for one or more of your prescriptions when you could use mail order. This can save you money. Please consult your pharmacist.",
+        "category": "Plan"
+      },
+      {
+        "messageId": 200,
+        "timeStamp": "05/03/2018",
+        "rowNum": 2,
+        "messageRead": false,
+        "alertShortTxt": "Learn more about your personal health score",
+        "isDeleted": false,
+        "alertLongTxt": "You're using a retail pharmacy for one or more of your prescriptions when you could use mail order. This can save you money. Please consult your pharmacist.",
+        "category": "Promotional"
+      },
+      {
+        "messageId": 500,
+        "timeStamp": "03/11/2017",
+        "rowNum": 3,
+        "messageRead": false,
+        "alertShortTxt": "Get Reimbursed for your fitness benefit",
+        "isDeleted": false,
+        "alertLongTxt": "Did you know you have a fitness benefit? It looks like you haven't submitted for this year yet. Do you want to learn more about it?",
+        "category": "aHealthyMe"
+      },
+      {
+        "messageId": 100,
+        "timeStamp": "03/11/2017",
+        "rowNum": 1,
+        "messageRead": false,
+        "alertShortTxt": "Save with Mail Order Pharmacy",
+        "isDeleted": false,
+        "alertLongTxt": "You're using a retail pharmacy for one or more of your prescriptions when you could use mail order. This can save you money. Please consult your pharmacist.",
+        "category": "Plan"
+      },
+      {
+        "messageId": 200,
+        "timeStamp": "05/03/2016",
+        "rowNum": 2,
+        "messageRead": false,
+        "alertShortTxt": "Learn more about your personal health score",
+        "isDeleted": false,
+        "alertLongTxt": "You're using a retail pharmacy for one or more of your prescriptions when you could use mail order. This can save you money. Please consult your pharmacist.",
+        "category": "Promotional"
+      },
+      {
+        "messageId": 500,
+        "timeStamp": "01/11/2017",
+        "rowNum": 3,
+        "messageRead": false,
+        "alertShortTxt": "Get Reimbursed for your fitness benefit",
+        "isDeleted": false,
+        "alertLongTxt": "Did you know you have a fitness benefit? It looks like you haven't submitted for this year yet. Do you want to learn more about it?",
+        "category": "aHealthyMe"
+      },
+      {
+        "messageId": 100,
+        "timeStamp": "02/11/2017",
+        "rowNum": 1,
+        "messageRead": false,
+        "alertShortTxt": "Save with Mail Order Pharmacy",
+        "isDeleted": false,
+        "alertLongTxt": "You're using a retail pharmacy for one or more of your prescriptions when you could use mail order. This can save you money. Please consult your pharmacist.",
+        "category": "Plan"
+      },
+      {
+        "messageId": 200,
+        "timeStamp": "03/03/2017",
+        "rowNum": 2,
+        "messageRead": false,
+        "alertShortTxt": "Learn more about your personal health score",
+        "isDeleted": false,
+        "alertLongTxt": "You're using a retail pharmacy for one or more of your prescriptions when you could use mail order. This can save you money. Please consult your pharmacist.",
+        "category": "Promotional"
+      },
+      {
+        "messageId": 500,
+        "timeStamp": "04/11/2017",
+        "rowNum": 3,
+        "messageRead": false,
+        "alertShortTxt": "Get Reimbursed for your fitness benefit",
+        "isDeleted": false,
+        "alertLongTxt": "Did you know you have a fitness benefit? It looks like you haven't submitted for this year yet. Do you want to learn more about it?",
+        "category": "aHealthyMe"
+      },
+      {
+        "messageId": 100,
+        "timeStamp": "05/11/2017",
+        "rowNum": 1,
+        "messageRead": false,
+        "alertShortTxt": "Save with Mail Order Pharmacy",
+        "isDeleted": false,
+        "alertLongTxt": "You're using a retail pharmacy for one or more of your prescriptions when you could use mail order. This can save you money. Please consult your pharmacist.",
+        "category": "Plan"
+      },
+      {
+        "messageId": 200,
+        "timeStamp": "06/03/2017",
+        "rowNum": 2,
+        "messageRead": false,
+        "alertShortTxt": "Learn more about your personal health score",
+        "isDeleted": false,
+        "alertLongTxt": "You're using a retail pharmacy for one or more of your prescriptions when you could use mail order. This can save you money. Please consult your pharmacist.",
+        "category": "Promotional"
+      },
+      {
+        "messageId": 500,
+        "timeStamp": "07/11/2017",
+        "rowNum": 3,
+        "messageRead": false,
+        "alertShortTxt": "Get Reimbursed for your fitness benefit",
+        "isDeleted": false,
+        "alertLongTxt": "Did you know you have a fitness benefit? It looks like you haven't submitted for this year yet. Do you want to learn more about it?",
+        "category": "aHealthyMe"
+      },
+      {
+        "messageId": 100,
+        "timeStamp": "08/11/2017",
+        "rowNum": 1,
+        "messageRead": true,
+        "alertShortTxt": "Save with Mail Order Pharmacy",
+        "isDeleted": false,
+        "alertLongTxt": "You're using a retail pharmacy for one or more of your prescriptions when you could use mail order. This can save you money. Please consult your pharmacist.",
+        "category": "Plan"
+      },
+      {
+        "messageId": 200,
+        "timeStamp": "09/03/2017",
+        "rowNum": 2,
+        "messageRead": true,
+        "alertShortTxt": "Learn more about your personal health score",
+        "isDeleted": false,
+        "alertLongTxt": "You're using a retail pharmacy for one or more of your prescriptions when you could use mail order. This can save you money. Please consult your pharmacist.",
+        "category": "Promotional"
+      },
+      {
+        "messageId": 500,
+        "timeStamp": "10/11/2017",
+        "rowNum": 3,
+        "messageRead": true,
+        "alertShortTxt": "Get Reimbursed for your fitness benefit",
+        "isDeleted": false,
+        "alertLongTxt": "Did you know you have a fitness benefit? It looks like you haven't submitted for this year yet. Do you want to learn more about it?",
+        "category": "aHealthyMe"
+      },
+      {
+        "messageId": 100,
+        "timeStamp": "11/11/2017",
+        "rowNum": 1,
+        "messageRead": true,
+        "alertShortTxt": "Save with Mail Order Pharmacy",
+        "isDeleted": false,
+        "alertLongTxt": "You're using a retail pharmacy for one or more of your prescriptions when you could use mail order. This can save you money. Please consult your pharmacist.",
+        "category": "Plan"
+      },
+      {
+        "messageId": 200,
+        "timeStamp": "12/03/2017",
+        "rowNum": 2,
+        "messageRead": true,
+        "alertShortTxt": "Learn more about your personal health score",
+        "isDeleted": false,
+        "alertLongTxt": "You're using a retail pharmacy for one or more of your prescriptions when you could use mail order. This can save you money. Please consult your pharmacist.",
+        "category": "Promotional"
+      },
+      {
+        "messageId": 500,
+        "timeStamp": "01/21/2018",
+        "rowNum": 3,
+        "messageRead": true,
+        "alertShortTxt": "Get Reimbursed for your fitness benefit",
+        "isDeleted": false,
+        "alertLongTxt": "Did you know you have a fitness benefit? It looks like you haven't submitted for this year yet. Do you want to learn more about it?",
+        "category": "aHealthyMe"
+      },
+      {
+        "messageId": 100,
+        "timeStamp": "02/21/2018",
+        "rowNum": 1,
+        "messageRead": true,
+        "alertShortTxt": "Save with Mail Order Pharmacy",
+        "isDeleted": false,
+        "alertLongTxt": "You're using a retail pharmacy for one or more of your prescriptions when you could use mail order. This can save you money. Please consult your pharmacist.",
+        "category": "Plan"
+      },
+      {
+        "messageId": 200,
+        "timeStamp": "04/21/2018",
+        "rowNum": 2,
+        "messageRead": true,
+        "alertShortTxt": "Learn more about your personal health score",
+        "isDeleted": false,
+        "alertLongTxt": "You're using a retail pharmacy for one or more of your prescriptions when you could use mail order. This can save you money. Please consult your pharmacist.",
+        "category": "Promotional"
+      },
+      {
+        "messageId": 500,
+        "timeStamp": "05/22/2018",
+        "rowNum": 3,
+        "messageRead": true,
+        "alertShortTxt": "Get Reimbursed for your fitness benefit",
+        "isDeleted": false,
+        "alertLongTxt": "Did you know you have a fitness benefit? It looks like you haven't submitted for this year yet. Do you want to learn more about it?",
+        "category": "aHealthyMe"
+      }
+    ],
+    "totRows": 3
+  }
+}

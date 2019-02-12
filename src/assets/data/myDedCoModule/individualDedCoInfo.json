@@ -1,0 +1,50 @@
+{
+  "accums": [
+    {
+      "planName": "Preferred Blue PPO SAVER",
+      "planStartDate": "12-31-2017",
+      "planEndDate": "12-31-2018",
+      "planTypeFlag": "111",
+      "coverageType": "Medical",
+      "cobundledPlanFlag": "string",
+      "uaCovgCode": "string",
+      "blueChoiceFlag": "string",
+      "unionChoiceFlag": "string",
+      "saverFlag": "string",
+      "healthPlanTypeDescription": "string",
+      "benefitName": "string",
+      "coinsurance": {
+        "networkIndicatorForCoinsurance": "IN",
+        "coinsuranceMax": 2500,
+        "coinsuranceContributed": 2187.50,
+        "coinsuranceRemainingMeet": "string",
+        "coinsuraneexclusionExcep": "string",
+        "coinsuranceLimitationContent": "string"
+      },
+      "overallDeductables": {
+        "networkIndicatorForOverallDeductible": "IN",
+        "overallDeductible": "4000",
+        "deductibleContributed": "200",
+        "deductibleRemainingToMeet": "3800",
+        "coinsuraneexclusionExcep": "string",
+        "coinsuranceLimitationContent": "string"
+      },
+      "outofpocket": {
+        "networkIndicatorForOutOfPocketMax": "IN",
+        "outOfPocketMax": 2600,
+        "oopMaxContributed": 250,
+        "oopMaxRemainingToMeet": "350",
+        "outofpocketexclusionExcep": "string",
+        "outofpocketLimitationContent": "string"
+      },
+      "overallBenefit": {
+        "networkIndicatorOverallBenefit": "IN",
+        "overallBenefitMax": 2500,
+        "overallBenefitMaxContributed": 2187.50,
+        "overallBenefitMaxRemainingToMeet": "string",
+        "overallBenefitexclusionExcep": "string",
+        "overallBenefitMaxLimitationContent": "string"
+      }
+    }
+  ]
+}

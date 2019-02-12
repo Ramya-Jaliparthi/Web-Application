@@ -1,0 +1,550 @@
+<div class="row ml-0 mr-0 mb-0">
+  <div class="col l4 m12 s12 pd-0">
+    <div class="ml-15 mt-20 hide-on-large-only">
+      <app-breadcrumbs></app-breadcrumbs>
+    </div>
+    <h1 class="header">Profile</h1>
+    <div class="hide-on-med-only hide-on-small-only">
+      <app-breadcrumbs></app-breadcrumbs>
+    </div>
+  </div>
+</div>
+<div class="row ml-0 mr-0">
+  <!-- <div class="medicare-result-container container"> -->
+  <div class="medicare-result-container">
+    <!--left side container-->
+    <div class="side-nav-container col l4 m12 s12">
+      <mat-card class="mat-card-override">
+        <mat-card-content>
+          <div class="profile-name row">
+            <div class="col s10 m10 profile-details-name">
+              {{profileEditForm.value.fullName | camelcase}}
+            </div>
+            <div class="col s2 m2 tool-tip-div" *ngIf="!registeredUserOnly">              
+                <span [ngClass]="{'icon-tooltip-filled': toolTipVisible }" class="i-circle tooltip spacing-iconProfileName" >
+                    <span (click)="showToolTip()" class="info-icon-span"><i class="fal fa-info-circle icon-blue"></i></span>
+                <span class="tooltiptext raisedbox" *ngIf="toolTipVisible">
+                  <a class="link-global" href="{{contactus}}">
+                    Contact us
+                  </a> to update your information.
+                </span>
+              </span>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col s12 mb-10" *ngIf="profile.userState !== 'REGISTERED-NOT-VERIFIED' && profileEditForm.value.dob">
+              <label class="label-prefix pl-0-important">Date of Birth: </label>
+              <label class="label-value pl-0-important">{{profileEditForm.value.dob | yyyymmddTommddyyyy}}</label>
+            </div>
+            <div class="col s12" [ngClass]="{'mb-5': showEdit()}">
+              <label class="label-prefix pl-0-important">Username: </label>
+              <label class="label-value pl-0-important">{{diplayUserID}}</label>
+            </div>
+            <!-- <div class="col s12 address-section mb-5" *ngIf="showEdit()"> -->
+            <div class="col s12 address-section mb-5" *ngIf="!showEdit() && profileEditForm.value.address1">
+              <label class="label-prefix mb-20 pl-0-important" *ngIf="profileEditForm.value.address1">Mailing Address</label>
+              <div class="address-details pl-0-important">
+                <label class="label-value">{{profileEditForm.value.address1}}</label>
+                <label *ngIf="profileEditForm.value.address2" class="label-value">{{profileEditForm.value.address2}}</label>
+                <label class="label-value">{{address3}}</label>
+              </div>
+            </div>
+          </div>
+        </mat-card-content>
+      </mat-card>
+    </div>
+    <!-- Non edit & editable container -->
+    <div class="middle-container col l4 m12 s12">
+      <div class="row m-0">
+        <div class="">
+          <form *ngIf="registeredUserOnly" [formGroup]="profileEditForm" novalidate (ngSubmit)="onSubmit()" [ngClass]="{'form-submitted' : isFormSubmitted}">
+            <!-- Phone -->
+            <div *ngIf="isUseridAPhone && !editPhone">
+              <span class="row">
+                <div class="col s5 pl-0-important">
+                  <span class="left spacing-iconPreceedingKey" *ngIf="profile.isVerifiedMobile">
+                    <i class="far fa-check-circle icon-verified "></i>
+                  </span>
+                  <span *ngIf="!profile.isVerifiedMobile" class="i-circle tooltip spacing-iconProfileName">
+                    <i class="fal fa-info-circle icon-blue"></i>
+                  </span>
+                  <span class="font-keytext" style="margin-left: 5px;">Phone Number</span>
+                  <span>
+                  </span>
+                </div>
+                <div class="col s6 pl-0-important">
+                  <a *ngIf="profileEditForm.value.phoneNumber && !profileEditForm.value.isVerifiedMobile && profileEditForm.value.phoneType==='MOBILE'"
+                    (click)="verifyPhone()" class="font-linktext right spacing-verifyLink">Verify your number</a>
+                </div>
+                <div class="col s1 pl-0-important">
+                  <a (click)="phoneEdit()" class="font-linktext right">Edit</a>
+                </div>
+              </span>
+              <span class="row">
+                <div class="col s12 pl-0-important" x-ms-format-detection="none">
+                  <span class="left spacing-iconPreceedingKey"></span>
+                  <span class="font-valuetext spacing-valueWithIcon" x-ms-format-detection="none">
+                    {{profileEditForm.value.phoneType | camelcase}} : {{profileEditForm.value.phoneNumber | phone}}
+                  </span>
+                </div>
+              </span>
+            </div>
+
+            <!-- Phone Edit form -->
+            <div *ngIf="isUseridAPhone &&  editPhone">
+              <!-- <span class="row">
+                <div class="input-field col s12 pd-0 mb-30">
+                  <mat-form-field class="col s12 pd-0 mat-inherit-underline">
+                    <mat-select tabindex="1" appMatSelectChange id="phoneType1" formControlName="phoneType">
+                      <mat-option *ngFor='let options of phoneNumberTypeValues' [value]='options.value'>
+                        {{options.label}}
+                      </mat-option>
+                    </mat-select>
+                  </mat-form-field>
+                  <label for="phoneType1" class="active label-prefix-alt">Phone Number Type*</label>
+                </div>
+              </span> -->
+              <span class="row">
+                <div class="input-field col s12 pd-0">
+                  <input placeholder="" tabindex="2" id="phoneNumber" aria-labelledby="phoneNumber" type="text" formControlName="phoneNumber"
+                    [textMask]="mask" />
+                  <label for="phoneNumber" class="active label-prefix-alt">Phone Number*</label>
+                  <mat-hint class="mat-hint-message">000-000-0000</mat-hint>
+                  <app-control-messages [control]="profileEditForm.controls.phoneNumber" [customMessages]="mobileNumberMessages"></app-control-messages>
+                </div>
+              </span>
+              <!-- Cancel and Save Buttons -->
+              <div class="row mb-20 submit-action-twobutton-center">
+                <div tabindex="11" class="waves-effect waves-light white-background btn-white
+                       btn-block white-background btn-half-width-left" type="" aria-label="Cancel" (click)="cancel()">Cancel
+                </div>
+
+                <button tabindex="12" class="waves-effect waves-light btn btn-block  btn-half-width-right br-8" type="submit" aria-label="Save"
+                  name="action" [disabled]="!profileEditForm.valid">Save
+                </button>
+                <br>
+                <br>
+              </div>
+            </div>
+
+            <!-- Email -->
+            <div *ngIf="isUseridAEmail && !editEmail">
+              <span class="row">
+                <div class="col s5 pl-0-important">
+                  <span class="left spacing-iconPreceedingKey" *ngIf="profileEditForm.value.isVerifiedEmail">
+                    <i class="far fa-check-circle icon-verified "></i>
+                  </span>
+
+                  <span *ngIf="!profileEditForm.value.isVerifiedEmail  && (profileEditForm.value.emailAddress != '')" class="i-circle tooltip spacing-iconProfileName float-left">
+                    <i class="fal fa-info-circle icon-blue"></i>
+                  </span>
+                  <span class="left font-keytext spacing-keyWithIcon">Email</span>
+                </div>
+                <div class="col s6 pl-0-important">
+                  <a *ngIf="profileEditForm.value.emailAddress && !profileEditForm.value.isVerifiedEmail && (profileEditForm.value.emailAddress != '') "
+                    (click)="verifyEmail()" class="font-linktext right spacing-verifyLink">Verify your email</a>
+                </div>
+                <div class="col s1 pl-0-important">
+                  <a (click)="emailEdit()" class="font-linktext right">Edit</a>
+                </div>
+              </span>
+              <span class="row">
+                <div class="col s12 pl-0-important">
+                  <span class="left spacing-iconPreceedingKey"></span>
+                  <span class="spacing-valueWithIcon font-valuetext"> {{diplayEmailAdress}}</span>
+                </div>
+              </span>
+            </div>
+            <!-- Email edit form -->
+            <div *ngIf="isUseridAEmail && editEmail" class="edit-padding">
+              <div class="row">
+                <div class="input-field col s12 pd-0">
+                  <input placeholder="" tabindex="6" id="emailAddress2" aria-labelledby="emailAddress" type="text" formControlName="emailAddress"
+                  />
+                  <label for="emailAddress2" class="active label-prefix-alt">Email*</label>
+                  <app-control-messages [control]="profileEditForm.controls.emailAddress" [customMessages]="emailMessages"></app-control-messages>
+                </div>
+              </div>
+              <!-- Cancel and Save Buttons -->
+              <div class="row mb-20 submit-action-twobutton-center">
+                <div tabindex="11" class="waves-effect waves-light white-background btn-white
+                       btn-block white-background btn-half-width-left" type="" aria-label="Cancel" (click)="cancel()">Cancel
+                </div>
+
+                <button tabindex="12" class="waves-effect waves-light btn btn-block  btn-half-width-right br-8" type="submit" aria-label="Save"
+                  name="action" [disabled]="!profileEditForm.valid">Save
+                </button>
+                <br>
+                <br>
+              </div>
+            </div>
+
+          </form>
+
+          <form *ngIf="!registeredUserOnly" [formGroup]="profileEditForm" novalidate (ngSubmit)="onSubmit()" [ngClass]="{'form-submitted' : isFormSubmitted}">
+            <!--  Mailing address Static Form-->
+            <div *ngIf="!editAddress && showEdit()">
+              <span class="row">
+                <div class="col s11 left pl-0-important">
+                  <span class="font-keytext">Mailing Address</span>
+                </div>
+                <div class="col s1 pl-0-important">
+                  <a (click)="addressEdit()" class="font-linktext right">Edit</a>
+                </div>
+              </span>
+              <span class="row" *ngIf="profileEditForm.value.address1">
+                <div class="col s12 left pl-0-important">
+                  <p class="font-valuetext">{{profileEditForm.value.address1}}</p>
+                </div>
+              </span>
+              <span class="row" *ngIf="profileEditForm.value.address2">
+                <div class="col s12 left pl-0-important">
+                  <p class="font-valuetext">{{profileEditForm.value.address2}}</p>
+                </div>
+              </span>
+              <span class="row" *ngIf="address3">
+                <div class="col s12 left pl-0-important">
+                  <p class="font-valuetext">{{address3}}</p>
+                </div>
+              </span>
+            </div>
+            <!-- Mail address edit form -->
+            <div *ngIf="editAddress" class="edit-padding">
+              <div class="row">
+                <div class="input-field col s12 pd-0">
+                  <div [ngClass]="{'error': profileEditForm.controls['address1'].errors && !profileEditForm.controls['address1'].pristine}">
+                    <input matInput placeholder="" tabindex="1" id="address" aria-labelledby="address" type="text" appAutofocus formControlName="address1"
+                      required maxlength="30" appNoFirstPound />
+                    <label for="address1" class="active label-prefix-alt">Mailing Address*</label>
+                    <app-control-messages [control]="profileEditForm.controls.address1" [customMessages]="addressMessages"></app-control-messages>
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="input-field col s12 pd-0">
+                  <div [ngClass]="{'error': profileEditForm.controls['address2'].errors && !profileEditForm.controls['address2'].pristine}">
+                    <input matInput placeholder="" tabindex="2" id="address2" maxlength="30" aria-labelledby="address2" type="text" formControlName="address2"
+                      appNoFirstPound />
+                    <label for="address2" class="active label-prefix-alt">Address 2</label>
+                    <app-control-messages [control]="profileEditForm.controls.address2" [customMessages]="addressMessages"></app-control-messages>
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="input-field col s12 pd-0">
+                  <div [ngClass]="{'error': profileEditForm.controls['city'].errors && !profileEditForm.controls['city'].pristine}">
+                    <input matInput placeholder="" tabindex="3" id="city" aria-labelledby="city" type="text" formControlName="city" required
+                      appNoFirstPound />
+                    <label for="city" class="active label-prefix-alt">City*</label>
+                    <app-control-messages [control]="profileEditForm.controls.city" [customMessages]="cityMessages"></app-control-messages>
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="input-field col s12 pd-0">
+                  <mat-form-field #stateField floatPlaceholder="never" class="col s12 pd-0 mat-inherit-underline">
+                    <mat-select tabindex="4" id="state" appMatSelectChange [parentFormField]="stateField" placeholder="Select One" formControlName='state'>
+                      <mat-option *ngFor='let options of statesList' [value]='options.value'>
+                        {{options.label}}
+                      </mat-option>
+                    </mat-select>
+                  </mat-form-field>
+                  <label for="state" class="active label-prefix-alt" [ngClass]="{'color-invalid': profileEditForm.controls['state'].touched
+                    && profileEditForm.controls['state'].errors
+                    && profileEditForm.controls['state'].errors.required}">State*</label>
+                </div>
+              </div>
+              <div class="row">
+                <div class="input-field col s12 pd-0">
+                  <div [ngClass]="{'error': profileEditForm.controls['zip'].errors && !profileEditForm.controls['zip'].pristine}">
+                    <input matInput placeholder="" minlength="5" maxlength="5" tabindex="5" [textMask]="zipMask" id="zip" aria-labelledby="zip"
+                      type="text" formControlName="zip" required />
+                    <label for="zip" class="active label-prefix-alt">ZIP code*</label>
+                    <app-control-messages [control]="profileEditForm.controls.zip" [customMessages]="zipMessages"></app-control-messages>
+                  </div>
+                </div>
+              </div>
+              <!-- Cancel and Save Buttons -->
+              <div class="row mb-20 submit-action-twobutton-center">
+                <div tabindex="11" class="waves-effect waves-light white-background btn-white
+                       btn-block white-background btn-half-width-left" type="" aria-label="Cancel" (click)="cancel()">Cancel
+                </div>
+
+                <button tabindex="12" class="waves-effect waves-light btn btn-block  btn-half-width-right br-8" type="submit" aria-label="Save"
+                  name="action" [disabled]="!profileEditForm.valid">Save
+                </button>
+                <br>
+                <br>
+              </div>
+            </div>
+
+            <!-- Email -->
+            <div *ngIf="!editEmail">
+              <div class="row row-normalise">
+                <div class="col s5 pl-0-important">
+                  <span class="left spacing-iconPreceedingKey" *ngIf="profileEditForm.value.isVerifiedEmail">
+                    <i class="far fa-check-circle icon-verified "></i>
+                  </span>
+                  <span *ngIf="!profileEditForm.value.isVerifiedEmail && (profileEditForm.value.emailAddress != '')" class="i-circle tooltip spacing-iconProfileName">
+                    <i class="fal fa-info-circle icon-blue"></i>
+                  </span>
+                  <span class="font-keytext spacing-keyWithIcon">Email</span>
+                </div>
+                <div class="col s6 pl-0-important">
+                  <a *ngIf="profileEditForm.value.emailAddress && !profileEditForm.value.isVerifiedEmail  && (profileEditForm.value.emailAddress != '') "
+                    (click)="verifyEmail()" class="font-linktext right spacing-verifyLink">Verify your email</a>
+                </div>
+                <div class="col s1 pl-0-important">
+                  <a (click)="emailEdit()" class="font-linktext right">Edit</a>
+                </div>
+              </div>
+              <div class="row row-normalise mb-20">
+                <div class="col s12 pl-0-important" id="emailDisplay">
+                  <span class="left spacing-iconPreceedingKey"></span>
+                  <span class="spacing-valueWithIcon font-valuetext"> {{profileEditForm.value.emailAddress}}</span>
+                </div>
+              </div>
+            </div>
+            <!-- Email edit form -->
+            <div *ngIf="editEmail" class="edit-padding">
+              <div class="row">
+                <div class="input-field col s12 pd-0">
+                  <div [ngClass]="{'error': profileEditForm.controls['emailAddress'].errors && !profileEditForm.controls['emailAddress'].pristine}">
+                    <input matInput placeholder="" tabindex="6" id="emailAddress" aria-labelledby="emailAddress" type="text" formControlName="emailAddress"
+                      required />
+                    <label for="emailAddress" class="active label-prefix-alt">Email*</label>
+                    <app-control-messages [control]="profileEditForm.controls.emailAddress" [customMessages]="emailMessages"></app-control-messages>
+                  </div>
+                </div>
+              </div>
+              <!-- Cancel and Save Buttons -->
+              <div class="row mb-20 submit-action-twobutton-center">
+                <div tabindex="11" class="waves-effect waves-light white-background btn btn-white
+                       btn-block white-background btn-half-width-left btn-cancel" type="" aria-label="Cancel" (click)="cancel()">Cancel
+                </div>
+                <button tabindex="12" class="waves-effect waves-light btn btn-block  btn-half-width-right br-8" type="submit" aria-label="Save"
+                  name="action" [disabled]="!profileEditForm.valid">Save
+                </button>
+                <br>
+                <br>
+              </div>
+            </div>
+
+            <!-- Phone -->
+            <div *ngIf="!editPhone">
+              <ng-container *ngIf="!isWebMigrated()">
+                <span class="row">
+                  <div class="col s5 pl-0-important">
+                    <span class="left spacing-iconPreceedingKey" *ngIf="profile.isVerifiedMobile">
+                      <i class="far fa-check-circle icon-verified "></i>
+                    </span>
+                    <span *ngIf="!profile.isVerifiedMobile" class="i-circle tooltip spacing-iconProfileName">
+                      <i class="fal fa-info-circle icon-blue"></i>
+                    </span>
+                    <span class="font-keytext" style="margin-left: 5px;">Phone Number</span>
+
+                  </div>
+                  <div class="col s6 pl-0-important">
+                    <a *ngIf="profileEditForm.value.phoneNumber && !profileEditForm.value.isVerifiedMobile && profileEditForm.value.phoneType ==='MOBILE'"
+                      (click)="verifyPhone()" class="font-linktext right spacing-verifyLink">Verify your number</a>
+                  </div>
+                  <div class="col s1 pl-0-important">
+                    <a (click)="phoneEdit()" class="font-linktext right">Edit</a>
+                  </div>
+                </span>
+                <span class="row">
+                  <div class="col s12 pl-0-important" x-ms-format-detection="none">
+                    <span class="left spacing-iconPreceedingKey"></span>
+                    <span *ngIf="profileEditForm.value.phoneNumber" x-ms-format-detection="none" class="font-valuetext spacing-valueWithIcon">
+                      {{(profileEditForm.value.phoneType ? profileEditForm.value.phoneType : 'MOBILE') | camelcase}} : {{profileEditForm.value.phoneNumber
+                      | phone}}
+                    </span>
+                  </div>
+                </span>
+              </ng-container>
+
+              <div *ngIf="isWebMigrated()" class="row ml-0 add-link mb-30" (click)="addPhone($event);">
+                <i class="fas fa-plus font-18"></i>
+                <a>Add Phone Number</a>
+              </div>
+            </div>
+
+            <!-- Phone Edit form -->
+            <div *ngIf="editPhone">
+              <!--<span class="row">-->
+              <!--<div class="input-field col s12 pd-0">-->
+              <!--<div class="input-field col s12 pd-0 mb-30">-->
+              <!--<mat-form-field class="col s12 pd-0 mat-inherit-underline">-->
+              <!--<mat-select tabindex="1" appMatSelectChange id="phoneType" formControlName="phoneType">-->
+              <!--<mat-option *ngFor='let options of phoneNumberTypeValues' [value]='options.value'>-->
+              <!--{{options.label}}-->
+              <!--</mat-option>-->
+              <!--</mat-select>-->
+              <!--</mat-form-field>-->
+              <!--<label for="phoneType" class="active label-prefix-alt">Phone Number Type*</label>-->
+              <!--</div>-->
+              <!--</div>-->
+              <!--</span>-->
+              <span class="row">
+                <div class="input-field col s12 pd-0">
+                  <div [ngClass]="{'error': profileEditForm.controls['phoneNumber'].errors && !profileEditForm.controls['phoneNumber'].pristine}">
+                    <input placeholder="" tabindex="2" id="phoneNumber" aria-labelledby="phoneNumber" type="text" formControlName="phoneNumber"
+                      [textMask]="mask" required />
+                    <label for="phoneNumber" class="active label-prefix-alt">Phone Number*</label>
+                    <mat-hint class="mat-hint-message">000-000-0000</mat-hint>
+                    <app-control-messages [control]="profileEditForm.controls.phoneNumber" [customMessages]="mobileNumberMessages"></app-control-messages>
+                  </div>
+                </div>
+              </span>
+              <!-- Cancel and Save Buttons -->
+              <div class="row ml-0 mr-0 mb-20 submit-action-twobutton-center">
+                <div tabindex="11" class="waves-effect waves-light white-background btn-white
+                       btn-block white-background btn-half-width-left" type="" aria-label="Cancel" (click)="cancel()">Cancel
+                </div>
+
+                <button tabindex="12" class="waves-effect waves-light btn btn-block  btn-half-width-right br-8" type="submit" aria-label="Save"
+                  name="action" [disabled]="!profileEditForm.valid">Save
+                </button>
+                <br>
+                <br>
+              </div>
+            </div>
+
+            <!-- Hint Question -->
+            <div *ngIf="!editHint && profile.userState !== 'REGISTERED-AND-VERIFIED'">
+              <span class="row">
+                <div class="col s11 left pl-0-important">
+                  <span class="font-keytext">Hint Question</span>
+                </div>
+                <div class="col s1 pl-0-important">
+                  <a (click)="hintEdit()" class="font-linktext right">Edit</a>
+                </div>
+              </span>
+              <span class="row">
+                <div class="col s12 left pl-0-important">
+                  {{profileEditForm.value.hintQuestion}}
+                </div>
+              </span>
+            </div>
+            <!-- Hint answer -->
+            <div *ngIf="!editHint && profile.userState !== 'REGISTERED-AND-VERIFIED'">
+              <span class="row">
+                <div class="col s12 left pl-0-important">
+                  <span class="font-keytext"> Hint Answer</span>
+                </div>
+              </span>
+              <span class="row">
+                <div class="col s12 left pl-0-important" *ngIf="profileEditForm.value.hintAnswer">
+                  ••••••••••••••
+                </div>
+              </span>
+            </div>
+
+            <!-- Hint Question Edit form -->
+            <div *ngIf="editHint">
+              <div class="input-field col s12 pd-0 mb-30">
+                <div>
+                  <mat-form-field #securityQuestionField floatPlaceholder="never" class="col s12 pd-0 mat-inherit-underline">
+                    <mat-select tabindex="1" id="hintQuestion" appMatSelectChange [parentFormField]="securityQuestionField" placeholder="Select One"
+                      formControlName='hintQuestion'>
+                      <mat-option *ngFor='let options of securityQuestionsOptions' [value]='options.value'>
+                        {{options.label}}
+                      </mat-option>
+                    </mat-select>
+                  </mat-form-field>
+                </div>
+                <label for="hintQuestion" class="active label-prefix-alt" class="active label-prefix-alt" [ngClass]="{'color-invalid': profileEditForm.controls['hintQuestion'].touched
+                  && profileEditForm.controls['hintQuestion'].errors
+                  && profileEditForm.controls['hintQuestion'].errors.required}">Hint Question*
+                </label>
+              </div>
+            </div>
+            <div *ngIf="editHint">
+              <div class="row m-0">
+                <div class="input-field col s12 pd-0 mb-20 password-block">
+                  <div [ngClass]="{'error': profileEditForm.controls['hintAnswer'].errors && !profileEditForm.controls['hintAnswer'].pristine}">
+                    <input matInput tabindex="2" placeholder="" aria-labelledby="hintAnswer" maxlength="30" id="hintAnswer" type="{{type}}" formControlName="hintAnswer"
+                      required />
+                    <label for="hintAnswer" class="active label-prefix-alt">Hint Answer*</label>
+                    <app-control-messages [customMessages]="hintAnswercustomMessages" [control]="profileEditForm.controls.hintAnswer"></app-control-messages>
+                  </div>
+                  <a tabindex="2" class="input-group-addon" [ngClass]="(typePlaceholder | lowercase) + '-class'" (click)="togglePasswordVisibility()">{{typePlaceholder}}</a>
+                </div>
+              </div>
+              <!-- Cancel and Save Buttons -->
+              <div class="mb-20 submit-action-twobutton-center">
+                <div tabindex="11" class="waves-effect mt-20 mb-20  waves-light white-background btn-white
+                     btn-block white-background btn-half-width-left" type="" aria-label="Cancel" (click)="cancel()">Cancel
+                </div>
+
+                <button tabindex="12" class="mt-20 mb-20 waves-effect waves-light btn btn-block  btn-half-width-right br-8" type="submit"
+                  aria-label="Save" name="action" [disabled]="!profileEditForm.valid">Save
+                </button>
+                <br>
+                <br>
+              </div>
+            </div>
+
+            <!-- Opted in Channel -->
+            <div *ngIf="currentUserScope === 'AUTHENTICATED-AND-VERIFIED' &&
+            ((profileEditForm.value.isEmailOptedIn && profileEditForm.value.isVerifiedEmail) ||
+            (profileEditForm.value.isMobileOptedIn && profileEditForm.value.isVerifiedMobile))">
+              <span class="row">
+                <div class="col s8 left pl-0-important">
+                  <span class="font-keytext">Opted In Channels
+                  </span>
+                </div>
+                <div class="col s4 pl-0-important">
+                  <a class="font-linktext right" (click)='navigateToNotificationPrefence()'>
+                    Edit Preferences</a>
+                </div>
+              </span>
+              <span class="row" *ngIf="profileEditForm.value.isEmailOptedIn && profileEditForm.value.isVerifiedEmail">
+                <div class="col s12 left tagged-container">
+                  {{profile.emailAddress}}
+                </div>
+              </span>
+              <span class="row" *ngIf="profileEditForm.value.isMobileOptedIn && profileEditForm.value.isVerifiedMobile">
+                <div class="col s12 left tagged-container">
+                  {{profile.phoneNumber}}
+                </div>
+              </span>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+    <!-- right side container-->
+    <div class="dynamic-content col l4 m12 s12 pd-0">
+      <div class="details-right-link" [routerLink]="['/myprofile/updatePassword']">
+        <a>
+          <span class="text-route">Update your password</span>
+          <span class="icon-arrow">
+            <i class="fa fa-chevron-right long-text"></i>
+          </span>
+        </a>
+      </div>
+      <div class="details-right-link" [routerLink]="['/myprofile/race']" *ngIf="profile.userState === 'AUTHENTICATED-AND-VERIFIED'">
+        <a>
+          <span class="text-route">Add your race, ethnicity &amp; language</span>
+          <span class="icon-arrow">
+            <i class="fa fa-chevron-right long-text"></i>
+          </span>
+        </a>
+      </div>
+      <div class="details-right-link" [routerLink]="['/notification-preferences']">
+        <a>
+          <span class="text-route">Update your notification preferences</span>
+          <span class="icon-arrow">
+            <i class="fa fa-chevron-right long-text"></i>
+          </span>
+        </a>
+      </div>
+      <div class="details-right-link-alt mb-20 pd-15 height-100">
+        <div>
+          <app-fpo-layout [targetUrl]="fpoTargetUrl" [displayCategory]="'profile'"></app-fpo-layout>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

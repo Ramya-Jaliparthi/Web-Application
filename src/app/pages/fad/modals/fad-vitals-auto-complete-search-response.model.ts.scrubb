@@ -1,0 +1,64 @@
+import { FVSSRSpecialityEntity } from './fad-vitals-specilities-search-response.model';
+import { FadVitalsAutoCompleteSearchResponseModelInterface } from './interfaces/fad-vitals-collection.interface';
+import { GetSearchBySpecialityResponseSearchSpecialtiesInfoInterface } from './interfaces/getSearchBySpeciality-models.interface';
+
+export class FadVitalsAutoCompleteSearchResponseModel implements FadVitalsAutoCompleteSearchResponseModelInterface {
+    public _meta: FVACSRMeta;
+    public telehealth: any;
+    public pharmacy: any;
+    public professionals: FVACSRSearchResultEntity[];
+    public facilities: FVACSRSearchResultEntity[];
+    public search_specialties: GetSearchBySpecialityResponseSearchSpecialtiesInfoInterface[]; FVSSRSpecialityEntity[];
+    public procedures: any[];
+}
+
+export class FVACSRMeta {
+    public counts: FVACSRCounts;
+    public pages: FVACSRPages;
+}
+
+class FVACSRCounts {
+    public total: FVACSRTotal;
+}
+class FVACSRTotal {
+    public professionals: number;
+    public facilities: number;
+    public search_specialties: number;
+    public procedures: number;
+}
+export class FVACSRPages {
+    public total: number;
+    public current: number;
+    public next: number;
+    public previous: number;
+}
+
+export class FVACSRSearchResultEntity {
+    public id: number;
+    public provider_id: string;
+    public name: string;
+    public type: string;
+    public specialty: string;
+    public specialty_count: number;
+    public href: string;
+    public locations_count: number;
+    public locations: FVACSRLocationEntity[];
+}
+
+class FVACSRLocationEntity {
+    public id: number;
+    public city: string;
+    public state: string;
+    public contract_id: number;
+}
+
+export class FVACSRProcedureEntity {
+    public id: number;
+    public name: string;
+    public locale_name: string;
+    public description: string;
+    public default_resource_type: number;
+    public keywords: string[];
+}
+
+

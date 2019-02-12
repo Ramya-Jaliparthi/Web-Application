@@ -1,0 +1,89 @@
+[
+  {
+    "accountDisplayHeader": "Flexible Spending Account",
+    "accountType": "FSA",
+    "planStartDate": "2018-06-01",
+    "planEndDate": "2019-05-31",
+    "availBalance": 2500,
+    "availableRollover": 1000,
+    "payments": 1500,
+    "annualElection": 3500,
+    "contributionsYTD": 1300,
+    "remainingContributions": 2000,
+    "planYear": 1,
+    "balance": 2900,
+    "submitClaimsLastDate": "2018-05-09",
+    "spendingLastDate": "2018-05-09",
+    "deductibleInfo": {
+      "deductible": 1236.88,
+      "appliedDeductible": 1019.01,
+      "remainingDeductible": 217.87
+    },
+    "familyDetailInfo": [
+      {
+        "firstName": "CHARLIE",
+        "lastName": "DAIGLE",
+        "middleInitial": "",
+        "status": "Active"
+      }
+    ]
+  },
+  {
+    "accountDisplayHeader": "Flexible Spending Account",
+    "accountType": "FSA",
+    "planStartDate": "2016-03-28",
+    "planEndDate": "2016-11-07",
+    "availBalance": 800,
+    "availableRollover": 1000,
+    "payments": 35,
+    "annualElection": 2345,
+    "contributionsYTD": 210,
+    "remainingContributions": 890,
+    "planYear": 2,
+    "balance": 2900,
+    "submitClaimsLastDate": "2018-05-09",
+    "spendingLastDate": "2018-05-09",
+    "deductibleInfo": {
+      "deductible": 1236.88,
+      "appliedDeductible": 1019.01,
+      "remainingDeductible": 217.87
+    },
+    "familyDetailInfo": [
+      {
+        "firstName": "CHARLIE",
+        "lastName": "DAIGLE",
+        "middleInitial": "",
+        "status": "Active"
+      }
+    ]
+  },
+  {
+    "accountDisplayHeader": "Flexible Spending Account",
+    "accountType": "FSA",
+    "planStartDate": "2018-06-01",
+    "planEndDate": "2018-08-31",
+    "availBalance": 2500,
+    "availableRollover": 1000,
+    "payments": 1500,
+    "annualElection": 3500,
+    "contributionsYTD": 1300,
+    "remainingContributions": 2000,
+    "planYear": 3,
+    "balance": 2900,
+    "submitClaimsLastDate": "2018-05-09",
+    "spendingLastDate": "2018-05-09",
+    "deductibleInfo": {
+      "deductible": 1236.88,
+      "appliedDeductible": 1019.01,
+      "remainingDeductible": 217.87
+    },
+    "familyDetailInfo": [
+      {
+        "firstName": "CHARLIE",
+        "lastName": "DAIGLE",
+        "middleInitial": "",
+        "status": "Active"
+      }
+    ]
+  }
+]

@@ -1,0 +1,236 @@
+@import '../_colors';
+@import '../_flex';
+// spk/cleanup - mymedications, myprofile, mycards, 
+// spk/cleanup - benefits, mplans, plandetails
+.claims-full-container,
+.side-nav-container {
+    .mat-drawer-container {
+        background-color: $non-vdk-5-brown !important;
+    }
+    .mat-drawer-backdrop {
+        display: none !important;
+    }
+    mat-sidenav,
+    mat-sidenav.md-locked-open,
+    mat-sidenav.md-closed.md-locked-open-add-active {
+        min-width: 200px !important;
+        width: 85vw !important;
+        max-width: 23% !important;
+    }
+}
+
+// spk/cleanup - myclaims, mymedications, message-center
+// spk/cleanup - mycards, mbdenefits, myplans, mypreferences
+.mat-list-option.mat-list-item-focus,
+.mat-list-option:hover,
+.mat-nav-list .mat-list-item.mat-list-item-focus,
+.mat-nav-list .mat-list-item:hover {
+    background: none !important;
+    outline-color: $background-white-color !important;
+}
+
+// spk/cleanup - myclaims, mydoctors
+@media (max-width: 992px) {
+    .claims-full-container {
+        mat-sidenav,
+        mat-sidenav.md-locked-open,
+        mat-sidenav.md-closed.md-locked-open-add-active {
+            width: 100% !important;
+            max-width: 100% !important;
+        }
+    }
+}
+
+// spk/cleanup - myclaims, mydoctors
+// spk-cleanup - @media only screen and (min-device-width: 768px) and (max-device-width: 1024px) and (orientation: landscape) {
+@media only screen and (min-width: 768px) and (max-width: 1024px) and (orientation: landscape) {
+    .claims-full-container {
+        mat-sidenav,
+        mat-sidenav.md-locked-open,
+        mat-sidenav.md-closed.md-locked-open-add-active {
+            max-width: 25% !important;
+        }
+    }
+}
+
+.mat-form-field-underline {
+    display: none;
+}
+
+.mat-inherit-underline {
+    .mat-form-field-underline {
+        display: inherit;
+    }
+}
+
+.mat-form-field {
+    width: 100%;
+}
+
+.mat-input-element {
+    //spk/cleanup - color: black !important;
+    color: $title-color !important;
+}
+
+.mat-select-arrow {
+    //spk/cleanup - color: black !important;
+    color: $title-color !important;
+}
+
+.mat-form-field-invalid .mat-input-element,
+.mat-warn .mat-input-element {
+    //spk/cleanup - caret-color: black;
+    caret-color: $title-color;
+}
+
+.mat-input-element {
+    //spk/cleanup - caret-color: black;
+    caret-color: $title-color;
+}
+
+.mat-button-ripple {
+    border-radius: 8px !important;
+}
+
+.mat-content {
+    display: block !important;
+}
+
+.mat-list-option.mat-list-item-focus,
+.mat-list-option:hover {
+    background: none !important;
+}
+
+.mat-list-item-disabled {
+    //spk/cleanup - background-color: $text-white-color !important;
+    background-color: $background-white-color !important;
+}
+
+.mat-select {
+    padding-top: 10px;
+}
+
+.mat-expansion-panel-body {
+    padding: 0 !important;
+}
+
+@media (max-width: 991px) {
+    .filter-container .mat-radio-container {
+        right: 18px !important;
+    }
+    .mat-pseudo-checkbox {
+        margin-right: 8px;
+    }
+}
+
+@media (min-width: 992px) {
+    .filter-container .mat-radio-container {
+        right: 11px !important;
+    }
+    .mat-pseudo-checkbox {
+        margin-right: 6px;
+    }
+    .filter-container {
+        .mat-pseudo-checkbox {
+            margin-right: 5px;
+        }
+    }
+}
+
+//spk/cleanup - orderidcard only
+.order-idcard-container {
+    .mat-list-item-content {
+        padding: 0 !important;
+    }
+    // .mat-checkbox-disabled,
+    .mat-checkbox-label {
+        font-size: 14px !important;
+        color: $text-disabled-gray;
+    }
+    .mat-checkbox-checked.mat-accent .mat-checkbox-background.mat-checkbox-background {
+        background-color: $textbox-border;
+    }
+    // MWIT-533
+    .mat-checkbox-frame {
+        background: $background-white-color;
+        border: 1px solid $non-vdk-19-grey;
+        border-radius: 0;
+    }
+    .mat-checkbox-checkmark-path {
+        stroke-width: 1.5px;
+    }
+}
+
+.mat-form-field {
+    font-size: 14px !important;
+}
+
+.mat-form-field .mat-select.mat-select-invalid .mat-select-arrow {
+    //spk/cleanup -color: BLACK;
+    color: $title-color;
+}
+
+.mat-form-field .mat-select.mat-select-invalid .mat-form-field-underline {
+    //spk/cleanup - color: $non-vdk-20-black !important;
+    //spk/cleanup - background-color: $non-vdk-20-black !important;
+    background-color: $non-vdk-20-black!important;
+    color: $non-vdk-20-black !important;
+}
+
+.mat-form-field-invalid .mat-form-field-ripple {
+    //spk/cleanup - background-color: $non-vdk-20-black;
+    background-color: $non-vdk-20-black;
+}
+
+.mat-form-field-invalid .mat-form-field-label {
+    //spk/cleanup -  color: $non-vdk-3-grey;
+    color: $non-vdk-3-grey;
+}
+
+.mat-form-field .mat-form-field-label {
+    //spk/cleanup - color: $non-vdk-3-grey !important;
+    color: $non-vdk-3-grey !important;
+    @include Roboto(light);
+    font-size: 14px;
+    margin-top: 14px;
+    margin-bottom: 10px;
+}
+
+.mat-form-field .mat-focused .mat-primary .mat-select-arrow {
+    //spk/cleanup - color: black !important;
+    color: $title-color;
+}
+
+.mat-form-field-infix {
+    //spk/cleanup - color: $non-vdk-21-black;
+    color: $non-vdk-21-black;
+    text-decoration-color: transparent;
+}
+
+.mat-raised-button {
+    box-shadow: none !important;
+}
+
+.filter-container {
+    mat-pseudo-checkbox.mat-pseudo-checkbox.mat-pseudo-checkbox-checked.mat-pseudo-checkbox-disabled::after {
+        //spk/cleanup -  border-bottom: 2px solid $non-vdk-11-grey !important;
+        //spk/cleanup -  border-left: 2px solid $non-vdk-11-grey !important;
+        border-bottom: 2px solid $non-vdk-11-grey!important;
+        border-left: 2px solid $non-vdk-11-grey !important;
+    }
+    // MWIT-554
+    .mat-button-ripple {
+        border-radius: 5px;
+    }
+    .mat-pseudo-checkbox {
+        height: 20px;
+        width: 20px;
+        //spk/cleanup - border: 1px solid $non-vdk-19-grey;
+        border: 1px solid $non-vdk-19-grey;
+        border-radius: 0;
+    }
+}
+
+.benefits-accordion .mat-expansion-indicator {
+    @extend %flexbox;
+}

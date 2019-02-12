@@ -1,0 +1,19 @@
+export class Plan {
+  ProdDesc: string;
+  subscriberNum: string;
+  CopayInfo: string;
+
+  constructor(planObj = null) {
+    if (planObj) {
+      this.ProdDesc = planObj.ProdDesc;
+      this.subscriberNum = planObj.subscriberNum;
+      this.CopayInfo = planObj.CopayInfo;
+    }
+  }
+}
+
+export interface RadioList {
+  value: string;
+  text: string;
+  checked: boolean;
+}

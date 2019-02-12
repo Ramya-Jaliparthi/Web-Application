@@ -1,0 +1,33 @@
+<div class="row m-0">
+  <h1 class="form-header">Forgot Username?</h1>
+  <form autocomplete="off" [formGroup]="forgotUsernameForm" (ngSubmit)="onSubmit()" novalidate>
+    <div class="card-content">
+      <div class="row">
+        <div class="input-field col s12 pd-0">
+          <input placeholder="" id="email" type="text" maxLength="100" class="validate fluid-width" formControlName="email"
+            appAutofocus />
+          <label for="email" class="active">Email</label>
+          <app-control-messages [control]="forgotUsernameForm.controls.email" [controlName]="'email'"></app-control-messages>
+        </div>
+        <br>
+        <br>
+        <br>
+        <h2 class="text-center line-through">
+          <span class="content">OR</span>
+        </h2>
+        <div class="input-field col s12 pd-0">
+          <input placeholder="" id="mobile" type="text" [textMask]="{mask: phoneMask, guide: false}" class="validate fluid-width"
+            formControlName="mobile">
+          <label for="mobile" class="active">Mobile number</label>
+          <span class="font-13-grey">123-123-1234</span>
+          <app-control-messages [control]="forgotUsernameForm.controls.mobile" [controlName]="'mobile'"></app-control-messages>
+        </div>
+      </div>
+    </div>
+    <div class="submit-action">
+      <button class="waves-effect waves-light btn btn-block  mt-20 mb-20 btn-full-width br-8" type="submit" name="action"
+        [disabled]='forgotUsernameForm.controls.email.invalid && forgotUsernameForm.controls.mobile.invalid'>Continue
+      </button>
+    </div>
+  </form>
+</div>

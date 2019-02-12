@@ -1,0 +1,39 @@
+<div style="margin-top:20px;">
+  <div class="row" style="margin-left: 0px; margin-right: 0px;">
+    <div class="col pd-0 l8 m12 s12 pb-10">
+      <div *ngIf="fpocontentData1">
+
+        <a href="{{fpocontentData1?.ArticleUrl}}"><img class="img-width" *ngIf="!fpocontentData1?.VideoUrl && !ismobile && fpocontentData1 && fpocontentData1.RegularImages" src="{{ environment.drupalTestUrl + fpocontentData1?.RegularImages}}"
+        /></a>
+
+
+        <div>
+          <a class="fpocontent" href="{{fpocontentData1?.ArticleUrlText}}">{{ fpocontentData1?.ArticleText }}</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="col l4 m12 s12 pd-0   ">
+
+      <div *ngIf="fpocontentData2" class="ml-10">
+
+        <a href="{{fpocontentData2?.ArticleUrl}}"> <img class="img-width" *ngIf="!fpocontentData2?.VideoUrl && !ismobile && fpocontentData2 && fpocontentData2.RegularImages" src="{{ environment.drupalTestUrl + fpocontentData2?.RegularImages}}"
+        /></a>
+
+        <img class="img-width" *ngIf="!fpocontentData2?.VideoUrl && ismobile && fpocontentData2 && fpocontentData2.MobileImages" src="{{ environment.drupalTestUrl  +fpocontentData2?.MobileImages}}"
+        />
+
+        <div *ngIf="fpocontentData2?.VideoUrl" class="video-label" >
+          <img class="img-width" *ngIf="fpocontentData2?.VideoUrl && !ismobile" src="{{ environment.drupalTestUrl +fpocontentData2?.RegularImages}}" alt="default image">
+          <img class="img-width" *ngIf="fpocontentData2?.VideoUrl && ismobile" src="{{ environment.drupalTestUrl + fpocontentData2?.MobileImages}}" alt="default image">
+        </div>
+
+        <div>
+          <a class="fpocontent" href="{{fpocontentData2?.ArticleUrlText}}">{{ fpocontentData2?.ArticleText }}</a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+

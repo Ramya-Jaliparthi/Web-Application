@@ -1,0 +1,65 @@
+@import '../_colors';
+// My Medication - taking css
+.calendar-main-container {
+    .mat-calendar-arrow {
+        visibility: hidden !important;
+        display: none !important;
+    }
+    .mat-calendar-next-button {
+        display: table-footer-group !important;
+        position: absolute !important;
+        float: right !important;
+        right: 0px !important;
+        color: $selected-background-color !important;
+    }
+    .mat-calendar-period-button {
+        display: table-row-group !important;
+        position: absolute !important;
+        float: left !important;
+        left: 34% !important;
+        color: $non-vdk-28-black !important;
+    }
+    .mat-calendar-previous-button {
+        left: 0px !important;
+        position: absolute !important;
+        display: table-header-group !important;
+        float: left !important;
+        color: $selected-background-color !important;
+    }
+    .mat-calendar-spacer {
+        display: hidden !important;
+    }
+    .mat-calendar-controls {
+        display: table !important;
+        padding-bottom: 10px !important;
+        height: 36px;
+    }
+    .mat-calendar-body-label {
+        visibility: hidden !important;
+    }
+    .mat-calendar-body-label[colspan="7"] {
+        display: none !important;
+    }
+    .mat-calendar-table-header-divider {
+        display: none;
+    }
+    thead.mat-calendar-table-header {
+        border: none;
+    }
+    button:focus {
+        background-color: $background-white-color !important;
+    }
+    .mat-calendar-body-today.mat-calendar-body-selected {
+        -webkit-box-shadow: none;
+        background-color: $text-primary-color !important;
+    }
+    .mat-calendar-body-cell-content {
+        border-radius: 50% !important;
+    }
+}
+
+.calendar-min-height {
+    .mat-list-item-content {
+        display: inherit !important;
+    }
+}

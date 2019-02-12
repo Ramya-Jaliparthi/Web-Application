@@ -1,0 +1,1203 @@
+/* You can add global styles to this file, and also import other style files */
+
+// spk/cleanup - added new files
+@import 'assets/styles/_global';
+@import 'assets/fonts/fontawesome-all';
+@import "../node_modules/materialize-css/dist/css/materialize.css";
+@import '~@angular/material/prebuilt-themes/indigo-pink.css';
+@import "assets/styles/_forms";
+@import "assets/styles/_variables";
+@import "assets/styles/_fonts";
+@import "assets/styles/_spacing";
+@import "assets/styles/_typography";
+@import 'assets/styles/_variables';
+@import 'assets/styles/_button';
+// spk/cleanup - added new files
+@import 'assets/styles/_unused';
+@import 'assets/styles/_unmaped';
+@import 'assets/styles/_flex';
+//Component level MAT controls customization
+@import 'app/pages/mypreferences/mypreferences/mypreferences.mat.scss';
+@import 'app/pages/mypreferences/notification-detail/notification-detail.mat.scss';
+@import 'app/pages/mypreferences/notifications/notifications.mat.scss';
+@import 'app/pages/mypreferences/delivery/delivery.mat.scss';
+@import 'app/pages/mypreferences/delivery-financial/delivery-financial.mat';
+// message center
+@import 'app/pages/message-center/msg-listing/msg-listing.mat';
+@import 'app/pages/myded-co/drupalpages/glossary/glossary.mat';
+// My Medication - taking css
+@import 'assets/styles/mat-controls/_mat-calendar';
+@import 'assets/styles/mat-controls/_mat-checkbox';
+@import 'assets/styles/mat-controls/_mat-dialog-container';
+@import 'assets/styles/mat-controls/_mat-radio';
+@import 'assets/styles/mat-controls/_mat-calendar';
+@import 'assets/styles/mat-controls/_mat-checkbox';
+@import 'assets/styles/mat-controls/_mat-calendar';
+@import 'assets/styles/mat-controls/_mat-checkbox';
+@import 'assets/styles/mat-controls/_mat-calendar';
+@import 'assets/styles/mat-controls/_mat-checkbox';
+@import 'assets/styles/mat-controls/_mat-dropdown';
+@import 'app/pages/medications/mat-medications';
+@import 'app/pages/myclaims/mat-claims';
+@import 'app/pages/landing/homepage';
+// My Cards & Order Replacement - taking css
+@import 'app/pages/mycards/_mat-mycards';
+@import 'app/pages/orderreplacement/_mat-orderreplacement';
+@import 'assets/fonts/_robotofonts';
+// @import 'assets/styles/Global';
+//$hideOpacity: false;
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Roboto;
+}
+
+//Temporarily added for header dialog popups. Will add logic later.
+.cdk-overlay-backdrop.cdk-overlay-backdrop-showing {
+    opacity: 1;
+    //@if ($hideOpacity) { // visualizing layout internals
+    //opacity: 0;
+    //}
+}
+
+@media (min-width: 601px) and (max-width: 710px) {
+    input:not([type]).validate+label,
+    input[type=text]:not(.browser-default).validate+label,
+    input[type=password]:not(.browser-default).validate+label,
+    input[type=email]:not(.browser-default).validate+label,
+    input[type=url]:not(.browser-default).validate+label,
+    input[type=time]:not(.browser-default).validate+label,
+    input[type=date]:not(.browser-default).validate+label,
+    input[type=datetime]:not(.browser-default).validate+label,
+    input[type=datetime-local]:not(.browser-default).validate+label,
+    input[type=tel]:not(.browser-default).validate+label,
+    input[type=number]:not(.browser-default).validate+label,
+    input[type=search]:not(.browser-default).validate+label,
+    textarea.materialize-textarea.validate+label {
+        width: max-content !important;
+    }
+}
+
+@media (min-width: 215px) and (max-width: 376px) {
+    input:not([type]).validate+label,
+    input[type=text]:not(.browser-default).validate+label,
+    input[type=password]:not(.browser-default).validate+label,
+    input[type=email]:not(.browser-default).validate+label,
+    input[type=url]:not(.browser-default).validate+label,
+    input[type=time]:not(.browser-default).validate+label,
+    input[type=date]:not(.browser-default).validate+label,
+    input[type=datetime]:not(.browser-default).validate+label,
+    input[type=datetime-local]:not(.browser-default).validate+label,
+    input[type=tel]:not(.browser-default).validate+label,
+    input[type=number]:not(.browser-default).validate+label,
+    input[type=search]:not(.browser-default).validate+label,
+    textarea.materialize-textarea.validate+label {
+        width: max-content !important;
+    }
+}
+
+@media (min-width: 993px) and (max-width: 1125px) {
+    input:not([type]).validate+label,
+    input[type=text]:not(.browser-default).validate+label,
+    input[type=password]:not(.browser-default).validate+label,
+    input[type=email]:not(.browser-default).validate+label,
+    input[type=url]:not(.browser-default).validate+label,
+    input[type=time]:not(.browser-default).validate+label,
+    input[type=date]:not(.browser-default).validate+label,
+    input[type=datetime]:not(.browser-default).validate+label,
+    input[type=datetime-local]:not(.browser-default).validate+label,
+    input[type=tel]:not(.browser-default).validate+label,
+    input[type=number]:not(.browser-default).validate+label,
+    input[type=search]:not(.browser-default).validate+label,
+    textarea.materialize-textarea.validate+label {
+        width: max-content !important;
+    }
+}
+
+@media (min-width: 715px) and (max-width: 876px) {
+    input:not([type]).validate+label,
+    input[type=text]:not(.browser-default).validate+label,
+    input[type=password]:not(.browser-default).validate+label,
+    input[type=email]:not(.browser-default).validate+label,
+    input[type=url]:not(.browser-default).validate+label,
+    input[type=time]:not(.browser-default).validate+label,
+    input[type=date]:not(.browser-default).validate+label,
+    input[type=datetime]:not(.browser-default).validate+label,
+    input[type=datetime-local]:not(.browser-default).validate+label,
+    input[type=tel]:not(.browser-default).validate+label,
+    input[type=number]:not(.browser-default).validate+label,
+    input[type=search]:not(.browser-default).validate+label,
+    textarea.materialize-textarea.validate+label {
+        width: max-content !important;
+    }
+}
+
+.input-field.col label {
+    left: 0rem;
+}
+
+.input-group-addon {
+    cursor: pointer;
+    border-radius: 50px;
+    background: $background-title-separator-color 100%;
+    color: white;
+    @include Roboto(medium);
+    font-size: 11px;
+    width: 55.9px;
+    height: 18px;
+    line-height: 18px;
+    letter-spacing: -0.01px;
+}
+
+.input-group-addon:hover {
+    // background: #0D53D4;
+}
+
+.input-field {
+    label {
+        color: $title-color;
+        font-size: 18px;
+        @include Roboto(bold);
+    }
+    input:focus+label {
+        color: $background-title-separator-color !important;
+    }
+    mat-form-field.mat-select-custom-focused+label {
+        color: $background-title-separator-color;
+    }
+    mat-form-field.mat-select-custom-focused.mat-primary .mat-select-arrow {
+        color: $background-title-separator-color !important;
+        border-bottom: 5px solid;
+        border-top: 0px solid;
+    }
+    /* Inline Error Messages start */
+    input.ng-touched.ng-invalid+label {
+        color: $error-alert-color;
+    }
+    input.ng-touched.ng-invalid+label {
+        color: $error-alert-color;
+    }
+    input:focus.ng-touched.ng-invalid+label {
+        color: $error-alert-color !important;
+    }
+    /* Inline Error Messages End */
+}
+
+input::-webkit-input-placeholder {
+    color: $non-vdk-3-grey;
+}
+
+input:-moz-placeholder {
+    color: $non-vdk-3-grey;
+}
+
+input:focus:-moz-placeholder {
+    color: $non-vdk-3-grey;
+}
+
+input::-moz-placeholder {
+    color: $non-vdk-3-grey;
+}
+
+input:focus::-moz-placeholder {
+    color: $non-vdk-3-grey;
+}
+
+
+/* Internet Explorer 10 */
+
+input:-ms-input-placeholder {
+    color: $non-vdk-3-grey !important;
+}
+
+[type="checkbox"].filled-in+label:after {
+    border-radius: 0;
+}
+
+[type="checkbox"].filled-in:checked+label:after {
+    top: 0;
+    width: 22px;
+    height: 22px;
+    border: 1px solid $non-vdk-19-grey;
+    background-color: $non-vdk-19-grey;
+    z-index: 0;
+}
+
+/*
+Below issues fixed. $non-vdk-1 and $non-vdk-2 are unused.
+$non-vdk-1 changed to $background-title-separator-color(#1866A3)
+$non-vdk-2 changed to $background-title-separator-color(#1866A3)
+*/
+[type="checkbox"].filled-in:checked+label:before {
+    border-right: 2px solid $background-title-separator-color;
+    border-bottom: 2px solid $background-title-separator-color;
+    top: 0px;
+    left: 2px;
+    width: 8px;
+    height: 15px;
+    @media only screen and (max-width: 1024px) {
+        border-right: 2px solid $background-title-separator-color;
+        border-bottom: 2px solid $background-title-separator-color;
+        top: 1px;
+        left: 1px;
+        width: 8px;
+        height: 15px;
+    }
+}
+
+[type="checkbox"].filled-in:not(:checked)+label:after {
+    border: 1px solid $non-vdk-19-grey;
+    width: 1.63rem;
+    height: 1.63rem;
+}
+
+.tabs {
+    .indicator {
+        height: 5px;
+        background-color: $non-vdk-1;
+    }
+}
+
+/*.btn,
+.btn:hover,
+.btn:focus {
+    background-color: $background-title-separator-color;
+    box-shadow: 0 0px 0px 0 rgba(0, 0, 0, 0), 0px 0px 0px 0 rgba(0, 0, 0, 0), 0 0px 0px 0px rgba(0, 0, 0, 0);
+}*/
+
+@media screen and (max-width: 599px) {
+    .desktop-hidden {
+        display: block;
+    }
+    .mobile-hidden {
+        display: none !important;
+    }
+    .menu-bar {
+        nav .nav-wrapper a {
+            color: $non-vdk-3-grey;
+            border-bottom: none;
+            bottom: 77px;
+        }
+        .side-nav li a {
+            color: black !important;
+            border-bottom: 1px solid black !important;
+        }
+    }
+}
+
+@media (min-width: 600px) and (max-width: 601px) {
+    .desktop-hidden {
+        display: block;
+    }
+    .mobile-hidden {
+        display: none !important;
+    }
+    .menu-bar {
+        nav .nav-wrapper a {
+            color: grey;
+            border-bottom: none;
+            bottom: 77px;
+        }
+        .side-nav li a {
+            color: black !important;
+            border-bottom: 1px solid black !important;
+        }
+    }
+    #sidenav-overlay {
+        top: 15% !important;
+    }
+}
+
+@media screen and (min-width: 602px) {
+    .desktop-hidden {
+        display: none !important;
+    }
+    .menu-bar {
+        nav a {
+            color: $title-color !important;
+            border-bottom: 1px solid black !important;
+            height: 50px;
+        }
+    }
+}
+
+.dont-have-account {
+    border-right: solid 1px white;
+    padding-right: 36px !important;
+}
+
+// For Small and Medium devices
+@media only screen and (max-width: 992px) {}
+
+//for large devices
+@media only screen and (min-width: 993px) {
+    .container {
+        width: 90%;
+    }
+}
+
+// To remove the chrome autofill yellow color
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+    -webkit-transition-delay: 9999s;
+    -webkit-transition: color 9999s ease-out, background-color 9999s ease-out;
+}
+
+input:focus:-webkit-autofill,
+input:focus:-webkit-autofill:hover,
+input:focus:-webkit-autofill:focus,
+input:focus:-webkit-autofill:active {
+    -webkit-transition-delay: 9999s;
+    -webkit-transition: color 9999s ease-out, background-color 9999s ease-out;
+}
+
+input:not([type]),
+input[type=text]:not(.browser-default),
+input[type=password]:not(.browser-default),
+input[type=email]:not(.browser-default),
+input[type=url]:not(.browser-default),
+input[type=time]:not(.browser-default),
+input[type=date]:not(.browser-default),
+input[type=datetime]:not(.browser-default),
+input[type=datetime-local]:not(.browser-default),
+input[type=tel]:not(.browser-default),
+input[type=number]:not(.browser-default),
+input[type=search]:not(.browser-default),
+textarea.materialize-textarea {
+    // margin-top: 6px;
+    height: 40px;
+    margin-bottom: 0px;
+    font-size: 14px;
+    // padding-top: 4px; MWIT-887 fix
+    margin-top: 4px;
+}
+
+input.valid:not([type]),
+input.valid:not([type]):focus,
+input[type=text].valid:not(.browser-default),
+input[type=text].valid:not(.browser-default):focus,
+input[type=password].valid:not(.browser-default),
+input[type=password].valid:not(.browser-default):focus,
+input[type=email].valid:not(.browser-default),
+input[type=email].valid:not(.browser-default):focus,
+input[type=url].valid:not(.browser-default),
+input[type=url].valid:not(.browser-default):focus,
+input[type=time].valid:not(.browser-default),
+input[type=time].valid:not(.browser-default):focus,
+input[type=date].valid:not(.browser-default),
+input[type=date].valid:not(.browser-default):focus,
+input[type=datetime].valid:not(.browser-default),
+input[type=datetime].valid:not(.browser-default):focus,
+input[type=datetime-local].valid:not(.browser-default),
+input[type=datetime-local].valid:not(.browser-default):focus,
+input[type=tel].valid:not(.browser-default),
+input[type=tel].valid:not(.browser-default):focus,
+input[type=number].valid:not(.browser-default),
+input[type=number].valid:not(.browser-default):focus,
+input[type=search].valid:not(.browser-default),
+input[type=search].valid:not(.browser-default):focus,
+textarea.materialize-textarea.valid,
+textarea.materialize-textarea.valid:focus,
+.select-wrapper.valid>input.select-dropdown {
+    //border-bottom: 1px solid lightgrey !important;
+    //box-shadow: 0 0 0 0 #4CAF50 !important;
+}
+
+input[type=text]:not(.browser-default):focus:not(readonly),
+input[type=password]:not(.browser-default):focus:not(readonly) {
+    border-bottom: 1px solid $title-color !important;
+    box-shadow: 0 0 0 0 $non-vdk-5-brown !important;
+}
+
+//.auth-shadow {
+//    //background: url("assets/images/shadow.png") no-repeat;
+//    //background-size: 100%;
+//    //display: block;
+//    //position: relative;
+//    //height: 0;
+//    //padding-bottom: 0.3%;
+//    //background-position-y: -7px;
+//    //background-color: #1866a3;
+//    padding: 0.15rem;
+//    background: $primary-color;
+//}
+
+.alert-shadow {
+    background: url("assets/images/shadow.png") no-repeat $text-white-color;
+    background-size: 100%;
+    display: block;
+    position: relative;
+    height: 0;
+    padding-bottom: 3%;
+    background-position-y: 0px;
+}
+
+.mat-accordion .mat-radio-group {
+    .mat-radio-label-content.mat-radio-label-before, .mat-radio-label, .mat-radio-button {
+        width: 100%;
+    }
+}
+
+.filter-container {
+    .mat-radio-container {
+        position: absolute !important;
+        right: 8px !important;
+        /*
+    right: 13px !important;
+drop3--> MyBlueWeb3.0-v3.2.2-QA-API-Drop3Master*/
+        top: 0;
+        bottom: 0;
+        margin-top: auto;
+        margin-bottom: auto;
+    }
+    .mat-radio-ripple {
+        left: unset !important;
+    }
+    .mat-list-item-content {
+        height: auto !important;
+        padding: 0.5rem 4px 0 0 !important;
+        /*
+    padding: 0.5rem 10px 0px 0px !important;
+drop3--> MyBlueWeb3.0-v3.2.2-QA-API-Drop3Master*/
+    }
+    .list .mat-list .mat-list-item {
+        height: auto !important;
+        /* To avoid calculated height from mat-line-x classes */
+    }
+    .mat-radio-label-content.mat-radio-label-before {
+        color: $title-color;
+        font-size: 14px;
+        width:  100%;
+    }
+    .mat-list-text {
+        font-size: 14px;
+        padding: 0 0px 0 0 !important;
+    }
+    .mat-list-item-disabled .mat-list-text {
+        color: $non-vdk-11-grey !important;
+        @include Roboto(regular);
+        font-size: 14px;
+    }
+    span.mat-content {
+        font-size: 16px;
+        @include Roboto(medium);
+    }
+    mat-expansion-panel {
+        box-shadow: none !important;
+        border-bottom: 1px solid $non-vdk-27-blue !important;
+        margin: 0 0 0.5rem !important;
+        padding: 0 0 0.5rem;
+    }
+    .mat-radio-button.mat-accent.mat-radio-checked .mat-radio-outer-circle {
+        border-color: grey !important;
+    }
+    .mat-radio-button.mat-accent .mat-radio-inner-circle {
+        background-color: $background-title-separator-color !important;
+    }
+    mat-expansion-panel-header {
+        padding: 0 16px 0 0 !important;
+        margin: 0 0 0 1rem !important;
+    }
+    .mat-expansion-panel-body {
+        margin: 0 !important;
+        //  overflow: hidden !important;
+    }
+    .mat-radio-button.mat-accent .mat-radio-ripple .mat-ripple-element {
+        background-color: transparent !important;
+    }
+    .mat-expansion-panel-content {
+        margin: 0 0 0 1rem !important;
+    }
+    .mat-expansion-indicator {
+        margin-right: -1px;
+    }
+    .mat-expansion-indicator::after {
+        margin: -10px 0 0px 0px !important;
+        padding: 2px !important;
+        color: $headings-dark-color !important;
+        width: 10px;
+        height: 10px;
+        border-left-color: transparent;
+    }
+    .mat-expansion-indicator[ng-trigger-indicatorRotate] {
+        margin-right: 3px !important;
+    }
+    .mat-icon svg {
+        fill: $background-title-separator-color;
+    }
+    mat-hint.mat-hint-message {
+        color: $text-gray-color;
+    }
+    .mat-selection-list .mat-list-item .mat-list-text,
+    .mat-selection-list .mat-list-option .mat-list-text {
+        color: $black_color;
+    }
+    .mat-list-item.mat-list-item {
+        color: $black_color !important;
+        height: 44px;
+    }
+    .mat-raised-button {
+        min-width: 138px;
+    }
+    @media (min-width: 993px) {
+        .mat-raised-button {
+            min-width: 110px;
+        }
+    }
+    .medicare-filter-inner-btn {
+        .filter-btn {
+            .filter-menu-with-action {
+                .material-icons {
+                    font-size: 36px;
+                    color: $headings-dark-color
+                }
+            }
+        }
+    }
+}
+
+// For Request Estimate
+.request-estimate-container {
+    .alert {
+        div {
+            margin-top: 0 !important;
+        }
+    }
+    mat-radio-group {
+        mat-radio-button {
+            .mat-radio-container {
+                height: 26px;
+                width: 26px;
+            }
+        }
+    }
+}
+
+.mat-list-option.mat-list-item-focus,
+.mat-list-option:hover,
+.mat-nav-list .mat-list-item.mat-list-item-focus,
+.mat-nav-list .mat-list-item:hover {
+    background: none !important;
+    outline-color: $text-white-color !important;
+}
+
+.claims-full-container,
+.side-nav-container {
+    .mat-drawer-container {
+        background-color: $non-vdk-7-grey !important;
+    }
+    .mat-drawer-backdrop {
+        display: none !important;
+    }
+    mat-sidenav,
+    mat-sidenav.md-locked-open,
+    mat-sidenav.md-closed.md-locked-open-add-active {
+        min-width: 200px !important;
+        width: 85vw !important;
+        max-width: 23% !important;
+    }
+}
+
+.filter-item {
+    .header-panel {
+        span.mat-content {
+            @include Roboto(bold);
+            font-size: 16px;
+            color: $headings-dark-color;
+            letter-spacing: -0.26px;
+        }
+    }
+}
+
+@media (max-width: 992px) {
+    .claims-full-container {
+        mat-sidenav,
+        mat-sidenav.md-locked-open,
+        mat-sidenav.md-closed.md-locked-open-add-active {
+            width: 100% !important;
+            max-width: 100% !important;
+        }
+    }
+}
+
+@media only screen and (min-device-width: 768px) and (max-device-width: 1024px) and (orientation: landscape) {
+    .claims-full-container {
+        mat-sidenav,
+        mat-sidenav.md-locked-open,
+        mat-sidenav.md-closed.md-locked-open-add-active {
+            max-width: 25% !important;
+        }
+    }
+}
+
+input.valid:not([type]),
+input.valid:not([type]):focus,
+input[type=text].valid:not(.browser-default),
+input[type=text].valid:not(.browser-default):focus,
+input[type=password].valid:not(.browser-default),
+input[type=password].valid:not(.browser-default):focus,
+input[type=email].valid:not(.browser-default),
+input[type=email].valid:not(.browser-default):focus,
+input[type=url].valid:not(.browser-default),
+input[type=url].valid:not(.browser-default):focus,
+input[type=time].valid:not(.browser-default),
+input[type=time].valid:not(.browser-default):focus,
+input[type=date].valid:not(.browser-default),
+input[type=date].valid:not(.browser-default):focus,
+input[type=datetime].valid:not(.browser-default),
+input[type=datetime].valid:not(.browser-default):focus,
+input[type=datetime-local].valid:not(.browser-default),
+input[type=datetime-local].valid:not(.browser-default):focus,
+input[type=tel].valid:not(.browser-default),
+input[type=tel].valid:not(.browser-default):focus,
+input[type=number].valid:not(.browser-default),
+input[type=number].valid:not(.browser-default):focus,
+input[type=search].valid:not(.browser-default),
+input[type=search].valid:not(.browser-default):focus,
+textarea.materialize-textarea.valid,
+textarea.materialize-textarea.valid:focus,
+.select-wrapper.valid>input.select-dropdown {
+    border-bottom: 1px solid $non-vdk-6-grey;
+    box-shadow: none;
+}
+
+.form-submitted {
+    input:focus+label {
+        color: $background-title-separator-color;
+    }
+    input.ng-invalid+label {
+        color: $error-alert-color;
+    }
+}
+
+.date-picker {
+    button:focus {
+        background-color: transparent !important;
+        color: $text-white-color
+    }
+}
+
+#sidenav-overlay {
+    background: none;
+}
+
+.mb-zero {
+    margin-bottom: 0;
+}
+
+.claims-pad-left {
+    padding-left: 2%;
+}
+
+.claims-pad-right {
+    padding-right: 2%;
+}
+
+.claims-pad-left-zero {
+    padding-left: 0;
+}
+
+.grey-border {
+    border-left-color: $non-vdk-8-grey !important;
+}
+
+.green-border {
+    border-left-color: $non-vdk-9-green !important;
+}
+
+.red-border {
+    border-left-color: $non-vdk-10-red !important;
+}
+
+.green-text {
+    color: $non-vdk-9-green;
+}
+
+.red-text {
+    color: $non-vdk-10-red;
+}
+
+.grey-text {
+    color: $non-vdk-8-grey;
+}
+
+.bold-text {
+    font-size: 16px;
+    @include Roboto(bold);
+}
+
+.bold {
+    @include Roboto(bold);
+    font-size: 14px !important;
+    font-weight: 700 !important;
+    color: $text-normal-color !important;
+    line-height: 18px !important;
+}
+
+.claims-shadow {
+    background: url("assets/images/shadow.png") $non-vdk-7-grey no-repeat;
+    background-size: 100%;
+    display: block;
+    position: relative;
+    height: 0;
+    padding-bottom: 1.6%;
+    background-position-y: -7px;
+}
+
+input.valid:not([type]),
+input.valid:not([type]):focus,
+input[type=text].valid:not(.browser-default),
+input[type=text].valid:not(.browser-default):focus,
+input[type=password].valid:not(.browser-default),
+input[type=password].valid:not(.browser-default):focus,
+input[type=email].valid:not(.browser-default),
+input[type=email].valid:not(.browser-default):focus,
+input[type=url].valid:not(.browser-default),
+input[type=url].valid:not(.browser-default):focus,
+input[type=time].valid:not(.browser-default),
+input[type=time].valid:not(.browser-default):focus,
+input[type=date].valid:not(.browser-default),
+input[type=date].valid:not(.browser-default):focus,
+input[type=datetime].valid:not(.browser-default),
+input[type=datetime].valid:not(.browser-default):focus,
+input[type=datetime-local].valid:not(.browser-default),
+input[type=datetime-local].valid:not(.browser-default):focus,
+input[type=tel].valid:not(.browser-default),
+input[type=tel].valid:not(.browser-default):focus,
+input[type=number].valid:not(.browser-default),
+input[type=number].valid:not(.browser-default):focus,
+input[type=search].valid:not(.browser-default),
+input[type=search].valid:not(.browser-default):focus,
+textarea.materialize-textarea.valid,
+textarea.materialize-textarea.valid:focus,
+.select-wrapper.valid>input.select-dropdown {
+    border-bottom: 1px solid $non-vdk-6-grey;
+    box-shadow: none;
+}
+
+.select-field {
+    label {
+        //z-index: 1;
+        font-size: 14px;
+    }
+}
+
+body ng-component {
+    display: block;
+}
+
+.line-through {
+    position: relative;
+}
+
+.line-through .content {
+    background: $text-white-color;
+    padding: 0 15px;
+}
+
+.line-through:before {
+    border-top: 1px solid $non-vdk-22-grey;
+    content: "";
+    margin: 0 auto;
+    position: absolute;
+    top: 50%;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: 100%;
+    z-index: -1;
+}
+
+.mat-select {
+    padding-top: 10px;
+}
+
+.mat-expansion-panel-body {
+    padding: 0 !important;
+}
+
+.flex {
+    @extend %flexbox;
+}
+
+.flex-row-reverse {
+    @include flex-direction(row-reverse);
+}
+
+.benefits-accordion .mat-expansion-indicator {
+    @extend %flexbox;
+}
+
+@media (max-width: 991px) {
+    .filter-container .mat-radio-container {
+        right: 18px !important;
+    }
+    .mat-pseudo-checkbox {
+        margin-right: 8px;
+    }
+}
+
+@media (min-width: 992px) {
+    .filter-container .mat-radio-container {
+        right: 13px !important;
+    }
+    .mat-pseudo-checkbox {
+        margin-right: 6px;
+    }
+    .filter-container {
+        .mat-pseudo-checkbox {
+            margin-right: 6px;
+        }
+    }
+}
+
+.check-mark-only {
+    .mat-pseudo-checkbox {
+        width: 0px !important;
+        border: 0px !important;
+        padding-right: 20px;
+        background-color: white !important;
+    }
+    .mat-pseudo-checkbox:hover,
+    .mat-pseudo-checkbox:focus {
+        width: 0px !important;
+        border: 0px !important;
+        background-color: rgba(0, 0, 0, 0) !important;
+    }
+}
+
+// global styles for all forms.
+.form-header {
+    color: $header-color;
+    font-size: $header-font-size;
+    @include Roboto(light);
+    margin: 20px 0px !important;
+}
+
+.mat-content {
+    display: block !important;
+}
+
+.mat-list-option.mat-list-item-focus,
+.mat-list-option:hover {
+    background: none !important;
+}
+
+.mat-list-item-disabled {
+    background-color: $text-white-color !important;
+}
+
+.order-idcard-container {
+    .mat-list-item-content {
+        padding: 0 !important;
+    }
+	// api integration changes
+     .mat-checkbox-disabled .mat-checkbox-label {
+         color: #b0b0b0;
+     }
+    .mat-checkbox-disabled,
+    .mat-checkbox-label {
+        font-size: 14px !important;
+        color: $text-disabled-gray;
+    }
+    .mat-checkbox-checked.mat-accent .mat-checkbox-background.mat-checkbox-background {
+        background-color: $textbox-border;
+    }
+    // MWIT-533
+    .mat-checkbox-frame {
+        background: $text-white-color;
+        border: 1px solid $non-vdk-19-grey;
+        border-radius: 0;
+    }
+    .mat-checkbox-checkmark-path {
+        stroke-width: 1.5px;
+    }
+}
+
+.mat-form-field {
+    font-size: 14px !important;
+}
+
+.mat-form-field .mat-select.mat-select-invalid .mat-select-arrow {
+    color: BLACK;
+}
+
+.mat-form-field .mat-select.mat-select-invalid .mat-form-field-underline {
+    color: $non-vdk-20-black !important;
+    background-color: $non-vdk-20-black !important;
+}
+
+.mat-form-field-invalid .mat-form-field-ripple {
+    background-color: $non-vdk-20-black;
+}
+
+.mat-form-field-invalid .mat-form-field-label {
+    color: $non-vdk-3-grey;
+}
+
+.mat-form-field .mat-form-field-label {
+    color: $non-vdk-3-grey !important;
+    @include Roboto(light);
+    font-size: 14px;
+    margin-top: 14px;
+    margin-bottom: 10px;
+}
+
+.mat-form-field .mat-focused .mat-primary .mat-select-arrow {
+    color: black !important;
+}
+
+.mat-form-field-infix {
+    color: $non-vdk-21-black;
+    text-decoration-color: transparent;
+}
+
+.alert.alert-success[_ngcontent-c5] h4[_ngcontent-c5],
+.alert.alert-success[_ngcontent-c5] .material-icons[_ngcontent-c5] {
+    color: $title-color !important;
+}
+
+.mat-raised-button {
+    box-shadow: none !important;
+}
+
+.filter-container {
+    mat-pseudo-checkbox.mat-pseudo-checkbox.mat-pseudo-checkbox-checked.mat-pseudo-checkbox-disabled::after {
+        border-bottom: 2px solid $non-vdk-11-grey !important;
+        border-left: 2px solid $non-vdk-11-grey !important;
+    }
+    // MWIT-554
+    .mat-button-ripple {
+        border-radius: 5px;
+    }
+    .mat-pseudo-checkbox {
+        height: 20px;
+        width: 20px;
+        border: 1px solid $non-vdk-19-grey;
+        border-radius: 0;
+    }
+}
+
+input::-ms-clear,
+input::-ms-reveal {
+    display: none;
+}
+
+.mat-form-field-underline {
+    display: none;
+}
+
+.mat-inherit-underline {
+    .mat-form-field-underline {
+        display: inherit;
+        height:  1.3px;
+    }
+}
+
+.mat-form-field {
+    width: 100%;
+}
+
+.mat-input-element {
+    color: black !important;
+}
+
+.mat-select-arrow {
+    color: black !important;
+}
+
+.mat-form-field-invalid .mat-input-element,
+.mat-warn .mat-input-element {
+    caret-color: black;
+}
+
+.mat-input-element {
+    caret-color: black;
+}
+
+.mat-button-ripple {
+    border-radius: 8px !important;
+}
+
+.flex {
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+}
+
+.flex-row-reverse {
+    -webkit-box-direction: reverse;
+    -moz-box-direction: reverse;
+    -webkit-flex-direction: row-reverse;
+    -ms-flex-direction: row-reverse;
+    flex-direction: row-reverse;
+}
+
+.mat-raised-button {
+    box-shadow: none !important;
+}
+
+.link-error {
+    color: $link-color;
+    @include Roboto(medium);
+    font-size: 13px;
+    text-decoration: underline;
+}
+
+.link-error:hover {
+    color: $link-secondary-color;
+    text-decoration: none;
+}
+
+.link-error:focus {
+    color: $new-color;
+}
+
+.spinner {
+    background: rgba(0, 0, 0, 0.8) !important;
+    opacity: 1 !important;
+    opacity: unset !important;
+}
+.spinnerOverlay {
+    position: fixed;
+    padding: 0;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    z-index: 9997;
+    background: rgba(0, 0, 0, 0.8);
+    -webkit-transition: opacity 0.3s linear;
+    -moz-transition: opacity 0.3s linear;
+    -o-transition: opacity 0.3s linear;
+    transition: opacity 0.3s linear;
+}
+.spinner-show {
+    display: block;
+}
+.spinner-hide {
+    display: none;
+}
+.spinner-height-100 {
+    height: 100%;
+}
+
+.spinner-height-50 {
+    height: 50%;
+}
+
+.spinner-height-0 {
+    height: 0%;
+}
+
+.justify-spinner-center {
+    justify-content: flex-start;
+}
+
+.input-color-onsubmit {
+    .input-field input.ng-touched.ng-invalid + label {
+        color: #000000 !important;
+    }
+    .input-field input:focus.ng-touched.ng-invalid + label {
+        color: #1866A3 !important;
+    }
+}
+
+.web30Spinner {
+    background-color: #ffffff;
+    max-width: 170px;
+    min-height: 51px !important;
+    border-radius: 2%;
+    width: 170px;
+}
+
+@keyframes spinner {
+	0%, 100% { opacity: 0; }
+	50% { opacity: 1; }
+}
+
+@for $i from 0 through 9 {
+    $nthCount: $i + 1;
+    .web30Spinner div:nth-child(#{$nthCount}) {
+        width: 3.6px !important;
+        height: 20px;
+        margin-top: -29px;
+        margin-left: 28px !important;
+        position: absolute;
+        float: left;
+        top: 50%;
+        border-top: 9.6px solid #1866A3;
+        -webkit-transform: rotate($i * 36deg);
+        -moz-transform: rotate($i * 36deg);
+        -ms-transform: rotate($i * 36deg);
+        -o-transform: rotate($i * 36deg);
+        transform: rotate($i * 36deg);
+        transform-origin: 50% 100%;
+        -webkit-animation: spinner 1.2s (($i - 10) * 0.1s) infinite linear;
+        -moz-animation: spinner 1.2s (($i - 10) * 0.1s) infinite linear;
+        -ms-animation: spinner 1.2s (($i - 10) * 0.1s) infinite linear;
+        -o-animation: spinner 1.2s (($i - 10) * 0.1s) infinite linear;
+        animation: spinner 1.2s (($i - 10) * 0.1s) infinite linear;
+    }
+}
+.web30Spinner div:nth-child(11) {
+    margin-left: 60px;
+    border-top: 16.6px solid transparent;
+    color: #333333;
+    @include Roboto(bold);
+    font-size: 20px;
+    line-height: 19px;
+}
+
+
+// it should be moved - temporary one
+.message-center-search-component {
+
+  @media (min-width:993px) {
+    .mat-expansion-indicator {
+        margin-right: 10px;
+    }
+  }
+}
+
+.filter-single-checkbox-without-header {
+    .mat-list-item-content {
+        padding-bottom: 10px !important;
+        padding-top: 10px !important;
+        .mat-list-text {
+            @include Roboto(bold);
+            font-size: 16px !important;
+            color: $headings-dark-color !important;
+            letter-spacing: -0.26px;
+        }
+    }
+}
+
+mat-list.mat-list.filter-dedco-single-radio-button {
+    padding-bottom: 40px !important;
+    .mat-radio-label-content {
+      @include Roboto(bold);
+      font-size: 16px !important;
+      color: $headings-dark-color !important;
+      letter-spacing: -0.26px;
+    }
+}
+.my-dedco-container {
+    .mat-expansion-indicator::after {
+        margin: -10px 0 0px 0px !important;
+        padding: 2px !important;
+        color: $headings-dark-color !important;
+        width: 10px;
+        height: 10px;
+        border-left-color: transparent;
+        font-size: 13px;
+    }
+    .mat-expansion-indicator,.mat-expansion-panel-header-description{
+        color: $headings-dark-color !important;
+    }
+}

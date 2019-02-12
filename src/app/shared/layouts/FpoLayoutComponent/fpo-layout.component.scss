@@ -1,0 +1,209 @@
+@import '../../../../assets/styles/_fonts';
+
+.fpocontent {
+  ::ng-deep p {
+    font-size: 16px;
+    color: $text-normal-color;
+    @include Roboto(light);
+    line-height: 18px;
+  }
+
+  ;
+
+  ::ng-deep a {
+    cursor: pointer;
+    color: $link-primary-color;
+    text-decoration: underline;
+  }
+
+  ;
+
+  ::ng-deep a:focus {
+    cursor: pointer;
+    color: $link-color;
+    text-decoration: none;
+  }
+
+  ;
+
+  ::ng-deep a:hover {
+    cursor: pointer;
+    color: $link-secondary-color;
+    text-decoration: none;
+  }
+
+  .no-underline {
+    text-decoration: none;
+  }
+}
+
+;
+
+.img-width {
+  width: 100%;
+}
+
+.thumbnail {
+  height: 50px;
+  width: 50px;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+}
+
+.thumbnail-cont {
+  position: relative;
+  line-height: 0px;
+  margin-bottom:  20px;
+}
+
+.fontawesomeText {
+  ::ng-deep p {
+    font-size: 16px;
+    color: $text-normal-color;
+    @include Roboto(light);
+    line-height: 18px;
+    text-align: left !important;
+  }
+}
+
+
+
+#drupalVideoModal {
+  video {
+    z-index: 1999;
+    width :100%
+  }
+  .video-icon {
+    color: White;
+    cursor: pointer;
+    position: fixed;
+    right: 20px;
+    top: 20px;
+    z-index: 2000;
+  }
+}
+
+#drupalVideoModal {
+  display: none;
+  position: fixed;
+  left: 0;
+  right: 0;
+  background-color: unset;
+  padding: 0;
+  max-height: 100%;
+  width: 100%;
+  margin: auto;
+  overflow-y: auto;
+  border-radius: 2px;
+  will-change: top, opacity;
+  z-index: 999999 !important;
+  box-shadow: none;
+}
+
+.video-icon {
+  svg {
+    background: #043167;
+    color: #ffffff !important;
+    border-radius: 50%;
+  }
+}
+
+
+.fpo-btn-width {
+  float: left;
+  text-align: center;
+  height: 40px !important;
+  font-size: 14px;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+.icon-color-blue {
+  color: #1065A5;
+}
+
+.btn-findoutnow {
+  margin-top: 15px;
+}
+
+.fpo-mb-20 {
+  @media (max-width: 660px) {
+    margin-bottom: 20px !important;
+  }
+
+  @media (min-width: 661px) and (max-width: 992px) {
+    margin-bottom: 0px !important;
+  }
+}
+
+.fpo-content {
+  @include Roboto(light);
+  font-size: 18px;
+  color: $text-normal-color;
+}
+
+.fpo-bodytext {
+  ::ng-deep p {
+    margin: 0 auto;
+    text-align: center !important;
+    vertical-align: middle;
+    width: 380px;
+    line-height: 26px;
+  }
+}
+
+.central-layout-fpocontainer {
+  border-top: 1px solid $non-vdk-11-grey;
+  padding-top: 20px !important;
+}
+
+// .divider{
+//   // display: none;
+//   // @media (max-width: 630px){
+//      display: block;
+//      margin: 0 -15px;
+//      &:first-child{
+//       border-top: 1px solid #b2b2b2;
+//      }
+//      &:last-child{
+//       border-bottom: 1px solid #b2b2b2;
+//      }
+//   // }
+// }
+
+.title-drupal-pd {
+  padding-left: 10px;
+  padding-right: 0px;
+  @include Roboto(bold);
+  font-size: 13px;
+  color: $title-color;
+  text-align: left;
+  line-height: 16px;
+  .close-icon {
+      font-size: 20px;
+      color: $black-color;
+      text-align: right;
+  }
+}
+
+.fpo-service-content {
+  ::ng-deep a {
+      @include Roboto(light);
+      font-size: 13px;
+      color: $title-color;
+      text-align: left;
+      line-height: 19px;
+  }
+}
+
+.close-icon {
+  font-size: 24px;
+  color: $black-color;
+  text-align: right;
+  float: right;
+  cursor: pointer;
+}

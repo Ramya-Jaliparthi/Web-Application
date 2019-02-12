@@ -1,0 +1,21 @@
+<div class="text-center bg-color white-text">
+  <div class="text-right">
+    <mat-icon (click)="onNoClick()" class="cursor-pointer mr-10 mt-10">close</mat-icon>
+  </div>
+  <!--<mat-icon>add</mat-icon>-->
+  <h4>My Plan</h4>
+  <p>Insurance Terms</p>
+</div>
+<mat-dialog-content>
+  <div class="content">
+    <h3>Overall Deductible</h3>
+    <p class="mb-10">The dollar amount that a member must pay for health care services before a health plan will cover eligible services.</p>
+    <p>For example, if member's deductible is $500, the member will pay that amount, out-of-pocket, before the health plan will cover eligible services.</p>
+    <h3>Co-Pay</h3>
+    <p>A co-pay is a fixed amount you pay for a health care service, usually when you receive the service. The amount can vary by the
+      type of service. You may also have a co-pay when you get a prescription filled.</p>
+  </div>
+</mat-dialog-content>
+<mat-dialog-actions>
+  <button mat-button mat-dialog-close tabindex="-1" class="bg-color white-text btn-90">Close</button>
+</mat-dialog-actions>

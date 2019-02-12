@@ -1,0 +1,45 @@
+<section class="fad-search-list-component">
+  <mat-tab-group (selectedIndexChange)="onTabSelectionChange($event)">
+    <mat-tab label="List">
+      <section class="search-list-container">
+        <!-- Banner section to show the clear & delete buttons for mobile & desktop with fixed position (scrolling) -->
+        <!-- <div class="banner" *ngIf="isDisplayBanner"> -->
+        <!-- <div *ngIf="!isNoSearchResults && professionalsList && professionalsList.length>0 && isDisplayBanner" [class]="['banner',selectedProfessionals.length==0?'hidden':''].join(' ')">
+          <div class="wrapper">
+            <div class="row mb-0">
+              <div class="col l6 s12 push-l3">
+                <div class="mob-float">
+                  <div>
+                    <button type="button" class="btn btn-default clear-button" (click)="clearProfileSelections()">Clear</button>
+                    <button type="button" class="btn btn-primary ml-10 right" (click)="compareSelectedProfiles()">{{selectedProfessionals?.length}} selected to Compare</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div> -->
+        <!-- search List View Section-->
+        <div #profileCardList *ngIf="!isNoSearchResults && professionalsList && professionalsList.length>0">
+          <!-- <div [class]="['right hide-on-med-and-down',selectedProfessionals.length==0?'hidden':''].join(' ')">
+            <div>
+              <button type="button" class=" btn btn-default btn-default-ripple clear-button" (click)="clearProfileSelections()">Clear</button>
+              <button type="button" class=" btn btn-primary btn-primary-ripple ml-10" (click)="compareSelectedProfiles()">{{selectedProfessionals?.length}} selected to Delete</button>
+            </div>
+
+          </div> -->
+          <app-fad-profile-card *ngFor="let professional of professionalsList" (componentOutput)="onProfileCardComponentInteraction($event)"
+            [componentInput]="getProfileCardInput(professional)"></app-fad-profile-card>
+        </div>
+        <div *ngIf="isNoSearchResults || professionalsList===null || professionalsList.length===0">
+          <app-fad-no-docs-page [componentInput]="noSearchResultsPageData"></app-fad-no-docs-page>
+        </div>
+        <!-- End :: search List View Section-->
+      </section>
+    </mat-tab>
+    <!-- <mat-tab label="Map">
+      <section class='map-container'>
+        <div id='fad-search-list-map-content'></div>
+      </section>
+    </mat-tab> -->
+  </mat-tab-group>
+</section>

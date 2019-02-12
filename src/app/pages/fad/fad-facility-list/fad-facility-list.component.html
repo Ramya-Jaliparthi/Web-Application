@@ -1,0 +1,15 @@
+<section class="fad-facility-list-component">
+  <mat-tab-group (selectedIndexChange)="onTabSelectionChange($event)">
+    <mat-tab label="List">
+      <section class="search-list-container">
+        <div #profileCardList *ngIf="!isNoSearchResults && facilityList && facilityList.length>0">
+          <app-fad-facility-card *ngFor="let facility of facilityList" (componentOutput)="onProfileCardComponentInteraction($event)"
+            [componentInput]="getProfileCardInput(facility)"></app-fad-facility-card>
+        </div>
+        <div *ngIf="isNoSearchResults || facilityList===null || facilityList.length===0">
+          <app-fad-no-docs-page [componentInput]="noSearchResultsPageData"></app-fad-no-docs-page>
+        </div>
+      </section>
+    </mat-tab>
+  </mat-tab-group>
+</section>

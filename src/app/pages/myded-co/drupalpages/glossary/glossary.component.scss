@@ -1,0 +1,52 @@
+@import '../../../../../assets/styles/_colors';
+@import '../../../../../assets/styles/_fonts';
+@import '../../../../../assets/styles/_spacing';
+.dedcoglossary-cont {
+    @media (max-width: 992px) {
+        margin-left: -0.75rem;
+        margin-right: -0.75rem;
+    }
+    .dedcoglossary {
+        .header-panel {
+            @include Roboto(bold);
+            font-size: 13px;
+            color: $headings-dark-color !important;
+            padding-top: 20px;
+            padding-bottom: 20px;
+            padding-right: 15px;
+            background: $background-white-color;
+            @media (max-width: 600px) {
+                padding: 10px 15px;
+            }
+        }
+        h1 {
+            padding: 0 24px;
+            margin-bottom: 20px;
+            @media (max-width: 600px) {
+                padding: 0 15px;
+                margin-top: 20px
+            }
+        }
+        .body-panel {
+            @include Roboto(light);
+            font-size: 14px;
+            color: $title-color;
+            text-align: left;
+            line-height: 16px;
+        }
+        .apply-button {
+            background: $new-color;
+            border-radius: 5px;
+            color: $background-white-color;
+            width: 290px;
+            height: 44px;
+            @include Roboto(bold);
+            font-size: 16px;
+            letter-spacing: -0.01px;
+            text-align: center;
+            @media (max-width: 600px) {
+                margin-top: 20px !important;
+            }
+        }
+    }
+}

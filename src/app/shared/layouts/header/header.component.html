@@ -1,0 +1,342 @@
+<header class="mt-20 mb-10 text-center" *ngIf="!isAuthenticated">
+  <span class="col s8 pd-0 header-logo">
+    <a href="http://bcbsma.info/member">
+      <img class="responsive-img " alt="bcbsma logo" src="assets/images/BCBSMA_Horizontal.svg">
+    </a>
+  </span>
+</header>
+
+<header class="pt-15 pb-5" *ngIf="isAuthenticated">
+  <div class="row mb-0">
+    <div class="col s12 l5 mobile-padding">
+      <!-- <span class="col s1 pd-0 hide-on-large-only">
+        <a data-activates="slide-out-left" class="mobile-square-logo" (click)="leftMenuSelect($event)">
+          <img class="square-logo" alt="square logo" src="assets/images/square-logo.png">
+        </a>
+      </span>
+      <span class="col s2 pd-0 dropdown-button hide-on-med-and-down" data-activates="dropdown1" (click)="leftMenuSelect($event)">
+        <img class="responsive-img square-logo" alt="square logo" src="assets/images/square-logo.png">
+      </span> -->
+      <span class="col s10 pd-0 header-logo">
+        <a routerLink="/home" class="left">
+          <img class="responsive-img " alt="bcbsma logo" src="assets/images/BCBSMA_Horizontal.svg">
+        </a>
+      </span>
+      <span class="hide-on-large-only">
+        <a data-activates="slide-out" class="menu-icon menu-bar">
+          <i class="fa fa-bars menu"></i>
+        </a>
+      </span>
+      <!-- <div class="side-nav left-nav pb-0" id="slide-out-left">
+        <ul>
+          <li class="title-content ml-0 mb-0 no-hover">
+            <div class="row mt-20 mb-0 valign-wrapper">
+              <div class="col s1 menu-close">
+                <a href="javascript:void(0)" (click)="closeMobileMenu($event)">
+                  <img src="assets/images/icon-close-white.svg" class="close" alt="Close">
+                </a>
+              </div>
+              <div class="menu-logo col s9">
+                <span>
+                  <img class="responsive-img" alt="massachusetts logo" src="assets/images/Massachusetts_white_logo.svg">
+                </span>
+              </div>
+            </div>
+          </li>
+          <li *ngFor="let menu of leftMenuList" class="main-list">
+            <a href="{{menu.url}}">{{menu.name}}</a>
+          </li>
+          <li class="no-hover sub-title mt-15">
+            <strong>I Am...</strong>
+          </li>
+          <li class="no-hover sub-title pt-0">
+            <ul>
+              <li *ngFor="let menu of leftMenuBottomList">
+                <a href="{{menu.url}}">{{menu.name}}
+                  <span *ngIf="menu.name === 'Member'" class="member-menu-options">
+                    <span>Medical</span>
+                    <span>Dental</span>
+                    <span>Vision</span>
+                  </span>
+                </a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </div> -->
+      <!-- <div class="dropdown-content external-link" id="dropdown1">
+        <ul>
+          <li class="row title-content ml-0 mb-0 no-hover">
+            <div class="col s12 mt-mb-20 valign-wrapper">
+              <div class="col s1 menu-close">
+                <a href="javascript:void(0)" (click)="closeMobileMenu($event)" class="m-0">
+                  <img src="assets/images/icon-close-white.svg" class="close" alt="Close">
+                </a>
+              </div>
+              <div class="menu-logo col s10 mt-0 ml-10">
+                <span>
+                  <img class="responsive-img" alt="massachusetts logo" src="assets/images/Massachusetts_white_logo.svg">
+                </span>
+              </div>
+            </div>
+          </li>
+          <li *ngFor="let menu of leftMenuList" class="main-list">
+            <a href="{{menu.url}}">{{menu.name}}</a>
+          </li>
+          <li class="no-hover sub-title mt-15">
+            <strong>I Am...</strong>
+          </li>
+          <li class="no-hover sub-title pt-0">
+            <ul>
+              <li *ngFor="let menu of leftMenuBottomList">
+                <a href="{{menu.url}}">{{menu.name}}
+                  <span *ngIf="menu.name === 'Member'" class="member-menu-options">
+                    <span>Medical</span>
+                    <span>Dental</span>
+                    <span>Vision</span>
+                  </span>
+                </a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </div> -->
+    </div>
+    <div class="col s12 l7 center-align">
+      <span class="col s7 m9 l7 pd-0 welcome-msg mt-mb-0">
+        <span *ngIf="memberFirstName === ''">{{estGreeting}}</span>
+        <span *ngIf="memberFirstName !== ''">{{estGreeting}}{{memberFirstName ? ', ' + (memberFirstName | titlecase) +
+          '!' : ''}}</span>
+      </span>
+      <span class="col s5 m3 l4 pd-0 header-items">
+        <a class="inbox-link" routerLink="/message-center">
+          <i class="fas fa-envelope circle"></i>
+          <span class="notification-badge" *ngIf="headerService?.unReadMsgCount > 0" [ngClass]="{'big-digits':headerService?.unReadMsgCount?.toString().length > 1}">{{headerService?.unReadMsgCount}}</span>
+        </a>
+        <a (click)="toggleContactUs($event)" class="contact-us-link" [ngClass]="{'open-contact-us':showContactUs}">
+          <i class="fas fa-question circle"></i>
+        </a>
+        <a (click)="clickSearchBar($event)" class="search-link" [ngClass]="{'open-search':showSearchBar,'search-icon-white':showSearchBar}">
+          <i class="fa fa-search circle"></i>
+        </a>
+      </span>
+      <span class="col l1 pd-0 menu-bar hide-on-med-and-down">
+        <a class="dropdown-button" data-activates="dropdown">
+          <i class="fa fa-bars menu"></i>
+        </a>
+      </span>
+    </div>
+    <div class="side-nav pb-0" [ngClass]="{'no-drupal-links': noApiLinks}" id="slide-out">
+      <ul class="right-nav" (click)="toggleCollapse($event)">
+        <li class="title-content mt-mb-0 ml-0">
+          <div class="row mt-15 mb-10 title-header">
+            <div class="col s10 pl-0 pt-0 dialog-header">
+              <span [ngClass]="{'menu-logo': ismobile}">
+                <img class="responsive-img" alt="massachusetts logo" src="assets/images/Massachusetts_white_logo.svg">
+              </span>
+            </div>
+            <div class="col s2 pr-0 menu-close right-align">
+              <a href="javascript:void(0)">
+                <img src="assets/images/icon-close-white.svg" id="close" class="pd-0" (click)="closeMobileMenu($event)"
+                  alt="Close">
+              </a>
+            </div>
+          </div>
+          <div class="row ml-0 mr-0 mb-10">
+            <div class="col s8 pd-0 register-buttons valign-wrapper">
+              <span>{{estGreeting}}{{ memberFirstName ? ', ' + (memberFirstName | titlecase) + '!' : ''}}</span>
+            </div>
+            <div class="col s4 right-align sign-out pr-0" (click)="signOut()" aria-label="Forgot password">
+              <a href="javascript:void(0)" class="mr-0" class="log-out">Sign out</a>
+            </div>
+          </div>
+          <div class="row mb-10">
+            <div class="col s12">
+              <div class="divider"></div>
+            </div>
+          </div>
+          <ul class="sub-menu-list">
+            <li *ngFor="let menu of getRightMenu()" (click)="closeMobileMenuForNavigatetoSamePage($event, menu, true)">
+              <!-- <a href="{{menu.url}}" *ngIf="menu.sso">
+                <span class="right-menu-list pl-0">
+                  <i class="{{menu.img}}"></i>
+                </span>
+                <span class="pl-0">{{menu.name}}</span>
+              </a> -->
+              <!-- </a>*ngIf="!menu.sso"> -->
+              <a > 
+                <span class="right-menu-list pl-0">
+                  <i class="{{menu.img}}"></i>
+                </span>
+                <span class="pl-0">{{menu.name}}</span>
+              </a>
+            </li>
+          </ul>
+        </li>
+        <li>
+          <ul class="collapsible sub-menus" id="collapsible" (click)="menuCollapse($event)">
+            <ng-template #iterateMenuItems let-menuDrupalLinks>
+              <li *ngFor="let menu of menuDrupalLinks">
+
+                <a href="{{menu.absolute}}" class="collapsible-header sub-list-heading" *ngIf="!menu.below?.length && menu.absolute">
+                  {{menu.title}}
+                </a>
+
+                <div class="collapsible-header sub-list-heading" *ngIf="menu.below?.length">
+                  <span *ngIf="!menu.absolute">{{menu.title}}</span>
+                  <a href="{{menu.absolute}}" *ngIf="menu.absolute" (click)="redirectToMenuPage($event)">{{menu.title}}</a>
+
+                  <span class="right">
+                    <i class="fas fa-chevron-down"></i>
+                  </span>
+                </div>
+
+                <div class="collapsible-body pd-0" *ngIf="menu.below?.length">
+                  <ul class="collapsible mt-mb-0">
+                    <ng-container *ngTemplateOutlet="iterateMenuItems; context:{ $implicit: menu.below}"></ng-container>
+                  </ul>
+                </div>
+              </li>
+            </ng-template>
+            <ng-container *ngTemplateOutlet="iterateMenuItems; context:{ $implicit: menuDrupalLinks }"></ng-container>
+          </ul>
+        </li>
+      </ul>
+    </div>
+    <div [ngClass]="{'no-drupal-links': noApiLinks}">
+      <ul class="dropdown-content internal-links" id="dropdown" (click)="toggleCollapse($event)">
+        <li class="title-content no-hover mt-mb-0 ml-0">
+          <div class="row mb-10 pd-0 title-header">
+            <div class="col s10 dialog-header">
+              <span>
+                <img class="responsive-img" alt="massachusetts logo" src="assets/images/Massachusetts_white_logo.svg">
+              </span>
+            </div>
+            <div class="col s2 mt-10 menu-close right-align">
+              <a href="javascript:void(0)">
+                <img src="assets/images/icon-close-white.svg" id="close" class="pd-0 close" (click)="closeMobileMenu($event)"
+                  alt="Close">
+              </a>
+            </div>
+          </div>
+          <div class="row ml-0 mr-0">
+            <div class="col s8 mt-10 register-buttons">
+              <span>{{estGreeting}}{{memberFirstName ? ', ' + (memberFirstName | titlecase) + '!' : ''}}</span>
+            </div>
+            <div class="col s4 right-align sign-out pr-0 mt-10" (click)="signOut()" aria-label="Forgot password">
+              <a href="javascript:void(0)" class="log-out">Sign out</a>
+            </div>
+          </div>
+          <div class="row mb-10 pt-10 pb-5">
+            <div class="col s12">
+              <div class="divider"></div>
+            </div>
+          </div>
+          <ul class="sub-menu-list">
+            <li *ngFor="let menu of getRightMenu()" (click)="closeMobileMenuForNavigatetoSamePage($event, menu,true)">
+              <a  *ngIf="menu.sso">
+                <span class="right-menu-list pl-0">
+                  <i class="{{menu.img}}"></i>
+                </span>
+                <span class="pl-0">{{menu.name}}</span>
+              </a>
+              <a *ngIf="!menu.sso">
+                <span class="right-menu-list pl-0">
+                  <i class="{{menu.img}}"></i>
+                </span>
+                <span class="pl-0">{{menu.name}}</span>
+              </a>
+            </li>
+          </ul>
+        </li>
+        <li>
+          <ul class="collapsible mt-mb-0 sub-menus" id="collapsible" (click)="menuCollapse($event)">
+            <ng-template #iterateMenuItems let-menuDrupalLinks>
+              <li *ngFor="let menu of menuDrupalLinks">
+
+                <a href="{{menu.absolute}}" class="collapsible-header sub-list-heading" *ngIf="!menu.below?.length && menu.absolute">
+                  {{menu.title}}
+                </a>
+
+                <div class="collapsible-header sub-list-heading" *ngIf="menu.below?.length">
+                  <span *ngIf="!menu.absolute">{{menu.title}}</span>
+                  <a href="{{menu.absolute}}" *ngIf="menu.absolute" (click)="redirectToMenuPage($event)">{{menu.title}}</a>
+
+                  <span class="right">
+                    <i class="fas fa-chevron-down"></i>
+                  </span>
+                </div>
+
+                <div class="collapsible-body pd-0" *ngIf="menu.below?.length">
+                  <ul class="collapsible mt-mb-0">
+                    <ng-container *ngTemplateOutlet="iterateMenuItems; context:{ $implicit: menu.below}"></ng-container>
+                  </ul>
+                </div>
+              </li>
+            </ng-template>
+            <ng-container *ngTemplateOutlet="iterateMenuItems; context:{ $implicit: menuDrupalLinks }"></ng-container>
+          </ul>
+        </li>
+      </ul>
+    </div>
+  </div>
+</header>
+
+<!-- Global Search Section -->
+<section class="search-filter-container center-align" *ngIf="isAuthenticated && showSearchBar">
+  <div class="search-content">
+    <div class="row mb-0">
+      <div class="col s12 search-bar">
+        <nav class="col s11 l5 push-l3">
+          <div class="nav-wrapper">
+            <form>
+              <div class="input-field row">
+                <input class="col s12 mt-0" id="search" type="search" placeholder="Search MyBlue" [formControl]="searchText"
+                  (keyup)="redirectToGetSearchResults($event)" required>
+                <label class="label-icon" for="search"></label>
+                <i class="material-icons" (click)="clearSearch()">close</i>
+                <i class="material-icons" (click)="redirectToGetSearchResults()">search</i>
+              </div>
+            </form>
+          </div>
+        </nav>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Contact Us-->
+<div class="contact-us" *ngIf="isAuthenticated && showContactUs">
+  <ul>
+    <li>
+      <a href="tel: 1-800-262-2583">
+        <span><i class="fas fa-phone"></i></span>
+        <span>
+          <span>Call Member Service</span>
+          <span>1-800-262-2583</span>
+        </span>
+      </a>
+    </li>
+    <li>
+      <a href="tel: 1-888-247-2583">
+        <span><i class="fas fa-phone"></i></span>
+        <span>
+          <span>Talk to a Nurse</span>
+          <span>1-888-247-2583</span>
+        </span>
+      </a>
+    </li>
+    <li>
+      <a href="https://myblue.bluecrossma.com/health-plan/telehealth">
+        <span><i class="fas fa-video"></i></span>
+        <span>Talk to a Doctor</span>
+      </a>
+    </li>
+    <li>
+      <a [href]="headerService.drupalsecureinquiry">
+        <span><i class="fas fa-lock"></i></span>
+        <span>Send Message</span>
+      </a>
+    </li>
+  </ul>
+</div>

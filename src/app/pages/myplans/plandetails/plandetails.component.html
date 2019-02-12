@@ -1,0 +1,159 @@
+<div class="row m-0">
+  <!-- <div class=""> -->
+  <div class="ml-15 mt-20 hide-on-large-only">
+    <app-breadcrumbs></app-breadcrumbs>
+  </div>
+  <div class="col l12 m12 s12 pd-0">
+    <h1 class="header">{{ planBenefitDetails?.planName }} Details</h1>
+  </div>
+  <div class="hide-on-med-only hide-on-small-only mt-0">
+    <app-breadcrumbs></app-breadcrumbs>
+  </div>
+  <!-- </div> -->
+</div>
+
+<div class="row m-0">
+  <div class="plan-results-container">
+    <div class="side-nav-container col l4 s12 m12 pd-0">
+      <mat-card class="mat-card-override">
+        <mat-card-content class="mb-0">
+          <div class="profile-name row pd-0">
+            <div class="col s10 m10 profile-details-name ">
+              Plan Costs & Limits
+            </div>
+            <div class="col s2 m2 tool-tip-div">  
+              <span [ngClass]="{'icon-tooltip-filled': toolTipVisible }" class="i-circle tooltip spacing-iconProfileName" >
+                  <span (click)="showToolTip()" class="info-icon-span"><i class="fal fa-info-circle icon-blue"></i></span>             
+                <span class="tooltiptext raisedbox" [ngClass]="{ 'hidden' : !toolTipVisible }" *ngIf="toolTipVisible">
+                  <app-fpo-layout [targetUrl]='fpoTargetTooltipUrl' [toolTipdataPlans]="drupalData" [isplandetails]="isplandetails"></app-fpo-layout>
+                </span>
+              </span>
+            </div>
+          </div>
+        </mat-card-content>
+        <div class="row">
+          <div class="col s12">
+            <!-- {{ planBenefitDetails?.networkCoverage}} -->
+          </div>
+        </div>
+      </mat-card>
+    </div>
+    <div class="col l4 s12 m12 middle-container">
+      <ng-container *ngIf="planBenefitDetails">
+        <ng-container *ngIf="deductibleObject">
+          <div class="benefit-section benefits-accordion mat-action-row">
+            <mat-expansion-panel class="mat-exp-margin" [expanded]="true">
+              <mat-expansion-panel-header class="expand-class pl-15 pr-15" [collapsedHeight]="'41px'" [expandedHeight]="'41px'">
+                <mat-panel-title class="mat-accordin-name">
+                  <span>Overall Deductible</span>
+                </mat-panel-title>
+              </mat-expansion-panel-header>
+              <ng-container *ngFor="let key of keys(deductibleObject)">
+                <div class="pl-15 pr-15 network-section" *ngIf="deductibleObject[key].length > 0">
+                  <h4 class="plan-name-header">{{ myPlansService.getNetworkString(key) }}
+                  </h4>
+                  <div class="row ml-0 mb-10 mr-0" *ngFor="let value of deductibleObject[key]">
+                    <ng-container *ngIf="value.indexOf('$') >= 0 || value.indexOf('%') >= 0">
+                      <div class="plan-label-value" [innerHtml]="myPlansService.getStyledHtmlText(value)"></div>
+                    </ng-container>
+                    <ng-container *ngIf="value.indexOf('$') < 0 && value.indexOf('%') < 0">
+                      <div class="plan-details-text" [innerHtml]="myPlansService.getStyledHtmlText(value)"></div>
+                    </ng-container>
+                  </div>
+                </div>
+              </ng-container>
+            </mat-expansion-panel>
+          </div>
+        </ng-container>
+
+        <ng-container *ngIf="coinsuranceMaxObject">
+          <div class="benefit-section benefits-accordion mat-action-row">
+            <mat-expansion-panel class="mat-exp-margin" [expanded]="true">
+              <mat-expansion-panel-header class="expand-class pl-15 pr-15" [collapsedHeight]="'41px'" [expandedHeight]="'41px'">
+                <mat-panel-title class="mat-accordin-name">
+                  <span>Out-of-Pocket Maximum</span>
+                </mat-panel-title>
+              </mat-expansion-panel-header>
+              <ng-container *ngFor="let key of keys(coinsuranceMaxObject)">
+                <div class="pl-15 pr-15 network-section" *ngIf="coinsuranceMaxObject[key].length > 0">
+                  <h4 class="plan-name-header">{{ myPlansService.getNetworkString(key) }}
+                  </h4>
+                  <div class="row ml-0 mb-10 mr-0" *ngFor="let value of coinsuranceMaxObject[key]">
+                    <ng-container *ngIf="value.indexOf('$') >= 0 || value.indexOf('%') >= 0">
+                      <div class="plan-label-value" [innerHtml]="myPlansService.getStyledHtmlText(value)"></div>
+                    </ng-container>
+                    <ng-container *ngIf="value.indexOf('$') < 0 && value.indexOf('%') < 0">
+                      <div class="plan-details-text" [innerHtml]="myPlansService.getStyledHtmlText(value)"></div>
+                    </ng-container>
+                  </div>
+                </div>
+              </ng-container>
+            </mat-expansion-panel>
+          </div>
+        </ng-container>
+
+        <ng-container *ngIf="lifetimeBenefitObject">
+          <div class="benefit-section benefits-accordion mat-action-row">
+            <mat-expansion-panel class="mat-exp-margin" [expanded]="true">
+              <mat-expansion-panel-header class="expand-class pl-15 pr-15" [collapsedHeight]="'41px'" [expandedHeight]="'41px'">
+                <mat-panel-title class="mat-accordin-name">
+                  <span>Overall Benefit Maximum</span>
+                </mat-panel-title>
+              </mat-expansion-panel-header>
+              <ng-container *ngFor="let key of keys(lifetimeBenefitObject)">
+                <div class="pl-15 pr-15 network-section" *ngIf="lifetimeBenefitObject[key].length > 0">
+                  <h4 class="plan-name-header">{{ myPlansService.getNetworkString(key) }}
+                  </h4>
+                  <div class="row ml-0 mb-10 mr-0" *ngFor="let value of lifetimeBenefitObject[key]">
+                    <ng-container *ngIf="value.indexOf('$') >= 0 || value.indexOf('%') >= 0">
+                      <div class="plan-label-value" [innerHtml]="myPlansService.getStyledHtmlText(value)"></div>
+                    </ng-container>
+                    <ng-container *ngIf="value.indexOf('$') < 0 && value.indexOf('%') < 0">
+                      <div class="plan-details-text" [innerHtml]="myPlansService.getStyledHtmlText(value)"></div>
+                    </ng-container>
+                  </div>
+                </div>
+              </ng-container>
+            </mat-expansion-panel>
+          </div>
+        </ng-container>
+      </ng-container>
+
+      <!-- <div class="mt-15 dedco-link">
+        <a class="view-values valign-wrapper" routerLink="/mydedco">
+          <span>
+            <i class="fas fa-external-link-alt ext-link"></i>View My Deductible & Co-Insurance to-date</span>
+        </a>
+      </div> -->
+    </div>
+    <div class="col l4 s12 m12 pd-0 dynamic-content">
+      <div class="details-right-link" [routerLink]="['/mydedco']">
+        <a>
+          <span class="text-route">View My Deductible & Co-Insurance Information</span>
+          <span class="icon-arrow">
+            <i class="fa fa-chevron-right long-text"></i>
+          </span>
+        </a>
+      </div>
+      <div class="details-right-link" [routerLink]="['/myplans/benefits']">
+        <a>
+          <span class="text-route">View Plan Benefits</span>
+          <span class="icon-arrow">
+            <i class="fa fa-chevron-right long-text"></i>
+          </span>
+        </a>
+      </div>
+      <div class="details-right-link" [routerLink]="['/message-center/documents/planDocuments']">
+        <a>
+          <span class="text-route">Read Plan Documents</span>
+          <span class="icon-arrow">
+            <i class="fa fa-chevron-right long-text"></i>
+          </span>
+        </a>
+      </div>
+      <div class="details-right-link-alt plans-flex">
+        <!-- <div>FPO placeholder for Drupal API content</div> -->
+        <app-fpo-layout [targetUrl]='fpoTargetUrl'></app-fpo-layout>
+      </div>
+    </div>
+  </div>

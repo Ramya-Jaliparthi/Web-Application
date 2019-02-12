@@ -1,0 +1,58 @@
+[
+    {
+        "pageTitle": "My Documents",
+        "alias": "0",
+        "folderSet": {
+            "folders": [
+                {
+                    "messageId": 501,
+                    "timeStamp": "11/03/2017",
+                    "RowNum": 1,
+                    "isDeleted": false,
+                    "messageRead": true,
+                    "alertShortTxt": "My Plan Documents",
+                    "alertLongTxt": "",
+                    "icon": "folder",
+                    "unReadDocs": 2,
+                    "containsFiles": false
+                },
+                {
+                    "messageId": 502,
+                    "timeStamp": "11/03/2017",
+                    "RowNum": 1,
+                    "isDeleted": false,
+                    "messageRead": true,
+                    "alertShortTxt": "Benefit Summaries",
+                    "alertLongTxt": "",
+                    "icon": "folder",
+                    "unReadDocs": 2,
+                    "containsFiles": false
+                },
+                {
+                    "messageId": 503,
+                    "timeStamp": "11/03/2017",
+                    "RowNum": 1,
+                    "isDeleted": false,
+                    "messageRead": true,
+                    "alertShortTxt": "Explanation of Benefits",
+                    "alertLongTxt": "",
+                    "icon": "folder",
+                    "containsFiles": false
+                },
+                {
+                    "messageId": 504,
+                    "timeStamp": "11/03/2017",
+                    "RowNum": 1,
+                    "isDeleted": false,
+                    "messageRead": true,
+                    "alertShortTxt": "My Uploads",
+                    "alertLongTxt": "",
+                    "icon": "picture",
+                    "containsFiles": false,
+                    "isUploadsFolder": true
+                }
+            ],
+            "totalRows": 3
+        }
+    }
+]

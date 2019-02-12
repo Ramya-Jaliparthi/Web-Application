@@ -1,0 +1,47 @@
+[
+    {
+        "pageTitle": "Plan Documents",
+        "alias": "501",
+        "folderSet": {
+            "folders": [
+                {
+                    "messageId": 601,
+                    "timeStamp": "11/03/2017",
+                    "RowNum": 1,
+                    "isDeleted": false,
+                    "messageRead": true,
+                    "alertShortTxt": "Blue Care Elect Program",
+                    "alertLongTxt": "",
+                    "icon": "folder",
+                    "unReadDocs": 2,
+                    "containsFiles": false
+                },
+                {
+                    "messageId": 602,
+                    "timeStamp": "11/03/2017",
+                    "RowNum": 1,
+                    "isDeleted": false,
+                    "messageRead": true,
+                    "alertShortTxt": "Care Plan",
+                    "alertLongTxt": "",
+                    "icon": "folder",
+                    "unReadDocs": 2,
+                    "containsFiles": false
+                },
+                {
+                    "messageId": 603,
+                    "timeStamp": "11/03/2017",
+                    "RowNum": 1,
+                    "isDeleted": false,
+                    "messageRead": true,
+                    "alertShortTxt": "Plan Name",
+                    "alertLongTxt": "",
+                    "icon": "folder",
+                    "unReadDocs": 20,
+                    "containsFiles": false
+                }
+            ],
+            "totalRows": 3
+        }
+    }
+]

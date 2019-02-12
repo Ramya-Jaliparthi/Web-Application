@@ -1,0 +1,82 @@
+.mypref-delivery-df-mat {
+    .mat-list-item-content {
+        padding-left: 0px !important;
+    }
+    mat-radio-button .mat-radio-label-content {
+        padding-right: 0px !important;
+        position: absolute !important;
+        margin-top: -15px !important; //26px height fo chkbox + 2 px for border +2px for safety + rest for spcace between other items.
+        @include Roboto(light);
+        font-size: 14px;
+        overflow: visible !important;
+        @include Roboto(light);
+        font-size: 14px;
+        color: $text-disabled-gray !important;
+    }
+    mat-radio-button .mat-radio-container {
+        width: 24px;
+        height: 24px;
+        left: 5px;
+        margin-top: 45px;
+    }
+    .mat-radio-button {
+        // padding-right: 20px !important;
+        padding-right: 46px !important;
+    }
+    .mat-checkbox-background {
+        background-color: transparent !important;
+    }
+    .mat-checkbox-checked {
+        .mat-checkbox-background {
+            background-color: $textbox-border !important;
+        }
+        .mat-checkbox-checkmark path {
+            stroke: $headings-dark-color !important;
+        }
+        .mat-checkbox-checkmark-path {
+            stroke-width: 2.1px;
+        }
+    }
+    .mat-checkbox-layout {
+        white-space: wrap;
+    }
+    @media (max-width: 991px) {
+        mat-card {
+            margin-right: -15px;
+            margin-left: -15px;
+            border-left: none;
+            border-right: none;
+            border-top: 1px solid $non-vdk-11-grey !important;
+            border-bottom: 0px solid transparent !important;
+            border-left: 0px solid transparent !important;
+            border-right: 0px solid transparent !important;
+        }
+    }
+    mat-card {
+        padding-right: 14px; //adding to broder it will 15px
+        padding-left: 15px;
+        padding-top: 15px;
+        padding-bottom: 30px;
+        border-radius: 0px !important;
+        margin-bottom: 0px;
+        box-shadow: none !important;
+        border: 1px solid $non-vdk-11-grey;
+    }
+    mat-card-content {
+        .col {
+            padding-left: 0px !important;
+            padding-right: 0px !important;
+            padding-bottom: 0px !important;
+        }
+        .row {
+            margin: 0px !important;
+        }
+        .pt-5 {
+            padding-top: 5px !important;
+        }
+        .mat-checkbox-inner-container {
+            margin-right: 0px;
+            margin-bottom: 0px !important;
+        }
+    }
+}

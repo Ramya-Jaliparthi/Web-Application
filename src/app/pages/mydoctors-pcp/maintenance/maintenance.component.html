@@ -1,0 +1,79 @@
+<div class="row m-0 maintenance-container">
+  <div class="col img-container">
+    <img class="fit-container" src="/assets/images/static/404_desktop.jpg" alt="default image" class="responsive-img">
+    <div class="no-page-found-mobile">
+        Whoops! It looks like this site is currently down for some routine maintenance. 
+        For immediate access to any personal health care information or to access your digital MyBlue Medical ID Card, 
+        we recommend downloading the MyBlue app. If you need to update your PCP, 
+        please try again during regular business hours. Thanks for your patience.
+    </div>
+  </div>
+  <div class="col link-container">
+    <div class="no-page-found">
+        Whoops! It looks like this site is currently down for some routine maintenance. 
+        For immediate access to any personal health care information or to access your digital MyBlue Medical ID Card, 
+        we recommend downloading the MyBlue app. If you need to update your PCP, 
+        please try again during regular business hours. Thanks for your patience.
+    </div>
+    <div class="flex-box" (click)="openSsoUrl('/fad')">
+      <div class="collection">
+        <div class="flex">
+          <div>
+            <i class="far fa-stethoscope fa-2x icons-class" aria-hidden="true"></i>
+          </div>
+          <p class="valign-wrapper ml-10 flex-grow-1 folder-card">
+            Search for doctors, dentists, and other health care providers
+          </p>
+          <div class="valign-wrapper ml-10 details-action">
+            <i class="far fa-chevron-right"></i>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="flex-box" (click)="navigate('myplans')">
+      <div class="collection">
+        <div class="flex">
+          <div>
+            <i class="far fa-shield-alt fa-2x icons-class" aria-hidden="true"></i>
+          </div>
+          <p class="valign-wrapper ml-10 flex-grow-1 folder-card">
+            View My Plan
+          </p>
+          <div class="valign-wrapper ml-10 details-action">
+            <i class="far fa-chevron-right"></i>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="flex-box" (click)="navigate('myaccount')">
+      <div class="collection">
+        <div class="flex">
+          <div>
+            <i class="far fa-user-shield fa-2x icons-class" aria-hidden="true"></i>
+          </div>
+          <p class="valign-wrapper ml-10 flex-grow-1 folder-card">
+            Go to My Account
+          </p>
+          <div class="valign-wrapper ml-10 details-action">
+            <i class="far fa-chevron-right"></i>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="flex-box" (click)="openContactUs()">
+      <div class="collection margin-40">
+        <div class="flex">
+          <div>
+            <i class="far fa-phone fa-2x icons-class" aria-hidden="true"></i>
+          </div>
+          <p class="valign-wrapper ml-10 flex-grow-1 folder-card">
+            Looking for something else ? Contact Us
+          </p>
+          <div class="valign-wrapper ml-10 details-action">
+            <i class="far fa-chevron-right"></i>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

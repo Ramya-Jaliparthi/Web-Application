@@ -1,0 +1,46 @@
+[
+    {
+        "pageTitle": "Blue Care Elect Program",
+        "alias": "601",
+        "folderSet": {
+            "folders": [
+                {
+                    "messageId": 901,
+                    "timeStamp": "11/03/2017",
+                    "RowNum": 1,
+                    "isDeleted": false,
+                    "messageRead": true,
+                    "alertShortTxt": "Subscriber Certificate",
+                    "alertLongTxt": "",
+                    "icon": "folder",
+                    "unReadDocs": 2,
+                    "containsFiles": true
+                },
+                {
+                    "messageId": 902,
+                    "timeStamp": "11/03/2017",
+                    "RowNum": 1,
+                    "isDeleted": false,
+                    "messageRead": true,
+                    "alertShortTxt": "Schedule of Benefits",
+                    "alertLongTxt": "",
+                    "icon": "folder",
+                    "unReadDocs": 2,
+                    "containsFiles": true
+                },
+                {
+                    "messageId": 902,
+                    "timeStamp": "11/03/2017",
+                    "RowNum": 1,
+                    "isDeleted": false,
+                    "messageRead": true,
+                    "alertShortTxt": "Prescription Drug Coverage",
+                    "alertLongTxt": "",
+                    "icon": "folder",
+                    "containsFiles": true
+                }
+            ],
+            "totalRows": 3
+        }
+    }
+]

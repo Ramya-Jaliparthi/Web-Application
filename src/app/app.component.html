@@ -1,0 +1,9 @@
+<div style="width: 100%">
+  <router-outlet>
+  </router-outlet>
+</div>
+<ng4-loading-spinner [threshold]="0" [timeout]="60000" [template]="template"></ng4-loading-spinner>
+<div *ngIf="includeOverlay" class="spinnerOverlay" [ngClass]="{ 'spinner-show': showOverlay, 'spinner-hide': !showOverlay }"></div>
+<app-modals></app-modals>
+<!-- SLA of 3 Seconds will not be verly less for slow networks. Need to discuss. Commenting below code till then-->
+<!-- <app-spinnertimeout></app-spinnertimeout> -->

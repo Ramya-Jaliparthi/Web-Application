@@ -1,0 +1,39 @@
+<div class="row m-0">
+  <h1 class="form-header">Enter your Member ID Number</h1>
+  <form novalidate [formGroup]="memberinfoForm" (ngSubmit)="onSubmit()" autocomplete="off" [ngClass]="{'form-submitted': isFormSubmitted}" *ngIf="showForm">
+
+    <div class="card-content">
+
+      <div class="row">
+        <div class="input-field col s12 pd-0">
+          <!-- <input tabindex="1" placeholder="" id="memberid" type="text" aria-labelledby="memberid" maxlength="12" formControlName="memberid" class="validate" appAutofocus/>
+          <label for="memberid" class="active">Member ID*</label>
+          <span class="font-13-grey">9 or 12 Digit member ID</span> -->
+          <!-- <app-control-messages *ngIf="isFormSubmitted" [control]="memberinfoForm.controls.memberid"></app-control-messages> -->
+
+          <div [ngClass]="{'error': memberinfoForm.controls['memberid'].errors && memberinfoForm.controls['memberid'].touched}">
+              <input tabindex="1" placeholder="" [textMask]="memberIdMask" id="memberid" type="text" aria-labelledby="memberid" maxlength="12" formControlName="memberid" class="validate" appAutofocus>
+              <label for="memberid" class="active">Member ID*</label>
+              <!--<mat-error class="error-msg" *ngIf="memberinfoForm.controls['memberid'].invalid">-->
+                  <!--<div class="inline-error"><span class="valign-wrapper"><i class="fa fa-exclamation-circle icon-error-style" ></i> 9 or 12 Digit member ID</span></div>-->
+              <!--</mat-error>-->
+              <app-control-messages [controlName]="'memberId'" [control]="memberinfoForm['controls'].memberid"></app-control-messages>
+          </div>
+          <div class = "font-13-grey digit-id pt-1rem mb-5" >12 digit member ID</div>
+        </div>
+      </div>
+    </div>
+
+    <div id="member-id" class="text-center">
+      <!--<span class="font-13-grey">Tap to zoom in</span>-->
+      <img  class="materialboxed" src="../../../../assets/images/Member_Card.png" alt="Member ID">
+    </div>
+
+    <div class="submit-action">
+      <button tabindex="2" class="waves-effect waves-light btn btn-block  mt-20 mb-20 btn-full-width br-8"
+              type="submit" aria-label="Continue" name="action" [disabled]="!memberinfoForm.valid">Continue</button>
+      <p class="font-13-grey left-align">*Field is required.</p>
+    </div>
+
+  </form>
+</div>

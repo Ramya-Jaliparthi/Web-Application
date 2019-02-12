@@ -1,0 +1,194 @@
+<div class="row benefit-details-container m-0">
+    <div class="col l8 m12 s12 mb-20 benefit-details-inner-container">
+        <div class="mt-20 hide-on-large-only">
+            <app-breadcrumbs></app-breadcrumbs>
+        </div>
+        <header class="benefit-details-header">
+            <h1 class="header">{{ benefitName }} Covered By Your Plan</h1>
+        </header>
+        <div class="hide-on-med-only hide-on-small-only">
+            <app-breadcrumbs></app-breadcrumbs>
+        </div>
+        <div class="benefit-details-body-text">
+            <p class="mb-20">{{ benefitDetails?.coveredServicesText}}</p>
+        </div>
+        <hr class="page-divider" />
+        <section class="benefit-individual-section">
+            <header>
+                <h2>Costs & Benefit Limits</h2>
+            </header>
+            <div class="benefit-individual-section-body-text">
+                <p>In-network and out-of-network costs may vary.</p>
+            </div>
+            <section class="benefit-individual-sub-section" *ngIf="planBenefits?.length > 0">
+                <ng-container *ngFor="let benefit of planBenefits">
+                    <header *ngIf="benefit.memberCostText || benefit.benefitDetailsText">
+                        <h6>{{ benefit.planBenefitName }}</h6>
+                    </header>
+                    <div class="benefit-individual-sub-section-inner">
+                        <ng-container *ngIf="benefit.memberCostText">
+                            <ng-container *ngFor="let key of keys(benefit.memberCostText)">
+                                <div class="row" *ngIf="benefit.memberCostText[key].length > 0">
+                                    <small class="col s4 m3 l2" *ngIf="isNetwork(key)">
+                                        <span>{{ myPlansService.getNetworkString(key) }}</span>
+                                    </small>
+                                    <div class="col s8 m9 l10 network-cont" [ngClass]="{'pl-0': !isNetwork(key)}">
+                                        <ng-container *ngFor="let value of (benefit.memberCostText[key])">
+                                            <p class="network-margin" [innerHtml]="myPlansService.getStyledHtmlText(value)">
+                                            </p>
+                                        </ng-container>
+                                    </div>
+                                </div>
+                            </ng-container>
+                        </ng-container>
+                        <ng-container *ngIf="benefit.benefitDetailsText">
+                            <ng-container *ngFor="let key of keys(benefit.benefitDetailsText)">
+                                <div class="row" *ngIf="benefit.benefitDetailsText[key].length > 0">
+                                    <small class="col s6 m5 l3">
+                                        <span>Benefit Limit
+                                            <ng-container *ngIf="isNetwork(key)">({{ myPlansService.getNetworkString(key) }})</ng-container>
+                                        </span>
+                                    </small>
+                                    <div class="col s6 m7 l9 network-cont" [ngClass]="{'pl-0': !isNetwork(key)}">
+                                        <ng-container *ngFor="let value of benefit.benefitDetailsText[key]">
+                                            <p class="network-margin" [innerHtml]="myPlansService.getStyledHtmlText(value)">
+                                            </p>
+                                        </ng-container>
+                                    </div>
+                                </div>
+                            </ng-container>
+                        </ng-container>
+                    </div>
+                    <hr *ngIf="benefit.memberCostText || benefit.benefitDetailsText" class="sub-page-divider" />
+                </ng-container>
+            </section>
+        </section>
+        <hr class="page-divider" />
+        <section class="benefit-individual-section">
+            <header>
+                <h2>Service Providers</h2>
+            </header>
+            <div class="benefit-individual-section-body-text">
+                <p>Use Find a Doctor to look up doctors, hospitals, and other health care providers.</p>
+            </div>
+            <section class="benefit-individual-sub-section" *ngIf="serviceProviders">
+                <div class="benefit-individual-sub-section-inner">
+                    <ng-container *ngFor="let key of keys(serviceProviders)">
+                        <div class="row" *ngIf="serviceProviders[key].length > 0">
+                            <small class="col s4 m3 l2" *ngIf="isNetwork(key)">
+                                <span>{{ myPlansService.getNetworkString(key) }}</span>
+                            </small>
+                            <div class="col s8 m9 l10 network-cont" [ngClass]="{'pl-0': !isNetwork(key)}">
+                                <ng-container *ngFor="let provider of serviceProviders[key]">
+                                    <p class="network-margin" [innerHtml]="myPlansService.getStyledHtmlText(provider.value)">
+                                    </p>
+                                </ng-container>
+                            </div>
+                        </div>
+                    </ng-container>
+                </div>
+            </section>
+        </section>
+        <hr class="page-divider" />
+        <section class="benefit-individual-section" *ngIf="benefitDetails?.authRefIndicator === true || benefitDetails?.authRefIndicator === 'True'">
+            <header>
+                <h2>Referrals & Authorizations</h2>
+            </header>
+            <div class="benefit-individual-section-body-text" *ngIf="displayState">
+                <p *ngIf="authReferralDetails?.state">{{ authReferralDetails.state.stateName }} PCP</p>
+            </div>
+            <section class="benefit-individual-sub-section">
+                <ng-container *ngIf="!authReferralErrorText">
+                    <ng-container *ngIf="authReferralDetails">
+                        <ng-container *ngFor="let authItem of authReferralDetails?.authReferralCategory">
+                            <ng-container *ngIf="authItem.benefitSubcategoryName">
+                                <header>
+                                    <h6>{{authItem.benefitSubcategoryName}}</h6>
+                                </header>
+                                <ng-container *ngFor="let networkItem of authItem.authReferral">
+                                    <div class="benefit-individual-sub-section-inner">
+                                        <div class="row" *ngIf="networkItem.network">
+                                            <small class="col s4 m3 l2" *ngIf="isNetwork(networkItem.network)">
+                                                <span>{{networkItem.network}}</span>
+                                            </small>
+                                            <div class="col s8 m9 l10 network-cont" [ngClass]="{'pl-0': !isNetwork(key)}">
+                                                <ng-container *ngIf="networkItem.authReferralFootnote?.length > 0">
+                                                    <p>
+                                                        <span>{{networkItem.authReferralRequired}}</span>
+                                                    </p>
+                                                    <ng-container *ngIf="isString()">
+                                                        <p class="mt-10">
+                                                            <span>{{networkItem.authReferralFootnote}}</span>
+                                                        </p>
+                                                    </ng-container>
+                                                    <ng-container *ngIf="!isString(networkItem.authReferralFootnote)">
+                                                        <ng-container *ngFor="let note of networkItem.authReferralFootnote">
+                                                            <p class="mt-10">
+                                                                <span>{{note.value}}</span>
+                                                            </p>
+                                                        </ng-container>
+                                                    </ng-container>
+
+                                                </ng-container>
+                                                <ng-container *ngIf="!networkItem.authReferralFootnote">
+                                                    <p>
+                                                        <span>{{networkItem.authReferralRequired}}</span>
+                                                    </p>
+                                                </ng-container>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </ng-container>
+                                <hr class="sub-page-divider" />
+                            </ng-container>
+                        </ng-container>
+                    </ng-container>
+                </ng-container>
+                <ng-container *ngIf="authReferralErrorText">
+                    <div class="benefit-individual-sub-section-inner">
+                        <div class="row">
+                            <small class="col s12">
+                                <span>{{authReferralErrorText}}</span>
+                            </small>
+                        </div>
+                    </div>
+                </ng-container>
+            </section>
+        </section>
+        <hr class="page-divider" *ngIf="benefitDetails?.authRefIndicator === true || benefitDetails?.authRefIndicator === 'True'"
+        />
+
+        <section class="benefit-individual-section">
+            <header>
+                <h2>Limitations & Exclusions</h2>
+            </header>
+            <ng-container *ngIf="!hideLimitationContentAndBanner">
+                <section class="benefit-individual-sub-section" *ngIf="limitationDetails">
+                    <div class="benefit-individual-sub-section-inner">
+                        <div class="row margin-tb5">
+                            <ul class="col s12">
+                                <ng-container *ngFor="let limit of limitationDetails">
+                                    <li *ngIf="limit.limitationTextHeader === 'Y'" class='limitation-title'>{{limit.limitationTextValue}}</li>
+                                    <li *ngIf="limit.limitationTextHeader === 'N'">{{limit.limitationTextValue}}</li>
+                                </ng-container>
+                            </ul>
+                        </div>
+                    </div>
+                </section>
+            </ng-container>
+        </section>
+    </div>
+    <div class="col l4 m12 s12 dynamic-content mb-20">
+        <div class="">
+            <!-- <div>FPO placeholder for dynamic content</div> -->
+            <app-fpo-layout [targetUrl]='fpoTargetUrl'></app-fpo-layout>
+        </div>
+    </div>
+
+</div>
+<div>
+    <hr class="page-divider" />
+    <div class="benefits-text">
+        <p>The benefits described here are for informational purposes only and are subject to change at any time.</p>
+    </div>
+</div>

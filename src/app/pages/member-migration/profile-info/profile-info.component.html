@@ -1,0 +1,113 @@
+<div>
+  <div class="row">
+    <div class="row  m-0">
+      <div>
+        <h1 *ngIf="SINGLEWEB  || (SINGLEAPP && !SINGLEWEBSINGLEAPP ) " class="login-header mt-20">Update Your Profile
+          </h1>
+        <h1 *ngIf="MULTIPLEAPP" class="login-header mt-20"> {{firstName ? (firstName | titlecase)
+          : ''}}, combine your usernames
+        </h1>
+        <h1 *ngIf="SINGLEWEBSINGLEAPP" class="login-header mt-20"> {{firstName ? (firstName | titlecase)
+          : ''}}, you have multiple usernames.
+        </h1>
+        <P *ngIf="SINGLEWEB && !SINGLEAPP" class="generalized-text  mt-20">
+          For your protection, please update the following information.
+        </P>
+        <P *ngIf="!SINGLEWEB && SINGLEAPP && !SINGLEWEBSINGLEAPP" class=" generalized-text  mt-20">
+          For your protection, please update the following information.
+        </P>
+        <P *ngIf="MULTIPLEAPP && !SINGLEWEBMULTIPLEAPP" class=" generalized-text  mt-20  ">
+          We've noticed you have multiple usernames. Let's combine them into one.
+        </P>
+        <P *ngIf="SINGLEWEBSINGLEAPP || SINGLEWEBMULTIPLEAPP" class=" generalized-text">
+          Your most recent information will be your active username.
+        </P>
+        <div class="row-profile" *ngIf="!SINGLEWEB  && MULTIPLEAPP ">
+          <div class="general-text-bold ">
+            Which active username would you like to keep?
+          </div>
+          <div>
+            <mat-radio-group class="example-radio-group" [(ngModel)]="ma_selectedId">
+              <mat-radio-button class="example-radio-button" *ngFor="let appuser of appResponse" [value]="appuser">
+                {{appuser.userID}}
+              </mat-radio-button>
+            </mat-radio-group>
+          </div>
+        </div>
+        <div *ngIf="!SINGLEWEB && SINGLEAPP " class="mb-5">
+          <div>
+            <div *ngIf="MULTIPLEAPP || SINGLEWEBSINGLEAPP " class="input-field label-prefix-header mt-5">Active
+              Username</div>
+            <div *ngIf="MULTIPLEAPP || SINGLEWEBSINGLEAPP " class="input-field  mt-5">{{sa_appUserID}}</div>
+            <div *ngIf="!SINGLEWEB && SINGLEAPP && !SINGLEWEBSINGLEAPP " class="input-field label-prefix-header mt-5">Email</div>
+            <div *ngIf="!SINGLEWEB && (SINGLEWEBSINGLEAPP|| SINGLEAPP)" class="label-prefix-b">{{sa_appEmail}}</div>
+          </div>
+
+          <div *ngIf="!SINGLEWEB && (SINGLEWEBSINGLEAPP ||MULTIPLEAPP)" class="mt-10">
+            <div class="label-value-bold">Old username</div>
+            <div class="label-value">{{sw_UserID}}</div>
+          </div>
+        </div>
+        <div *ngIf="SINGLEWEBMULTIPLEAPP " class="mb-5">
+          <div class="mt-6">
+            <div class="label-value-bold">Old username</div>
+            <div class="label-value">{{sw_UserID}}</div>
+          </div>
+        </div>
+        <form [formGroup]="registerDetailForm" novalidate (ngSubmit)="onSubmit()" [ngClass]="{'form-submitted' : isFormSubmitted}">
+          <div class="card-content">
+            <div class="row" *ngIf="SINGLEWEB">
+              <div *ngIf="SINGLEWEB">
+                <div class="input-field mt-30 col s12 pd-0">
+                  <input [(ngModel)]="singleWebEmail" placeholder="" tabindex="1" id="email" aria-labelledby="email"
+                    type="text" formControlName="email" appAutofocus />
+                  <label for="email" class="active label-color">Email*</label>
+                  <app-control-messages [control]="registerDetailForm.controls.email" [controlName]="'email'"></app-control-messages>
+                </div>
+              </div>
+            </div>
+
+            <div class="input-field mt-30 col s12 pd-0">
+              <mat-form-field #securityQuestionField floatPlaceholder="never" class="col s12 pd-0 mat-inherit-underline">
+                <mat-select appMatSelectChange [parentFormField]="securityQuestionField" placeholder="Select a question"
+                  tabindex="2" id="securityQuestion" formControlName='securityQuestion' autofocus>
+                  <mat-option *ngFor='let options of securityQuestionsOptions' [value]='options.label'>
+                    {{options.label}}
+                  </mat-option>
+                </mat-select>
+              </mat-form-field>
+              <label for="securityQuestion" class="active label-colors" [ngClass]="{'color-invalid': registerDetailForm.controls['securityQuestion'].touched && registerDetailForm.controls['securityQuestion'].errors && registerDetailForm.controls['securityQuestion'].errors.required}">Hint
+                Question*</label>
+            </div>
+
+            <div class="row">
+              <div class="input-field col s12 mt-30 password-block  pd-0">
+                <input tabindex="3" placeholder="" id="securityQuesAnswer" type="text" aria-labelledby="securityQuesAnswer"
+                  formControlName="securityQuesAnswer" autocomplete="off" name="securityQuesAnswer" maxlength="30" />
+                <label for="securityQuesAnswer" class="active label-color">Answer to Hint Question*</label>
+                <!--<a class="input-group-addon" [ngClass]="(typePlaceholder | lowercase) + '-class'" (click)="togglePasswordVisibility()">{{typePlaceholder}}</a>-->
+                <app-control-messages [control]="registerDetailForm.controls.securityQuesAnswer" [customMessages]="hintAnswercustomMessages"></app-control-messages>
+              </div>
+            </div>
+
+            <!--<div class="row-profile">-->
+                <!--<ng-container *ngIf="ma_selectedId && ma_selectedId['userID']">-->
+                  <!--Selected user name:-->
+                  <!--<span class="general-text-bold ">-->
+                    <!--{{ma_selectedId['userID']}}-->
+                <!--</span>-->
+                <!--</ng-container>-->
+            <!--</div>-->
+
+
+            <div class="submit-action">
+              <button tabindex="4" class="waves-effect waves-light btn btn-block  mt-30 mb-20 btn-full-width br-8" type="submit"
+                aria-label="Continue" name="action" [disabled]="disableSubmitButton()">Continue</button>
+              <p class="font-13-grey">*Field is required.</p>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,68 @@
+{
+    "documentMode": "message-detail",
+    "h1Header": "Subject line cras quis nulla commodo aliquam",
+    "dateStamp": "Wednesday, 12/02/2017 at 11:00am",
+    "category": "Promotional",
+    "introduction": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer velit urna, sodales eget cursus non, iaculis ac est. Nulla bibendum risus odio, eu pretium eros feugiat sed. Duis ut luctus neque, vitae ultricies sapien.",
+    "introImageData": "../../../../assets/images/medical-bill-upload.PNG",
+    "introPara": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer velit urna, sodales eget cursus",
+    "introParaTooltipContent": "non, iaculis ac est. Nulla bibendum risus odio, eu pretium eros.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer velit urna, sodales eget cursus non, iaculis ac est. Nulla bibendum risus odio, eu pretium eros feugiat sed. Duis ut luctus neque, vitae ultricies sapien. Nulla bibendum risus odio, eu pretium eros feugiat sed. Duis ut luctus neque, vitae ultricies sapien.",
+    "vedioInfo": "https: //www.youtube.com/embed/tIuxD2duwco",
+    "h2Header": {
+        "title": "H2 Subheader",
+        "ctaButtonText": "CTA",
+        "sectionContents": [
+            {
+                "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer velit urna, sodales eget cursus non, iaculis ac est. Nulla bibendum risus odio, eu pretium eros bibendum risus odio, eu pretium eros feugiat sed. Duis ut luctus neque, vitae ultricies sapien. Nulla bibendum risus odio, eu pretium eros feugiat sed. Duis ut luctus neque, vitae ultricies sapien."
+            },
+            {
+                "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer velit urna, sodales eget cursus non, iaculis ac est. Nulla bibendum risus odio, eu pretium eros bibendum risus odio, eu pretium eros feugiat sed. Duis ut luctus neque, vitae ultricies sapien. Nulla bibendum risus odio, eu pretium eros feugiat sed. Duis ut luctus neque, vitae ultricies sapien."
+            },
+            {
+                "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer velit urna, sodales eget cursus non, iaculis ac est. Nulla bibendum risus odio, eu pretium eros bibendum risus odio, eu pretium eros feugiat sed. Duis ut luctus neque, vitae ultricies sapien. Nulla bibendum risus odio, eu pretium eros feugiat sed. Duis ut luctus neque, vitae ultricies sapien."
+            }
+        ]
+    },
+    "h3Header": {
+        "title": "H3 Subsubheader",
+        "ctaButtonText": "Secondary CTA",
+        "sectionContents": [
+            {
+                "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer velit urna, sodales eget cursus non, iaculis ac est. Nulla bibendum risus odio, eu pretium eros bibendum risus odio, eu pretium eros feugiat sed. Duis ut luctus neque, vitae ultricies sapien. Nulla bibendum risus odio, eu pretium eros feugiat sed. Duis ut luctus neque, vitae ultricies sapien."
+            },
+            {
+                "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer velit urna, sodales eget cursus non, iaculis ac est. Nulla bibendum risus odio, eu pretium eros bibendum risus odio, eu pretium eros feugiat sed. Duis ut luctus neque, vitae ultricies sapien. Nulla bibendum risus odio, eu pretium eros feugiat sed. Duis ut luctus neque, vitae ultricies sapien."
+            },
+            {
+                "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer velit urna, sodales eget cursus non, iaculis ac est. Nulla bibendum risus odio, eu pretium eros bibendum risus odio, eu pretium eros feugiat sed. Duis ut luctus neque, vitae ultricies sapien. Nulla bibendum risus odio, eu pretium eros feugiat sed. Duis ut luctus neque, vitae ultricies sapien."
+            }
+        ]
+    },
+    "h4Header": {
+        "title": "H4 Subsubsubheader",
+        "ctaButtonText": "",
+        "sectionContents": [
+            {
+                "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer velit urna, sodales eget cursus non, iaculis ac est. Nulla bibendum risus odio, eu pretium eros bibendum risus odio, eu pretium eros feugiat sed. Duis ut luctus neque, vitae ultricies sapien. Nulla bibendum risus odio, eu pretium eros feugiat sed. Duis ut luctus neque, vitae ultricies sapien."
+            }
+        ]
+    },
+    "h5Header": {
+        "title": "H5 Subsubsubsubheader",
+        "ctaButtonText": "",
+        "sectionContents": [
+            {
+                "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer velit urna, sodales eget cursus non, iaculis ac est. Nulla bibendum risus odio, eu pretium eros bibendum risus odio, eu pretium eros feugiat sed. Duis ut luctus neque, vitae ultricies sapien. Nulla bibendum risus odio, eu pretium eros feugiat sed. Duis ut luctus neque, vitae ultricies sapien."
+            }
+        ]
+    },
+    "h6Header": {
+        "title": "H6 Subsubsubsubheader",
+        "ctaButtonText": "",
+        "sectionContents": [
+            {
+                "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer velit urna, sodales eget cursus non, iaculis ac est. Nulla bibendum risus odio, eu pretium eros bibendum risus odio, eu pretium eros feugiat sed. Duis ut luctus neque, vitae ultricies sapien. Nulla bibendum risus odio, eu pretium eros feugiat sed. Duis ut luctus neque, vitae ultricies sapien."
+            }
+        ]
+    }
+}

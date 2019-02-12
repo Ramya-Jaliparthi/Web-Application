@@ -1,0 +1,102 @@
+<section *ngIf="!benefitCoverageDocs">
+  <section class="documents-component" *ngIf='!planBenefitsList'>
+    <!--TODO: Change condition for no docs page -->
+    <app-no-documents-found *ngIf="hasContents==false" [componentMode]="no_doc_found_component_mode"></app-no-documents-found>
+    <div>
+
+      <h1> My Documents</h1>
+      <div class="row mb-0">
+        <div class="col s12">
+          <app-breadcrumbs [breadCrumbs]="breadCrumbs"></app-breadcrumbs>
+        </div>
+      </div>
+      <div class="titleSeperator"></div>
+      <div class="row">
+        <div class="flex-container">
+          <div class="col l8 s12">
+            <div class="flex-box">
+              <div class="collection">
+                <div class="flex" (click)="planDetailsList()">
+                  <div>
+                    <i class="fas fa-folder"></i>
+                  </div>
+                  <p class="ml-10 flex-grow-1 folder-card">Plan Documents</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col l4 s12 promo">
+            <app-fpo-layout [targetUrl]="fpoHomeTargetUrl" [displayCategory]="'documents'"></app-fpo-layout>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="documents-component" *ngIf='planBenefitsList'>
+    <h1>My Plan Documents</h1>
+    <div class="row mb-0">
+      <div class="col s12">
+        <app-breadcrumbs [breadCrumbs]="breadCrumbs"></app-breadcrumbs>
+      </div>
+    </div>
+    <div class="titleSeperator"></div>
+    <div class="row">
+      <div class="flex-container">
+        <div class="col s12 l8 ml-0">
+          <div class="flex-box">
+            <ng-container *ngIf="planBenefitsList && planBenefitsList.RowSet">
+              <div class="collection" *ngFor="let plan of planBenefitsList.RowSet.osplinPlans.plans">
+                <div class="flex">
+                  <div (click)="openBenefitCoverageDocsList(plan)">
+                    <i class="fas fa-folder"></i>
+                  </div>
+                  <p class="ml-10 flex-grow-1 folder-card" (click)="openBenefitCoverageDocsList(plan)">{{plan.planName}} Documents</p>
+                </div>
+              </div>
+            </ng-container>
+          </div>
+        </div>
+        <div class="col l4 s12 promo">
+          <app-fpo-layout [targetUrl]="fpoMyPlanDocumentTargetUrl" [displayCategory]="'documents'"></app-fpo-layout>
+        </div>
+      </div>
+    </div>
+  </section>
+</section>
+<section class="documents-component" *ngIf='benefitCoverageDocs'>
+  <h1>{{documentsService?.selectedPlan?.planName}}</h1>
+  <div class="row mb-0">
+    <div class="col s12">
+      <app-breadcrumbs [breadCrumbs]="breadCrumbs"></app-breadcrumbs>
+    </div>
+  </div>
+  <div class="titleSeperator"></div>
+  <div class="row">
+    <div class="flex-container">
+      <div class="col s12 l8 ml-0">
+        <div class="flex-box">
+          <div class="collection">
+            <div class="flex">
+              <div (click)="openOverAllPlanInformation()">
+                <i class="fas fa-folder"></i>
+              </div>
+              <p class="ml-10 flex-grow-1 folder-card" (click)="openOverAllPlanInformation()">Overall Plan Information</p>
+            </div>
+          </div>
+          <div class="collection" *ngFor="let policy of benefitCoverageDocs.RowSet.eocPolicies">
+            <div class="flex">
+              <div (click)="openBenefitCoverage(policy)">
+                <i class="fas fa-folder"></i>
+              </div>
+              <p class="ml-10 flex-grow-1 folder-card" (click)="openBenefitCoverage(policy,benefitCoverageDocs.planName)">{{policy?.policyFormName}}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col l4 s12 promo">
+        <app-fpo-layout [targetUrl]="fpobenefitCoverageListTargetUrl" [displayCategory]="'documents'"></app-fpo-layout>
+      </div>
+    </div>
+  </div>
+</section>

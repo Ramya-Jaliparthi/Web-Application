@@ -1,0 +1,306 @@
+@import '../../../assets/styles/_include';
+$hideOpacity: true;
+header {
+    font-family: Roboto;
+    font-weight: lighter;
+    .row {
+        margin: 0;
+        @media only screen and (min-device-width: 320px) and (max-device-width: 480px) {
+            margin: 0 !important;
+        }
+    }
+    .side-nav {
+        background: $background-title-separator-color;
+        //top: 80px;
+    }
+    .logo {
+        font-size: 16px !important;
+        color: $title-color;
+        .responsive-img {
+            &.square-logo {
+                width: 42px;
+                height: 36px;
+                margin-bottom: 2px;
+            }
+            &.bcbsma-logo {
+                width: 280px !important;
+                height: 56px !important;
+                margin-left: 10%;
+                @media only screen and (min-device-width: 320px) and (max-device-width: 480px) {
+                    margin-bottom: 0%;
+                    height: 28px !important;
+                    width: 210px !important;
+                }
+            }
+            @media only screen and (min-device-width: 760px) and (max-device-width: 1024px) {
+                &.square-logo {
+                    width: 32px;
+                    height: 28px;
+                    margin-bottom: 0rem;
+                }
+                &.bcbsma-logo {
+                    width: 224px;
+                    height: 49px;
+                    margin-left: 8%;
+                }
+            }
+            @media only screen and (min-device-width: 320px) and (max-device-width: 480px) {
+                max-width: 75%;
+                &.square-logo {
+                    width: 42px;
+                    height: 35px;
+                    margin-right: 4%;
+                }
+                &.bcbsma-logo {
+                    height: 49px;
+                    margin-left: 4%;
+                }
+            }
+        }
+        .menu-icon {
+            font-size: 20px;
+            i {
+                font-size: 42px;
+                color: $non-vdk-11-grey;
+                @media only screen and (min-device-width: 320px) and (max-device-width: 1024px) {
+                    font-size: 35px;
+                    padding-left: 10.5px;
+                }
+                @media only screen and (min-device-width: 760px) and (max-device-width: 1024px) {
+                    padding-left: 0;
+                }
+            }
+        }
+        .menu-icon:last-child {
+            margin-left: 28px;
+            @media only screen and (min-device-width: 760px) and (max-device-width: 1024px) {
+                margin-left: 0%;
+                margin-top: 3.5px;
+            }
+            @media only screen and (min-device-width: 320px) and (max-device-width: 480px) {
+                margin-left: 0%;
+                margin-top: 11.2px;
+            }
+        }
+        .welcome-msg {
+            margin-left: 2rem;
+            font-size: 1.5rem;
+            margin-top: 0.5rem;
+            padding-left: 1.5rem;
+            @media only screen and (min-device-width: 760px) and (max-device-width: 1024px) {
+                margin-left: 0rem;
+                font-size: 1.5rem;
+                margin-top: 0.25rem;
+                padding: 0rem;
+            }
+            @media only screen and (min-device-width: 320px) and (max-device-width: 480px) {
+                padding-left: 0%;
+                margin-left: 0%;
+                margin-top: 0%;
+            }
+        }
+        .mobile-icons {
+            padding-left: 0rem;
+            margin-top: -0.25rem;
+            margin-left: .5rem;
+            .circle {
+                font-size: 1.75em;
+                margin-right: 0.25rem;
+                margin-bottom: 0.5rem;
+                display: inline-block;
+                width: 3.25rem;
+                height: 3.25rem;
+                line-height: 2.8rem;
+                text-align: center;
+                color: $background-default-color;
+                border: 2px solid $background-default-color;
+                border-radius: 50%;
+                @media only screen and (min-device-width: 320px) and (max-device-width: 1024px) {
+                    font-size: 1.5rem !important;
+                    width: 2.75rem;
+                    height: 2.75rem;
+                    line-height: 2.25rem;
+                }
+            }
+            @media only screen and (min-device-width: 760px) and (max-device-width: 1024px) {
+                margin: 0rem;
+                padding: 0rem;
+            }
+            @media only screen and (min-device-width: 320px) and (max-device-width: 480px) {
+                margin: 0rem;
+                padding: 0rem;
+                text-align: right;
+            }
+        }
+        .mobile-icons {
+            i:last-child {
+                margin-left: 8%;
+                @media only screen and (min-device-width: 320px) and (max-device-width: 1024px) {
+                    margin-left: 0%;
+                }
+            }
+        }
+    }
+    .logo:first-child {
+        margin-left: 7%;
+        span:first-child {
+            padding-left: 0%;
+            margin-top: 0.25rem;
+            @media only screen and (min-device-width: 320px) and (max-device-width: 480px) {
+                margin-top: 0;
+            }
+        }
+        @media only screen and (min-device-width: 320px) and (max-device-width: 480px) {
+            margin: 0;
+        }
+        @media only screen and (min-device-width: 760px) and (max-device-width: 1024px) {
+            margin-left: 5%;
+        }
+    }
+    .logo:last-child {
+        margin-top: 1.5rem;
+        margin-left: 0%;
+        @media only screen and (min-device-width: 320px) and (max-device-width: 480px) {
+            margin: 2% 0 0;
+        }
+    }
+}
+
+.example-button-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
+
+/* Header & Navigation Styles */
+
+
+/*Styles below to be refactored*/
+
+header .top-menu {
+    background: $non-vdk-47-blue;
+    padding: 5px 0;
+}
+
+header .top-menu a {
+    padding-right: 25px;
+}
+
+header .row {
+    margin-bottom: 0%;
+    margin-top: 0%;
+}
+
+header .logo {
+    margin: 0 0 3.5px;
+    @media only screen and (min-device-width: 320px) and (max-device-width: 480px) {
+        margin: 0px 0 10px 0;
+    }
+}
+
+header .logo.row .col.push-m1,
+nav.row .col.push-m1 {
+    left: 2%;
+}
+
+nav {
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+    box-shadow: none;
+    //border-bottom: 10px solid $non-vdk-47-blue;
+}
+
+nav .material-icons {
+    margin: 2px 0 0 5px;
+}
+
+nav ul a {
+    font-size: 16px;
+    display: inline-block;
+}
+
+nav ul a:hover,
+nav ul a:focus {
+    background: none;
+    color: $non-vdk-47-blue;
+}
+
+nav .dropdown-content {
+    margin-top: 50px;
+    box-shadow: 0 0 10px 0 $non-vdk-27-blue;
+}
+
+nav .dropdown-content a {
+    display: block;
+    background: $non-vdk-37-white;
+    color: $title-color;
+    opacity: 0.87;
+}
+
+nav .dropdown-content a:hover,
+nav .dropdown-content a:focus {
+    background: $non-vdk-38-blue;
+    color: $headings-dark-color
+}
+
+nav ul a,
+.mobile-icon .material-icons {
+    color: $non-vdk-8-grey;
+}
+
+header .side-nav {
+    background: white;
+    //top: 80px;
+}
+
+header .side-nav .title-content {
+    background: $background-default-color;
+    padding-bottom: 5%;
+}
+
+header .side-nav .close {
+    float: right;
+    width: 20px;
+    height: 20px;
+    margin-top: 10px;
+}
+
+header .side-nav li a {
+    padding: 10px 0 10px 15px;
+    height: 60px;
+    line-height: 40px;
+    font-size: 15px;
+}
+
+.active {
+    color: $non-vdk-47-blue !important;
+}
+
+.sm-active {
+    background-color: $headings-dark-color;
+}
+
+.top-link {
+    line-height: 20px;
+    margin: 0;
+}
+
+.register-buttons {
+    button {
+        border-radius: 5%;
+        margin: 0 15px;
+        color: $non-vdk-52-blue;
+    }
+}
+
+button:focus {
+    background-color: $non-vdk-53-black !important;
+    border: 1px solid $non-vdk-54-black;
+    color: white;
+}
+
+.list-values {
+    padding: 10px 20px;
+    background: $non-vdk-55-white;
+}

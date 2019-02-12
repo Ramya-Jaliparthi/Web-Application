@@ -1,0 +1,552 @@
+<ng-container *ngIf="isRegisteredUser; then registeredUser;else authenticatedUser">
+</ng-container>
+
+<ng-template #registeredUser>
+  <div class="authenicated-homepage-container">
+
+    <!-- Registered users -->
+    <div class="registered-image-container">
+      <img src="/assets/images/homepage/Hero_Image_Default.jpg" *ngIf="!ismobile" alt="default image" class="responsive-img">
+      <div *ngIf="ismobile" class="mobile-hero-image">
+        <img src="/assets/images/homepage/Hero_Image_Default-Mobile.jpg" alt="default image" class="responsive-img">
+      </div>
+      <div class="verify-your-account-container">
+        <div class="verify-account-header">
+          <i class="far fa-shield-check  menu-icon" aria-hidden="true"></i>
+          <!--fa-shield-check-->
+          <span>Verify Your Account to Access:</span>
+        </div>
+        <div class="verify-account-link">
+          <div class="verify-account-info">
+            <span class="menu-icon">
+              <i class="fas fa-shield-alt" aria-hidden="true"></i>
+            </span>
+            <span>Easy access to your plan info</span>
+          </div>
+          <div class="verify-account-info">
+            <span class="menu-icon">
+              <i class="fas fa-file-alt" aria-hidden="true"></i>
+            </span>
+            <span>View the status of your claims</span>
+          </div>
+          <div class="verify-account-info">
+            <span class="menu-icon">
+              <i class="fas fa-user-md" aria-hidden="true"></i>
+            </span>
+            <span>Access doctor info & visit history</span>
+          </div>
+          <div class="verify-account-info">
+            <span class="menu-icon">
+              <i class="fas fa-id-card" aria-hidden="true"></i>
+            </span>
+            <span>Instant access to your Member ID</span>
+          </div>
+          <div class="verify-account-button">
+            <button mat-raised-button (click)="authRestartScreen()" style="border: none">
+              Verify Account Now
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="registered-links-divider hide-on-large-only"></div>
+    <div class="registered-links-container">
+      <div class="home-page-link">
+        <i class="far fa-user-circle" aria-hidden="true"></i>
+        <a (click)="navigate('myprofile')"> Manage My Profile</a>
+      </div>
+      <div class="link-seperator">
+      </div>
+      <div class="home-page-link" (click)="openUrl(nurseLineUrl)">
+        <i class="far fa-phone" aria-hidden="true"></i>
+        <a> Call the 24-Hour Nurse Line</a>
+      </div>
+      <div class="link-seperator">
+      </div>
+      <div class="home-page-link">
+        <i class="fas fa-stethoscope" aria-hidden="true"></i>
+        <a [routerLink]="['/fad']" target="_blank"> Find a Doctor & Estimate Costs</a>
+      </div>
+    </div>
+
+    <!-- Removing as per VP comments-->
+    <!--<app-promo-carousel [ismobile]="ismobile" [carouselItems]='carouselItemDetails'></app-promo-carousel>-->
+
+    <div class="registered-line-divider hide-on-med-only hide-on-small-only"></div>
+
+    <app-promo-images [images]='landingService.articles'></app-promo-images>
+
+  </div>
+</ng-template>
+<ng-template #authenticatedUser>
+  <div class="authenicated-homepage-container">
+
+    <div class="image-container">
+      <!--<img [src]="bannerImage.mobileView" alt="default image" class="hide-on-large-only mobile-view">-->
+      <img src="../../assets/images/homepage/{{bannerImage+'.jpg'}}" *ngIf="!ismobile" alt="default image" class="responsive-img">
+      <!-- hide-on-small-only desktop-view -->
+      <div *ngIf="ismobile" class="mobile-hero-image">
+        <img src="../../assets/images/homepage/{{bannerImage+'-Mobile.jpg'}}" alt="default image" class="responsive-img">
+        <!-- hide-on-small-only desktop-view -->
+      </div>
+      <div class="col s12 image-menu-container">
+        <div *ngIf="memberInfo?.userState !== 'Inactive'" class="image-menu-plan-details" [ngClass]="{'medicare-dep-member-plan-details' : ismedicaremember || isdependant}">
+          <div class="menu-header">
+            <label> Manage My Plan</label>
+          </div>
+          <div class="menu-link">
+            <i class="fas fa-shield-alt  menu-icon" aria-hidden="true"></i>
+            <a (click)="navigate('myplans')">My Plans & Benefits</a>
+          </div>
+          <!-- *ngIf="memberInfo?.userState !== 'Inactive'" -->
+          <div class="menu-link">
+            <i class="fas fa-id-card  menu-icon" aria-hidden="true"></i>
+            <a (click)="navigate('mycards')">My Cards</a>
+          </div>
+        </div>
+
+        <div class="image-menu-health-details" [ngClass]="{'medicare-dep-menu-health-details' : ismedicaremember || isdependant}">
+          <div class="menu-header">
+            <label> Manage My Health</label>
+          </div>
+          <div class="menu-link">
+            <i class="fas fa-stethoscope menu-icon" aria-hidden="true"></i>
+            <a (click)="openFadSSO()">Find a Doctor & Estimate Costs</a>
+          </div>
+          <div class="menu-link" (click)="openUrl(nurseLineUrl)">
+            <i class="fas fa-phone menu-icon" aria-hidden="true"></i>
+            <a>24-Hour Nurse Line</a>
+          </div>
+
+        </div>
+
+      </div>
+    </div>
+
+    <div class="links-divider hide-on-large-only"></div>
+    <div class="links-container">
+      <!-- first box -->
+      <div class="home-page-link">
+        <div *ngIf="hasBqi" (click)="openBqi()"> 
+          <i class="far fa-shield menu-icon" aria-hidden="true"></i>
+          <a>View, Change or Renew My Plan</a>
+        </div>
+       <div *ngIf="hasBlueGreen" (click)="openUrlinNewWindow(blueGreenUrl)">
+          <i class="far fa-donate menu-icon" aria-hidden="true"></i>
+          <a>View My Fidelity Account(s)</a>
+        </div>
+        <div *ngIf="(!hasBlueGreen && !hasBqi)" (click)="navigate('myaccount')">
+          <i class="far fa-user-shield" aria-hidden="true"></i>
+          <a> Manage My Account</a>
+        </div>
+      </div>
+      <div class="link-seperator">
+      </div>
+      <!-- second box -->
+      <div class="home-page-link">
+        <!--<div class="home-page-link" *ngIf="isFinancialView && isSmartShopperUser" (click)='openOtherPartySite()'>-->
+        <!--<i class="far fa-shopping-bag" aria-hidden="true"></i>-->
+        <!--<a> Start Saving with SmartShopper</a>-->
+        <!--</div>-->
+        <div *ngIf="showNurseLine" (click)="openUrl(nurseLineUrl)">
+          <i class="far fa-phone" aria-hidden="true"></i>
+          <a> Call the 24-Hour Nurse Line</a>
+        </div>
+        <div *ngIf="ahealthyme" (click)='openAhealthyme()'>
+          <i class="fas fa-bicycle menu-icon" aria-hidden="true"></i>
+          <a>ahealthyme</a>
+        </div>
+      </div>
+      <!-- third box -->
+      <div class="link-seperator">
+      </div>
+      <div class="home-page-link">
+        <div>
+          <i class="fas fa-stethoscope" aria-hidden="true"></i>
+          <a (click)="openFadSSO()"> Find a Doctor & Estimate Costs</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="inbox-container">
+
+      <div class="inbox-details" [ngClass]="{'drupal-1x': isFinancialView}">
+
+        <div class="inbox-header header-item">
+          <h3>
+            <a href="javascript:void(0)" (click)="navigate('myInbox')">
+              <i class="far fa-envelope" aria-hidden="true"></i>
+              <span>My Inbox</span>
+            </a>
+          </h3>
+
+        </div>
+
+        <div class="inbox-item-details">
+
+          <div class="inbox-item" (click)="navigate('messagecenter')">
+            <div class="inbox-messages">
+              <i class="far fa-envelope-open  icons-class"></i>
+              <p class="folder-card">Messages</p>
+              <div class="valign-wrapper" *ngIf="memberInfo?.unreadMessageCount > 0">
+                <span class="badge unread-docs-indicator">{{memberInfo?.unreadMessageCount}}</span>
+              </div>
+              <div class="valign-wrapper ml-10">
+                <i class="far fa-chevron-right"></i>
+              </div>
+            </div>
+          </div>
+
+          <div class="inbox-item" (click)="navigate('documents')">
+            <div class="inbox-documents">
+              <i class="far fa-folder  icons-class"></i>
+              <p class="folder-card">Documents</p>
+              <!--<div class="valign-wrapper">
+                <span class="badge unread-docs-indicator">2</span>
+              </div>-->
+              <div class="valign-wrapper ml-10">
+                <i class="far fa-chevron-right"></i>
+              </div>
+            </div>
+          </div>
+
+          <!-- <div class="inbox-item" (click)="navigate('uploads')"> -->
+          <div class="inbox-item">
+            <div class="inbox-uploads">
+              <i class="far fa-image  icons-class"></i>
+              <p class="folder-card">My Uploads (Coming Soon)</p>
+              <!-- <div class="valign-wrapper ml-10">
+                <i class="far fa-chevron-right"></i>
+              </div> -->
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+
+      <div class="deduction-details inactive-details" *ngIf="!isFinancialView && (memberInfo?.userState === 'Inactive') " [ngClass]="{'drupal-1x': isFinancialView,'finance-data': !isFinancialView}">
+        <div class="deduction-header header-item " style="margin-left: 0px;">
+          <h3><a><span><!-- no heading --></span></a></h3>
+        </div>
+
+        <app-inactive-homepage-fpo-layout class="promo deduction-details inactive-details" [targetUrl]='drupalContentInactiveNoFinancials'>
+        </app-inactive-homepage-fpo-layout>
+
+      </div>
+
+      <div class="finanicals-details" *ngIf="isFinancialView && (memberInfo?.userState === 'Inactive') " [ngClass]="{'drupal-1x': isFinancialView}">
+        <app-inactive-homepage-fpo-layout [targetUrl]='drupalContentInactiveWithFinancials'></app-inactive-homepage-fpo-layout>
+      </div>
+
+      <div class="deduction-details" *ngIf="(memberInfo?.userState === 'Active') " [ngClass]="{'drupal-1x': isFinancialView,'finance-data': !isFinancialView}">
+        <div class="deduction-header header-item">
+
+          <h3>
+            <a href="javascript:void(0)" (click)="navigate('deductibles')">
+              <i class="far fa-clipboard-check" aria-hidden="true"></i>
+              <span>My Deductible &amp; Co-Insurance</span>
+            </a>
+          </h3>
+
+
+        </div>
+
+        <div class="deduction-item-details" (click)="navigate('deductibles')" style="cursor: pointer;">
+          <app-spinner [ngClass]="{ 'hide': !showDedcoSpinner }" [showSpinner]="showDedcoSpinner"></app-spinner>
+          <ng-container *ngIf="!showDedcoSpinner">
+            <div class="finanical-item-detail" *ngIf="deductibleChartDetails?.length >0">
+              <div class="plan-details" [ngClass]="{'flex-direction-col': isFinancialView}">
+                <div class="plan-name">
+                  <label class="plan-name-label">{{dedCoInfo?.planName}}</label>
+                  <label class="plan-for light-text" *ngIf="hasFamily">For Family</label>
+                  <label class="plan-for light-text" *ngIf="!hasFamily">For {{dedCoName | titlecase}}</label>
+                </div>
+                <div class="effective-date">
+                  <label class="light-text effective-date-label">Effective Date: </label>
+                  <label class="light-text">{{dedCoInfo?.planStartDate | yyyymmddTommddyyyy}} -
+                    {{dedCoInfo?.planEndDate
+                    | yyyymmddTommddyyyy}}</label>
+                </div>
+              </div>
+              <div class="deduction-chart-container">
+                <div class="deduction-chart" *ngFor="let lineChart of deductibleChartDetails">
+                  <app-linechart [lineChartOptions]="lineChart"></app-linechart>
+                </div>
+              </div>
+            </div>
+
+            <div class="action-container" *ngIf="deductibleChartDetails?.length >0">
+              <span>
+                <i class="far fa-chevron-right"></i>
+              </span>
+            </div>
+            <div class="valign-wrapper" style="width: 100%;text-align: center;" *ngIf="deductibleChartDetails?.length === 0">
+              <div class="finanical-item-detail">
+                <p style="font-size: 14px;">Your Deductible &amp; Co-Insurance data is not available at this time.</p>
+              </div>
+            </div>
+          </ng-container>
+
+        </div>
+
+      </div>
+
+      <div class="finanicals-details" *ngIf="isFinancialView && (memberInfo?.userState !== 'Inactive') " [ngClass]="{'drupal-1x': isFinancialView}">
+
+        <div class="finanicals-header header-item">
+
+
+          <h3 (click)="navigateToAlegeus()" style="cursor: pointer">
+            <i class="far fa-chart-line" aria-hidden="true"></i>
+            <span>My Financials</span>
+          </h3>
+
+          <div class="previous-next" *ngIf="financialChartDetails?.length > 1">
+            <span class="previos-next-action" [ngClass]="{'cursor-pointer': (financialChartCounter > 0)}" (click)="decrementFinancialDetailsCounter()">
+              <i class="far fa-chevron-left"></i>
+            </span>
+            <span class="arrow-seperator"></span>
+            <span class="previos-next-action" [ngClass]="{'cursor-pointer': (financialChartCounter !== financialChartDetails.length - 1)}"
+              (click)="incrementFinancialDetailsCounter()">
+              <i class="far fa-chevron-right"></i>
+            </span>
+          </div>
+        </div>
+
+
+        <div class="carousel carousel-slider center cursor-pointer">
+          <app-spinner [ngClass]="{ 'hide': !isDisplayFinanceLoader }" [showSpinner]="isDisplayFinanceLoader"></app-spinner>
+          <ng-container *ngIf="!isDisplayFinanceLoader">
+            <div class="financial-carousel" materialize="carousel" [materializeParams]="[{fullWidth: true, indicators: true, duration: 50}]"
+              *ngIf="financialChartDetails && financialChartDetails?.length > 0">
+              <div *ngFor="let lineChart of financialChartDetails; let i = index" class="carousel-item info-item" (click)="navigateToAlegeus()">
+                <div class="finanicals-item-details">
+                  <div class="finanical-item-detail">
+                    <div class="plan-details">
+                      <div class="plan-name">
+                        <label class="plan-name-label">{{lineChart.chartOptions.headerText1}}</label>
+                      </div>
+                      <div class="plan-name">
+                        <label class="plan-for light-text">Account No.: {{lineChart.acountNumber}}</label>
+                      </div>
+                      <div class="effective-date">
+                        <label class="light-text effective-date-label">Effective Date: </label>
+                        <span class="light-text" *ngIf="lineChart.PlanEndDate !== ''">{{lineChart.PlanStartDate | date :'MM/dd/yyyy' }}</span>
+                        <span *ngIf="lineChart.PlanEndDate !== '' && !isHsaAccount(lineChart.accountType)" class="light-text">
+                           -
+                          {{lineChart.PlanEndDate | date :'MM/dd/yyyy' }}
+                        </span>
+                        <label class="light-text" *ngIf="lineChart.PlanEndDate === ''">{{lineChart.PlanStartDate}}</label>
+                      </div>
+                    </div>
+                    <div class="finanicals-chart-container">
+                      <div class="finanicals-chart">
+                        <app-financialchart [lineChartOptions]="lineChart.chartOptions"></app-financialchart>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="action-container">
+                    <span>
+                      <i class="far fa-chevron-right"></i>
+                    </span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="finanicals-item-details" style="height: 218px !important;text-align: center;padding: 15px;" *ngIf="financialChartDetails && financialChartDetails.length === 0">
+              <div class="finanical-item-detail" style="justify-content: center">
+                <p style="font-size: 14px;">Your financial accounts data is not available at this time.</p>
+              </div>
+            </div>
+          </ng-container>
+        </div>
+
+      </div>
+    </div>
+
+    <app-promo-carousel [ismobile]="ismobile" [carouselItems]='carouselItemDetails'></app-promo-carousel>
+
+    <div class="my-details-container">
+
+      <div class="my-details" *ngIf="memberInfo && memberInfo.mymedications?.rxDrugName">
+        <div class="details-header" (click)="navigate('mymedications')">
+          <i class="far fa-capsules" aria-hidden="true"></i>
+          <label> My Medications</label>
+        </div>
+        <div class="detail-container list-medication-container" (click)="showMedicationDetails()">
+          <div class=medication-detail>
+            <div class="dependent-info">
+              {{memberInfo?.fullMemInfo('medications')}}
+            </div>
+            <div class="medication-details">
+              <div class="medication-name">
+                {{memberInfo.mymedications?.rxDrugName}}
+              </div>
+              <!--<div class="medication-type">
+                Tablet
+              </div>
+              <div class="medication-frequency">
+                Frequency: 1x/Daily
+              </div>-->
+            </div>
+            <div class="pharmacy-details">
+              <div class="pharmacy-name">
+                <span class="name">Pharmacy: {{memberInfo.mymedications?.rxDispPrvName | camelcase}}</span>
+                <span class="store-id">({{memberInfo.mymedications?.rxDispPrvNum}})</span>
+              </div>
+              <div class="pharmacy-contact-info">
+                Need a refill?
+                <ng-container *ngIf="memberInfo.mymedications?.rxPrescPhone">
+                  <span class="phone-icon">
+                    <i class="fas fa-phone"></i>
+                  </span>
+                  <a (click)="stopEventPropagation($event)" href="tel:+1{{memberInfo.mymedications?.rxPrescPhone}}" class="phone">{{memberInfo.mymedications?.rxPrescPhone | phone}} </a>
+                </ng-container>
+              </div>
+            </div>
+            <div class="fill-details">
+              <div class="amount-info">
+                <ng-container *ngIf="memberInfo?.mymedications?.rxCoPay">
+                  <span class="amount"> ${{memberInfo.mymedications?.rxCoPay.toString().split('.')[0]}}
+                    <sup style="font-size: 10px;left: -0.4em">{{memberInfo.mymedications?.rxCoPay.toString().split('.')[1]
+                      ? memberInfo.mymedications?.rxCoPay.toString().split('.')[1] : '00'}}</sup>
+                  </span>
+                  <span>copay</span>
+                </ng-container>
+
+
+                <!--<span class="amount"> ${{memberInfo?.mymedications?.rxCoPay.toString().split('.')[0]}}-->
+                <!--<sup style="font-size: 10px;left: -0.4em">{{memberInfo?.mymedications?.rxCoPay.toString().split('.')[1] ?-->
+                <!--memberInfo?.mymedications?.rxCoPay.toString().split('.')[1] : '00'}}</sup>-->
+                <!--</span>-->
+
+              </div>
+              <div class="last-fill-info">
+                Last Fill:
+                <span class="last-fill-date">{{memberInfo.mymedications?.rxLastFillDate | homedate}}</span>
+              </div>
+            </div>
+          </div>
+          <div class="details-action">
+            <span>
+              <i class="far fa-chevron-right"></i>
+            </span>
+          </div>
+        </div>
+      </div>
+
+      <div class="my-details" *ngIf="memberInfo && memberInfo.mydoctors?.visitPrvName">
+        <div class="details-header" (click)="navigate('mydoctors')">
+          <i class="far fa-user-md" aria-hidden="true"></i>
+          <label> My Doctors</label>
+        </div>
+        <div class="detail-container doctor-details-container" (click)="showDoctorDetails()">
+          <div class="doctor-details">
+            <div class="doctor-name">
+              <label>{{memberInfo.mydoctors?.visitPrvName | casingForFilter}}</label>
+            </div>
+            <div class="doctor-specialization">
+              <label>{{memberInfo.mydoctors?.visitSpec | camelcase}}</label>
+            </div>
+            <div class="doctor-contact-info">
+              <ng-container *ngIf="memberInfo.mydoctors?.visitPhone">
+                <span class="phone-icon">
+                  <i class="fas fa-phone"></i>
+                </span>
+                <a href="tel:+1{{memberInfo.mydoctors?.visitPhone}}" class="phone" (click)="stopEventPropagation($event)">{{memberInfo.mydoctors?.visitPhone | phone}} </a>
+              </ng-container>
+            </div>
+            <div class="last-appointment-info">
+              <label class="label">Last Date of Service for {{memberInfo.mydoctors?.visitFrstName}}
+                {{memberInfo.mydoctors?.visitLastName}}</label>
+              <label class="label-value">{{memberInfo.mydoctors?.visitSvcDate | homedate}} -
+                {{memberInfo.mydoctors?.visitLastSvcDate | homedate}}
+              </label>
+            </div>
+          </div>
+          <div class="details-action">
+            <span>
+              <i class="far fa-chevron-right"></i>
+            </span>
+          </div>
+        </div>
+      </div>
+
+      <div class="my-details" *ngIf="memberInfo &&  memberInfo.myclaims?.clmICN">
+        <div class="details-header" (click)="navigate('myclaims')">
+          <i class="far fa-file-alt" aria-hidden="true"></i>
+          <label> My Claims</label>
+        </div>
+        <div class="detail-container list-claims-container" (click)="navigate('claimdetails')">
+          <div class="claim-detail">
+            <div class="dependent-info">
+              {{memberInfo?.fullMemInfo('claims')}}
+            </div>
+            <div class="claim-details">
+              <div class="claim-name">
+                {{memberInfo.myclaims?.clmPrvName | camelcase}}
+              </div>
+            </div>
+            <div class="claim-number">
+              <span class="claim-number-label"> Claim No.</span>
+              <span class="claim-number">{{memberInfo.myclaims?.clmICN | claimid}}</span>
+            </div>
+            <div class="claim-status">
+              <span [ngClass]="{'completed': (memberInfo.myclaims?.clmStatus === 'Complete'), 'pending': (memberInfo.myclaims?.clmStatus === 'Pending')}">
+                {{memberInfo.myclaims?.clmStatus === 'Complete' ? 'Completed' :memberInfo.myclaims?.clmStatus}}</span>
+            </div>
+            <div class="claim-amount-details">
+              <div class="amount-covered">
+                <ng-container *ngIf="memberInfo.myclaims?.clmCoveredAmt">
+                  <span class="amount"> ${{memberInfo.myclaims?.clmCoveredAmt.toString().split('.')[0] ?
+                    memberInfo.myclaims?.clmCoveredAmt.toString().split('.')[0] : '0'}}
+                    <sup style="font-size: 10px;left: -0.4em">{{memberInfo.myclaims?.clmCoveredAmt.toString().split('.')[1]
+                      ? memberInfo.myclaims?.clmCoveredAmt.toString().split('.')[1] : '00'}}</sup>
+                  </span>
+                </ng-container>
+                <span> Amount Covered</span>
+              </div>
+              <div class="amount-you-owe">
+                <ng-container *ngIf="memberInfo.myclaims?.clmYouOweAmt">
+                  <span class="amount"> ${{memberInfo.myclaims?.clmYouOweAmt.toString().split('.')[0] ?
+                    memberInfo.myclaims?.clmYouOweAmt.toString().split('.')[0]
+                    : '0'}}
+                    <sup style="font-size: 10px;left: -0.4em">{{memberInfo.myclaims?.clmYouOweAmt.toString().split('.')[1]
+                      ? memberInfo.myclaims?.clmYouOweAmt.toString().split('.')[1]
+                      : '00'}}</sup>
+                  </span>
+                </ng-container>
+                <span class="amount-owe"> Amount You Owe</span>
+              </div>
+            </div>
+            <div class="claim-service-details">
+              <span class="claim-service-label">Date of Service:&nbsp;</span>
+              <span class="claim-service-date" style="padding-left: 5px"> {{memberInfo.myclaims?.clmDOS | homedate}} -
+                {{memberInfo.myclaims?.clmLastDOS | homedate}} </span>
+            </div>
+          </div>
+          <div class="details-action">
+            <span>
+              <i class="far fa-chevron-right"></i>
+            </span>
+          </div>
+        </div>
+      </div>
+
+      <app-promo-blocks [ismobile]="ismobile" *ngIf="showDoctorDrupal" [data]="doctorData"></app-promo-blocks>
+      <div style="padding-right: 20px" *ngIf="showDoctorDrupal || showMedicationDrupal"></div>
+      <app-promo-blocks [ismobile]="ismobile" *ngIf="showMedicationDrupal" [data]="medicationData"></app-promo-blocks>
+      <div style="padding-right: 20px" *ngIf="showClaimsDrupal || showMedicationDrupal"></div>
+      <app-promo-blocks [ismobile]="ismobile" *ngIf="showClaimsDrupal" [data]="ClaimsData"></app-promo-blocks>
+    </div>
+    <div class="line-divider" *ngIf="memberInfo && (memberInfo.mymedications?.rxDrugName || memberInfo.mydoctors?.visitPrvName || memberInfo.myclaims?.clmICN)"></div>
+    <div class="line-divider-no-data" *ngIf="memberInfo && (!memberInfo.rxDrug && !memberInfo.mydoctors?.visitPrvName && !memberInfo.myclaims?.clmICN)"></div>
+
+    <app-promo-images [images]='landingService.articles'></app-promo-images>
+
+  </div>
+
+</ng-template>

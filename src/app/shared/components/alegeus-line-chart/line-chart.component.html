@@ -1,0 +1,65 @@
+<div class="chart-container">
+  <header>
+    <h6>{{ lineChartOptions.headerText }}:</h6>
+    <p>${{ lineChartOptions.AnnualElection | number : '1.2-2' }}</p>
+  </header>
+  <section *ngIf="lineChartWidth!==100.3 || !lineChartOptions.altText">
+    <div class="progress" [ngStyle]="{ 'background-color': lineChartOptions.chartBackgroundColor, 'display': 'flex' }">
+      <div class="determinate" *ngIf="lineChartWidth > 0.3 && showTotalValueBar"
+           [ngStyle]="{ 'width': lineChartWidth + '%', 'background-color': lineChartOptions.chartColor, 'max-width': 'calc(100% + 1px)' }"></div>
+      <div class="pending" *ngIf="showOption3Bar"
+           [ngStyle]="{ 'width': lineChartWidth2 + '%', 'background-color': lineChartOptions.chartOption3BackgroundColor, 'max-width': 'calc(100% + 1px)' }"
+           style="border-radius: 15px;">
+      </div>
+    </div>
+    <div class="chart-bottom">
+      <div class="chart-bottom-option">
+        <div class="chart-bottom-option-inner">
+          <div class="round" [ngStyle]="{ 'background-color': lineChartOptions.chartColor }"></div>
+          <div class="chart-bottom-text">
+            <ng-template [ngIf]="lineChartOptions.currentYear" [ngIfElse]="currentYear">
+              <small>{{ lineChartOptions.chartOption1Text}} ({{lineChartOptions.currentYear}})</small>
+            </ng-template>
+            <ng-template #currentYear>
+              <small>{{ lineChartOptions.chartOption1Text }}</small>
+            </ng-template>
+            <p>${{ lineChartOptions.totalValue | number : '1.2-2' }}</p>
+          </div>
+        </div>
+      </div>
+      <div class="chart-bottom-option" *ngIf='lineChartOptions.showOption3'>
+        <div class="chart-bottom-option-inner">
+          <div class="round round-default"
+               [ngStyle]="{ 'background-color': lineChartOptions.chartOption3BackgroundColor }"></div>
+          <div class="chart-bottom-text">
+            <ng-template [ngIf]="lineChartOptions.currentYear" [ngIfElse]="roolOverYear">
+              <small>{{ lineChartOptions.chartOption3Text}} ({{lineChartOptions.roolOverYear}})</small>
+            </ng-template>
+            <ng-template #roolOverYear>
+              <small>{{ lineChartOptions.chartOption3Text }}</small>
+            </ng-template>
+            <ng-template [ngIf]="lineChartOptions['chartOption3Value'] !== ''" [ngIfElse]="nodata">
+              <p>${{ lineChartOptions.chartOption3Value | number : '1.2-2' }}</p>
+            </ng-template>
+            <ng-template #nodata>
+              <p>No data</p>
+            </ng-template>
+          </div>
+        </div>
+      </div>
+      <div class="chart-bottom-option">
+        <div class="chart-bottom-option-inner">
+          <div class="round round-default"
+               [ngStyle]="{ 'background-color': lineChartOptions.chartBackgroundColor }"></div>
+          <div class="chart-bottom-text">
+            <small>{{ lineChartOptions.chartOption2Text }}</small>
+            <p>${{ lineChartOptions.chartValue | number : '1.2-2' }}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section *ngIf="lineChartWidth===100.3 && lineChartOptions.altText">
+    {{lineChartOptions.altText}}
+  </section>
+</div>

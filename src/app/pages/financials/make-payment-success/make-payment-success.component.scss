@@ -1,0 +1,177 @@
+@import '../../../../assets/styles/_spacing';
+@import '../../../../assets/styles/_colors';
+@import '../../../../assets/styles/_fonts';
+@import '../../../../assets/styles/_typography';
+@import '../../../../assets/styles/variables';
+@import '../../../../assets/styles/_variables';
+
+
+.payment-success-container {
+    .payment-success-header {
+        h1 {
+          @include Roboto(regular);
+        }
+    }
+    .payment-amount {
+        border-bottom: 1px solid $non-vdk-11-grey;
+        padding-bottom: 30px;
+        padding-top: 10px;
+
+        div {
+            display: table;
+
+            span:first-child {
+                font-size: 22px;
+                @include Roboto(bold);
+            }
+    
+            span {
+                @include Roboto(regular);
+                color: $headings-dark-color;
+                display: table-cell;
+            }
+        }
+
+
+    }   
+    .transaction-details {
+        display: flex;
+        flex-direction: column;
+
+        /* span {
+            @include Roboto(regular);
+            font-size: 14px;
+            color: #000;
+        } */
+
+        .debit-card-label-value {
+            display: flex;
+
+            span:first-child {
+                width: 110px;
+            }
+
+            a {
+                text-decoration: underline;
+            }
+        }
+
+        .user-name {
+            margin-bottom: 10px;
+            span {
+                @include Roboto(bold);
+                color: $headings-dark-color;
+            }
+        }
+
+        .transaction-date-section {
+    
+            margin-top: 10px;
+            
+            @include Roboto(regular);
+            font-size: 12px;
+            color: $text-normal-color;
+            letter-spacing: -0px;
+            text-align: right;
+    
+        }
+    
+        .service-date-section {
+            
+            margin-top: 5px;
+            @include Roboto(regular);
+            font-size: 12px;
+            color: $text-normal-color;
+            text-align: right;
+    
+        }
+
+        .transaction-details-header {
+            h2 {
+                @include Roboto(regular);
+                font-size: 20px !important;
+                margin-bottom: 10px !important;
+                margin-top: 10px !important;
+            }
+        }
+
+        .provider-name, .service-type, .user-note {
+            span:first-child {
+                @include Roboto(medium);
+            }
+
+            span:last-child {
+                @include Roboto(regular);
+            }
+        }
+    }
+
+    .submit-section {
+        .view-transaction-action {
+            display: flex;
+            padding: 30px 0px;
+            flex: 1;
+            justify-content: center;
+        
+            button {
+              flex: 1;
+            }
+        }
+    }
+}
+
+
+
+@media (max-width: 992px) {
+
+    .payment-success-container {
+        margin-left: 15px !important;
+        margin-right: 15px !important;
+    }
+  
+    .payment-success-header {
+        h1 {
+        margin-left: 15px;
+        }
+    }
+
+    .review-submit-success {
+        margin: 0px !important;
+    }
+}
+.payment-success-header {
+  h1 {
+    margin: 20px 0;
+  }
+}
+
+.review-submit-success {
+    margin: 0px -16px;
+    display: flex;
+    padding: 0px;
+    border-left: 5px solid #3DA148;
+    height: 41px;
+    background: #F2F2F2;
+    
+    .success-text {
+        @include Roboto(bold);
+        font-size: 13px;
+        color: $title-color;
+        line-height: 41px;
+    }
+
+    .check-circle {
+        color: #3DA148;
+        padding: 0px 10px;
+        line-height: 41px;
+        font-size: 18px;
+    }
+    
+}
+
+::ng-deep .mlmr-15 {
+    .breadcrumb {
+        margin-left: 15px !important;
+        margin-right: 15px !important;
+    }
+}

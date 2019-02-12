@@ -1,0 +1,93 @@
+<div id="tokenExpiryModal" class="modal token-expire-modal">
+  <div class="modal-header">
+    <img src="assets/images/bcbsma_logo.svg" class="bcbsma-logo" alt="bcbsma logo" />
+    <a class="black-text modal-close cursor-pointer" (click)="reset()">
+      <i class="fal fa-times fa-3x"></i>
+    </a>
+  </div>
+  <div class="modal-body">
+    <p>Your session has timed out. Please login again</p>
+    <div class="action-container">
+      <button class="secondary clear-button" mat-raised-button (click)="openHome()">
+            Back to home
+      </button>
+      <button class="btn btn-primary apply-button" mat-raised-button (click)="reset()">
+          Login
+      </button>
+    </div>
+  </div>
+</div>
+
+<div id="requestTimeoutError" class="modal service-error-modal">
+  <div class="modal-header">
+    <img src="assets/images/bcbsma_logo.svg" class="bcbsma-logo" alt="bcbsma logo" />
+    <a class="black-text modal-close cursor-pointer" (click)="reloadPage()">
+      <i class="fal fa-times fa-3x"></i>
+    </a>
+  </div>
+  <div class="modal-body">
+    <p id="timeOutErrorText">Oops Something went wrong. Please try again!</p>
+    <div class="action-container">
+      <button class="btn btn-primary apply-button" mat-raised-button (click)="reloadPage()">
+        Try Again
+      </button>
+    </div>
+  </div>
+</div>
+
+<div id="internetconnection" class="modal no-internet-modal">
+  <div class="modal-header">
+    <img src="assets/images/bcbsma_logo.svg" class="bcbsma-logo" alt="bcbsma logo" />
+    <a class="black-text modal-close cursor-pointer" (click)="reset()">
+      <i class="fal fa-times fa-3x"></i>
+    </a>
+  </div>
+  <div class="modal-body">
+    <p>Oops!</p>
+    <p>There is no internet connection. Please try again!</p>
+  </div>
+</div>
+
+
+<div id="openOtherPartySite" class="modal otherparty-site-modal">
+  <div class="modal-header">
+    <img src="assets/images/bcbsma_logo.svg" class="bcbsma-logo" alt="bcbsma logo" />
+    <a class="modal-close cursor-pointer" (click)="closeModal()">
+      <i class="fal fa-times fa-3x"></i>
+    </a>
+  </div>
+  <div class="modal-body">
+    <p class="header-text">You are about to leave Blue Cross Blue Shield of Massachusetts.</p>
+
+    <p class="company-name">{{currentPage}}</p>
+
+    <p class="content-text">Company Name is an independent company, that content here
+      <br/><br/> By selecting Continue, you acknowledge that you have read and understood the statement below, and wish to visit Company
+      Name’s site.
+      <br/><br/> By selecting Cancel, you will return to bluecrossma.com Your use of the selected site is subject to the Terms of Use
+      and Privacy Policies of the publisher of that site. Blue Cross Blue Shield of Massachusetts’ Terms of Use and Privacy
+      Policy do not apply at the selected site. Use of any such site, including the information, services, products, materials,
+      and any other resources contained on them, is conducted solely at your own risk.</p>
+    <div class="action-container">
+      <button (click)= "closeModal()" class="secondary clear-button" mat-raised-button>
+        Cancel
+      </button>
+      <button (click)="openbluehome()" class="btn btn-primary apply-button" mat-raised-button>
+        Continue
+      </button>
+    </div>
+  </div>
+</div>
+
+<div id="globalError" class="modal global-error-modal">
+  <div class="modal-header">
+    <img src="assets/images/bcbsma_logo.svg" class="bcbsma-logo" alt="bcbsma logo" />
+    <a class="black-text modal-close cursor-pointer" (click)="reset()">
+      <i class="fal fa-times fa-3x"></i>
+    </a>
+  </div>
+  <div class="modal-body">
+    <p>We're currently experiencing technical difficulties. Please try again later, or call
+      <a class="phone-link">1-888-772-1722</a> for immediate assistance.</p>
+  </div>
+</div>

@@ -1,0 +1,122 @@
+<div class="mt-20 hide-on-large-only">
+  <app-breadcrumbs [breadCrumbs]="breadCrumbs"></app-breadcrumbs>
+</div>
+
+<div class="row  m-0">
+  <h1 class="form-header">Add a Provider</h1>
+  <div class="hide-on-med-only hide-on-small-only">
+    <app-breadcrumbs [breadCrumbs]="breadCrumbs"></app-breadcrumbs>
+  </div>
+  <form [formGroup]="addProviderForm" novalidate (ngSubmit)="addProvider()"
+        [ngClass]="{'form-submitted' : isFormSubmitted}">
+    <div class="card-content">
+
+      <div class="row">
+        <div class="input-field col s12 pd-0">
+          <input tabindex="1" matInput placeholder="" id="providerName" aria-labelledby="providerName" type="text"
+                 formControlName="providerName"/>
+          <label for="providerName" class="active">Provider Name*</label>
+          <app-control-messages [control]="addProviderForm['controls'].providerName" [controlName]="'providerName'"
+                              [customMessages]='providerMessages'></app-control-messages>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="input-field col s12 pd-0">
+          <input tabindex="2" matInput placeholder="" id="providerAddress1" aria-labelledby="providerAddress1" type="text"
+                 formControlName="providerAddress1"/>
+          <label for="providerAddress1" class="active">Address Line 1*</label>
+          <app-control-messages [control]="addProviderForm['controls'].providerAddress1" [controlName]="'providerAddress1'"
+                              [customMessages]='addressMessages'></app-control-messages>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="input-field col s12 pd-0">
+          <input tabindex="3" matInput placeholder="" id="providerAddress2" aria-labelledby="providerAddress2" type="text"
+                 formControlName="providerAddress2"/>
+          <label for="providerAddress2" class="active">Address Line 2</label>
+          <app-control-messages [control]="addProviderForm['controls'].providerAddress2" [controlName]="'providerAddress2'"
+                              [customMessages]='addressMessages'></app-control-messages>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="input-field col s12 pd-0">
+          <input tabindex="4" matInput placeholder="" id="providerZipCode" aria-labelledby="providerZipCode" type="text"
+          [textMask]="{mask: zipMask, guide: false}" formControlName="providerZipCode"/>
+          <label for="providerZipCode" class="active">ZIP Code*</label>
+          <mat-hint>
+            <span class="font-13-grey">00000</span>
+          </mat-hint>
+          <app-control-messages [control]="addProviderForm['controls'].providerZipCode" [controlName]="'providerZipCode'"
+                              [customMessages]='zipMessages'></app-control-messages>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="input-field col s12 pd-0">
+          <input tabindex="5" matInput placeholder="" id="providerCity" aria-labelledby="providerCity" type="text"
+                 formControlName="providerCity"/>
+          <label for="providerCity" class="active">City*</label>
+          <app-control-messages [control]="addProviderForm['controls'].providerCity" [controlName]="'providerCity'"
+                              [customMessages]='cityMessages'></app-control-messages>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="input-field col s12 pd-0">
+          <mat-form-field floatPlaceholder="never" class="col s12 pd-0 mat-inherit-underline">
+            <mat-select tabindex="6" id="providerState" appMatSelectChange placeholder="Helper Text"
+                        formControlName='providerState'>
+              <mat-option *ngFor='let options of statesList' [value]='options.value'>
+                {{options.label}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+          <label for="providerState" class="active">State*</label>
+        </div>
+        <app-control-messages [control]="addProviderForm['controls'].providerState" [controlName]="'providerState'"
+                              [customMessages]='stateMessages'></app-control-messages>
+      </div>
+
+      <div class="row">
+        <div class="input-field col s12 pd-0">
+          <input tabindex="7" matInput placeholder="" id="providerPhoneNumber" aria-labelledby="providerPhoneNumber" type="text"
+                          [textMask]="{mask: phoneMask, guide: false}" formControlName="providerPhoneNumber"/>
+          <label for="providerPhoneNumber" class="active">Phone Number</label>
+          <mat-hint>
+            <span class="font-13-grey">(000) 000-00000</span>
+          </mat-hint>
+          <app-control-messages [control]="addProviderForm['controls'].providerPhoneNumber" [controlName]="'providerPhoneNumber'"
+                              [customMessages]='mobileNumberMessages'></app-control-messages>
+        </div>
+      </div>
+
+      <!-- <div class="row button-row">
+        <div tabindex="8" class="cancel-btn waves-effect waves-light btn-white
+        btn-block btn-half-width-left" type=""
+                aria-label="Cancel" (click)="closeAddProvider()">Cancel
+        </div>
+        <button tabindex="9" class="submit-btn waves-effect waves-light btn btn-block  btn-half-width-right br-8"
+                type="submit" aria-label="Submit" name="action">Submit
+        </button>
+      </div> -->
+
+      <div class="row button-row">
+        <button tabindex="13" class="submit-btn waves-effect waves-light btn btn-block  btn-half-width-right br-8"
+                type="submit" aria-label="Submit" [disabled] = "!addProviderForm.valid"
+                name="action">Add
+        </button>
+        <div class="btn-cancel" aria-label="Cancel" tabindex="14">
+            <a class="cancel" (click)="closeAddProvider()">Cancel</a>
+        </div>
+      </div>
+
+      <p class="note-text">* indicates a required field</p>
+
+    </div>
+
+
+  </form>
+</div>

@@ -1,0 +1,224 @@
+@import '../../../../assets/styles/_colors';
+@import '../../../../assets/styles/variables';
+@import '../../../../assets/styles/_fonts';
+@import '../../../../assets/styles/Global';
+@import '../../../../assets/styles/_flex';
+@import '../request-estimate.mat';
+.main-container {
+    @extend %flexbox;
+    padding-top: 20px;
+    @media (max-width: 992px) {
+        @include flex-direction(column);
+    }
+    [readonly] {
+        opacity: 0.6;
+    }
+    .header { 
+        color: #043167;
+        font-size: 24px;
+        font-weight: 300;
+        margin: 10px 0;
+        text-align: left;
+       
+    }
+    .row {
+        margin: 0;
+    }
+
+    .pos-absolute {
+        position: absolute;
+    }
+
+    .main-content {
+        padding: 0 15px 0 0;
+        @media (max-width: 992px) {
+            padding: 0 15px;
+        }
+        .header-text {
+            padding: 20px 0 0 0;
+            @media (max-width: 992px) {
+                padding-top: 10px;
+            }
+        }
+        .link-container {
+            background: $content-background-color;
+            padding: 15px 0 15px 15px;
+            margin: 30px 0;
+            
+            a {
+                cursor: pointer;
+                @extend %flexbox;
+                @include flex-direction(row);
+                @include align-items(center);
+                @include justify-content(space-between);
+                p {
+                    @include Roboto(bold);
+                    font-size: 16px;
+                    color: #043167;
+                    line-height: 22px;  
+                    padding-right: 15px;    
+                    display: inline;              
+                }     
+                
+                span.lint-desc {
+                    @include Roboto(light);
+                    font-size: 16px;
+                    color: #000000;
+                    line-height: 22px;
+                    padding: 0 15px;
+                    @media (max-width: 992px) {
+                        display: block;
+                        padding: 0;
+                    }
+                }
+                .icon-arrow {
+                    color: #043167 !important;
+                    width: 11px;
+                    height: 18px;
+                    @include flex-grow(1);
+                    margin-right: 15px;
+                    padding-right: 0;
+                    text-align: right;
+                    font-size: 19px;
+                    line-height: 22px;
+                }
+            }
+        }
+        .questions-container {
+            h2 {
+                @include Roboto(bold);
+                font-size: 22px;
+                color: #043167;
+                margin: 15px 0;
+            }
+            .input-item {
+                margin-top: 10px;
+            }
+            .question-text {
+                @include Roboto(bold);
+                font-size: 14px;
+                color: #000000;
+                line-height: 16px;
+                margin: 0;
+            }
+            .question-text.error {
+                color: #C1272D;
+            }
+            .question-sub-text {
+                @include Roboto(light);
+                font-size: 14px;
+                color: #000000;
+                line-height: 16px;
+                margin: 3px 0 0 0;
+            }
+
+            .question-option {
+                @include Roboto(regular);
+                font-size: 14px;
+                color: #000000;
+                letter-spacing: 0;
+                line-height: 18px;
+            }
+
+            .deliver-option {
+                @extend %flexbox;
+                @include flex-direction(row);
+                @include align-items(flex-start);
+                @include justify-content(flex-start);
+                .input-field {
+                    padding-left: 5px;
+                    label {
+                        -webkit-transform: translateY(-7px) scale(0.8);
+                        transform: translateY(-7px) scale(0.8);
+                        -webkit-transform-origin: 0 0;
+                        transform-origin: 0 0;
+                        padding-left: 5px;
+                        width: 120%;
+                    }                    
+                }
+            }
+
+            .sub-details-shift {
+                padding-left: 37px;
+            }
+
+            .tool-tip-div {
+                position: absolute;
+                top: -15px;
+                right: 0;
+            }
+
+            .add-link {
+                cursor: pointer;
+                color: $link-color !important;
+                padding-left: 5px;
+                @extend %flexbox;
+                @include flex-direction(row);
+                @include align-items(center);
+                @include justify-content(flex-start);
+                .font-18 {
+                    font-size: 18px;
+                }
+            }
+
+            .add-optional {
+                float: left;
+                font-family: Roboto !important;
+                font-weight: 500 !important;
+                font-size: 12px;
+                padding-left: 0;
+                @media (max-width: 992px) {
+                    padding-left: 5px;
+                }
+            }
+        }
+    }
+
+    .dynamic-content {
+        padding: 0px;
+        @extend %flexbox;
+        @include flex-direction(row);
+        // @include align-items(center);
+        // @include justify-content(center);
+        // background: $content-background-color;
+        font-size: $header-font-size;
+        // height: 100%; // spk fix after review with deepak
+        div {
+        text-align: center;
+        color: $text-gray-color;
+        font-size: 24px;
+        @include Roboto(light);
+        }
+        @media (max-width: 992px) {
+            padding: 30px 40px;
+        }
+    }
+
+    .submit-action-twobutton-twocol {
+        .btn-block {
+            line-height: 44px;
+        }
+        .btn-block[disabled] {
+            line-height: 40px;
+        }
+    }
+
+    .modal {
+        .modal-footer {
+            height: auto;
+            width: 50%;
+            .btn-block {
+                margin: 6px 0;
+            }
+        }
+    }
+    @media (max-width: 992px) {
+        .form-error-stretch {
+            margin: 0 -15px;
+        }
+
+        .submit-action-twobutton-twocol {
+            width: 100%;
+        }
+    }
+}

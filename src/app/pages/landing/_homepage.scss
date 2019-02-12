@@ -1,0 +1,25 @@
+.info-container {
+  .carousel-fixed-item.with-indicators {
+    bottom: 15px !important;
+    text-align: right;
+    right: 34%;
+    padding-right: 30px;
+  }
+  .indicators {
+    display: none !important;
+  }
+}
+
+@media only screen and (max-width: 992px) {
+  .info-container {
+    .carousel-slider {
+      //height: 265px !important;
+      //min-height: 265px !important;
+    }
+    .carousel-fixed-item.with-indicators {
+      right: 0;
+      padding-right: 30px;
+      top: 20px;
+    }
+  }
+}

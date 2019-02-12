@@ -1,0 +1,69 @@
+@import '../../../../assets/styles/_colors';
+@import '../../../../assets/styles/_vdk-colors';
+// spk-cleanup - @import '../../../../assets/styles/variables';
+@import '../../../../assets/styles/_variables';
+@import '../../../../assets/styles/_fonts';
+@import '../../../../assets/styles/_spacing';
+@import '../../../../assets/styles/_global';
+@import '../utils/message-center-common.scss';
+@mixin no-docs-message-section-styles {
+    font-size: 16px;
+    text-align: center;
+    line-height: 22px;
+}
+
+.message-center-no-docs-found-comp {
+    .no-docs-message-bold {
+        @include Roboto(bold);
+        @include no-docs-message-section-styles;
+        color: $text-disabled-gray;
+    }
+    .no-docs-message-regular {
+        @include Roboto(regular);
+        @include no-docs-message-section-styles;
+        color: $black-text;
+    }
+    .no-search-results-mode {
+        /*padding-top: 15px;*/
+        padding: 10px 10px 25px 0;
+        @media(max-width:992px){
+            padding-left:10px;
+        }
+        ul {
+            margin-left:30px;
+
+            li{
+                padding:5px 0;
+                list-style-type: disc;
+            }
+        }
+        p, ul li, .search-option-header{
+            font-size: 16px;
+            @include Roboto(normal);
+            color: $text-disabled-gray;
+        }
+
+        .search-option-header{
+            font-size: 18px;
+        }
+
+        button {
+            background: $text-primary-color;
+            width: 100%;
+            margin: 20px 0px;
+            color: $text-white-color;
+            border-radius: 8px;
+        }
+               
+        .search-option {
+            font-size: 13px;
+            color: $disabled_text_color;
+            padding: 5px 0px;
+        }
+       
+    }
+    /* @media (min-width: 993px) {
+        margin-left: 2%;
+        width: 95%;
+    }*/
+}

@@ -1,0 +1,19 @@
+<div class="demo-class">
+    <h2 mat-dialog-title>My Dialog</h2>
+    <hr>
+    <mat-dialog-content>
+        <mat-expansion-panel *ngFor="let game of games;">
+            <mat-expansion-panel-header>
+                <mat-panel-title>
+                    {{game.platform}}
+                </mat-panel-title>
+            </mat-expansion-panel-header>
+            <p>{{game.release}}</p>
+            </mat-expansion-panel>
+    </mat-dialog-content>
+    <hr>
+    <mat-dialog-actions>
+        <button mat-raised-button (click)="onCloseConfirm()">Confirm</button>
+        <button mat-raised-button (click)="onCloseCancel()">Cancel</button>
+    </mat-dialog-actions>
+</div>

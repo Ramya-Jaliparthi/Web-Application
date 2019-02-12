@@ -1,0 +1,54 @@
+<div class="mt-20 hide-on-large-only">
+    <app-breadcrumbs [breadCrumbs]="breadCrumbs"></app-breadcrumbs>
+</div>
+<div class="debit-card-details-container">
+  <div class="debit-card-details-header">
+    <h1>Manage Debit Cards</h1>
+    <div class="hide-on-med-only hide-on-small-only">
+        <app-breadcrumbs [breadCrumbs]="breadCrumbs"></app-breadcrumbs>
+    </div>
+  </div>
+  <div>
+    <div class="debit-card-details">
+      <div class="debit-card-status">
+        <span [class]='cardDetails.status'>{{cardDetails.status}}</span>
+      </div>
+      <div class="debit-card-number">
+        <span>{{cardDetails.number}}</span>
+      </div>
+      <div class="debit-card-name">
+        <span>{{cardDetails.name}}</span>
+      </div>
+      <div class="debit-card-label-value">
+        <span>Issue Status: </span><span>{{cardDetails.issueStatus}}</span>
+      </div>
+      <div class="debit-card-label-value">
+        <span>Mailed Date: </span><span> {{cardDetails.mailedDate}}</span>
+      </div>
+      <div class="debit-card-label-value">
+        <span>Activation Date: </span><span>{{cardDetails.activationDate}}</span>
+      </div>
+      <div class="debit-card-label-value">
+        <span>Expiration Date: </span><span>{{cardDetails.expirtyDate}}</span>
+      </div>
+      <div class="debit-card-label-value">
+        <span>PIN: </span><a>Show</a>
+      </div>
+    </div>
+    <div class="debit-card-stolen" *ngIf="cardDetails.showLostReportButton" (click)=navigateToReportCardPage()>
+      <div class="flex menu-item-container">
+        <p class="flex-grow-1 folder-card-sm1">
+          Report Lost/Stolen
+        </p>
+      </div>
+      <div class="flex menu-item-action">
+        <div class="valign-wrapper ml-10">
+          <i class="far fa-chevron-right"></i>
+        </div>
+      </div>
+    </div>
+    <div class="debit-card-action" *ngIf="cardDetails.showActivateButton">
+      <button type="button" class="btn btn-primary btn-full-width" (click)= 'navigateToActivatePage()'>Activate</button>
+    </div>
+  </div>
+</div>

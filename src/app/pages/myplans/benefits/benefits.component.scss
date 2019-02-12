@@ -1,0 +1,434 @@
+@import '../../../../assets/styles/_include';
+@import '../../../../assets/styles/Global';
+@import '../../../../assets/styles/_flex';
+@import '../../../../assets/styles/_filter-core';
+.header {
+    color: $headings-dark-color;
+    font-size: 24px;
+    // spk/cleanup - font-weight: 300;
+    @include Roboto(light);
+    margin-top: 0 !important;
+    text-align: left;
+    @media (min-width: 993px) {
+        padding-left: 8px;
+        margin: 20px 0!important;
+    }
+}
+
+.pos-absolute {
+    position: absolute;
+}
+
+.title-color {
+    color: $non-vdk-47-blue;
+}
+
+.benefits-intro-text {
+    @include Roboto(regular);
+    font-size: 12px;
+    color: $non-vdk-3-grey;
+    line-height: 16px;
+}
+
+.benefitdate-label {
+    @include Roboto(medium);
+    font-size: 10px;
+    color: $text-normal-color;
+    float: left;
+    line-height: 16px;
+}
+
+.benefitdate-value {
+    @include Roboto(light);
+    font-size: 12px;
+    color: $text-normal-color;
+    line-height: 16px;
+    padding-left: 5px;
+}
+
+.icon-arrow {
+    color: $text-primary-color !important;
+    float: right;
+    width: 11px;
+    height: 18px;
+}
+
+.plans-flex {
+    @extend %flexbox;
+}
+
+.plan-results-container {
+    @extend %flexbox;
+    padding: 0px;
+    .dynamic-content {
+        @extend %flexbox;
+        .details-right-link {
+            margin-bottom: 15px;
+            width: 100% !important;
+            @include Roboto(bold);
+            background: $content-background-color-alt; //$non-vdk-15-grey
+            text-align: left;
+            font-size: 13px;
+            cursor: pointer;
+            padding: 10px;
+            span {
+                color: $text-primary-color!important;
+            }
+            span.text-route {
+                margin: 0 0 0 2%;
+            }
+            span.icon-arrow {
+                color: $text-primary-color !important;
+                float: right;
+                width: 11px;
+                height: 18px;
+            }
+        }
+        .details-right-link-alt {
+            width: 100% !important;
+            @include Roboto(bold);
+            text-align: center;
+            font-size: $header-font-size;
+            cursor: pointer;
+            padding: 0;
+            @media (max-width: 992px) {
+                padding: 25px 15px 0px 15px;
+            }
+            span.text-route {
+                margin: 0 0 0 2%;
+            }
+            span.icon-arrow {
+                color: $text-primary-color !important;
+                float: right;
+                width: 11px;
+                height: 18px;
+            }
+        }
+        div {
+            text-align: center;
+            font-size: 24px;
+            @include Roboto(light);
+            width: 100%;
+            @extend %flexbox;
+            @include flex-direction(row);
+            @include align-items(flex-start);
+            @include justify-content(flex-start);
+        }
+    .details-right-link {
+      margin-bottom: 15px;
+      width: 100% !important;
+      @include Roboto(bold);
+      background: $button_hover_background; //#DCE4EB
+      text-align: left;
+      font-size: 13px;
+      cursor: pointer;
+      padding: 10px;
+      span {
+          color: #1866a3!important;
+      }
+      span.text-route {
+          margin: 0 0 0 2%;
+      }
+      span.icon-arrow {
+          color: #1866a3 !important;
+          float: right;
+          width: 11px;
+          height: 18px;
+    }
+    }
+    .plan-name-header {
+        @include Roboto(bold);
+        font-size: 16px;
+        color: $headings-dark-color;
+    }
+    .plan-label-date {
+        margin-left: 50%;
+        @include Roboto(medium);
+        font-size: 10px;
+        color: $text-normal-color;
+    }
+    .plan-label-dateValue {
+        margin-left: 9%;
+        @include Roboto(light);
+        font-size: 12px;
+        color: $text-normal-color;
+    }
+    .plan-group-name-header {
+        @include Roboto(light);
+        font-size: 12px;
+        color: $text-normal-color;
+        margin-left: 0%;
+    }
+    .plan-label-name {
+        @include Roboto(bold);
+        font-size: 14px;
+        color: $text-normal-color;
+        float: left;
+    }
+    .plan-label-value {
+        @include Roboto(regular);
+        font-size: 14px;
+        color: $text-sub-list;
+    }
+    .side-nav-container {
+        padding: 0px;
+    }
+    }
+}
+
+
+.disp-flex {
+    @extend %flexbox;
+}
+
+.benefits-text {
+    @extend %flexbox;
+    @include flex-direction(row);
+    @include align-items(center);
+    @include justify-content(center);
+    padding: 0px 15px 20px 15px;
+    p {
+        font-family: Roboto;
+        font-size: 12px;
+        color: $non-vdk-3-grey;
+        line-height: 16px;
+    }
+}
+
+@media (min-width: 993px) {
+    .intro-text {
+        @include Roboto(regular);
+        font-size: 16px;
+        color: $text-disabled-gray;
+        margin: 0 0 0 0px !important;
+    }
+    .plan-results-container {
+        .dynamic-content {
+            .details-right-link-alt {
+                margin: 0;
+            }
+        }
+    }
+}
+
+@media (max-width: 992px) {
+    .header {
+        margin: 20px 0;
+        padding: 0 15px;
+    }
+    .container {
+        width: 100% !important;
+    }
+    .plan-results-container {
+        @include flex-direction(column);
+        width: 100%;
+        margin-bottom: 0;
+        .middle-container {
+            width: 100% !important;
+            padding: 0px 0px !important;
+            padding-left: 15px !important;
+            padding-right: 15px !important;
+        }
+        .dynamic-content {
+            @include flex-direction(row);
+            @include justify-content(center);
+            @include align-items(center);
+            width: 100% !important;
+        }
+        .side-nav-container {
+            width: 100% !important;
+        }
+    }
+    .no-search-result {
+        margin-top: 10px;
+    }
+}
+
+.plan-details-text {
+    @include Roboto(regular);
+    font-size: 12px;
+    color: $non-vdk-3-grey;
+}
+
+.copay-header {
+    @include Roboto(medium);
+    font-size: 22px;
+    color: $headings-dark-color;
+}
+
+.copay-values {
+    @include Roboto(bold);
+    font-size: 16px;
+    color: $text-normal-color;
+    float: right;
+}
+
+.copay-values-header {
+    @include Roboto(regular);
+    font-size: 16px;
+    color: $text-normal-color;
+    float: left;
+}
+
+.view-values {
+    color: $link-color;
+    @include Roboto(medium);
+    font-size: 12px;
+}
+
+.no-search-result {
+    padding: 20px 0 10px 0;
+}
+
+.network-margin {
+    margin-top: 10px;
+    margin-bottom: 0;
+}
+.network-margin:first-child {
+    margin-top: 0;
+}
+
+
+/* Mat accordin*/
+
+.mat-expansion-panel:not([class*=mat-elevation-z]) {
+    box-shadow: 0 0px 0px 0px rgba(0, 0, 0, 0), 0 0px 0px 0 rgba(0, 0, 0, 0), 0 0px 0px 0 rgba(0, 0, 0, 0)
+}
+
+.mat-expansion-panel-header {
+    color: $headings-dark-color;
+    p.search-line {
+        font-family: Roboto;
+        font-size: 10px;
+        color: $text-normal-color;
+        letter-spacing: -0px;
+        line-height: 16px;
+        margin-top: 5px;
+    }
+}
+
+.mat-list,
+.mat-nav-list,
+.mat-selection-list {
+    padding-top: 5px;
+}
+
+.benefits-accordion {
+    .mat-expansion-panel {
+        width: 100%;
+        .mat-expansion-panel-header:hover {
+            background: $background-white-color 100%;
+        }
+    }
+}
+
+::ng-deep .expand-class>.mat-expansion-indicator:after {
+    color: $headings-dark-color;
+    @include Roboto(bold);
+    font-size: 14px;
+    border-left-color: transparent;
+}
+
+.mat-action-row {
+    border-top-style: solid;
+    border-bottom-style: solid;
+    border-top-width: 1px;
+    border-bottom-width: 1px;
+    border-top-color: $non-vdk-11-grey;
+    border-bottom-color: $non-vdk-11-grey;
+    @include justify-content(flex-start);
+    @media (min-width: 993px) {
+        border-left-style: solid;
+        border-right-style: solid;
+        border-left-color: $non-vdk-11-grey;
+        border-right-color: $non-vdk-11-grey;
+        border-left-width: 1px;
+        border-right-width: 1px;
+    }
+    @media (max-width: 992px) {
+        margin-left: -15px;
+        margin-right: -15px;
+    }
+    padding: 0;
+    margin-bottom: 10px;
+    &:last-child {
+        margin-bottom: 0;
+    }
+}
+
+.mt-13 {
+    margin-top: 13px !important;
+}
+
+.info-service {
+    background: $background-gray-color;
+    margin-left: -15px;
+    margin-right: -15px;
+    height: 41px;
+    cursor: pointer;
+    @extend %flexbox;
+    @include flex-direction(row);
+    @include align-items(center);
+    @include justify-content(flex-start);
+    div {
+        padding-left: 15px;
+        padding-right: 15px;
+        text-align: left;
+        @extend %flexbox;
+        @include flex-direction(row);
+        @include align-items(center);
+        @include justify-content(space-between);
+        clear: both;
+        a {
+            font-family: Roboto;
+            font-size: 13px;
+            // spk/cleanup - font-weight: 700;
+            @include Roboto(bold);
+            color: $headings-dark-color;
+            text-align: left;
+            line-height: 16px;
+            width: 100%;
+        }
+        span {
+            color: $headings-dark-color;
+            vertical-align: middle;
+            float: right;
+        }
+    }
+}
+
+.info-service:hover {
+  background: $button_hover_background;   
+}
+
+.mat-accordin-name {
+    @include Roboto(bold);
+    color: $headings-dark-color;
+    font-size: 13px;
+    line-height: 16px;
+}
+
+.mat-service-header {
+    @include Roboto(bold);
+    font-size: 14px !important;
+    color: $title-color;
+    margin-top: 0;
+    margin-bottom: 11px;
+}
+
+.mat-service-label {
+    @include Roboto(regular);
+    font-size: 12px;
+    color: $text-disabled-gray;
+    float: left;
+    line-height: 16px;
+    padding-right: 0;
+}
+
+.mat-service-value, .mat-service-value p {
+    @include Roboto(regular);
+    font-size: 14px;
+    color: $text-normal-color;
+    line-height: 18px;
+    padding-right: 5px;
+}

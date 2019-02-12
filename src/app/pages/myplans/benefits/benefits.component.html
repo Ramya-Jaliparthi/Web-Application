@@ -1,0 +1,221 @@
+<div class="row m-0">
+  <div class="col l6 m12 s12 pd-0 offset-l3">
+    <div class="ml-15 mt-20 hide-on-large-only">
+      <app-breadcrumbs></app-breadcrumbs>
+    </div>
+    <ng-container *ngIf="!isSearchShowing">
+      <h1 class="header">{{planName}}</h1>
+    </ng-container>
+    <div class="ml-10 hide-on-med-only hide-on-small-only">
+      <app-breadcrumbs></app-breadcrumbs>
+    </div>
+    <ng-container *ngIf="isSearchShowing">
+      <h1 class="header" *ngIf="filteredBenefits.length === 0">No Results Found</h1>
+      <h1 class="header" *ngIf="filteredBenefits.length === 1">{{ filteredBenefits.length }} Result</h1>
+      <h1 class="header" *ngIf="filteredBenefits.length > 1">{{ filteredBenefits.length }} Results</h1>
+    </ng-container>
+  </div>
+</div>
+
+<div class="row m-0">
+  <div class="plan-results-container mb-20">
+    <div class="show-on-medium-and-down hide-on-large-only pl-15 pr-15 mb-20">
+      <div>
+        <div class="row ml-0 mb-10 mr-0">
+          <div class="benefitdate-label left">Efffective Date: </div>
+          <div class="benefitdate-value left">{{effectiveStartDate | yyyymmddTommddyyyy}}
+            <ng-container *ngIf="effectiveEndDate">– {{effectiveEndDate | yyyymmddTommddyyyy}}</ng-container>
+          </div>
+        </div>
+      </div>
+      <div class="benefits-intro-text">
+        Costs may vary In-Network versus Out-of-Network. Tap a Service to view details and restrictions.
+      </div>
+    </div>
+    <div class="main-result">
+      <div class="main-result-container">
+        <div class="filter-action-button-cont">
+          <div class="filter-action-button" [ngClass]="{'toggle-filter': (isSidenavOpened), 'closed-filter': !(isSidenavOpened)}">
+            <div class="filter-action-label" (click)="toggleFilter('in')">
+              Filter
+              <p>
+                <i class="material-icons">keyboard_arrow_down</i>
+              </p>
+            </div>
+          </div>
+          <div *ngIf="showClearLink" [ngClass]="{'toggle-filter': (isSidenavOpened)}" class="clear-action-label" (click)="clearFilter()">
+            Clear
+          </div>
+        </div>
+
+        <div [ngClass]="{'filter-mobile-divider': !(isSidenavOpened)}" class="hide-on-large-only"></div>
+
+        <div class="side-nav-container col l3 m12 s12" [@slideInOut]='sideNavStatus' [ngClass]="{'show-side-content': (isSidenavOpened)}">
+
+          <div class="row filter-container" #sideNavContainer>
+
+            <div class="col m12 s12 pd-0 medicare-filter-inner-btn">
+              <div #filterWidth class="col m12 s12 filter-btn">
+                <div class="col s12 filter-menu">
+                  <div> Filter</div>
+                </div>
+                <div class="col s12 filter-menu-with-action" (click)="toggleFilter('out')">
+                  <div> Filter</div>
+                  <i class="material-icons">keyboard_arrow_up</i>
+                </div>
+              </div>
+            </div>
+
+            <div class="col s12 pd-0">
+              <mat-accordion multi="true" class="filter-item">
+                <mat-expansion-panel [expanded]="isSortExpanded" (opened)="isSortOpened()" (closed)="isSortClosed()" class="sort-panel">
+                  <mat-expansion-panel-header class="header-panel" [collapsedHeight]="collapsedSortHeight" [expandedHeight]="expandedSortHeight">
+                    <div class="sort-by">Sort by</div>
+                    <p class="selected-sort" *ngIf="!isSortExpanded">{{sortSelectedFilter}}</p>
+                  </mat-expansion-panel-header>
+                  <mat-list>
+                    <mat-radio-group name="filterSort" [(ngModel)]="sortSelectedFilter" (change)="sortFilterChanged($event);" #issortingChecked>
+                      <mat-list-item *ngFor="let item of sortList">
+                        <mat-radio-button labelPosition="before" [checked]="item.checked" name="filterSort" [value]="item.value">{{item.text}}
+                        </mat-radio-button>
+                      </mat-list-item>
+                    </mat-radio-group>
+                  </mat-list>
+                </mat-expansion-panel>
+              </mat-accordion>
+            </div>
+
+            <div class="filter-divider-row"></div>
+
+            <div class="col s12 filter-apply pd-0">
+              <div>
+                <button class="clear-button" mat-raised-button type="button" (click)="clearFilter()">
+                  Clear
+                </button>
+              </div>
+              <div>
+                <button class="apply-button" mat-raised-button type="submit" (click)="applyFilter()">
+                  Apply
+                </button>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+        <div class="col l6 s12 m12 middle-container" [ngClass]="{'hide-side-content': (isSidenavOpened)}">
+          <div class="show-on-large hide-on-med-and-down">
+            <div>
+              <div class="row ml-0 mb-10 mr-0">
+                <div class="benefitdate-label left">Efffective Date: </div>
+                <div class="benefitdate-value left">{{effectiveStartDate | yyyymmddTommddyyyy}}
+                  <ng-container *ngIf="effectiveEndDate">– {{effectiveEndDate | yyyymmddTommddyyyy}}</ng-container>
+                </div>
+              </div>
+            </div>
+            <div class="benefits-intro-text mb-20">
+              In network and out-of-network costs may vary. Tap a service to view details and restrictions.
+            </div>
+          </div>
+
+          <div class="result-container col l12 m12 s12 pd-0" *ngIf="benefitList?.length === 0" [ngClass]="{'hide-side-content': (isSidenavOpened)}">
+            <div class="no-medications-available">
+              <div class="text-center medicare-msg">
+                <div class="text-center medicare-msg no-search-result">
+                  <div class="no-medications-icon">
+                    <img src="/assets/images/medication_error.svg">
+                  </div>
+                  <p class="no-medications">We couldn’t look up your plan.</p>
+                  <p>If you have questions about your plan, please contact us.</p>
+                </div>
+                <button class="search-clear-button mb-10" mat-raised-button type="button" (click)="navigateToContactUs()">
+                  Contact Us
+                </button>
+                <a class="search-back-button" mat-raised-button type="button" (click)="clearFilter();">
+                  Go Back
+                </a>
+              </div>
+            </div>
+          </div>
+          <ng-container *ngIf="benefitList">
+            <ng-container *ngFor="let benefit of benefitList; trackBy: trackByFunction">
+              <div class="mat-action-row benefits-accordion">
+                <mat-expansion-panel #matExpansionPanelList class="mat-exp-margin">
+                  <mat-expansion-panel-header class="expand-class pl-15 pr-15" [collapsedHeight]="'41px'" [expandedHeight]="'41px'">
+                    <mat-panel-title class="mat-accordin-name">
+                      {{ benefit.planBenefitName }}
+                    </mat-panel-title>
+                  </mat-expansion-panel-header>
+  
+                  <ng-container *ngIf="benefit.subcategory?.length > 0">
+                    <div class="pl-15 pr-15">
+                      <div class="col s12 m12 pd-0" *ngFor="let service of benefit.subcategory">
+                        <h6 class="mat-service-header">{{ service.planBenefitName }}</h6>
+                        <ng-container *ngIf="service.memberCostText">
+                          <ng-container *ngFor="let key of keys(service.memberCostText)">
+                            <div class="mb-10 row" *ngIf="service.memberCostText[key].length > 0">
+                              <div class="col s4 m3 mat-service-label" *ngIf="isNetwork(key)">
+                                  {{ myPlansService.getNetworkString(key) }}
+                              </div>
+                              <div class="col s8 m9 mat-service-value">
+                                <ng-container *ngFor="let value of service.memberCostText[key]">
+                                  <p class="network-margin" [innerHtml]="myPlansService.getStyledHtmlText(value)">
+                                  </p>
+                                </ng-container>
+                              </div>
+                            </div>
+                          </ng-container>
+                        </ng-container>
+                      </div>
+                    </div>
+                  </ng-container>
+  
+                  <ng-container *ngIf="!benefit.subcategory || benefit.subcategory.length === 0">
+                    <div class="pl-15 pr-15" *ngIf="benefit.memberCostText">
+                      <div class="col s12 m12 pd-0" *ngFor="let key of keys(benefit.memberCostText)">
+                        <div class="mb-10 row" *ngIf="benefit.memberCostText[key].length > 0">
+                          <div class="col s4 m3 mat-service-label" *ngIf="isNetwork(key)">
+                            {{ myPlansService.getNetworkString(key) }}
+                          </div>
+                          <div class="col s8 m9 mat-service-value">
+                            <ng-container *ngFor="let value of benefit.memberCostText[key]">
+                              <p class="network-margin" [innerHtml]="myPlansService.getStyledHtmlText(value)">
+                              </p>
+                            </ng-container>
+  
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </ng-container>
+  
+                  <div class="col s12 m12 pd-0 info-service" [routerLink]="['/myplans/benefitdetails']" (click)="setBenefitName(benefit.planBenefitName);">
+                    <div class="col s12 m12 pd-0">
+                      <a class="pl-15 pr-15" [routerLink]="['/myplans/benefitdetails']" (click)="setBenefitName(benefit.planBenefitName);">View all information about this service
+                        <span>
+                          <i class="fas fa-chevron-right"></i>
+                        </span>
+                      </a>
+  
+                    </div>
+                  </div>
+                </mat-expansion-panel>
+              </div>
+            </ng-container>
+          </ng-container>
+        </div>
+        <div class="col l3 s12 m12 pd-0 dynamic-content">
+          <div class="details-right-link-alt plans-flex">
+            <!-- <div>FPO placeholder for Drupal API content</div> -->
+            <app-fpo-layout [targetUrl]='fpoTargetUrl'></app-fpo-layout>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+  <hr class="mb-20" />
+  <div class="benefits-text">
+    <p>The benefits described here are for informational purposes only and are subject to change at any time.</p>
+  </div>
+</div>

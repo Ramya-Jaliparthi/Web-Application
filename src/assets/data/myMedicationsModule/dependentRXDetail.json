@@ -1,0 +1,27 @@
+{
+    "rxDetails": {
+        "genericName": "Hydrocodone-Acetaminophen Tab 7.5-325 MG",
+        "pharmacy": {
+            "id": "70010002236544",
+            "name": "STAR PHARMACY",
+            "phoneNumber": "617-782-162",
+            "address": "370 WESTERN AVE",
+            "city": "BRIGHTON",
+            "state": "MA",
+            "zip": "02135"
+        },
+        "copay": 5.45,
+        "lastFill": "2013-09-23",
+        "prescribingDoctor": "DAVID K WEINSTOCK MD",
+        "refillHistory": [
+            {
+                "date": "2013-09-23",
+                "claimNumber": "026152957073500"
+            },
+            {
+                "date": "2013-12-23",
+                "claimNumber": "026152957073501"
+            }
+        ]
+    }
+}

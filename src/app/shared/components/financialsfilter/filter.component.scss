@@ -1,0 +1,316 @@
+@import '../../../../assets/styles/_fonts';
+// spk-cleanup - @import '../../../../assets/styles/variables';
+@import '../../../../assets/styles/_variables';
+@import '../../../../assets/styles/Global';
+@import '../../../../assets/styles/_flex';
+@import '../../../../assets/styles/_filter-core';
+@import '../../../../assets/styles/_colors';
+.filter-component {
+    height: 100% !important;
+    margin: 0px;
+    background: $non-vdk-15-grey;
+    .apply-button {
+        background: $new-color;
+        border-radius: 5px;
+        color: $text-white-color;
+        @include Roboto(bold);
+        font-size: 16px;
+        letter-spacing: -0.01px;
+        text-align: center;
+        height: 44px;
+    }
+    .clear-button {
+        color: $background-title-separator-color;
+        border-radius: 5px;
+        background: $text-white-color;
+        @include Roboto(bold);
+        font-size: 16px;
+        letter-spacing: -0.01px;
+        text-align: center;
+        height: 44px;
+    }
+    .filter-divider-row {
+        height: 1px;
+        background: $non-vdk-15-grey;
+        width: 100%;
+    }
+    .mat-expansion-panel-header {
+        padding-top: 10px;
+        padding-bottom: 10px;
+        margin-left: 0 !important;
+        padding-left: 1rem !important;
+        .mat-content {
+            font-family: Roboto;
+            @include Roboto(bold);
+            font-size: 16px;
+            color: $link-secondary-color;
+            letter-spacing: -0.26px;
+        }
+        .sort-by {
+            @include Roboto(bold);
+            font-size: 16px;
+            color: $title-color;
+            letter-spacing: -0.26px;
+            color: $black_color;
+        }
+        @media (max-width: 992px) {
+            padding-right: 22px !important;
+        }
+    }
+    .mat-expansion-panel-header.mat-expanded {
+        .sort-by {
+            font-size: 16px;
+            color: $headings-dark-color;
+        }
+    }
+    .mat-expansion-panel {
+        margin: 0px !important;
+        border: 0px !important;
+        padding: 0px !important;
+    }
+    .sort-panel {
+        padding: 0px !important;
+    }
+    .mat-list,
+    .mat-selection-list {
+        padding-top: 0;
+    }
+    .header-panel,
+    .mat-expansion-indicator::after {
+        color: $header-color !important;
+        padding-top: 20px !important;
+        padding-bottom: 20px !important;
+        background: $background-white-color 100%;
+    }
+    .filter-item {
+        .header-panel {
+            @include Roboto(bold);
+            font-size: 16px;
+            color: $headings-dark-color;
+            letter-spacing: -0.26px;
+        }
+    }
+    .mat-expansion-panel-header:hover {
+        background: $background-white-color 100%;
+    }
+    .filter-menu-with-action {
+        @extend %flexbox;
+        align-items: center;
+        padding: 0px !important;
+        @include justify-content(space-between);
+        display: none;
+    }
+    .filter-menu {
+        display: block;
+        @include Roboto(bold);
+        font-size: 14px;
+        color: $headings-dark-color;
+        letter-spacing: -0px;
+    }
+    .filter-apply {
+        margin: 10px 0 10px 0;
+        @extend %flexbox;
+        @include justify-content(space-around);
+        div {
+            flex: 1;
+            button {
+                width: 100%;
+            }
+        }
+        div:first-child {
+            padding: 5px 5px 5px 3%;
+        }
+        div:last-child {
+            padding: 5px 3% 5px 5px;
+        }
+        .clear-button:hover {
+            background-color: #c6dcee !important;
+        }
+    }
+    .filter-divider {
+        height: 10px;
+        background: $non-vdk-15-grey;
+        width: 100%;
+        border-top: 1px solid $non-vdk-14-grey;
+        border-bottom: 1px solid $non-vdk-14-grey;
+    }
+    .mat-list-option {
+        height: auto !important;
+        min-height: 44px;
+    }
+    .filter-action-button {
+        display: none;
+    }
+    .filter-btn {
+        background: $non-vdk-15-grey 100%;
+        color: $header-color;
+        vertical-align: middle;
+        padding: 0.5rem 1rem 5px 0;
+        @include Roboto(bold);
+        @media (max-width: 992px) {
+            cursor: pointer;
+        }
+        .filter-menu-with-action {
+            .material-icons {
+                font-size: 30px;
+                color: $headings-dark-color;
+            }
+        }
+        img {
+            width: 24px;
+            height: 24px;
+        }
+    }
+    @media (max-width: 992px) {
+        .filter-content {
+            display: none;
+        }
+        .filter-action-button-cont {
+            display: flex;
+            @include flex-direction(row);
+            @include align-items(center);
+            background-color: $background-white-color;
+            .clear-action-label {
+                cursor: pointer;
+                color: $link-color;
+                font-size: 14px;
+                text-decoration: underline;
+                padding-left: 15px;
+                @include Roboto(bold);
+                display: block;
+            }
+            .toggle-filter {
+                display: none;
+            }
+        }
+        .filter-action-button {
+            display: flex;
+            align-items: center;
+            margin: 0px 0px;
+            .filter-action-label {
+                display: flex;
+                align-items: center;
+                cursor: pointer;
+                margin-left: 15px;
+                width: 100%;
+                i {
+                    font-size: 27px;
+                    margin-top: 0;
+                    color: $headings-dark-color;
+                    padding-left: 3px!important;
+                    position: relative;
+                    top: 4px;
+                    @media (max-width: 992px) { 
+                        color: $background-white-color;
+                    }
+                }
+            }
+        }
+        .filter-btn {
+            padding: 0 10px 0 3% !important;
+        }
+        .show-side-content {
+            display: block;
+            padding: 0px;
+        }
+        .hide-side-content {
+            display: none !important;
+        }
+    }
+    .toggle-filter {
+        display: none;
+    }
+    .closed-filter {
+        color: $headings-dark-color;
+        @include Roboto(bold);
+        background: $non-vdk-15-grey 20%;
+        width: 84px;
+        height: 30px;
+        
+        @media (max-width: 992px) { 
+            background-color: $background-title-separator-color;
+            color: $background-white-color;
+        }
+    }
+    .filter-mobile-divider {
+        border: 2px solid $text-primary-color;
+    }
+
+    .selected-sort {
+        @include Roboto(regular);
+        font-size: 14px;
+        color: $black_color;
+    }
+    
+    .date-error {
+        color: $error-alert-color;
+        span {
+            font-size: 12px;
+        }
+        i.arrow_forward {
+            position: relative;
+            font-size: 18px;
+            top: 4px;
+            display: inline-block;
+        }
+    }
+
+    .calendar-min-height {
+        min-height: 65px;
+    }
+    
+    .calendar-container {
+        width: 380px !important;
+        position: relative;
+    }
+    
+    .calendar-main-container {
+        @extend %flexbox;
+        .mat-calendar-previous-button:focus {
+            background-color: none !important;
+        }
+    }
+
+    .date-filter-custom {
+        display: flex;
+        flex-direction: column;
+        margin-top: -25px;
+        .date-filter-range {
+            display: flex;
+            .from-date {
+                padding-right: 2px;
+            }
+        }
+        .mat-hint-message {
+            font-size: 12px;
+        }
+        .date-filter-custom-date {
+            display: flex;
+            flex-direction: row;
+            .fa-calendar-alt {
+                cursor: pointer;
+                margin-top: 17px;
+                margin-right: 10px;
+                color: $icon-color;
+                @media (max-width: 992px) {
+                    margin-right: 15px;
+                }
+            }
+        }
+        .custom-range-error-message {
+            color: $non-vdk-41-red;
+            font-size: 12px;
+            padding-top: 5px;
+        }
+    }
+    
+    .input-calender {
+        font-size: 14px;
+        margin-top: 4px;
+    }
+    
+    .hidden {
+        display: none;
+    }
+    
+}

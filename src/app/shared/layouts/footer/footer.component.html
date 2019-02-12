@@ -1,0 +1,86 @@
+<div class="row mr-0 ml-0">
+  <hr class="hide-on-med-and-up mb-20">
+  <div class="footer-container pt-30  pb-15">
+    <hr class="hide-on-small-only mb-20">
+    <div class="row mb-0 footer-content-container mt-30">
+      <a href="https://home.bluecrossma.com/">
+        <img class="col s12 m12 l2 mb-10 hide-on-med-and-down footer-logo" alt="BCBSMA Title Logo" src="{{drupalUrl}}{{footerGlobalLinks?.Bcbslogo}}">
+      </a>
+      <div class="col s12 m12 l2 mb-25 hide-on-large-only center-align">
+        <a href="https://home.bluecrossma.com/">
+          <img class="footer-logo" alt="BCBSMA Title Logo" src="{{drupalUrl}}{{footerGlobalLinks?.Bcbslogo}}">
+        </a>
+      </div>
+
+      <div class="col s12 footer-contents">
+        <!-- social icons -->
+
+        <div class="social-icons" *ngIf="isAuthenticated">
+          <div class="scal-icons-firstset">
+            <a target="_blank" href={{footerGlobalLinks?.LinkedInUrl}} class="mr-12">
+              <img src="{{drupalUrl}}{{footerGlobalLinks?.LinkedInIcon}}" alt="Join us on Linkedin">
+            </a>
+            <a target="_blank" href={{footerGlobalLinks?.TwitterUrl}} class="mr-12">
+              <img src="{{drupalUrl}}{{footerGlobalLinks?.TwitterIcon}}" alt="Follow us on Twitter">
+            </a>
+            <a target="_blank" href={{footerGlobalLinks?.FacebookUrl}} class="mr-12">
+              <img src="{{drupalUrl}}{{footerGlobalLinks?.FacebookIcon}}" alt="Like us on facebook">
+            </a>
+            <a target="_blank" href={{footerGlobalLinks?.YoutubeUrl}} class="mr-35">
+              <img src="{{drupalUrl}}{{footerGlobalLinks?.YoutubeIcon}}" alt="Watch our YouTube channel">
+            </a>
+          </div>
+          <div class="scal-iconssecondset">
+            <a target="_blank" href={{footerGlobalLinks?.AppstoreUrl}} class="mr-12">
+              <img src="{{drupalUrl}}{{footerGlobalLinks?.AppstoreIcon}}" alt="Get from App store" class="footer-app-icons">
+            </a>
+            <a target="_blank" href={{footerGlobalLinks?.GooglePlayUrl}} class="mr-20">
+              <img src="{{drupalUrl}}{{footerGlobalLinks?.GooglePlayIcon}}" alt="Get from Google Play" class="footer-app-icons gglplay">
+            </a>
+            <div class="divider hide-on-large-only"></div>
+          </div>
+          <!-- <div class="divider hide-on-large-only"></div> -->
+          <!-- <div class="nletter-blck mr-12">
+                            <a href="#" title="sign up for our newsletter" target="_blank">Sign up for our newsletter</a>
+                            <a href="#" title="privacy policy" target="_blank">Privacy policy</a>
+                        </div>
+                        <div class="input-field">                                   
+                                    <input matInput placeholder="Email address" aria-labelledby="emailadd" id="emailadd" type="text" class="validate fluid-width pd-0 mt-0"  />
+                                    <label for="updatepcpid" class="active sr-only">Email address</label>                                       
+                                <button class="btn btn-primary" type="button" aria-label="Sign up">Sign up</button>
+                            </div>  
+                        <div class="divider hide-on-large-only"></div>
+                    -->
+        </div>
+
+        <div class="mb-0 str-content-txt">
+          <div class="footer-content" [innerHTML]="footerGlobalLinks?.FooterContent">
+          </div>
+        </div>
+        <div class="mb-0 ftr-links">
+          <ul class="footer-links">
+            <li *ngFor="let ftrlnks of footerLinks">
+              <a href={{ftrlnks.absolute}} target="_blank">{{ftrlnks.title}}</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+  <hr *ngIf="langTranslation && langTranslation.length > 0">
+  <div class="row language-links" *ngIf="langTranslation && langTranslation.length > 0">
+    <p class="col l10 s12 offset-l2 pt-20 pb-20">
+      Nondiscrimination &amp; Translations Resources
+    </p>
+    <ul class="col l10 s12 offset-l2 pb-30">
+      <li *ngFor="let link of langTranslation">
+        <a (click)="selectLang(link)">
+          {{link.IntlLanguage}} ({{link.Translation}})
+        </a>
+      </li>
+    </ul>
+
+    <div class="col l10 s12 offset-l2 pb-30" [innerHTML]="langFooterText">
+    </div>
+  </div>
+</div>

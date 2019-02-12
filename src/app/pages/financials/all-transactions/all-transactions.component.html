@@ -1,0 +1,219 @@
+<!-- Start - Title -->
+<div class="row">
+  <div class="col l6 s12 push-l3">
+    <h1 class="page-title">{{financialConstants.text.allTransactionsTitle}}</h1>
+  </div>
+</div>
+<div class="filter-title show-on-large-only">Filter</div>
+<div class="auth-shadow responsive-image show-on-large-only"></div>
+<!-- End - Title -->
+
+<!-- Start - Transaction Content -->
+<section class="AllTransactionPage">
+  <div class="">
+    <div class="row">
+      <!-- Start - Filter Section -->
+      <div class="col l3 m12 s12">
+        <!--*ngIf="searchCriteriaData?.categoryFilterMap?.size>0" <app-filter-search-all-transactions (onSearch)="onSearch($event)" [searchCriteriaData]="searchCriteriaData"></app-filter-search-all-transactions> -->
+        <app-cost-breakdown-financials-filter [filterConfig]="filterConfig"></app-cost-breakdown-financials-filter>
+      </div>
+      <!-- End - Filter Section -->
+      <!-- Start - All Transaction  -->
+      <div class="col l6 m12 s12">
+        <!-- Start - Action items Block -->
+        <div class="flex collection_heading">
+          <h2>
+            <span class="categoryNo">({{allTransactionActionitems.length}})</span>
+            {{financialConstants.text.allTransactionActionitems}}</h2>
+        </div>
+        <ul class="collection">
+          <li class="collection-item menu-top-border" *ngFor="let actionItem of allTransactionActionitems">
+            <div class="flex flex-box-listing" (click)="navigateToTransactionDetail(actionItem.Transactions.TransactionId)">
+              <table>
+                <tr class="transactionDisplayName">{{actionItem.Transactions.DisplayName}}</tr>
+                <tr class="transactionProviderName">{{actionItem.Transactions.ProviderName}}</tr>
+                <tr class="transactionClaim">
+                  <span class="transactionClaimText">{{financialConstants.text.claimNo}}</span>
+                  <span class="transactionClaim"> {{actionItem.Transactions.ClaimLine }}</span>
+                </tr>
+                <tr class="actionClaimStatus">{{actionItem.Transactions.TransactionStatus }}</tr>
+                <tr>
+                  <div class="valign-wrapper ">
+                    <i class="fa fa-chevron-right "></i>
+                  </div>
+                </tr>
+                <tr class="transactionAmount">
+                  <div class="row">
+                    <div class="col s6 m4 amountFirst">
+                      &#40;&#36;{{convertAmountToBaseValue(actionItem.Transactions.TransactionAmt)}}<sup>{{convertAmountToDecimalValue(actionItem.Transactions.TransactionAmt)}}</sup>&#41;
+                      <span class="amountFirstText">{{financialConstants.text.amountCovered}}</span>
+                    </div>
+                    <div class="col s6 m4 amountSecond">
+                      &#40;&#36;{{convertAmountToBaseValue(actionItem.Transactions.TransactionEligibleAmt)}}<sup>{{convertAmountToDecimalValue(actionItem.Transactions.TransactionEligibleAmt)}}</sup>&#41;
+                      <span class="amountSecondText">{{financialConstants.text.whatYouOwe}}</span>
+                    </div>
+                  </div>
+                </tr>
+                <tr>
+                  <div class="transactionFrom">from {{actionItem.Transactions.AcctTypeCode}},
+                    and {{actionItem.Transactions.AcctTypeDesc}}
+                  </div>
+                </tr>
+                <tr>
+                  <div class="transactionDateDiv">
+                    <span class="transactionDateText">{{financialConstants.text.dateOfTransaction}}</span>
+                    <span class="transactionDate">{{actionItem.Transactions.TransactionDate }}</span>
+                  </div>
+                </tr>
+              </table>
+            </div>
+          </li>
+        </ul>
+        <!-- End - Action items Block -->
+        <!-- Start - Pending Block -->
+        <div class="flex collection_heading">
+          <h2>
+            <span class="categoryNo">({{allTransactionPending.length}})</span>
+            {{financialConstants.text.allTransactionPending}}</h2>
+        </div>
+        <ul class="collection">
+          <li class="collection-item menu-top-border" *ngFor="let pendingItem of allTransactionPending">
+            <div class="flex flex-box-listing">
+              <table>
+                <tr class="transactionDisplayName">{{pendingItem.Transactions.DisplayName}}</tr>
+                <tr class="transactionProviderName">{{pendingItem.Transactions.ProviderName}}</tr>
+                <tr class="transactionClaim">
+                  <span class="transactionClaimText">{{financialConstants.text.claimNo}}</span>
+                  <span class="transactionClaim"> {{pendingItem.Transactions.ClaimLine }}</span>
+                </tr>
+                <tr class="pendingClaimStatus">{{pendingItem.Transactions.TransactionStatus }}</tr>
+                <tr>
+                  <div class="transactionDateDiv">
+                    <span class="transactionDateText">{{financialConstants.text.dateOfTransaction}}</span>
+                    <span class="transactionDate">{{pendingItem.Transactions.TransactionDate }}</span>
+                  </div>
+                </tr>
+              </table>
+            </div>
+          </li>
+        </ul>
+        <!-- End - Pending Block -->
+        <!-- Start - Completed Block -->
+        <div class="flex collection_heading">
+          <h2>
+            <span class="categoryNo">({{allTransactionCompleted.length}})</span> <b>{{financialConstants.text.allTransactionCompleted}}</b>
+          </h2>
+        </div>
+        <ul class="collection">
+          <li class="collection-item menu-top-border" *ngFor="let completedItem of allTransactionCompleted">
+            <div class="flex flex-box-listing" (click)="navigateToTransactionDetail(completedItem.Transactions.TransactionId)">
+              <table>
+                <tr class="transactionDisplayName">{{completedItem.Transactions.DisplayName}}</tr>
+                <tr class="transactionProviderName">{{completedItem.Transactions.ProviderName}}</tr>
+                <tr class="transactionClaim">
+                  <span class="transactionClaimText">{{financialConstants.text.claimNo}}</span>
+                  <span class="transactionClaim"> {{completedItem.Transactions.ClaimLine }}</span>
+                </tr>
+                <tr class="completedClaimStatus">{{completedItem.Transactions.TransactionStatus }}</tr>
+                <tr>
+                  <div class="valign-wrapper ">
+                    <i class="fa fa-chevron-right "></i>
+                  </div>
+                </tr>
+                <tr class="transactionAmount">
+                  <div class="row">
+                    <div class="col s6 m4 amountFirst">
+                      &#40;&#36;{{convertAmountToBaseValue(completedItem.Transactions.TransactionAmt)}}<sup>{{convertAmountToDecimalValue(completedItem.Transactions.TransactionAmt)}}</sup>&#41;
+                      <span class="amountFirstText">{{financialConstants.text.amountPaid}}</span>
+                    </div>
+                    <div class="col s6 m4 amountSecond">
+                      &#40;&#36;{{convertAmountToBaseValue(completedItem.Transactions.TransactionEligibleAmt)}}<sup>{{convertAmountToDecimalValue(completedItem.Transactions.TransactionEligibleAmt)}}</sup>&#41;
+                      <span class="amountSecondText">{{financialConstants.text.whatYouOwe}}</span>
+                    </div>
+                  </div>
+                </tr>
+                <tr>
+                  <div class="transactionFrom">from {{completedItem.Transactions.AcctTypeCode}},
+                    and {{completedItem.Transactions.AcctTypeDesc}}
+                  </div>
+                </tr>
+                <tr>
+                  <div class="transactionDateDiv">
+                    <span class="transactionDateText">{{financialConstants.text.dateOfTransaction}}</span>
+                    <span class="transactionDate">{{completedItem.Transactions.TransactionDate }}</span>
+                  </div>
+                </tr>
+              </table>
+            </div>
+          </li>
+        </ul>
+        <!-- End - Completed Block -->
+        <!-- Start - Others Block -->
+        <div class="flex collection_heading ">
+          <h2><span class="categoryNo">({{allTransactionOthers.length}})</span>
+            {{financialConstants.text.allTransactionOthers}}</h2>
+        </div>
+        <ul class="collection">
+          <li class="collection-item menu-top-border" *ngFor="let otherItem of allTransactionOthers">
+            <div class="flex flex-box-listing" (click)="navigateToTransactionDetail(otherItem)">
+              <table>
+                <tr class="transactionDisplayName">{{otherItem.Transactions.DisplayName}}</tr>
+                <tr class="transactionProviderName">{{otherItem.Transactions.ProviderName}}</tr>
+                <tr class="transactionClaim">
+                  <span class="transactionClaimText">{{financialConstants.text.claimNo}}</span>
+                  <span class="transactionClaim"> {{otherItem.Transactions.ClaimLine }}</span>
+                </tr>
+                <tr class="completedClaimStatus">{{otherItem.Transactions.TransactionStatus }}</tr>
+                <tr>
+                  <div class="valign-wrapper ">
+                    <i class="fa fa-chevron-right "></i>
+                  </div>
+                </tr>
+                <tr class="transactionAmount">
+                  <div class="row">
+                    <div class="col s6 m4 amountFirst">
+                      &#40;&#36;{{convertAmountToBaseValue(otherItem.Transactions.TransactionAmt)}}<sup>{{convertAmountToDecimalValue(otherItem.Transactions.TransactionAmt)}}</sup>&#41;
+                      <span class="amountFirstText">{{financialConstants.text.amountPaid}}</span>
+                    </div>
+                    <div class="col s6 m4 amountSecond">
+                      &#40;&#36;{{convertAmountToBaseValue(otherItem.Transactions.TransactionEligibleAmt)}}<sup>{{convertAmountToDecimalValue(otherItem.Transactions.TransactionEligibleAmt)}}</sup>&#41;
+                      <span class="amountSecondText">{{financialConstants.text.whatYouOwe}}</span>
+                    </div>
+                  </div>
+                </tr>
+                <tr>
+                  <div class="transactionFrom">from {{otherItem.Transactions.AcctTypeCode}},
+                    and {{otherItem.Transactions.AcctTypeDesc}}
+                  </div>
+                </tr>
+                <tr>
+                  <div class="transactionDateDiv">
+                    <span class="transactionDateText">{{financialConstants.text.dateOfTransaction}}</span>
+                    <span class="transactionDate">{{otherItem.Transactions.TransactionDate }}</span>
+                  </div>
+                </tr>
+              </table>
+            </div>
+          </li>
+        </ul>
+        <!-- End - Others Block -->
+      </div>
+      <!-- End - All Transaction  -->
+
+      <!-- Start - No Transaction Found -->
+      <div *ngIf="!isNoTransactionResults " [class]="[ 'col', 's12', 'l6', mobileHideByFilterOverlay?
+              'mobile-hide-by-filter-overlay': ''].join( ' ') ">
+        <div>{{financialConstants.errorMessages.noTransactionFound}}</div>
+      </div>
+      <!-- End - No Transaction Found -->
+
+      <!-- Start - Promotional Material Section-->
+      <div [class]="[ 'col', 'l3', 'm12', 's12', 'promo', mobileHideByFilterOverlay? 'mobile-hide-by-filter-overlay': ''].join(
+              ' ') ">
+        <app-dynamic-promotional-content></app-dynamic-promotional-content>
+      </div>
+      <!-- End - Promotional Material Section-->
+    </div>
+  </div>
+</section>
+<!-- End - Transaction Content -->

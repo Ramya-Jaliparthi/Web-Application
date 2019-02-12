@@ -1,0 +1,146 @@
+<div class="mycards">
+  <div>
+    <!-- <div class="row" [ngClass]="{'container-fluid': (ismobile),  'container': (!ismobile)}"> -->
+    <div class="row ml-0 mr-0 mb-0" [ngClass]="{'mt-20': !ismobile}">
+      <div class="col l3 m12 s12 pd-0" [hidden]="!bHasDependents"></div>
+      <div class="col l6 m12 s12" [ngClass]="{'hide-side-content': (isSidenavOpened), 'l8': !bHasDependents}">
+        <div *ngIf="ismobile" class="mt-20">
+          <app-breadcrumbs></app-breadcrumbs>
+        </div>
+        <div class="cards-logo-color">
+          <div>My Cards</div>
+        </div>
+        <div *ngIf="!ismobile">
+          <app-breadcrumbs></app-breadcrumbs>
+        </div>
+      </div>
+      <div class="col l3 m12 s12"></div>
+    </div>
+
+    <!-- <div class="row" [ngClass]="{'container-fluid': (ismobile), 'container':(!ismobile)}"> -->
+    <div class="row ml-0 mr-0">
+      <div [ngClass]="{'pd-0': (ismobile) }">
+        <div class="cards-result">
+          <div class="cards-result-container">
+            <div [hidden]="!ismobile" class="mobile-text-info">
+              <p class="header-text">The cards displayed on this page may not match the physical card originally mailed to you. We're working on
+                bringing you an accurate digital card in the future!</p>
+
+              <p class="header-text">
+                <a class="header-text" (click)="navigateToContactUs()">Contact us</a> if you need to give your insurance information to a provider.
+              </p>
+
+            </div>
+            <div [hidden]="!bHasDependents" class="filter-action-button" [ngClass]="{'toggle-filter': (isSidenavOpened), 'no-dependents': !bHasDependents}">
+
+              <div class="filter-action-label" (click)="toggleFilter('in')">
+                <span class="filter-menu-text" style="margin-left: 10px">Filter</span>
+                <p>
+                  <i class="material-icons ml-10" style="font-size: 26px;margin-top: 8px;color: #043167">keyboard_arrow_down</i>
+                </p>
+              </div>
+              <div class="clear-action-label" *ngIf="showClearLink" (click)="clearFilter()">
+                <span>Clear</span>
+              </div>
+            </div>
+
+            <div [ngClass]="{'filter-mobile-divider': !(isSidenavOpened)}" class="hide-on-large-only"></div>
+
+            <div class="side-nav-container col l3 m12 s12 pd-0" [hidden]="!bHasDependents" [@slideInOut]='sideNavStatus' [ngClass]="{'show-side-content': (isSidenavOpened) }">
+              <div class="row filter-container" #sideNavContainer>
+                <div class="col m12 s12 pd-0 cards-filter-inner-btn">
+                  <div #filterWidth class="col m12 s12 filter-btn">
+                    <div class="col s12 filter-menu">
+                      <div class="filter-menu-text">Filter</div>
+                    </div>
+                    <div class="col s12 filter-menu-with-action" (click)="toggleFilter('out')">
+                      <div class="filter-menu-text" style="font-size:14px;">Filter</div>
+                      <i class="material-icons" style="font-size: 26px;">keyboard_arrow_up</i>
+                    </div>
+                  </div>
+                </div>
+                <div class="filter-divider">
+                </div>
+
+
+                <mat-accordion multi="true">
+                  <mat-expansion-panel [hideToggle]="true" [expanded]="isexpanded">
+                    <mat-expansion-panel-header style="pointer-events: none" class="header-panel" [collapsedHeight]="collapsedHeight" [expandedHeight]="expandedHeight">
+                      <b class="ft-16">Member Name</b>
+                    </mat-expansion-panel-header>
+
+                    <mat-selection-list #members (selectionChange)="onMemberSelectionChange($event)">
+                      <mat-list-option *ngFor="let item of membersList" [selected]="item.selected" value="{{ item.value }}">
+                        {{ item.name | titlecase }} {{item.name === 'All Members' ? '('+(membersList.length -1)+')' : ''}}
+                      </mat-list-option>
+                    </mat-selection-list>
+                  </mat-expansion-panel>
+                </mat-accordion>
+
+                <div class="col s12 filter-apply pd-0">
+                  <div>
+                    <button class="clear-button" disableRipple mat-raised-button type="button" (click)="clearFilter()">
+                      Clear
+                    </button>
+                  </div>
+                  <div>
+                    <button class="apply-button" disableRipple mat-raised-button type="submit" (click)="applyFilter(true)">
+                      Apply
+                    </button>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+
+            <div class="result-container col l6 m12 s12" #cardsContainer [ngClass]="{'hide-side-content': (isSidenavOpened), 'l8': !bHasDependents}" *ngIf="cardData">
+              <div class="col s12 pd-0">
+                <!-- Desktop View -->
+                <div [hidden]="ismobile" class="text-info">
+                  <p class="header-text">The cards displayed on this page may not match the physical card originally mailed to you. We're working
+                    on bringing you an accurate digital card in the future!
+                  </p>
+                  <p class="header-text">
+                    <a class="header-text" (click)="navigateToContactUs()">Contact us
+                    </a> if you need to give your insurance information to a provider.
+                  </p>
+                </div>
+                <ng-container *ngFor="let card of cards let sIndex = index">
+                  <app-card #cards [ngClass]="{'hideMatdivider': ismobile && sIndex === 0}" [ismobile]="ismobile" [hasDependents]="bHasDependents"
+                    [cardData]="card"></app-card>
+                </ng-container>
+              </div>
+            </div>
+
+            <div class="dynamic-content col l3 m12 s12 pd-0" [ngClass]="{'hide-side-content': (isSidenavOpened), 'l4': !bHasDependents, 'hasDependents': !bHasDependents}">
+              <div class="order-cards">
+                <div class="row m-0">
+                  <h3 class="cards-header">
+                    Need your cards?
+                  </h3>
+                </div>
+                <div class="row m-0">
+                  <div style="display: inline-flex" [ngClass]="{'m5 s5' : (ismobile), 'half-width':(!ismobile)}" class="or-link col m-0">
+                    <i class="far fa-clone replacement-icon"></i>
+                    <p class="text-style" [routerLink]="['/orderreplacement']">Order ID Card</p>
+                  </div>
+                  <div class="col s1"></div>
+                  <div style="display: inline-flex;direction:rtl" [ngClass]="{'m6 s6' : (ismobile)}" class="download-link col m-0">
+                    <p class="text-style" (click)="downloadPdf()">Download ID Card</p>
+                    <i class="material-icons download-icon">arrow_downward</i>
+                  </div>
+                </div>
+
+              </div>
+              <div class="downloadView">
+                <app-fpo-layout [targetUrl]='fpoTargetUrl'></app-fpo-layout>
+              </div>
+            </div>
+
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

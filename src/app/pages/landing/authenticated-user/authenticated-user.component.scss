@@ -1,0 +1,1330 @@
+@import '../../../../assets/styles/colors';
+@import '../../../../assets/styles/variables';
+@import '../../../../assets/styles/_fonts';
+
+.authenicated-homepage-container {
+  width: 100%;
+  //display: flex;
+  //flex-direction: column;
+
+  .promo {
+    background: $background-gray-color;
+    //background-clip: content-box;
+    /*margin-left:0.60rem!important;*/
+    display: flex;
+    // align-items: center;
+     justify-content: center;
+    // padding-right:0;
+}
+
+
+
+  .image-container {
+    position: relative;
+    // background: $forms-select-muted-color;
+    img {
+      /*max-width: 100%;
+      min-height: 300px;*/
+      border-bottom: 4px solid $forms-select-muted-color;
+    }
+    .image-menu-container {
+      position: absolute;
+      top: 41px;
+      left: 14px;
+      .image-menu-plan-details{
+        border-bottom: 1px solid $border-color;
+      }
+
+      .image-menu-plan-details, .image-menu-health-details {
+     
+        padding-bottom: 10px;
+        margin-bottom: 10px;
+        .menu-header {
+          label {
+            @include Roboto(bold);
+            font-size: 22px;
+            color: $text-white-color;
+          }
+        }
+        .menu-link {
+          padding: 5px 0;
+          .menu-icon {
+            &.fa-w-16{
+              width:1.125em;
+            }
+          }
+          a, .menu-icon {
+            @include Roboto(light);
+            font-size: 16px;
+            color: $text-white-color;
+          }
+          a {
+            padding-left: 10px;
+            cursor: pointer;
+          }
+        }
+      }
+
+      .medicare-dep-member-plan-details{
+        border-bottom: 1px solid $border-color;
+      }
+      
+      .medicare-dep-member-plan-details, .medicare-dep-menu-health-details {
+      
+        padding-bottom: 10px;
+        margin-bottom: 10px;
+        .menu-header {
+          label {
+            @include Roboto(bold);
+            font-size: 22px;
+            color: $text-normal-color;
+          }
+        }
+        .menu-link {
+          padding: 5px 0;
+          a, .menu-icon {
+            @include Roboto(light);
+            font-size: 16px;
+            color: #1866A3;
+          }
+          a {
+            padding-left: 10px;
+            cursor: pointer;
+          }
+        }
+      }
+
+    }
+    .mobile-view {
+      display: none;
+    }
+    .desktop-view {
+      display: block;
+    }
+  }
+
+  .links-container {
+    display: flex;
+    padding: 26px 0 32px 0;
+    border-bottom: 1px solid #B7B7B7;
+    .home-page-link {
+      flex: 1;
+      a {
+        @include Roboto(bold);
+        font-size: 18px;
+        color: $icon-color;
+        padding-left: 10px;
+        cursor: pointer;
+      }
+      svg {
+        font-size: 28px;
+        color: $icon-color;
+      }
+    }
+    .link-seperator {
+      border-left: 1px solid #B6B6B6;
+      padding-right: 20px;
+    }
+  }
+
+  .inbox-container {
+    display: flex;
+    padding: 30px 0 36px 0;
+    
+
+    .inbox-header, .deduction-header, .finanicals-header {
+      padding-bottom: 10px;
+      width:100%;
+      overflow: hidden;
+      h3 {
+        margin:0;
+        float:left;
+        a,span {
+          color: $icon-color;
+         
+        }
+       span{
+        padding-left: 5px;
+       }
+      }
+     /* label {
+        padding-left: 10px;
+       
+        @include Roboto(regular);
+        font-size: 20px;
+        line-height: 24px;
+      }*/
+      svg {
+        color: $icon-color;
+        font-size: 20px;
+      }
+    }
+    @media (max-width: 992px) {
+      overflow: hidden;
+      .inbox-header, .deduction-header,.finanicals-header{
+        span{
+          font-size: 18px;
+        }
+      }
+
+      
+    }
+
+    .inbox-details {
+      flex: 1;
+      .inbox-item-details {
+
+        
+
+        .inbox-item {
+          display: flex;
+          flex-wrap: wrap;
+          //@media (max-width: 992px) {
+          //  margin:0;
+          //}
+          
+         
+
+          .inbox-messages, .inbox-documents, .inbox-uploads {
+            display: flex;
+            flex: 0 1 100%;
+            margin: 0 10px 10px 0;
+            padding: 20px;
+            cursor: pointer;
+            border: 1px solid $textbox-border;
+            @media (max-width: 992px) {
+              min-width: 100%;
+              margin: 0;
+
+             
+            }
+
+            @media (min-width: 993px) {
+              &.mrg-bottom{
+                margin-bottom:0;
+              }
+            }
+
+            
+
+            .icons-class {
+              color: $link-secondary-color;
+              font-size: 22px;
+              //@media (max-width: 992px){
+              //  font-size: 14px;
+              //}
+            }
+
+            .unread-docs-indicator {
+              @include Roboto(regular);
+              text-align: center;
+              background-color: $unread-docs-alert-color;
+              font-size: 12.65px;
+              color: $text-white-color;
+              border-radius: 50%;
+              min-width: 1.5rem;
+            }
+
+            .folder-card {
+              flex-grow: 1;
+              @include Roboto(bold);
+              color: $primary-color;
+              font-size: 16px;
+              padding-left: 15px;
+            }
+
+            .fa-chevron-right {
+              color: $link-secondary-color;
+              width: 11px;
+              height: 18px;
+              cursor: pointer;
+            }
+
+          }
+
+          
+
+          .inbox-uploads {
+            margin-bottom: 0;
+          }
+
+        }
+      }
+    }
+
+    .deduction-details {
+      &.finance-data{
+        flex: 2;
+      }
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      margin-left: 10px;
+      .deduction-item-details {
+        padding: 15px;
+        flex: 1;
+        border: 1px solid $border-color;
+        display: flex;
+        @media (max-width:992px) {
+          min-height: 218px;
+        }
+        //flex-direction: column;
+        .finanical-item-detail {
+          display: flex;
+          flex-direction: column;
+          flex: 1;
+        }
+        .action-container {
+          align-self: center;
+          display: flex;
+          align-items: center;
+          i {
+            color: $header-color;
+            cursor: pointer;
+          }
+
+          svg {
+            color: $header-color;
+            cursor: pointer;
+            width: 18px;
+            height: 18px;
+          }
+        }
+        .plan-details {
+          display: flex;
+          justify-content: space-between;
+          //flex-direction: column;
+        }
+        .light-text {
+          @include Roboto(light);
+          color: $light-text-color;
+          font-size: 14px;
+        }
+        .plan-details {
+          display: flex;
+          .plan-name {
+            display: flex;
+            flex-direction: column;
+            .plan-for {
+              margin-top: -6px;
+            }
+          }
+          .plan-name-label {
+            @include Roboto(bold);
+            color: $primary-color;
+            font-size: 16px;
+          }
+          .effective-date-label {
+            @include Roboto(regular);
+          }
+        }
+        .deduction-chart-container {
+          display: flex;
+          .deduction-chart {
+            flex: 1;
+          }
+        }
+        .deduction-chart:first-child {
+          padding-right: 15px;
+        }
+        .deduction-chart:last-child {
+          padding-left: 15px;
+        }
+      }
+    }
+    
+    
+
+    .finanicals-details {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      margin-left: 20px;
+      .carousel {
+        height: auto !important;
+        flex: 1;
+        text-align: justify;
+        border: 1px solid $border-color;
+      }
+      .carousel-item {
+        min-height: auto;
+      }
+      .previous-next {
+        float: right;
+        /*padding-top: 5px;*/
+        margin-right: -8px;
+        .previos-next-action {
+          padding: 0 10px;
+        }
+        svg, .fa {
+          color: #555555;
+          font-size: 18px;
+        }
+        .cursor-pointer {
+          cursor: pointer;
+        }
+        .arrow-seperator {
+          padding: 0 5px;
+        }
+      }
+      .finanicals-item-details {
+        padding: 10px;
+        flex: 1;
+        // border: 1px solid $border-color;
+        display: flex;
+        .finanical-item-detail {
+          display: flex;
+          flex-direction: column;
+          flex: 1;
+        }
+        .action-container {
+          align-self: center;
+          display: flex;
+          align-items: center;
+          i {
+            color: $header-color;
+            cursor: pointer;
+          }
+
+          svg {
+            color: $header-color;
+            cursor: pointer;
+            width: 18px;
+            height: 18px;
+          }
+        }
+        height: 100%;
+        .plan-details {
+          display: flex;
+          justify-content: space-between;
+          flex-direction: column;
+        }
+        .light-text {
+          @include Roboto(light);
+          color: $light-text-color;
+          font-size: 14px;
+        }
+        .plan-details {
+          display: flex;
+          .plan-name {
+            display: flex;
+            flex-direction: column;
+            .plan-for {
+              margin-top: -6px;
+            }
+          }
+          .plan-name-label {
+            @include Roboto(bold);
+            color: $primary-color;
+            font-size: 16px;
+          }
+          .effective-date-label {
+            @include Roboto(regular);
+          }
+        }
+        .finanicals-chart-container {
+          display: flex;
+          .finanicals-chart {
+            flex: 1;
+          }
+        }
+        .finanicals-chart:first-child {
+          padding-right: 15px;
+        }
+        .finanicals-chart:last-child {
+          padding-left: 15px;
+        }
+      }
+    }
+
+  }
+
+  .ads-container {
+    display: flex;
+    width: 100%;
+    margin: 0 0 15px 0;
+    .ads-details:first-child {
+      padding-right: 10px;
+    }
+    .ads-details:last-child {
+      padding-left: 10px;
+    }
+    .ads-details {
+      //flex: 1;
+      display: flex;
+      flex-direction: column;
+      img {
+        //height: 136px;
+        max-width: 100%;
+      }
+      .add-label {
+        padding: 15px 0;
+        color: $link-color;
+        font-size: 18px;
+        @include Roboto(bold);
+      }
+    }
+  }
+
+  .my-details-container {
+    display: flex;
+    width: 100%;
+    /*.my-details:first-child {
+      padding-right: 20px;
+    }*/
+    .my-details:last-child {
+      margin-right: 0;
+    }
+    .my-details {
+      flex: 1;
+      //display: flex;
+      margin-right:20px;
+      flex-direction: column;
+
+      @media (max-width: 992px) {
+        margin-right:0;
+        margin-bottom:30px;
+      }
+      .details-header {
+        padding-left: 2px;
+        label, .fa, svg {
+          @include Roboto(regular);
+          color: $link-color;
+          font-size: 20px;
+          cursor: pointer;
+        }
+        label {
+          padding-left: 10px;
+        }
+
+      }
+      .detail-container {
+        //height: 200px;
+        border: 1px solid $border-color;
+        //padding: 15px;
+        margin: 12px 0 0 0;
+        flex: 1;
+
+      }
+
+      .details-action {
+        display: flex;
+        align-items: center;
+        margin-right: 1px;
+        i {
+          color: $header-color;
+          cursor: pointer;
+        }
+
+        svg {
+          color: $header-color;
+          cursor: pointer;
+          width: 18px;
+          height: 18px;
+        }
+      }
+
+      .phone-icon, .phone {
+        color: $link-primary-color;
+        @include Roboto(medium);
+        font-size: 12px;
+        i {
+          font-size: 12px;
+          transform: rotate(270deg);
+          color: $link-primary-color;
+        }
+      }
+      .phone-icon {
+        //vertical-align: middle;
+      }
+      .phone {
+        cursor: pointer;
+        text-decoration: underline;
+      }
+
+      .list-claims-container {
+        cursor: pointer;
+        display: flex;
+        justify-content: space-between;
+        //align-items: center;
+        background: $text-white-color;
+        padding: 15px 15px;
+        height: 210px;
+
+        .claim-detail {
+          line-height: 16px;
+          letter-spacing: -0.01px;
+          flex-grow: 1;
+          font-size: 12px;
+          .dependent-info {
+            @include Roboto(light);
+            color: $text-normal-color;
+            line-height: 16px;
+            letter-spacing: -0.01px;
+            padding-bottom: 15px;
+          }
+          .claim-details {
+            padding-bottom: 15px;
+            .claim-name {
+              font-size: 16px;
+              color: $header-color;
+              @include Roboto(bold);
+            }
+          }
+          .claim-number {
+            padding-bottom: 5px;
+            .claim-number-label {
+              @include Roboto(bold);
+            }
+            .claim-number {
+              @include Roboto(regular);
+              font-size: 12px;
+              color: $text-sub-list;
+            }
+          }
+          .claim-status {
+            padding-bottom: 10px;
+            @include Roboto(light);
+            .completed {
+              color: $success-alerts-color;
+              @include Roboto(bold);
+            }
+            .pending {
+              color: $text-gray-color;
+              @include Roboto(bold);
+            }
+          }
+          .claim-amount-details {
+            padding-bottom: 10px;
+            display: flex;
+            justify-content: space-between;
+            .amount-covered, .amount-you-owe {
+              font-size: 10px;
+              color: $radio-label-color;
+              .amount {
+                font-size: 18px;
+                @include Roboto(light);
+              }
+            }
+            .amount-you-owe {
+              @include Roboto(bold);
+              .amount {
+                @include Roboto(bold);
+              }
+              .amount-owe {
+                @include Roboto(medium);
+              }
+            }
+          }
+          .claim-service-details {
+            display: flex;
+            justify-content: flex-end;
+            @include Roboto(medium);
+            color: $radio-label-color;
+            .claim-service-label {
+              @include Roboto(medium);
+            }
+            .claim-service-date {
+              @include Roboto(light);
+            }
+          }
+        }
+
+        .claim-action {
+          float: right;
+          i {
+            color: $header-color;
+            cursor: pointer;
+          }
+
+          svg {
+            color: $header-color;
+            cursor: pointer;
+            width: 18px;
+            height: 18px;
+            float: right;
+            margin-right: -2px !important;
+          }
+
+        }
+      }
+
+      .doctor-details-container {
+        display: flex;
+        justify-content: space-between;
+        //align-items: center;
+        cursor: pointer;
+        background: $text-white-color;
+        padding: 15px 15px;
+        height: 210px;
+        .doctor-details {
+          flex: 1;
+          display: flex;
+          flex-direction: column;
+
+          .doctor-name {
+            margin-top: -4px;
+          }
+
+          .doctor-name label {
+            @include Roboto(bold);
+            font-size: 16px;
+            color: $primary-color;
+            cursor: pointer;
+          }
+          .doctor-specialization {
+            cursor: pointer;
+            margin-top: -5px;
+            label {
+              @include Roboto(light);
+              font-size: 14px;
+              color: $title-color;
+              letter-spacing: -0;
+              cursor: pointer;
+            }
+          }
+          .doctor-contact-info {
+            padding-top: 10px;
+          }
+
+          .last-appointment-info {
+            display: flex;
+            align-items: flex-end;
+            flex-direction: column;
+            margin-top: 25px;
+            margin-right: 5px;
+            label {
+              font-size: 12px;
+              color: $title-color;
+              cursor: pointer;
+            }
+            .label {
+              @include Roboto(medium);
+            }
+            .label-value {
+              @include Roboto(light);
+            }
+          }
+        }
+      }
+
+      .list-medication-container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        background: $text-white-color;
+        padding: 15px 15px;
+
+        .medication-detail {
+          cursor: pointer;
+          line-height: 16px;
+          height: 178px;
+          letter-spacing: -0.01px;
+          flex-grow: 1;
+          font-size: 12px;
+          .dependent-info {
+            @include Roboto(light);
+            color: $text-normal-color;
+            line-height: 16px;
+            letter-spacing: -0.01px;
+            padding-bottom: 15px;
+          }
+          .medication-details {
+            cursor: pointer;
+            padding-bottom: 15px;
+            .medication-name {
+              font-size: 16px;
+              color: $header-color;
+              @include Roboto(bold);
+            }
+            .medication-type, .medication-frequency {
+              color: $disabed-background-color;
+              @include Roboto(regular);
+            }
+          }
+          .pharmacy-details {
+            cursor: pointer;
+            padding-bottom: 10px;
+            .pharmacy-name {
+              padding-bottom: 5px;
+              color: $text-normal-color;
+              .name {
+                @include Roboto(medium);
+                color: $text-normal-color;
+              }
+              .store-id {
+                @include Roboto(light);
+                color: $text-sub-list;
+              }
+            }
+            .pharmacy-contact-info {
+              @include Roboto(light);
+              color: $text-normal-color;
+            }
+          }
+          .fill-details {
+            display: flex;
+            justify-content: space-between;
+            .amount-info {
+              font-size: 10px;
+              color: $radio-label-color;
+              .amount {
+                font-size: 18px;
+                @include Roboto(light);
+              }
+            }
+            .last-fill-info {
+              @include Roboto(medium);
+              color: $radio-label-color;
+              .last-fill-date {
+                @include Roboto(light);
+              }
+            }
+          }
+        }
+      }
+    }
+
+    .drupal-1x, .drupal-2x {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      //padding-left: 20px;
+      .dummy-header {
+        height: 30px;
+      }
+      .drupal-content {
+        //display: flex;
+        //justify-content: center;
+        //align-items: center;
+        //flex: 1;
+        //border: 1px solid $border-color;
+        //background: #E2E2E2;
+
+        //background: $content-background-color;
+        text-align: center;
+        cursor: pointer;
+        //color: $text-gray-color;
+        font-size: 24px;
+        @include Roboto(light);
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-box-pack: center;
+        -ms-flex-pack: center;
+        justify-content: center;
+        //background: #F2F2F2;
+        -webkit-box-align: center;
+        -ms-flex-align: center;
+        align-items: center;
+        margin: 12px 0 0 0;
+        height: 100%;
+        //border: 1px solid #D8D8D8;
+      }
+    }
+
+    .drupal-1x {
+      flex: 1 !important;
+    }
+
+    .drupal-2x {
+      flex: 2 !important;
+      padding-left: 0 !important;
+      //height: 238px;
+      //min-height: 238px;
+    }
+  }
+
+  .line-divider {
+    background: #B7B7B7;
+    height: 1px;
+    margin: 30px 0;
+  }
+
+  .line-divider-no-data {
+    background: #B7B7B7;
+    height: 1px;
+    margin: 0 0 30px 0;
+  }
+
+
+
+  .links-divider {
+    border-top: 1px solid #B7B7B7;
+  }
+
+  .drupal-1x {
+    flex: 1 !important;
+  }
+
+  .drupal-2x {
+    flex: 2 !important;
+    padding-left: 0 !important;
+    //height: 190px;
+    //min-height: 190px;
+  }
+
+
+  .registered-image-container {
+    position: relative;
+   // background: $forms-select-muted-color;
+    img {
+      max-width: 100%;
+      min-height: 300px;
+      border-bottom: 4px solid $forms-select-muted-color;
+    }
+    .verify-your-account-container {
+      position: absolute;
+      top: 27px;
+      left: 14px;
+      .verify-account-header {
+        span,
+        .menu-icon {
+          @include Roboto(regular);
+          font-size: 20px;
+          color: $text-white-color;
+        }
+        span {
+          padding-left: 5px;
+        }
+      }
+      .verify-account-info {
+        padding: 5px 0;
+        span {
+          @include Roboto(light);
+          font-size: 14px;
+          color: $title-color;
+        }
+        .menu-icon {
+          color: $headings-dark-color;
+          padding-right: 8px;
+          width: 24px;
+          display: inline-block;
+          svg {
+            height: 18px;
+            width: 18px;
+            vertical-align: middle;
+          }
+        }
+      }
+      .verify-account-link {
+        background: $text-white-color;
+        padding: 20px 20px 15px 20px;
+        opacity: 0.9;
+        margin-top: 10px;
+        display: flex;
+        flex-direction: column;
+        .verify-account-button {
+          display: flex;
+          flex: 1;
+          justify-content: center;
+          margin-top: 10px;
+          button {
+            color: $text-white-color;
+            background: $new-color;
+            border-radius: 5px;
+            width: 100%;
+            height: 44px;
+            @include Roboto(bold);
+            font-size: 16px;
+          }
+        }
+      }
+    }
+  }
+  .registered-links-container {
+    display: flex;
+    padding: 26px 0 32px 0;
+    .home-page-link {
+      flex: 1;
+      a {
+        @include Roboto(bold);
+        font-size: 18px;
+        color: $icon-color;
+        padding-left: 10px;
+        cursor: pointer;
+      }
+      svg {
+        font-size: 28px;
+        color: $icon-color;
+      }
+    }
+    .link-seperator {
+      border-left: 1px solid $non-vdk-30-grey;
+      padding-right: 20px;
+    }
+  }
+  .registered-line-divider {
+    // background: $non-vdk-29-grey;
+    background: $non-vdk-29-grey;
+    height: 1px;
+    margin: 0 0 40px 0;
+  }
+  .registered-links-divider {
+    // border-top: 1px solid $non-vdk-29-grey;
+    border-top: 1px solid $non-vdk-29-grey;
+  }
+  .hide {
+    display: none !important;
+  }
+}
+
+@media (min-width: 993px) {
+  .inbox-item:last-child {
+    padding-right:0;
+  }
+
+  .finanicals-details {
+    .carousel {
+      height: auto !important;
+    }
+  }
+
+  .image-container {
+    img {
+      min-height: 250px;
+    }
+  }
+}
+
+@media (min-width: 993px) and (max-width: 1026px) {
+  .drupal-1x {
+    .header-item {
+      height: 60px !important;
+    }
+  }
+}
+
+@media (max-width: 992px) {
+  .container {
+    width: 100% !important;
+  }
+  .authenicated-homepage-container {
+
+    .ads-container {
+      flex-direction: column;
+      padding: 0 15px;
+      .ads-details:first-child {
+        padding-right: 0;
+      }
+      .ads-details:last-child {
+        padding-left: 0;
+      }
+    }
+
+    .my-details-container {
+      display: block;
+      flex-direction: column;
+
+      .my-details:first-child {
+        padding-right: 0;
+      }
+      .my-details:last-child, .drupal-1x, .drupal-2x {
+        padding-left: 0;
+      }
+      .my-details {
+        .details-header {
+          padding-left: 15px;
+          padding-top: 10px;
+        }
+        .detail-container, .drupal-content {
+          border-left: none;
+          border-right: none;
+        }
+
+      }
+      .drupal-1x, .drupal-2x {
+        padding-left: 0;
+        flex: 1;
+        .drupal-content {
+          min-height: 136px;
+        }
+      }
+    }
+
+
+    .inbox-container {
+      padding-top: 40px;
+      display: block;
+      flex-direction: column;
+      .inbox-details .inbox-item-details,
+      .deduction-details .deduction-item-details,
+      .finanicals-details .finanicals-item-details {
+        border-left: none;
+        border-right: none;
+        .plan-details {
+          .plan-name {
+            .plan-for {
+              margin-top: -4px;
+              margin-bottom: 12px;
+            }
+          }
+        }
+
+        .previous-next {
+          margin-right: 0;
+        }
+
+      }
+
+      .deduction-details, .finanicals-details{
+        .inactive-details {
+          display: flex; 
+        }
+        display: block;
+        min-height: 280px;
+      }
+
+
+
+
+
+      .deduction-details .deduction-item-details,
+      .finanicals-details .finanicals-item-details {
+        padding: 20px 15px;
+      }
+
+      .inbox-details {
+        .inbox-item-details {
+          .inbox-item {
+            .inbox-messages, .inbox-documents {
+              margin-bottom: 15px;
+              padding-left: 15px;
+              border: none;
+              border-bottom: 1px solid #D8D8D8;
+              border-top: 1px solid #D8D8D8;
+            }
+            .inbox-uploads {
+              margin-bottom: 40px;
+              padding-left: 15px;
+              border: none;
+              border-bottom: 1px solid #D8D8D8;
+              border-top: 1px solid #D8D8D8;
+            }
+          }
+        }
+      }
+
+      .deduction-details {
+        margin-left: 0;
+        .deduction-item-details {
+          // height: 200px;
+          .plan-details {
+            flex-direction: column;
+            justify-content: flex-start;
+            .plan-name {
+              //margin-bottom: 12px;
+            }
+          }
+          .deduction-chart-container {
+            display: block;
+            flex-direction: column;
+          }
+          .deduction-chart:first-child {
+            padding-right: 0;
+          }
+          .deduction-chart:last-child {
+            padding-left: 0;
+          }
+        }
+      }
+      .inbox-header, .deduction-header, .finanicals-header {
+        padding-left: 15px;
+      }
+      .finanicals-details {
+        margin-left: 0;
+        .finanicals-item-details {
+          .finanicals-chart:first-child {
+            padding-right: 0;
+          }
+          .finanicals-chart:last-child {
+            padding-left: 0;
+          }
+
+          .finanicals-chart-container {
+            display: block;
+            flex-direction: column;
+          }
+
+
+          .plan-details {
+            flex-direction: column;
+            justify-content: flex-start;
+            .plan-name {
+              //margin-bottom: 12px;
+            }
+          }
+
+        }
+        .carousel {
+          height: 240px !important;
+        }
+      }
+      .finanicals-header {
+        padding-top: 15px;
+        padding-right: 15px;
+      }
+    }
+
+    .links-container {
+      flex-direction: column;
+      display: block;
+      padding: 0 15px;
+      .home-page-link {
+        padding: 20px 0;
+        a {
+          font-size: 16px;
+        }
+        svg {
+          font-size: 18px;
+        }
+      }
+      .link-seperator {
+        border-top: 1px solid #DDD;
+      }
+    }
+
+    .image-container {
+      background: none !important;
+      //margin-bottom: 4px;
+      img {
+        //height: auto;
+        //background: #6591B3 !important;
+        width: 100%;
+      }
+      /*.mobile-hero-image {
+        background: #6591B3 !important;
+      }*/
+      .image-menu-container {
+        position: static;
+        padding: 20px 15px 0;
+        .image-menu-plan-details, .image-menu-health-details {
+          margin-bottom: 20px;
+          padding-bottom: 15px;
+          .menu-link {
+            padding: 10px 0;
+            a, .menu-icon {
+              color: $icon-color;
+            }
+          }
+          .menu-header {
+            label {
+              color: $light-label-color;
+            }
+          }
+        }
+
+        .image-menu-health-details {
+          border: 0;
+          margin-bottom: 0;
+        }
+
+      }
+
+    }
+
+    .line-divider {
+      background: none;
+      margin: 20px 0;
+    }
+
+  }
+}
+
+.flex-direction-col {
+  flex-direction: column;
+}
+
+@media (min-width: 993px) and (max-width: 1150px) {
+  .image-menu-container {
+    .image-menu-plan-details, .image-menu-health-details {
+      margin-bottom: 5px !important;
+      padding-bottom: 5px !important;
+      .menu-link {
+        a, .menu-icon {
+          font-size: 15px !important
+        }
+      }
+      .menu-header {
+        label {
+          font-size: 20px !important;
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 992px) {
+  .height-400 {
+    height: 400px !important;
+  }
+  .authenicated-homepage-container {
+    .registered-links-container {
+      display: block;
+      flex-direction: column;
+      padding: 0 15px;
+      border-bottom: 1px solid $non-vdk-29-grey;
+      margin-bottom: 75px;
+      .home-page-link {
+        padding: 20px 0;
+        a {
+          font-size: 16px;
+        }
+        svg {
+          font-size: 18px;
+        }
+      }
+      .link-seperator {
+        // border-top: 1px solid $non-vdk-32-grey;
+        border-top: 1px solid $non-vdk-32-grey;
+      }
+    }
+
+    .registered-image-container {
+      background: none !important;
+      margin-bottom: 30px;
+      .mobile-hero-image {
+        background: $forms-select-muted-color !important;
+      }
+      img {
+        height: auto;
+        width: 100%;
+      }
+      .verify-your-account-container {
+        position: static;
+        padding: 10px 15px 0;
+        .verify-account-link {
+          //padding: 10px 0;
+          background: $background-gray-color;
+          a,
+          .menu-icon {
+            color: $link-secondary-color;
+          }
+        }
+        .verify-account-header {
+          padding: 5px 0;
+          span,
+          .menu-icon {
+            color: $light-label-color;
+          }
+        }
+      }
+    }
+  }
+}
+
+app-promo-blocks {
+  display: flex;
+  flex: 1;
+}
+
+app-spinner {
+  width: 100%;
+  height: 100%;
+}
+
+
+@media screen and (-ms-high-contrast: active), screen and (-ms-high-contrast: none) {
+  .verify-account-link {
+    padding: 20px 20px 55px 20px!important;
+  }
+}

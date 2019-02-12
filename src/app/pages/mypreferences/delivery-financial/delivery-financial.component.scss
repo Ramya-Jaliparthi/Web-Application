@@ -1,0 +1,73 @@
+@import '../../../../assets/styles/_fonts';
+@import '../mypreferences-vdk';
+.mypref-delivery-df-mat {
+    @media (max-width: 991px) {
+        .center-box-width {
+            padding-right: 0px !important;
+        }
+        .bottom-border-nullifier {
+            margin-bottom: 0px !important;
+        }
+        .enforce-flex {
+            flex: 2 !important;
+            display: flex !important;
+            flex-direction: column !important;
+            align-items: center !important;
+        }
+    }
+    @media (min-width: 993px) {
+        .padding-adjustment {
+            @media (min-width: 993px) {
+                padding-left: 0px;
+                padding-right: 0px;
+            }
+        }
+    }
+    .btn-white,
+    .btn-white:hover,
+    .btn-white:focus {
+        background-color: transparent !important;
+        line-height: 36px;
+        width: 140px;
+        border: none;
+    }
+    .mb-button-30 {
+        margin-bottom: 30px !important;
+        margin-top: 30px !important;
+    }
+    .enforce-flex {
+        flex: 2;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+    }
+    .enforce-flex-column {
+        flex: 2;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding-bottom: 5px;
+    }
+    .center-box-width {
+        width: 100%;
+    }
+    .paddingIcon {
+        margin-right: 10px;
+    }
+    .box-header-text {
+        @include Roboto(bold);
+        font-size: 18px;
+        color: $headings-dark-color;
+    }
+    .box-description-text {
+        @include Roboto(regular);
+        font-size: 14px;
+        color: $non-vdk-12-grey;
+        @media (min-width: 992px) and (max-width: 1439px) {
+            height: 63px;
+        }
+    }
+    .valign-wrapper-override {
+        align-self: flex-start;
+    }
+}

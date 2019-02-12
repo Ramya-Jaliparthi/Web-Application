@@ -1,0 +1,342 @@
+@import '../../../assets/styles/_colors';
+@import '../../../assets/styles/_fonts';
+@import '../../../assets/styles/_variables';
+.fa-folder,
+.fa-image {
+    color: $link-secondary-color;
+    font-size: 22px;
+    @media (max-width: 992px) {
+        font-size: 14px;
+    }
+}
+
+.fa-chevron-right {
+    color: $link-secondary-color;
+    font-size: 18px;
+    cursor: pointer;
+}
+
+.documents-component {
+    h1 {
+        color: $header-color;
+        margin: 20px 0;
+    }
+    .flex-container {
+        display: flex;
+        flex-direction: row;
+        margin-right: 0;
+        margin-left: 0;
+        @media (max-width: 992px) {
+            // flex-direction: column;
+            width: 100%;
+        }
+    }
+    .promo {
+        @media (min-width: 992px) {
+            background: $background-gray-color;
+        }
+    }
+    .hide {
+        display: none;
+    }
+    .unread-docs-indicator {
+        @include Roboto(regular);
+        text-align: center;
+        background-color: $unread-docs-alert-color;
+        font-size: 12.65px;
+        color: $text-white-color;
+        min-width: 20px;
+        border-radius: 10px;
+        padding: 0px 2px;
+    }
+    .folder-card {
+        @include Roboto(bold);
+        color: $primary-color;
+        font-size: 16px;
+    }
+    //for desktop screens
+    @media (min-width: 993px) {
+        .container {
+            margin-left: 0;
+        }
+        .folderCard {
+            width: 48%;
+            margin-right: 2%; //to give horizontal gap between cards
+            margin-bottom: 3%; //to give vertical gap between cards
+            &:hover {
+                cursor: pointer;
+            }
+        }
+        .documentsNav {
+            min-height: 340px;
+        }
+        .desktop-right-align {
+            text-align: right;
+        }
+    }
+    //for mobile/tablet screens
+    @media (max-width: 992px) {
+        width: 100%;
+        h1 {
+            margin-left: 15px;
+        }
+        .folderCard {
+            width: 100%;
+            border: 1px solid $textbox-border;
+            padding-left: 8%;
+        }
+        .mobileMarginLeft-minus10 {
+            margin-left: -10px;
+        }
+    }
+}
+
+.flex {
+    display: flex;
+}
+
+.flex-grow-1 {
+    flex-grow: 1;
+}
+
+.mr-10 {
+    margin-right: 10px !important;
+}
+
+.flex-box {
+    display: flex;
+    flex-wrap: wrap;
+    margin: -10px;
+    @media (max-width: 992px) {
+        margin: 0;
+    }
+    .collection {
+        flex: 0 1 100%;
+        margin: 10px;
+        padding: 26px 10px;
+        cursor: pointer;
+        border: 1px solid $file-card-border-color !important;
+        ;
+        @media (max-width: 992px) {
+            // flex: 0 0 100%;
+            min-width: 100%;
+            margin: 0;
+            padding: 26px 15px;
+        }
+    }
+}
+
+.myaccount-container {
+    display: flex;
+    padding: 0;
+
+    .side-nav-container {
+        flex: 4;
+        .account-details-container {
+            padding: 15px;
+            border: 1px solid $file-card-border-color;
+            cursor: pointer;
+        }
+        .account-item-header {
+            label {
+                font-size: 16px;
+                @include Roboto(bold);
+                color: $primary-color;
+            }
+        }
+        .account-type {
+            padding: 1px 0;
+            label {
+                font-size: 12px;
+                @include Roboto(light);
+                color: $light-label-color;
+                letter-spacing: -0.01px;
+                line-height: 16px;
+            }
+        }
+        .item-container {
+            .item-text,
+            .item-date-text {
+                font-size: 12px;
+                @include Roboto(medium);
+                color: $light-label-color;
+                letter-spacing: -0.01px;
+                line-height: 16px;
+            }
+            .item-value {
+                font-size: 12px;
+                @include Roboto(light);
+                color: $text-sub-list;
+                letter-spacing: -0.01px;
+                line-height: 16px;
+            }
+            .item-value-coverage {
+                a {
+                  font-size: 12px;
+                  @include Roboto(light);
+                  color:  $primary-color;
+                  letter-spacing: -0.01px;
+                  line-height: 16px;
+                  text-decoration: underline;
+                }
+            }
+            .item-date-text {
+                font-size: 10px;
+            }
+        }
+    }
+    .menu-container-1 {
+        flex: 4;
+        padding: 0 15px;
+        svg {
+          width: 1.125em;
+        }
+        .collection{
+            margin-left: 13px;
+            @media (max-width: 992px){
+                margin-left: 0;
+            }
+        }
+    }
+    .menu-container-2 {
+        flex: 4;
+        padding: 0;
+        svg {
+          width: 1.125em;
+        }
+        .collection{
+            margin-left: 13px;
+        }
+    }
+    .menu-item-container {
+        flex: 1;
+        justify-content: space-between;
+        .split-in-two-lines {
+            width: 140px;
+        }
+    }
+    .doctor-menu-item {
+        height: 102px;
+        align-items: center;
+        display: flex;
+        .flex {
+            flex: 1;
+        }
+    }
+}
+
+.icons-class {
+    color: $primary-color;
+    font-size: 24px;
+}
+
+.text-padding {
+    padding: 0 94px 0 0 !important;
+}
+
+.mat-card-override {
+    padding: 20px 16px;
+}
+
+.profile-name {
+    display: flex;
+    justify-content: space-between;
+    /*padding-bottom: 10px;*/
+    align-items: center;
+    padding-bottom: 5px; //for desktops
+    margin-bottom: 0;
+    .profile-details-name {
+        margin: 0 !important;
+        color: $header-color;
+        font-size: 22px;
+        @include Roboto(bold);
+        // font-weight: 600;
+    }
+    .profile-help-icon {
+        border: 1px solid $header-color;
+        border-radius: 50%;
+        height: 16px;
+        display: flex;
+        width: 16px;
+        justify-content: center;
+        align-items: center;
+        font-size: 8px;
+        // font-weight: 100;
+        @include Roboto(thin);
+        cursor: pointer;
+    }
+    .spacing-iconProfileName {
+        float: right;
+    }
+}
+
+.menu-top-border {
+    border-top: 1px solid $file-card-border-color !important;
+}
+
+@media (max-width: 992px) {
+    .myaccount-container {
+        // flex-direction: column;
+        display: block;
+        .side-nav-container {
+            margin-bottom: 20px;
+            .account-details-container {
+                border: none;
+            }
+        }
+        .menu-container-1 {
+            padding: 0 !important;
+        }
+        .doctor-menu-item {
+            height: auto;
+        }
+    }
+    .flex-box {
+        .collection {
+            border: 0 !important;
+            border-bottom: 1px solid $file-card-border-color !important;
+        }
+        .menu-top-border {
+            border-top: 1px solid $file-card-border-color !important;
+        }
+    }
+}
+
+.flex-box {
+    .bb-0 {
+        border-bottom: none !important;
+    }
+
+    .b-0 {
+      border: none !important;
+    }
+
+    .bt-0 {
+      border-top: none !important;
+      &:first-child{
+        border-top: 1px solid #B2B2B2 !important;
+      }
+    }
+}
+
+.pd-t10 {
+    padding-top: 10px !important;
+}
+
+.registered-users{
+    .collection{
+        flex: 30%;
+        height: 85px;
+        padding: 20px;
+        p{
+            display: inline;
+        }
+        &:last-child{
+            border: none !important;
+        }
+        // TODO: Add incase of mobile under Request Estimate
+        // .no-border{
+        //     border-bottom: none !important;
+        // }
+    }
+}

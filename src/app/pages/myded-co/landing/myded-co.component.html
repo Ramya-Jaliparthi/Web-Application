@@ -1,0 +1,563 @@
+<header class="row my-dedco-header ml-0 mr-0 mb-0">
+  <div class="">
+    <!-- no container class to be used. -->
+    <div class="col l6 m12 s12 pd-0 offset-l3">
+      <div *ngIf="ismobile" class="ml-15 mt-20">
+        <app-breadcrumbs></app-breadcrumbs>
+      </div>
+      <div class="my-dedco-header-inner">
+        <div>
+          <h1 *ngIf="!ismobile" class="header hide-below-322">Deductible & Co-insurance</h1>
+          <h1 *ngIf="ismobile" class="header hide-below-322 mt-0">Deductible & Co-insurance</h1>
+          <h1 class="header hide-above-322">Deductible &
+            <br /> Co-insurance</h1>
+        </div>
+        <div class="tool-tip-div">
+          <span class="i-circle tooltip" (click)="showToolTip('header')">
+            <div [ngClass]="{'icon-tooltip-filled': headerToolTipVisible }">
+              <i class="fal fa-info-circle icon-blue"></i>
+            </div>
+            <ng-container *ngIf="headerToolTipVisible">
+              <ng-container *ngTemplateOutlet="tooltipTextGlossary;">
+              </ng-container>
+            </ng-container>
+          </span>
+        </div>
+      </div>
+      <div *ngIf="!ismobile" class="ml-15">
+        <app-breadcrumbs></app-breadcrumbs>
+      </div>
+    </div>
+  </div>
+</header>
+
+<section class="row mb-0 ml-0 mr-0">
+  <div class="main-container my-dedco-container mb-20">
+    <div class="main-result">
+
+      <div class="main-result-container">
+
+        <div class="col l3 m12 s12 pd-0">
+          <div class="row filter-container" #sideNavContainer *ngIf="deductibleAndCoInsuranceData && deductibleAndCoInsuranceData.accums">
+
+            <app-dedco-filter [filterConfig]="filterConfig" (applyFilter)="applyFilter($event)" (clearFilter)="clearFilter($event)"
+              (toggleFilter)="toggleFilter($event)" (radioChange)="radioChange($event)" (checkboxChange)="checkboxChange($event)"></app-dedco-filter>
+
+          </div>
+        </div>
+
+        <div class="col l6 s12 m12 middle-container" [ngClass]="{'hideMainCont': (hideMainContentOnFilterToggleForMobile)}">
+          <div *ngIf="deductibleAndCoInsuranceData && (deductibleAndCoInsuranceData['error'] || (deductibleAndCoInsuranceData.accums &&
+          deductibleAndCoInsuranceData.accums.length === 0))">
+            Your Deductible &amp; Co-Insurance data is not available at this time.
+          </div>
+          <ng-container *ngFor="let accumItem of deductibleAndCoInsuranceData.accums">
+            <section class="my-dedco-section" *ngIf="accumItem">
+              <header>
+                <h4>{{ accumItem?.planName }}</h4>
+              </header>
+              <small class="my-dedco-dependent-text" *ngIf="accumItem_memberName !== 'Family'">for {{
+                accumItem_memberName | titlecase
+                }}
+              </small>
+              <small class="my-dedco-dependent-text" *ngIf="accumItem_memberName === 'Family'">for
+                Family
+              </small>
+              <div class="my-dedco-effective-cont">
+                <small>
+                  <span>Effective Date:</span>
+                </small>
+                <p>
+                  <span>{{ accumItem?.planStartDate | yyyymmddTommddyyyy }} - {{
+                    accumItem?.planEndDate | yyyymmddTommddyyyy }}</span>
+                </p>
+              </div>
+
+              <ng-container *ngIf="accumItem && accumItem.coinsurance">
+                <section class="my-dedco-sub-section" *ngFor="let coinsuranceItem of accumItem.coinsurance">
+                  <div class="my-dedco-network-info">
+                    <span>
+                      {{
+                      getInOutNetworkText(accumItem,coinsuranceItem?.networkIndicatorForCoinsurance)
+                      }}
+                    </span>
+                  </div>
+                  <app-linechart [lineChartOptions]="getLineChartOptions(coinsuranceItem,0)"></app-linechart>
+                  <div class="my-dedco-limitations">
+                    <mat-expansion-panel>
+                      <mat-expansion-panel-header class="header-panel" [expandedHeight]="expandedHeight">
+                        <div class="limitations-header">Limitations</div>
+                      </mat-expansion-panel-header>
+                      <div class="content">
+                        {{coinsuranceItem?.coinsuranceLimitationContent}}
+                      </div>
+                    </mat-expansion-panel>
+                  </div>
+                  <div class="my-dedco-exceptions">
+                    <mat-expansion-panel>
+                      <mat-expansion-panel-header class="header-panel" [expandedHeight]="expandedHeight">
+                        <div class="limitations-header">Exceptions & Exclusions</div>
+                      </mat-expansion-panel-header>
+                      <div class="content"> {{coinsuranceItem?.coinsuraneexclusionExcep}}
+                      </div>
+                    </mat-expansion-panel>
+                  </div>
+                </section>
+              </ng-container>
+
+              <!-- <ng-container *ngIf="accumItem">
+                <section class="my-dedco-sub-section" *ngIf="accumItem.coinsurance1">
+                  <div class="my-dedco-network-info">
+                    <span>
+                      {{
+                      getInOutNetworkText(accumItem,accumItem?.coinsurance1?.networkIndicatorForCoinsurance)
+                      }}
+                    </span>
+                  </div>
+                  <app-linechart [lineChartOptions]="getLineChartOptions(accumItem.coinsurance1,0)"></app-linechart>
+                  <div class="my-dedco-limitations">
+                    <mat-expansion-panel>
+                      <mat-expansion-panel-header class="header-panel">
+                        <div class="limitations-header">Limitations</div>
+                      </mat-expansion-panel-header>
+                      <div class="content">
+                        {{accumItem?.coinsurance1?.coinsuranceLimitationContent}}
+                      </div>
+                    </mat-expansion-panel>
+                  </div>
+                  <div class="my-dedco-exceptions">
+                    <mat-expansion-panel>
+                      <mat-expansion-panel-header class="header-panel">
+                        <div class="limitations-header">Exceptions & Exclusions</div>
+                      </mat-expansion-panel-header>
+                      <div class="content"> {{accumItem?.coinsurance1?.coinsuraneexclusionExcep}}
+                      </div>
+                    </mat-expansion-panel>
+                  </div>
+                </section>
+                </ng-container>
+                <ng-container *ngIf="accumItem">
+                <section class="my-dedco-sub-section" *ngIf="accumItem.coinsurance2">
+                  <div class="my-dedco-network-info">
+                    <span>
+                      {{
+                      getInOutNetworkText(accumItem,accumItem?.coinsurance2?.networkIndicatorForCoinsurance)
+                      }}
+                    </span>
+                  </div>
+                  <app-linechart [lineChartOptions]="getLineChartOptions(accumItem.coinsurance2,0)"></app-linechart>
+                  <div class="my-dedco-limitations">
+                    <mat-expansion-panel>
+                      <mat-expansion-panel-header class="header-panel">
+                        <div class="limitations-header">Limitations</div>
+                      </mat-expansion-panel-header>
+                      <div class="content">
+                        {{accumItem?.coinsurance2?.coinsuranceLimitationContent}}
+                      </div>
+                    </mat-expansion-panel>
+                  </div>
+                  <div class="my-dedco-exceptions">
+                    <mat-expansion-panel>
+                      <mat-expansion-panel-header class="header-panel">
+                        <div class="limitations-header">Exceptions & Exclusions</div>
+                      </mat-expansion-panel-header>
+                      <div class="content"> {{accumItem?.coinsurance2?.coinsuraneexclusionExcep}}
+                      </div>
+                    </mat-expansion-panel>
+                  </div>
+                </section>
+                </ng-container> -->
+
+              <ng-container *ngIf="accumItem && accumItem.overallDeductables">
+                <section class="my-dedco-sub-section" *ngFor="let overallDeductablesItem of accumItem.overallDeductables">
+                  <div class="my-dedco-network-info">
+                    <span>
+                      {{
+                      getInOutNetworkText(accumItem,overallDeductablesItem?.networkIndicatorForOverallDeductible)
+                      }}
+                    </span>
+                  </div>
+                  <app-linechart [lineChartOptions]="getLineChartOptions(overallDeductablesItem,1)"></app-linechart>
+                  <div class="my-dedco-limitations">
+                    <mat-expansion-panel>
+                      <mat-expansion-panel-header class="header-panel" [expandedHeight]="expandedHeight">
+                        <div class="limitations-header">Limitations</div>
+                      </mat-expansion-panel-header>
+                      <div class="content">
+                        {{overallDeductablesItem?.overallDeductibleLimitationContent}}
+                      </div>
+                    </mat-expansion-panel>
+                  </div>
+                  <div class="my-dedco-exceptions">
+                    <mat-expansion-panel>
+                      <mat-expansion-panel-header class="header-panel" [expandedHeight]="expandedHeight">
+                        <div class="limitations-header">Exceptions & Exclusions</div>
+                      </mat-expansion-panel-header>
+                      <div class="content">
+                        {{overallDeductablesItem?.overallDeductibleExclusionExcep}}
+                      </div>
+                    </mat-expansion-panel>
+                  </div>
+                </section>
+              </ng-container>
+
+              <!-- <ng-container *ngIf="accumItem">
+                <section class="my-dedco-sub-section" *ngIf="accumItem.overallDeductables1">
+                  <div class="my-dedco-network-info">
+                    <span>
+                      {{
+                      getInOutNetworkText(accumItem,accumItem?.overallDeductables1?.networkIndicatorForOverallDeductible)
+                      }}
+                    </span>
+                  </div>
+                  <app-linechart
+                    [lineChartOptions]="getLineChartOptions(accumItem.overallDeductables1,1)"></app-linechart>
+                  <div class="my-dedco-limitations">
+                    <mat-expansion-panel>
+                      <mat-expansion-panel-header class="header-panel">
+                        <div class="limitations-header">Limitations</div>
+                      </mat-expansion-panel-header>
+                      <div class="content">
+                        {{accumItem?.overallDeductables1?.overallDeductibleLimitationContent}}
+                      </div>
+                    </mat-expansion-panel>
+                  </div>
+                  <div class="my-dedco-exceptions">
+                    <mat-expansion-panel>
+                      <mat-expansion-panel-header class="header-panel">
+                        <div class="limitations-header">Exceptions & Exclusions</div>
+                      </mat-expansion-panel-header>
+                      <div class="content">
+                        {{accumItem?.overallDeductables1?.overallDeductibleExclusionExcep}}
+                      </div>
+                    </mat-expansion-panel>
+                  </div>
+                </section>
+                </ng-container>
+
+                <ng-container *ngIf="accumItem">
+                <section class="my-dedco-sub-section" *ngIf="accumItem.overallDeductables2">
+                  <div class="my-dedco-network-info">
+                    <span>
+                      {{
+                      getInOutNetworkText(accumItem,accumItem?.overallDeductables2?.networkIndicatorForOverallDeductible)
+                      }}
+                    </span>
+                  </div>
+                  <app-linechart
+                    [lineChartOptions]="getLineChartOptions(accumItem.overallDeductables2,1)"></app-linechart>
+                  <div class="my-dedco-limitations">
+                    <mat-expansion-panel>
+                      <mat-expansion-panel-header class="header-panel">
+                        <div class="limitations-header">Limitations</div>
+                      </mat-expansion-panel-header>
+                      <div class="content">
+                        {{accumItem?.overallDeductables2?.overallDeductibleLimitationContent}}
+                      </div>
+                    </mat-expansion-panel>
+                  </div>
+                  <div class="my-dedco-exceptions">
+                    <mat-expansion-panel>
+                      <mat-expansion-panel-header class="header-panel">
+                        <div class="limitations-header">Exceptions & Exclusions</div>
+                      </mat-expansion-panel-header>
+                      <div class="content">
+                        {{accumItem?.overallDeductables2?.overallDeductibleExclusionExcep}}
+                      </div>
+                    </mat-expansion-panel>
+                  </div>
+                </section>
+                </ng-container> -->
+
+              <ng-container *ngIf="accumItem && accumItem.outOfPocket">
+                <section class="my-dedco-sub-section" *ngFor="let outofpocketItem of accumItem.outOfPocket">
+                  <div class="my-dedco-network-info">
+                    <span>
+                      {{
+                      getInOutNetworkText(accumItem,outofpocketItem?.networkIndicatorForOutOfPocketMax)
+                      }}
+                    </span>
+                  </div>
+                  <app-linechart [lineChartOptions]="getLineChartOptions(outofpocketItem,2)"></app-linechart>
+                  <div class="my-dedco-limitations">
+                    <mat-expansion-panel>
+                      <mat-expansion-panel-header class="header-panel" [expandedHeight]="expandedHeight">
+                        <div class="limitations-header">Limitations</div>
+                      </mat-expansion-panel-header>
+                      <div class="content"> {{outofpocketItem?.oopMaxLimitationContent}}
+                      </div>
+                    </mat-expansion-panel>
+                  </div>
+                  <div class="my-dedco-exceptions">
+                    <mat-expansion-panel>
+                      <mat-expansion-panel-header class="header-panel" [expandedHeight]="expandedHeight">
+                        <div class="limitations-header">Exceptions & Exclusions</div>
+                      </mat-expansion-panel-header>
+                      <div class="content"> {{outofpocketItem?.oopMaxExclusionExcep}}
+                      </div>
+                    </mat-expansion-panel>
+                  </div>
+                </section>
+              </ng-container>
+
+              <!-- <ng-container *ngIf="accumItem">
+                <section class="my-dedco-sub-section" *ngIf="accumItem.outOfPocket1">
+                  <div class="my-dedco-network-info">
+                    <span>
+                      {{
+                      getInOutNetworkText(accumItem,accumItem?.outOfPocket1?.networkIndicatorForOutOfPocketMax)
+                      }}
+                    </span>
+                  </div>
+                  <app-linechart [lineChartOptions]="getLineChartOptions(accumItem.outOfPocket1,2)"></app-linechart>
+                  <div class="my-dedco-limitations">
+                    <mat-expansion-panel>
+                      <mat-expansion-panel-header class="header-panel">
+                        <div class="limitations-header">Limitations</div>
+                      </mat-expansion-panel-header>
+                      <div class="content"> {{accumItem?.outOfPocket1?.oopMaxLimitationContent}}
+                      </div>
+                    </mat-expansion-panel>
+                  </div>
+                  <div class="my-dedco-exceptions">
+                    <mat-expansion-panel>
+                      <mat-expansion-panel-header class="header-panel">
+                        <div class="limitations-header">Exceptions & Exclusions</div>
+                      </mat-expansion-panel-header>
+                      <div class="content"> {{accumItem?.outOfPocket1?.oopMaxExclusionExcep}}
+                      </div>
+                    </mat-expansion-panel>
+                  </div>
+                </section>
+                </ng-container>
+
+                <ng-container *ngIf="accumItem">
+                <section class="my-dedco-sub-section" *ngIf="accumItem.outOfPocket2">
+                  <div class="my-dedco-network-info">
+                    <span>
+                      {{
+                      getInOutNetworkText(accumItem,accumItem?.outOfPocket2?.networkIndicatorForOutOfPocketMax)
+                      }}
+                    </span>
+                  </div>
+                  <app-linechart [lineChartOptions]="getLineChartOptions(accumItem.outOfPocket1,2)"></app-linechart>
+                  <div class="my-dedco-limitations">
+                    <mat-expansion-panel>
+                      <mat-expansion-panel-header class="header-panel">
+                        <div class="limitations-header">Limitations</div>
+                      </mat-expansion-panel-header>
+                      <div class="content"> {{accumItem?.outOfPocket2?.oopMaxLimitationContent}}
+                      </div>
+                    </mat-expansion-panel>
+                  </div>
+                  <div class="my-dedco-exceptions">
+                    <mat-expansion-panel>
+                      <mat-expansion-panel-header class="header-panel">
+                        <div class="limitations-header">Exceptions & Exclusions</div>
+                      </mat-expansion-panel-header>
+                      <div class="content"> {{accumItem?.outOfPocket2?.oopMaxExclusionExcep}}
+                      </div>
+                    </mat-expansion-panel>
+                  </div>
+                </section>
+                </ng-container> -->
+
+              <ng-container *ngIf="accumItem && accumItem.overallBenefit">
+                <section class="my-dedco-sub-section" *ngFor="let overallBenefitItem of accumItem.overallBenefit">
+                  <div class="my-dedco-network-info">
+                    <span>
+                      {{
+                      getInOutNetworkText(accumItem,overallBenefitItem?.networkIndicatorOverallBenefit)
+                      }}
+                    </span>
+                  </div>
+                  <app-linechart [lineChartOptions]="getLineChartOptions(overallBenefitItem,3)"></app-linechart>
+                  <div class="my-dedco-limitations">
+                    <mat-expansion-panel>
+                      <mat-expansion-panel-header class="header-panel" [expandedHeight]="expandedHeight">
+                        <div class="limitations-header">Limitations</div>
+                      </mat-expansion-panel-header>
+                      <div class="content">
+                        {{overallBenefitItem?.overallBenefitMaxLimitationContent}}
+                      </div>
+                    </mat-expansion-panel>
+                  </div>
+                  <div class="my-dedco-exceptions">
+                    <mat-expansion-panel>
+                      <mat-expansion-panel-header class="header-panel" [expandedHeight]="expandedHeight">
+                        <div class="limitations-header">Exceptions & Exclusions</div>
+                      </mat-expansion-panel-header>
+                      <div class="content">
+                        {{overallBenefitItem?.overallBenefitexclusionExcep}}
+                      </div>
+                    </mat-expansion-panel>
+                  </div>
+                </section>
+              </ng-container>
+
+              <!-- <ng-container *ngIf="accumItem">
+                <section class="my-dedco-sub-section" *ngIf="accumItem.overallBenefit1">
+                  <div class="my-dedco-network-info">
+                    <span>
+                      {{
+                      getInOutNetworkText(accumItem,accumItem?.overallBenefit1?.networkIndicatorOverallBenefit)
+                      }}
+                    </span>
+                  </div>
+                  <app-linechart [lineChartOptions]="getLineChartOptions(accumItem.overallBenefit1,3)"></app-linechart>
+                  <div class="my-dedco-limitations">
+                    <mat-expansion-panel>
+                      <mat-expansion-panel-header class="header-panel">
+                        <div class="limitations-header">Limitations</div>
+                      </mat-expansion-panel-header>
+                      <div class="content">
+                        {{accumItem?.overallBenefit1?.overallBenefitMaxLimitationContent}}
+                      </div>
+                    </mat-expansion-panel>
+                  </div>
+                  <div class="my-dedco-exceptions">
+                    <mat-expansion-panel>
+                      <mat-expansion-panel-header class="header-panel">
+                        <div class="limitations-header">Exceptions & Exclusions</div>
+                      </mat-expansion-panel-header>
+                      <div class="content">
+                        {{accumItem?.overallBenefit1?.overallBenefitexclusionExcep}}
+                      </div>
+                    </mat-expansion-panel>
+                  </div>
+                </section>
+                </ng-container>
+
+                <ng-container *ngIf="accumItem">
+                <section class="my-dedco-sub-section" *ngIf="accumItem.overallBenefit2">
+                  <div class="my-dedco-network-info">
+                    <span>
+                      {{
+                      getInOutNetworkText(accumItem,accumItem?.overallBenefit2?.networkIndicatorOverallBenefit)
+                      }}
+                    </span>
+                  </div>
+                  <app-linechart [lineChartOptions]="getLineChartOptions(accumItem.overallBenefit2,3)"></app-linechart>
+                  <div class="my-dedco-limitations">
+                    <mat-expansion-panel>
+                      <mat-expansion-panel-header class="header-panel">
+                        <div class="limitations-header">Limitations</div>
+                      </mat-expansion-panel-header>
+                      <div class="content">
+                        {{accumItem?.overallBenefit2?.overallBenefitMaxLimitationContent}}
+                      </div>
+                    </mat-expansion-panel>
+                  </div>
+                  <div class="my-dedco-exceptions">
+                    <mat-expansion-panel>
+                      <mat-expansion-panel-header class="header-panel">
+                        <div class="limitations-header">Exceptions & Exclusions</div>
+                      </mat-expansion-panel-header>
+                      <div class="content">
+                        {{accumItem?.overallBenefit2?.overallBenefitexclusionExcep}}
+                      </div>
+                    </mat-expansion-panel>
+                  </div>
+                </section>
+                </ng-container> -->
+            </section>
+            <!--<section *ngIf="accumItem.blueChoiceFlag==='True'" class="my-dedco-section">-->
+            <!--<header>-->
+            <!--<h4>{{ accumItem.planName }}</h4>-->
+            <!--</header>-->
+            <!--<div>-->
+            <!--For questions about your out-of-pocket maximum, please call Member Service at the-->
+            <!--number on the front of your ID card.-->
+
+            <!--</div>-->
+            <!--</section>-->
+            <section *ngIf="!accumItem">
+              <div class="hide-on-med-only hide-on-small-only">
+                Your Deductible &amp; Co-Insurance data is not available at this time.
+              </div>
+
+              <div style="padding: 20px 15px;" class="hide-on-large-only">
+                Your Deductible &amp; Co-Insurance data is not available at this time.
+              </div>
+            </section>
+          </ng-container>
+        </div>
+
+        <section class="col l3 s12 m12 pd-0 link-container" [ngClass]="{'hideMainCont': (hideMainContentOnFilterToggleForMobile)}">
+          <div class="link-container-inner" *ngIf="deductibleAndCoInsuranceData && deductibleAndCoInsuranceData.accums">
+            <div>
+              <h3>Important Information</h3>
+            </div>
+            <div class="tool-tip-div">
+              <span class="i-circle tooltip" (click)="showToolTip('link')">
+                <div [ngClass]="{'icon-tooltip-filled': linkToolTipVisible }">
+                  <i class="fal fa-info-circle icon-blue"></i>
+                </div>
+                <ng-container *ngIf="linkToolTipVisible">
+                  <ng-container *ngTemplateOutlet="tooltipTextInfo;">
+                  </ng-container>
+                </ng-container>
+
+              </span>
+            </div>
+
+          </div>
+
+          <div class="details-right-link" [routerLink]="['/myclaims']" *ngIf="deductibleAndCoInsuranceData && deductibleAndCoInsuranceData.accums">
+            <a>
+              <span class="text-route">View Claims</span>
+              <span class="icon-arrow">
+                <em class="fa fa-chevron-right long-text"></em>
+              </span>
+            </a>
+          </div>
+
+          <div class="details-right-link" (click)="openSSO('algOrHeq')" *ngIf="showFinancialLink && deductibleAndCoInsuranceData && deductibleAndCoInsuranceData.accums">
+            
+            <a>
+              <span class="text-route">Go to My Financials</span>
+              <span class="icon-arrow">
+              <em class="fa fa-chevron-right long-text"></em>
+              </span>
+            </a>
+          </div>
+
+          <div class="details-right-link" (click)="openSSO('heq')" *ngIf="showHEQALGFinancialLink && deductibleAndCoInsuranceData && deductibleAndCoInsuranceData.accums">
+
+            <a>
+              <span class="text-route">Go to my HealthEquity financial account(s)</span>
+              <span class="icon-arrow">
+                <em class="fa fa-chevron-right long-text"></em>
+              </span>
+            </a>
+          </div>
+
+          <div class="details-right-link" (click)="openSSO('alg')" *ngIf="showHEQALGFinancialLink && deductibleAndCoInsuranceData && deductibleAndCoInsuranceData.accums">
+
+            <a>
+              <span class="text-route">Go to my Blue Cross health financial account(s)</span>
+              <span class="icon-arrow">
+                <em class="fa fa-chevron-right long-text"></em>
+              </span>
+            </a>
+          </div>
+
+        </section>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<ng-template #tooltipTextGlossary>
+  <span class="tooltiptext raisedbox">
+    <app-fpo-layout [targetUrl]='drupalDedCoTooltipUrl' [toolTipdataPlans]="drupalDedCoTooltipUrlData" isplandetails="true"></app-fpo-layout>
+  </span>
+</ng-template>
+
+<ng-template #tooltipTextInfo>
+  <span class="tooltiptext raisedbox">
+    <app-fpo-layout [targetUrl]='drupalDedCoTooltipUrl' [toolTipdataPlans]="drupalDedCoTooltipUrlData" isplandetails="true"></app-fpo-layout>
+  </span>
+</ng-template>
+<!-- -->

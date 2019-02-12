@@ -1,0 +1,50 @@
+@import '../../../../assets/styles/_colors';
+@import '../../../../assets/styles/_fonts';
+.fad-no-docs-page {
+    p {
+        @include Roboto(regular);
+        font-size: 16px;
+        color: $text-disabled-gray;
+    }
+    button {
+        @include Roboto(bold);
+        font-size: 16px;
+        letter-spacing: -0.01px;
+        text-align: center;
+        background: $text-primary-color;
+        width: 100%;
+        margin: 20px 0px;
+        color: white;
+        border-radius: 5px;
+    }
+    div {
+        .search-option-header {
+            @include Roboto(regular);
+            color: $header-color;
+            font-size: 18px;
+        }
+        .search-option {
+            font-size: 14px;
+            color: $text-disabled-gray;
+            padding: 5px 0px;
+        }
+    }
+    .bottom-border {
+        border-bottom: 4px solid $background-title-separator-color !important;
+    }
+    @media (max-width: 992px) {
+        .nodocs-result-container {
+            margin: 0;
+            padding: 0;
+            padding: 5%;
+        }
+    }
+
+    @media (min-width: 993px) {
+        .nodocs-result-container {
+            margin: 0;
+            padding: 0;
+            padding: 2% 0 0 0;
+        }
+    }
+}

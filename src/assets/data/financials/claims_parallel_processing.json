@@ -1,0 +1,3883 @@
+{
+  "transactionsRecent": [
+    {
+      "AcctTypeCode": "ABH",
+      "AcctTypeDesc": "Health Savings Account",
+      "CanUploadReceipt": false,
+      "Claimant": "CHARLIE DAIGLE",
+      "Description": "INTEREST PAYMENT",
+      "DisplayName": null,
+      "FlexAcctKey": 0,
+      "HSATransactionType": "Non Reportable",
+      "HasReceipt": false,
+      "ReceiptExpired": null,
+      "ReceiptsInfo": [],
+      "SeqNumber": 1,
+      "ServiceStartDate": "/Date(1530421200000-0500)/",
+      "SettlementDate": "20180801",
+      "TransactionAmt": 0.75,
+      "TransactionDate": "/Date(1533070339000-0500)/",
+      "TransactionId": "3750002876-20180731-15521916",
+      "TransactionStatus": "Posted",
+      "TransactionType": "Interest payment",
+      "TxnStatusToolTipText": false
+    },
+    {
+      "AcctTypeCode": "ABH",
+      "AcctTypeDesc": "Health Savings Account",
+      "CanUploadReceipt": false,
+      "Claimant": "CHARLIE DAIGLE",
+      "Description": "PAPER SURCHARGE FEE",
+      "DisplayName": null,
+      "FlexAcctKey": 0,
+      "HSATransactionType": "Non Reportable",
+      "HasReceipt": false,
+      "ReceiptExpired": null,
+      "ReceiptsInfo": [],
+      "SeqNumber": 1,
+      "ServiceStartDate": "/Date(1532840400000-0500)/",
+      "SettlementDate": "20180730",
+      "TransactionAmt": -1.25,
+      "TransactionDate": "/Date(1532897287000-0500)/",
+      "TransactionId": "5250000201-20180729-15480734",
+      "TransactionStatus": "Posted",
+      "TransactionType": "Fee",
+      "TxnStatusToolTipText": false
+    },
+    {
+      "AcctTypeCode": "ABH",
+      "AcctTypeDesc": "Health Savings Account",
+      "CanUploadReceipt": false,
+      "Claimant": "CHARLIE DAIGLE",
+      "Description": "INTEREST PAYMENT",
+      "DisplayName": null,
+      "FlexAcctKey": 0,
+      "HSATransactionType": "Non Reportable",
+      "HasReceipt": false,
+      "ReceiptExpired": null,
+      "ReceiptsInfo": [],
+      "SeqNumber": 1,
+      "ServiceStartDate": "/Date(1527829200000-0500)/",
+      "SettlementDate": "20180701",
+      "TransactionAmt": 0.72,
+      "TransactionDate": "/Date(1530391709000-0500)/",
+      "TransactionId": "3750002036-20180630-15482919",
+      "TransactionStatus": "Posted",
+      "TransactionType": "Interest payment",
+      "TxnStatusToolTipText": false
+    },
+    {
+      "AcctTypeCode": "ABH",
+      "AcctTypeDesc": "Health Savings Account",
+      "CanUploadReceipt": false,
+      "Claimant": "CHARLIE DAIGLE",
+      "Description": "INTEREST PAYMENT",
+      "DisplayName": null,
+      "FlexAcctKey": 0,
+      "HSATransactionType": "Non Reportable",
+      "HasReceipt": false,
+      "ReceiptExpired": null,
+      "ReceiptsInfo": [],
+      "SeqNumber": 1,
+      "ServiceStartDate": "/Date(1525150800000-0500)/",
+      "SettlementDate": "20180601",
+      "TransactionAmt": 0.75,
+      "TransactionDate": "/Date(1527800234000-0500)/",
+      "TransactionId": "3750002586-20180531-15571499",
+      "TransactionStatus": "Posted",
+      "TransactionType": "Interest payment",
+      "TxnStatusToolTipText": false
+    },
+    {
+      "AcctTypeCode": "ABH",
+      "AcctTypeDesc": "Health Savings Account",
+      "CanUploadReceipt": false,
+      "Claimant": "PRUITT DAIGLE",
+      "Description": "Admin - Purchase",
+      "DisplayName": null,
+      "FlexAcctKey": 0,
+      "HSATransactionType": "Normal Distribution",
+      "HasReceipt": false,
+      "ReceiptExpired": null,
+      "ReceiptsInfo": [],
+      "SeqNumber": 1,
+      "ServiceStartDate": "/Date(1496638800000-0500)/",
+      "SettlementDate": "20180515",
+      "TransactionAmt": -21.53,
+      "TransactionDate": "/Date(1526401415000-0500)/",
+      "TransactionId": "1040005036-20180515-11233542",
+      "TransactionStatus": "Posted",
+      "TransactionType": "Manual Claim",
+      "TxnStatusToolTipText": false
+    },
+    {
+      "AcctTypeCode": "ABH",
+      "AcctTypeDesc": "Health Savings Account",
+      "CanUploadReceipt": false,
+      "Claimant": "CHARLIE DAIGLE",
+      "Description": "STEWARD NORWOOD HOSPITAL INC",
+      "DisplayName": null,
+      "FlexAcctKey": 0,
+      "HSATransactionType": "Normal Distribution",
+      "HasReceipt": false,
+      "ReceiptExpired": null,
+      "ReceiptsInfo": [],
+      "SeqNumber": 1,
+      "ServiceStartDate": "/Date(1518760800000-0600)/",
+      "SettlementDate": "20180515",
+      "TransactionAmt": -25.39,
+      "TransactionDate": "/Date(1526400398000-0500)/",
+      "TransactionId": "1040005030-20180515-11063879",
+      "TransactionStatus": "Posted",
+      "TransactionType": "Manual Claim",
+      "TxnStatusToolTipText": false
+    },
+    {
+      "AcctTypeCode": "ABH",
+      "AcctTypeDesc": "Health Savings Account",
+      "CanUploadReceipt": false,
+      "Claimant": "CHARLIE DAIGLE",
+      "Description": "INTEREST PAYMENT",
+      "DisplayName": null,
+      "FlexAcctKey": 0,
+      "HSATransactionType": "Non Reportable",
+      "HasReceipt": false,
+      "ReceiptExpired": null,
+      "ReceiptsInfo": [],
+      "SeqNumber": 1,
+      "ServiceStartDate": "/Date(1522558800000-0500)/",
+      "SettlementDate": "20180501",
+      "TransactionAmt": 0.73,
+      "TransactionDate": "/Date(1525121733000-0500)/",
+      "TransactionId": "3750002475-20180430-15553356",
+      "TransactionStatus": "Posted",
+      "TransactionType": "Interest payment",
+      "TxnStatusToolTipText": false
+    },
+    {
+      "AcctTypeCode": "ABH",
+      "AcctTypeDesc": "Health Savings Account",
+      "CanUploadReceipt": false,
+      "Claimant": "CHARLIE DAIGLE",
+      "Description": "INTEREST PAYMENT",
+      "DisplayName": null,
+      "FlexAcctKey": 0,
+      "HSATransactionType": "Non Reportable",
+      "HasReceipt": false,
+      "ReceiptExpired": null,
+      "ReceiptsInfo": [],
+      "SeqNumber": 1,
+      "ServiceStartDate": "/Date(1519884000000-0600)/",
+      "SettlementDate": "20180401",
+      "TransactionAmt": 0.76,
+      "TransactionDate": "/Date(1522529311000-0500)/",
+      "TransactionId": "3750001668-20180331-15483144",
+      "TransactionStatus": "Posted",
+      "TransactionType": "Interest payment",
+      "TxnStatusToolTipText": false
+    },
+    {
+      "AcctTypeCode": "ABH",
+      "AcctTypeDesc": "Health Savings Account",
+      "CanUploadReceipt": false,
+      "Claimant": "CHARLIE DAIGLE",
+      "Description": "INTEREST PAYMENT",
+      "DisplayName": null,
+      "FlexAcctKey": 0,
+      "HSATransactionType": "Non Reportable",
+      "HasReceipt": false,
+      "ReceiptExpired": null,
+      "ReceiptsInfo": [],
+      "SeqNumber": 1,
+      "ServiceStartDate": "/Date(1517464800000-0600)/",
+      "SettlementDate": "20180301",
+      "TransactionAmt": 0.68,
+      "TransactionDate": "/Date(1519856561000-0600)/",
+      "TransactionId": "3750002187-20180228-16224198",
+      "TransactionStatus": "Posted",
+      "TransactionType": "Interest payment",
+      "TxnStatusToolTipText": false
+    },
+    {
+      "AcctTypeCode": "ABH",
+      "AcctTypeDesc": "Health Savings Account",
+      "CanUploadReceipt": false,
+      "Claimant": "CHARLIE DAIGLE",
+      "Description": "INTEREST PAYMENT",
+      "DisplayName": null,
+      "FlexAcctKey": 0,
+      "HSATransactionType": "Non Reportable",
+      "HasReceipt": false,
+      "ReceiptExpired": null,
+      "ReceiptsInfo": [],
+      "SeqNumber": 1,
+      "ServiceStartDate": "/Date(1514786400000-0600)/",
+      "SettlementDate": "20180201",
+      "TransactionAmt": 0.75,
+      "TransactionDate": "/Date(1517437012000-0600)/",
+      "TransactionId": "3750001885-20180131-16165251",
+      "TransactionStatus": "Posted",
+      "TransactionType": "Interest payment",
+      "TxnStatusToolTipText": false
+    },
+    {
+      "AcctTypeCode": "ABH",
+      "AcctTypeDesc": "Health Savings Account",
+      "CanUploadReceipt": false,
+      "Claimant": "CHARLIE DAIGLE",
+      "Description": "INTEREST PAYMENT",
+      "DisplayName": null,
+      "FlexAcctKey": 0,
+      "HSATransactionType": "Non Reportable",
+      "HasReceipt": false,
+      "ReceiptExpired": null,
+      "ReceiptsInfo": [],
+      "SeqNumber": 1,
+      "ServiceStartDate": "/Date(1512108000000-0600)/",
+      "SettlementDate": "20180101",
+      "TransactionAmt": 0.75,
+      "TransactionDate": "/Date(1514758079000-0600)/",
+      "TransactionId": "3750001184-20171231-16075972",
+      "TransactionStatus": "Posted",
+      "TransactionType": "Interest payment",
+      "TxnStatusToolTipText": false
+    },
+    {
+      "AcctTypeCode": "ABH",
+      "AcctTypeDesc": "Health Savings Account",
+      "CanUploadReceipt": false,
+      "Claimant": "CHARLIE DAIGLE",
+      "Description": "INTEREST PAYMENT",
+      "DisplayName": null,
+      "FlexAcctKey": 0,
+      "HSATransactionType": "Non Reportable",
+      "HasReceipt": false,
+      "ReceiptExpired": null,
+      "ReceiptsInfo": [],
+      "SeqNumber": 1,
+      "ServiceStartDate": "/Date(1509512400000-0500)/",
+      "SettlementDate": "20171201",
+      "TransactionAmt": 0.73,
+      "TransactionDate": "/Date(1512080956000-0600)/",
+      "TransactionId": "3750001911-20171130-16291609",
+      "TransactionStatus": "Posted",
+      "TransactionType": "Interest payment",
+      "TxnStatusToolTipText": false
+    },
+    {
+      "AcctTypeCode": "ABH",
+      "AcctTypeDesc": "Health Savings Account",
+      "CanUploadReceipt": false,
+      "Claimant": "CHARLIE DAIGLE",
+      "Description": "INTEREST PAYMENT",
+      "DisplayName": null,
+      "FlexAcctKey": 0,
+      "HSATransactionType": "Non Reportable",
+      "HasReceipt": false,
+      "ReceiptExpired": null,
+      "ReceiptsInfo": [],
+      "SeqNumber": 1,
+      "ServiceStartDate": "/Date(1506834000000-0500)/",
+      "SettlementDate": "20171101",
+      "TransactionAmt": 0.76,
+      "TransactionDate": "/Date(1509484077000-0500)/",
+      "TransactionId": "3750001542-20171031-16075791",
+      "TransactionStatus": "Posted",
+      "TransactionType": "Interest payment",
+      "TxnStatusToolTipText": false
+    },
+    {
+      "AcctTypeCode": "ABH",
+      "AcctTypeDesc": "Health Savings Account",
+      "CanUploadReceipt": false,
+      "Claimant": "CHARLIE DAIGLE",
+      "Description": "Admin - HSA Online Payment",
+      "DisplayName": null,
+      "FlexAcctKey": 0,
+      "HSATransactionType": "Normal Distribution",
+      "HasReceipt": false,
+      "ReceiptExpired": null,
+      "ReceiptsInfo": [],
+      "SeqNumber": 1,
+      "ServiceStartDate": "/Date(1507093200000-0500)/",
+      "SettlementDate": "20171004",
+      "TransactionAmt": -3,
+      "TransactionDate": "/Date(1507100415000-0500)/",
+      "TransactionId": "3640004487-20171004-02001597",
+      "TransactionStatus": "Posted",
+      "TransactionType": "Bill Payment",
+      "TxnStatusToolTipText": false
+    },
+    {
+      "AcctTypeCode": "ABH",
+      "AcctTypeDesc": "Health Savings Account",
+      "CanUploadReceipt": false,
+      "Claimant": "CHARLIE DAIGLE",
+      "Description": "INTEREST PAYMENT",
+      "DisplayName": null,
+      "FlexAcctKey": 0,
+      "HSATransactionType": "Non Reportable",
+      "HasReceipt": false,
+      "ReceiptExpired": null,
+      "ReceiptsInfo": [],
+      "SeqNumber": 1,
+      "ServiceStartDate": "/Date(1504242000000-0500)/",
+      "SettlementDate": "20171001",
+      "TransactionAmt": 0.38,
+      "TransactionDate": "/Date(1506805682000-0500)/",
+      "TransactionId": "3750006322-20170930-16080275",
+      "TransactionStatus": "Posted",
+      "TransactionType": "Interest payment",
+      "TxnStatusToolTipText": false
+    },
+    {
+      "AcctTypeCode": "ABH",
+      "AcctTypeDesc": "Health Savings Account",
+      "CanUploadReceipt": false,
+      "Claimant": "CHARLIE DAIGLE",
+      "Description": "HSA Balance Transfer",
+      "DisplayName": null,
+      "FlexAcctKey": 0,
+      "HSATransactionType": "Normal Contribution – Employer",
+      "HasReceipt": false,
+      "ReceiptExpired": null,
+      "ReceiptsInfo": [],
+      "SeqNumber": 1,
+      "ServiceStartDate": "/Date(1505365200000-0500)/",
+      "SettlementDate": "20170915",
+      "TransactionAmt": 6750,
+      "TransactionDate": "/Date(1505422223000-0500)/",
+      "TransactionId": "8830000009-20170914-15502368",
+      "TransactionStatus": "Posted",
+      "TransactionType": "HSA Balance Transfer",
+      "TxnStatusToolTipText": false
+    }
+  ],
+  "claimsSummary": [
+    {
+      "__type": "ManualClaim:http://schema.wealthcareadmin.com/payload/mobile/2013/01",
+      "AccountKey": -1,
+      "AcctTypeCde": "",
+      "AcctTypeDesc": "",
+      "CardHolderDisplay": true,
+      "Claimant": {
+        "CardNum": null,
+        "CardholderKey": 1702,
+        "CardholderTypeCde": 0,
+        "EmprId": null,
+        "FirstName": " Kaywin",
+        "Initial": null,
+        "LastName": "Dcosta",
+        "NamePrefix": null,
+        "SocSecNum": null,
+        "TpaId": "T02432"
+      },
+      "DisplayableFields": [
+        {
+          "AlternativeFieldName": "Tracking#",
+          "DisplayOptions": 2,
+          "DisplaySpecifications": 0,
+          "OriginalFieldName": "TrackingNum"
+        },
+        {
+          "AlternativeFieldName": "TransactionDate",
+          "DisplayOptions": 2,
+          "DisplaySpecifications": 0,
+          "OriginalFieldName": "TransactionDate"
+        },
+        {
+          "AlternativeFieldName": "Service Start Date",
+          "DisplayOptions": 2,
+          "DisplaySpecifications": 0,
+          "OriginalFieldName": "ServiceStartDate"
+        },
+        {
+          "AlternativeFieldName": "Service End Date",
+          "DisplayOptions": 2,
+          "DisplaySpecifications": 0,
+          "OriginalFieldName": "ServiceEndDate"
+        },
+        {
+          "AlternativeFieldName": "Account Type",
+          "DisplayOptions": 2,
+          "DisplaySpecifications": 0,
+          "OriginalFieldName": "AcctTypeCde"
+        },
+        {
+          "AlternativeFieldName": "Type",
+          "DisplayOptions": 1,
+          "DisplaySpecifications": 0,
+          "OriginalFieldName": "Type"
+        },
+        {
+          "AlternativeFieldName": "Claimant",
+          "DisplayOptions": 1,
+          "DisplaySpecifications": 0,
+          "OriginalFieldName": "Claimant"
+        },
+        {
+          "AlternativeFieldName": "Status",
+          "DisplayOptions": 1,
+          "DisplaySpecifications": 0,
+          "OriginalFieldName": "Status"
+        },
+        {
+          "AlternativeFieldName": "Amount",
+          "DisplayOptions": 2,
+          "DisplaySpecifications": 0,
+          "OriginalFieldName": "TxnAmt"
+        },
+        {
+          "AlternativeFieldName": "SCC",
+          "DisplayOptions": 2,
+          "DisplaySpecifications": 0,
+          "OriginalFieldName": "ScCde"
+        },
+        {
+          "AlternativeFieldName": "Comments",
+          "DisplayOptions": 2,
+          "DisplaySpecifications": 0,
+          "OriginalFieldName": "Notes"
+        },
+        {
+          "AlternativeFieldName": "Provider",
+          "DisplayOptions": 2,
+          "DisplaySpecifications": 0,
+          "OriginalFieldName": "ClaimDesc"
+        }
+      ],
+      "EmployerId": "BCS0243493",
+      "ExpenseKey": -1,
+      "FileKey": 1,
+      "FlexAcctKey": -1,
+      "HasReceipt": true,
+      "InsertDate": null,
+      "InsertUserIdKey": null,
+      "PlanEndDate": null,
+      "PlanStartDate": null,
+      "ProviderDesc": "",
+      "ProviderId": "",
+      "ReceiptExpired": null,
+      "ReceiptsInfo": [
+        {
+          "DocDisplayName": "511f17cbe6de4f6f8bc1418c514c1ae5",
+          "DocId": "511f17cbe6de4f6f8bc1418c514c1ae5",
+          "FileKey": 2807,
+          "OriginalFileName": "",
+          "TpaId": "T02432",
+          "UploadDate": "/Date(1528323446840-0500)/"
+        }
+      ],
+      "ServiceEndDate": "/Date(1525755600000-0500)/",
+      "ServiceStartDate": "/Date(1525755600000-0500)/",
+      "Status": "Entered<br>Not Reviewed",
+      "TpaId": "T02432",
+      "TransactionDate": "/Date(1528323446810-0500)/",
+      "TxnAmt": 205.02,
+      "TxnAmtDenied": 0,
+      "TxnAmtOrig": 0,
+      "TxnAmtPending": 0,
+      "TxnAmtRefund": 0,
+      "TxnCde": -1,
+      "TxnMsg": "",
+      "TxnOptions": null,
+      "TxnOriginCde": 57,
+      "Type": "Claim",
+      "UpdateDte": "/Date(1530952228997-0500)/",
+      "UpdateUserIdKey": 10,
+      "ClaimDesc": "Test BCBSMA1",
+      "ClaimKey": 3459,
+      "ClaimStatus": null,
+      "ClaimStatusMsg": "",
+      "Notes": "Sample notes",
+      "ReimbModeCde": -1,
+      "ScCde": "",
+      "ScCdeDesc": "",
+      "TrackingNum": "18381"
+    },
+    {
+      "__type": "ManualClaim:http://schema.wealthcareadmin.com/payload/mobile/2013/01",
+      "AccountKey": -1,
+      "AcctTypeCde": "",
+      "AcctTypeDesc": "",
+      "CardHolderDisplay": true,
+      "Claimant": {
+        "CardNum": null,
+        "CardholderKey": 1702,
+        "CardholderTypeCde": 0,
+        "EmprId": null,
+        "FirstName": " Kaywin",
+        "Initial": null,
+        "LastName": "Dcosta",
+        "NamePrefix": null,
+        "SocSecNum": null,
+        "TpaId": "T02432"
+      },
+      "DisplayableFields": [
+        {
+          "AlternativeFieldName": "Tracking#",
+          "DisplayOptions": 2,
+          "DisplaySpecifications": 0,
+          "OriginalFieldName": "TrackingNum"
+        },
+        {
+          "AlternativeFieldName": "TransactionDate",
+          "DisplayOptions": 2,
+          "DisplaySpecifications": 0,
+          "OriginalFieldName": "TransactionDate"
+        },
+        {
+          "AlternativeFieldName": "Service Start Date",
+          "DisplayOptions": 2,
+          "DisplaySpecifications": 0,
+          "OriginalFieldName": "ServiceStartDate"
+        },
+        {
+          "AlternativeFieldName": "Service End Date",
+          "DisplayOptions": 2,
+          "DisplaySpecifications": 0,
+          "OriginalFieldName": "ServiceEndDate"
+        },
+        {
+          "AlternativeFieldName": "Account Type",
+          "DisplayOptions": 2,
+          "DisplaySpecifications": 0,
+          "OriginalFieldName": "AcctTypeCde"
+        },
+        {
+          "AlternativeFieldName": "Type",
+          "DisplayOptions": 1,
+          "DisplaySpecifications": 0,
+          "OriginalFieldName": "Type"
+        },
+        {
+          "AlternativeFieldName": "Claimant",
+          "DisplayOptions": 1,
+          "DisplaySpecifications": 0,
+          "OriginalFieldName": "Claimant"
+        },
+        {
+          "AlternativeFieldName": "Status",
+          "DisplayOptions": 1,
+          "DisplaySpecifications": 0,
+          "OriginalFieldName": "Status"
+        },
+        {
+          "AlternativeFieldName": "Amount",
+          "DisplayOptions": 2,
+          "DisplaySpecifications": 0,
+          "OriginalFieldName": "TxnAmt"
+        },
+        {
+          "AlternativeFieldName": "SCC",
+          "DisplayOptions": 2,
+          "DisplaySpecifications": 0,
+          "OriginalFieldName": "ScCde"
+        },
+        {
+          "AlternativeFieldName": "Comments",
+          "DisplayOptions": 2,
+          "DisplaySpecifications": 0,
+          "OriginalFieldName": "Notes"
+        },
+        {
+          "AlternativeFieldName": "Provider",
+          "DisplayOptions": 2,
+          "DisplaySpecifications": 0,
+          "OriginalFieldName": "ClaimDesc"
+        }
+      ],
+      "EmployerId": "BCS0243493",
+      "ExpenseKey": -1,
+      "FileKey": 1,
+      "FlexAcctKey": -1,
+      "HasReceipt": true,
+      "InsertDate": null,
+      "InsertUserIdKey": null,
+      "PlanEndDate": null,
+      "PlanStartDate": null,
+      "ProviderDesc": "",
+      "ProviderId": "",
+      "ReceiptExpired": null,
+      "ReceiptsInfo": [
+        {
+          "DocDisplayName": "e8ec5653ff704333845940cde7f8c0a1",
+          "DocId": "e8ec5653ff704333845940cde7f8c0a1",
+          "FileKey": 2806,
+          "OriginalFileName": "",
+          "TpaId": "T02432",
+          "UploadDate": "/Date(1528322925740-0500)/"
+        }
+      ],
+      "ServiceEndDate": "/Date(1525755600000-0500)/",
+      "ServiceStartDate": "/Date(1525755600000-0500)/",
+      "Status": "Entered<br>Not Reviewed",
+      "TpaId": "T02432",
+      "TransactionDate": "/Date(1528322925557-0500)/",
+      "TxnAmt": 205.02,
+      "TxnAmtDenied": 0,
+      "TxnAmtOrig": 0,
+      "TxnAmtPending": 0,
+      "TxnAmtRefund": 0,
+      "TxnCde": -1,
+      "TxnMsg": "",
+      "TxnOptions": null,
+      "TxnOriginCde": 57,
+      "Type": "Claim",
+      "UpdateDte": "/Date(1530952228997-0500)/",
+      "UpdateUserIdKey": 10,
+      "ClaimDesc": "Test BCBSMA1",
+      "ClaimKey": 3458,
+      "ClaimStatus": null,
+      "ClaimStatusMsg": "",
+      "Notes": "Sample notes",
+      "ReimbModeCde": -1,
+      "ScCde": "",
+      "ScCdeDesc": "",
+      "TrackingNum": "18380"
+    },
+    {
+      "__type": "ManualClaim:http://schema.wealthcareadmin.com/payload/mobile/2013/01",
+      "AccountKey": -1,
+      "AcctTypeCde": "",
+      "AcctTypeDesc": "",
+      "CardHolderDisplay": true,
+      "Claimant": {
+        "CardNum": null,
+        "CardholderKey": 1702,
+        "CardholderTypeCde": 0,
+        "EmprId": null,
+        "FirstName": " Kaywin",
+        "Initial": null,
+        "LastName": "Dcosta",
+        "NamePrefix": null,
+        "SocSecNum": null,
+        "TpaId": "T02432"
+      },
+      "DisplayableFields": [
+        {
+          "AlternativeFieldName": "Tracking#",
+          "DisplayOptions": 2,
+          "DisplaySpecifications": 0,
+          "OriginalFieldName": "TrackingNum"
+        },
+        {
+          "AlternativeFieldName": "TransactionDate",
+          "DisplayOptions": 2,
+          "DisplaySpecifications": 0,
+          "OriginalFieldName": "TransactionDate"
+        },
+        {
+          "AlternativeFieldName": "Service Start Date",
+          "DisplayOptions": 2,
+          "DisplaySpecifications": 0,
+          "OriginalFieldName": "ServiceStartDate"
+        },
+        {
+          "AlternativeFieldName": "Service End Date",
+          "DisplayOptions": 2,
+          "DisplaySpecifications": 0,
+          "OriginalFieldName": "ServiceEndDate"
+        },
+        {
+          "AlternativeFieldName": "Account Type",
+          "DisplayOptions": 2,
+          "DisplaySpecifications": 0,
+          "OriginalFieldName": "AcctTypeCde"
+        },
+        {
+          "AlternativeFieldName": "Type",
+          "DisplayOptions": 1,
+          "DisplaySpecifications": 0,
+          "OriginalFieldName": "Type"
+        },
+        {
+          "AlternativeFieldName": "Claimant",
+          "DisplayOptions": 1,
+          "DisplaySpecifications": 0,
+          "OriginalFieldName": "Claimant"
+        },
+        {
+          "AlternativeFieldName": "Status",
+          "DisplayOptions": 1,
+          "DisplaySpecifications": 0,
+          "OriginalFieldName": "Status"
+        },
+        {
+          "AlternativeFieldName": "Amount",
+          "DisplayOptions": 2,
+          "DisplaySpecifications": 0,
+          "OriginalFieldName": "TxnAmt"
+        },
+        {
+          "AlternativeFieldName": "SCC",
+          "DisplayOptions": 2,
+          "DisplaySpecifications": 0,
+          "OriginalFieldName": "ScCde"
+        },
+        {
+          "AlternativeFieldName": "Comments",
+          "DisplayOptions": 2,
+          "DisplaySpecifications": 0,
+          "OriginalFieldName": "Notes"
+        },
+        {
+          "AlternativeFieldName": "Provider",
+          "DisplayOptions": 2,
+          "DisplaySpecifications": 0,
+          "OriginalFieldName": "ClaimDesc"
+        }
+      ],
+      "EmployerId": "BCS0243493",
+      "ExpenseKey": -1,
+      "FileKey": 1,
+      "FlexAcctKey": -1,
+      "HasReceipt": true,
+      "InsertDate": null,
+      "InsertUserIdKey": null,
+      "PlanEndDate": null,
+      "PlanStartDate": null,
+      "ProviderDesc": "",
+      "ProviderId": "",
+      "ReceiptExpired": null,
+      "ReceiptsInfo": [
+        {
+          "DocDisplayName": "cb2cd3039a16478a9066d49ec3825a48",
+          "DocId": "cb2cd3039a16478a9066d49ec3825a48",
+          "FileKey": 2795,
+          "OriginalFileName": "",
+          "TpaId": "T02432",
+          "UploadDate": "/Date(1527805730200-0500)/"
+        }
+      ],
+      "ServiceEndDate": "/Date(1525755600000-0500)/",
+      "ServiceStartDate": "/Date(1525755600000-0500)/",
+      "Status": "Entered<br>Not Reviewed",
+      "TpaId": "T02432",
+      "TransactionDate": "/Date(1527805729923-0500)/",
+      "TxnAmt": 205.02,
+      "TxnAmtDenied": 0,
+      "TxnAmtOrig": 0,
+      "TxnAmtPending": 0,
+      "TxnAmtRefund": 0,
+      "TxnCde": -1,
+      "TxnMsg": "",
+      "TxnOptions": null,
+      "TxnOriginCde": 57,
+      "Type": "Claim",
+      "UpdateDte": "/Date(1530434147067-0500)/",
+      "UpdateUserIdKey": 10,
+      "ClaimDesc": "Test BCBSMA1",
+      "ClaimKey": 3450,
+      "ClaimStatus": null,
+      "ClaimStatusMsg": "",
+      "Notes": "Sample notes",
+      "ReimbModeCde": -1,
+      "ScCde": "",
+      "ScCdeDesc": "",
+      "TrackingNum": "18375"
+    },
+    {
+      "__type": "ManualClaim:http://schema.wealthcareadmin.com/payload/mobile/2013/01",
+      "AccountKey": -1,
+      "AcctTypeCde": "",
+      "AcctTypeDesc": "",
+      "CardHolderDisplay": true,
+      "Claimant": {
+        "CardNum": null,
+        "CardholderKey": 1702,
+        "CardholderTypeCde": 0,
+        "EmprId": null,
+        "FirstName": " Kaywin",
+        "Initial": null,
+        "LastName": "Dcosta",
+        "NamePrefix": null,
+        "SocSecNum": null,
+        "TpaId": "T02432"
+      },
+      "DisplayableFields": [
+        {
+          "AlternativeFieldName": "Tracking#",
+          "DisplayOptions": 2,
+          "DisplaySpecifications": 0,
+          "OriginalFieldName": "TrackingNum"
+        },
+        {
+          "AlternativeFieldName": "TransactionDate",
+          "DisplayOptions": 2,
+          "DisplaySpecifications": 0,
+          "OriginalFieldName": "TransactionDate"
+        },
+        {
+          "AlternativeFieldName": "Service Start Date",
+          "DisplayOptions": 2,
+          "DisplaySpecifications": 0,
+          "OriginalFieldName": "ServiceStartDate"
+        },
+        {
+          "AlternativeFieldName": "Service End Date",
+          "DisplayOptions": 2,
+          "DisplaySpecifications": 0,
+          "OriginalFieldName": "ServiceEndDate"
+        },
+        {
+          "AlternativeFieldName": "Account Type",
+          "DisplayOptions": 2,
+          "DisplaySpecifications": 0,
+          "OriginalFieldName": "AcctTypeCde"
+        },
+        {
+          "AlternativeFieldName": "Type",
+          "DisplayOptions": 1,
+          "DisplaySpecifications": 0,
+          "OriginalFieldName": "Type"
+        },
+        {
+          "AlternativeFieldName": "Claimant",
+          "DisplayOptions": 1,
+          "DisplaySpecifications": 0,
+          "OriginalFieldName": "Claimant"
+        },
+        {
+          "AlternativeFieldName": "Status",
+          "DisplayOptions": 1,
+          "DisplaySpecifications": 0,
+          "OriginalFieldName": "Status"
+        },
+        {
+          "AlternativeFieldName": "Amount",
+          "DisplayOptions": 2,
+          "DisplaySpecifications": 0,
+          "OriginalFieldName": "TxnAmt"
+        },
+        {
+          "AlternativeFieldName": "SCC",
+          "DisplayOptions": 2,
+          "DisplaySpecifications": 0,
+          "OriginalFieldName": "ScCde"
+        },
+        {
+          "AlternativeFieldName": "Comments",
+          "DisplayOptions": 2,
+          "DisplaySpecifications": 0,
+          "OriginalFieldName": "Notes"
+        },
+        {
+          "AlternativeFieldName": "Provider",
+          "DisplayOptions": 2,
+          "DisplaySpecifications": 0,
+          "OriginalFieldName": "ClaimDesc"
+        }
+      ],
+      "EmployerId": "BCS0243493",
+      "ExpenseKey": -1,
+      "FileKey": 1,
+      "FlexAcctKey": -1,
+      "HasReceipt": true,
+      "InsertDate": null,
+      "InsertUserIdKey": null,
+      "PlanEndDate": null,
+      "PlanStartDate": null,
+      "ProviderDesc": "",
+      "ProviderId": "",
+      "ReceiptExpired": null,
+      "ReceiptsInfo": [
+        {
+          "DocDisplayName": "ca0df2032c2343799f948379a87643e5",
+          "DocId": "ca0df2032c2343799f948379a87643e5",
+          "FileKey": 2775,
+          "OriginalFileName": "",
+          "TpaId": "T02432",
+          "UploadDate": "/Date(1526930786020-0500)/"
+        }
+      ],
+      "ServiceEndDate": "/Date(1525755600000-0500)/",
+      "ServiceStartDate": "/Date(1525755600000-0500)/",
+      "Status": "Entered<br>Not Reviewed",
+      "TpaId": "T02432",
+      "TransactionDate": "/Date(1526930785847-0500)/",
+      "TxnAmt": 200.02,
+      "TxnAmtDenied": 0,
+      "TxnAmtOrig": 0,
+      "TxnAmtPending": 0,
+      "TxnAmtRefund": 0,
+      "TxnCde": -1,
+      "TxnMsg": "",
+      "TxnOptions": null,
+      "TxnOriginCde": 57,
+      "Type": "Claim",
+      "UpdateDte": "/Date(1530434147067-0500)/",
+      "UpdateUserIdKey": 10,
+      "ClaimDesc": "Test BCBSMA",
+      "ClaimKey": 3445,
+      "ClaimStatus": null,
+      "ClaimStatusMsg": "",
+      "Notes": "Sample notes",
+      "ReimbModeCde": -1,
+      "ScCde": "",
+      "ScCdeDesc": "",
+      "TrackingNum": "18369"
+    },
+    {
+      "__type": "ManualClaim:http://schema.wealthcareadmin.com/payload/mobile/2013/01",
+      "AccountKey": -1,
+      "AcctTypeCde": "",
+      "AcctTypeDesc": "",
+      "CardHolderDisplay": true,
+      "Claimant": {
+        "CardNum": null,
+        "CardholderKey": 1702,
+        "CardholderTypeCde": 0,
+        "EmprId": null,
+        "FirstName": " Kaywin",
+        "Initial": null,
+        "LastName": "Dcosta",
+        "NamePrefix": null,
+        "SocSecNum": null,
+        "TpaId": "T02432"
+      },
+      "DisplayableFields": [
+        {
+          "AlternativeFieldName": "Tracking#",
+          "DisplayOptions": 2,
+          "DisplaySpecifications": 0,
+          "OriginalFieldName": "TrackingNum"
+        },
+        {
+          "AlternativeFieldName": "TransactionDate",
+          "DisplayOptions": 2,
+          "DisplaySpecifications": 0,
+          "OriginalFieldName": "TransactionDate"
+        },
+        {
+          "AlternativeFieldName": "Service Start Date",
+          "DisplayOptions": 2,
+          "DisplaySpecifications": 0,
+          "OriginalFieldName": "ServiceStartDate"
+        },
+        {
+          "AlternativeFieldName": "Service End Date",
+          "DisplayOptions": 2,
+          "DisplaySpecifications": 0,
+          "OriginalFieldName": "ServiceEndDate"
+        },
+        {
+          "AlternativeFieldName": "Account Type",
+          "DisplayOptions": 2,
+          "DisplaySpecifications": 0,
+          "OriginalFieldName": "AcctTypeCde"
+        },
+        {
+          "AlternativeFieldName": "Type",
+          "DisplayOptions": 1,
+          "DisplaySpecifications": 0,
+          "OriginalFieldName": "Type"
+        },
+        {
+          "AlternativeFieldName": "Claimant",
+          "DisplayOptions": 1,
+          "DisplaySpecifications": 0,
+          "OriginalFieldName": "Claimant"
+        },
+        {
+          "AlternativeFieldName": "Status",
+          "DisplayOptions": 1,
+          "DisplaySpecifications": 0,
+          "OriginalFieldName": "Status"
+        },
+        {
+          "AlternativeFieldName": "Amount",
+          "DisplayOptions": 2,
+          "DisplaySpecifications": 0,
+          "OriginalFieldName": "TxnAmt"
+        },
+        {
+          "AlternativeFieldName": "SCC",
+          "DisplayOptions": 2,
+          "DisplaySpecifications": 0,
+          "OriginalFieldName": "ScCde"
+        },
+        {
+          "AlternativeFieldName": "Comments",
+          "DisplayOptions": 2,
+          "DisplaySpecifications": 0,
+          "OriginalFieldName": "Notes"
+        },
+        {
+          "AlternativeFieldName": "Provider",
+          "DisplayOptions": 2,
+          "DisplaySpecifications": 0,
+          "OriginalFieldName": "ClaimDesc"
+        }
+      ],
+      "EmployerId": "BCS0243493",
+      "ExpenseKey": -1,
+      "FileKey": 1,
+      "FlexAcctKey": -1,
+      "HasReceipt": true,
+      "InsertDate": null,
+      "InsertUserIdKey": null,
+      "PlanEndDate": null,
+      "PlanStartDate": null,
+      "ProviderDesc": "",
+      "ProviderId": "",
+      "ReceiptExpired": null,
+      "ReceiptsInfo": [
+        {
+          "DocDisplayName": "86feb9b8dafe4c00a6de87d3f82a6999",
+          "DocId": "86feb9b8dafe4c00a6de87d3f82a6999",
+          "FileKey": 2774,
+          "OriginalFileName": "",
+          "TpaId": "T02432",
+          "UploadDate": "/Date(1526914412537-0500)/"
+        }
+      ],
+      "ServiceEndDate": "/Date(1525755600000-0500)/",
+      "ServiceStartDate": "/Date(1525755600000-0500)/",
+      "Status": "Entered<br>Not Reviewed",
+      "TpaId": "T02432",
+      "TransactionDate": "/Date(1526914412517-0500)/",
+      "TxnAmt": 205.02,
+      "TxnAmtDenied": 0,
+      "TxnAmtOrig": 0,
+      "TxnAmtPending": 0,
+      "TxnAmtRefund": 0,
+      "TxnCde": -1,
+      "TxnMsg": "",
+      "TxnOptions": null,
+      "TxnOriginCde": 57,
+      "Type": "Claim",
+      "UpdateDte": "/Date(1530434147067-0500)/",
+      "UpdateUserIdKey": 10,
+      "ClaimDesc": "Test BCBSMA1",
+      "ClaimKey": 3444,
+      "ClaimStatus": null,
+      "ClaimStatusMsg": "",
+      "Notes": "Sample notes",
+      "ReimbModeCde": -1,
+      "ScCde": "",
+      "ScCdeDesc": "",
+      "TrackingNum": "18368"
+    },
+    {
+      "__type": "ManualClaim:http://schema.wealthcareadmin.com/payload/mobile/2013/01",
+      "AccountKey": -1,
+      "AcctTypeCde": "",
+      "AcctTypeDesc": "",
+      "CardHolderDisplay": true,
+      "Claimant": {
+        "CardNum": null,
+        "CardholderKey": 1702,
+        "CardholderTypeCde": 0,
+        "EmprId": null,
+        "FirstName": " Kaywin",
+        "Initial": null,
+        "LastName": "Dcosta",
+        "NamePrefix": null,
+        "SocSecNum": null,
+        "TpaId": "T02432"
+      },
+      "DisplayableFields": [
+        {
+          "AlternativeFieldName": "Tracking#",
+          "DisplayOptions": 2,
+          "DisplaySpecifications": 0,
+          "OriginalFieldName": "TrackingNum"
+        },
+        {
+          "AlternativeFieldName": "TransactionDate",
+          "DisplayOptions": 2,
+          "DisplaySpecifications": 0,
+          "OriginalFieldName": "TransactionDate"
+        },
+        {
+          "AlternativeFieldName": "Service Start Date",
+          "DisplayOptions": 2,
+          "DisplaySpecifications": 0,
+          "OriginalFieldName": "ServiceStartDate"
+        },
+        {
+          "AlternativeFieldName": "Service End Date",
+          "DisplayOptions": 2,
+          "DisplaySpecifications": 0,
+          "OriginalFieldName": "ServiceEndDate"
+        },
+        {
+          "AlternativeFieldName": "Account Type",
+          "DisplayOptions": 2,
+          "DisplaySpecifications": 0,
+          "OriginalFieldName": "AcctTypeCde"
+        },
+        {
+          "AlternativeFieldName": "Type",
+          "DisplayOptions": 1,
+          "DisplaySpecifications": 0,
+          "OriginalFieldName": "Type"
+        },
+        {
+          "AlternativeFieldName": "Claimant",
+          "DisplayOptions": 1,
+          "DisplaySpecifications": 0,
+          "OriginalFieldName": "Claimant"
+        },
+        {
+          "AlternativeFieldName": "Status",
+          "DisplayOptions": 1,
+          "DisplaySpecifications": 0,
+          "OriginalFieldName": "Status"
+        },
+        {
+          "AlternativeFieldName": "Amount",
+          "DisplayOptions": 2,
+          "DisplaySpecifications": 0,
+          "OriginalFieldName": "TxnAmt"
+        },
+        {
+          "AlternativeFieldName": "SCC",
+          "DisplayOptions": 2,
+          "DisplaySpecifications": 0,
+          "OriginalFieldName": "ScCde"
+        },
+        {
+          "AlternativeFieldName": "Comments",
+          "DisplayOptions": 2,
+          "DisplaySpecifications": 0,
+          "OriginalFieldName": "Notes"
+        },
+        {
+          "AlternativeFieldName": "Provider",
+          "DisplayOptions": 2,
+          "DisplaySpecifications": 0,
+          "OriginalFieldName": "ClaimDesc"
+        }
+      ],
+      "EmployerId": "BCS0243493",
+      "ExpenseKey": -1,
+      "FileKey": 1,
+      "FlexAcctKey": -1,
+      "HasReceipt": true,
+      "InsertDate": null,
+      "InsertUserIdKey": null,
+      "PlanEndDate": null,
+      "PlanStartDate": null,
+      "ProviderDesc": "",
+      "ProviderId": "",
+      "ReceiptExpired": null,
+      "ReceiptsInfo": [
+        {
+          "DocDisplayName": "3e8e572aee4941cabd1c1483bdd83971",
+          "DocId": "3e8e572aee4941cabd1c1483bdd83971",
+          "FileKey": 2773,
+          "OriginalFileName": "",
+          "TpaId": "T02432",
+          "UploadDate": "/Date(1526910798807-0500)/"
+        }
+      ],
+      "ServiceEndDate": "/Date(1525755600000-0500)/",
+      "ServiceStartDate": "/Date(1525755600000-0500)/",
+      "Status": "Entered<br>Not Reviewed",
+      "TpaId": "T02432",
+      "TransactionDate": "/Date(1526910798743-0500)/",
+      "TxnAmt": 205.02,
+      "TxnAmtDenied": 0,
+      "TxnAmtOrig": 0,
+      "TxnAmtPending": 0,
+      "TxnAmtRefund": 0,
+      "TxnCde": -1,
+      "TxnMsg": "",
+      "TxnOptions": null,
+      "TxnOriginCde": 57,
+      "Type": "Claim",
+      "UpdateDte": "/Date(1530434147067-0500)/",
+      "UpdateUserIdKey": 10,
+      "ClaimDesc": "Test BCBSMA1",
+      "ClaimKey": 3443,
+      "ClaimStatus": null,
+      "ClaimStatusMsg": "",
+      "Notes": "Sample notes",
+      "ReimbModeCde": -1,
+      "ScCde": "",
+      "ScCdeDesc": "",
+      "TrackingNum": "18367"
+    },
+    {
+      "__type": "ManualClaim:http://schema.wealthcareadmin.com/payload/mobile/2013/01",
+      "AccountKey": -1,
+      "AcctTypeCde": "",
+      "AcctTypeDesc": "",
+      "CardHolderDisplay": true,
+      "Claimant": {
+        "CardNum": null,
+        "CardholderKey": 1702,
+        "CardholderTypeCde": 0,
+        "EmprId": null,
+        "FirstName": " Kaywin",
+        "Initial": null,
+        "LastName": "Dcosta",
+        "NamePrefix": null,
+        "SocSecNum": null,
+        "TpaId": "T02432"
+      },
+      "DisplayableFields": [
+        {
+          "AlternativeFieldName": "Tracking#",
+          "DisplayOptions": 2,
+          "DisplaySpecifications": 0,
+          "OriginalFieldName": "TrackingNum"
+        },
+        {
+          "AlternativeFieldName": "TransactionDate",
+          "DisplayOptions": 2,
+          "DisplaySpecifications": 0,
+          "OriginalFieldName": "TransactionDate"
+        },
+        {
+          "AlternativeFieldName": "Service Start Date",
+          "DisplayOptions": 2,
+          "DisplaySpecifications": 0,
+          "OriginalFieldName": "ServiceStartDate"
+        },
+        {
+          "AlternativeFieldName": "Service End Date",
+          "DisplayOptions": 2,
+          "DisplaySpecifications": 0,
+          "OriginalFieldName": "ServiceEndDate"
+        },
+        {
+          "AlternativeFieldName": "Account Type",
+          "DisplayOptions": 2,
+          "DisplaySpecifications": 0,
+          "OriginalFieldName": "AcctTypeCde"
+        },
+        {
+          "AlternativeFieldName": "Type",
+          "DisplayOptions": 1,
+          "DisplaySpecifications": 0,
+          "OriginalFieldName": "Type"
+        },
+        {
+          "AlternativeFieldName": "Claimant",
+          "DisplayOptions": 1,
+          "DisplaySpecifications": 0,
+          "OriginalFieldName": "Claimant"
+        },
+        {
+          "AlternativeFieldName": "Status",
+          "DisplayOptions": 1,
+          "DisplaySpecifications": 0,
+          "OriginalFieldName": "Status"
+        },
+        {
+          "AlternativeFieldName": "Amount",
+          "DisplayOptions": 2,
+          "DisplaySpecifications": 0,
+          "OriginalFieldName": "TxnAmt"
+        },
+        {
+          "AlternativeFieldName": "SCC",
+          "DisplayOptions": 2,
+          "DisplaySpecifications": 0,
+          "OriginalFieldName": "ScCde"
+        },
+        {
+          "AlternativeFieldName": "Comments",
+          "DisplayOptions": 2,
+          "DisplaySpecifications": 0,
+          "OriginalFieldName": "Notes"
+        },
+        {
+          "AlternativeFieldName": "Provider",
+          "DisplayOptions": 2,
+          "DisplaySpecifications": 0,
+          "OriginalFieldName": "ClaimDesc"
+        }
+      ],
+      "EmployerId": "BCS0243493",
+      "ExpenseKey": -1,
+      "FileKey": 1,
+      "FlexAcctKey": -1,
+      "HasReceipt": true,
+      "InsertDate": null,
+      "InsertUserIdKey": null,
+      "PlanEndDate": null,
+      "PlanStartDate": null,
+      "ProviderDesc": "",
+      "ProviderId": "",
+      "ReceiptExpired": null,
+      "ReceiptsInfo": [
+        {
+          "DocDisplayName": "4534e32c0d9f4604b622fbe95380f826",
+          "DocId": "4534e32c0d9f4604b622fbe95380f826",
+          "FileKey": 2772,
+          "OriginalFileName": "",
+          "TpaId": "T02432",
+          "UploadDate": "/Date(1526910554680-0500)/"
+        }
+      ],
+      "ServiceEndDate": "/Date(1525755600000-0500)/",
+      "ServiceStartDate": "/Date(1525755600000-0500)/",
+      "Status": "Entered<br>Not Reviewed",
+      "TpaId": "T02432",
+      "TransactionDate": "/Date(1526910554447-0500)/",
+      "TxnAmt": 205.02,
+      "TxnAmtDenied": 0,
+      "TxnAmtOrig": 0,
+      "TxnAmtPending": 0,
+      "TxnAmtRefund": 0,
+      "TxnCde": -1,
+      "TxnMsg": "",
+      "TxnOptions": null,
+      "TxnOriginCde": 57,
+      "Type": "Claim",
+      "UpdateDte": "/Date(1530434147067-0500)/",
+      "UpdateUserIdKey": 10,
+      "ClaimDesc": "Test BCBSMA1",
+      "ClaimKey": 3442,
+      "ClaimStatus": null,
+      "ClaimStatusMsg": "",
+      "Notes": "Sample notes",
+      "ReimbModeCde": -1,
+      "ScCde": "",
+      "ScCdeDesc": "",
+      "TrackingNum": "18366"
+    },
+    {
+      "__type": "ManualClaim:http://schema.wealthcareadmin.com/payload/mobile/2013/01",
+      "AccountKey": -1,
+      "AcctTypeCde": "",
+      "AcctTypeDesc": "",
+      "CardHolderDisplay": true,
+      "Claimant": {
+        "CardNum": null,
+        "CardholderKey": 1702,
+        "CardholderTypeCde": 0,
+        "EmprId": null,
+        "FirstName": " Kaywin",
+        "Initial": null,
+        "LastName": "Dcosta",
+        "NamePrefix": null,
+        "SocSecNum": null,
+        "TpaId": "T02432"
+      },
+      "DisplayableFields": [
+        {
+          "AlternativeFieldName": "Tracking#",
+          "DisplayOptions": 2,
+          "DisplaySpecifications": 0,
+          "OriginalFieldName": "TrackingNum"
+        },
+        {
+          "AlternativeFieldName": "TransactionDate",
+          "DisplayOptions": 2,
+          "DisplaySpecifications": 0,
+          "OriginalFieldName": "TransactionDate"
+        },
+        {
+          "AlternativeFieldName": "Service Start Date",
+          "DisplayOptions": 2,
+          "DisplaySpecifications": 0,
+          "OriginalFieldName": "ServiceStartDate"
+        },
+        {
+          "AlternativeFieldName": "Service End Date",
+          "DisplayOptions": 2,
+          "DisplaySpecifications": 0,
+          "OriginalFieldName": "ServiceEndDate"
+        },
+        {
+          "AlternativeFieldName": "Account Type",
+          "DisplayOptions": 2,
+          "DisplaySpecifications": 0,
+          "OriginalFieldName": "AcctTypeCde"
+        },
+        {
+          "AlternativeFieldName": "Type",
+          "DisplayOptions": 1,
+          "DisplaySpecifications": 0,
+          "OriginalFieldName": "Type"
+        },
+        {
+          "AlternativeFieldName": "Claimant",
+          "DisplayOptions": 1,
+          "DisplaySpecifications": 0,
+          "OriginalFieldName": "Claimant"
+        },
+        {
+          "AlternativeFieldName": "Status",
+          "DisplayOptions": 1,
+          "DisplaySpecifications": 0,
+          "OriginalFieldName": "Status"
+        },
+        {
+          "AlternativeFieldName": "Amount",
+          "DisplayOptions": 2,
+          "DisplaySpecifications": 0,
+          "OriginalFieldName": "TxnAmt"
+        },
+        {
+          "AlternativeFieldName": "SCC",
+          "DisplayOptions": 2,
+          "DisplaySpecifications": 0,
+          "OriginalFieldName": "ScCde"
+        },
+        {
+          "AlternativeFieldName": "Comments",
+          "DisplayOptions": 2,
+          "DisplaySpecifications": 0,
+          "OriginalFieldName": "Notes"
+        },
+        {
+          "AlternativeFieldName": "Provider",
+          "DisplayOptions": 2,
+          "DisplaySpecifications": 0,
+          "OriginalFieldName": "ClaimDesc"
+        }
+      ],
+      "EmployerId": "BCS0243493",
+      "ExpenseKey": -1,
+      "FileKey": 1,
+      "FlexAcctKey": -1,
+      "HasReceipt": true,
+      "InsertDate": null,
+      "InsertUserIdKey": null,
+      "PlanEndDate": null,
+      "PlanStartDate": null,
+      "ProviderDesc": "",
+      "ProviderId": "",
+      "ReceiptExpired": null,
+      "ReceiptsInfo": [
+        {
+          "DocDisplayName": "0c2373e9464043ca9d666ef9945b4859",
+          "DocId": "0c2373e9464043ca9d666ef9945b4859",
+          "FileKey": 2769,
+          "OriginalFileName": "",
+          "TpaId": "T02432",
+          "UploadDate": "/Date(1526910319590-0500)/"
+        }
+      ],
+      "ServiceEndDate": "/Date(1525755600000-0500)/",
+      "ServiceStartDate": "/Date(1525755600000-0500)/",
+      "Status": "Entered<br>Not Reviewed",
+      "TpaId": "T02432",
+      "TransactionDate": "/Date(1526910319377-0500)/",
+      "TxnAmt": 205.02,
+      "TxnAmtDenied": 0,
+      "TxnAmtOrig": 0,
+      "TxnAmtPending": 0,
+      "TxnAmtRefund": 0,
+      "TxnCde": -1,
+      "TxnMsg": "",
+      "TxnOptions": null,
+      "TxnOriginCde": 57,
+      "Type": "Claim",
+      "UpdateDte": "/Date(1530434147067-0500)/",
+      "UpdateUserIdKey": 10,
+      "ClaimDesc": "Test BCBSMA1",
+      "ClaimKey": 3441,
+      "ClaimStatus": null,
+      "ClaimStatusMsg": "",
+      "Notes": "Sample notes",
+      "ReimbModeCde": -1,
+      "ScCde": "",
+      "ScCdeDesc": "",
+      "TrackingNum": "18365"
+    },
+    {
+      "__type": "ManualClaim:http://schema.wealthcareadmin.com/payload/mobile/2013/01",
+      "AccountKey": -1,
+      "AcctTypeCde": "",
+      "AcctTypeDesc": "",
+      "CardHolderDisplay": true,
+      "Claimant": {
+        "CardNum": null,
+        "CardholderKey": 1702,
+        "CardholderTypeCde": 0,
+        "EmprId": null,
+        "FirstName": " Kaywin",
+        "Initial": null,
+        "LastName": "Dcosta",
+        "NamePrefix": null,
+        "SocSecNum": null,
+        "TpaId": "T02432"
+      },
+      "DisplayableFields": [
+        {
+          "AlternativeFieldName": "Tracking#",
+          "DisplayOptions": 2,
+          "DisplaySpecifications": 0,
+          "OriginalFieldName": "TrackingNum"
+        },
+        {
+          "AlternativeFieldName": "TransactionDate",
+          "DisplayOptions": 2,
+          "DisplaySpecifications": 0,
+          "OriginalFieldName": "TransactionDate"
+        },
+        {
+          "AlternativeFieldName": "Service Start Date",
+          "DisplayOptions": 2,
+          "DisplaySpecifications": 0,
+          "OriginalFieldName": "ServiceStartDate"
+        },
+        {
+          "AlternativeFieldName": "Service End Date",
+          "DisplayOptions": 2,
+          "DisplaySpecifications": 0,
+          "OriginalFieldName": "ServiceEndDate"
+        },
+        {
+          "AlternativeFieldName": "Account Type",
+          "DisplayOptions": 2,
+          "DisplaySpecifications": 0,
+          "OriginalFieldName": "AcctTypeCde"
+        },
+        {
+          "AlternativeFieldName": "Type",
+          "DisplayOptions": 1,
+          "DisplaySpecifications": 0,
+          "OriginalFieldName": "Type"
+        },
+        {
+          "AlternativeFieldName": "Claimant",
+          "DisplayOptions": 1,
+          "DisplaySpecifications": 0,
+          "OriginalFieldName": "Claimant"
+        },
+        {
+          "AlternativeFieldName": "Status",
+          "DisplayOptions": 1,
+          "DisplaySpecifications": 0,
+          "OriginalFieldName": "Status"
+        },
+        {
+          "AlternativeFieldName": "Amount",
+          "DisplayOptions": 2,
+          "DisplaySpecifications": 0,
+          "OriginalFieldName": "TxnAmt"
+        },
+        {
+          "AlternativeFieldName": "SCC",
+          "DisplayOptions": 2,
+          "DisplaySpecifications": 0,
+          "OriginalFieldName": "ScCde"
+        },
+        {
+          "AlternativeFieldName": "Comments",
+          "DisplayOptions": 2,
+          "DisplaySpecifications": 0,
+          "OriginalFieldName": "Notes"
+        },
+        {
+          "AlternativeFieldName": "Provider",
+          "DisplayOptions": 2,
+          "DisplaySpecifications": 0,
+          "OriginalFieldName": "ClaimDesc"
+        }
+      ],
+      "EmployerId": "BCS0243493",
+      "ExpenseKey": -1,
+      "FileKey": 1,
+      "FlexAcctKey": -1,
+      "HasReceipt": true,
+      "InsertDate": null,
+      "InsertUserIdKey": null,
+      "PlanEndDate": null,
+      "PlanStartDate": null,
+      "ProviderDesc": "",
+      "ProviderId": "",
+      "ReceiptExpired": null,
+      "ReceiptsInfo": [
+        {
+          "DocDisplayName": "8741ab0dddf949c9aeede7f307d35a59",
+          "DocId": "8741ab0dddf949c9aeede7f307d35a59",
+          "FileKey": 2768,
+          "OriginalFileName": "",
+          "TpaId": "T02432",
+          "UploadDate": "/Date(1526683125963-0500)/"
+        }
+      ],
+      "ServiceEndDate": "/Date(1525755600000-0500)/",
+      "ServiceStartDate": "/Date(1525755600000-0500)/",
+      "Status": "Entered<br>Not Reviewed",
+      "TpaId": "T02432",
+      "TransactionDate": "/Date(1526683125933-0500)/",
+      "TxnAmt": 205.02,
+      "TxnAmtDenied": 0,
+      "TxnAmtOrig": 0,
+      "TxnAmtPending": 0,
+      "TxnAmtRefund": 0,
+      "TxnCde": -1,
+      "TxnMsg": "",
+      "TxnOptions": null,
+      "TxnOriginCde": 57,
+      "Type": "Claim",
+      "UpdateDte": "/Date(1530434147067-0500)/",
+      "UpdateUserIdKey": 10,
+      "ClaimDesc": "Test BCBSMA1",
+      "ClaimKey": 3440,
+      "ClaimStatus": null,
+      "ClaimStatusMsg": "",
+      "Notes": "Sample notes",
+      "ReimbModeCde": -1,
+      "ScCde": "",
+      "ScCdeDesc": "",
+      "TrackingNum": "18363"
+    },
+    {
+      "__type": "ManualClaim:http://schema.wealthcareadmin.com/payload/mobile/2013/01",
+      "AccountKey": -1,
+      "AcctTypeCde": "",
+      "AcctTypeDesc": "",
+      "CardHolderDisplay": true,
+      "Claimant": {
+        "CardNum": null,
+        "CardholderKey": 1702,
+        "CardholderTypeCde": 0,
+        "EmprId": null,
+        "FirstName": " Kaywin",
+        "Initial": null,
+        "LastName": "Dcosta",
+        "NamePrefix": null,
+        "SocSecNum": null,
+        "TpaId": "T02432"
+      },
+      "DisplayableFields": [
+        {
+          "AlternativeFieldName": "Tracking#",
+          "DisplayOptions": 2,
+          "DisplaySpecifications": 0,
+          "OriginalFieldName": "TrackingNum"
+        },
+        {
+          "AlternativeFieldName": "TransactionDate",
+          "DisplayOptions": 2,
+          "DisplaySpecifications": 0,
+          "OriginalFieldName": "TransactionDate"
+        },
+        {
+          "AlternativeFieldName": "Service Start Date",
+          "DisplayOptions": 2,
+          "DisplaySpecifications": 0,
+          "OriginalFieldName": "ServiceStartDate"
+        },
+        {
+          "AlternativeFieldName": "Service End Date",
+          "DisplayOptions": 2,
+          "DisplaySpecifications": 0,
+          "OriginalFieldName": "ServiceEndDate"
+        },
+        {
+          "AlternativeFieldName": "Account Type",
+          "DisplayOptions": 2,
+          "DisplaySpecifications": 0,
+          "OriginalFieldName": "AcctTypeCde"
+        },
+        {
+          "AlternativeFieldName": "Type",
+          "DisplayOptions": 1,
+          "DisplaySpecifications": 0,
+          "OriginalFieldName": "Type"
+        },
+        {
+          "AlternativeFieldName": "Claimant",
+          "DisplayOptions": 1,
+          "DisplaySpecifications": 0,
+          "OriginalFieldName": "Claimant"
+        },
+        {
+          "AlternativeFieldName": "Status",
+          "DisplayOptions": 1,
+          "DisplaySpecifications": 0,
+          "OriginalFieldName": "Status"
+        },
+        {
+          "AlternativeFieldName": "Amount",
+          "DisplayOptions": 2,
+          "DisplaySpecifications": 0,
+          "OriginalFieldName": "TxnAmt"
+        },
+        {
+          "AlternativeFieldName": "SCC",
+          "DisplayOptions": 2,
+          "DisplaySpecifications": 0,
+          "OriginalFieldName": "ScCde"
+        },
+        {
+          "AlternativeFieldName": "Comments",
+          "DisplayOptions": 2,
+          "DisplaySpecifications": 0,
+          "OriginalFieldName": "Notes"
+        },
+        {
+          "AlternativeFieldName": "Provider",
+          "DisplayOptions": 2,
+          "DisplaySpecifications": 0,
+          "OriginalFieldName": "ClaimDesc"
+        }
+      ],
+      "EmployerId": "BCS0243493",
+      "ExpenseKey": -1,
+      "FileKey": 1,
+      "FlexAcctKey": -1,
+      "HasReceipt": true,
+      "InsertDate": null,
+      "InsertUserIdKey": null,
+      "PlanEndDate": null,
+      "PlanStartDate": null,
+      "ProviderDesc": "",
+      "ProviderId": "",
+      "ReceiptExpired": null,
+      "ReceiptsInfo": [
+        {
+          "DocDisplayName": "cd42e65994d14403932bf035678a43ea",
+          "DocId": "cd42e65994d14403932bf035678a43ea",
+          "FileKey": 2767,
+          "OriginalFileName": "",
+          "TpaId": "T02432",
+          "UploadDate": "/Date(1526682883163-0500)/"
+        }
+      ],
+      "ServiceEndDate": "/Date(1525755600000-0500)/",
+      "ServiceStartDate": "/Date(1525755600000-0500)/",
+      "Status": "Entered<br>Not Reviewed",
+      "TpaId": "T02432",
+      "TransactionDate": "/Date(1526682883130-0500)/",
+      "TxnAmt": 205.02,
+      "TxnAmtDenied": 0,
+      "TxnAmtOrig": 0,
+      "TxnAmtPending": 0,
+      "TxnAmtRefund": 0,
+      "TxnCde": -1,
+      "TxnMsg": "",
+      "TxnOptions": null,
+      "TxnOriginCde": 57,
+      "Type": "Claim",
+      "UpdateDte": "/Date(1530434147067-0500)/",
+      "UpdateUserIdKey": 10,
+      "ClaimDesc": "Test BCBSMA1",
+      "ClaimKey": 3439,
+      "ClaimStatus": null,
+      "ClaimStatusMsg": "",
+      "Notes": "Sample notes",
+      "ReimbModeCde": -1,
+      "ScCde": "",
+      "ScCdeDesc": "",
+      "TrackingNum": "18362"
+    },
+    {
+      "__type": "ManualClaim:http://schema.wealthcareadmin.com/payload/mobile/2013/01",
+      "AccountKey": -1,
+      "AcctTypeCde": "",
+      "AcctTypeDesc": "",
+      "CardHolderDisplay": true,
+      "Claimant": {
+        "CardNum": null,
+        "CardholderKey": 1702,
+        "CardholderTypeCde": 0,
+        "EmprId": null,
+        "FirstName": " Kaywin",
+        "Initial": null,
+        "LastName": "Dcosta",
+        "NamePrefix": null,
+        "SocSecNum": null,
+        "TpaId": "T02432"
+      },
+      "DisplayableFields": [
+        {
+          "AlternativeFieldName": "Tracking#",
+          "DisplayOptions": 2,
+          "DisplaySpecifications": 0,
+          "OriginalFieldName": "TrackingNum"
+        },
+        {
+          "AlternativeFieldName": "TransactionDate",
+          "DisplayOptions": 2,
+          "DisplaySpecifications": 0,
+          "OriginalFieldName": "TransactionDate"
+        },
+        {
+          "AlternativeFieldName": "Service Start Date",
+          "DisplayOptions": 2,
+          "DisplaySpecifications": 0,
+          "OriginalFieldName": "ServiceStartDate"
+        },
+        {
+          "AlternativeFieldName": "Service End Date",
+          "DisplayOptions": 2,
+          "DisplaySpecifications": 0,
+          "OriginalFieldName": "ServiceEndDate"
+        },
+        {
+          "AlternativeFieldName": "Account Type",
+          "DisplayOptions": 2,
+          "DisplaySpecifications": 0,
+          "OriginalFieldName": "AcctTypeCde"
+        },
+        {
+          "AlternativeFieldName": "Type",
+          "DisplayOptions": 1,
+          "DisplaySpecifications": 0,
+          "OriginalFieldName": "Type"
+        },
+        {
+          "AlternativeFieldName": "Claimant",
+          "DisplayOptions": 1,
+          "DisplaySpecifications": 0,
+          "OriginalFieldName": "Claimant"
+        },
+        {
+          "AlternativeFieldName": "Status",
+          "DisplayOptions": 1,
+          "DisplaySpecifications": 0,
+          "OriginalFieldName": "Status"
+        },
+        {
+          "AlternativeFieldName": "Amount",
+          "DisplayOptions": 2,
+          "DisplaySpecifications": 0,
+          "OriginalFieldName": "TxnAmt"
+        },
+        {
+          "AlternativeFieldName": "SCC",
+          "DisplayOptions": 2,
+          "DisplaySpecifications": 0,
+          "OriginalFieldName": "ScCde"
+        },
+        {
+          "AlternativeFieldName": "Comments",
+          "DisplayOptions": 2,
+          "DisplaySpecifications": 0,
+          "OriginalFieldName": "Notes"
+        },
+        {
+          "AlternativeFieldName": "Provider",
+          "DisplayOptions": 2,
+          "DisplaySpecifications": 0,
+          "OriginalFieldName": "ClaimDesc"
+        }
+      ],
+      "EmployerId": "BCS0243493",
+      "ExpenseKey": -1,
+      "FileKey": 1,
+      "FlexAcctKey": -1,
+      "HasReceipt": true,
+      "InsertDate": null,
+      "InsertUserIdKey": null,
+      "PlanEndDate": null,
+      "PlanStartDate": null,
+      "ProviderDesc": "",
+      "ProviderId": "",
+      "ReceiptExpired": null,
+      "ReceiptsInfo": [
+        {
+          "DocDisplayName": "95d226c60bd74b3ea5d91087f293621f",
+          "DocId": "95d226c60bd74b3ea5d91087f293621f",
+          "FileKey": 2766,
+          "OriginalFileName": "",
+          "TpaId": "T02432",
+          "UploadDate": "/Date(1526682607987-0500)/"
+        }
+      ],
+      "ServiceEndDate": "/Date(1525755600000-0500)/",
+      "ServiceStartDate": "/Date(1525755600000-0500)/",
+      "Status": "Entered<br>Not Reviewed",
+      "TpaId": "T02432",
+      "TransactionDate": "/Date(1526682607973-0500)/",
+      "TxnAmt": 205.02,
+      "TxnAmtDenied": 0,
+      "TxnAmtOrig": 0,
+      "TxnAmtPending": 0,
+      "TxnAmtRefund": 0,
+      "TxnCde": -1,
+      "TxnMsg": "",
+      "TxnOptions": null,
+      "TxnOriginCde": 57,
+      "Type": "Claim",
+      "UpdateDte": "/Date(1530434147067-0500)/",
+      "UpdateUserIdKey": 10,
+      "ClaimDesc": "Test BCBSMA1",
+      "ClaimKey": 3438,
+      "ClaimStatus": null,
+      "ClaimStatusMsg": "",
+      "Notes": "Sample notes",
+      "ReimbModeCde": -1,
+      "ScCde": "",
+      "ScCdeDesc": "",
+      "TrackingNum": "18361"
+    },
+    {
+      "__type": "ManualClaim:http://schema.wealthcareadmin.com/payload/mobile/2013/01",
+      "AccountKey": -1,
+      "AcctTypeCde": "",
+      "AcctTypeDesc": "",
+      "CardHolderDisplay": true,
+      "Claimant": {
+        "CardNum": null,
+        "CardholderKey": 1702,
+        "CardholderTypeCde": 0,
+        "EmprId": null,
+        "FirstName": " Kaywin",
+        "Initial": null,
+        "LastName": "Dcosta",
+        "NamePrefix": null,
+        "SocSecNum": null,
+        "TpaId": "T02432"
+      },
+      "DisplayableFields": [
+        {
+          "AlternativeFieldName": "Tracking#",
+          "DisplayOptions": 2,
+          "DisplaySpecifications": 0,
+          "OriginalFieldName": "TrackingNum"
+        },
+        {
+          "AlternativeFieldName": "TransactionDate",
+          "DisplayOptions": 2,
+          "DisplaySpecifications": 0,
+          "OriginalFieldName": "TransactionDate"
+        },
+        {
+          "AlternativeFieldName": "Service Start Date",
+          "DisplayOptions": 2,
+          "DisplaySpecifications": 0,
+          "OriginalFieldName": "ServiceStartDate"
+        },
+        {
+          "AlternativeFieldName": "Service End Date",
+          "DisplayOptions": 2,
+          "DisplaySpecifications": 0,
+          "OriginalFieldName": "ServiceEndDate"
+        },
+        {
+          "AlternativeFieldName": "Account Type",
+          "DisplayOptions": 2,
+          "DisplaySpecifications": 0,
+          "OriginalFieldName": "AcctTypeCde"
+        },
+        {
+          "AlternativeFieldName": "Type",
+          "DisplayOptions": 1,
+          "DisplaySpecifications": 0,
+          "OriginalFieldName": "Type"
+        },
+        {
+          "AlternativeFieldName": "Claimant",
+          "DisplayOptions": 1,
+          "DisplaySpecifications": 0,
+          "OriginalFieldName": "Claimant"
+        },
+        {
+          "AlternativeFieldName": "Status",
+          "DisplayOptions": 1,
+          "DisplaySpecifications": 0,
+          "OriginalFieldName": "Status"
+        },
+        {
+          "AlternativeFieldName": "Amount",
+          "DisplayOptions": 2,
+          "DisplaySpecifications": 0,
+          "OriginalFieldName": "TxnAmt"
+        },
+        {
+          "AlternativeFieldName": "SCC",
+          "DisplayOptions": 2,
+          "DisplaySpecifications": 0,
+          "OriginalFieldName": "ScCde"
+        },
+        {
+          "AlternativeFieldName": "Comments",
+          "DisplayOptions": 2,
+          "DisplaySpecifications": 0,
+          "OriginalFieldName": "Notes"
+        },
+        {
+          "AlternativeFieldName": "Provider",
+          "DisplayOptions": 2,
+          "DisplaySpecifications": 0,
+          "OriginalFieldName": "ClaimDesc"
+        }
+      ],
+      "EmployerId": "BCS0243493",
+      "ExpenseKey": -1,
+      "FileKey": 1,
+      "FlexAcctKey": -1,
+      "HasReceipt": true,
+      "InsertDate": null,
+      "InsertUserIdKey": null,
+      "PlanEndDate": null,
+      "PlanStartDate": null,
+      "ProviderDesc": "",
+      "ProviderId": "",
+      "ReceiptExpired": null,
+      "ReceiptsInfo": [
+        {
+          "DocDisplayName": "d67f74f7bcb74587861de706409e4ae2",
+          "DocId": "d67f74f7bcb74587861de706409e4ae2",
+          "FileKey": 2765,
+          "OriginalFileName": "",
+          "TpaId": "T02432",
+          "UploadDate": "/Date(1526682474043-0500)/"
+        }
+      ],
+      "ServiceEndDate": "/Date(1525755600000-0500)/",
+      "ServiceStartDate": "/Date(1525755600000-0500)/",
+      "Status": "Entered<br>Not Reviewed",
+      "TpaId": "T02432",
+      "TransactionDate": "/Date(1526682473983-0500)/",
+      "TxnAmt": 205.02,
+      "TxnAmtDenied": 0,
+      "TxnAmtOrig": 0,
+      "TxnAmtPending": 0,
+      "TxnAmtRefund": 0,
+      "TxnCde": -1,
+      "TxnMsg": "",
+      "TxnOptions": null,
+      "TxnOriginCde": 57,
+      "Type": "Claim",
+      "UpdateDte": "/Date(1530434147067-0500)/",
+      "UpdateUserIdKey": 10,
+      "ClaimDesc": "Test BCBSMA1",
+      "ClaimKey": 3437,
+      "ClaimStatus": null,
+      "ClaimStatusMsg": "",
+      "Notes": "Sample notes",
+      "ReimbModeCde": -1,
+      "ScCde": "",
+      "ScCdeDesc": "",
+      "TrackingNum": "18360"
+    },
+    {
+      "__type": "ManualClaim:http://schema.wealthcareadmin.com/payload/mobile/2013/01",
+      "AccountKey": -1,
+      "AcctTypeCde": "",
+      "AcctTypeDesc": "",
+      "CardHolderDisplay": true,
+      "Claimant": {
+        "CardNum": null,
+        "CardholderKey": 1702,
+        "CardholderTypeCde": 0,
+        "EmprId": null,
+        "FirstName": " Kaywin",
+        "Initial": null,
+        "LastName": "Dcosta",
+        "NamePrefix": null,
+        "SocSecNum": null,
+        "TpaId": "T02432"
+      },
+      "DisplayableFields": [
+        {
+          "AlternativeFieldName": "Tracking#",
+          "DisplayOptions": 2,
+          "DisplaySpecifications": 0,
+          "OriginalFieldName": "TrackingNum"
+        },
+        {
+          "AlternativeFieldName": "TransactionDate",
+          "DisplayOptions": 2,
+          "DisplaySpecifications": 0,
+          "OriginalFieldName": "TransactionDate"
+        },
+        {
+          "AlternativeFieldName": "Service Start Date",
+          "DisplayOptions": 2,
+          "DisplaySpecifications": 0,
+          "OriginalFieldName": "ServiceStartDate"
+        },
+        {
+          "AlternativeFieldName": "Service End Date",
+          "DisplayOptions": 2,
+          "DisplaySpecifications": 0,
+          "OriginalFieldName": "ServiceEndDate"
+        },
+        {
+          "AlternativeFieldName": "Account Type",
+          "DisplayOptions": 2,
+          "DisplaySpecifications": 0,
+          "OriginalFieldName": "AcctTypeCde"
+        },
+        {
+          "AlternativeFieldName": "Type",
+          "DisplayOptions": 1,
+          "DisplaySpecifications": 0,
+          "OriginalFieldName": "Type"
+        },
+        {
+          "AlternativeFieldName": "Claimant",
+          "DisplayOptions": 1,
+          "DisplaySpecifications": 0,
+          "OriginalFieldName": "Claimant"
+        },
+        {
+          "AlternativeFieldName": "Status",
+          "DisplayOptions": 1,
+          "DisplaySpecifications": 0,
+          "OriginalFieldName": "Status"
+        },
+        {
+          "AlternativeFieldName": "Amount",
+          "DisplayOptions": 2,
+          "DisplaySpecifications": 0,
+          "OriginalFieldName": "TxnAmt"
+        },
+        {
+          "AlternativeFieldName": "SCC",
+          "DisplayOptions": 2,
+          "DisplaySpecifications": 0,
+          "OriginalFieldName": "ScCde"
+        },
+        {
+          "AlternativeFieldName": "Comments",
+          "DisplayOptions": 2,
+          "DisplaySpecifications": 0,
+          "OriginalFieldName": "Notes"
+        },
+        {
+          "AlternativeFieldName": "Provider",
+          "DisplayOptions": 2,
+          "DisplaySpecifications": 0,
+          "OriginalFieldName": "ClaimDesc"
+        }
+      ],
+      "EmployerId": "BCS0243493",
+      "ExpenseKey": -1,
+      "FileKey": 1,
+      "FlexAcctKey": -1,
+      "HasReceipt": true,
+      "InsertDate": null,
+      "InsertUserIdKey": null,
+      "PlanEndDate": null,
+      "PlanStartDate": null,
+      "ProviderDesc": "",
+      "ProviderId": "",
+      "ReceiptExpired": null,
+      "ReceiptsInfo": [
+        {
+          "DocDisplayName": "d65452c9caaf43fd944f4663376bdbdc",
+          "DocId": "d65452c9caaf43fd944f4663376bdbdc",
+          "FileKey": 2764,
+          "OriginalFileName": "",
+          "TpaId": "T02432",
+          "UploadDate": "/Date(1526681770340-0500)/"
+        }
+      ],
+      "ServiceEndDate": "/Date(1525755600000-0500)/",
+      "ServiceStartDate": "/Date(1525755600000-0500)/",
+      "Status": "Entered<br>Not Reviewed",
+      "TpaId": "T02432",
+      "TransactionDate": "/Date(1526681770137-0500)/",
+      "TxnAmt": 205.02,
+      "TxnAmtDenied": 0,
+      "TxnAmtOrig": 0,
+      "TxnAmtPending": 0,
+      "TxnAmtRefund": 0,
+      "TxnCde": -1,
+      "TxnMsg": "",
+      "TxnOptions": null,
+      "TxnOriginCde": 57,
+      "Type": "Claim",
+      "UpdateDte": "/Date(1530434147067-0500)/",
+      "UpdateUserIdKey": 10,
+      "ClaimDesc": "Test BCBSMA1",
+      "ClaimKey": 3436,
+      "ClaimStatus": null,
+      "ClaimStatusMsg": "",
+      "Notes": "Sample notes",
+      "ReimbModeCde": -1,
+      "ScCde": "",
+      "ScCdeDesc": "",
+      "TrackingNum": "18359"
+    },
+    {
+      "__type": "ManualClaim:http://schema.wealthcareadmin.com/payload/mobile/2013/01",
+      "AccountKey": -1,
+      "AcctTypeCde": "",
+      "AcctTypeDesc": "",
+      "CardHolderDisplay": true,
+      "Claimant": {
+        "CardNum": null,
+        "CardholderKey": 1702,
+        "CardholderTypeCde": 0,
+        "EmprId": null,
+        "FirstName": " Kaywin",
+        "Initial": null,
+        "LastName": "Dcosta",
+        "NamePrefix": null,
+        "SocSecNum": null,
+        "TpaId": "T02432"
+      },
+      "DisplayableFields": [
+        {
+          "AlternativeFieldName": "Tracking#",
+          "DisplayOptions": 2,
+          "DisplaySpecifications": 0,
+          "OriginalFieldName": "TrackingNum"
+        },
+        {
+          "AlternativeFieldName": "TransactionDate",
+          "DisplayOptions": 2,
+          "DisplaySpecifications": 0,
+          "OriginalFieldName": "TransactionDate"
+        },
+        {
+          "AlternativeFieldName": "Service Start Date",
+          "DisplayOptions": 2,
+          "DisplaySpecifications": 0,
+          "OriginalFieldName": "ServiceStartDate"
+        },
+        {
+          "AlternativeFieldName": "Service End Date",
+          "DisplayOptions": 2,
+          "DisplaySpecifications": 0,
+          "OriginalFieldName": "ServiceEndDate"
+        },
+        {
+          "AlternativeFieldName": "Account Type",
+          "DisplayOptions": 2,
+          "DisplaySpecifications": 0,
+          "OriginalFieldName": "AcctTypeCde"
+        },
+        {
+          "AlternativeFieldName": "Type",
+          "DisplayOptions": 1,
+          "DisplaySpecifications": 0,
+          "OriginalFieldName": "Type"
+        },
+        {
+          "AlternativeFieldName": "Claimant",
+          "DisplayOptions": 1,
+          "DisplaySpecifications": 0,
+          "OriginalFieldName": "Claimant"
+        },
+        {
+          "AlternativeFieldName": "Status",
+          "DisplayOptions": 1,
+          "DisplaySpecifications": 0,
+          "OriginalFieldName": "Status"
+        },
+        {
+          "AlternativeFieldName": "Amount",
+          "DisplayOptions": 2,
+          "DisplaySpecifications": 0,
+          "OriginalFieldName": "TxnAmt"
+        },
+        {
+          "AlternativeFieldName": "SCC",
+          "DisplayOptions": 2,
+          "DisplaySpecifications": 0,
+          "OriginalFieldName": "ScCde"
+        },
+        {
+          "AlternativeFieldName": "Comments",
+          "DisplayOptions": 2,
+          "DisplaySpecifications": 0,
+          "OriginalFieldName": "Notes"
+        },
+        {
+          "AlternativeFieldName": "Provider",
+          "DisplayOptions": 2,
+          "DisplaySpecifications": 0,
+          "OriginalFieldName": "ClaimDesc"
+        }
+      ],
+      "EmployerId": "BCS0243493",
+      "ExpenseKey": -1,
+      "FileKey": 1,
+      "FlexAcctKey": -1,
+      "HasReceipt": true,
+      "InsertDate": null,
+      "InsertUserIdKey": null,
+      "PlanEndDate": null,
+      "PlanStartDate": null,
+      "ProviderDesc": "",
+      "ProviderId": "",
+      "ReceiptExpired": null,
+      "ReceiptsInfo": [
+        {
+          "DocDisplayName": "e0408de48cb047b5aec4eb6ead26dec1",
+          "DocId": "e0408de48cb047b5aec4eb6ead26dec1",
+          "FileKey": 2763,
+          "OriginalFileName": "",
+          "TpaId": "T02432",
+          "UploadDate": "/Date(1526651119607-0500)/"
+        }
+      ],
+      "ServiceEndDate": "/Date(1525755600000-0500)/",
+      "ServiceStartDate": "/Date(1525755600000-0500)/",
+      "Status": "Entered<br>Not Reviewed",
+      "TpaId": "T02432",
+      "TransactionDate": "/Date(1526651119273-0500)/",
+      "TxnAmt": 205.02,
+      "TxnAmtDenied": 0,
+      "TxnAmtOrig": 0,
+      "TxnAmtPending": 0,
+      "TxnAmtRefund": 0,
+      "TxnCde": -1,
+      "TxnMsg": "",
+      "TxnOptions": null,
+      "TxnOriginCde": 57,
+      "Type": "Claim",
+      "UpdateDte": "/Date(1530434147067-0500)/",
+      "UpdateUserIdKey": 10,
+      "ClaimDesc": "Test BCBSMA1",
+      "ClaimKey": 3435,
+      "ClaimStatus": null,
+      "ClaimStatusMsg": "",
+      "Notes": "Sample notes",
+      "ReimbModeCde": -1,
+      "ScCde": "",
+      "ScCdeDesc": "",
+      "TrackingNum": "18358"
+    },
+    {
+      "__type": "ManualClaim:http://schema.wealthcareadmin.com/payload/mobile/2013/01",
+      "AccountKey": -1,
+      "AcctTypeCde": "",
+      "AcctTypeDesc": "",
+      "CardHolderDisplay": true,
+      "Claimant": {
+        "CardNum": null,
+        "CardholderKey": 1702,
+        "CardholderTypeCde": 0,
+        "EmprId": null,
+        "FirstName": " Kaywin",
+        "Initial": null,
+        "LastName": "Dcosta",
+        "NamePrefix": null,
+        "SocSecNum": null,
+        "TpaId": "T02432"
+      },
+      "DisplayableFields": [
+        {
+          "AlternativeFieldName": "Tracking#",
+          "DisplayOptions": 2,
+          "DisplaySpecifications": 0,
+          "OriginalFieldName": "TrackingNum"
+        },
+        {
+          "AlternativeFieldName": "TransactionDate",
+          "DisplayOptions": 2,
+          "DisplaySpecifications": 0,
+          "OriginalFieldName": "TransactionDate"
+        },
+        {
+          "AlternativeFieldName": "Service Start Date",
+          "DisplayOptions": 2,
+          "DisplaySpecifications": 0,
+          "OriginalFieldName": "ServiceStartDate"
+        },
+        {
+          "AlternativeFieldName": "Service End Date",
+          "DisplayOptions": 2,
+          "DisplaySpecifications": 0,
+          "OriginalFieldName": "ServiceEndDate"
+        },
+        {
+          "AlternativeFieldName": "Account Type",
+          "DisplayOptions": 2,
+          "DisplaySpecifications": 0,
+          "OriginalFieldName": "AcctTypeCde"
+        },
+        {
+          "AlternativeFieldName": "Type",
+          "DisplayOptions": 1,
+          "DisplaySpecifications": 0,
+          "OriginalFieldName": "Type"
+        },
+        {
+          "AlternativeFieldName": "Claimant",
+          "DisplayOptions": 1,
+          "DisplaySpecifications": 0,
+          "OriginalFieldName": "Claimant"
+        },
+        {
+          "AlternativeFieldName": "Status",
+          "DisplayOptions": 1,
+          "DisplaySpecifications": 0,
+          "OriginalFieldName": "Status"
+        },
+        {
+          "AlternativeFieldName": "Amount",
+          "DisplayOptions": 2,
+          "DisplaySpecifications": 0,
+          "OriginalFieldName": "TxnAmt"
+        },
+        {
+          "AlternativeFieldName": "SCC",
+          "DisplayOptions": 2,
+          "DisplaySpecifications": 0,
+          "OriginalFieldName": "ScCde"
+        },
+        {
+          "AlternativeFieldName": "Comments",
+          "DisplayOptions": 2,
+          "DisplaySpecifications": 0,
+          "OriginalFieldName": "Notes"
+        },
+        {
+          "AlternativeFieldName": "Provider",
+          "DisplayOptions": 2,
+          "DisplaySpecifications": 0,
+          "OriginalFieldName": "ClaimDesc"
+        }
+      ],
+      "EmployerId": "BCS0243493",
+      "ExpenseKey": -1,
+      "FileKey": 1,
+      "FlexAcctKey": -1,
+      "HasReceipt": true,
+      "InsertDate": null,
+      "InsertUserIdKey": null,
+      "PlanEndDate": null,
+      "PlanStartDate": null,
+      "ProviderDesc": "",
+      "ProviderId": "",
+      "ReceiptExpired": null,
+      "ReceiptsInfo": [
+        {
+          "DocDisplayName": "4bcfbb2cdc9d45c6b078fa36bcd233f6",
+          "DocId": "4bcfbb2cdc9d45c6b078fa36bcd233f6",
+          "FileKey": 2732,
+          "OriginalFileName": "",
+          "TpaId": "T02432",
+          "UploadDate": "/Date(1525919289740-0500)/"
+        }
+      ],
+      "ServiceEndDate": "/Date(1525755600000-0500)/",
+      "ServiceStartDate": "/Date(1525755600000-0500)/",
+      "Status": "Entered<br>Not Reviewed",
+      "TpaId": "T02432",
+      "TransactionDate": "/Date(1525919289433-0500)/",
+      "TxnAmt": 205.02,
+      "TxnAmtDenied": 0,
+      "TxnAmtOrig": 0,
+      "TxnAmtPending": 0,
+      "TxnAmtRefund": 0,
+      "TxnCde": -1,
+      "TxnMsg": "",
+      "TxnOptions": null,
+      "TxnOriginCde": 57,
+      "Type": "Claim",
+      "UpdateDte": "/Date(1530434147067-0500)/",
+      "UpdateUserIdKey": 10,
+      "ClaimDesc": "Test BCBSMA1",
+      "ClaimKey": 3418,
+      "ClaimStatus": null,
+      "ClaimStatusMsg": "",
+      "Notes": "Sample notes",
+      "ReimbModeCde": -1,
+      "ScCde": "",
+      "ScCdeDesc": "",
+      "TrackingNum": "18338"
+    },
+    {
+      "__type": "ManualClaim:http://schema.wealthcareadmin.com/payload/mobile/2013/01",
+      "AccountKey": -1,
+      "AcctTypeCde": "",
+      "AcctTypeDesc": "",
+      "CardHolderDisplay": true,
+      "Claimant": {
+        "CardNum": null,
+        "CardholderKey": 1702,
+        "CardholderTypeCde": 0,
+        "EmprId": null,
+        "FirstName": " Kaywin",
+        "Initial": null,
+        "LastName": "Dcosta",
+        "NamePrefix": null,
+        "SocSecNum": null,
+        "TpaId": "T02432"
+      },
+      "DisplayableFields": [
+        {
+          "AlternativeFieldName": "Tracking#",
+          "DisplayOptions": 2,
+          "DisplaySpecifications": 0,
+          "OriginalFieldName": "TrackingNum"
+        },
+        {
+          "AlternativeFieldName": "TransactionDate",
+          "DisplayOptions": 2,
+          "DisplaySpecifications": 0,
+          "OriginalFieldName": "TransactionDate"
+        },
+        {
+          "AlternativeFieldName": "Service Start Date",
+          "DisplayOptions": 2,
+          "DisplaySpecifications": 0,
+          "OriginalFieldName": "ServiceStartDate"
+        },
+        {
+          "AlternativeFieldName": "Service End Date",
+          "DisplayOptions": 2,
+          "DisplaySpecifications": 0,
+          "OriginalFieldName": "ServiceEndDate"
+        },
+        {
+          "AlternativeFieldName": "Account Type",
+          "DisplayOptions": 2,
+          "DisplaySpecifications": 0,
+          "OriginalFieldName": "AcctTypeCde"
+        },
+        {
+          "AlternativeFieldName": "Type",
+          "DisplayOptions": 1,
+          "DisplaySpecifications": 0,
+          "OriginalFieldName": "Type"
+        },
+        {
+          "AlternativeFieldName": "Claimant",
+          "DisplayOptions": 1,
+          "DisplaySpecifications": 0,
+          "OriginalFieldName": "Claimant"
+        },
+        {
+          "AlternativeFieldName": "Status",
+          "DisplayOptions": 1,
+          "DisplaySpecifications": 0,
+          "OriginalFieldName": "Status"
+        },
+        {
+          "AlternativeFieldName": "Amount",
+          "DisplayOptions": 2,
+          "DisplaySpecifications": 0,
+          "OriginalFieldName": "TxnAmt"
+        },
+        {
+          "AlternativeFieldName": "SCC",
+          "DisplayOptions": 2,
+          "DisplaySpecifications": 0,
+          "OriginalFieldName": "ScCde"
+        },
+        {
+          "AlternativeFieldName": "Comments",
+          "DisplayOptions": 2,
+          "DisplaySpecifications": 0,
+          "OriginalFieldName": "Notes"
+        },
+        {
+          "AlternativeFieldName": "Provider",
+          "DisplayOptions": 2,
+          "DisplaySpecifications": 0,
+          "OriginalFieldName": "ClaimDesc"
+        }
+      ],
+      "EmployerId": "BCS0243493",
+      "ExpenseKey": -1,
+      "FileKey": 1,
+      "FlexAcctKey": -1,
+      "HasReceipt": true,
+      "InsertDate": null,
+      "InsertUserIdKey": null,
+      "PlanEndDate": null,
+      "PlanStartDate": null,
+      "ProviderDesc": "",
+      "ProviderId": "",
+      "ReceiptExpired": null,
+      "ReceiptsInfo": [
+        {
+          "DocDisplayName": "3931418c21e847e6b5501354cdc0e76f",
+          "DocId": "3931418c21e847e6b5501354cdc0e76f",
+          "FileKey": 2726,
+          "OriginalFileName": "",
+          "TpaId": "T02432",
+          "UploadDate": "/Date(1525887253213-0500)/"
+        }
+      ],
+      "ServiceEndDate": "/Date(1525755600000-0500)/",
+      "ServiceStartDate": "/Date(1525755600000-0500)/",
+      "Status": "Entered<br>Not Reviewed",
+      "TpaId": "T02432",
+      "TransactionDate": "/Date(1525887253197-0500)/",
+      "TxnAmt": 201.02,
+      "TxnAmtDenied": 0,
+      "TxnAmtOrig": 0,
+      "TxnAmtPending": 0,
+      "TxnAmtRefund": 0,
+      "TxnCde": -1,
+      "TxnMsg": "",
+      "TxnOptions": null,
+      "TxnOriginCde": 57,
+      "Type": "Claim",
+      "UpdateDte": "/Date(1530434147067-0500)/",
+      "UpdateUserIdKey": 10,
+      "ClaimDesc": "Test BCBSMA1",
+      "ClaimKey": 3416,
+      "ClaimStatus": null,
+      "ClaimStatusMsg": "",
+      "Notes": "Sample notes",
+      "ReimbModeCde": -1,
+      "ScCde": "",
+      "ScCdeDesc": "",
+      "TrackingNum": "18336"
+    },
+    {
+      "__type": "ManualClaim:http://schema.wealthcareadmin.com/payload/mobile/2013/01",
+      "AccountKey": -1,
+      "AcctTypeCde": "",
+      "AcctTypeDesc": "",
+      "CardHolderDisplay": true,
+      "Claimant": {
+        "CardNum": null,
+        "CardholderKey": 1702,
+        "CardholderTypeCde": 0,
+        "EmprId": null,
+        "FirstName": " Kaywin",
+        "Initial": null,
+        "LastName": "Dcosta",
+        "NamePrefix": null,
+        "SocSecNum": null,
+        "TpaId": "T02432"
+      },
+      "DisplayableFields": [
+        {
+          "AlternativeFieldName": "Tracking#",
+          "DisplayOptions": 2,
+          "DisplaySpecifications": 0,
+          "OriginalFieldName": "TrackingNum"
+        },
+        {
+          "AlternativeFieldName": "TransactionDate",
+          "DisplayOptions": 2,
+          "DisplaySpecifications": 0,
+          "OriginalFieldName": "TransactionDate"
+        },
+        {
+          "AlternativeFieldName": "Service Start Date",
+          "DisplayOptions": 2,
+          "DisplaySpecifications": 0,
+          "OriginalFieldName": "ServiceStartDate"
+        },
+        {
+          "AlternativeFieldName": "Service End Date",
+          "DisplayOptions": 2,
+          "DisplaySpecifications": 0,
+          "OriginalFieldName": "ServiceEndDate"
+        },
+        {
+          "AlternativeFieldName": "Account Type",
+          "DisplayOptions": 2,
+          "DisplaySpecifications": 0,
+          "OriginalFieldName": "AcctTypeCde"
+        },
+        {
+          "AlternativeFieldName": "Type",
+          "DisplayOptions": 1,
+          "DisplaySpecifications": 0,
+          "OriginalFieldName": "Type"
+        },
+        {
+          "AlternativeFieldName": "Claimant",
+          "DisplayOptions": 1,
+          "DisplaySpecifications": 0,
+          "OriginalFieldName": "Claimant"
+        },
+        {
+          "AlternativeFieldName": "Status",
+          "DisplayOptions": 1,
+          "DisplaySpecifications": 0,
+          "OriginalFieldName": "Status"
+        },
+        {
+          "AlternativeFieldName": "Amount",
+          "DisplayOptions": 2,
+          "DisplaySpecifications": 0,
+          "OriginalFieldName": "TxnAmt"
+        },
+        {
+          "AlternativeFieldName": "SCC",
+          "DisplayOptions": 2,
+          "DisplaySpecifications": 0,
+          "OriginalFieldName": "ScCde"
+        },
+        {
+          "AlternativeFieldName": "Comments",
+          "DisplayOptions": 2,
+          "DisplaySpecifications": 0,
+          "OriginalFieldName": "Notes"
+        },
+        {
+          "AlternativeFieldName": "Provider",
+          "DisplayOptions": 2,
+          "DisplaySpecifications": 0,
+          "OriginalFieldName": "ClaimDesc"
+        }
+      ],
+      "EmployerId": "BCS0243493",
+      "ExpenseKey": -1,
+      "FileKey": 1,
+      "FlexAcctKey": -1,
+      "HasReceipt": true,
+      "InsertDate": null,
+      "InsertUserIdKey": null,
+      "PlanEndDate": null,
+      "PlanStartDate": null,
+      "ProviderDesc": "",
+      "ProviderId": "",
+      "ReceiptExpired": null,
+      "ReceiptsInfo": [
+        {
+          "DocDisplayName": "fa2d3f273c2f4d8683cae05c6e3e6dd9",
+          "DocId": "fa2d3f273c2f4d8683cae05c6e3e6dd9",
+          "FileKey": 2725,
+          "OriginalFileName": "",
+          "TpaId": "T02432",
+          "UploadDate": "/Date(1525886484633-0500)/"
+        }
+      ],
+      "ServiceEndDate": "/Date(1525755600000-0500)/",
+      "ServiceStartDate": "/Date(1525755600000-0500)/",
+      "Status": "Entered<br>Not Reviewed",
+      "TpaId": "T02432",
+      "TransactionDate": "/Date(1525886484477-0500)/",
+      "TxnAmt": 205.02,
+      "TxnAmtDenied": 0,
+      "TxnAmtOrig": 0,
+      "TxnAmtPending": 0,
+      "TxnAmtRefund": 0,
+      "TxnCde": -1,
+      "TxnMsg": "",
+      "TxnOptions": null,
+      "TxnOriginCde": 57,
+      "Type": "Claim",
+      "UpdateDte": "/Date(1530434147067-0500)/",
+      "UpdateUserIdKey": 10,
+      "ClaimDesc": "Test BCBSMA1",
+      "ClaimKey": 3415,
+      "ClaimStatus": null,
+      "ClaimStatusMsg": "",
+      "Notes": "Sample notes",
+      "ReimbModeCde": -1,
+      "ScCde": "",
+      "ScCdeDesc": "",
+      "TrackingNum": "18335"
+    },
+    {
+      "__type": "ManualClaim:http://schema.wealthcareadmin.com/payload/mobile/2013/01",
+      "AccountKey": -1,
+      "AcctTypeCde": "",
+      "AcctTypeDesc": "",
+      "CardHolderDisplay": true,
+      "Claimant": {
+        "CardNum": null,
+        "CardholderKey": 1702,
+        "CardholderTypeCde": 0,
+        "EmprId": null,
+        "FirstName": " Kaywin",
+        "Initial": null,
+        "LastName": "Dcosta",
+        "NamePrefix": null,
+        "SocSecNum": null,
+        "TpaId": "T02432"
+      },
+      "DisplayableFields": [
+        {
+          "AlternativeFieldName": "Tracking#",
+          "DisplayOptions": 2,
+          "DisplaySpecifications": 0,
+          "OriginalFieldName": "TrackingNum"
+        },
+        {
+          "AlternativeFieldName": "TransactionDate",
+          "DisplayOptions": 2,
+          "DisplaySpecifications": 0,
+          "OriginalFieldName": "TransactionDate"
+        },
+        {
+          "AlternativeFieldName": "Service Start Date",
+          "DisplayOptions": 2,
+          "DisplaySpecifications": 0,
+          "OriginalFieldName": "ServiceStartDate"
+        },
+        {
+          "AlternativeFieldName": "Service End Date",
+          "DisplayOptions": 2,
+          "DisplaySpecifications": 0,
+          "OriginalFieldName": "ServiceEndDate"
+        },
+        {
+          "AlternativeFieldName": "Account Type",
+          "DisplayOptions": 2,
+          "DisplaySpecifications": 0,
+          "OriginalFieldName": "AcctTypeCde"
+        },
+        {
+          "AlternativeFieldName": "Type",
+          "DisplayOptions": 1,
+          "DisplaySpecifications": 0,
+          "OriginalFieldName": "Type"
+        },
+        {
+          "AlternativeFieldName": "Claimant",
+          "DisplayOptions": 1,
+          "DisplaySpecifications": 0,
+          "OriginalFieldName": "Claimant"
+        },
+        {
+          "AlternativeFieldName": "Status",
+          "DisplayOptions": 1,
+          "DisplaySpecifications": 0,
+          "OriginalFieldName": "Status"
+        },
+        {
+          "AlternativeFieldName": "Amount",
+          "DisplayOptions": 2,
+          "DisplaySpecifications": 0,
+          "OriginalFieldName": "TxnAmt"
+        },
+        {
+          "AlternativeFieldName": "SCC",
+          "DisplayOptions": 2,
+          "DisplaySpecifications": 0,
+          "OriginalFieldName": "ScCde"
+        },
+        {
+          "AlternativeFieldName": "Comments",
+          "DisplayOptions": 2,
+          "DisplaySpecifications": 0,
+          "OriginalFieldName": "Notes"
+        },
+        {
+          "AlternativeFieldName": "Provider",
+          "DisplayOptions": 2,
+          "DisplaySpecifications": 0,
+          "OriginalFieldName": "ClaimDesc"
+        }
+      ],
+      "EmployerId": "BCS0243493",
+      "ExpenseKey": -1,
+      "FileKey": 1,
+      "FlexAcctKey": -1,
+      "HasReceipt": true,
+      "InsertDate": null,
+      "InsertUserIdKey": null,
+      "PlanEndDate": null,
+      "PlanStartDate": null,
+      "ProviderDesc": "",
+      "ProviderId": "",
+      "ReceiptExpired": null,
+      "ReceiptsInfo": [
+        {
+          "DocDisplayName": "267d6680f4844b2ba856b29778251a9c",
+          "DocId": "267d6680f4844b2ba856b29778251a9c",
+          "FileKey": 2724,
+          "OriginalFileName": "",
+          "TpaId": "T02432",
+          "UploadDate": "/Date(1525882713433-0500)/"
+        }
+      ],
+      "ServiceEndDate": "/Date(1525755600000-0500)/",
+      "ServiceStartDate": "/Date(1525755600000-0500)/",
+      "Status": "Entered<br>Not Reviewed",
+      "TpaId": "T02432",
+      "TransactionDate": "/Date(1525882713420-0500)/",
+      "TxnAmt": 201.02,
+      "TxnAmtDenied": 0,
+      "TxnAmtOrig": 0,
+      "TxnAmtPending": 0,
+      "TxnAmtRefund": 0,
+      "TxnCde": -1,
+      "TxnMsg": "",
+      "TxnOptions": null,
+      "TxnOriginCde": 57,
+      "Type": "Claim",
+      "UpdateDte": "/Date(1530434147067-0500)/",
+      "UpdateUserIdKey": 10,
+      "ClaimDesc": "Test BCBSMA1",
+      "ClaimKey": 3414,
+      "ClaimStatus": null,
+      "ClaimStatusMsg": "",
+      "Notes": "Sample notes",
+      "ReimbModeCde": -1,
+      "ScCde": "",
+      "ScCdeDesc": "",
+      "TrackingNum": "18334"
+    },
+    {
+      "__type": "ManualClaim:http://schema.wealthcareadmin.com/payload/mobile/2013/01",
+      "AccountKey": -1,
+      "AcctTypeCde": "",
+      "AcctTypeDesc": "",
+      "CardHolderDisplay": true,
+      "Claimant": {
+        "CardNum": null,
+        "CardholderKey": 1702,
+        "CardholderTypeCde": 0,
+        "EmprId": null,
+        "FirstName": " Kaywin",
+        "Initial": null,
+        "LastName": "Dcosta",
+        "NamePrefix": null,
+        "SocSecNum": null,
+        "TpaId": "T02432"
+      },
+      "DisplayableFields": [
+        {
+          "AlternativeFieldName": "Tracking#",
+          "DisplayOptions": 2,
+          "DisplaySpecifications": 0,
+          "OriginalFieldName": "TrackingNum"
+        },
+        {
+          "AlternativeFieldName": "TransactionDate",
+          "DisplayOptions": 2,
+          "DisplaySpecifications": 0,
+          "OriginalFieldName": "TransactionDate"
+        },
+        {
+          "AlternativeFieldName": "Service Start Date",
+          "DisplayOptions": 2,
+          "DisplaySpecifications": 0,
+          "OriginalFieldName": "ServiceStartDate"
+        },
+        {
+          "AlternativeFieldName": "Service End Date",
+          "DisplayOptions": 2,
+          "DisplaySpecifications": 0,
+          "OriginalFieldName": "ServiceEndDate"
+        },
+        {
+          "AlternativeFieldName": "Account Type",
+          "DisplayOptions": 2,
+          "DisplaySpecifications": 0,
+          "OriginalFieldName": "AcctTypeCde"
+        },
+        {
+          "AlternativeFieldName": "Type",
+          "DisplayOptions": 1,
+          "DisplaySpecifications": 0,
+          "OriginalFieldName": "Type"
+        },
+        {
+          "AlternativeFieldName": "Claimant",
+          "DisplayOptions": 1,
+          "DisplaySpecifications": 0,
+          "OriginalFieldName": "Claimant"
+        },
+        {
+          "AlternativeFieldName": "Status",
+          "DisplayOptions": 1,
+          "DisplaySpecifications": 0,
+          "OriginalFieldName": "Status"
+        },
+        {
+          "AlternativeFieldName": "Amount",
+          "DisplayOptions": 2,
+          "DisplaySpecifications": 0,
+          "OriginalFieldName": "TxnAmt"
+        },
+        {
+          "AlternativeFieldName": "SCC",
+          "DisplayOptions": 2,
+          "DisplaySpecifications": 0,
+          "OriginalFieldName": "ScCde"
+        },
+        {
+          "AlternativeFieldName": "Comments",
+          "DisplayOptions": 2,
+          "DisplaySpecifications": 0,
+          "OriginalFieldName": "Notes"
+        },
+        {
+          "AlternativeFieldName": "Provider",
+          "DisplayOptions": 2,
+          "DisplaySpecifications": 0,
+          "OriginalFieldName": "ClaimDesc"
+        }
+      ],
+      "EmployerId": "BCS0243493",
+      "ExpenseKey": -1,
+      "FileKey": 1,
+      "FlexAcctKey": -1,
+      "HasReceipt": true,
+      "InsertDate": null,
+      "InsertUserIdKey": null,
+      "PlanEndDate": null,
+      "PlanStartDate": null,
+      "ProviderDesc": "",
+      "ProviderId": "",
+      "ReceiptExpired": null,
+      "ReceiptsInfo": [
+        {
+          "DocDisplayName": "4f2823ffc932495dbe8d1693b52ed15a",
+          "DocId": "4f2823ffc932495dbe8d1693b52ed15a",
+          "FileKey": 2723,
+          "OriginalFileName": "",
+          "TpaId": "T02432",
+          "UploadDate": "/Date(1525881772870-0500)/"
+        }
+      ],
+      "ServiceEndDate": "/Date(1525755600000-0500)/",
+      "ServiceStartDate": "/Date(1525755600000-0500)/",
+      "Status": "Entered<br>Not Reviewed",
+      "TpaId": "T02432",
+      "TransactionDate": "/Date(1525881772857-0500)/",
+      "TxnAmt": 201.02,
+      "TxnAmtDenied": 0,
+      "TxnAmtOrig": 0,
+      "TxnAmtPending": 0,
+      "TxnAmtRefund": 0,
+      "TxnCde": -1,
+      "TxnMsg": "",
+      "TxnOptions": null,
+      "TxnOriginCde": 57,
+      "Type": "Claim",
+      "UpdateDte": "/Date(1530434147067-0500)/",
+      "UpdateUserIdKey": 10,
+      "ClaimDesc": "Test BCBSMA1",
+      "ClaimKey": 3413,
+      "ClaimStatus": null,
+      "ClaimStatusMsg": "",
+      "Notes": "Sample notes",
+      "ReimbModeCde": -1,
+      "ScCde": "",
+      "ScCdeDesc": "",
+      "TrackingNum": "18333"
+    },
+    {
+      "__type": "ManualClaim:http://schema.wealthcareadmin.com/payload/mobile/2013/01",
+      "AccountKey": -1,
+      "AcctTypeCde": "",
+      "AcctTypeDesc": "",
+      "CardHolderDisplay": true,
+      "Claimant": {
+        "CardNum": null,
+        "CardholderKey": 1702,
+        "CardholderTypeCde": 0,
+        "EmprId": null,
+        "FirstName": " Kaywin",
+        "Initial": null,
+        "LastName": "Dcosta",
+        "NamePrefix": null,
+        "SocSecNum": null,
+        "TpaId": "T02432"
+      },
+      "DisplayableFields": [
+        {
+          "AlternativeFieldName": "Tracking#",
+          "DisplayOptions": 2,
+          "DisplaySpecifications": 0,
+          "OriginalFieldName": "TrackingNum"
+        },
+        {
+          "AlternativeFieldName": "TransactionDate",
+          "DisplayOptions": 2,
+          "DisplaySpecifications": 0,
+          "OriginalFieldName": "TransactionDate"
+        },
+        {
+          "AlternativeFieldName": "Service Start Date",
+          "DisplayOptions": 2,
+          "DisplaySpecifications": 0,
+          "OriginalFieldName": "ServiceStartDate"
+        },
+        {
+          "AlternativeFieldName": "Service End Date",
+          "DisplayOptions": 2,
+          "DisplaySpecifications": 0,
+          "OriginalFieldName": "ServiceEndDate"
+        },
+        {
+          "AlternativeFieldName": "Account Type",
+          "DisplayOptions": 2,
+          "DisplaySpecifications": 0,
+          "OriginalFieldName": "AcctTypeCde"
+        },
+        {
+          "AlternativeFieldName": "Type",
+          "DisplayOptions": 1,
+          "DisplaySpecifications": 0,
+          "OriginalFieldName": "Type"
+        },
+        {
+          "AlternativeFieldName": "Claimant",
+          "DisplayOptions": 1,
+          "DisplaySpecifications": 0,
+          "OriginalFieldName": "Claimant"
+        },
+        {
+          "AlternativeFieldName": "Status",
+          "DisplayOptions": 1,
+          "DisplaySpecifications": 0,
+          "OriginalFieldName": "Status"
+        },
+        {
+          "AlternativeFieldName": "Amount",
+          "DisplayOptions": 2,
+          "DisplaySpecifications": 0,
+          "OriginalFieldName": "TxnAmt"
+        },
+        {
+          "AlternativeFieldName": "SCC",
+          "DisplayOptions": 2,
+          "DisplaySpecifications": 0,
+          "OriginalFieldName": "ScCde"
+        },
+        {
+          "AlternativeFieldName": "Comments",
+          "DisplayOptions": 2,
+          "DisplaySpecifications": 0,
+          "OriginalFieldName": "Notes"
+        },
+        {
+          "AlternativeFieldName": "Provider",
+          "DisplayOptions": 2,
+          "DisplaySpecifications": 0,
+          "OriginalFieldName": "ClaimDesc"
+        }
+      ],
+      "EmployerId": "BCS0243493",
+      "ExpenseKey": -1,
+      "FileKey": 1,
+      "FlexAcctKey": -1,
+      "HasReceipt": true,
+      "InsertDate": null,
+      "InsertUserIdKey": null,
+      "PlanEndDate": null,
+      "PlanStartDate": null,
+      "ProviderDesc": "",
+      "ProviderId": "",
+      "ReceiptExpired": null,
+      "ReceiptsInfo": [
+        {
+          "DocDisplayName": "7d680d1f9b864297953e282b60c02e71",
+          "DocId": "7d680d1f9b864297953e282b60c02e71",
+          "FileKey": 2722,
+          "OriginalFileName": "",
+          "TpaId": "T02432",
+          "UploadDate": "/Date(1525879312407-0500)/"
+        }
+      ],
+      "ServiceEndDate": "/Date(1525755600000-0500)/",
+      "ServiceStartDate": "/Date(1525755600000-0500)/",
+      "Status": "Entered<br>Not Reviewed",
+      "TpaId": "T02432",
+      "TransactionDate": "/Date(1525879312393-0500)/",
+      "TxnAmt": 200.02,
+      "TxnAmtDenied": 0,
+      "TxnAmtOrig": 0,
+      "TxnAmtPending": 0,
+      "TxnAmtRefund": 0,
+      "TxnCde": -1,
+      "TxnMsg": "",
+      "TxnOptions": null,
+      "TxnOriginCde": 57,
+      "Type": "Claim",
+      "UpdateDte": "/Date(1530434147067-0500)/",
+      "UpdateUserIdKey": 10,
+      "ClaimDesc": "Test BCBSMA",
+      "ClaimKey": 3412,
+      "ClaimStatus": null,
+      "ClaimStatusMsg": "",
+      "Notes": "Sample notes",
+      "ReimbModeCde": -1,
+      "ScCde": "",
+      "ScCdeDesc": "",
+      "TrackingNum": "18332"
+    },
+    {
+      "__type": "ManualClaim:http://schema.wealthcareadmin.com/payload/mobile/2013/01",
+      "AccountKey": -1,
+      "AcctTypeCde": "",
+      "AcctTypeDesc": "",
+      "CardHolderDisplay": true,
+      "Claimant": {
+        "CardNum": null,
+        "CardholderKey": 1702,
+        "CardholderTypeCde": 0,
+        "EmprId": null,
+        "FirstName": " Kaywin",
+        "Initial": null,
+        "LastName": "Dcosta",
+        "NamePrefix": null,
+        "SocSecNum": null,
+        "TpaId": "T02432"
+      },
+      "DisplayableFields": [
+        {
+          "AlternativeFieldName": "Tracking#",
+          "DisplayOptions": 2,
+          "DisplaySpecifications": 0,
+          "OriginalFieldName": "TrackingNum"
+        },
+        {
+          "AlternativeFieldName": "TransactionDate",
+          "DisplayOptions": 2,
+          "DisplaySpecifications": 0,
+          "OriginalFieldName": "TransactionDate"
+        },
+        {
+          "AlternativeFieldName": "Service Start Date",
+          "DisplayOptions": 2,
+          "DisplaySpecifications": 0,
+          "OriginalFieldName": "ServiceStartDate"
+        },
+        {
+          "AlternativeFieldName": "Service End Date",
+          "DisplayOptions": 2,
+          "DisplaySpecifications": 0,
+          "OriginalFieldName": "ServiceEndDate"
+        },
+        {
+          "AlternativeFieldName": "Account Type",
+          "DisplayOptions": 2,
+          "DisplaySpecifications": 0,
+          "OriginalFieldName": "AcctTypeCde"
+        },
+        {
+          "AlternativeFieldName": "Type",
+          "DisplayOptions": 1,
+          "DisplaySpecifications": 0,
+          "OriginalFieldName": "Type"
+        },
+        {
+          "AlternativeFieldName": "Claimant",
+          "DisplayOptions": 1,
+          "DisplaySpecifications": 0,
+          "OriginalFieldName": "Claimant"
+        },
+        {
+          "AlternativeFieldName": "Status",
+          "DisplayOptions": 1,
+          "DisplaySpecifications": 0,
+          "OriginalFieldName": "Status"
+        },
+        {
+          "AlternativeFieldName": "Amount",
+          "DisplayOptions": 2,
+          "DisplaySpecifications": 0,
+          "OriginalFieldName": "TxnAmt"
+        },
+        {
+          "AlternativeFieldName": "SCC",
+          "DisplayOptions": 2,
+          "DisplaySpecifications": 0,
+          "OriginalFieldName": "ScCde"
+        },
+        {
+          "AlternativeFieldName": "Comments",
+          "DisplayOptions": 2,
+          "DisplaySpecifications": 0,
+          "OriginalFieldName": "Notes"
+        },
+        {
+          "AlternativeFieldName": "Provider",
+          "DisplayOptions": 2,
+          "DisplaySpecifications": 0,
+          "OriginalFieldName": "ClaimDesc"
+        }
+      ],
+      "EmployerId": "BCS0243493",
+      "ExpenseKey": -1,
+      "FileKey": 1,
+      "FlexAcctKey": -1,
+      "HasReceipt": true,
+      "InsertDate": null,
+      "InsertUserIdKey": null,
+      "PlanEndDate": null,
+      "PlanStartDate": null,
+      "ProviderDesc": "",
+      "ProviderId": "",
+      "ReceiptExpired": null,
+      "ReceiptsInfo": [
+        {
+          "DocDisplayName": "46850e4ca3374a388843dfc69974a487",
+          "DocId": "46850e4ca3374a388843dfc69974a487",
+          "FileKey": 2721,
+          "OriginalFileName": "",
+          "TpaId": "T02432",
+          "UploadDate": "/Date(1525878593947-0500)/"
+        }
+      ],
+      "ServiceEndDate": "/Date(1525755600000-0500)/",
+      "ServiceStartDate": "/Date(1525755600000-0500)/",
+      "Status": "Entered<br>Not Reviewed",
+      "TpaId": "T02432",
+      "TransactionDate": "/Date(1525878593917-0500)/",
+      "TxnAmt": 200.02,
+      "TxnAmtDenied": 0,
+      "TxnAmtOrig": 0,
+      "TxnAmtPending": 0,
+      "TxnAmtRefund": 0,
+      "TxnCde": -1,
+      "TxnMsg": "",
+      "TxnOptions": null,
+      "TxnOriginCde": 57,
+      "Type": "Claim",
+      "UpdateDte": "/Date(1530434147067-0500)/",
+      "UpdateUserIdKey": 10,
+      "ClaimDesc": "Test BCBSMA",
+      "ClaimKey": 3411,
+      "ClaimStatus": null,
+      "ClaimStatusMsg": "",
+      "Notes": "Sample notes",
+      "ReimbModeCde": -1,
+      "ScCde": "",
+      "ScCdeDesc": "",
+      "TrackingNum": "18331"
+    },
+    {
+      "__type": "ManualClaim:http://schema.wealthcareadmin.com/payload/mobile/2013/01",
+      "AccountKey": -1,
+      "AcctTypeCde": "",
+      "AcctTypeDesc": "",
+      "CardHolderDisplay": true,
+      "Claimant": {
+        "CardNum": null,
+        "CardholderKey": 1702,
+        "CardholderTypeCde": 0,
+        "EmprId": null,
+        "FirstName": " Kaywin",
+        "Initial": null,
+        "LastName": "Dcosta",
+        "NamePrefix": null,
+        "SocSecNum": null,
+        "TpaId": "T02432"
+      },
+      "DisplayableFields": [
+        {
+          "AlternativeFieldName": "Tracking#",
+          "DisplayOptions": 2,
+          "DisplaySpecifications": 0,
+          "OriginalFieldName": "TrackingNum"
+        },
+        {
+          "AlternativeFieldName": "TransactionDate",
+          "DisplayOptions": 2,
+          "DisplaySpecifications": 0,
+          "OriginalFieldName": "TransactionDate"
+        },
+        {
+          "AlternativeFieldName": "Service Start Date",
+          "DisplayOptions": 2,
+          "DisplaySpecifications": 0,
+          "OriginalFieldName": "ServiceStartDate"
+        },
+        {
+          "AlternativeFieldName": "Service End Date",
+          "DisplayOptions": 2,
+          "DisplaySpecifications": 0,
+          "OriginalFieldName": "ServiceEndDate"
+        },
+        {
+          "AlternativeFieldName": "Account Type",
+          "DisplayOptions": 2,
+          "DisplaySpecifications": 0,
+          "OriginalFieldName": "AcctTypeCde"
+        },
+        {
+          "AlternativeFieldName": "Type",
+          "DisplayOptions": 1,
+          "DisplaySpecifications": 0,
+          "OriginalFieldName": "Type"
+        },
+        {
+          "AlternativeFieldName": "Claimant",
+          "DisplayOptions": 1,
+          "DisplaySpecifications": 0,
+          "OriginalFieldName": "Claimant"
+        },
+        {
+          "AlternativeFieldName": "Status",
+          "DisplayOptions": 1,
+          "DisplaySpecifications": 0,
+          "OriginalFieldName": "Status"
+        },
+        {
+          "AlternativeFieldName": "Amount",
+          "DisplayOptions": 2,
+          "DisplaySpecifications": 0,
+          "OriginalFieldName": "TxnAmt"
+        },
+        {
+          "AlternativeFieldName": "SCC",
+          "DisplayOptions": 2,
+          "DisplaySpecifications": 0,
+          "OriginalFieldName": "ScCde"
+        },
+        {
+          "AlternativeFieldName": "Comments",
+          "DisplayOptions": 2,
+          "DisplaySpecifications": 0,
+          "OriginalFieldName": "Notes"
+        },
+        {
+          "AlternativeFieldName": "Provider",
+          "DisplayOptions": 2,
+          "DisplaySpecifications": 0,
+          "OriginalFieldName": "ClaimDesc"
+        }
+      ],
+      "EmployerId": "BCS0243493",
+      "ExpenseKey": -1,
+      "FileKey": 1,
+      "FlexAcctKey": -1,
+      "HasReceipt": true,
+      "InsertDate": null,
+      "InsertUserIdKey": null,
+      "PlanEndDate": null,
+      "PlanStartDate": null,
+      "ProviderDesc": "",
+      "ProviderId": "",
+      "ReceiptExpired": null,
+      "ReceiptsInfo": [
+        {
+          "DocDisplayName": "18605ea093914fcca81527bff1b0cf64",
+          "DocId": "18605ea093914fcca81527bff1b0cf64",
+          "FileKey": 2720,
+          "OriginalFileName": "",
+          "TpaId": "T02432",
+          "UploadDate": "/Date(1525877837643-0500)/"
+        }
+      ],
+      "ServiceEndDate": "/Date(1525755600000-0500)/",
+      "ServiceStartDate": "/Date(1525755600000-0500)/",
+      "Status": "Entered<br>Not Reviewed",
+      "TpaId": "T02432",
+      "TransactionDate": "/Date(1525877837320-0500)/",
+      "TxnAmt": 200.02,
+      "TxnAmtDenied": 0,
+      "TxnAmtOrig": 0,
+      "TxnAmtPending": 0,
+      "TxnAmtRefund": 0,
+      "TxnCde": -1,
+      "TxnMsg": "",
+      "TxnOptions": null,
+      "TxnOriginCde": 57,
+      "Type": "Claim",
+      "UpdateDte": "/Date(1530434147067-0500)/",
+      "UpdateUserIdKey": 10,
+      "ClaimDesc": "Test BCBSMA",
+      "ClaimKey": 3410,
+      "ClaimStatus": null,
+      "ClaimStatusMsg": "",
+      "Notes": "Sample notes",
+      "ReimbModeCde": -1,
+      "ScCde": "",
+      "ScCdeDesc": "",
+      "TrackingNum": "18330"
+    },
+    {
+      "__type": "ManualClaim:http://schema.wealthcareadmin.com/payload/mobile/2013/01",
+      "AccountKey": -1,
+      "AcctTypeCde": "",
+      "AcctTypeDesc": "",
+      "CardHolderDisplay": true,
+      "Claimant": {
+        "CardNum": null,
+        "CardholderKey": 1702,
+        "CardholderTypeCde": 0,
+        "EmprId": null,
+        "FirstName": " Kaywin",
+        "Initial": null,
+        "LastName": "Dcosta",
+        "NamePrefix": null,
+        "SocSecNum": null,
+        "TpaId": "T02432"
+      },
+      "DisplayableFields": [
+        {
+          "AlternativeFieldName": "Tracking#",
+          "DisplayOptions": 2,
+          "DisplaySpecifications": 0,
+          "OriginalFieldName": "TrackingNum"
+        },
+        {
+          "AlternativeFieldName": "TransactionDate",
+          "DisplayOptions": 2,
+          "DisplaySpecifications": 0,
+          "OriginalFieldName": "TransactionDate"
+        },
+        {
+          "AlternativeFieldName": "Service Start Date",
+          "DisplayOptions": 2,
+          "DisplaySpecifications": 0,
+          "OriginalFieldName": "ServiceStartDate"
+        },
+        {
+          "AlternativeFieldName": "Service End Date",
+          "DisplayOptions": 2,
+          "DisplaySpecifications": 0,
+          "OriginalFieldName": "ServiceEndDate"
+        },
+        {
+          "AlternativeFieldName": "Account Type",
+          "DisplayOptions": 2,
+          "DisplaySpecifications": 0,
+          "OriginalFieldName": "AcctTypeCde"
+        },
+        {
+          "AlternativeFieldName": "Type",
+          "DisplayOptions": 1,
+          "DisplaySpecifications": 0,
+          "OriginalFieldName": "Type"
+        },
+        {
+          "AlternativeFieldName": "Claimant",
+          "DisplayOptions": 1,
+          "DisplaySpecifications": 0,
+          "OriginalFieldName": "Claimant"
+        },
+        {
+          "AlternativeFieldName": "Status",
+          "DisplayOptions": 1,
+          "DisplaySpecifications": 0,
+          "OriginalFieldName": "Status"
+        },
+        {
+          "AlternativeFieldName": "Amount",
+          "DisplayOptions": 2,
+          "DisplaySpecifications": 0,
+          "OriginalFieldName": "TxnAmt"
+        },
+        {
+          "AlternativeFieldName": "SCC",
+          "DisplayOptions": 2,
+          "DisplaySpecifications": 0,
+          "OriginalFieldName": "ScCde"
+        },
+        {
+          "AlternativeFieldName": "Comments",
+          "DisplayOptions": 2,
+          "DisplaySpecifications": 0,
+          "OriginalFieldName": "Notes"
+        },
+        {
+          "AlternativeFieldName": "Provider",
+          "DisplayOptions": 2,
+          "DisplaySpecifications": 0,
+          "OriginalFieldName": "ClaimDesc"
+        }
+      ],
+      "EmployerId": "BCS0243493",
+      "ExpenseKey": -1,
+      "FileKey": 1,
+      "FlexAcctKey": -1,
+      "HasReceipt": true,
+      "InsertDate": null,
+      "InsertUserIdKey": null,
+      "PlanEndDate": null,
+      "PlanStartDate": null,
+      "ProviderDesc": "",
+      "ProviderId": "",
+      "ReceiptExpired": null,
+      "ReceiptsInfo": [
+        {
+          "DocDisplayName": "5c39802d5d43413984af632623eaf9ee",
+          "DocId": "5c39802d5d43413984af632623eaf9ee",
+          "FileKey": 2719,
+          "OriginalFileName": "",
+          "TpaId": "T02432",
+          "UploadDate": "/Date(1525877003693-0500)/"
+        }
+      ],
+      "ServiceEndDate": "/Date(1525755600000-0500)/",
+      "ServiceStartDate": "/Date(1525755600000-0500)/",
+      "Status": "Entered<br>Not Reviewed",
+      "TpaId": "T02432",
+      "TransactionDate": "/Date(1525877003663-0500)/",
+      "TxnAmt": 200.02,
+      "TxnAmtDenied": 0,
+      "TxnAmtOrig": 0,
+      "TxnAmtPending": 0,
+      "TxnAmtRefund": 0,
+      "TxnCde": -1,
+      "TxnMsg": "",
+      "TxnOptions": null,
+      "TxnOriginCde": 57,
+      "Type": "Claim",
+      "UpdateDte": "/Date(1530434147067-0500)/",
+      "UpdateUserIdKey": 10,
+      "ClaimDesc": "Test BCBSMA",
+      "ClaimKey": 3409,
+      "ClaimStatus": null,
+      "ClaimStatusMsg": "",
+      "Notes": "Sample notes",
+      "ReimbModeCde": -1,
+      "ScCde": "",
+      "ScCdeDesc": "",
+      "TrackingNum": "18329"
+    },
+    {
+      "__type": "ManualClaim:http://schema.wealthcareadmin.com/payload/mobile/2013/01",
+      "AccountKey": -1,
+      "AcctTypeCde": "",
+      "AcctTypeDesc": "",
+      "CardHolderDisplay": true,
+      "Claimant": {
+        "CardNum": null,
+        "CardholderKey": 1702,
+        "CardholderTypeCde": 0,
+        "EmprId": null,
+        "FirstName": " WHIPPLE",
+        "Initial": null,
+        "LastName": "CRUZ",
+        "NamePrefix": null,
+        "SocSecNum": null,
+        "TpaId": "T02432"
+      },
+      "DisplayableFields": [
+        {
+          "AlternativeFieldName": "Tracking#",
+          "DisplayOptions": 2,
+          "DisplaySpecifications": 0,
+          "OriginalFieldName": "TrackingNum"
+        },
+        {
+          "AlternativeFieldName": "TransactionDate",
+          "DisplayOptions": 2,
+          "DisplaySpecifications": 0,
+          "OriginalFieldName": "TransactionDate"
+        },
+        {
+          "AlternativeFieldName": "Service Start Date",
+          "DisplayOptions": 2,
+          "DisplaySpecifications": 0,
+          "OriginalFieldName": "ServiceStartDate"
+        },
+        {
+          "AlternativeFieldName": "Service End Date",
+          "DisplayOptions": 2,
+          "DisplaySpecifications": 0,
+          "OriginalFieldName": "ServiceEndDate"
+        },
+        {
+          "AlternativeFieldName": "Account Type",
+          "DisplayOptions": 2,
+          "DisplaySpecifications": 0,
+          "OriginalFieldName": "AcctTypeCde"
+        },
+        {
+          "AlternativeFieldName": "Type",
+          "DisplayOptions": 1,
+          "DisplaySpecifications": 0,
+          "OriginalFieldName": "Type"
+        },
+        {
+          "AlternativeFieldName": "Claimant",
+          "DisplayOptions": 1,
+          "DisplaySpecifications": 0,
+          "OriginalFieldName": "Claimant"
+        },
+        {
+          "AlternativeFieldName": "Status",
+          "DisplayOptions": 1,
+          "DisplaySpecifications": 0,
+          "OriginalFieldName": "Status"
+        },
+        {
+          "AlternativeFieldName": "Amount",
+          "DisplayOptions": 2,
+          "DisplaySpecifications": 0,
+          "OriginalFieldName": "TxnAmt"
+        },
+        {
+          "AlternativeFieldName": "SCC",
+          "DisplayOptions": 2,
+          "DisplaySpecifications": 0,
+          "OriginalFieldName": "ScCde"
+        },
+        {
+          "AlternativeFieldName": "Comments",
+          "DisplayOptions": 2,
+          "DisplaySpecifications": 0,
+          "OriginalFieldName": "Notes"
+        },
+        {
+          "AlternativeFieldName": "Provider",
+          "DisplayOptions": 2,
+          "DisplaySpecifications": 0,
+          "OriginalFieldName": "ClaimDesc"
+        }
+      ],
+      "EmployerId": "BCS0243493",
+      "ExpenseKey": -1,
+      "FileKey": 1,
+      "FlexAcctKey": -1,
+      "HasReceipt": true,
+      "InsertDate": null,
+      "InsertUserIdKey": null,
+      "PlanEndDate": null,
+      "PlanStartDate": null,
+      "ProviderDesc": "",
+      "ProviderId": "",
+      "ReceiptExpired": null,
+      "ReceiptsInfo": [
+        {
+          "DocDisplayName": "b37fcb4e3ea94e04b0716c56a3499071",
+          "DocId": "b37fcb4e3ea94e04b0716c56a3499071",
+          "FileKey": 2780,
+          "OriginalFileName": "",
+          "TpaId": "T02432",
+          "UploadDate": "/Date(1527172892090-0500)/"
+        }
+      ],
+      "ServiceEndDate": "/Date(1525064400000-0500)/",
+      "ServiceStartDate": "/Date(1525064400000-0500)/",
+      "Status": "Entered<br>Not Reviewed",
+      "TpaId": "T02432",
+      "TransactionDate": "/Date(1527172891907-0500)/",
+      "TxnAmt": 23.11,
+      "TxnAmtDenied": 0,
+      "TxnAmtOrig": 0,
+      "TxnAmtPending": 0,
+      "TxnAmtRefund": 0,
+      "TxnCde": -1,
+      "TxnMsg": "",
+      "TxnOptions": null,
+      "TxnOriginCde": 54,
+      "Type": "Claim",
+      "UpdateDte": "/Date(1530434147067-0500)/",
+      "UpdateUserIdKey": 10,
+      "ClaimDesc": "Test POST request",
+      "ClaimKey": 3446,
+      "ClaimStatus": null,
+      "ClaimStatusMsg": "",
+      "Notes": "samplestring9",
+      "ReimbModeCde": 1,
+      "ScCde": "",
+      "ScCdeDesc": "",
+      "TrackingNum": "18370"
+    },
+    {
+      "__type": "ManualClaim:http://schema.wealthcareadmin.com/payload/mobile/2013/01",
+      "AccountKey": -1,
+      "AcctTypeCde": "",
+      "AcctTypeDesc": "",
+      "CardHolderDisplay": true,
+      "Claimant": {
+        "CardNum": null,
+        "CardholderKey": 1702,
+        "CardholderTypeCde": 0,
+        "EmprId": null,
+        "FirstName": " WHIPPLE",
+        "Initial": null,
+        "LastName": "CRUZ",
+        "NamePrefix": null,
+        "SocSecNum": null,
+        "TpaId": "T02432"
+      },
+      "DisplayableFields": [
+        {
+          "AlternativeFieldName": "Tracking#",
+          "DisplayOptions": 2,
+          "DisplaySpecifications": 0,
+          "OriginalFieldName": "TrackingNum"
+        },
+        {
+          "AlternativeFieldName": "TransactionDate",
+          "DisplayOptions": 2,
+          "DisplaySpecifications": 0,
+          "OriginalFieldName": "TransactionDate"
+        },
+        {
+          "AlternativeFieldName": "Service Start Date",
+          "DisplayOptions": 2,
+          "DisplaySpecifications": 0,
+          "OriginalFieldName": "ServiceStartDate"
+        },
+        {
+          "AlternativeFieldName": "Service End Date",
+          "DisplayOptions": 2,
+          "DisplaySpecifications": 0,
+          "OriginalFieldName": "ServiceEndDate"
+        },
+        {
+          "AlternativeFieldName": "Account Type",
+          "DisplayOptions": 2,
+          "DisplaySpecifications": 0,
+          "OriginalFieldName": "AcctTypeCde"
+        },
+        {
+          "AlternativeFieldName": "Type",
+          "DisplayOptions": 1,
+          "DisplaySpecifications": 0,
+          "OriginalFieldName": "Type"
+        },
+        {
+          "AlternativeFieldName": "Claimant",
+          "DisplayOptions": 1,
+          "DisplaySpecifications": 0,
+          "OriginalFieldName": "Claimant"
+        },
+        {
+          "AlternativeFieldName": "Status",
+          "DisplayOptions": 1,
+          "DisplaySpecifications": 0,
+          "OriginalFieldName": "Status"
+        },
+        {
+          "AlternativeFieldName": "Amount",
+          "DisplayOptions": 2,
+          "DisplaySpecifications": 0,
+          "OriginalFieldName": "TxnAmt"
+        },
+        {
+          "AlternativeFieldName": "SCC",
+          "DisplayOptions": 2,
+          "DisplaySpecifications": 0,
+          "OriginalFieldName": "ScCde"
+        },
+        {
+          "AlternativeFieldName": "Comments",
+          "DisplayOptions": 2,
+          "DisplaySpecifications": 0,
+          "OriginalFieldName": "Notes"
+        },
+        {
+          "AlternativeFieldName": "Provider",
+          "DisplayOptions": 2,
+          "DisplaySpecifications": 0,
+          "OriginalFieldName": "ClaimDesc"
+        }
+      ],
+      "EmployerId": "BCS0243493",
+      "ExpenseKey": -1,
+      "FileKey": 1,
+      "FlexAcctKey": -1,
+      "HasReceipt": true,
+      "InsertDate": null,
+      "InsertUserIdKey": null,
+      "PlanEndDate": null,
+      "PlanStartDate": null,
+      "ProviderDesc": "",
+      "ProviderId": "",
+      "ReceiptExpired": null,
+      "ReceiptsInfo": [
+        {
+          "DocDisplayName": "68543e5bc7144a9186f57c239fd4f6e3",
+          "DocId": "68543e5bc7144a9186f57c239fd4f6e3",
+          "FileKey": 2708,
+          "OriginalFileName": "",
+          "TpaId": "T02432",
+          "UploadDate": "/Date(1525803420317-0500)/"
+        }
+      ],
+      "ServiceEndDate": "/Date(1525064400000-0500)/",
+      "ServiceStartDate": "/Date(1525064400000-0500)/",
+      "Status": "Entered<br>Not Reviewed",
+      "TpaId": "T02432",
+      "TransactionDate": "/Date(1525803419833-0500)/",
+      "TxnAmt": 23.11,
+      "TxnAmtDenied": 0,
+      "TxnAmtOrig": 0,
+      "TxnAmtPending": 0,
+      "TxnAmtRefund": 0,
+      "TxnCde": -1,
+      "TxnMsg": "",
+      "TxnOptions": null,
+      "TxnOriginCde": 54,
+      "Type": "Claim",
+      "UpdateDte": "/Date(1530434147067-0500)/",
+      "UpdateUserIdKey": 10,
+      "ClaimDesc": "Test POST request",
+      "ClaimKey": 3399,
+      "ClaimStatus": null,
+      "ClaimStatusMsg": "",
+      "Notes": "samplestring9",
+      "ReimbModeCde": 1,
+      "ScCde": "",
+      "ScCdeDesc": "",
+      "TrackingNum": "18320"
+    }
+  ]
+}

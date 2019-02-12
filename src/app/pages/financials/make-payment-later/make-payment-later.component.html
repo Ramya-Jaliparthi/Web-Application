@@ -1,0 +1,68 @@
+<div class="mt-20 hide-on-large-only">
+  <app-breadcrumbs [breadCrumbs]="breadCrumbs" class="mlmr-15"></app-breadcrumbs>
+</div>
+<div class="payment-success-container row  m-0">
+    <div class="payment-success-header">
+      <h1 *ngIf="!isPayProvider">Saved Payment to You</h1>
+      <h1 *ngIf="isPayProvider">Saved Payment to Provider</h1>
+      <div class="hide-on-med-only hide-on-small-only">
+        <app-breadcrumbs [breadCrumbs]="breadCrumbs"></app-breadcrumbs>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col s12 l8">
+        <div class="payment-amount">
+          <div>
+            <span>&#36;{{convertAmountToBaseValue(transactionDetails.amount) | number}}<sup>{{convertAmountToDecimalValue(transactionDetails.amount)}} </sup></span>
+            <span> to be paid by direct deposit to {{transactionDetails.name}}</span>
+          </div>
+        </div>
+        <div class="transaction-details">
+          
+          <div class="transaction-details-header">
+            <h2>Payment Details</h2>
+          </div>
+
+          <div class="user-name">
+            <span>{{transactionDetails.name}}</span>
+          </div>
+
+          <div class="provider-name">
+            <span>Provider: </span><span>{{transactionDetails.provider}}</span>
+          </div>
+          
+          <div class="service-type">
+              <span>Service Type: </span><span>{{transactionDetails.serviceType}}</span>
+          </div>
+
+          <div class="user-note">
+              <span>Note: </span><span>{{transactionDetails.note}}</span>
+          </div>
+      
+          <div class="service-date-section">
+            <span class="service-date-label">Date of Service:</span>
+            <span
+              class="service-date">{{transactionDetails.dateOfServiceStart}}</span>
+          </div>
+        </div>
+      </div>
+      <div class="submit-section col s12 l4">
+        <div class="user-prompt-text">
+          <h2 *ngIf="!recieptsUploaded">You need to upload a receipt
+              before you can submit your payment.</h2>
+          <h2 *ngIf="recieptsUploaded">Everything looks good?</h2>
+        </div>
+        <div class="edit-payment-btn">
+          <button type="button" class="btn btn-primary btn-full-width" (click)= 'editPayment()'>Edit Payment</button>
+        </div>
+        <div class="button-seperator">
+          <span class="line"></span>&emsp; Or &emsp;<span class="line"></span>
+        </div>
+        <div class="submit-payment-btn">
+          <button type="button" [disabled]="!recieptsUploaded" class="btn btn-primary btn-full-width" (click)= 'submitPayment()' type="submit">Submit Payment</button>
+        </div>
+    </div>
+  </div>  
+</div>
+
+      

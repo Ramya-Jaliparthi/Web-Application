@@ -1,0 +1,26 @@
+<div class="ads-container">
+  <!--<div class="ads-details" *ngFor="let article$ of images; let i = index">-->
+    <!--<img src="{{article$.RegularImages}}" alt="default image" class="responsive-img">-->
+    <!--<label (click)= "openUrl(article$.ArticleUrl)" class="add-label"> {{article$?.Title}} </label>-->
+  <!--</div>-->
+  <div class="ads-details" *ngFor="let article$ of imagesResponse; let i = index">
+       <div class="video-label" (click)= openUrl(article$.ArticleUrl)>
+         <img src="{{article$.RegularImages}}" alt="default image">
+         <a *ngIf="article$.isVideo" (click)="openVideoModal($event, article$.VIdeoUrl)">
+           <div class="video-icon">
+             <i class="fas fa-play-circle   fa-3x play-icon" aria-hidden="true"></i>
+           </div>
+         </a>
+       </div>
+      <label (click)= "openUrl(article$.ArticleUrl)" class="add-label"> {{article$?.ArticleText}} </label>
+  </div>
+</div>
+<div id="imageVideoModal" class="modal">
+  <div class="video-container" *ngIf="carouselVideoSource">
+    <a (click)= 'closeVideoModal()'><i class="fas fa-times fa-2x video-icon"  aria-hidden="true"></i></a>
+    <video class="responsive-video" autoplay
+           [src]='carouselVideoSource' controls>
+      Your browser does not support the video tag.
+    </video>
+  </div>
+</div>

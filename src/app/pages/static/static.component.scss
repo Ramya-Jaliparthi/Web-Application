@@ -1,0 +1,24 @@
+.modal-close-right {
+    display: block;
+    height: 30px;
+    width: 30px;
+    i {
+        font-size: 50px;
+        -ms-transform: translate(-20%,-20%);
+        -webkit-transform: translate(-20%,-20%);
+        transform: translate(-20%,-20%);
+    }
+}
+
+.layoutCentered {
+    position: relative;
+    max-width: 600px;
+    left: calc(50% - 300px);
+}
+  
+@media (max-width: 600px) {
+    .layoutCentered {
+      left: 0px;
+      width:100%;
+    }
+}

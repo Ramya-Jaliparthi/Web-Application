@@ -1,0 +1,192 @@
+<div *ngIf="fpocontentData && displayCategory ==='profile'">
+  <!-- <h2>{{fpocontentData.Title}}</h2> -->
+  <img class="img-width" *ngIf="!fpocontentData?.VideoUrl && !ismobile && fpocontentData && fpocontentData.RegularImages" src="{{fpocontentData?.RegularImages}}"
+  />
+
+  <img class="img-width" *ngIf="!fpocontentData?.VideoUrl && ismobile && fpocontentData && fpocontentData.MobileImages" src="{{fpocontentData?.MobileImages}}"
+  />
+
+  <div *ngIf="fpocontentData?.VideoUrl" class="video-label" (click)="openVideoModal($event, fpocontentData?.VideoUrl)">
+    <img class="img-width" *ngIf="fpocontentData?.VideoUrl && !ismobile" src="{{fpocontentData?.RegularImages}}" alt="default image">
+    <img class="img-width" *ngIf="fpocontentData?.VideoUrl && ismobile" src="{{fpocontentData?.MobileImages}}" alt="default image">
+  </div>
+
+  <div class="fpocontent" [innerHTML]="fpocontentData?.ShortDescription"></div>
+  <div class="fpocontent" [innerHTML]="fpocontentData?.Body"></div>
+  
+</div>
+
+<div *ngIf="fpocontentData && displayCategory ==='rfe'">
+  <!-- <h2>{{fpocontentData.Title}}</h2> -->
+
+  <img class="img-width" *ngIf="!fpocontentData?.VideoUrl && !ismobile && fpocontentData && fpocontentData.RegularImages" src="{{fpocontentData?.RegularImages}}"
+  />
+
+  <img class="img-width" *ngIf="!fpocontentData?.VideoUrl && ismobile && fpocontentData && fpocontentData.MobileImages" src="{{fpocontentData?.MobileImages}}"
+  />
+
+  <div *ngIf="fpocontentData?.VideoUrl" class="video-label" (click)="openVideoModal($event, fpocontentData?.VideoUrl)">
+    <img class="img-width" *ngIf="fpocontentData?.VideoUrl && !ismobile" src="{{fpocontentData?.RegularImages}}" alt="default image">
+    <img class="img-width" *ngIf="fpocontentData?.VideoUrl && ismobile" src="{{fpocontentData?.MobileImages}}" alt="default image">
+  </div>
+
+  <div class="fpocontent" [innerHTML]="fpocontentData?.ShortDescription"></div>
+  <div class="fpocontent" [innerHTML]="fpocontentData?.Body"></div>
+
+  <div class="row col s12 mb-0 pd-0" *ngIf="fpocontentData?.FontawesomeIconUnicode && fpocontentData?.ButtonText">
+    <div class="row col s1 m1 l1 pd-0"></div>
+    <div class="row col s10 m10 l10 ml-20 pd-20">
+      <button class="waves-effect waves-light btn btn-block fpo-btn-width gradient" type="submit" aria-label="" name="action" (click)="openUrl(fpocontentData?.ButtonUrl)">{{fpocontentData?.ButtonText}}</button>
+    </div>
+  </div>
+</div>
+
+<div *ngIf="fpocontentData && displayCategory ==='documents'">
+  <!-- <h2>{{fpocontentData.Title}}</h2> -->
+
+  <img class="img-width" *ngIf="!fpocontentData?.VideoUrl && !ismobile && fpocontentData && fpocontentData.RegularImages" src="{{fpocontentData?.RegularImages}}"
+  />
+
+  <img class="img-width" *ngIf="!fpocontentData?.VideoUrl && ismobile && fpocontentData && fpocontentData.MobileImages" src="{{fpocontentData?.MobileImages}}"
+  />
+
+  <div *ngIf="fpocontentData?.VideoUrl" class="video-label" (click)="openVideoModal($event, fpocontentData?.VideoUrl)">
+    <img class="img-width" *ngIf="fpocontentData?.VideoUrl && !ismobile" src="{{fpocontentData?.RegularImages}}" alt="default image">
+    <img class="img-width" *ngIf="fpocontentData?.VideoUrl && ismobile" src="{{fpocontentData?.MobileImages}}" alt="default image">
+  </div>
+
+  <!-- <div class="fpocontent" [innerHTML]="fpocontentData?.ArticleText"></div>
+  <div class="fpocontent" [innerHTML]="fpocontentData?.ArticleUrl"></div> -->
+  <div>
+    <a class="fpocontent" href="{{fpocontentData?.ArticleUrl}}">{{ fpocontentData?.ArticleText }}</a>
+  </div>
+
+
+</div>
+
+<div *ngIf="fpocontentData && displayCategory ==='doctor'">
+
+  <img class="img-width" *ngIf="!fpocontentData?.VideoUrl && !ismobile" src="{{fpocontentData?.RegularImages}}" />
+
+  <img class="img-width" *ngIf="!fpocontentData?.VideoUrl && ismobile" src="{{fpocontentData?.MobileImages}}" />
+
+  <div *ngIf="fpocontentData?.VideoUrl" class="video-label thumbnail-cont" (click)="openVideoModal($event, fpocontentData?.VideoUrl)">
+    <img class="img-width" *ngIf="!ismobile" src="{{fpocontentData?.RegularImages}}" alt="default image">
+    <img class="img-width" *ngIf="ismobile" src="{{fpocontentData?.MobileImages}}" alt="default image">
+    <img class="thumbnail center" *ngIf="fpocontentData?.VideoThumbnailIcon" src="{{fpocontentData?.VideoThumbnailIconSrc}}"
+      alt="Play">
+    <!-- <div class="thumbnail center" *ngIf="fpocontentData?.VideoThumbnailIcon" [innerHTML]="fpocontentData?.VideoThumbnailIcon">
+    </div> -->
+  </div>
+
+  <div class="fpocontent" [innerHTML]="fpocontentData?.ShortDescription"></div>
+  <div class="fpocontent" [innerHTML]="fpocontentData?.Body"></div>
+</div>
+
+<div *ngIf="fpocontentData && displayCategory ==='plans'">
+
+  <img class="img-width" *ngIf="!fpocontentData?.VideoUrl && !ismobile" src="{{fpocontentData?.RegularImages}}" />
+
+  <img class="img-width" *ngIf="!fpocontentData?.VideoUrl && ismobile" src="{{fpocontentData?.MobileImages}}" />
+
+  <div *ngIf="fpocontentData?.VideoUrl" class="video-label thumbnail-cont" (click)="openVideoModal($event, fpocontentData?.VideoUrl)">
+    <img class="img-width" *ngIf="!ismobile" src="{{fpocontentData?.RegularImages}}" alt="default image">
+    <img class="img-width" *ngIf="ismobile" src="{{fpocontentData?.MobileImages}}" alt="default image">
+    <img class="thumbnail center" *ngIf="fpocontentData?.VideoThumbnailIcon" src="{{fpocontentData?.VideoThumbnailIconSrc}}"
+      alt="Play">
+  </div>
+
+  <div class="fpocontent mt-5" *ngIf="fpocontentData.ArticleUrl">
+    <a class="no-underline" href="{{fpocontentData.ArticleUrl}}">{{ fpocontentData.ArticleText }}</a>
+  </div>
+</div>
+
+<div *ngIf="fpocontentData && displayCategory ==='plans-pull-text'">
+  <div class="col s12 m12 pd-0">
+    <div class="row">
+      <!-- <div class="col s12 m12 l12 title-drupal-pd">
+        {{ fpocontentData.Title }}
+        <i class="material-icons close-icon" (click)="closePullText();">close</i>
+      </div> -->
+    </div>
+  </div>
+  <div class="col s12 m12 pd-0">
+    <div class="fpo-service-content" [innerHTML]="fpocontentData.ShortDescription">
+    </div>
+  </div>
+</div>
+
+<div *ngIf="fpocontentData && (displayCategory !== 'profile' && displayCategory !== 'doctor' && displayCategory !== 'rfe' && displayCategory !== 'plans' && displayCategory !== 'plans-pull-text') && layout!=='central'">
+
+  <div class="row col s12 mb-0 pd-0" *ngIf="fpocontentData?.FontawesomeIconUnicode">
+    <div class="row col s1 m1 l1 fpo-mb-20 pd-0 icon-color-blue" [innerHTML]="fontawesomeIcon"></div>
+    <div class="row col s11 m11 l11 fpo-mb-20 pd-0 ml-20 fontawesomeText" [innerHTML]="fpocontentData?.Body"></div>
+  </div>
+  <div class="row col s12 mb-0 pd-0" *ngIf="fpocontentData?.FontawesomeIconUnicode && fpocontentData?.ButtonText">
+    <div class="row col s1 m1 l1 pd-0"></div>
+    <div class="row col s10 m10 l10 ml-20 pd-0">
+      <button class="waves-effect waves-light btn btn-block fpo-btn-width gradient" type="submit" aria-label="" name="action" (click)="openUrl(fpocontentData?.ButtonUrl)">{{fpocontentData?.ButtonText}}</button>
+    </div>
+  </div>
+  <div class="row col s12 mb-0 pd-0" *ngIf="(fpocontentData?.AppstoreIcon && fpocontentData?.AppstoreIconUrl) || (fpocontentData?.GoogleplayIcon && fpocontentData?.GoogleplaystoreIconUrl)">
+    <div class="row col s1 m1 l1 pd-0 mb-0"></div>
+    <div class="row col s11 m11 l11 ml-20 pd-0 mb-0">
+      <div class="row col m12 s12 pd-0">
+        <div class="row col s9 m9 l9 pd-0 mb-0">
+          <a class="mr-5" href="{{fpocontentData?.AppstoreIconUrl}}" [innerHTML]="fpocontentData?.AppstoreIcon"></a>
+          <a href="{{fpocontentData?.GoogleplaystoreIconUrl}}" [innerHTML]="fpocontentData?.GoogleplayIcon"></a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="row col s12 mb-0" *ngIf="!fpocontentData?.FontawesomeIconUnicode">
+    <div class="fpocontent" [innerHTML]="fpocontentData?.ShortDescription"></div>
+    <div class="fpocontent" [innerHTML]="fpocontentData?.Body"></div>
+  </div>
+</div>
+
+<div *ngIf="fpocontentData && (displayCategory !== 'profile' && displayCategory !== 'doctor' && displayCategory !== 'plans' && displayCategory !== 'plans-pull-text') && layout==='central'">
+  <!-- <div class="divider"></div> -->
+
+  <div class="row col s12 mb-0 pd-0 central-layout-fpocontainer" *ngIf="fpocontentData?.FontawesomeIconUnicode">
+    <div class="pd-0 icon-color-blue" [innerHTML]="fontawesomeIcon"></div>
+    <div class="pd-0 fontawesomeText fpo-content fpo-bodytext" [innerHTML]="bodyContent"></div>
+  </div>
+  <div class="" *ngIf="fpocontentData?.FontawesomeIconUnicode && fpocontentData?.ButtonText">
+    <div class="">
+      <button class="waves-effect waves-light btn btn-block gradient btn-findoutnow" type="submit" aria-label="" name="action"
+        (click)="openUrl(fpocontentData?.ButtonUrl)">{{fpocontentData?.ButtonText}}</button>
+    </div>
+  </div>
+  <div class="row col s12 mb-0 pd-0" *ngIf="(fpocontentData?.AppstoreIcon && fpocontentData?.AppstoreIconUrl) || (fpocontentData?.GoogleplayIcon && fpocontentData?.GoogleplaystoreIconUrl)">
+    <div class="row col s2 m2 l2 pd-0 mb-0"></div>
+    <div class="row col s2 m2 l2 pd-0 mb-0"></div>
+    <div class="row col s8 m8 l8 pd-0 mb-0">
+      <div class="row col m12 s12 pd-0">
+        <div class="row col s6 m6 l6 pd-0 mb-0">
+          <a class="mr-5" href="{{fpocontentData?.AppstoreIconUrl}}" [innerHTML]="fpocontentData?.AppstoreIcon"></a>
+          <a href="{{fpocontentData?.GoogleplaystoreIconUrl}}" [innerHTML]="fpocontentData?.GoogleplayIcon"></a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row col s12 mb-0" *ngIf="!fpocontentData?.FontawesomeIconUnicode">
+    <div class="fpocontent" [innerHTML]="fpocontentData?.ShortDescription"></div>
+    <div class="fpocontent" [innerHTML]="fpocontentData?.Body"></div>
+  </div>
+</div>
+
+<div id="drupalVideoModal" class="modal">
+  <div class="video-container" *ngIf="fpoVideoSourceUrl">
+    <a (click)= "closeVideoModal()">
+      <i class="fas fa-times fa-2x video-icon"  aria-hidden="true"></i>
+    </a>
+    <video class="responsive-video" autoplay
+           [src]='fpoVideoSourceUrl' controls>
+      Your browser does not support the video tag.
+    </video>
+  </div>
+</div>

@@ -1,0 +1,32 @@
+@import '../../../../assets/styles/_colors';
+// spk-cleanup - @import '../../../../assets/styles/variables';
+@import '../../../../assets/styles/_variables';
+@import '../../../../assets/styles/_fonts';
+@import '../../../../assets/styles/_spacing';
+@import '../../../../assets/styles/Global';
+@import '../utils/message-center-common.scss';
+.upload-detail {
+    margin-top: 20px;
+    h1 {
+        margin: 20px 0px 10px;
+    }
+    p {
+        @include Roboto(medium);
+        font-size: 12px;
+        color: $black-text;
+        line-height: 16px;
+    }
+    .image-detail {
+        @include Roboto(regular);
+        font-size: 16px;
+        color: $text-disabled-gray;
+        line-height: 22px;
+    }
+    .responsive-img {
+        width: 100%;
+    }
+    a {
+        font-size: 12px;
+        text-decoration: underline;
+    }
+}

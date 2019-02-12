@@ -1,0 +1,27 @@
+<div *ngIf="fpocontentData" class="promo-margin">
+  <div class="row" *ngIf="fpocontentData?.FontawesomeIconUnicode">
+    <div class="col s1 fpo-mb-20 icon-color-blue" [innerHTML]="fontawesomeIcon"></div>
+    <div class="col s11 fpo-mb-20  fontawesomeText" [innerHTML]="fpocontentData?.Body"></div>
+  </div>
+  <div class="row col s12 mb-0 pd-0" *ngIf="fpocontentData?.FontawesomeIconUnicode && fpocontentData?.ButtonText">
+    <div class="row col s1 m1 l1 pd-0"></div>
+    <div class="row col s10 m10 l10 ml-20 pd-0">
+      <button class="waves-effect waves-light btn btn-block fpo-btn-width gradient" type="submit" aria-label="" name="action" (click)="openUrl(fpocontentData?.ButtonUrl)">{{fpocontentData?.ButtonText}}</button>
+    </div>
+  </div>
+  <div class="row col s12 mb-0 pd-0" *ngIf="(fpocontentData?.AppstoreIcon && fpocontentData?.AppstoreIconUrl) || (fpocontentData?.GoogleplayIcon && fpocontentData?.GoogleplaystoreIconUrl)">
+    <div class="row col s1 m1 l1 pd-0 mb-0"></div>
+    <div class="row col s11 m11 l11 ml-20 pd-0 mb-0">
+      <div class="row col m12 s12 pd-0">
+        <div class="row col s9 m9 l9 pd-0 mb-0">
+          <a class="mr-5" href="{{fpocontentData?.AppstoreIconUrl}}" [innerHTML]="fpocontentData?.AppstoreIcon"></a>
+          <a href="{{fpocontentData?.GoogleplaystoreIconUrl}}" [innerHTML]="fpocontentData?.GoogleplayIcon"></a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row col s12 mb-0" *ngIf="!fpocontentData?.FontawesomeIconUnicode">
+    <div class="fpocontent" [innerHTML]="fpocontentData?.ShortDescription"></div>
+    <div class="fpocontent" [innerHTML]="fpocontentData?.Body"></div>
+  </div>
+</div>

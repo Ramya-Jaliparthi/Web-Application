@@ -1,0 +1,162 @@
+<!-- <div class="row container"> -->
+<div class="row m-0">
+  <div class="col s12 panel-content">
+    <div class="mt-20 hide-on-large-only" style="text-align: left">
+      <app-breadcrumbs></app-breadcrumbs>
+    </div>
+    <h1 class="header">Add Your Race, Ethnicity, and Language</h1>
+    <div class="hide-on-med-only hide-on-small-only" style="text-align: left">
+      <app-breadcrumbs></app-breadcrumbs>
+    </div>
+    <div class="row">
+      <div class="col s12">
+        <div class="col s12 m12 l8 left-content">
+          <p class="description-text">At Blue Cross Blue Shield of Massachusetts, we are committed to being part of a health care system that provides
+            safe, timely, effective, affordable, patient-centered care for all. But research shows that there are measurable
+            differences in the health care provided to people in Massachusetts based on their race, ethnicity, or primary
+            language. To better understand these differences, and expand access to care, Blue Cross Blue Shield of Massachusetts
+            would like to ask you to share information about your race, ethnicity, and language. Sharing this information
+            is completely voluntary, and we will hold it in the strictest confidence. To better understand differences in
+            access to and use of health care, selected state health organizations will receive information that is de-identified,
+            meaning your personal identity is removed from the answers.
+          </p>
+          <div class="left-align learn-more-link mt-10">
+            <a routerLink="/pages/relFpo">Learn more about how this information will be used.</a>
+          </div>
+          <hr class="hide-on-med-and-up mt-20 mb-20">
+          <form [formGroup]="raceForm" novalidate (ngSubmit)="onSubmit()" [ngClass]="{'form-submitted' : isFormSubmitted}">
+            <p class="question mt-20 mb-20">Would you like to provide this information to Blue Cross Blue Shield of Massachusetts?</p>
+            <p class="mb-30">
+              <input type="checkbox" class="filled-in" id="agree" formControlName="agree" (click)="provideInfo()" aria-labelledby="agree"
+              />
+              <label for="agree">
+                <span class="info-checkbox">Yes, I wish to provide this information</span>
+              </label>
+            </p>
+            <div class="card-content">
+              <div class="row ml-0 mr-0 mb-12" *ngIf="showRaceForm">
+                <div class="input-field col s12 pd-0 ">
+                  <mat-form-field #race1FormField floatPlaceholder="never" class="col s12 pd-0 mat-inherit-underline">
+                    <mat-select tabindex="1" id="race1" appMatSelectChange [parentFormField]="race1FormField" placeholder="Select One" formControlName='race1'>
+                      <mat-option *ngFor='let options of raceList' [value]='options.code'>
+                        {{options.description}}
+                      </mat-option>
+                    </mat-select>
+                  </mat-form-field>
+                  <label for="race1" class="active rel-label" [ngClass]="{'color-invalid': raceForm.controls['race1'].touched 
+                  && raceForm.controls['race1'].errors 
+                  && raceForm.controls['race1'].errors.required}">
+                    Race 1*</label>
+                </div>
+              </div>
+
+              <div (click)="showRace2()" *ngIf="!showRace2Flag && showRaceForm" class="row ml-0 add-link add-optional">
+                <i class="fas fa-plus new-font"></i>
+                <a (click)="showRace2()" tabindex="2" class="add-link">Add Race 2 (optional)</a>
+              </div>
+
+              <div class="row ml-0 mr-0 mb-10" *ngIf="showRaceForm && showRace2Flag">
+                <div class="input-field col s12 pd-0">
+                  <mat-form-field #race2FormField floatPlaceholder="never" class="col s12 pd-0 mat-inherit-underline">
+                    <mat-select id="race2" tabindex="2" appMatSelectChange [parentFormField]="race2FormField" placeholder="Select One" formControlName='race2'>
+                      <mat-option *ngFor='let options of raceList' [value]='options.code'>
+                        {{options.description}}
+                      </mat-option>
+                    </mat-select>
+                  </mat-form-field>
+                  <label for="race2" class="active rel-label">Race 2 (optional)</label>
+                </div>
+              </div>
+              <div class="row ml-0 mr-0 mb-12" *ngIf="showRaceForm">
+                <div class="input-field col s12 pd-0">
+                  <mat-form-field #ethnicity1FormField floatPlaceholder="never" class="col s12 pd-0 mat-inherit-underline">
+                    <mat-select id="ethnicity1" tabindex="3" appMatSelectChange [parentFormField]="ethnicity1FormField" placeholder="Select One"
+                      formControlName='ethnicity1'>
+                      <mat-option *ngFor='let options of ethnicityList' [value]='options.code'>
+                        {{options.description}}
+                      </mat-option>
+                    </mat-select>
+                  </mat-form-field>
+                  <label for="ethnicity1" class="active rel-label" [ngClass]="{'color-invalid': raceForm.controls['ethnicity1'].touched 
+                  && raceForm.controls['ethnicity1'].errors 
+                  && raceForm.controls['ethnicity1'].errors.required}">Ethnicity 1*
+                  </label>
+                </div>
+              </div>
+              <div (click)="showEthenicity2()" *ngIf="!showEthenicity2Flag && showRaceForm" class="row ml-0 add-link add-optional">
+                <i class="fas fa-plus new-font"></i>
+                <a class="add-link" tabindex="4">Add Ethnicity 2 (optional)</a>
+              </div>
+              <div *ngIf="showEthenicity2Flag  && showRaceForm" class="row ml-0 mr-0 mb-12">
+                <div class="input-field col s12 pd-0">
+                  <mat-form-field #ethnicity2FormField floatPlaceholder="never" class="col s12 pd-0 mat-inherit-underline">
+                    <mat-select tabindex="4" appMatSelectChange [parentFormField]="ethnicity2FormField" placeholder="Select One" id="ethnicity2"
+                      formControlName='ethnicity2'>
+                      <mat-option *ngFor='let options of ethnicityList' [value]='options.code'>
+                        {{options.description}}
+                      </mat-option>
+                    </mat-select>
+                  </mat-form-field>
+                  <label for="ethnicity2" class="active rel-label">Ethnicity 2 (optional)</label>
+                </div>
+              </div>
+
+              <div class="row ml-0 mr-0 mb-12" *ngIf="showRaceForm">
+                <div class="input-field col s12 pd-0">
+                  <mat-form-field #latinoFormField floatPlaceholder="never" class="col s12 pd-0 mat-inherit-underline">
+                    <mat-select tabindex="5" appMatSelectChange [parentFormField]="latinoFormField" placeholder="Select One" id="latinoOrigin"
+                      formControlName='latinoOrigin'>
+                      <mat-option *ngFor='let options of latinoOriginList' [value]='options.code'>
+                        {{options.description}}
+                      </mat-option>
+                    </mat-select>
+                  </mat-form-field>
+                  <label for="latinoOrigin" class="active rel-label" [ngClass]="{'color-invalid': raceForm.controls['latinoOrigin'].touched 
+                  && raceForm.controls['latinoOrigin'].errors 
+                  && raceForm.controls['latinoOrigin'].errors.required}">Latino Origin*
+                  </label>
+                </div>
+              </div>
+
+              <div class="row ml-0 mr-0 mb-0 mb-12" *ngIf="showRaceForm">
+                <div class="input-field col s12 pd-0">
+                  <mat-form-field #primaryLanguageFormField floatPlaceholder="never" class="col s12 pd-0 mat-inherit-underline">
+                    <mat-select tabindex="6" appMatSelectChange [parentFormField]="primaryLanguageFormField" placeholder="Select One" id="primaryLang"
+                      formControlName='primaryLang'>
+                      <mat-option *ngFor="let options of languageList" [value]="options.code">
+                        {{options.description}}
+                      </mat-option>
+                    </mat-select>
+                  </mat-form-field>
+                  <label for="primaryLang" class="active rel-label" [ngClass]="{'color-invalid': raceForm.controls['primaryLang'].touched 
+                  && raceForm.controls['primaryLang'].errors 
+                  && raceForm.controls['primaryLang'].errors.required}">Primary Spoken Language*</label>
+                </div>
+              </div>
+              <div class="submit-action-twobutton-twocol">
+                <div tabindex="8" class="waves-effect waves-light white-background btn-white btn-block btn-half-width-left" type="" aria-label="Cancel"
+                  (click)="cancel()">Cancel
+                </div>
+                <button tabindex="7" class="waves-effect waves-light btn btn-block  btn-half-width-right br-8" type="submit" aria-label="Save"
+                  name="action" [disabled]="!raceForm.valid">Save
+                </button>
+              </div>
+            </div>
+            <div class="mt-40" *ngIf="showRaceForm">
+              <p class="font-13-grey">*Field is required.</p>
+            </div>
+          </form>
+        </div>
+        <div class="col s12 m12 l4 right-content">
+          <div class="details-right-link fpo-padding">
+            <div class="drupal-content">
+              <div>
+                <app-fpo-layout [targetUrl]='fpoTargetUrl' [displayCategory]="'profile'"></app-fpo-layout>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

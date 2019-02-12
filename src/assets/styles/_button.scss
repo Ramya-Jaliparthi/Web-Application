@@ -1,0 +1,67 @@
+@import './_colors';
+@import './fonts';
+.submit-action {
+    @extend %submit-action;
+}
+
+.submit-action-twobutton-center {
+    /*.btn[disabled] {
+        background-color: $disabed-background-color !important;
+        color: $button_white_background !important;
+    }*/
+    //SPK/CLEANUP - @media only screen and (min-device-width: 320px) and (max-device-width: 480px) {
+    @media (min-width: 320px) and (max-width: 480px) {
+        margin-bottom: 15px;
+    }
+    .white-background {
+        box-shadow: 0 2px 0px 0 rgba(0, 0, 0, 0), 0 1px 5px 0 rgba(0, 0, 0, 0), 0 3px 1px -2px rgba(0, 0, 0, 0);
+        background-color: $button_white_background;
+        color: $new-color;
+        @include Roboto(bold);
+    }
+}
+
+.submit-action-twobutton-twocol {
+   /* .btn[disabled] {
+        background-color: $disabed-background-color !important;
+    }*/
+    float: right;
+    width: 50%;
+    //SPK/CLEANUP - @media only screen and (min-device-width: 320px) and (max-device-width: 480px) {
+    @media (min-width: 320px) and (max-width: 480px) {
+        width: 75%;
+    }
+    .white-background {
+        box-shadow: 0 2px 0px 0 rgba(0, 0, 0, 0), 0 1px 5px 0 rgba(0, 0, 0, 0), 0 3px 1px -2px rgba(0, 0, 0, 0);
+        background-color: $button_white_background;
+        color: $new-color;
+        @include Roboto(bold);
+    }
+}
+
+%submit-action  .btn[disabled], .btn[disabled] {
+    color:$btn-disabled-text-color!important;
+    border:3px solid $non-vdk-32-grey;
+    background: $background-white-color!important;
+    cursor: not-allowed;
+    box-shadow:none;
+}
+
+.btn,.apply-button{
+    @include Roboto(bold);
+    background: linear-gradient(-180deg, $btn-primary-bkg-gradient-color1 57%, $btn-primary-bkg-gradient-color2 100%);
+    font-size:16px;
+    border: 1px solid $btn-primary-border-color;
+    height:44px!important;  
+    border-radius:5px!important;
+    box-shadow: 0 0 2px 0 rgba(0,0,0,0.30);
+    &:hover{
+        background: linear-gradient(-180deg, $btn-primary-hover-bkg-gradient-color1 57%, $btn-primary-hover-bkg-gradient-color2 100%);
+    }
+
+    /*@at-root{
+        &, .clear-button{
+           
+        }
+    }*/
+}

@@ -1,0 +1,482 @@
+@import '../../../../assets/styles/_colors';
+// spk-cleanup - @import '../../../../assets/styles/variables';
+@import '../../../../assets/styles/_variables';
+@import '../../../../assets/styles/_fonts';
+@import '../dynamic-content';
+
+.claim-details-container {
+  display: flex;
+  margin-left: 0;
+  margin-right: 0;
+
+  .claim-details {
+    //flex: 2;
+    //padding: 0 15px;
+    margin-right: 0.75rem;
+
+    &-header {
+      font-size: $header-font-size;
+      color: $header-color;
+      // padding-bottom: 20px;
+      @include Roboto(light);
+    }
+
+    &-dependent-info {
+      font-size: 12px;
+      padding-bottom: 10px;
+      color: $light-label-color;
+    }
+
+    &-number {
+      @include Roboto(bold);
+      font-size: 14px;
+      color: $text-normal-color;
+    }
+
+    &-number-label {
+      @include Roboto(regular);
+      font-size: 14px;
+      color: $text-sub-list;
+    }
+
+    &-status {
+      .pending {
+        color: $link-color;
+        text-decoration: underline;
+      }
+
+      .completed {
+        color: $success-alerts-color;
+        @include Roboto(bold);
+      }
+
+      &-link {
+        @include Roboto(medium);
+        font-size: 14px;
+        color: $link-primary-color;
+        cursor: pointer;
+        text-decoration: underline;
+      }
+    }
+
+    &-description {
+      p {
+        font-size: 12px;
+        color: $text-gray-color;
+      }
+    }
+
+    &-amount {
+      padding-bottom: 10px;
+      display: flex;
+      justify-content: space-between;
+
+      .amount-covered,
+      .amount-you-owe {
+        font-size: 10px;
+        color: $radio-label-color;
+
+        .amount {
+          font-size: 18px;
+          @include Roboto(light);
+        }
+
+        .amount-text {
+          margin-left: -6px;
+        }
+      }
+
+      .amount-you-owe {
+        @include Roboto(medium);
+
+        .amount {
+          @include Roboto(medium);
+        }
+      }
+    }
+
+    &-service {
+      display: flex;
+      justify-content: flex-end;
+      @include Roboto(medium);
+      color: $radio-label-color;
+
+      .claim-service-label {
+        @include Roboto(medium);
+        font-size: 10px;
+        margin-right: 5px;
+      }
+
+      .claim-service-date {
+        @include Roboto(light);
+        font-size: 12px;
+      }
+    }
+
+    &-pharmacy-details {
+      padding: 20px 0;
+
+      .pharmacy-name,
+      .doctor-name {
+        color: $light-label-color;
+
+        .name {
+          @include Roboto(bold);
+          color: $primary-color;
+          font-size: 16px;
+        }
+
+        .address {
+          @include Roboto(light);
+          color: $light-label-color;
+          font-size: 12px;
+          font-style: inherit;
+        }
+      }
+
+      .pharmacy-contact-info {
+        font-size: 14px;
+
+        .phone-icon,
+        .phone,
+        .directions {
+          color: $link-primary-color;
+          font-size: 12px;
+          @include Roboto(medium);
+
+          i {
+            font-size: 12px;
+            transform: rotate(270deg);
+            color: $link-primary-color;
+          }
+        }
+
+        .phone-icon,
+        .directions-icon {
+          vertical-align: middle;
+        }
+
+        .map-icon {
+          color: $link-color;
+        }
+
+        .directions-icon {
+          i {
+            font-size: 12px;
+            color: $link-color;
+            margin-left: 10px;
+          }
+        }
+
+        .phone,
+        .directions {
+          cursor: pointer;
+          text-decoration: underline;
+        }
+
+        .phone {
+          margin-right: 10px;
+        }
+      }
+
+      .rate-your-provider {
+        padding: 15px 0 0 0;
+        @include Roboto(medium);
+        font-size: 13px;
+
+        a {
+          color: $link-color;
+        }
+      }
+    }
+  }
+
+  .claim-billing-breakdown {
+    display: flex;
+    flex-grow: 1;
+    flex-direction: column;
+    padding: 0.75rem 0.75rem 15px 0rem;
+    border-top: 1.1px solid $file-card-border-color;
+    border-bottom: 1.1px solid $file-card-border-color;
+    margin: 10px 0;
+
+    &-header {
+      @include Roboto(bold);
+      color: $primary-color;
+      font-size: 16px;
+      padding-bottom: 5px;
+    }
+
+    .claim-expense-row,
+    .claim-expense-owe {
+      display: flex;
+      justify-content: space-between;
+      @include Roboto(regular);
+      font-size: 12px;
+      letter-spacing: -0px;
+      color: $title-color;
+      padding: 5px 0;
+    }
+
+    .claim-expense-row {
+      .claim-expense-value.text-gray {
+        color: $text-disabled-gray;
+      }
+    }
+
+    .claim-expense-owe {
+      @include Roboto(bold);
+      border-top: 1px solid $file-card-border-color;
+    }
+
+    .claim-Arcillary {
+      padding: 10px 0;
+
+      .header {
+        font-size: 14px;
+        color: $primary-color;
+      }
+
+      .place-holder-text {
+        font-size: 12px;
+        color: $text-disabled-gray;
+      }
+    }
+  }
+
+  .claim-billing-breakdown-service {
+    display: flex;
+    flex-grow: 1;
+    flex-direction: column;
+    padding: 0 15px 15px 0;
+
+    //border-top: 1px solid $content-background-color;
+    //margin: 10px 0;
+    &-header {
+      @include Roboto(bold);
+      color: $primary-color;
+      font-size: 16px;
+      padding-bottom: 5px;
+    }
+
+    .claim-expense-row,
+    .claim-expense-owe {
+      display: flex;
+      justify-content: space-between;
+      @include Roboto(regular);
+      font-size: 12px;
+      letter-spacing: -0px;
+      color: $title-color;
+      padding: 5px 0;
+    }
+
+    .claim-expense-row {
+      .claim-expense-value.text-gray {
+        color: $text-disabled-gray;
+      }
+    }
+
+    .claim-expense-owe {
+      @include Roboto(bold);
+      border-top: 1px solid $file-card-border-color;
+    }
+
+    .claim-Arcillary {
+      padding: 10px 0;
+
+      .header {
+        font-size: 14px;
+        color: $primary-color;
+      }
+
+      .place-holder-text {
+        font-size: 12px;
+        color: $text-disabled-gray;
+      }
+    }
+  }
+
+  .dynamic-content-container {
+    display: flex;
+    height: 100%;
+  }
+
+  .dynamic-content {
+    //flex: 4;
+    display: flex;
+    flex-direction: column;
+    /*justify-content: center;*/
+    font-size: $header-font-size;
+    align-items: center;
+
+    .details-right-link {
+      //height: 30% !important;
+      //margin-bottom: 15px;
+      width: 100% !important;
+      @include Roboto(bold);
+      background: $content-background-color;
+      text-align: left;
+      font-size: 13px;
+      padding: 15px;
+
+      span {
+        color: $text-primary-color !important;
+      }
+
+      span.text-route {
+        //margin: 0 0 0 2%;
+      }
+
+      span.icon-arrow {
+        color: $background-title-separator-color !important;
+        float: right;
+        width: 11px;
+        height: 18px;
+      }
+      a:active, a:hover {
+        cursor: pointer;
+      }
+    }
+
+    .details-right-link-fpo {
+      //height: 30% !important;
+      //margin-bottom: 15px;
+      width: 100% !important;
+      @include Roboto(bold);
+      text-align: left;
+      font-size: 13px;
+      padding: 15px;
+
+      span {
+        color: $text-primary-color !important;
+      }
+
+      span.text-route {
+        //margin: 0 0 0 2%;
+      }
+
+      span.icon-arrow {
+        color: $background-title-separator-color !important;
+        float: right;
+        width: 11px;
+        height: 18px;
+      }
+    }
+
+    .drupal-content {
+      //height: 70% !important;
+      //  background: $content-background-color;
+      color: $text-gray-color;
+      font-size: 24px;
+      @include Roboto(light);
+      display: -ms-flexbox;
+      display: flex;
+      -webkit-box-pack: center;
+      -ms-flex-pack: center;
+      justify-content: center;
+      // background: $background-gray-color;
+      -webkit-box-align: center;
+      -ms-flex-align: center;
+    }
+  }
+
+  .billing-header {
+    //padding-left: 15px !important;
+    font-size: 13px;
+    @include Roboto(bold);
+    color: $header-color;
+  }
+}
+
+.external-link-item {
+  @include Roboto(medium);
+
+  a {
+    color: $text-primary-color;
+    font-size: 12px;
+
+    .fa-external-link-alt {
+      height: 18px;
+      width: 18px;
+    }
+  }
+
+  padding: 0.75rem 0.75rem 15px 0 !important;
+}
+
+/deep/ .mat-expansion-indicator::after {
+  color: $header-color;
+}
+
+@media (max-width: 992px) {
+  .container {
+    width: 100%;
+  }
+
+  .claim-details-container {
+    flex-direction: column;
+
+    .claim-details {
+      margin-right: 0;
+      padding: 0 0.75rem;
+
+      // &-header {
+      //   padding-bottom: 10px !important;
+      // }
+    }
+
+    .dynamic-content {
+      margin: 20px 0;
+
+      .mobile-container {
+        height: 150% !important;
+      }
+    }
+  }
+
+  .claim-billing-breakdown,
+  .claim-billing-breakdown-service {
+    padding: 15px 0.75rem !important;
+  }
+
+  .external-link-item {
+    padding: 15px 0.75rem !important;
+  }
+
+  .mat-expansion-panel-header {
+    padding: 15px 0.75rem !important;
+  }
+}
+
+/deep/ .mat-expansion-panel {
+  box-shadow: none !important;
+}
+
+/deep/ .mat-expansion-panel-header:hover,
+.mat-expansion-panel-header:focus {
+  background: none !important;
+}
+
+/deep/ .mat-expansion-panel-header {
+  padding: 0 24px 0 0 !important;
+}
+
+/deep/ .mat-expansion-panel-header-description {
+  margin-right: 0 !important;
+}
+
+.billing-service {
+  display: flex;
+  flex-grow: 1;
+  flex-direction: column;
+}
+
+@media (max-width: 992px) {
+  /deep/ .mat-expansion-panel-header {
+    padding: 15px 0.75rem !important;
+  }
+}
+
+.add-border {
+  border-bottom: 1.1px solid $file-card-border-color;
+}

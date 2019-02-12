@@ -1,0 +1,16 @@
+.messages {
+    .mat-checkbox {
+        width: auto; 
+        height: 20px;
+        .mat-checkbox-frame {
+            border: 1px solid $chkbox-border-color;
+            border-radius: 0;
+        }
+        .mat-checkbox-checkmark-path {
+            stroke: $icon-color !important;
+        }
+        &.mat-checkbox-checked .mat-checkbox-background {
+            background: $chkbox-bkg-color;
+        }
+    }
+}

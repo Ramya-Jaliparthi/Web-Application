@@ -1,0 +1,394 @@
+<section class="fad-facility-profile-component">
+  <div class="row" *ngIf="isShowFacilityDetialsSection">
+    <div class="col l4 s12">
+      <mat-card class="profile-title-card">
+        <mat-card-title>{{fadFacilityResposeData?.facilityName}}</mat-card-title>
+        <mat-card-subtitle class='card-sub-title'>{{selectedLocationDetails?.specialty}}</mat-card-subtitle>
+        <!-- Dont delete following section -->
+        <!-- <mat-card-content>
+          <div class="tier-tag">
+            Enhanced Benefits Tier
+          </div>
+        </mat-card-content> -->
+      </mat-card>
+    </div>
+    <div class="col l4 s12">
+      <!-- <mat-card class="location-card" *ngFor="let location of facilityProfile?.locations; let locationItr = index"> -->
+      <mat-card class="location-card">
+        <mat-card-subtitle>
+          {{selectedLocationDetails?.address}}
+        </mat-card-subtitle>
+        <mat-card-content>
+          <span class="phone-icon">
+            <i class="fa fa-phone" aria-hidden="true"></i>
+          </span>&nbsp;
+          <a [href]="selectedLocationDetails && 'tel:+'+selectedLocationDetails?.phone">
+            {{selectedLocationDetails?.phone | phone}}</a>&nbsp;&nbsp;
+          <span class="phone-icon">
+            <i class="fas fa-map-marker-alt"></i>
+          </span>&nbsp;
+          <a (click)="getDirections(selectedLocationDetails?.address, $event)">Get Directions</a>
+          <!-- Dont delete following section -->
+          <!-- <div class="row procedure">
+            <div class="header">Knee Replacement</div>
+            <div class="sub-header">Estimated costs at this location. <a href="javascript:void(0)" (click)="showCostBreakdown()">See
+                cost breakdown</a>.</div>
+            <div>
+              <div class="col s3 my-cost procedure-cost">
+                <div class="cost"><span>$700</span><sup>00</sup></div>
+                <div class="description">My Cost</div>
+              </div>
+              <div class="col s1 operation-symbol">+</div>
+              <div class="col s4 insurance-cost procedure-cost">
+                <div class="cost"><span>$700</span><sup>00</sup></div>
+                <div class="description">Insurance Cost</div>
+              </div>
+              <div class="col s1 operation-symbol">=</div>
+              <div class="col s3 total-cost procedure-cost">
+                <div class="cost"><span>$1400</span><sup>00</sup></div>
+                <div class="description">Total Cost</div>
+              </div>
+            </div>
+          </div> -->
+
+        </mat-card-content>
+
+      </mat-card>
+      <mat-expansion-panel class="see-all-location-affiliations" [expanded]="accordianToggleStatus['allLocation'] == undefined ? false : accordianToggleStatus['allLocation']"
+        (opened)="toggleAccordion('allLocation',true)" (closed)="toggleAccordion('allLocation',false)">
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            <span class="accordian-title-text">See all locations</span>
+          </mat-panel-title>
+        </mat-expansion-panel-header>
+
+        <mat-card *ngIf="fadFacilityResposeData?.location?.length>1" class="other-locations-card">
+          <mat-card-title>Other Locations</mat-card-title>
+          <mat-card-content>
+            <div *ngFor="let locationItem of fadFacilityResposeData?.location let locationIndex = index">
+              <mat-card class="location-card" *ngIf="locationIndex != selectedLocationIndex">
+                <div class="col s11">
+                  <!-- <mat-card-title (click)="loadDetailsBasedOnLocation(locationIndex)">{{locationItem?.name}}</mat-card-title> -->
+                  <mat-card-subtitle (click)="loadDetailsBasedOnLocation(locationIndex)">
+                    {{locationItem?.address}}
+                  </mat-card-subtitle>
+                  <mat-card-content>
+                    <span class="phone-icon">
+                      <i class="fa fa-phone" aria-hidden="true"></i>
+                    </span>&nbsp;
+                    <a [href]="locationItem && 'tel:+'+locationItem?.phone">
+                      {{locationItem?.phone | phone}}</a>&nbsp;&nbsp;
+                    <span class="phone-icon">
+                      <i class="fas fa-map-marker-alt"></i>
+                    </span>&nbsp;
+                    <a (click)="getDirections(locationItem?.address, $event)">Get Directions</a>
+
+                    <div class="row procedure" hidden>
+                      <div class="header">Knee Replacement</div>
+                      <div class="sub-header">Estimated costs at this location.
+                        <a href="javascript:void(0)" (click)="showCostBreakdown()">See cost breakdown</a>.</div>
+                      <div>
+                        <div class="col s3 my-cost procedure-cost">
+                          <div class="cost">
+                            <span>$700</span>
+                            <sup>00</sup>
+                          </div>
+                          <div class="description">My Cost</div>
+                        </div>
+                        <div class="col s1 operation-symbol">+</div>
+                        <div class="col s4 insurance-cost procedure-cost">
+                          <div class="cost">
+                            <span>$700</span>
+                            <sup>00</sup>
+                          </div>
+                          <div class="description">Insurance Cost</div>
+                        </div>
+                        <div class="col s1 operation-symbol">=</div>
+                        <div class="col s3 total-cost procedure-cost">
+                          <div class="cost">
+                            <span>$1400</span>
+                            <sup>00</sup>
+                          </div>
+                          <div class="description">Total Cost</div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="out-of-network-info" hidden>
+                      <span class="remove-icon">
+                        <i class="fas fa-times"></i>
+                      </span>
+                      <span class="out-of-network-text">Out-of-Network &nbsp;</span>
+                      <span class="info-icon tooltip clearfix">
+                        <span class="tooltiptext">We’re unable to provide cost estimates for this provider. Please
+                          <a (click)="reviewBenifits()">review your benefits</a> for more information</span>
+                        <i class="fas fa-info-circle"></i>
+                      </span>
+                    </div>
+                  </mat-card-content>
+                </div>
+                <div class="col s1 aside text-right" (click)="loadDetailsBasedOnLocation(locationIndex)">
+                  <a href="javascript:void(0)" title="Click Here to View the Document Details">
+                    <i class="fa fa-chevron-right"></i>
+                  </a>
+                </div>
+              </mat-card>
+            </div>
+          </mat-card-content>
+        </mat-card>
+        <!-- <mat-card class="hospital-affiliation-card">
+            <mat-card-title>Hospital Affliations</mat-card-title>
+            <mat-card-subtitle>
+              Where this facility has admitting priviledges.
+            </mat-card-subtitle>
+            <mat-card-content>     
+              <mat-card class="hospital-affiliated-with" *ngFor="let hospital of hospitalAffiliationsList">
+                <mat-card-content>
+                  <div class="row">
+                    <div class="col s10 affiliations-name">
+                      {{hospital.name}}
+                    </div>
+                    <div class="col s2 aside text-center">
+                        <a href="javascript:void(0)" title="Click Here to view Facility/Hospital Details" (click)="openFacility($event)">
+                          <i class="fa fa-chevron-right"></i>
+                        </a>
+                    </div>
+                  </div>
+                  <div class="row procedure">
+                        <div class="header">Knee Replacement</div>
+                        <div class="sub-header">Estimated costs at this location. <a href="javascript:void(0)" (click)="showCostBreakdown()">See cost breakdown</a>.</div>
+                        <div>
+                          <div class="col s3 my-cost procedure-cost">
+                            <div class="cost"><span>$700</span><sup>00</sup></div>
+                            <div class="description">My Cost</div>
+                          </div>
+                          <div class="col s1 operation-symbol">+</div>
+                          <div class="col s4 insurance-cost procedure-cost">
+                            <div class="cost"><span>$700</span><sup>00</sup></div>
+                            <div class="description">Insurance Cost</div>
+                          </div>
+                          <div class="col s1 operation-symbol">=</div>
+                          <div class="col s3 total-cost procedure-cost">
+                            <div class="cost"><span>$1400</span><sup>00</sup></div>
+                            <div class="description">Total Cost</div>
+                          </div>
+                        </div>
+                      </div>
+                </mat-card-content>
+              </mat-card>
+            </mat-card-content>
+          </mat-card> -->
+
+      </mat-expansion-panel>
+
+    </div>
+    <div class="col l4 s12">
+      <mat-expansion-panel class="rating-accordian" [expanded]="accordianToggleStatus['rating'] == undefined ? false : accordianToggleStatus['rating']"
+        (opened)="toggleAccordion('rating',true)" (closed)="toggleAccordion('rating',false)">
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            <div>
+              <app-star-rating-component [componentInput]="selectedLocationDetails?.ratings ? getRating(selectedLocationDetails?.ratings) : ''"></app-star-rating-component>
+            </div>
+          </mat-panel-title>
+        </mat-expansion-panel-header>
+        <p class="overall-header-title">Overall Experience based on survey</p>
+        <div class="row overall-recommendation">
+          <div class="col s3 overall-percentage">{{selectedLocationDetails.ratings.percentRecommended}}</div>
+          <div class="col s9 overall-comment">would recommend this provider to a friend.</div>
+        </div>
+
+        <mat-card class="overall-rating-survey" *ngFor="let review of selectedLocationDetails?.reviews">
+          <mat-card-title>
+            {{review.name}}
+          </mat-card-title>
+          <mat-card-content>
+            <div *ngFor="let question of review.questionAnswer; let i = index;">
+              <p class="rating-header-title">{{question.question}}</p>
+              {{review.questionAnswer.answers}}
+              <div class="row rating-recommendation" *ngFor="let answer of review.questionAnswer[i].answers">
+                <div class="col s3 rating-percentage">{{answer.answerPercent}}</div>
+                <div class="col s9 rating-comment">{{answer.answer}}</div>
+              </div>
+            </div>
+          </mat-card-content>
+        </mat-card>
+      </mat-expansion-panel>
+
+      <mat-expansion-panel class="networks-accepted-accordian" [expanded]="accordianToggleStatus['network'] == undefined ? false : accordianToggleStatus['network']"
+        (opened)="toggleAccordion('network',true)" (closed)="toggleAccordion('network',false)">
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            <div class="in-network-header">
+              <span class="check-circle">
+                <i class="fa fa-check-circle" aria-hidden="true"></i>
+              </span>
+              <span class="title-text">&nbsp;In-Network</span>
+            </div>
+            <div *ngIf="noNetworkSelectedFlag" class="networks-accepted">
+              Networks Accepted
+            </div>
+            <div *ngIf="outOfNetworkFlag" class="row out-of-network-info">
+              <span class="remove-icon">
+                <i class="fas fa-times"></i>
+              </span>
+              <span class="out-of-network-text">Out-of-Network &nbsp;</span>
+              <span class="info-icon tooltip clearfix">
+                <span class="tooltiptext">We’re unable to provide cost estimates for this provider. Please
+                  <a (click)="reviewBenifits()">review your benefits</a> for more information</span>
+                <i class="fas fa-info-circle"></i>
+              </span>
+            </div>
+          </mat-panel-title>
+          <mat-panel-description>
+
+          </mat-panel-description>
+        </mat-expansion-panel-header>
+        <!-- Dont delete following commented lines -->
+        <!-- <mat-card class="networks-accepted-card">
+          <mat-card-title *ngIf="inNetworkFlag || outOfNetworkFlag" class="networks-accepted-title">All Networks
+            accepted</mat-card-title>
+          <mat-card-title *ngIf="noNetworkSelectedFlag && anonymousUserFlag">
+            <div class="row">
+              <div class="col s12">
+                <div class="authenticate-if-in-network">
+                  <span class="check-circle">
+                    <i class="fas fa-exclamation-circle"></i>
+                  </span>&nbsp;
+                  <a (click)="doAuthentication()">Login</a>&nbsp;to see if In-Network
+                </div>
+              </div>
+            </div>
+          </mat-card-title>
+          <mat-card-title *ngIf="noNetworkSelectedFlag && registeredUserFlag">
+            <div class="row">
+              <div class="col s12">
+                <div class="authenticate-if-in-network">
+                  <span class="check-circle">
+                    <i class="fas fa-exclamation-circle"></i>
+                  </span>&nbsp;
+                  <a (click)="doAuthentication()">Authenticate</a>&nbsp;to see if In-Network
+                </div>
+              </div>
+            </div>
+          </mat-card-title>
+
+          <mat-card-content>
+
+            <ul class="accepted-network">
+              <li *ngFor="let acceptedNetwork of acceptedNetworks">
+                {{acceptedNetwork}}
+              </li>
+            </ul>
+          </mat-card-content>
+        </mat-card> -->
+
+      </mat-expansion-panel>
+
+      <mat-expansion-panel class="awards-quality-accordian" [expanded]="accordianToggleStatus['award'] == undefined ? false : accordianToggleStatus['award']"
+        (opened)="toggleAccordion('award',true)" (closed)="toggleAccordion('award',false)">
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            <span class="accordian-title-text">Awards & Quality</span>
+          </mat-panel-title>
+          <mat-panel-description>
+
+          </mat-panel-description>
+        </mat-expansion-panel-header>
+
+        <mat-card class="quality-award-card" *ngIf="selectedLocationDetails?.awards?.length > 0">
+          <mat-card-title>
+            Accreditations
+            <span class="check-circle right">
+              <i class="fas fa-info-circle"></i>
+            </span>
+          </mat-card-title>
+          <mat-card-content class="education-content">
+            <div class="row" *ngFor="let award of selectedLocationDetails?.awards">
+              <div class="col s3 award-image">
+
+              </div>
+              <div class="col s19 award-description">
+                {{award.name}}
+              </div>
+            </div>
+          </mat-card-content>
+
+        </mat-card>
+
+        <mat-card class="hospital-quality-methodology" *ngIf="selectedLocationDetails?.quality?.length > 0">
+          <mat-card-title>
+            Hospital Quality Methodology
+          </mat-card-title>
+          <mat-card-subtitle (click)="hospitalQualityListLimitToggle()">
+            <a class="copy-text" href="javascript:void(0)" (click)="learnMoreAboutQuality()">
+              Learn more about Hospital Quality Methodology
+            </a>
+          </mat-card-subtitle>
+          <mat-card-content class="education-content">
+            <div *ngFor="let qualityMethodology of selectedLocationDetails?.quality | slice:0:hospitalQualityListLimit">
+              <div class="row quality-rating">
+                <app-star-rating-component [componentInput]="getQualityRating(qualityMethodology)"></app-star-rating-component>
+              </div>
+              <div class="row quality-description">
+                {{qualityMethodology.name}}
+              </div>
+            </div>
+          </mat-card-content>
+        </mat-card>
+      </mat-expansion-panel>
+
+      <mat-expansion-panel class="location-details-accordian" [expanded]="accordianToggleStatus['location'] == undefined ? false : accordianToggleStatus['location']"
+        (opened)="toggleAccordion('location',true)" (closed)="toggleAccordion('location',false)">
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            <span class="accordian-title-text">Location Details</span>
+          </mat-panel-title>
+          <mat-panel-description>
+
+          </mat-panel-description>
+        </mat-expansion-panel-header>
+
+        <mat-card class="provider-identifier-card" *ngIf="selectedLocationDetails?.identifiers?.length > 0">
+          <mat-card-title>Identifiers</mat-card-title>
+          <mat-card-content>
+            <div class="row" *ngFor="let identifier of selectedLocationDetails.identifiers; let i = index;">
+              <div class="col s3">
+                <input readonly [value]="identifier?.typeCode+' :'">
+              </div>
+              <div class="col s7">
+                <input readonly [value]="identifier?.value" id="{{'inputIdentifier'+i}}">
+              </div>
+              <div class="col s2 aside text-right">
+                <a class="copy-text" href="javascript:void(0)" (click)="copyIdentifierValue($event, 'inputIdentifier'+i)">
+                  Copy
+                </a>
+              </div>
+            </div>
+            <div class="payment-title" *ngIf="selectedLocationDetails?.additionalInformation?.length > 0">Payment</div>
+            <p class="payment-description" *ngFor="let additionalInformation of selectedLocationDetails.additionalInformation; let i = index;">
+              {{additionalInformation.type}}
+            </p>
+          </mat-card-content>
+        </mat-card>
+
+      </mat-expansion-panel>
+      <mat-card class="disclaimer hide-on-large-only">
+        <mat-card-title>
+          <a (click)="searchAffiliatedDoctors()">
+            <i class="fa fa-search circle"></i>&nbsp;
+            <span> Search for affiliated doctors
+            </span>
+          </a>
+        </mat-card-title>
+        <mat-card-content>
+          <p>Our networks include a comprehensive range of doctors, hospitals, and other health care providers. When recruiting
+            providers to participate in our network, we consider the distance our members will have to travel to get to the
+            provider. We select providers for participation in our networks based on their proven ability to meet our credentialing
+            criteria. We do not measure cost, quality, or member experience when selecting providers to participate in our
+            networks.
+          </p>
+        </mat-card-content>
+      </mat-card>
+    </div>
+  </div>
+</section>

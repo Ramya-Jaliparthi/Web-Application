@@ -1,0 +1,50 @@
+@import '../../../../assets/styles/_colors';
+@import '../../../../assets/styles/_fonts';
+%fad-basic-layout {
+    .flex-container {
+        display: flex;
+        flex-direction: row;
+        margin-right: 0;
+    } //for desktop screens
+    @media (min-width: 993px) {
+        .container {
+            margin-left: 0px;
+        }
+        .promo {
+            background: $background-gray-color;
+            margin-left: 0.60rem !important;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+    } //for mobile/tablet screens
+    @media (max-width: 992px) {
+        width: 100%;
+        h1 {
+            margin-left: 10px;
+        }
+        .flex-container {
+            flex-direction: column;
+            width: 100%;
+            margin-left: 0;
+        }
+    }
+}
+
+.position-relative {
+    position: relative;
+}
+
+@media (max-width: 992px) {
+    // for mobile/tablet screens 
+    .mobile-hidden {
+        display: none !important;
+    }
+}
+
+@media (min-width: 993px) {
+    // for mobile/tablet screens 
+    .desktop-only-hidden {
+        display: none !important;
+    }
+}

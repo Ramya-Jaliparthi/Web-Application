@@ -1,0 +1,28 @@
+<div class="container header-container">
+  <app-header></app-header>
+</div>
+<div class="container-fluid">
+  <div class="auth-shadow responsive-image"></div>
+
+  <!-- NOT IN RTMS MODE -->
+  <div class="row container-width" *ngIf="isRtmsUpmode">
+    <app-alerts scope="component" class="hide-on-med-and-up"></app-alerts>
+    <div class="col s12">
+      <div class="layoutCentered">
+        <app-alerts scope="component" class="hide-on-small-only"></app-alerts>
+        <router-outlet #o="outlet"></router-outlet>
+      </div>
+    </div>
+  </div>
+  <!-- NOT IN RTMS MODE -->
+
+  <!-- RTMS MODE -->
+  <div class="container" *ngIf="!isRtmsUpmode">
+    <app-alerts scope="component"></app-alerts>
+    <router-outlet #o="outlet"></router-outlet>
+  </div>
+  <!-- RTMS MODE -->
+</div>
+<div class="container ftrContainer">
+  <app-footer></app-footer>
+</div>

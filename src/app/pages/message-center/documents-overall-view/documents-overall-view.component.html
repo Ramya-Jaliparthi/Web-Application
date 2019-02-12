@@ -1,0 +1,75 @@
+<section class="documents-list-view-component">
+    <div class="row">
+        <div class="flex-container">
+            <div class="col s12">
+                <h1>Overall Plan Information </h1>
+                <h6> for {{parentFolderName}}</h6>
+                <div class="row mb-0">
+                    <div class="col s12 breadcrumbs">
+                        <app-breadcrumbs [breadCrumbs]="breadCrumbs"></app-breadcrumbs>
+                    </div>
+                </div>
+                <div class="titleSeperator"></div>
+                <ul class="collection">
+                    <li class="collection-item">
+                        <div class="flex-box-listing cursor-pointer" (click)="displayBenefitText(0)">
+                            <div class="flex-grow-1 mr-10">
+                                <span class="unread-docs">Eligiblity Provisions</span>
+                                <p>Types of member who are eligible for coverage under your plan.</p>
+                            </div>
+                            <div class="valign-wrapper">
+                                <a href="javascript:void(0)" title="Click Here to View the Document Details">
+                                    <i class="fa fa-chevron-right"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="collection-item">
+                        <div class="flex-box-listing cursor-pointer" (click)="displayBenefitText(1)">
+                            <div class="flex-grow-1 mr-10">
+                                <span class="unread-docs">Claims Filling Limit</span>
+                                <p>When a claim should be filed by the provider or member</p>
+                            </div>
+                            <div class="valign-wrapper">
+                                <a href="javascript:void(0)" title="Click Here to View the Document Details">
+                                    <i class="fa fa-chevron-right"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="collection-item">
+                        <div class="flex-box-listing cursor-pointer" (click)="displayBenefitText(2)">
+                            <div class="flex-grow-1 mr-10">
+                                <span class="unread-docs">Coordination of Benefits</span>
+                                <p>How your plan will coordinate payments of covered services with other insurance plans
+                                </p>
+                            </div>
+                            <div class="valign-wrapper">
+                                <a href="javascript:void(0)" title="Click Here to View the Document Details">
+                                    <i class="fa fa-chevron-right"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="collection-item">
+                        <div class="flex-box-listing cursor-pointer" (click)="displayBenefitText(3)">
+                            <div class="flex-grow-1 mr-10">
+                                <span class="unread-docs">Overall Plan Limitations & Exclusions</span>
+                                <p>Describes coverage that is limited or excluded under your plan.</p>
+                            </div>
+                            <div class="valign-wrapper">
+                                <a href="javascript:void(0)" title="Click Here to View the Document Details">
+                                    <i class="fa fa-chevron-right"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            <!-- <div class="col l3 s12 promo">
+                <app-dynamic-promotional-content></app-dynamic-promotional-content>
+            </div> -->
+        </div>
+    </div>
+
+</section>

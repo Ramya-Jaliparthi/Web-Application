@@ -1,0 +1,28 @@
+<div class="mb-20">
+  <h1 class="form-header">Verify Your Identity</h1>
+  <p>You have four minutes to answer the following questions correctly.</p>
+</div>
+<form autocomplete="off" [formGroup]="securityQuestionsForm" (ngSubmit)="onSubmit()">
+  <div formArrayName="securityQuestions" class="security-questions-container">
+    <div *ngFor="let question of lnqns;let i = index" [formGroupName]="i" >
+      <div class="question-number">Question {{i+1}}*</div>
+      <p class="question-text">{{question.Text.Statement}}</p>
+      <mat-radio-group formControlName="securityQuestion">
+        <mat-list-item class="row" role="listitem" *ngFor="let item of question.Choices">
+          <mat-radio-button class="question-option" [value]="item.ChoiceId">{{item.Text.Statement}}</mat-radio-button>
+        </mat-list-item>
+      </mat-radio-group>
+    </div>
+  </div>
+  <div class="submit-action">
+    <button class="waves-effect waves-light btn btn-block darken-4 mt-mb-5 btn-full-width mb-10 br-8" type="submit" aria-label="Continue"
+      name="action" [disabled]='!securityQuestionsForm.valid'>Continue</button>
+
+    <div class="social-security-link" *ngIf="!isUserMedicare">
+      <a (click)="navigateToAuthpage()" >
+        Or enter the last four digits of your Social Security number.
+      </a>
+    </div>
+  </div>
+  <p class="font-13-grey field-required-indicator">* Field is required.</p>
+</form>

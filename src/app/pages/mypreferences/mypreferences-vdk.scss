@@ -1,0 +1,29 @@
+// Media Query
+$tab-and-down:991px;
+// Colors - to be exported to global
+$grey-medium:$non-vdk-11-grey;
+$white: $text-white-color;
+$blue-dark: $headings-dark-color;
+$grey-dark: $non-vdk-3-grey;
+$font-regular:$text-disabled-gray;
+.btn {
+    width: 140px;
+    /* background-color: $white;
+    color: $grey-medium;
+    @include Roboto(bold);
+    font-size: 16px; */
+}
+
+.btn-border {
+    /* border: 2px solid $grey-medium;
+    border-radius: 5px;*/
+    //  -moz-border-image: -moz-linear-gradient(top, #3acfd5 0%, #3a4ed5 100%);
+    //  -webkit-border-image: -webkit-linear-gradient(top, #3acfd5 0%, #3a4ed5 100%);
+    //  border-image: linear-gradient(to bottom, #3acfd5 0%, #3a4ed5 100%);
+    //  border-image-slice: 5;
+}
+
+.notification-arrow {
+    width: 11.2px;
+    height: 18px
+}

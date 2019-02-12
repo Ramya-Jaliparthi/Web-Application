@@ -1,0 +1,8 @@
+<ol *ngIf="!!(breadcrumbs$ && breadcrumbs$.length)" class="breadcrumb">
+  <li *ngFor="let breadcrumb of breadcrumbs$; let sIndex=index" [ngClass]="{active: sIndex + 1 === breadcrumbs$.length}" class="breadcrumb-item">
+    <i *ngIf="!!sIndex" class="fal fa-angle-right mr-5"></i>
+    <a [routerLink]="breadcrumb.url">
+      {{ breadcrumb.label }}
+    </a>
+  </li>
+</ol>

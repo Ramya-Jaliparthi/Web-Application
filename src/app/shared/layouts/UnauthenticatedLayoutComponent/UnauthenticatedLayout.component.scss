@@ -1,0 +1,201 @@
+@import '../../../../assets/styles/_include';
+.header-class {
+    background: $non-vdk-1 100%;
+    p {
+        font-size: 1rem;
+    }
+    .right-arrow {
+        width: 1.5rem;
+        height: 1.5rem;
+    }
+}
+
+.res-img {
+    width: auto;
+    max-width: 100%;
+    height: auto;
+}
+
+.layoutCentered {
+    position: relative;
+    max-width: 600px;
+    left: calc(50% - 300px);
+}
+
+.layoutCentered {
+    @media (max-width: 600px) {
+        left: 0px;
+        width: 100%;
+    }
+    @media (min-width: 600px) and (max-width:630px) {
+        position: static;
+        max-width: 600px;
+        left: calc(50% - 300px);
+    }
+}
+
+
+.container {
+    margin: 0px auto;
+    @media (min-width: 993px) {
+        width: 100% !important;
+        padding: 0 15px;
+        max-width: 1210px; // Based on specs = 1180 + 15 + 15 = 1210
+    }
+    @media (max-width: 992px) {
+        width: 100% !important;
+        max-width: 100% !important;
+        // overflow: hidden; for fixing the tooltip hiding issue
+    }
+}
+
+
+.footer {
+    .container {
+        margin: 0px auto;
+        @media (min-width: 993px) {
+            width: 90% !important;
+            max-width: 1210px; // 1280px - 90% of 1280 [the border margin/padding]
+        }
+        @media (max-width: 992px) {
+            width: 100% !important;
+            max-width: 100% !important;
+            // overflow: hidden; for fixing the tooltip hiding issue
+        }
+    }
+    .multicol-layout {
+        div {
+            border: 1px solid red;
+        }
+    }
+    .footer-container {
+        //background-color: $text-normal-color;
+        .footer-content-container {
+            display: flex;
+            display: -webkit-flex;
+            margin: 0;
+            .social-icons {
+                margin-top: 10px;
+            }
+        }
+    }
+    img.footer-logo-new {
+        height: 200%;
+        width: 200%;
+    }
+    //@media only screen and (max-width: 480px) {
+    //  .footer-content-container {
+    //    flex-direction: column;
+    //  }
+    //}
+    // For Small and Medium devices
+    @media only screen and (max-width: 992px) {
+        // 992px
+        .footer-container {
+            //background-color: $text-normal-color;
+            width: 100%;
+            .large-devices {
+                display: none;
+            }
+            .footer-content-container {
+                //padding: 10px;
+                flex-direction: column;
+                display: flex;
+                flex-wrap: wrap;
+                display: -webkit-flex;
+                -webkit-flex-wrap: wrap;
+            }
+            img.footer-logo {
+                height: 54px;
+                width: 140px;
+            }
+        }
+        .footer-text {
+            margin-bottom: 5px;
+        }
+        .footer-links {
+            display: flex;
+            flex-direction: column;
+            .footer-link-seperator {
+                display: none;
+            }
+        }
+        .footer-content {
+            .row .col {
+                padding: 0px;
+            }
+        }
+    }
+    //for large devices
+    @media only screen and (min-width: 993px) {
+        // 993px
+        .small-devices {
+            display: none;
+        }
+        .footer-links {
+            display: flex;
+            flex-direction: row;
+            .footer-link-seperator {
+                padding: 0px 5px;
+            }
+        }
+        .footer-container {
+            img.footer-logo {
+                height: 66px;
+                width: 188px;
+            }
+        }
+    }
+    .footer-content p {
+        font-size: 0.86rem;
+        color: $non-vdk-51-grey;
+    }
+    .footer-logged-in-content {
+        @extend .footer-content;
+        p {
+            padding: 20px 0px;
+        }
+    }
+    .footer-links a {
+        font-size: 0.86rem;
+        color: $link-primary-color;
+    }
+    .footer-links a:hover {
+        text-decoration: underline;
+        color: $link-secondary-color;
+    }
+    .footer-links a:focus {
+        color: $link-color;
+    }
+    .flip-img {
+        -moz-transform: scaleX(-1) scaleY(-1);
+        -o-transform: scaleX(-1) scaleY(-1);
+        -webkit-transform: scaleX(-1) scaleY(-1);
+        transform: scaleX(-1) scaleY(-1);
+    }
+    .link-header {
+        @include Roboto(bold);
+        margin-bottom: 5px;
+    }
+    @media screen and (min-width:600px) and (max-width: 869px) {
+        .footer-links {
+            display: flex;
+            flex-direction: column;
+            .footer-link-seperator {
+                display: none;
+            }
+        }
+    }
+    @media screen and (min-width:992px) and (max-width: 1078px) {
+        .footer-links {
+            display: flex;
+            flex-direction: column;
+            .footer-link-seperator {
+                display: none;
+            }
+        }
+    }
+}
+.ftrContainer{
+    width: 100%;
+}

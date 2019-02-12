@@ -1,0 +1,27 @@
+@import '../../../../assets/styles/_variables';
+@import '../../../../assets/styles/_global';
+.input-group-addon {
+    cursor: pointer;
+    &.show-class {}
+    &.hide-class {
+        background-color: $non-vdk-3-grey;
+    }
+}
+
+.info-text {
+    a {
+        text-decoration: underline;
+    }
+}
+
+.password-block {
+    position: relative;
+}
+
+.password-block .input-group-addon {
+    position: absolute;
+    right: 0px;
+    top: 20px;
+    text-align: center;
+}
+

@@ -1,0 +1,109 @@
+<div class="mypref-notification-detail-mat   resuseable">
+
+    <div class="row ml-0 mr-0">
+        <h1 class="col s12 m12 l12 mb-10 padding-adjustment">{{title}}</h1>
+        <div class="col s12 m12 l12 padding-adjustment">
+            The latest updates on what's new.
+        </div>
+    </div>
+    <div class="row ml-0 mr-0 bottom-border-nullifier">
+        <div class="col s12 m12 l4 left-container">
+            <mat-card>
+                <mat-card-content>
+                    <div class=" center-box-width">
+                        <!-- <div class="m-0 row center-box-width enforce-flex"> -->
+                        <div class="row flexcontainer-res-mob-col-desk-row">
+                            <div  class="col s12 l5 box-header-text-13 box-header-text headerToChkBox align-justify">
+                                <!-- class="col s12 l5 box-header-text headerToChkBox" style="align-self: center;"> -->
+                                <span *ngIf="isOptionalPref">All notifications</span>
+                            </div>
+                            <div class="col s12 l7 mypref-chkBoxes">
+                                <!-- class="col s12 l7 mypref-chkBoxes"> -->
+                                <mat-selection-list disableRipple>
+                                    <div class="flexcontainer-row">
+                                        <span *ngFor="let mcItem of getTotalRowElements()" style="padding-right: 18px;padding-top:10px;">
+                                            <div style="text-align: center" class="checkBoxText"> {{mcItem.commChannel.name}} </div>
+                                            <div>
+                                            <mat-list-option [value]="mcItem.checked "  (selectionChange)="onMyPrefChange1(HealthPromoRows[0],mcItem,$event) " [selected]="mcItem.checked " [disabled]="isCheckBoxedDisabledDueToGlobalLevel">
+                                            </mat-list-option>
+                                        </div>
+                                        </span>
+                                    </div>
+                                </mat-selection-list>
+                            </div>
+                        </div>
+                    </div>
+                </mat-card-content>
+            </mat-card>
+        </div>
+        <div class="col s12 m12 l8 right-container right">
+            <div class="row">
+                <div class="col s12 rightCol right" *ngIf="HealthPromoRows.length > 2">
+                    <mat-accordion multi="true">
+                        <mat-expansion-panel>
+                            <!-- (opened)="isOpened('isPharmacyExpanded')" (closed)="isClosed('isPharmacyExpanded')"> -->
+                            <mat-expansion-panel-header class="header-panel" collapsedHeight="40px" expandedHeight="40px">
+                                <span class="box-header-text-13" *ngIf="isOptionalPref"> Or select by type (individual message) </span>
+                                <span class="box-header-text-13" *ngIf="!isOptionalPref"> See message details </span>
+                            </mat-expansion-panel-header>
+                            <div *ngFor="let MCRow of HealthPromoRows; let i = index; ">
+                                <mat-card *ngIf="i > 0" [ngClass]="{
+                                    'mat-card-top-borderless': i==1 ,
+                                    'mat-card-top-border': i>1
+                                }" class="border-nullifier">
+                                    <mat-card-content>
+                                        <div class="flexcontainer-col">
+                                            <div class="row center-box-width flexcontainer-res-mob-col-desk-row align-first">
+                                                <div class="col s12 l5 box-header-text headerToChkBox first-child valign-wrapper">
+                                                    <!-- <div class="m-0 row center-box-width enforce-flex">
+                                                <div class="col s12 l4 box-header-text headerToChkBox" style="align-self: center;"> -->
+                                                    {{MCRow.rowName}}
+                                                </div>
+                                                <div class="col s12 center-box-width hide-on-large-only">
+                                                    <div class="box-description-text" *ngIf="showDescription(MCRow)">
+                                                        {{MCRow.rowDescription}}
+                                                    </div>
+                                                </div>
+                                                <div class="col s12 l7 mypref-chkBoxes" *ngIf="chkBox">
+                                                    <!-- <div class="col s12 l8 mypref-chkBoxes"> -->
+                                                    <mat-selection-list disableRipple (selectionChange)="onMyPrefChange($event) ">
+                                                        <div class="flexcontainer-row">
+                                                            <span *ngFor="let mcItem of MCRow.row " style="padding-right: 10px;padding-right: 18px;">
+                                                                <div style="text-align: center" class="checkBoxText"> {{mcItem.commChannel.name}} </div>
+                                                                <div>
+                                                                    <mat-list-option [value]="mcItem.checked "  (selectionChange)="onMyPrefChange1(MCRow,mcItem,$event) " [selected]="mcItem.checked " [disabled]="isCheckBoxedDisabledDueToGlobalLevel">
+                                                                    </mat-list-option>
+                                                                </div>
+                                                            </span>
+                                                        </div>
+                                                    </mat-selection-list>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="">
+                                            <!-- <div class="m-0 row center-box-width enforce-flex hide-on-med-and-down">
+                                                    <div class="m-0  box-description-text center-box-width"> -->
+                                            <div class="center-box-width hide-on-med-and-down">
+                                                <div class="box-description-text" *ngIf="showDescription(MCRow)">
+                                                    {{MCRow.rowDescription}}
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </mat-card-content>
+                                </mat-card>
+                            </div>
+                        </mat-expansion-panel>
+                    </mat-accordion>
+                </div>
+                <div class="col s12 box-footer-text mb-button-30 submit-action-twobutton-center">
+                    <button tabindex="4" class=" waves-effect waves-light btn btn-block btn-half-width-right br-8 mr-0 btn-border " (click)="OnSubmit()">Save</button>
+                    <button tabindex="5" class=" waves-effect waves-light btn-white btn-white  btn-block white-background right br-8 ml-10 " (click)="OnCancel()">Cancel</button>
+                </div>
+                <div class="col s12 box-footer-text mb-footer-40">
+                    *By enrolling in text alerts you are authorizing Blue Cross Blue Shield of Massachusetts to send text messages through an automatic dialing system.
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

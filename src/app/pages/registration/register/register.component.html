@@ -1,0 +1,58 @@
+<div class="row m-0">
+    <h1 class="form-header">Register Now</h1>
+    <p class="mb-10 sub-header" *ngIf="subheading">{{subheading}}</p>
+    <form novalidate [formGroup]="registerForm" (ngSubmit)="onSubmit()" autocomplete="off">
+        <div class="card-content mb-30">
+            <div class="input-color-onsubmit row mb-10">
+                <div class="input-field col s12 pd-0 userid-control">
+                    <input appAutofocus placeholder="" maxlength="{{maxLength}}" [textMask]="mask" aria-labelledby="useridin" id="useridin" type="text" formControlName="useridin" class="validate fluid-width">
+                    <label for="useridin" class="active fluid-label">{{userTypeLabel}}</label>
+                    <mat-hint *ngIf="userTypeLabel === 'Mobile Number* (This will be your username)'" class="mat-hint-message">000-000-0000 US only</mat-hint>
+                    <app-control-messages [valdiateOnFormSubmit]="true" [isFormSubmitted]="isFormSubmitted" [control]="registerForm['controls'].useridin" [customMessages]="getMessages()"></app-control-messages>
+                </div>
+            </div>
+            <div class="row text-center text-bold  mt-0">
+                <a (click)="toggleUserType()" class="cursor-pointer mt-10 text-link">{{userTypeChangeLabel}}</a>
+            </div>
+            <div class="input-color-onsubmit row mt-10">
+                <div class="input-field col s12 password-block pd-0">
+                    <input placeholder="" aria-labelledby="password" id="password" type="{{type}}"
+                    formControlName="passwordin" class="mb-5 validate fluid-width" (blur)="showErrorOnBlur()" maxlength="16"
+                    autocomplete="new-password" />
+                    <label for="password" class="active">Password*</label>
+                    <a class="input-group-addon" [ngClass]="(typePlaceholder | lowercase) + '-class'" (click)="togglePasswordVisibility()">{{typePlaceholder}}</a>
+                    <app-password-control-messages [isBlurEvent] = "showPasswordErrors" [password]="registerForm.value.passwordin" [isSubmitted]="isFormSubmitted" [control]="registerForm['controls'].passwordin"></app-password-control-messages>
+                    <app-control-messages [valdiateOnFormSubmit]="true" [isFormSubmitted]="isFormSubmitted" [control]="registerForm['controls'].passwordin" [customMessages]="getPasswordMessages()" [controlName]="'regpassword'"></app-control-messages>
+                </div>
+            </div>
+        </div>
+
+        <div>
+            <p class="mb-0">
+                <input type="checkbox" aria-labelledby="receiveinfo" class="filled-in" id="receiveinfo" checked="checked" formControlName="receiveinfo" />
+                <label for="receiveinfo" class="black-text">
+                    <p class="privacy-text font-color-black">Yes, I wish to receive communications from Blue Cross Blue Shield of Massachusetts.
+                        <a routerLink="/pages/learnmore" (click)="saveState()" routerLinkActive="active"><u>Learn More.</u></a>
+                    </p>
+                </label>
+            </p>
+            <p class="font-14-grey mt-20 privacy-text continue-text">By clicking "Continue", I agree to the Blue Cross Blue Shield of Massachusetts
+                <a class="font-14-grey" routerLink="/pages/terms" (click)="saveState()" routerLinkActive="active"><u>Terms of Use</u></a> and
+                <a class="font-14-grey" routerLink="/pages/confidentiality" (click)="saveState()" routerLinkActive="active"><u>Confidentiality</u></a>
+            </p>
+            <div class="submit-action">
+                <button tabindex="0" class="btn waves-effect waves-light mt-mb-5 btn-full-width btn-color br-8" type="submit" name="action" aria-label="Continue">Continue</button>
+            </div>
+            <p class="font-14-grey left-align mt-10">* Field is required.</p>
+
+          <div class="help-text">
+            <p>
+              Welcome New Members!  You will be able to register on your plan effective date.
+            </p>
+            <a aria-label="Help Text" href="http://bcbsma.info/help">
+              <span>Help with Sign in / Registration</span>
+            </a>
+          </div>
+        </div>
+    </form>
+</div>

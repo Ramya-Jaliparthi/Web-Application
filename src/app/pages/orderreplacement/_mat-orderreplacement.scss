@@ -1,0 +1,16 @@
+@import '../../../assets/styles/_fonts';
+@import '../../../assets/styles/_variables';
+@import '../../../assets/styles/_colors';
+    .order-idcard-container {
+        .mat-checkbox-checkmark-path {
+            stroke: $headings-dark-color !important;
+        }
+        .mat-checkbox {
+            .mat-checkbox-frame {
+                border-width: 1px;
+                border-color: $non-vdk-19-grey;
+                border-radius: 1px;    
+            }
+        }
+    }
+

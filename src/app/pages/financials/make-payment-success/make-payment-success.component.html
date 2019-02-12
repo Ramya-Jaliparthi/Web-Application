@@ -1,0 +1,75 @@
+<div class="mt-20 hide-on-large-only">
+  <app-breadcrumbs [breadCrumbs]="breadCrumbs" class="mlmr-15"></app-breadcrumbs>
+</div>
+<div class="review-submit-success row  m-0">
+  <span class="check-circle">
+    <i class="fal fa-check-circle"></i>
+  </span>&nbsp;
+  <span class="success-text">Success!</span>
+</div>
+<div class="payment-success-container">
+    <div class="payment-success-header">
+      <h1 *ngIf="submitNow && !isPayProvider">Your payment was submitted</h1>
+      <h1 *ngIf="submitNow && isPayProvider">Your request to pay a
+          provider was submitted.</h1>
+      <h1 *ngIf="!submitNow && !isPayProvider">Your payment was saved
+          for later</h1>
+      <h1 *ngIf="!submitNow && isPayProvider">Your request to pay a
+          provider was saved for later</h1>
+      <div class="hide-on-med-only hide-on-small-only">
+        <app-breadcrumbs [breadCrumbs]="breadCrumbs"></app-breadcrumbs>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col s12 l8">
+        <div class="payment-amount">
+          <div>
+            <span>&#36;{{convertAmountToBaseValue(transactionDetails.amount) | number}}<sup>{{convertAmountToDecimalValue(transactionDetails.amount)}}</sup></span>
+            <span> to be paid by direct deposit to {{transactionDetails.name}}</span>
+          </div>
+        </div>
+        <div class="transaction-details">
+          
+          <div class="transaction-details-header">
+            <h2>Transaction Details</h2>
+          </div>
+
+          <div class="user-name">
+            <span>{{transactionDetails.name}}</span>
+          </div>
+
+          <div class="provider-name">
+            <span>Provider: </span><span>{{transactionDetails.provider}}</span>
+          </div>
+          
+          <div class="service-type">
+              <span>Service Type: </span><span>{{transactionDetails.serviceType}}</span>
+          </div>
+
+          <div class="user-note">
+              <span>Note: </span><span>{{transactionDetails.note}}</span>
+          </div>
+
+          <div class="transaction-date-section">
+            <span class="trasaction-label">Date of Transaction:</span>
+            <span class="transaction-date">{{transactionDetails.dateOfTransaction}}</span>
+          </div>
+    
+          <div class="service-date-section">
+            <span class="service-date-label">Date of Service:</span>
+            <span
+              class="service-date">{{transactionDetails.dateOfServiceStart}} - {{transactionDetails.dateOfServiceEnd}}</span>
+          </div>
+        </div>
+      </div>
+      <div class="submit-section col s12 l4">
+
+        <div class="view-transaction-action">
+          <button type="button" class="btn btn-primary btn-full-width" (click)= 'showAllTransactions()'>View All Transactions</button>
+        </div>
+      </div>
+
+    </div>
+</div>
+
+    

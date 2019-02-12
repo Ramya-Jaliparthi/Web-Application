@@ -1,0 +1,52 @@
+//input#accesscode {
+//    width: 60px !important;
+//}
+@import '../../../../assets/styles/_variables';
+@import '../../../../assets/styles/_global';
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+input.access-code {
+    border: none;
+    border-bottom: 1px solid $non-vdk-19-grey;
+    text-align: center;
+    font-size: 24px;
+    color: $text-normal-color;
+}
+
+.form-header {
+    margin-bottom: 10px !important;
+}
+
+.fix-left-right-margin{
+    margin-left: -0.75rem !important;
+    margin-right: -0.75rem !important;
+}
+
+
+
+.clear-button:hover {
+  background-color: #c6dcee !important;
+}
+.clear-button {
+  color: $text-primary-color;
+  border-radius: 8px;
+  background: $background-white-color;
+  font-size: 16px !important;
+  height: 44px !important;
+  @include Roboto(bold);
+  min-width: 125px !important;
+}
+.apply-button {
+  background: $new-color;
+  border-radius: 8px;
+  color: $background-white-color;
+  font-size: 16px !important;
+  @include Roboto(bold);
+  min-width: 125px !important;
+  height: 44px !important;
+}
+

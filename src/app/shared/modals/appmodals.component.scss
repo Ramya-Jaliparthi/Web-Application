@@ -1,0 +1,140 @@
+@import '../../../assets/styles/_include';
+.service-error-modal,
+.no-internet-modal,
+.token-expire-modal,
+.global-error-modal,
+.otherparty-site-modal {
+  padding: 15px;
+  background: $white_background;
+  top: 15% !important;
+  overflow: hidden;
+  .modal-header {
+    display: flex;
+    justify-content: space-between;
+    padding-bottom: 15px;
+    border-bottom: 2px solid $non-vdk-32-grey;
+    .bcbsma-logo {
+      height: 51px;
+      width: 133px;
+    }
+
+    .modal-close {
+      svg {
+        color: $non-vdk-3-grey;
+        width: .556em !important;
+      }
+    }
+  }
+  .modal-body {
+    padding: 20px 0 10px 0;
+    p {
+      @include Roboto(bold);
+      font-size: 18px;
+      line-height: 24px;
+      letter-spacing: -0.01px;
+      .phone-link {
+        color: #043167;
+        text-decoration: underline;
+      }
+    }
+    .action-container {
+      display: flex;
+      justify-content: space-around;
+      padding-top: 30px;
+      button {
+        font-size: 16px;
+        width: 290px;
+      }
+      .btn-primary {
+        color: white;
+      }
+      .secondary {
+        color: $primary-color;
+      }
+      button:nth-child(2) {
+        margin-left: 20px;
+      }
+  }
+  }
+}
+
+.otherparty-site-modal {
+  max-height: 85%;
+  .modal-body {
+    .action-container {
+      button {
+        width: auto;
+        max-width: 270px;
+        flex: 1;
+      }
+    }
+    p {
+      padding-bottom: 10px;
+    }
+    .header-text {
+      @include Roboto(light);
+      font-size: 24px;
+      color: $primary-color;
+    }
+    .company-name {
+      @include Roboto(bold);
+      font-size: 22px;
+      color: $primary-color;
+    }
+    .content-text {
+      @include Roboto(regular);
+      font-size: 16px;
+      color: #4D4D4D;
+    }
+  }
+}
+
+@media (max-width: 992px) {
+  .service-error-modal,
+  .global-error-modal,
+  .no-internet-modal,
+  .session-expire-modal {
+    width: 100% !important;
+    top:27.8% !important;
+    .modal-body {
+      .action-container {
+        flex-direction: column-reverse;
+        align-items: center;
+        button:nth-child(2) {
+          margin-bottom: 20px;
+          margin-left: 0;
+        }
+      }
+    }
+  }
+  .otherparty-site-modal {
+    width: 100% !important;
+  }
+}
+
+
+.apply-button {
+  background: $link-primary-color;
+  border-radius: 5px;
+  color: $background-white-color;
+  font-size: 16px;
+  @include Roboto(bold);
+}
+
+.apply-button:hover {
+  background: $link-secondary-color;
+}
+.apply-button:focus {
+  background: $link-color;
+}
+.clear-button {
+  color: $text-primary-color;
+  border-radius: 5px;
+  background: $background-white-color;
+  font-size: 16px;
+  @include Roboto(bold);
+  height: 44px !important;
+}
+.clear-button:hover {
+  background-color: #c6dcee !important;
+}

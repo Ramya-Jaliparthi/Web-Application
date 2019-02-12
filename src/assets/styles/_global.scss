@@ -1,0 +1,602 @@
+@import './_flex';
+@import './_variables';
+@import './_fonts';
+@import './_colors';
+@import './_colors';
+@import './_button';
+.flex {
+    @extend %flexbox;
+}
+
+.flex-row-reverse {
+    @include flex-direction(row-reverse);
+}
+
+.flex {
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+}
+
+.flex-row-reverse {
+    -webkit-box-direction: reverse;
+    -moz-box-direction: reverse;
+    -webkit-flex-direction: row-reverse;
+    -ms-flex-direction: row-reverse;
+    flex-direction: row-reverse;
+}
+
+// Placeholder Style
+.search-input::-webkit-input-placeholder { /* WebKit, Blink, Edge */
+    @include Roboto(regular);
+    font-size: 14px;
+    color: #8C8C8C !important;
+}
+.search-input:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+    @include Roboto(regular);
+    font-size: 14px;
+    color: #8C8C8C !important;
+    opacity:  1;
+}
+.search-input::-moz-placeholder { /* Mozilla Firefox 19+ */
+    @include Roboto(regular);
+    font-size: 14px;
+    color: #8C8C8C !important;
+    opacity:  1;
+}
+.search-input:-ms-input-placeholder { /* Internet Explorer 10-11 */
+    @include Roboto(regular);
+    font-size: 14px;
+    color: #8C8C8C !important;
+}
+.search-input::-ms-input-placeholder { /* Microsoft Edge */
+    @include Roboto(regular);
+    font-size: 14px;
+    color: #8C8C8C !important;
+}
+
+.search-input::placeholder { /* Most modern browsers support this now. */
+    @include Roboto(regular);
+    font-size: 14px;
+    color: #8C8C8C !important;
+}
+// spk/cleanup - login, update-password, profile-info, 
+// spk/cleanup - create-password, profile-edit, profile, 
+// spk/cleanup - update-password, register-detail, register
+// spk/cleanup - updatesnn, updatestudentid
+.input-group-addon {
+    cursor: pointer;
+    border-radius: 50px;
+    // spk/cleanup - background: $non-vdk-1 100%;
+    background: $background-title-separator-color;
+    // spk/cleanup - color: white;
+    color: $text-white-color;
+    // spk/cleanup - font-weight: 500;
+    @include Roboto(medium);
+    font-size: 11px;
+    width: 55.9px;
+    height: 18px;
+    line-height: 18px;
+    letter-spacing: -0.01px;
+}
+
+// spk/cleanup - login, update-password, profile-info, 
+// spk/cleanup - create-password, profile-edit, profile, 
+// spk/cleanup - update-password, register-detail, register
+// spk/cleanup - updatesnn, updatestudentid
+/*
+Below issues fixed. $non-vdk-1 and $non-vdk-2 are unused.
+$non-vdk-1 changed to $background-title-separator-color(#1866A3)
+$non-vdk-2 changed to $background-title-separator-color(#1866A3)
+*/
+.input-field {
+    label {
+        // spk/cleanup color: #000;
+        color: $title-color;
+        font-size: 18px;
+        // spk/cleanup - font-weight: 500;
+        @include Roboto(bold);
+    }
+    input:focus+label {
+        // spk/cleanup color: #1866A3 !important;
+        color: $text-primary-color !important;
+    }
+    mat-form-field.mat-select-custom-focused+label {
+        // spk/cleanup color: #1866A3;
+        color: $text-primary-color !important;
+    }
+    mat-form-field.mat-select-custom-focused.mat-primary .mat-select-arrow {
+        // spk/cleanup  color: #1866A3 !important;
+        color: $text-primary-color !important;
+        border-bottom: 5px solid;
+        border-top: 0px solid;
+    }
+    /* Inline Error Messages start */
+    input.ng-touched.ng-invalid+label {
+        // spk/cleanup color: $error-alert-color;
+        color: $error-alert-color
+    }
+    input.ng-touched.ng-invalid+label {
+        // spk/cleanup  color: $error-alert-color;
+        color: $error-alert-color
+    }
+    input:focus.ng-touched.ng-invalid+label {
+        // spk/cleanup  color: $error-alert-color !important;
+        color: $error-alert-color !important;
+    }
+    /* Inline Error Messages End */
+}
+
+// spk/cleanup - login, rcl, register, 
+// spk/cleanup - settings
+[type="checkbox"].filled-in+label:after {
+    border-radius: 0;
+}
+
+[type="checkbox"].filled-in:checked+label:after {
+    top: 0;
+    width: 22px;
+    height: 22px;
+    /* spk/cleanup
+    border: 1px solid $non-vdk-19-grey;
+    background-color: $non-vdk-19-grey;
+    */
+    border: 1px solid $chkbox-border-color;
+    background-color: $chkbox-border-color;
+    z-index: 0;
+}
+
+/*
+Below issues fixed. $non-vdk-1 and $non-vdk-2 are unused.
+$non-vdk-1 changed to $background-title-separator-color(#1866A3)
+$non-vdk-2 changed to $background-title-separator-color(#1866A3)
+*/
+[type="checkbox"].filled-in:checked+label:before {
+    /* spk/cleanup
+    border-right: 2px solid $non-vdk-2;
+    border-bottom: 2px solid $non-vdk-2;
+    */
+    border-right: 2px solid $background-title-separator-color;
+    border-bottom: 2px solid $background-title-separator-color;
+    top: 0px;
+    left: 2px;
+    width: 8px;
+    height: 15px;
+    //spk/cleanup - @media only screen and (max-device-width: 1024px) {
+    @media only screen and (max-width: 1024px) {
+        /* spk/cleanup - repeating
+            border-right: 2px solid $non-vdk-2;
+            border-bottom: 2px solid $non-vdk-2;
+        */
+        top: 1px;
+        left: 1px;
+        /* spk/cleanup - repeating
+        width: 8px;
+        height: 15px;
+        */
+    }
+}
+
+[type="checkbox"].filled-in:not(:checked)+label:after {
+    // spk/cleanup border: 1px solid $non-vdk-19-grey;
+    border: 1px solid $chkbox-border-color;
+    width: 1.63rem;
+    height: 1.63rem;
+}
+
+// spk/cleanup - myclaims, financials, register, profile, setting
+.tabs {
+    .indicator {
+        height: 5px;
+        // spk/celanup background-color: $non-vdk-1;
+        background-color: $non-vdk-1;
+    }
+}
+
+// spk/cleanup - all files
+
+
+// spk/cleanup - session
+.menu-bar {
+    nav .nav-wrapper a {
+        @media screen and (max-width: 599px) {
+            color: $non-vdk-3-grey;
+            border-bottom: none;
+            bottom: 77px;
+        }
+        @media (min-width: 600px) and (max-width: 601px) {
+            color: $non-vdk-4-grey;
+            border-bottom: none;
+            bottom: 77px;
+        }
+    }
+    .side-nav li a {
+        @media screen and (max-width: 599px) {
+            color: $title-color !important;
+            border-bottom: 1px solid $title-color !important;
+        }
+        @media (min-width: 600px) and (max-width: 601px) {
+            color: $title-color !important;
+            border-bottom: 1px solid $title-color !important;
+        }
+    }
+    .menu-bar {
+        @media screen and (min-width: 602px) {
+            nav a {
+                color: $title-color !important;
+                border-bottom: 1px solid $title-color !important;
+                height: 50px;
+            }
+        }
+    }
+}
+
+// For Small and Medium devices
+@media only screen and (max-width: 992px) {}
+
+//for large devices
+@media only screen and (min-width: 993px) {
+    .container {
+        width: 80%;
+    }
+}
+
+// To remove the chrome autofill yellow color
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+    -webkit-transition-delay: 9999s;
+    -webkit-transition: color 9999s ease-out, background-color 9999s ease-out;
+}
+
+input:focus:-webkit-autofill,
+input:focus:-webkit-autofill:hover,
+input:focus:-webkit-autofill:focus,
+input:focus:-webkit-autofill:active {
+    -webkit-transition-delay: 9999s;
+    -webkit-transition: color 9999s ease-out, background-color 9999s ease-out;
+}
+
+// spk/cleanup - login screen
+input[type=text]:not(.browser-default):focus:not(readonly),
+input[type=password]:not(.browser-default):focus:not(readonly) {
+    /* spk/cleanup
+    border-bottom: 1px solid $title-color !important;
+    box-shadow: 0 0 0 0 $non-vdk-5-brown !important;
+    */
+    border-bottom: 1px solid $title-color !important;
+    box-shadow: 0 0 0 0 $non-vdk-5-brown !important;
+}
+
+// spk/cleanup - layouts
+.auth-shadow {
+    //background: url("assets/images/shadow.png") no-repeat;
+    //background-size: 100%;
+    //display: block;
+    //position: relative;
+    //height: 0;
+    //padding-bottom: 0.3%;
+    //background-position-y: -7px;
+    //background-color: #1866a3;
+    // padding: 0.15rem;
+    // spk/cleanup - background: $primary-color;
+    background: $background-default-color;
+    height:4px;
+}
+
+// spk/cleanup - myclaims, mydoctors
+.claims-pad-left {
+    padding-left: 2%;
+}
+
+.claims-pad-right {
+    padding-right: 2%;
+}
+
+.claims-pad-left-zero {
+    padding-left: 0;
+}
+
+.claims-shadow {
+    // spk/cleanup - background: url("assets/images/shadow.png") $non-vdk-7-grey no-repeat;
+    background: url("/assets/images/shadow.png") $non-vdk-7-grey no-repeat;
+    background-size: 100%;
+    display: block;
+    position: relative;
+    height: 0;
+    padding-bottom: 1.6%;
+    background-position-y: -7px;
+}
+
+.grey-border {
+    // spk/cleanup - border-left-color: $non-vdk-8-grey !important;
+    border-left-color: $non-vdk-8-grey !important;
+}
+
+.green-border {
+    // spk/cleanupborder-left-color: $non-vdk-9-green !important;
+    border-left-color: $non-vdk-9-green !important;
+}
+
+.red-border {
+    // spk/cleanup - border-left-color: $non-vdk-10-red !important;
+    border-left-color: $non-vdk-10-red !important;
+}
+
+.green-text {
+    // spk/cleanup - color: $non-vdk-9-green;
+    color: $non-vdk-9-green;
+}
+
+.red-text {
+    // spk/cleanup - color: $non-vdk-10-red;
+    color: $non-vdk-10-red;
+}
+
+.bold-text {
+    font-size: 16px;
+    // spk/cleanup - font-weight: bold;
+    @include Roboto(bold);
+}
+
+.grey-text {
+    // spk/cleanup - color: $non-vdk-8-grey;
+    color: $non-vdk-8-grey;
+}
+
+// global styles for all forms.
+//spk/cleanup - login, confirmidentity, create-password, forgot-password, fpcofirmidentity,
+//spk/cleanup - orderreplacement, member-info, registerm register-detail, registrationpromo,
+//spk/cleanup - security-asnwers, success-info, updatessn, updatestdetid
+//spk/cleanup - verifyaccesscode, confidentiality, learn-more, terms
+.form-header {
+    // spk/cleanup - color: $header-color;
+    // spk/cleanup - font-size: $header-font-size;
+    // spk/cleanup - font-weight: $header-font-weight;
+    color: $headings-dark-color;
+    font-size: 24px;
+    @include Roboto(light);
+    margin: 20px 0px !important;
+}
+
+//spk/cleanup - myclaimsn, mydoctors, profile-info
+.date-picker {
+    button:focus {
+        background-color: transparent !important;
+        // spk/cleanup - color: $text-white-color
+        color: $background-white-color;
+    }
+}
+
+//spk/cleanup - login, forgot-username
+.line-through {
+    position: relative;
+}
+
+.line-through .content {
+    // spk/cleanup - background: $text-white-color;
+    padding: 0 15px;
+    background: $background-white-color;
+}
+
+.line-through:before {
+    // spk/cleanup - border-top: 1px solid #$non-vdk-22-grey;
+    border-top: 1px solid $non-vdk-22-grey;
+    content: "";
+    margin: 0 auto;
+    position: absolute;
+    top: 50%;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: 100%;
+    z-index: -1;
+}
+
+//spk/cleanup - login, profile-info, profile-edit, profile, rcl, 
+//spk/cleanup - member-info, regitser-detail, updatessn, updatestudentid
+.form-submitted {
+    input:focus+label {
+        //spk/cleanup -  color: #1866A3;
+        color: $text-disabled-color;
+    }
+    input.ng-invalid+label {
+        //spk/cleanup -  color: $error-alert-color;
+        color: $error-alert-color
+    }
+}
+
+.screen-header {
+    color: $header-color;
+    font-size: $header-font-size;
+    @include Roboto(light);
+    margin: $header-margin;
+}
+
+.description-text {
+    color: $black-text;
+    text-align: left;
+    font-size: 16px;
+    @include Roboto(regular);
+    color: $text-disabled-gray;
+}
+
+.icon-verified {
+    color: $success-alerts-color !important;
+    font-size: 15px;
+    float: left;
+    margin: 1% 0% 0% 0%;
+    //spk/cleanup - @media only screen and (max-device-width : 1023px) {
+    @media only screen and (max-width: 1023px) {
+        margin: 0.75% 3% 0% 0%;
+    }
+}
+
+.no-uploads-icon {
+    img {
+        height: 48px;
+        width: 40px;
+    }
+}
+
+.userId-color-registered {
+    color: $primary-color !important;
+    @include Roboto(bold);
+}
+
+.icon-info {
+    color: blue !important;
+    font-size: 20px;
+    float: left;
+    margin: 0% 0% 0% 0%;
+    //spk/cleanup - @media only screen and (max-device-width: 600px) {
+    @media only screen and (max-width: 600px) {
+        margin: 0% 3% 0% 0%;
+    }
+}
+
+
+/* Tool Tip starts */
+
+.link-global {
+    cursor: pointer;
+    color: $link-primary-color !important;
+    text-decoration: underline;
+}
+
+.link-global:hover {
+    cursor: pointer;
+    color: $link-secondary-color !important;
+    text-decoration: none;
+}
+
+.link-global:focus {
+    cursor: pointer;
+    color: $link-color !important;
+}
+
+// Tooltip
+.tooltip {
+    position: relative;
+    display: inline-block;
+    border-bottom: none;
+}
+
+.icon-blue {
+    color: $link-secondary-color;
+    font-size: 16px;
+}
+
+.icon-tooltip-filled {
+    .icon-blue {
+        background-color: $link-secondary-color;
+        color: $text-white-color;
+        border-radius: 50%;
+    }
+}
+
+.tooltip .tooltiptext {
+    visibility: visible;
+    width: 249px;
+    margin-left: -227px;
+    background-color: $white_background;
+    @include Roboto(light);
+    font-size: 12px !important;
+    color: $text-normal-color;
+    letter-spacing: -0px;
+    text-align: left;
+    padding: 10px;
+    position: absolute;
+    z-index: 1;
+    bottom: 27px;
+    left: 0px;
+    &:after {
+        content: "";
+        position: absolute;
+        top: 100%;
+        left: 227px;
+        margin-left: 0px;
+        font-size: 16px !important;
+        border-width: 7px;
+        border-style: solid;
+        border-color: $white_background transparent transparent transparent;
+    }
+    .fpocontent {
+        p {
+            font-size: 12px !important;
+            color: $text-normal-color;
+        }
+    }
+}
+
+// .tooltip:hover .tooltiptext {
+//     visibility: visible;
+// }
+
+.raisedbox {
+    font-size: 14px !important;
+    bottom: 165%;
+    padding: 10px;
+    border: 1px solid $white_background;
+    box-shadow: -1px -1px 16px 3px $tooltip-shadowcolor;
+}
+
+
+/* Tool Tip Ends */
+
+.mat-option {
+    background-color: $content-background-color;
+    //height: 3em !important;
+    color: $black_color !important;
+    @include Roboto(light);
+    font-size: 14px !important;
+
+    white-space: normal;
+    height: auto !important;
+    min-height: 3em !important;
+    .mat-option-text {
+        line-height: 18px;
+    }
+}
+
+.mat-option.mat-active {
+    background: $dropdown-background-color !important; //$forms-select-muted-color #C6DCEE
+    color: $black_color !important; //$forms-select-muted-color
+    //height: 26px !important;
+    @include Roboto(light);
+    font-size: 14px;
+    text-align: left;
+}
+
+.mat-select-panel .mat-optgroup-label,
+.mat-select-panel .mat-option {
+    font-size: inherit;
+    line-height: 2em !important;
+    height: 32px !important;
+}
+
+.mat-primary .mat-option.mat-selected:not(.mat-option-disabled) {
+    color: $new-color !important;
+}
+
+.inline-error {
+    color: $error-alert-color;
+    @include Roboto(regular);
+    font-size: 12px !important;
+}
+
+.icon-error-style {
+    height: 18.06px !important;
+    width: 18.06px !important;
+    margin-right: 9.94px;
+}
+
+.color-invalid {
+    color: $error-alert-color !important;
+}
+a:active, a:hover {
+    cursor: pointer;
+}

@@ -1,0 +1,160 @@
+<div class="message-center-search-component">
+  <div #sideNavContainer>
+
+    <div class="filter-bar" [ngClass]="{'toggle-show':isDisplayFilter}" (click)="toggleFilter()">
+      <span>Filter
+        <a href="javascript:void(0)" *ngIf="!isDisplayFilter">
+          <i class="fa fa-chevron-down"></i>
+        </a>
+        <a href="javascript:void(0)" *ngIf="isDisplayFilter">
+          <i class="fa fa-chevron-up"></i>
+        </a>
+      </span>
+    </div>
+
+    <div class="filter-container" [class.block]="isDisplayFilter">
+      <div class="filter-pos">
+        <div class="col s12 search-box">
+          <div>
+            <input #searchInput [focus]="myFocusTriggeringEventEmitter" type="text" id="autocomplete-input" [(ngModel)]="searchCriteriaData.keywordToSearch"
+              (keyup)="showTypeAHeadList($event,data)" (keyup.enter)="search($event,data)" (keydown)="escapeSearchContainer($event)"
+              (focus)="escapeSearchContainer($event)" #data class="search-input" placeholder="Keyword">
+            <i class="material-icons close-icon" (click)="clearSearchVal()" *ngIf="showClose">close</i>
+            <i class="material-icons" (click)="search($event,data)">search</i>
+          </div>
+          <div class="auto-search" *ngIf="isAutoSearch" #searchDrpContainer>
+            <ul>
+              <li *ngFor="let matchingKeyword of searchCriteriaData.matchingKeywords; let matchingKeywordIndex = index;" tabindex="{{matchingKeywordIndex}}"
+                (keydown)="searchMouseDown($event, matchingKeywordIndex)" (click)="getSearchValue($event,matchingKeyword)">
+                {{matchingKeyword}}
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <mat-accordion multi="true" *ngIf="searchCriteriaData?.sortByFilterMap?.size>0">
+          <mat-expansion-panel class="sort" [expanded]="isSortExpanded" (opened)="isSortOpened()" (closed)="isSortClosed()">
+            <mat-expansion-panel-header class="header-panel" [collapsedHeight]="collapsedSortHeight" [expandedHeight]="expandedSortHeight">
+              <div class="sort-text">Sort by</div>
+              <p class="selected-sort" *ngIf="!isSortExpanded">{{sortSelectedFilter}}</p>
+            </mat-expansion-panel-header>
+            <mat-list>
+              <mat-radio-group (touch)="proxyClick($event)" (click)="proxyClick($event)" name="filterSort" [(ngModel)]="sortSelectedFilter"
+                (change)="onSortFilterChanged($event);">
+                <mat-list-item *ngFor="let item of searchCriteriaData.sortByFilterMap?.getValues()">
+                  <mat-radio-button labelPosition="before" [checked]="item.criteriaSelected" name="filterSort" [value]="item.criteriaName">{{item.criteriaName}}
+                  </mat-radio-button>
+                </mat-list-item>
+              </mat-radio-group>
+            </mat-list>
+          </mat-expansion-panel>
+        </mat-accordion>
+        <div class="filter-divider-row" *ngIf="searchCriteriaData?.sortByFilterMap?.size>0"></div>
+
+        <mat-accordion multi="true" *ngIf="searchCriteriaData?.categoryFilterMap?.size>0">
+          <mat-expansion-panel [expanded]="isProviderExpanded" (opened)="isOpened('isProviderExpanded')" (closed)="isClosed('isProviderExpanded')">
+            <mat-expansion-panel-header class="header-panel" [collapsedHeight]="collapsedHeight" [expandedHeight]="expandedHeight">
+              Category
+            </mat-expansion-panel-header>
+            <div role="list of mat-selection-list" *ngFor="let item of searchCriteriaData.categoryFilterMap.getValues()" style="position:relative">
+              <mat-selection-list disableRipple (selectionChange)="onCategoryFilterChange($event)" [@.disabled]="true">
+                <mat-list-option [selected]="item.criteriaSelected" [disabled]="item.disabled" value="{{ item.criteriaName }}" disableRipple
+                  [@.disabled]="true">
+                  <span>{{item.criteriaName}} ({{item.matchingResultsCount}})</span>
+                </mat-list-option>
+              </mat-selection-list>
+              <div role="prevent clicking mat-selection-list to prevent ripple animation bug" style="position:absolute;top:0px;left:0px;height:100%;width:100%;z-Index:100;opacity:1"
+                (click)="proxyClick($event,'mat-selection-list')" (touch)="proxyClick($event,'mat-selection-list')"></div>
+            </div>
+          </mat-expansion-panel>
+        </mat-accordion>
+        <div class="filter-divider-row" *ngIf="searchCriteriaData?.categoryFilterMap?.size>0"></div>
+
+        <mat-accordion multi="true" *ngIf="searchCriteriaData?.dateFilterMap?.size>0">
+          <mat-expansion-panel [expanded]="isDateExpanded" (opened)="isOpened('isDateExpanded')" (closed)="isClosed('isDateExpanded')">
+            <mat-expansion-panel-header class="header-panel" [collapsedHeight]="collapsedHeight" [expandedHeight]="expandedHeight">
+              Date
+            </mat-expansion-panel-header>
+            <mat-list class="date-container">
+              <mat-radio-group name="filterDate" [(ngModel)]="dateSelectedFilter" (click)="proxyClick($event,'radioButton')" (change)="onDateFilterChanged($event);">
+                <mat-list-item *ngFor="let item of searchCriteriaData.dateFilterMap?.getValues()">
+                  <mat-radio-button labelPosition="before" [checked]="item.criteriaSelected" name="filterDate" [value]="item.criteriaName">
+                    <span>{{item?.criteriaName | titlecase}}</span>
+                    <span *ngIf="item?.matchingResultsCount!=undefined">({{item?.matchingResultsCount}})</span>
+                  </mat-radio-button>
+                </mat-list-item>
+              </mat-radio-group>
+              <mat-list-item class="calendar-min-height" *ngIf="dateSelectedFilter === messageCenterConstants.filters.dateFilters.customDateRange">
+                <div class="date-filter-custom">
+                  <div class="date-filter-range">
+                    <div class="date-filter-custom-date from-date">
+                      <!--<mat-form-field>-->
+                      <div>
+                        <input #fromDateInput placeholder="From date" class="input-calender" [(ngModel)]="searchCriteriaData.dateFilterCustomStartDate"
+                          maxlength="10" (keydown)="customDateInputKeyDownEvent($event)" (input)="formatInputFromDate($event.target.value)"
+                          (click)="toggleCalender('from')">
+                        <mat-hint class="mat-hint-message">MM/DD/YYYY</mat-hint>
+                      </div>
+                      <!--</mat-form-field>-->
+                      <div class="calendar-icon" (click)="toggleCalender('from')">
+                        <i class="far fa-calendar-alt"></i>
+                      </div>
+                      <mat-datepicker #fromPicker></mat-datepicker>
+                    </div>
+                    <div class="date-filter-custom-date">
+                      <!--<mat-form-field>-->
+                      <div>
+                        <input #toDateInput matInput [min]="fromMinDate" (click)="toggleCalender('to')" maxlength="10" (keydown)="customDateInputKeyDownEvent($event)"
+                          (input)="formatInputToDate($event.target.value)" [(ngModel)]="searchCriteriaData.dateFilterCustomEndDate"
+                          placeholder="End date">
+                        <mat-hint class="mat-hint-message">MM/DD/YYYY</mat-hint>
+                        <!--</mat-form-field>-->
+                      </div>
+                      <div class="calendar-icon" (click)="toggleCalender('to')">
+                        <i class="far fa-calendar-alt"></i>
+                      </div>
+                      <mat-datepicker #toPicker></mat-datepicker>
+                    </div>
+                  </div>
+                  <div class="custom-range-error-message" *ngIf="isSelectedDateInvalid">
+                    Please Enter valid Date
+                  </div>
+                  <div class="custom-range-error-message" *ngIf="isCustomDateRangeInValid">
+                    End date can't be less than start range
+                  </div>
+                  <div class="date-error" *ngIf="errorMessage !== null">
+                    <i class="material-icons arrow_forward pd-0">arrow_forward</i>
+                    <span>{{errorMessage}}</span>
+                  </div>
+                </div>
+              </mat-list-item>
+            </mat-list>
+            <div class="calendar-main-container">
+              <div class="calendar-container">
+                <mat-calendar *ngIf='showCalender' [minDate]="fromMinDate" [maxDate]="calendarMaxDate" [startAt]="currentSelectedDate" [cellAspectRatio]="1"
+                  [selected]="currentSelectedDate" (selectedChange)="getSelectedValue($event)">
+                </mat-calendar>
+              </div>
+            </div>
+          </mat-expansion-panel>
+        </mat-accordion>
+        <div class="filter-divider-row" *ngIf="searchCriteriaData?.dateFilterMap?.size>0"></div>
+
+        <div class="filter-buttons">
+          <div class="col s12 filter-apply pd-0">
+            <div>
+              <button class="btn btn-default btn-default-ripple clear-filter-button" type="button" (click)="clearFilter()">
+                Clear
+              </button>
+            </div>
+            <div>
+              <button class="btn btn-primary btn-primary-ripple right" type="submit" (click)="applyFilter()">
+                Apply
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

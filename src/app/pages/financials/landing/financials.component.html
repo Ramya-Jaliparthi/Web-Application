@@ -1,0 +1,184 @@
+<section>
+  <div class="documents-component">
+    <div class="ml-15 mt-20 hide-on-large-only">
+      <app-breadcrumbs></app-breadcrumbs>
+    </div>
+    <h1>{{financialConstants.text.landingPageTitle}}</h1>
+    <div class=" hide-on-med-only hide-on-small-only">
+      <app-breadcrumbs></app-breadcrumbs>
+    </div>
+    <div class="myaccount-container row">
+
+      <div class="col l12 s12 menu-container-0">
+        <div class="flex-box">
+          <div class="flex" class="collection_sm" (click)="navigateToAllTransaction()">
+            <div class="flex menu-item-container">
+              <div class="flex menu-item-text">
+                <p class="flex-grow-1 folder-card-sm">
+                  {{financialConstants.text.landingPageTransactionTitle}}
+                </p>
+              </div>
+              <div class="flex menu-item-action">
+                <div class="valign-wrapper" *ngIf="transactionDetails?.Action.length>0">
+                  <span class="badge unread-docs-indicator">{{transactionDetails.Action.length}}</span>
+                </div>
+                <div class="valign-wrapper ml-10">
+                  <i class="far fa-chevron-right"></i>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+
+          <div  class=" col l8 s12">
+  
+            <div class="flex-box" *ngIf="accountDetails?.length || futureAccountDetails?.length || previousAccountDetails?.length">
+              <div class="flex" class="collection_heading">
+                <h2>{{financialConstants.text.collectionHeaderTitle}}</h2>
+              </div>
+            </div>
+  
+            <div class="flex-box" *ngIf="accountDetails?.length || futureAccountDetails?.length || previousAccountDetails?.length">
+              <div *ngFor="let account of accountDetails; index as account; let i = index" class="collection"
+                   [ngClass]="{'menu-top-border': i===0 && ismobile}">
+                <div class="flex" (click)="navigateToAccountDetail(account)">
+                  <div class="flex menu-item-container">
+  
+                    <div class="flex menu-item-text">
+                      <p class="flex-grow-1 folder-card">
+                        {{getHeader(account['accountType'])}}
+                        <span class="folder-card-span">Available: <label class="folder-card-amt">&#36;{{account['availBalance']
+                              | number : '1.2-2'}}</label>
+                              until  {{convertDate(account['planEndDate']) | date:'MM/dd/yyyy' }}
+                        </span>
+                        
+                      </p>
+                    </div>
+  
+                    <div class="flex menu-item-action">
+                      <div class="valign-wrapper ml-10">
+                        <i class="far fa-chevron-right"></i>
+                      </div>
+                    </div>
+                  </div>
+  
+                </div>
+              </div>
+
+              <div *ngFor="let account of futureAccountDetails; index as account; let i = index" class="collection"
+                     [ngClass]="{'menu-top-border': i===0 && ismobile}">
+                  <div class="flex" (click)="navigateToAccountDetail(account)">
+                    <div class="flex menu-item-container">
+    
+                      <div class="flex menu-item-text">
+                        <p class="flex-grow-1 folder-card">
+                          <span class="new-account">New ! </span>{{getHeader(account['accountType'])}}
+                          <span class="folder-card-span">Account becomes Available: {{
+                            convertDate(account['planStartDate']) | date:'MM/dd/yyyy' }}
+                          </span>
+                          
+                        </p>
+                      </div>
+    
+                      <div class="flex menu-item-action">
+                        <div class="valign-wrapper ml-10">
+                          <i class="far fa-chevron-right"></i>
+                        </div>
+                      </div>
+                    </div>
+    
+                  </div>
+                </div>
+
+              <div *ngIf="previousAccountDetails?.length" class="collection previous-accounts"
+                       [ngClass]="{'menu-top-border': i===0 && ismobile}">
+                    <div class="flex" (click)="navigateToPreviousAccounts()">
+                      <div class="flex menu-item-container">
+      
+                        <div class="flex menu-item-text">
+                          <p class="flex-grow-1 folder-card">
+                            Previous Accounts
+                          </p>
+                        </div>
+      
+                        <div class="flex menu-item-action">
+                          <div class="valign-wrapper ml-10">
+                            <i class="far fa-chevron-right"></i>
+                          </div>
+                        </div>
+                      </div>
+      
+                    </div>
+                  </div>
+            </div>
+
+            <div class="flex-box">
+                
+              </div>
+
+            <div class="flex-box">
+                  
+                </div>
+  
+          </div>
+  
+          <div class="col l4 s12">
+            <!-- <div class="flex-box">
+              <div class="flex" class="collection_heading">
+                <h4>{{financialConstants.text.collectionlinkTitle}}</h4>
+              </div>
+            </div> -->
+    
+            <div class="flex-box quick-links">
+              <div *ngFor="let link of financialConstants.quickLinks; index as link" class="collection_links">
+                <div class="flex menu-item-container" (click)="openPage(link['url'])">
+                  <div class="flex menu-item-text">
+                    <p class="flex-grow-1 folder-card-sm1">
+                      {{link['text']}}
+                    </p>
+                  </div>
+    
+                  <div class="flex menu-item-action">
+                    <div class="valign-wrapper ml-10">
+                      <i class="far fa-chevron-right"></i>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- <div class="flex-box" *ngIf="accountDetails?.length">
+          <div class="flex" class="collection_heading">
+            <h6>{{financialConstants.text.accountDetailTitle}}</h6>
+          </div>
+        </div>
+
+        <div class="flex-box pd-b20">
+          <div *ngFor="let account of accountDetails; index as account; let i = index" class="collection_acc_details"
+               [ngClass]="{'menu-top-border': i===0 && !ismobile}">
+            <div class="flex menu-item-container">
+
+              <div class="flex menu-item-text">
+                <p class="flex-grow-1 folder-card-sm1">
+                  About {{getHeader(account['accountType'])}}
+                </p>
+              </div>
+
+              <div class="flex menu-item-action">
+                <div class="valign-wrapper ml-10">
+                  <i class="far fa-chevron-right"></i>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div> -->
+      </div>
+
+    </div>
+
+  </div>
+</section>

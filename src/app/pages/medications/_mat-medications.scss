@@ -1,0 +1,156 @@
+@import '../../../assets/styles/_fonts';
+@import '../../../assets/styles/_variables';
+@import '../../../assets/styles/_colors';
+.medications-filter-container {
+    .mat-radio-container {
+        position: absolute !important;
+        right: 8px !important;
+        top: 0;
+        bottom: 0;
+        margin-top: auto;
+        margin-bottom: auto;
+    }
+    .mat-radio-ripple {
+        left: unset !important;
+    }
+    .mat-list-item-content {
+        height: auto !important;
+        padding: 0.5rem 4px 0 0 !important;
+    }
+    .list .mat-list .mat-list-item {
+        height: auto !important;
+        /* To avoid calculated height from mat-line-x classes */
+    }
+    .mat-radio-label-content.mat-radio-label-before {
+        color: $title-color;
+        font-size: 14px;
+    }
+    .mat-list-text {
+        font-size: 14px;
+        padding: 0 !important;
+    }
+    .mat-list-item-disabled .mat-list-text {
+        color: $non-vdk-11-grey !important;
+        @include Roboto(regular);
+        font-size: 14px;
+    }
+    span.mat-content {
+        font-size: 16px;
+        //spk/cleanup - font-weight: 500;
+        @include Roboto(bold);
+    }
+    div.sort-by {
+        font-size: 16px !important;
+        // font-weight: 600 !important;
+        @include Roboto(medium);
+    }
+    mat-expansion-panel {
+        box-shadow: none !important;
+        border-bottom: 1px solid $non-vdk-27-blue !important;
+        margin: 0 0 0.5rem !important;
+        padding: 0 0 0.5rem;
+    }
+    .mat-radio-button.mat-accent.mat-radio-checked .mat-radio-outer-circle {
+        border-color: $non-vdk-4-grey !important;
+    }
+    .mat-radio-button.mat-accent .mat-radio-inner-circle {
+        background-color: $background-title-separator-color !important;
+    }
+    mat-expansion-panel-header {
+        padding: 0 5px 0 0 !important;
+        margin: 0 0 0 1rem !important;
+    }
+    .mat-expansion-panel-body {
+        margin: 0 !important;
+        //  overflow: hidden !important;
+    }
+    .mat-radio-button.mat-accent .mat-radio-ripple .mat-ripple-element {
+        background-color: transparent !important;
+    }
+    .mat-expansion-panel-content {
+        margin: 0 0 0 1rem !important;
+    }
+    .mat-expansion-indicator::after {
+        margin: -10px 3px 0px 0px !important;
+        padding: 2px !important;
+        color: $headings-dark-color !important;
+        width: 10px;
+        height: 10px;
+        border-left-color: transparent;
+    }
+    .mat-expansion-indicator[ng-trigger-indicatorRotate] {
+        margin-right: 3px !important;
+    }
+    .mat-icon svg {
+        fill: $background-title-separator-color;
+    }
+    mat-hint.mat-hint-message {
+        color: $text-gray-color;
+    }
+    .mat-selection-list .mat-list-item .mat-list-text,
+    .mat-selection-list .mat-list-option .mat-list-text {
+        color: $black_color;
+    }
+    .mat-list-item.mat-list-item {
+        color: $black_color !important;
+        height: 44px;
+    }
+    .mat-raised-button {
+        min-width: 138px;
+    }
+    @media (min-width: 993px) {
+        .mat-raised-button {
+            min-width: 110px;
+        }
+    }
+    .medicare-filter-inner-btn {
+        .filter-btn {
+            .filter-menu-with-action {
+                .material-icons {
+                    font-size: 36px;
+                    color: $headings-dark-color;
+                }
+            }
+        }
+    }
+}
+
+@media (max-width: 992px) {
+    .medications-filter-container .mat-radio-container {
+        right: 18px !important;
+    }
+    .mat-pseudo-checkbox {
+        margin-right: 8px;
+    }
+}
+
+@media (min-width: 992px) {
+    .medications-filter-container .mat-radio-container {
+        right: 11px !important;
+    }
+    .mat-pseudo-checkbox {
+        margin-right: 6px;
+    }
+    .medications-filter-container {
+        .mat-pseudo-checkbox {
+            margin-right: 5px;
+        }
+    }
+}
+
+.medications-filter-container {
+    mat-pseudo-checkbox.mat-pseudo-checkbox.mat-pseudo-checkbox-checked.mat-pseudo-checkbox-disabled::after {
+        border-bottom: 2px solid $non-vdk-11-grey !important;
+        border-left: 2px solid $non-vdk-11-grey !important;
+    }
+    // MWIT-554
+    .mat-button-ripple {
+        border-radius: 5px;
+    }
+    .mat-pseudo-checkbox {
+        height: 20px;
+        width: 20px;
+        border: 1px solid $non-vdk-19-grey;
+        border-radius: 0;
+    }
+}

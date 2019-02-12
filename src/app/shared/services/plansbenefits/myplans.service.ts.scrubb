@@ -1,0 +1,57 @@
+import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs/Observable';
+import { AuthHttp } from '../authHttp.service';
+import { ConstantsService, AuthService } from '../../shared.module';
+import {
+  PlanBenefitsListResponseModelInterface,
+  PlanBenefitsListRequestModelInterface
+} from '../../../pages/myplans/models/interfaces/plan-benefits-list-model.interface';
+import { PlanBenefitsListRequestModel } from '../../../pages/myplans/models/plan-benefits-list.model';
+
+
+@Injectable()
+export class MyplansService {
+
+  constructor(private http: AuthHttp,
+    private constants: ConstantsService,
+    private authService: AuthService) {
+  }
+
+  // start : code modification by kalagi01
+  // getPlansData(): Observable<any> {
+  //   const request = {
+  //     useridin: this.authService.useridin
+  //   };
+
+  //   return this.http.encryptPost(this.constants.getPlansBenefitsListUrl, request).map(response => {
+  //     console.log('Getplansbenefitslist', response);
+  //     if (response.type !== 'error') {
+  //       if (response['fault'] && response['fault'].faultstring) {
+  //         return;
+  //       } else if (response && response['ROWSET'] && response['ROWSET'].totRows <= 1) {
+  //         return [response['ROWSET'].ROWS];
+  //       } else {
+  //         return response['ROWSET'].ROWS;
+  //       }
+  //     }
+  //   });
+  // }
+
+  getPlansData(): Observable<PlanBenefitsListResponseModelInterface> {
+    const request: PlanBenefitsListRequestModelInterface = new PlanBenefitsListRequestModel();
+    request.useridin = this.authService.useridin;
+
+    return this.http.encryptPost(this.constants.getPlansBenefitsListUrl, request).map(response => {
+      const planBenefitsListResponse: PlanBenefitsListResponseModelInterface = <PlanBenefitsListResponseModelInterface>response;
+      console.log('Getplansbenefitslist', planBenefitsListResponse);
+      if (planBenefitsListResponse['type'] !== 'error') {
+        if (planBenefitsListResponse['fault'] && planBenefitsListResponse['fault'].faultstring) {
+          return;
+        } else {
+          return planBenefitsListResponse;
+        }
+      }
+    });
+  }
+  // end : code modification by kalagi01
+}

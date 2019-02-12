@@ -1,0 +1,32 @@
+
+.mat-radio-outer-circle {
+    border-color: $radio-button-border-color !important;
+    transition: none !important;
+    height: 26px !important;
+    width: 26px !important;
+    border-width: 1px !important;
+  }
+
+  .mat-radio-ripple {
+    display: none;
+  }
+
+  .mat-radio-inner-circle {
+    background-color: $selected-background-color !important;
+    transition: none !important;
+    height: 26px !important;
+    width: 26px !important;
+  }
+
+  .mat-radio-checked .mat-radio-inner-circle {
+    transform: scale(0.7) !important;
+  }
+
+  .mat-radio-label-content {
+    font-size: 14px;
+    color: $black_color !important;
+    //padding-left: 16px !important;
+    margin-top: 7px !important;
+  }
+
+

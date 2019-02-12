@@ -1,0 +1,38 @@
+.breadcrumb{
+  margin: 10px 0 20px;
+}
+.breadcrumb li {
+  display: inline;
+  margin: 3px;
+}
+.breadcrumb li:first-child{
+  margin-left: 0;
+}
+.breadcrumb li+li:before {
+  //content: "\f054";
+  //font-family: "FontAwesome";
+  color: #043167;
+  font-size: 12px;
+}
+.breadcrumb li svg {
+  color: #043167;
+}
+.breadcrumb a{
+  color: #043167;
+  font-size: 16px;
+  font-family: Roboto !important;
+  font-weight: 300 !important;
+  text-decoration:underline
+}
+.breadcrumb-item.active a{
+  text-decoration:none;
+}
+.disable{
+  cursor: default;
+  pointer-events: none;
+}
+@media (max-width:992px) {
+  .breadcrumb a{
+    font-size: 14px;
+  }
+}

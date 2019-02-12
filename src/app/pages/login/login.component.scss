@@ -1,0 +1,95 @@
+@import '../../../assets/styles/_include';
+.login-action {
+    display: block;
+    padding: 10px;
+    border-radius: 2px;
+    color: $title-color;
+    height: 47px;
+    p {
+        display: inline-block;
+        margin: 3px 0 0 4px;
+        // spk/cleanup font-weight: bold;
+        @include Roboto(bold);
+    }
+    span {
+        float: right;
+        margin-top: 4px;
+    }
+}
+
+form p {
+    margin-top: 13px;
+    margin-bottom: 5px;
+}
+
+//input {
+//    margin-bottom: 0;
+//}
+
+.input-group-addon {
+    cursor: pointer;
+    margin: 4px -2px 0px 0px;
+    &.hide-class {
+        background-color: $non-vdk-3-grey;
+    }
+}
+
+.password-block {
+    position: relative;
+}
+
+.password-block .input-group-addon {
+    position: absolute;
+    right: 4px;
+    top: 15px;
+    text-align: center;
+}
+
+a.text-color {
+    color: $new-color;
+    font-size: 16px;
+}
+
+.remember-me {
+    font-size: 14px;
+}
+
+.recommend-text {
+    margin: -3px 0px 0px 0px !important;
+    font-size: 12px;
+}
+
+.forgot-text {
+  @include vdkTextLink();
+}
+
+/*.submit-action .btn[disabled] {
+    //background-color: $non-vdk-3-grey // $non-vdk-3-grey
+    opacity: 1 !important;
+    cursor: not-allowed;
+    color: $background-white-color !important; // white
+  .gradient { // CR for buttons
+    border: 1px solid $non-vdk-33-blue  !important;;
+    background: linear-gradient($non-vdk-34-blue, $non-vdk-35-blue)  !important;;
+  }
+}*/
+
+//for - get one-touch sign in to MyBlue
+ul:not(.browser-default)>li {
+  list-style-type: disc;
+}
+
+.list-items {
+  ul {
+    li {
+      padding: 6px;
+      color: $non-vdk-6-grey; // $non-vdk-6-grey;
+      font-size: 16px;
+    }
+  }
+}
+
+.help-text {
+  @include vdkTextLink();
+  margin-left: 10px !important;
+}

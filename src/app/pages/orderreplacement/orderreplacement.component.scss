@@ -1,0 +1,97 @@
+// spk-cleanup - @import '../../../../assets/styles/variables';
+@import '../../../assets/styles/_variables';
+@import '../../../assets/styles/_fonts';
+@import '../../../assets/styles/_colors';
+.row {
+    @media (max-width: 993px) {
+        margin-left: 0 !important;
+        margin-right: 0 !important;
+    }
+}
+
+.member-color,
+.mail-address {
+    color: $primary-color;
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.service-link {
+    color: $link-color;
+}
+
+.check-link {
+    color: green;
+}
+.clear-link {
+    color: red;
+}
+
+.mail-address {
+    margin-bottom: 10px;
+}
+
+.orderreplacement .blueColor {
+    color: $non-vdk-43-blue;
+}
+
+.dependentList {
+    display: table;
+    margin: auto;
+}
+
+.buttonWhite {
+    color: $background-title-separator-color;
+}
+
+.orderreplacement .submitted {
+    color: green;
+}
+
+.orderreplacement .mat-list-item-content {
+    padding: 0 !important;
+}
+
+.address-text {
+    padding: 10px 16px 10px 0px;
+    color: $text-disabled-gray;
+    p {
+        font-size: 16px;
+    }
+}
+
+.mat-list-item-content {
+    padding-left: 0px;
+}
+
+.btn-cancel {
+    text-align: center;
+    margin-top: 10px;
+    .cancel {
+        @include Roboto(bold);
+        font-size: 14px;
+        color: $link-color;
+    }
+}
+
+.material-icons {
+    vertical-align: middle;
+}
+
+.order-idcard-container {
+    .cardTypes {
+        margin-left: 25px;
+        padding: 5px;
+    }
+}
+
+.member-text {
+    @include Roboto(bold);
+    font-size: 16px;
+    color: $headings-dark-color;
+    padding-bottom: 10px;
+}
+
+.selected-cards {
+    padding-left: 30px;
+}

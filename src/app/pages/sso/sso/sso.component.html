@@ -1,0 +1,3 @@
+<form *ngIf="ssoDetails" method="POST" [action]="ssoDetails?.ssomsg.samlUrl" #sso ngNoForm > <!-- -->
+  <input type="hidden" name="NameValue" [value]="ssoDetails?.ssomsg.samlValue" />
+</form>

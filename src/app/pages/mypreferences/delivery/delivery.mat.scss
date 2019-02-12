@@ -1,0 +1,37 @@
+.mypreferences-delivery-mat {
+    .mat-checkbox-background {
+        background-color: transparent !important;
+    }
+    .mat-checkbox-checked,
+    {
+        .mat-checkbox-background {
+            background-color: $textbox-border !important;
+        }
+        .mat-checkbox-checkmark path {
+            stroke: $headings-dark-color !important;
+        }
+        .mat-checkbox-checkmark-path {
+            stroke-width: 2.1px;
+        }
+    }
+    .mat-checkbox-layout {
+        white-space: wrap;
+    }
+    mat-card-content {
+        .col {
+            padding-left: 0px !important;
+            padding-right: 0px !important;
+            padding-bottom: 0px !important;
+        }
+        .row {
+            margin: 0px !important;
+        }
+        .pt-5 {
+            padding-top: 5px !important;
+        }
+        .mat-checkbox-inner-container {
+            margin-right: 0px;
+            margin-bottom: 0px !important;
+        }
+    }
+}

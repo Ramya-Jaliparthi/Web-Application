@@ -1,0 +1,137 @@
+@import '../styles/fad';
+.fad-search-results-component {
+    @extend %fad-basic-layout;
+    .more-info-section {
+        @include Roboto(light);
+        font-size: 14px;
+        border-top: 4px solid $background-title-separator-color;
+        margin-top: 36px;
+        padding-top: 15px;
+        color: $text-normal-color;
+        letter-spacing: -0.01px;
+        line-height: 19px;
+        a {
+            cursor: pointer;
+        }
+        @media (max-width: 992px) {
+            display: none;
+        }
+    }
+    .email-section {
+        position: relative;
+        @include Roboto(medium);
+        font-size: 12px;
+        color: $text-primary-color;
+        letter-spacing: -0px;
+        background-color: $content-background-color;
+        padding: 10px;
+        margin-top: 40px;
+        min-height: 43px;
+        .section-content {
+            position: absolute;
+            top: 0px;
+            bottom: 0px;
+            left: 0px;
+            right: 0px;
+            margin: auto;
+            height: 23px;
+            margin-left: 15px;
+        }
+        .mail-icon {
+            float: left;
+            font-family: FontAwesome5Pro(light);
+            font-size: 18px;
+            margin-right: 10px;
+        }
+        .section-text {
+            float: left;
+            margin-top: 5px;
+        }
+    }
+    .search-results-meta-info-container {
+        .result-count {
+            @include Roboto(light);
+            font-size: 24px;
+            color: $headings-dark-color;
+            margin-top: 15px;
+        }
+        .signed-on-section {
+            width: 100%;
+            position: relative;
+            background-color: $background-gray-color;
+            margin-top: 15px;
+            border-left: 9px solid $icon-color;
+            padding: 10px 6px;
+            p {
+                padding: 5px;
+                @include Roboto(light);
+                font-size: 13px;
+                color: black;
+                text-align: left;
+                line-height: 16px;
+            }
+        }
+        .not-signed-on-section,
+        .ask-to-authenticate {
+            min-height: 43px;
+            height: 43px;
+            width: 100%;
+            position: relative;
+            background-color: $background-gray-color;
+            border-left: 9px solid $icon-color;
+            margin-top: 15px;
+            @media (max-width:404px) {
+                height: 55px;
+            }
+            .request-sign-in-section {
+                float: left;
+                @include Roboto(bold);
+                font-size: 13px;
+                color: black;
+                text-align: left;
+                line-height: 16px;
+                height: 16px;
+                padding: 14px 0 0 10px;
+                position: relative;
+                // margin-left: 12px;
+                // margin-right: 30px;
+                a {
+                    font-size: 13px;
+                    color: $text-primary-color;
+                    text-align: left;
+                    line-height: 16px;
+                    text-decoration: underline;
+                }
+                
+            }
+            .close-icon {
+                font-size: 20px;
+                font-weight: lighter;
+                float: right;
+                color: $icon-color;
+                right: 5px;
+                height: 30px;
+                position: relative;
+                text-align: right;
+                padding: 0;
+                margin-top: 9px;
+            }
+        }
+    }
+    @media (max-width: 992px) {
+        // for mobile/tablet screens 
+        .mobile-adjustments {
+            padding-left: 0px;
+            padding-right: 0px;
+        }
+        .mobile-hide-by-filter-overlay {
+            display: none;
+        }  
+    }
+
+    // .filter-adjust-padding {
+    //     height: 20px;
+    //     margin-top: 20px;
+    //     border-bottom: 4px solid #1866A3;
+    // }
+}
